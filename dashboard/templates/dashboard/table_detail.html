@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ table.title|default:"Table details" }}</title>
+
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            max-width: 1200px;
+            color: #222;
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metadata div {
+            padding: 0.8rem;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+
+        .metadata dt {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .metadata dd {
+            margin: 0.25rem 0 0;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.65rem 0.8rem;
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        thead th {
+            background: #eee;
+            position: sticky;
+            top: 0;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .label {
+            font-weight: 600;
+            min-width: 180px;
+        }
+
+        .numeric {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: #eee;
+            font-size: 0.85rem;
+        }
+
+        .notice {
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+
+        a {
+            color: #1756a9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>
+        <a href="{% url 'table-list' %}">&larr; Back to tables</a>
+    </p>
+
+    <header>
+        <h1>{{ table.title|default:"Untitled table" }}</h1>
+
+        <p>
+            <span class="badge">{{ table.source_id }}</span>
+
+            {% if table.ocr %}
+                <span class="badge">OCR extracted</span>
+            {% else %}
+                <span class="badge">Digitally extracted</span>
+            {% endif %}
+        </p>
+    </header>
+
+    <section>
+        <h2>Table information</h2>
+
+        <dl class="metadata">
+            <div>
+                <dt>Source ID</dt>
+                <dd>{{ table.source_id }}</dd>
+            </div>
+
+            <div>
+                <dt>Year</dt>
+                <dd>{{ table.year }}</dd>
+            </div>
+
+            <div>
+                <dt>Page</dt>
+                <dd>{{ table.page }}</dd>
+            </div>
+
+            <div>
+                <dt>Table number</dt>
+                <dd>{{ table.table_number|default:"—" }}</dd>
+            </div>
+
+            <div>
+                <dt>Number of rows</dt>
+                <dd>{{ rows|length }}</dd>
+            </div>
+
+            <div>
+                <dt>Number of columns</dt>
+                <dd>{{ table.columns|length }}</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section>
+        <h2>Data</h2>
+
+        {% if rows %}
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Position</th>
+                            <th scope="col">Label</th>
+
+                            {% for column in table.columns %}
+                                <th scope="col">{{ column }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row.position }}</td>
+                                <td>{{ row.label|default:"—" }}</td>
+
+                                {% for cell in row.cells %}
+                                    <td>{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="notice">
+                No rows are available for this table.
+            </p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>
+            <a href="{% url 'table-list' %}">&larr; Back to tables</a>
+        </p>
+    </footer>
+
+</body>
+</html>

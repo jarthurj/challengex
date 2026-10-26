@@ -1,0 +1,52 @@
+
+<h1>Browse tables</h1>
+
+<form method="get">
+    <input
+        type="search"
+        name="q"
+        value="{{ query }}"
+        placeholder="Search title or source ID"
+    >
+
+    <input
+        type="number"
+        name="year"
+        value="{{ year }}"
+        placeholder="Year"
+    >
+
+    <button type="submit">Search</button>
+    <a href="{% url 'table-list' %}">Clear</a>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Page</th>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Source ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for table in tables %}
+            <tr>
+                <td>{{ table.year }}</td>
+                <td>{{ table.page }}</td>
+                <td>{{ table.table_number }}</td>
+                <td>
+                    <a href="{% url 'table-detail' table.pk %}">
+                        {{ table.title|default:"Untitled" }}
+                    </a>
+                </td>
+                <td>{{ table.source_id }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5">No matching tables found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
