@@ -35,6 +35,99 @@ The stated goal is "Unlock the hidden value of these annual reports."
    and AI insights.
 3. **AI integration.** Which AI to use for summaries and forecasts, and how to wire it in.
 
+## What kind of project this is
+This is an end-to-end **analytics data product**, sometimes called "augmented analytics." It has
+four parts:
+- A **document-extraction ETL pipeline** that turns PDFs into structured tables.
+- A **dimensional data model**: `Observation` is the fact table; `Metric`, `Segment`, and year
+  are the dimensions.
+- A **BI dashboard**.
+- **Time-series forecasting** plus **LLM-generated narrative insights**.
+
+The client is a federal oversight office (USPS OIG), and this is a cybersecurity course, so
+public-sector accessibility and security norms apply.
+
+## Quality bar (acceptance criteria)
+These are standard industry practice for this kind of product. They are not in the slides, but
+the team holds the work to them, and a feature isn't done until it meets the ones that apply.
+
+**User stories.** The primary persona is an OIG analyst writing "How Americans Use Mail." That
+analyst should be able to:
+- Find any headline number for any year within a few clicks, along with its source report and
+  page.
+- Compare one metric across years and demographic segments on a single chart.
+- Read a plain-language summary of what changed and why, and copy it into a report with its
+  citations.
+- See each forecast with its uncertainty and the model's track record.
+- A partner postal analyst should be able to filter by product and demographic and export the
+  result to CSV.
+
+**Data:**
+- **Provenance.** Every number shown traces back to `source_table`, report year, and page, and
+  the UI links to it.
+- **Quality dimensions:**
+  - Accuracy: the `verified` flag, plus a visible badge on unverified values.
+  - Completeness: show gaps; never silently interpolate.
+  - Consistency: canonical units.
+  - Uniqueness: one preferred value per metric, segment, and year.
+- **Reproducible, idempotent loads.** Rebuilding from `tables.json` plus the mapping always
+  produces the same database.
+- **Data dictionary.** Every `Metric` has a definition, a unit, a market, and its source tables.
+
+**Dashboard and UX:**
+- Every chart has a title, units, a source, the report year, and methodology-break annotations.
+- **Accessibility: WCAG 2.1 AA, as Section 508 requires for a federal audience.**
+  - Never use color as the only way to encode information.
+  - Every chart has a data-table fallback or text alternative.
+  - The whole dashboard works by keyboard.
+  - Text meets contrast requirements.
+- Pages load in about 2 seconds or less. No external API calls happen during a page load.
+- Number formatting is consistent: thousands separators, fixed decimals per unit, and units
+  always shown.
+
+**Forecasting:**
+- Compare every model against a naive baseline: the last value, or drift.
+- Report backtest error (MAE or MAPE) on held-out years.
+- Show prediction intervals and label forecasts as projections.
+- Keep horizons at 5 years or less.
+- Flag any series that crosses a methodology break, or fit only on the years after the break.
+- Explain the model and its assumptions in the UI.
+
+**Generative AI.** Follow the NIST AI RMF and the OWASP Top 10 for LLM Applications:
+- **Grounding:**
+  - The LLM sees only our observations, forecasts, and methodology notes.
+  - Every claim cites a metric and year.
+  - An automated check confirms that every number in the generated text matches the database.
+- Label AI-generated text, and require a human "reviewed" flag before it's treated as final.
+- Keep prompt templates versioned in code. Store the model ID, prompt version, and a hash of the
+  inputs with each `Insight`.
+- Keep a small eval set of known metrics and expected facts, and check summaries against it for
+  numeric errors and hallucinations.
+- **Prompt injection.** Treat "Ask the data" input as untrusted. The LLM has no write tools, and
+  its output is escaped when rendered.
+
+**Security** (this is a CYSE course, so it gets graded):
+- **OWASP Top 10:**
+  - Keep Django's autoescaping on. Never apply `|safe` to LLM or extracted text.
+  - Keep CSRF protection on.
+  - Use the ORM only; no raw SQL built from user input.
+  - Validate every query parameter.
+- Secrets live only in `.env` and are never logged or committed.
+- Pin dependencies in `requirements.txt` and scan them with `pip-audit`.
+- Cap the LLM's cost and rate, with a timeout, and fail gracefully when the API is unavailable.
+- Before any deployment:
+  - Set `DEBUG=False`.
+  - Read `SECRET_KEY` from the environment.
+  - Set `ALLOWED_HOSTS`.
+  - Serve over HTTPS.
+  - Put authentication in front of the admin.
+
+**Engineering:**
+- Write tests (`python manage.py test`) for unit conversions, the loader mapping, the forecasts,
+  and the AI-text number check.
+- Keep changes small and focused, merged to `main` with a clear description.
+- Update this file when a team decision changes.
+
 ## Stack and how to run
 - Django 6.1, SQLite (`db.sqlite3` is committed), Python 3.15. The project is `mysite/` and the
   app is `dashboard/`.
