@@ -12,9 +12,5 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Source reports (~200 MB). Keep locally in docs/; don't commit.
-docs/*.pdf
-docs/*.docx
-docs/*.xlsx
-# The assignment slides are small and worth sharing.
-!docs/USPS Analysing Mail Usage Through an Interactive Dashboard.pptx.pdf
+# Source reports and assignment slides. Keep locally; don't commit.
+docs/

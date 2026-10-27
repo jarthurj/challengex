@@ -47,7 +47,7 @@ The stated goal is "Unlock the hidden value of these annual reports."
 - The team decided against ModelForms. Don't add them.
 
 ## Source material
-- **`docs/`** (untracked, about 200 MB):
+- **`docs/`** (git-ignored, local only, about 200 MB; each teammate keeps their own copy):
   - The original report PDFs for **2000, 2001, 2003–2010, and 2012–2025**. 2002 and 2011 are
     missing.
   - The assignment slides.
@@ -110,13 +110,15 @@ The stated goal is "Unlock the hidden value of these annual reports."
   be queried across years.
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by year.
-  - `table_detail` renders a table but still has debug `print()` calls.
+  - `table_detail` renders one table.
   - `dashboard` is a "Hello world" placeholder.
 - **Templates:** `table_list.html` has no styling or `<html>` wrapper. `table_detail.html` is
   styled.
-- **Missing:** tests, admin registrations, charts, and any AI.
-- **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and the report
-  binaries in `docs/`. Only the assignment slides in `docs/` can be committed.
+- **`admin.py`:** `Table` (filter by year/OCR, rows inline) and `Row` are registered for data
+  review at `/admin/`. Run `python manage.py createsuperuser` to log in.
+- **Missing:** tests, charts, and any AI.
+- **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
+  `docs/`, including the slides. The team decided to keep it out of git.
 
 ## Target design (recommended)
 
@@ -186,24 +188,21 @@ value against the PDF in `docs/`.
   from the returned rows.
 
 ## Next steps (priority order)
-1. **Housekeeping** (the `.gitignore` and untracking are done):
-   - Remove the debug prints in `table_detail`.
-   - Register `Table`/`Row` in `admin.py`.
-2. **Cleanup pass in `load_tables`:**
+1. **Cleanup pass in `load_tables`:**
    - Drop a first data row that repeats the header.
    - Skip or flag the back-matter tables beyond page 110.
    - Add a `needs_review` flag, set for OCR tables, tables with no title, and tables with
      `col_N` headers.
-3. **Fill the data gaps:**
+2. **Fill the data gaps:**
    - Fix the 2021 values by re-extracting or entering them by hand from `docs/2021.pdf`.
    - Extract the missing FY2019 Appendix A tables and FY2018 A8-10.
-4. **Build `Metric`/`Segment`/`Observation`** and the mapping-driven loader. Start with about 10
+3. **Build `Metric`/`Segment`/`Observation`** and the mapping-driven loader. Start with about 10
    headline series, sourced from Appendix A where possible.
-5. **Unit normalization and methodology-break metadata:** per week → per year, billions ↔ per
+4. **Unit normalization and methodology-break metadata:** per week → per year, billions ↔ per
    household, and age-band mapping.
-6. **Extend history to 15+ years:** pull headline series for 2000–2015 from the `docs/` PDFs or
+5. **Extend history to 15+ years:** pull headline series for 2000–2015 from the `docs/` PDFs or
    the Appendix A back-years.
-7. **Overview, Trends, and Year pages** with Chart.js, filterable by product and demographic.
-8. **Forecast module** (`statsmodels`), with backtests and confidence bands.
-9. **Claude-generated summaries**, cached and shown next to the charts, plus export.
-10. **Tests** for unit conversion, the loader mapping, and the forecast functions.
+6. **Overview, Trends, and Year pages** with Chart.js, filterable by product and demographic.
+7. **Forecast module** (`statsmodels`), with backtests and confidence bands.
+8. **Claude-generated summaries**, cached and shown next to the charts, plus export.
+9. **Tests** for unit conversion, the loader mapping, and the forecast functions.
