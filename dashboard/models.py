@@ -98,7 +98,7 @@ class Observation(models.Model):
     source_table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="observations")
     report_year = models.PositiveIntegerField()  # which annual report published this value
     is_preferred = models.BooleanField(default=False)  # the one value to chart for this year
-    verified = models.BooleanField(default=False)  # a person checked it against the PDF
+    verified = models.BooleanField(default=False)  # checked against the source PDF page; notes say how
     notes = models.TextField(blank=True)
 
     class Meta:

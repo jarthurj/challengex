@@ -148,7 +148,12 @@ analyst should be able to:
   2. `python manage.py load_metrics`. This rebuilds the metric layer from
      `dashboard/metric_sources.py`. It's safe to re-run, and it keeps reviewers' `verified`
      flags and notes.
-- Run the tests: `python manage.py test dashboard`. They load the real `tables.json`.
+  3. `python manage.py verify_pdfs` checks every loaded value against the text of its source
+     PDF page, then sets `verified` and adds a `[pdf-check]` note. It needs the PDFs in `docs/`
+     and `pypdf`. **Run it after mapping any new series.**
+- Run the tests: `python manage.py test dashboard`. They load the real `tables.json`, and they
+  don't need `docs/`.
+- See `VERIFICATION.md` for the full check of the loaded data against every file in `docs/`.
 - The team decided against ModelForms. Don't add them.
 
 ## Source material
@@ -156,6 +161,12 @@ analyst should be able to:
   - The original report PDFs for **2000, 2001, 2003–2010, and 2012–2025**. 2002 and 2011 are
     missing.
   - The assignment slides.
+  - **Text layers:**
+    - Most PDFs have a real text layer, which `pypdf` reads exactly.
+    - **FY2004 is fully scanned.**
+    - In **FY2021**, the chapter pages (9–69) are scanned, but Appendix A has text.
+    - In **FY2019**, the Appendix A tables are embedded as images.
+    - Pages without text can only be checked by rendering them, for example with PyMuPDF.
   - `tables.xlsx - Index.pdf`, a printed index of `tables.json`.
   - `2025.docx` and `2025_Household_Mail_Survey_extracted.xlsx`, alternate extractions of
     FY2025.
@@ -183,16 +194,32 @@ analyst should be able to:
     2015/2020/2025).
 
 ## Known data-quality problems (verify before trusting a number)
-- **2021 is 88% OCR (112 of 128 tables) and its values are wrong.**
+- **The FY2021 chapter tables are OCR'd from scanned pages, and their values are wrong**
+  (112 of 128 FY2021 tables).
   - Example: `2021-p009-1` gives 395.1 billion First-Class pieces received. The real figure is
     about 32 billion.
   - Treat every `ocr=True` table as unverified. 2021 is the only year with OCR.
-  - The impact is limited: the 2021 values also appear in the non-OCR FY2022, FY2023, and FY2024
-    appendices. Prefer those.
+  - **The 16 FY2021 Appendix A tables (`2021-p072-1` … `2021-p087-1`) are not OCR.** They are
+    `ocr=False`, and all 3,572 of their numbers match the PDF text exactly, so they're usable as
+    sources.
+  - The 2021 values also appear in the FY2022, FY2023, and FY2024 appendices.
 - **Appendix gaps:**
-  - FY2019 has no Appendix A tables at all. The extraction skipped pp. 68–85.
+  - FY2019's Appendix A tables (pp. 69–85) are images in the PDF, which is why the extraction
+    skipped them.
   - FY2018 is missing A8-10.
   - Both gaps are covered by later reports' appendices, so they're low priority.
+- **The correspondence/transactions split was reclassified several times.** The total stays the
+  same, but the split moves between categories.
+  - Reports in FY2007–2010, FY2012–2014, FY2015–2016, FY2017–2018, and FY2019 each split
+    2000–2010 differently. For example, 2000 correspondence is 16,304M in FY2014, 18,311M in
+    FY2015, and 19,470M from FY2017 on.
+  - The loaded preferred values come from FY2020 (2000–2009) and FY2023 (2010+). Both use the
+    current classification, and they agree where they overlap.
+  - **Never combine split values from different reports in one series without checking this.**
+- **Small inconsistencies in USPS's own tables.**
+  - In the FY2020 report's A8-1, the parts for 2007 and 2008 add up to 9M and 7M more than the
+    printed total. Correspondence is about 8M higher than in FY2017/2018.
+  - The values are kept as published, and the affected observations carry a note.
 - **Appendix layouts differ between reports. Never match values to years by column position.**
   - FY2020 A8 tables are aligned.
   - FY2022 and FY2023 alternate value and blank columns, and each value sits one column to the
@@ -258,8 +285,13 @@ analyst should be able to:
   - `fcm-received-per-household`, 2014–2024.
   - `bills-paid-by-mail-share`, in percent, 2000–2025, plus 16 FY2025 demographic segments for
     2015, 2020, and 2025.
-- **`dashboard/tests.py`** has 17 tests covering header parsing, preference, conversions, the
-  mapping, an end-to-end load against `tables.json`, idempotent reloads, and the admin pages.
+- **All 313 loaded observations are verified** against their source PDF page. See
+  `VERIFICATION.md`.
+- **`dashboard/tests.py`** has 21 tests. They cover:
+  - header parsing, preference, and conversions
+  - the mapping, an end-to-end load against `tables.json`, and idempotent reloads
+  - PDF-text parsing for `verify_pdfs`
+  - the admin pages
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by year.
   - `table_detail` renders one table.
@@ -269,7 +301,7 @@ analyst should be able to:
 - **`admin.py`:** all models are registered at `/admin/`. Run `python manage.py createsuperuser`
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
-  - Reviewers tick `verified` on the Observation list after checking a value against the PDF.
+  - On the Observation list, `verified` is editable, and the `notes` field explains each check.
 - **Missing:** charts, forecasts, and any AI.
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
@@ -356,9 +388,8 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
 The plan is to build one thin end-to-end slice first, then broaden it. Steps 1–4 produce a
 demoable dashboard. Write tests with each step.
 
-1. ~~**Metric layer for a few series.**~~ **Done.** See "Current code state."
-   - Remaining from this step: the team spot-checks the loaded values against the `docs/` PDFs
-     and ticks `verified` in the admin.
+1. ~~**Metric layer for a few series.**~~ **Done and verified.** See "Current code state" and
+   `VERIFICATION.md`.
 2. **Trends page.**
    - A Chart.js line chart from a JSON view, showing the preferred observations.
    - Methodology breaks annotated, plus units.
@@ -382,9 +413,10 @@ demoable dashboard. Write tests with each step.
    - Skip the back-matter tables beyond page 110.
    - Add a `needs_review` flag, plus a badge, and market and OCR filters in the browser.
 7. **Data repairs, as needed.** Only if a mapped series needs them:
-   - The 2021 OCR values.
-   - The FY2019 appendix and FY2018 A8-10.
-   - Older PDFs.
+   - The FY2021 chapter tables. They are OCR'd from scanned pages; the appendix is fine.
+   - The FY2019 appendix, which is images. Read it from rendered pages.
+   - FY2018 A8-10.
+   - Older PDFs. FY2004 is scanned.
 8. **Polish and hardening.**
    - Accessibility pass (WCAG 2.1 AA).
    - `pip-audit`.

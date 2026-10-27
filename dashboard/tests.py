@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 
+from .management.commands import verify_pdfs
 from .management.commands.load_metrics import mark_preferred, row_values, year_header
 from .metric_sources import CONVERSIONS, METRICS, SOURCES
 from .models import MethodologyBreak, Metric, Observation, Table
@@ -58,6 +59,41 @@ class MappingTests(SimpleTestCase):
         for source_id, (_, row_maps) in SOURCES.items():
             for rm in row_maps:
                 self.assertIn(rm.metric, slugs, source_id)
+
+
+class PdfTextTests(SimpleTestCase):
+    """Parsing of PDF page text used by `verify_pdfs` (the PDFs themselves are git-ignored)."""
+
+    PAGE = "\n".join([
+        "Table A8-1 First Class Mail Received by Type",
+        "2010 2011 2012",
+        "   I nsurance  2,001 2,602 2,443",
+        "Total 15,995 16,281 16,311",
+        "Total 23,263 22,906 22,501",
+        "Total First-Class Received 50,063 48,272 47,204",
+        "Under 45 17% 10% 6%",
+    ])
+
+    def test_split_letters_and_repeated_labels(self):
+        self.assertEqual(verify_pdfs.label_rows(self.PAGE, "Insurance"), [["2,001", "2,602", "2,443"]])
+        found, _ = verify_pdfs.page_series(self.PAGE, "Total", 2)
+        self.assertEqual(found, {2010: "23,263", 2011: "22,906", 2012: "22,501"})
+        found, _ = verify_pdfs.page_series(self.PAGE, "Total First-Class Received", 1)
+        self.assertEqual(found[2012], "47,204")
+
+    def test_label_containing_digits(self):
+        self.assertEqual(verify_pdfs.label_rows(self.PAGE, "Under 45"), [["17%", "10%", "6%"]])
+
+    def test_count_mismatch_is_reported_not_guessed(self):
+        # As in FY2023 A8-1: "554" extracted as "5 54", giving one token too many.
+        found, problem = verify_pdfs.page_series(self.PAGE + "\nOther Social 5 54 642 582", "Other Social", 1)
+        self.assertIsNone(found)
+        self.assertIn("4 numbers for 3 years", problem)
+
+    def test_note_keeps_reviewer_text(self):
+        notes = verify_pdfs.set_note("Checked by Sam", "[pdf-check] old")
+        notes = verify_pdfs.set_note(notes, "matches docs/2023.pdf p.77 (35,729)")
+        self.assertEqual(notes, "Checked by Sam\n[pdf-check] matches docs/2023.pdf p.77 (35,729)")
 
 
 class LoadMetricsTests(TestCase):
