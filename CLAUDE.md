@@ -1,7 +1,10 @@
-# ChallengeX: USPS Household Mail Dashboard (CYSE 130, Group 2)
+# ChallengeX: USPS Household Mail Dashboard (Group 2)
+
+This is an **outside challenge set by USPS** through George Mason University's Challenge X
+program, not a course assignment. The client is USPS and its Office of Inspector General (OIG).
 
 ## Goal (from `docs/USPS Analysing Mail Usage Through an Interactive Dashboard.pptx.pdf`)
-GMU Challenge X use case: **"Postal Insights: Analyzing US Mail Usage Through an Interactive Dashboard."**
+Challenge X use case: **"Postal Insights: Analyzing US Mail Usage Through an Interactive Dashboard."**
 
 **Problem.** USPS has run the Household Diary Study every year since 1987. It was renamed the
 Household Mail Survey (HMS) in FY2025. Each report runs about 80 pages and is heavy on charts,
@@ -44,8 +47,12 @@ four parts:
 - A **BI dashboard**.
 - **Time-series forecasting** plus **LLM-generated narrative insights**.
 
-The client is a federal oversight office (USPS OIG), and this is a cybersecurity course, so
-public-sector accessibility and security norms apply.
+The client is a federal agency and its oversight office (USPS OIG), so public-sector
+accessibility and security norms apply.
+
+**Our inference: the challenge will be judged on a live demo.** Build a thin end-to-end slice
+first (data → chart → forecast → AI summary for a few metrics), then broaden it. That beats a
+perfect database with no dashboard on demo day.
 
 ## Quality bar (acceptance criteria)
 These are standard industry practice for this kind of product. They are not in the slides, but
@@ -106,7 +113,7 @@ analyst should be able to:
 - **Prompt injection.** Treat "Ask the data" input as untrusted. The LLM has no write tools, and
   its output is escaped when rendered.
 
-**Security** (this is a CYSE course, so it gets graded):
+**Security** (a federal client, plus an LLM that takes free-text input):
 - **OWASP Top 10:**
   - Keep Django's autoescaping on. Never apply `|safe` to LLM or extracted text.
   - Keep CSRF protection on.
@@ -123,8 +130,8 @@ analyst should be able to:
   - Put authentication in front of the admin.
 
 **Engineering:**
-- Write tests (`python manage.py test`) for unit conversions, the loader mapping, the forecasts,
-  and the AI-text number check.
+- Write tests (`python manage.py test`) alongside each feature, not at the end. Cover the unit
+  conversions, the loader mapping, the forecasts, and the AI-text number check.
 - Keep changes small and focused, merged to `main` with a clear description.
 - Update this file when a team decision changes.
 
@@ -153,12 +160,18 @@ analyst should be able to:
     label).
   - Tables per year: 2016: 139, 2017: 127, 2018: 114, 2019: 96, 2020: 114, 2021: 128,
     2022: 115, 2023: 115, 2024: 79, 2025: 68.
-- **Getting to "15+ years".** The extracted reports cover 10 years. Two ways to get further back:
-  - **Appendix A trend tables** (A8-x before FY2024, A-x from FY2024) already reach back to 2010.
-    Some go back to 2000.
-  - Extract headline tables from the `docs/` PDFs for 2000–2015.
+- **"15+ years" is already covered by the Appendix A trend tables** (A8-x before FY2024, A-x
+  from FY2024). None of them are OCR'd:
+  - The FY2020 report's A8 tables cover **2000–2020**. For example, `2020-p072-1` is A8-1,
+    First-Class Mail received by type, in millions of pieces.
+  - The FY2022 and FY2023 reports' A8 tables cover 2010–2022 and 2010–2023.
+  - FY2024 A-x covers 2014–2024, per household per year. FY2025 A-x has only 2015, 2020, and
+    2025.
 
-  Use both, starting with the Appendix A tables.
+  So the full history is **2000–2025**, entirely from non-OCR tables. Use Appendix A as the
+  primary trend source. Use the E.x and 1.x tables to check it and to add series the appendix
+  lacks. Extract from the older `docs/` PDFs only to verify values or fill a specific missing
+  series.
 - **How comparison years work:**
   - Up to FY2023, reports compare against the 2 prior years.
   - From FY2024, reports compare against the years 5 and 10 earlier (2014/2019/2024 and
@@ -168,10 +181,19 @@ analyst should be able to:
 - **2021 is 88% OCR (112 of 128 tables) and its values are wrong.**
   - Example: `2021-p009-1` gives 395.1 billion First-Class pieces received. The real figure is
     about 32 billion.
-  - Treat every `ocr=True` table as unverified.
+  - Treat every `ocr=True` table as unverified. 2021 is the only year with OCR.
+  - The impact is limited: the 2021 values also appear in the non-OCR FY2022, FY2023, and FY2024
+    appendices. Prefer those.
 - **Appendix gaps:**
-  - **FY2019 has no Appendix A tables at all.** The extraction skipped pp. 68–85.
+  - FY2019 has no Appendix A tables at all. The extraction skipped pp. 68–85.
   - FY2018 is missing A8-10.
+  - Both gaps are covered by later reports' appendices, so they're low priority.
+- **Appendix layout: values sit one column to the left of their year header.**
+  - Example: in `2023-p077-1`, the label "2010" is at index 2, but the value `4,855` is at index
+    1.
+  - Many A8 tables alternate value and blank columns.
+  - The first data row holds the years, and `columns[0]` holds the real title.
+  - Map cells explicitly in the loader. Never zip the header row with the values.
 - **Back-matter noise.** There are 49 tables beyond page 110, in 2016, 2017, and 2021. They are
   mostly 2-column questionnaire or tabulation fragments. Exclude them from metrics.
 - **Titles:**
@@ -194,10 +216,13 @@ analyst should be able to:
   - "Large MSA" was redefined in Jan 2025, from the top 30 metros to metros of 1 million or more.
   - Age bands changed. Before FY2025 they were 18–34 / 35–54 / 55+; from FY2025 they are
     Under 45 / 45–64 / 65+.
-- **Restatements.** Later reports sometimes revise values for earlier years. Keep every value
-  with its source report, and mark one as preferred.
+- **Restatements.** Later reports revise values for earlier years, sometimes by a lot.
+  - Example: 2020 Personal correspondence received is 2,345M in the FY2020 report but 2,894M in
+    the FY2023 report.
+  - Keep every value with its source report.
+  - Prefer the most recent non-OCR report, unless a methodology break makes it incomparable.
 
-## Current code state (as of commit f8ddfd6)
+## Current code state (branch `test_titles`)
 - **`dashboard/models.py`**: `Table` (metadata plus a `columns` JSON field) and `Row` (`label`,
   plus `data = {col: {"raw": str, "num": float|None}}`). This is a raw staging layer and can't
   be queried across years.
@@ -233,7 +258,8 @@ Keep `Table`/`Row` as the raw, auditable source, and add three models:
   - Unique on (metric, segment, fiscal_year, report_year).
 
 Populate it with a curated mapping: a management command plus a YAML or Python mapping from
-`source_id + row label + column` to metric and year. Start with these headline series:
+`source_id + row label + column index` to metric and year. Use the column index, not the
+header, because of the appendix offset. Start with these headline series:
 - Total mail received and sent (E.1)
 - Mail by market (E.2 / 1.x)
 - Bill-payment and bill-receipt mail shares
@@ -241,8 +267,8 @@ Populate it with a curated mapping: a management command plus a YAML or Python m
 - Periodicals by type
 - Packages received and sent
 
-A smaller set of correct series is worth more than full coverage. Hand-check every 2021 and OCR
-value against the PDF in `docs/`.
+A smaller set of correct series is worth more than full coverage. Spot-check the mapped values
+against the PDFs in `docs/`, especially around restatements and methodology breaks.
 
 ### 2. UI
 - **Overview:**
@@ -281,21 +307,44 @@ value against the PDF in `docs/`.
   from the returned rows.
 
 ## Next steps (priority order)
-1. **Cleanup pass in `load_tables`:**
-   - Drop a first data row that repeats the header.
-   - Skip or flag the back-matter tables beyond page 110.
-   - Add a `needs_review` flag, set for OCR tables, tables with no title, and tables with
-     `col_N` headers.
-2. **Fill the data gaps:**
-   - Fix the 2021 values by re-extracting or entering them by hand from `docs/2021.pdf`.
-   - Extract the missing FY2019 Appendix A tables and FY2018 A8-10.
-3. **Build `Metric`/`Segment`/`Observation`** and the mapping-driven loader. Start with about 10
-   headline series, sourced from Appendix A where possible.
-4. **Unit normalization and methodology-break metadata:** per week → per year, billions ↔ per
-   household, and age-band mapping.
-5. **Extend history to 15+ years:** pull headline series for 2000–2015 from the `docs/` PDFs or
-   the Appendix A back-years.
-6. **Overview, Trends, and Year pages** with Chart.js, filterable by product and demographic.
-7. **Forecast module** (`statsmodels`), with backtests and confidence bands.
-8. **Claude-generated summaries**, cached and shown next to the charts, plus export.
-9. **Tests** for unit conversion, the loader mapping, and the forecast functions.
+The plan is to build one thin end-to-end slice first, then broaden it. Steps 1–4 produce a
+demoable dashboard. Write tests with each step.
+
+1. **Metric layer for a few series.**
+   - Add the `Metric`/`Segment`/`Observation` models and the mapping-driven loader.
+   - Map 3–5 headline series from the non-OCR Appendix A tables, covering 2000–2025 (see
+     "Source material"):
+     - Total First-Class Mail received
+     - Mail by market
+     - Packages received
+   - Handle the column offset, the unit normalization, and the methodology-break metadata for
+     these series now. A trend line is wrong without them.
+   - Spot-check against the PDFs.
+2. **Trends page.**
+   - A Chart.js line chart from a JSON view.
+   - Methodology breaks annotated, source links, units, and a data-table fallback.
+3. **Forecasts.**
+   - Naive baseline vs. linear and Holt (`statsmodels`).
+   - Backtest error and a prediction band on the Trends chart.
+4. **AI summaries.**
+   - Claude-generated, grounded in the observations and the forecast output.
+   - A number-check against the database, cached in `Insight`, labeled as AI-generated.
+   - *This is the end-to-end demo.*
+5. **Broaden.**
+   - More series, plus demographic `Segment`s (a slide requirement). Map old age bands to new
+     ones.
+   - An Overview page with KPI cards and the AI summary.
+   - A Year page, and CSV export.
+6. **Table browser and raw-data cleanup.** In `load_tables`:
+   - Drop repeated header rows.
+   - Skip the back-matter tables beyond page 110.
+   - Add a `needs_review` flag, plus a badge, and market and OCR filters in the browser.
+7. **Data repairs, as needed.** Only if a mapped series needs them:
+   - The 2021 OCR values.
+   - The FY2019 appendix and FY2018 A8-10.
+   - Older PDFs.
+8. **Polish and hardening.**
+   - Accessibility pass (WCAG 2.1 AA).
+   - `pip-audit`.
+   - "Ask the data" box (optional).
+   - Demo script.
