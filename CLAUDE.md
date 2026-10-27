@@ -115,11 +115,8 @@ The stated goal is "Unlock the hidden value of these annual reports."
 - **Templates:** `table_list.html` has no styling or `<html>` wrapper. `table_detail.html` is
   styled.
 - **Missing:** tests, admin registrations, charts, and any AI.
-- **Repo hygiene:**
-  - There's no `.gitignore`.
-  - `.DS_Store` and the `cpython-314` `__pycache__/*.pyc` files are **tracked**. The new
-    `cpython-315` ones are untracked.
-  - `docs/` is untracked.
+- **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and the report
+  binaries in `docs/`. Only the assignment slides in `docs/` can be committed.
 
 ## Target design (recommended)
 
@@ -189,10 +186,7 @@ value against the PDF in `docs/`.
   from the returned rows.
 
 ## Next steps (priority order)
-1. **Housekeeping:**
-   - Add a `.gitignore` covering `__pycache__/`, `*.pyc`, `.env`, `.DS_Store`, and `docs/*.pdf`
-     (or move the PDFs to Git LFS). The PDFs total about 200 MB, so the team needs to decide.
-   - Run `git rm --cached` on the tracked `.pyc` files and `.DS_Store`.
+1. **Housekeeping** (the `.gitignore` and untracking are done):
    - Remove the debug prints in `table_detail`.
    - Register `Table`/`Row` in `admin.py`.
 2. **Cleanup pass in `load_tables`:**
