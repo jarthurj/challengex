@@ -142,8 +142,13 @@ analyst should be able to:
   which is fine because nothing is deployed. Never commit API keys. Put them in `.env`, which
   `python-dotenv` reads.
 - Run the server: `python manage.py runserver`, then open `/dashboard/tables/`.
-- Reload data: `python manage.py load_tables tables.json`. This **wipes** every Table and Row
-  first.
+- Reload data, in this order:
+  1. `python manage.py load_tables tables.json`. This **wipes** every Table and Row, and every
+     Observation along with them.
+  2. `python manage.py load_metrics`. This rebuilds the metric layer from
+     `dashboard/metric_sources.py`. It's safe to re-run, and it keeps reviewers' `verified`
+     flags and notes.
+- Run the tests: `python manage.py test dashboard`. They load the real `tables.json`.
 - The team decided against ModelForms. Don't add them.
 
 ## Source material
@@ -188,12 +193,15 @@ analyst should be able to:
   - FY2019 has no Appendix A tables at all. The extraction skipped pp. 68–85.
   - FY2018 is missing A8-10.
   - Both gaps are covered by later reports' appendices, so they're low priority.
-- **Appendix layout: values sit one column to the left of their year header.**
-  - Example: in `2023-p077-1`, the label "2010" is at index 2, but the value `4,855` is at index
-    1.
-  - Many A8 tables alternate value and blank columns.
-  - The first data row holds the years, and `columns[0]` holds the real title.
-  - Map cells explicitly in the loader. Never zip the header row with the values.
+- **Appendix layouts differ between reports. Never match values to years by column position.**
+  - FY2020 A8 tables are aligned.
+  - FY2022 and FY2023 alternate value and blank columns, and each value sits one column to the
+    left of its year label. In `2023-p077-1`, "2010" is at index 2, but `4,855` is at index 1.
+  - The years row is often the first data row, and `columns[0]` holds the real title.
+  - `load_metrics` handles all of this by reading the years in order from the header line, then
+    the non-empty values in order. It refuses to load if the two counts differ.
+  - Rows can repeat a label. A8-1 has two "Total" rows (correspondence, then transactions), so
+    the mapping uses `nth`.
 - **Back-matter noise.** There are 49 tables beyond page 110, in 2016, 2017, and 2021. They are
   mostly 2-column questionnaire or tabulation fragments. Exclude them from metrics.
 - **Titles:**
@@ -207,9 +215,15 @@ analyst should be able to:
 - **Headers:** 740 tables have blank column headers, which load as `col_N`. 174 repeat the header
   as their first data row.
 - **Unit changes (the biggest trap for trend lines):**
-  - Up to FY2023, reports mostly use **billions of pieces** or **pieces per household per week**.
-  - FY2024 and later use **pieces per household per year**.
-  - Per year = per week × 52. Total = per household × households (about 123–135 million).
+  - The A8 appendix tables (through FY2023) use **millions of pieces**.
+  - Chapter tables up to FY2023 mostly use **billions of pieces** or **pieces per household per
+    week**.
+  - FY2024 and later use **pieces per household per year**. For example, FY2024 A-1 gives 348.2
+    for 2014, where A8-1 gives 42,830M, which implies about 123M households.
+  - Per year = per week × 52; this conversion is in `CONVERSIONS`.
+  - **Millions ↔ per household is not converted.** The reports publish household counts only
+    for 2014, 2015, 2019, 2020, 2024, and 2025, so these are kept as separate metrics in their
+    own units. Converting them would need an outside annual series, such as Census households.
 - **Methodology breaks.** Annotate these on charts; don't smooth over them:
   - The contractor changed from NuStats to RCF in FY2024.
   - FY2025 brought a new survey design, though the old survey still covered Q1 of that year.
@@ -219,53 +233,85 @@ analyst should be able to:
 - **Restatements.** Later reports revise values for earlier years, sometimes by a lot.
   - Example: 2020 Personal correspondence received is 2,345M in the FY2020 report but 2,894M in
     the FY2023 report.
+  - Another example: total First-Class Mail received in 2020 is 35,345M in the FY2020 report and
+    35,729M in the FY2023 report.
   - Keep every value with its source report.
-  - Prefer the most recent non-OCR report, unless a methodology break makes it incomparable.
+  - Prefer the most recent non-OCR report. `mark_preferred` in `load_metrics` does this.
+  - Because of that rule, a preferred series can switch source reports partway through. Bills
+    paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
+    FY2023 said 34%). Charts must show each point's source report.
 
 ## Current code state (branch `test_titles`)
-- **`dashboard/models.py`**: `Table` (metadata plus a `columns` JSON field) and `Row` (`label`,
-  plus `data = {col: {"raw": str, "num": float|None}}`). This is a raw staging layer and can't
-  be queried across years.
+- **`dashboard/models.py`:**
+  - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
+    `data = {col: {"raw": str, "num": float|None}}`).
+  - **Metric layer:** `Metric`, `Segment`, `Observation`, and `MethodologyBreak`. A break with
+    no metrics attached applies to every metric.
+- **`dashboard/metric_sources.py`** is the curated mapping that `load_metrics` reads:
+  - `METRICS`
+  - `SOURCES`: `source_id` → (the table's unit, `RowMap`s)
+  - `CONVERSIONS`
+  - `BREAKS`
+- **Six metrics are loaded so far:**
+  - `fcm-received-total`, `-correspondence`, `-transactions`, and `-advertising`, in millions,
+    2000–2023.
+  - `fcm-received-per-household`, 2014–2024.
+  - `bills-paid-by-mail-share`, in percent, 2000–2025, plus 16 FY2025 demographic segments for
+    2015, 2020, and 2025.
+- **`dashboard/tests.py`** has 17 tests covering header parsing, preference, conversions, the
+  mapping, an end-to-end load against `tables.json`, idempotent reloads, and the admin pages.
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by year.
   - `table_detail` renders one table.
   - `dashboard` is a "Hello world" placeholder.
 - **Templates:** `table_list.html` has no styling or `<html>` wrapper. `table_detail.html` is
   styled.
-- **`admin.py`:** `Table` (filter by year/OCR, rows inline) and `Row` are registered for data
-  review at `/admin/`. Run `python manage.py createsuperuser` to log in.
-- **Missing:** tests, charts, and any AI.
+- **`admin.py`:** all models are registered at `/admin/`. Run `python manage.py createsuperuser`
+  to log in.
+  - `Table` can be filtered by year and OCR status, with its rows inline.
+  - Reviewers tick `verified` on the Observation list after checking a value against the PDF.
+- **Missing:** charts, forecasts, and any AI.
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
 ## Target design (recommended)
 
-### 1. Database: add a clean "metric" layer on top of the raw tables
-Keep `Table`/`Row` as the raw, auditable source, and add three models:
+### 1. Database: a clean "metric" layer on top of the raw tables (built)
+Keep `Table`/`Row` as the raw, auditable source. The metric layer adds the models below:
 - **`Metric`** is one tracked series.
   - Fields: `slug`, `name`, `market`, `direction`, `unit`, `description`.
   - `market` is the postal product: correspondence, transactions, advertising, periodicals,
     packages, or total.
   - `direction` is received, sent, or total.
-  - `unit` is canonical: pieces per household per year, billions, or percent.
+  - `unit` is one of: `millions` (pieces), `per_household_year`, or `percent`.
 - **`Segment`** is the demographic dimension, and the slides require it.
-  - `dimension`: all, age, income, education, tenure, MSA, or household size.
-  - `value`: for example "65+" or "$100K+".
-  - Includes a note mapping old age bands to new ones.
+  - `dimension`: all, age, income, education, tenure, or MSA. Add household size when it's
+    mapped.
+  - `value` is the report's own label, for example "65 and Over".
+  - Old and new age bands are different segments. Don't merge them. The FY2025 break explains
+    the change.
+- **`MethodologyBreak`** records a year, a title, a description, and the affected metrics (an
+  empty list means all of them).
 - **`Observation`** is one data point.
   - Fields: `metric`, `segment`, `fiscal_year`, `value` (normalized), `raw_value`, `raw_unit`,
     `source_table` (FK to `Table`), `report_year`, `is_preferred`, `verified`, `notes`.
   - Unique on (metric, segment, fiscal_year, report_year).
 
-Populate it with a curated mapping: a management command plus a YAML or Python mapping from
-`source_id + row label + column index` to metric and year. Use the column index, not the
-header, because of the appendix offset. Start with these headline series:
-- Total mail received and sent (E.1)
-- Mail by market (E.2 / 1.x)
-- Bill-payment and bill-receipt mail shares
-- Ad reading and response rates
-- Periodicals by type
-- Packages received and sent
+The layer is populated from `dashboard/metric_sources.py`, a mapping from `source_id + row label
+(+ nth)` to metric (+ segment). Years are read from each table's own header.
+
+**Done:**
+- First-Class Mail received, total and by market
+- Bills paid by mail
+
+**Still to map:**
+- First-Class Mail sent (A8-3 / A-3)
+- Electronic bill-payment share (A8-6 "Total Electronic")
+- Advertising totals (A8-12)
+- Periodicals and packages
+
+Packages and periodicals are **not in the A8 appendix**. Take them from chapter 7 and 6 tables
+and from the FY2024/2025 A-x demographic tables.
 
 A smaller set of correct series is worth more than full coverage. Spot-check the mapped values
 against the PDFs in `docs/`, especially around restatements and methodology breaks.
@@ -310,19 +356,15 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
 The plan is to build one thin end-to-end slice first, then broaden it. Steps 1–4 produce a
 demoable dashboard. Write tests with each step.
 
-1. **Metric layer for a few series.**
-   - Add the `Metric`/`Segment`/`Observation` models and the mapping-driven loader.
-   - Map 3–5 headline series from the non-OCR Appendix A tables, covering 2000–2025 (see
-     "Source material"):
-     - Total First-Class Mail received
-     - Mail by market
-     - Packages received
-   - Handle the column offset, the unit normalization, and the methodology-break metadata for
-     these series now. A trend line is wrong without them.
-   - Spot-check against the PDFs.
+1. ~~**Metric layer for a few series.**~~ **Done.** See "Current code state."
+   - Remaining from this step: the team spot-checks the loaded values against the `docs/` PDFs
+     and ticks `verified` in the admin.
 2. **Trends page.**
-   - A Chart.js line chart from a JSON view.
-   - Methodology breaks annotated, source links, units, and a data-table fallback.
+   - A Chart.js line chart from a JSON view, showing the preferred observations.
+   - Methodology breaks annotated, plus units.
+   - Each point's source report and table shown, since preferred series switch reports.
+   - A data-table fallback.
+   - Millions and per-household metrics are never put on the same axis.
 3. **Forecasts.**
    - Naive baseline vs. linear and Holt (`statsmodels`).
    - Backtest error and a prediction band on the Trends chart.
@@ -331,8 +373,8 @@ demoable dashboard. Write tests with each step.
    - A number-check against the database, cached in `Insight`, labeled as AI-generated.
    - *This is the end-to-end demo.*
 5. **Broaden.**
-   - More series, plus demographic `Segment`s (a slide requirement). Map old age bands to new
-     ones.
+   - The series under "Still to map," plus more demographic `Segment`s (a slide requirement).
+     Keep old and new age bands as separate segments.
    - An Overview page with KPI cards and the AI summary.
    - A Year page, and CSV export.
 6. **Table browser and raw-data cleanup.** In `load_tables`:
