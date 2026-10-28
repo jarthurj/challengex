@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 
+from . import titles
 from .management.commands import verify_pdfs
 from .management.commands.load_metrics import mark_preferred, row_values, year_header
 from .metric_sources import CONVERSIONS, METRICS, SOURCES
@@ -157,12 +158,14 @@ class LoadMetricsTests(TestCase):
         for model in ["metric", "segment", "observation", "methodologybreak"]:
             self.assertEqual(self.client.get(f"/admin/dashboard/{model}/").status_code, 200, model)
 
-    def test_reload_is_idempotent_and_keeps_review(self):
+    def test_full_reload_is_idempotent_and_keeps_review(self):
         obs = self.preferred("fcm-received-total", 2023)
         obs.verified, obs.notes = True, "Checked against 2023.pdf p.77"
         obs.save()
         before = Observation.objects.count()
+        table_pk = obs.source_table.pk
 
+        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
         call_command("load_metrics", stdout=StringIO())
 
         self.assertEqual(Observation.objects.count(), before)
@@ -171,3 +174,86 @@ class LoadMetricsTests(TestCase):
         reloaded = self.preferred("fcm-received-total", 2023)
         self.assertTrue(reloaded.verified)
         self.assertEqual(reloaded.notes, "Checked against 2023.pdf p.77")
+        self.assertEqual(reloaded.source_table.pk, table_pk)  # table URLs stay stable
+
+    def test_review_notes_from_code_are_applied(self):
+        obs = Observation.objects.get(metric__slug="fcm-received-correspondence", fiscal_year=2007,
+                                      report_year=2020)
+        self.assertIn("Source inconsistency", obs.notes)
+
+    def test_recovered_titles_are_applied(self):
+        t = Table.objects.get(source_id="2016-p050-2")  # extracted as "Table 5.6" with no title
+        self.assertEqual(t.table_number, "Table 5.5")
+        self.assertEqual(t.title, "Advertising Mail Received by Income and Age (Pieces per Household per Week)")
+        self.assertLess(Table.objects.filter(title="").count(), 100)
+
+
+class TitleTests(SimpleTestCase):
+    """dashboard/titles.py on small synthetic pages (the PDFs themselves are git-ignored)."""
+
+    PAGE = [
+        "As Table 5.5 illustrates, households headed by an older person receive more mail.",
+        "Table 5.6:",
+        "Advertising Mail Received by Size of Household",
+        "(Pieces per Household per Week)",
+        "Household Size",
+        "One person 9.6",
+        "Two 12.8",
+        "Three 12.7",
+        "Average 12.1",
+        "Table 5.7:",
+        "Advertising Mail Received by Number",
+        "of Adults",
+        "(Pieces per Household per Week)",
+        "One 9.4",
+        "Two 12.8",
+        "Three or more 14.1",
+        "Average 12.1",
+    ]
+    SIZE = {"id": "2016-p050-3", "year": 2016, "page": 50, "table_number": "", "title": "", "columns": ["", "Household Size", ""],
+            "rows": [["One person", "", "9.6"], ["Two", "", "12.8"], ["Three", "", "12.7"], ["Average", "", "12.1"]]}
+    ADULTS = {"id": "2016-p050-4", "year": 2016, "page": 50, "table_number": "Table 5.6", "title": "presents these data",
+              "columns": ["", "Adults", ""],
+              "rows": [["One", "", "9.4"], ["Two", "", "12.8"], ["Three or more", "", "14.1"], ["Average", "", "12.1"]]}
+
+    def test_captions_skip_prose_and_join_wrapped_titles(self):
+        caps = titles.captions(self.PAGE)
+        self.assertEqual([c["num"] for c in caps], ["Table 5.6", "Table 5.7"])
+        self.assertEqual(titles.title_for(caps[1], {}),
+                         "Advertising Mail Received by Number of Adults (Pieces per Household per Week)")
+
+    def test_rows_vote_and_shared_rows_are_ignored(self):
+        # "Two 12.8" and "Average 12.1" appear under both captions, so only the other rows count.
+        got = titles.assign_page([self.SIZE, self.ADULTS], self.PAGE, {})
+        self.assertEqual(got["2016-p050-3"][0]["num"], "Table 5.6")
+        self.assertEqual(got["2016-p050-4"][0]["num"], "Table 5.7")
+
+    def test_list_of_tables_title_is_preferred(self):
+        records = titles.assign_report([self.SIZE], {
+            3: ["Table 5.6: Advertising Mail Received by Size of Household ........ 50",
+                "Table 5.7: Advertising Mail Received by Number of Adults ........ 50",
+                "Table 5.8: Advertising Mail Received by Internet Access ........ 51",
+                "Table 5.9: Income and Education by Type of Internet Access ...... 51"],
+            50: self.PAGE,
+        })
+        self.assertEqual(records["2016-p050-3"]["title"],
+                         "Advertising Mail Received by Size of Household (Pieces per Household per Week)")
+
+    def test_number_spacing_and_years_in_titles(self):
+        self.assertEqual(titles.fix_line("Table 7. 1:"), "Table 7.1:")
+        self.assertEqual(titles.fix_line("Table B.1 1:"), "Table B.11:")
+        cap = titles.captions(["Table 1.1:", "Total Mail Volume: FY 2020, 2021, and 2022", "(Billions of Pieces)",
+                               "Mail Classification 2020 2021 2022"])[0]
+        self.assertEqual(titles.title_for(cap, {}), "Total Mail Volume: FY 2020, 2021, and 2022 (Billions of Pieces)")
+
+    def test_scanned_page_without_matching_caption_stays_untitled(self):
+        t = {**self.SIZE, "title": "lacsdA an Argon"}
+        records = titles.assign_report([t], {50: []})
+        self.assertNotIn("title", records["2016-p050-3"])
+        self.assertTrue(records["2016-p050-3"]["method"].startswith("none"))
+
+    def test_survey_forms_are_labelled_not_guessed(self):
+        form = {**self.SIZE, "id": "2016-p191-1", "page": 191}
+        records = titles.assign_report([form], {191: ["Answer Sheet Purple", "Mail Piece"]})
+        self.assertEqual(records["2016-p191-1"]["title"], titles.SURVEY_FORM_TITLE)
+        self.assertEqual(records["2016-p191-1"]["table_number"], "")

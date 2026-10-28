@@ -125,6 +125,20 @@ CONVERSIONS = {
     ("per_household_week", "per_household_year"): lambda v: v * 52,
 }
 
+# Notes attached to specific observations on every load: (metric, fiscal year, report year) -> note.
+REVIEW_NOTES = {
+    ("fcm-received-correspondence", 2007, 2020): (
+        "Source inconsistency in USPS FY2020 Table A8-1: correspondence + transactions + advertising + "
+        "other categories exceed the printed total by 9M for 2007. The FY2017/FY2018 reports give 18,820, "
+        "which adds up. Kept as published (matches the cited page); difference is under 0.1%."
+    ),
+    ("fcm-received-correspondence", 2008, 2020): (
+        "Source inconsistency in USPS FY2020 Table A8-1: correspondence + transactions + advertising + "
+        "other categories exceed the printed total by 7M for 2008. The FY2017/FY2018 reports give 18,087, "
+        "which adds up. Kept as published (matches the cited page); difference is under 0.1%."
+    ),
+}
+
 BREAKS = [
     {
         "fiscal_year": 2010,

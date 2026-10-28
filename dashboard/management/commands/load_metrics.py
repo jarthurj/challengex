@@ -4,7 +4,7 @@ from collections import defaultdict
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from dashboard.metric_sources import BREAKS, CONVERSIONS, METRICS, SOURCES
+from dashboard.metric_sources import BREAKS, CONVERSIONS, METRICS, REVIEW_NOTES, SOURCES
 from dashboard.models import MethodologyBreak, Metric, Observation, Segment, Table
 
 from .load_tables import to_num
@@ -123,6 +123,9 @@ class Command(BaseCommand):
                     verified, notes = kept.get(
                         (metric.slug, seg.dimension, seg.value, year, table.year), (False, "")
                     )
+                    fixed_note = REVIEW_NOTES.get((metric.slug, year, table.year))
+                    if fixed_note and fixed_note not in notes:
+                        notes = f"{fixed_note}\n{notes}".strip()
                     observations.append(Observation(
                         metric=metric, segment=seg, fiscal_year=year,
                         value=convert(num), raw_value=raw, raw_unit=raw_unit,

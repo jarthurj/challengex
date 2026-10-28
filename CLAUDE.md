@@ -142,15 +142,19 @@ analyst should be able to:
   which is fine because nothing is deployed. Never commit API keys. Put them in `.env`, which
   `python-dotenv` reads.
 - Run the server: `python manage.py runserver`, then open `/dashboard/tables/`.
-- Reload data, in this order:
-  1. `python manage.py load_tables tables.json`. This **wipes** every Table and Row, and every
-     Observation along with them.
+- Reload data, in this order. Every step is safe to re-run, and reviewers' `verified` flags and
+  notes survive:
+  1. `python manage.py load_tables tables.json`. This updates tables in place by `source_id`
+     (table IDs and URLs stay stable), rebuilds their rows, and applies the corrected titles and
+     numbers from `table_titles.json`.
   2. `python manage.py load_metrics`. This rebuilds the metric layer from
-     `dashboard/metric_sources.py`. It's safe to re-run, and it keeps reviewers' `verified`
-     flags and notes.
+     `dashboard/metric_sources.py`, including the fixed `REVIEW_NOTES`.
   3. `python manage.py verify_pdfs` checks every loaded value against the text of its source
      PDF page, then sets `verified` and adds a `[pdf-check]` note. It needs the PDFs in `docs/`
      and `pypdf`. **Run it after mapping any new series.**
+  - `python manage.py extract_titles` regenerates `table_titles.json` from the PDFs (about 30
+    seconds). It's only needed if `tables.json` or `dashboard/titles.py` changes. The output is
+    committed, so teammates without `docs/` still get the titles.
 - Run the tests: `python manage.py test dashboard`. They load the real `tables.json`, and they
   don't need `docs/`.
 - See `VERIFICATION.md` for the full check of the loaded data against every file in `docs/`.
@@ -229,16 +233,25 @@ analyst should be able to:
     the non-empty values in order. It refuses to load if the two counts differ.
   - Rows can repeat a label. A8-1 has two "Total" rows (correspondence, then transactions), so
     the mapping uses `nth`.
-- **Back-matter noise.** There are 49 tables beyond page 110, in 2016, 2017, and 2021. They are
-  mostly 2-column questionnaire or tabulation fragments. Exclude them from metrics.
-- **Titles:**
-  - 706 tables have an empty title.
-  - Many others hold a scrap of body text instead of the caption (for example "presents these
+- **Back-matter noise.** There are 49 "tables" from Appendix C, the survey instruments (cover
+  letter, diary instructions, blank answer sheets), in 2016, 2017, and 2021. They're titled as
+  survey forms. Exclude them from metrics.
+- **Titles and table numbers in `tables.json` are unreliable. Use the corrected ones.**
+  - Originally, 706 titles were empty, and many others were scraps of body text ("presents these
     data in two other forms,").
-- **Table numbers are unreliable:**
-  - 127 are blank, and some are wrong. `2021-p010-1` is labeled "Table E.2" but contains E.3.
-  - The same number means different things in different years. "Table 1.1" in 2023 is not
-    "Table 1.1" in 2024. **Never join across years on `table_number`.**
+  - Numbers were sometimes taken from prose, such as "Table 1.6 presents…". In `2016-p050-2`, the
+    extraction said "Table 5.6" but the table is really 5.5.
+  - `dashboard/titles.py` recovers the real caption and number for all 1,095 tables, stored in
+    `table_titles.json` with the method used for each and the original values. 236 numbers were
+    corrected.
+  - It matches by content: rows whose label and exact numbers appear once on the page vote for
+    the caption above them. Titles come from each report's List of Tables, or from the page
+    caption (FY2022 has no list).
+  - Scanned and chart pages were read from page images; see `FROM_PAGE_IMAGES` and `MANUAL` in
+    `titles.py`.
+  - Some "tables" are chart data, titled "Figure x.y". Their extracted values are often OCR noise.
+  - Even corrected, the same number means different things in different years. "Table 1.1" in
+    2023 is not "Table 1.1" in 2024. **Never join across years on `table_number`.**
 - **Headers:** 740 tables have blank column headers, which load as `col_N`. 174 repeat the header
   as their first data row.
 - **Unit changes (the biggest trap for trend lines):**
@@ -287,10 +300,14 @@ analyst should be able to:
     2015, 2020, and 2025.
 - **All 313 loaded observations are verified** against their source PDF page. See
   `VERIFICATION.md`.
-- **`dashboard/tests.py`** has 21 tests. They cover:
+- **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
+  and `manage.py extract_titles`.
+- **`dashboard/tests.py`** has 29 tests. They cover:
   - header parsing, preference, and conversions
-  - the mapping, an end-to-end load against `tables.json`, and idempotent reloads
+  - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
+    flags and notes
   - PDF-text parsing for `verify_pdfs`
+  - title recovery
   - the admin pages
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by year.
@@ -408,9 +425,10 @@ demoable dashboard. Write tests with each step.
      Keep old and new age bands as separate segments.
    - An Overview page with KPI cards and the AI summary.
    - A Year page, and CSV export.
-6. **Table browser and raw-data cleanup.** In `load_tables`:
+6. **Table browser and raw-data cleanup.** Titles and table numbers are done. Remaining, in
+   `load_tables` and the browser:
    - Drop repeated header rows.
-   - Skip the back-matter tables beyond page 110.
+   - Hide the Appendix C survey-form "tables".
    - Add a `needs_review` flag, plus a badge, and market and OCR filters in the browser.
 7. **Data repairs, as needed.** Only if a mapped series needs them:
    - The FY2021 chapter tables. They are OCR'd from scanned pages; the appendix is fine.
