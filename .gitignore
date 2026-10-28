@@ -14,3 +14,6 @@ Thumbs.db
 
 # Source reports and assignment slides. Keep locally; don't commit.
 docs/
+
+# Local database. Rebuild it with: python manage.py rebuild_db
+db.sqlite3

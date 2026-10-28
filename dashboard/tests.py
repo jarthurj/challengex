@@ -188,6 +188,28 @@ class LoadMetricsTests(TestCase):
         self.assertLess(Table.objects.filter(title="").count(), 100)
 
 
+class RebuildDbTests(TestCase):
+    def test_rebuild_fills_an_empty_database_and_keeps_local_work(self):
+        from django.contrib.auth.models import User
+        call_command("rebuild_db", skip_verify=True, stdout=StringIO())
+        self.assertEqual(Table.objects.count(), 1095)
+        self.assertEqual(Observation.objects.count(), 313)
+
+        User.objects.create_superuser("me", "me@example.com", "pw")
+        obs = Observation.objects.filter(metric__slug="fcm-received-total", is_preferred=True).first()
+        obs.verified, obs.notes = True, "checked by hand"
+        obs.save()
+
+        call_command("rebuild_db", skip_verify=True, stdout=StringIO())  # re-run on the same database
+
+        self.assertTrue(User.objects.filter(username="me").exists())
+        # load_metrics recreates observations, so look this one up by its natural key
+        obs = Observation.objects.get(metric=obs.metric, segment=obs.segment, fiscal_year=obs.fiscal_year,
+                                      report_year=obs.report_year)
+        self.assertTrue(obs.verified)
+        self.assertEqual(obs.notes, "checked by hand")
+
+
 class TitleTests(SimpleTestCase):
     """dashboard/titles.py on small synthetic pages (the PDFs themselves are git-ignored)."""
 

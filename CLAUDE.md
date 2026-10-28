@@ -136,14 +136,24 @@ analyst should be able to:
 - Update this file when a team decision changes.
 
 ## Stack and how to run
-- Django 6.1, SQLite (`db.sqlite3` is committed), Python 3.15. The project is `mysite/` and the
-  app is `dashboard/`.
+- Django 6.1, SQLite, Python 3.15. The project is `mysite/` and the app is `dashboard/`.
+- **`db.sqlite3` is not in git.** It's git-ignored, and each person builds their own copy.
+  - Everything in it is generated from files in git: `tables.json`, `table_titles.json`, and
+    `dashboard/metric_sources.py`.
+  - The rebuilt database is identical to the one that used to be committed.
+  - First-time setup, or after a pull that changes the data:
+    `pip install -r requirements.txt` then `python manage.py rebuild_db`.
+  - `rebuild_db` runs `migrate`, `load_tables`, `load_metrics`, and `verify_pdfs` (the last only
+    if `pypdf` and the PDFs in `docs/` are present). It takes a few seconds.
+  - It's safe to re-run: admin accounts and reviewers' flags and notes are kept.
+  - Admin accounts (`createsuperuser`) and notes typed into the admin exist only in your local
+    database.
 - Hosting is local only. `SECRET_KEY` is hard-coded in `mysite/settings.py` and `DEBUG=True`,
   which is fine because nothing is deployed. Never commit API keys. Put them in `.env`, which
   `python-dotenv` reads.
 - Run the server: `python manage.py runserver`, then open `/dashboard/tables/`.
-- Reload data, in this order. Every step is safe to re-run, and reviewers' `verified` flags and
-  notes survive:
+- The individual steps that `rebuild_db` runs, in order. Every step is safe to re-run, and
+  reviewers' `verified` flags and notes survive:
   1. `python manage.py load_tables tables.json`. This updates tables in place by `source_id`
      (table IDs and URLs stay stable), rebuilds their rows, and applies the corrected titles and
      numbers from `table_titles.json`.
@@ -302,13 +312,14 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **`dashboard/tests.py`** has 29 tests. They cover:
+- **`dashboard/tests.py`** has 30 tests. They cover:
   - header parsing, preference, and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
   - PDF-text parsing for `verify_pdfs`
   - title recovery
   - the admin pages
+  - `rebuild_db` on an empty database and on an existing one
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by year.
   - `table_detail` renders one table.
