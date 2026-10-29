@@ -18,7 +18,10 @@ def table_list(request):
 
     # Read search and filter parameters from the URL
     query = request.GET.get("q", "").strip()
-    year = request.GET.get("year", "").strip()
+    selected_years = [
+        value for value in request.GET.getlist("year")
+        if value.isascii() and value.isdigit()
+    ]
 
     if query:
         tables = tables.filter(
@@ -27,13 +30,15 @@ def table_list(request):
             | Q(table_number__icontains=query)
         )
 
-    if year.isdigit():
-        tables = tables.filter(year=int(year))
+    if selected_years:
+        tables = tables.filter(year__in=[
+            int(value) for value in selected_years
+        ])
 
     return render(request, "dashboard/table_list.html", {
         "tables": tables,
         "query": query,
-        "year": year,
+        "selected_years": selected_years,
         "years": years,
     })
 
