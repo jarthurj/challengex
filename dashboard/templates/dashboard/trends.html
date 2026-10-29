@@ -33,5 +33,138 @@
 
     <h1>USPS Trends</h1>
     <p>Explore how USPS mail usage has changed over time.</p>
+    <h2>Total mail volume over time</h2>
+
+<p>
+    Extracted report figures. See the source review below
+    for verification status.
+</p>
+
+<form method="get">
+    <label for="trend">Select a trend:</label>
+
+    <select name="trend" id="trend">
+        {% for value, label in trend_options %}
+            <option value="{{ value }}"
+                {% if selected_trend == value %}selected{% endif %}>
+                {{ label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Show trend</button>
+</form>
+
+{% if selected_trend == "total_volume" %}
+<div style="position: relative; height: 400px;">
+    <canvas
+        id="volume-chart"
+        role="img"
+        aria-label="Total USPS mail volume by year, in billions of pieces">
+        Mail volume figures are available in the table below.
+    </canvas>
+</div>
+    <h2>Total mail volume: source review</h2>
+
+<p>
+    Figures are in billions of mail pieces.
+    These extracted values need verification against the original reports.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Year</th>
+            <th scope="col">Volume (billions)</th>
+            <th scope="col">Source</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for point in points %}
+            <tr>
+                <td>{{ point.year }}</td>
+                <td>{{ point.volume|default_if_none:"Missing" }}</td>
+                <td>
+                    {% if point.table %}
+                        <a href="{% url 'table-detail' point.table.pk %}">
+                            {{ point.table.source_id }}
+                        </a>
+                    {% else %}
+                        Source unavailable
+                    {% endif %}
+                </td>
+                <td>{{ point.status }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% elif selected_trend == "category_volume" %}
+    <h2>Mail volume by category</h2>
+    <p>Category data has not been connected yet.</p>
+
+{% elif selected_trend == "mail_delays" %}
+    <h2>Mail delays per year</h2>
+    <p>Delay data has not been connected yet.</p>
+{% endif %}
+{{ chart_data|json_script:"volume-data" }}
+{% if selected_trend == "total_volume" %}
+
+    <!-- Your existing json_script, Chart.js script,
+         and chart creation script stay here. -->
+
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+
+<script>
+    const volumeData = JSON.parse(
+        document.getElementById("volume-data").textContent
+    );
+
+    new Chart(document.getElementById("volume-chart"), {
+        type: "line",
+        data: {
+            labels: volumeData.years,
+            datasets: [{
+                label: "Total mail volume (billions of pieces)",
+                data: volumeData.volumes,
+                borderColor: "#1756a9",
+                backgroundColor: "#1756a9",
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 7,
+                tension: 0,
+                spanGaps: false,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Fiscal year"
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: "Mail volume (billions of pieces)"
+                    }
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>
