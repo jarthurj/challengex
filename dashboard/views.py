@@ -28,6 +28,19 @@ def table_context(source_id):
         return {}
 
 
+def join_wrapped_labels(tidied, joins):
+    """Join a label printed on two lines back into one row (see pdftables.wrapped_labels)."""
+    rows = tidied["rows"]
+    for join in sorted(joins, key=lambda j: -j["row"]):
+        i, k = join["row"], join["rows"]
+        parts = rows[i:i + k + 1]
+        if (len(parts) == k + 1 and not any(c.strip() for r in parts[1:] for c in r[1:])
+                and " ".join(r[0] for r in parts).split() == join["label"].split()):
+            rows[i:i + k + 1] = [[join["label"]] + rows[i][1:]]
+            tidied["notes"].append(f"Joined a row label printed on two lines: “{join['label']}”.")
+    return tidied
+
+
 def rebuilt_display(structure):
     """A table re-read from its PDF page, in the shape the template draws (like tidy's output)."""
     headers = structure["headers"]
@@ -107,6 +120,7 @@ def table_detail(request, pk):
         tidied = rebuilt_display(context["structure"])
     else:
         tidied = tidy([str(c) for c in table.columns], [row.cells for row in rows], table.title)
+        tidied = join_wrapped_labels(tidied, context.get("label_joins", []))
 
     return render(request, "dashboard/table_detail.html", {
         "table": table,

@@ -149,6 +149,16 @@ class ReReadTests(SimpleTestCase):
         self.assertIn("number of rows", implausible(split, tidied))
         self.assertTrue(leaks(dict(good, headers=["(Pieces per Household per Week)", "a", "b"]), "Title"))
 
+    def test_wrapped_labels_found_from_the_pdf_labels(self):
+        rows = [["Secondary", "7,404"], ["Advertising", ""], ["Total Ads", "77,370"],
+                ["First-Class Ads", "22%"], ["Share of Total Ads", ""]]
+        reread = [["Secondary Advertising"], ["Total Ads"], ["First-Class Ads Share of Total Ads"]]
+        self.assertEqual(pdftables.wrapped_labels(rows, reread), [
+            {"row": 0, "rows": 1, "label": "Secondary Advertising"},
+            {"row": 3, "rows": 1, "label": "First-Class Ads Share of Total Ads"}])
+        # A section heading isn't a second line: the PDF labels don't account for it, so no joins.
+        self.assertEqual(pdftables.wrapped_labels([["Business", ""], ["Bills", "9"]], [["Bills"]]), [])
+
     def test_score_counts_unnamed_columns_and_missing_labels(self):
         self.assertEqual(score(["Type", "Column 2", "Sent"], [["", "1.0", "0.1"]]), 2)
 
@@ -187,6 +197,12 @@ class TablePageTests(TestCase):
         page = self.page("2016-p011-1")  # Table E.5: the extraction lost its row labels
         for label in ("Newspapers", "Magazines", "Total Periodicals"):
             self.assertIn(f'<th scope="row" class="label">{label}', page)
+
+    def test_label_on_two_lines_is_one_row(self):
+        page = self.page("2016-p084-1")  # Appendix A8-12: "First-Class Ads / Share of Total Ads"
+        self.assertIn('<th scope="row" class="label">First-Class Ads Share of Total Ads</th>', page)
+        self.assertIn('<th scope="row" class="label">Secondary Advertising</th>', page)
+        self.assertNotIn('<th scope="row" class="label">Share of Total Ads</th>', page)
 
     def test_quotes_are_escaped(self):
         sid = next(k for k, v in TABLE_CONTEXT.items() if any('"Other"' in e["text"] for e in v["excerpts"]))

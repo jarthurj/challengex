@@ -149,6 +149,9 @@ class Command(BaseCommand):
                         entry["structure"] = rebuilt
                     else:
                         note = "re-read no better than the extraction"
+                    # Even a rejected re-read shows which empty rows are a label's second line.
+                    if rebuilt and not entry["structure"]:
+                        entry["label_joins"] = pdftables.wrapped_labels(td["rows"], rebuilt["rows"])
                 entry["structure_note"] = note
                 stats[f"structure: {note.split(':')[0]}"] += 1
                 out[t.source_id] = entry

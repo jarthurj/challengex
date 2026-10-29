@@ -284,6 +284,9 @@ analyst should be able to:
     right of their year, in an unnamed spacer column. When no row fills both, they move under
     the year. Long single-cell note lines become footnotes.
   - The label column's heading ("Sector") one column right, over an empty column.
+  - A row label printed on two lines ("First-Class Ads / Share of Total Ads") that the
+    extraction split into a row plus an empty row. The PDF re-read's labels decide which empty
+    rows are second lines (`label_joins` in `table_context.json`), so section headings stay.
 
   With tidying and the PDF re-reads below, 116 of the 1,046 data tables still show a
   "Column N" somewhere, mostly charts (`Figure x.y`) and FY2021 OCR tables. Every table page has
@@ -349,7 +352,7 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 73 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+- **Tests:** 75 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
   page), and `dashboard/test_context.py` (excerpt finding, the FY2021 transcriptions,
   `table_context.json`, re-read checks, and the table page). `dashboard/tests.py` covers:
   - header parsing, preference, and conversions

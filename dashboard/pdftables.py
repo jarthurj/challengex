@@ -254,6 +254,31 @@ def rebuild(page, number, title=""):
     return {"headers": headers, "groups": groups, "rows": body}, None
 
 
+def wrapped_labels(rows, reread_rows):
+    """Labels printed on two lines that the extraction split into a row plus an empty row.
+
+    `rows`: the displayed rows; `reread_rows`: rows re-read from the PDF, used only for their
+    labels. Returns [{"row": i, "rows": k, "label": text}]: row i and the k empty rows after it
+    are one row labelled `text` ("First-Class Ads" + "Share of Total Ads"). Returns [] unless the
+    re-read labels account for every row, so a section heading ("Business") is never joined.
+    """
+    joins, i = [], 0
+    for label in (r[0] for r in reread_rows):
+        if i >= len(rows):
+            return []
+        target, have, k = _norm(label), _norm(rows[i][0]), 0
+        while have != target and target.startswith(have) and i + k + 1 < len(rows) \
+                and not any(c.strip() for c in rows[i + k + 1][1:]):
+            k += 1
+            have += _norm(rows[i + k][0])
+        if have != target:
+            return []
+        if k:
+            joins.append({"row": i, "rows": k, "label": label})
+        i += k + 1
+    return joins if i == len(rows) else []
+
+
 def numbers(cells):
     """Number tokens in cells, including inside text ("35 to 54" -> 35, 54)."""
     return [tok for c in cells for tok in c.split() if NUMERIC.search(tok) and VALUE.match(tok)]
