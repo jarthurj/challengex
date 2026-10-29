@@ -9,12 +9,17 @@
         placeholder="Search title or source ID"
     >
 
-    <input
-        type="number"
-        name="year"
-        value="{{ year }}"
-        placeholder="Year"
-    >
+    <label for="year">Year:</label>
+    <select name="year" id="year">
+    <option value="">All years</option>
+
+    {% for available_year in years %}
+        <option value="{{ available_year }}"
+            {% if year == available_year|stringformat:"s" %}selected{% endif %}>
+            {{ available_year }}
+        </option>
+    {% endfor %}
+</select>
 
     <button type="submit">Search</button>
     <a href="{% url 'table-list' %}">Clear</a>

@@ -10,6 +10,12 @@ from .models import Table
 def table_list(request):
     tables = Table.objects.all()
 
+    years = (
+        Table.objects.order_by("-year")
+        .values_list("year", flat=True)
+        .distinct()
+    )
+
     # Read search and filter parameters from the URL
     query = request.GET.get("q", "").strip()
     year = request.GET.get("year", "").strip()
@@ -28,8 +34,8 @@ def table_list(request):
         "tables": tables,
         "query": query,
         "year": year,
+        "years": years,
     })
-
 
 
 def table_detail(request, pk):
