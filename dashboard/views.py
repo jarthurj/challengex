@@ -81,11 +81,94 @@ def dashboard(request):
     # Returns a plain text response with an optional 200 OK status
     return HttpResponse("Hello, world! This is a basic Django view.")
 
+def build_category_chart():
+    # Some extracted headings are shifted. These column keys
+    # were checked against the stored row values.
+    sources = [
+        (2016, "2016-p014-1", "col_6"),
+        (2017, "2017-p014-1", "col_6"),
+        (2018, "2018-p014-1", "col_6"),
+        (2019, "2019-p014-1", "col_6"),
+        (2020, "2020-p014-1", "col_6"),
+        (2021, "2021-p014-1", "2021"),
+        (2022, "2022-p007-1", "2022"),
+        (2023, "2023-p015-1", "col_6"),
+        (2024, "2024-p012-1", "2024"),
+    ]
+
+    categories = [
+        (
+            "First-Class Mail",
+            ["Total First-Class Mail", "First-Class Mail"],
+            "#1756a9",
+        ),
+        (
+            "Standard / Marketing Mail",
+            ["Total Marketing Mail", "Total Standard Mail"],
+            "#c05621",
+        ),
+        (
+            "Periodicals",
+            ["Periodicals"],
+            "#278047",
+        ),
+    ]
+
+    tables = {
+        table.source_id: table
+        for table in Table.objects.filter(
+            source_id__in=[source[1] for source in sources]
+        ).prefetch_related("rows")
+    }
+
+    datasets = []
+
+    for name, labels, color in categories:
+        values = []
+
+        for year, source_id, column in sources:
+            table = tables.get(source_id)
+            value = None
+
+            if table is not None:
+                row = next(
+                    (
+                        row for row in table.rows.all()
+                        if row.label.strip() in labels
+                    ),
+                    None,
+                )
+
+                if row is not None:
+                    cell = row.data.get(column, {})
+                    if isinstance(cell, dict):
+                        value = cell.get("num")
+
+            values.append(value)
+
+        datasets.append({
+            "label": name,
+            "data": values,
+            "borderColor": color,
+            "backgroundColor": color,
+            "borderWidth": 3,
+            "pointRadius": 4,
+            "tension": 0,
+            "spanGaps": False,
+            "fill": False,
+        })
+
+    return {
+        "years": [source[0] for source in sources],
+        "datasets": datasets,
+    }, list(tables.values())
+
 def trends(request):
     # Explicit sources prevent accidentally selecting a different total.
     trend_options = [
         ("total_volume", "Total mail volume over time"),
         ("category_volume", "Mail volume by category"),
+        ("mail_delays", "Mail delays per year"),
     ]
 
     selected_trend = request.GET.get("trend", "total_volume")
@@ -95,7 +178,17 @@ def trends(request):
     if selected_trend not in valid_trends:
         selected_trend = "total_volume"
 
-    if selected_trend != "total_volume":
+    if selected_trend == "category_volume":
+        chart_data, category_sources = build_category_chart()
+
+        return render(request, "dashboard/trends.html", {
+            "trend_options": trend_options,
+            "selected_trend": selected_trend,
+            "chart_data": chart_data,
+            "category_sources": category_sources,
+        })
+
+    if selected_trend == "mail_delays":
         return render(request, "dashboard/trends.html", {
             "trend_options": trend_options,
             "selected_trend": selected_trend,

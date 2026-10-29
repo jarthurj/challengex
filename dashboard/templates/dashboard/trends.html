@@ -33,12 +33,6 @@
 
     <h1>USPS Trends</h1>
     <p>Explore how USPS mail usage has changed over time.</p>
-    <h2>Total mail volume over time</h2>
-
-<p>
-    Extracted report figures. See the source review below
-    for verification status.
-</p>
 
 <form method="get">
     <label for="trend">Select a trend:</label>
@@ -56,6 +50,12 @@
 </form>
 
 {% if selected_trend == "total_volume" %}
+    <h2>Total mail volume over time</h2>
+
+<p>
+    Extracted report figures. See the source review below
+    for verification status.
+</p>
 <div style="position: relative; height: 400px;">
     <canvas
         id="volume-chart"
@@ -103,15 +103,44 @@
 
 {% elif selected_trend == "category_volume" %}
     <h2>Mail volume by category</h2>
-    <p>Category data has not been connected yet.</p>
+
+    <p>
+        Extracted figures in billions of mail pieces, 2016–2024.
+        Values require verification against the original reports.
+        Standard Mail and Marketing Mail are grouped for this
+        preliminary comparison; category definitions may change.
+    </p>
+
+    <div style="position: relative; height: 400px;">
+        <canvas
+            id="volume-chart"
+            role="img"
+            aria-label="Mail volume by category and fiscal year">
+            Category figures are available through the source links below.
+        </canvas>
+    </div>
+
+    <h3>Source tables</h3>
+
+    <ul>
+        {% for table in category_sources %}
+            <li>
+                <a href="{% url 'table-detail' table.pk %}">
+                    {{ table.year }} — {{ table.source_id }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 
 {% elif selected_trend == "mail_delays" %}
     <h2>Mail delays per year</h2>
-    <p>Delay data has not been connected yet.</p>
+    <p>
+        Annual delivery-performance data has not been added.
+        Missing measurements are not treated as zero delays.
+    </p>
 {% endif %}
 {{ chart_data|json_script:"volume-data" }}
-{% if selected_trend == "total_volume" %}
-
+{% if chart_data %}
     <!-- Your existing json_script, Chart.js script,
          and chart creation script stay here. -->
 
@@ -127,25 +156,25 @@
         type: "line",
         data: {
             labels: volumeData.years,
-            datasets: [{
-                label: "Total mail volume (billions of pieces)",
-                data: volumeData.volumes,
-                borderColor: "#1756a9",
-                backgroundColor: "#1756a9",
-                borderWidth: 3,
-                pointRadius: 4,
-                pointHoverRadius: 7,
-                tension: 0,
-                spanGaps: false,
-                fill: false
-            }]
+            datasets: volumeData.datasets || [{
+            label: "Total mail volume (billions of pieces)",
+            data: volumeData.volumes,
+            borderColor: "#1756a9",
+            backgroundColor: "#1756a9",
+            borderWidth: 3,
+            pointRadius: 4,
+            pointHoverRadius: 7,
+            tension: 0,
+            spanGaps: false,
+            fill: false
+        }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false
+                    display: true
                 }
             },
             scales: {
