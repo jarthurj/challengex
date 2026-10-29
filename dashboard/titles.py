@@ -36,6 +36,12 @@ MANUAL = {
     # Adults". Rows decide: "One person, Two, ..." is household size, "One, Two, Three or more" is adults.
     "2021-p061-2": ("Table 6.5", "Periodicals by Number of Adults in Household"),
     "2021-p061-3": ("Table 6.4", "Periodicals by Size of Household"),
+    # Scanned FY2021 pages 15-16: Tables 1.5 and 1.7 share Table E.1's title, so the List of Tables
+    # match picked E.1. Read from the page images.
+    "2021-p015-3": ("Table 1.5", "Mail Received and Sent by Households (Billions of Pieces)"),
+    "2021-p016-2": ("Table 1.7", "Mail Received and Sent by Households"),
+    # The units line is letter-spaced in the PDF's text layer ("Mi l l i o n s o f H o u se h o l d s").
+    "2018-p020-8": ("Table 2.6", "Households by Number of Adults (Millions of Households)"),
 }
 
 # Pages with no usable text, read from the rendered page image and matched to each extracted table
