@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 
 from .models import Table
+from .tidy import tidy
 
 
 def table_list(request):
@@ -53,9 +54,15 @@ def table_detail(request, pk):
 
             row.cells.append(value)
 
+    # Show tidied column names by default; ?raw=1 shows the extraction exactly as stored.
+    show_raw = request.GET.get("raw") == "1"
+    tidied = None if show_raw else tidy([str(c) for c in table.columns], [row.cells for row in rows], table.title)
+
     return render(request, "dashboard/table_detail.html", {
         "table": table,
         "rows": rows,
+        "show_raw": show_raw,
+        "tidied": tidied,
     })
 
 

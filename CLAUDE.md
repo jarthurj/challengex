@@ -262,8 +262,22 @@ analyst should be able to:
   - Some "tables" are chart data, titled "Figure x.y". Their extracted values are often OCR noise.
   - Even corrected, the same number means different things in different years. "Table 1.1" in
     2023 is not "Table 1.1" in 2024. **Never join across years on `table_number`.**
-- **Headers:** 740 tables have blank column headers, which load as `col_N`. 174 repeat the header
-  as their first data row.
+- **Column names are often wrong in the raw extraction.** 732 tables were affected; blank names
+  load as `col_N`. `dashboard/tidy.py` repairs them **for display only**, and the stored data
+  is unchanged. The patterns it handles:
+  - Names one column to the right of their values, with empty spacer columns. A group heading
+    such as "Educational Attainment of Head of Household" can take a slot; it becomes a heading
+    row instead.
+  - The real header in the first data row, such as the years in Appendix A tables, where
+    `columns[0]` is the caption.
+  - Repeated header rows.
+  - A name one column to the left of its values.
+  - "Source:"/"Note:" lines extracted as rows; these become footnotes.
+  - A single value column with no name in the report, which gets named from the title's units.
+
+  After tidying, 826 of 870 regular tables have every column named. Charts (`Figure x.y`), the
+  FY2021 OCR tables, and about 44 tables whose names were mangled in extraction still show
+  "Column N". Every table page has a "Show the raw extraction" link (`?raw=1`).
 - **Unit changes (the biggest trap for trend lines):**
   - The A8 appendix tables (through FY2023) use **millions of pieces**.
   - Chapter tables up to FY2023 mostly use **billions of pieces** or **pieces per household per
@@ -312,7 +326,7 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **`dashboard/tests.py`** has 30 tests. They cover:
+- **`dashboard/tests.py`** has 36 tests. They cover:
   - header parsing, preference, and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
@@ -320,9 +334,10 @@ analyst should be able to:
   - title recovery
   - the admin pages
   - `rebuild_db` on an empty database and on an existing one
+  - column-name tidying (`tidy.py`) and the table page in tidy and raw modes
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by year.
-  - `table_detail` renders one table.
+  - `table_detail` renders one table with tidied column names (`dashboard/tidy.py`); `?raw=1` shows the extraction as stored.
   - `dashboard` is a "Hello world" placeholder.
 - **Templates:** `table_list.html` has no styling or `<html>` wrapper. `table_detail.html` is
   styled.
@@ -436,9 +451,8 @@ demoable dashboard. Write tests with each step.
      Keep old and new age bands as separate segments.
    - An Overview page with KPI cards and the AI summary.
    - A Year page, and CSV export.
-6. **Table browser and raw-data cleanup.** Titles and table numbers are done. Remaining, in
-   `load_tables` and the browser:
-   - Drop repeated header rows.
+6. **Table browser and raw-data cleanup.** Titles, table numbers, and display column names
+   (`tidy.py`) are done. Remaining, in `load_tables` and the browser:
    - Hide the Appendix C survey-form "tables".
    - Add a `needs_review` flag, plus a badge, and market and OCR filters in the browser.
 7. **Data repairs, as needed.** Only if a mapped series needs them:

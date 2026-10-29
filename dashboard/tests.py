@@ -6,6 +6,7 @@ from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 
 from . import titles
+from .tidy import tidy
 from .management.commands import verify_pdfs
 from .management.commands.load_metrics import mark_preferred, row_values, year_header
 from .metric_sources import CONVERSIONS, METRICS, SOURCES
@@ -181,6 +182,15 @@ class LoadMetricsTests(TestCase):
                                       report_year=2020)
         self.assertIn("Source inconsistency", obs.notes)
 
+    def test_table_page_shows_tidied_columns_and_raw_on_request(self):
+        pk = Table.objects.get(source_id="2016-p021-8").pk
+        page = self.client.get(f"/dashboard/tables/{pk}/").content.decode()
+        self.assertIn('colspan="4">Educational Attainment of Head of Household', page)
+        self.assertIn('<th scope="col">High School Graduate</th>', page)
+        self.assertNotIn("col_5", page)
+        raw = self.client.get(f"/dashboard/tables/{pk}/?raw=1").content.decode()
+        self.assertIn("col_5", raw)
+
     def test_recovered_titles_are_applied(self):
         t = Table.objects.get(source_id="2016-p050-2")  # extracted as "Table 5.6" with no title
         self.assertEqual(t.table_number, "Table 5.5")
@@ -208,6 +218,50 @@ class RebuildDbTests(TestCase):
                                       report_year=obs.report_year)
         self.assertTrue(obs.verified)
         self.assertEqual(obs.notes, "checked by hand")
+
+
+class TidyTests(SimpleTestCase):
+    """Column-name repair for display (dashboard/tidy.py), on the shapes found in tables.json."""
+
+    def test_names_shifted_right_of_values_with_group_heading(self):
+        # 2016-p021-8: each name sits one column right of its numbers; the group heading took a slot.
+        cols = ["Mail Received", "Households (Millions)", "Educational Attainment of Head of Household",
+                "Less than High School", "col_5", "High School Graduate", "col_7", "College Graduate"]
+        out = tidy(cols, [["45 or more", "4.8", "8%", "", "18%", "", "59%", ""]])
+        self.assertEqual(out["headers"], ["Mail Received", "Households (Millions)", "Less than High School",
+                                          "High School Graduate", "College Graduate"])
+        self.assertEqual(out["rows"], [["45 or more", "4.8", "8%", "18%", "59%"]])
+        self.assertEqual(out["groups"], [("", 1), ("", 1), ("Educational Attainment of Head of Household", 3)])
+
+    def test_years_row_promoted_and_realigned_caption_dropped(self):
+        # 2023-p077-1: caption in columns[0], years as the first data row, values one column left.
+        cols = ["Table A8-1 First Class Mail Received by Type", "col_2", "col_3", "col_4", "col_5"]
+        rows = [["", "", "2010", "", "2011"], ["Personal", "4,855", "", "4,301", ""],
+                ["", "Note: Beginning in 2010 data was restated.", "", "", ""]]
+        out = tidy(cols, rows)
+        self.assertEqual(out["headers"], ["", "2010", "2011"])
+        self.assertEqual(out["rows"], [["Personal", "4,855", "4,301"]])
+        self.assertEqual(out["footnotes"], ["Note: Beginning in 2010 data was restated."])
+
+    def test_label_heading_left_of_values_and_units_from_title(self):
+        # 2016-p050-3: "Household Size" belongs to the label column; the value column is unnamed.
+        out = tidy(["col_1", "Household Size", "col_3"],
+                   [["One person", "", "9.6"], ["", "Source: HDS Diary Sample, FY 2016.", ""]],
+                   "Advertising Mail Received by Size of Household (Pieces per Household per Week)")
+        self.assertEqual(out["headers"], ["Household Size", "Pieces per Household per Week"])
+        self.assertEqual(out["rows"], [["One person", "9.6"]])
+
+    def test_repeated_header_removed_and_section_label_kept(self):
+        out = tidy(["Market", "2019", "2020"], [["Market", "2019", "2020"], ["Correspondence", "15.1", "15.1"]])
+        self.assertEqual(out["rows"], [["Correspondence", "15.1", "15.1"]])
+        out = tidy(["Industry", "col_2"], [["Financial", "Bills (Millions)"], ["Bank", "863"]])
+        self.assertEqual(out["headers"], ["Industry", "Bills (Millions)"])
+        self.assertEqual(out["rows"][0], ["Financial", ""])
+
+    def test_unrecoverable_names_are_labelled_not_guessed(self):
+        out = tidy(["Label", "col_2", "col_3"], [["A", "1.0", "2.0"]])
+        self.assertEqual(out["headers"], ["Label", "Column 2", "Column 3"])
+        self.assertTrue(out["notes"])
 
 
 class TitleTests(SimpleTestCase):

@@ -94,6 +94,15 @@
         a {
             color: #1756a9;
         }
+
+        thead th[scope="colgroup"] {
+            text-align: center;
+        }
+
+        .footnote {
+            font-size: 0.85rem;
+            color: #555;
+        }
     </style>
 </head>
 
@@ -156,34 +165,81 @@
     <section>
         <h2>Data</h2>
 
+        {% if show_raw %}
+            <p>Showing the raw extraction exactly as stored. <a href="?">Show the tidied table</a></p>
+        {% elif tidied.notes %}
+            <details class="notice">
+                <summary>Column names were tidied for display. <a href="?raw=1">Show the raw extraction</a></summary>
+                <ul>
+                    {% for note in tidied.notes %}<li>{{ note }}</li>{% endfor %}
+                </ul>
+            </details>
+        {% else %}
+            <p><a href="?raw=1">Show the raw extraction</a></p>
+        {% endif %}
+
         {% if rows %}
             <div class="table-wrapper">
                 <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Position</th>
-                            <th scope="col">Label</th>
-
-                            {% for column in table.columns %}
-                                <th scope="col">{{ column }}</th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {% for row in rows %}
+                    {% if tidied %}
+                        <thead>
+                            {% if tidied.groups %}
+                                <tr>
+                                    {% for label, span in tidied.groups %}
+                                        <th scope="colgroup" colspan="{{ span }}">{{ label }}</th>
+                                    {% endfor %}
+                                </tr>
+                            {% endif %}
                             <tr>
-                                <td>{{ row.position }}</td>
-                                <td>{{ row.label|default:"—" }}</td>
-
-                                {% for cell in row.cells %}
-                                    <td>{{ cell }}</td>
+                                {% for header in tidied.headers %}
+                                    <th scope="col">{{ header }}</th>
                                 {% endfor %}
                             </tr>
-                        {% endfor %}
-                    </tbody>
+                        </thead>
+
+                        <tbody>
+                            {% for cells in tidied.rows %}
+                                <tr>
+                                    {% for cell in cells %}
+                                        {% if forloop.first %}
+                                            <th scope="row" class="label">{{ cell }}</th>
+                                        {% else %}
+                                            <td class="numeric">{{ cell }}</td>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% else %}
+                        <thead>
+                            <tr>
+                                <th scope="col">Position</th>
+                                <th scope="col">Label</th>
+
+                                {% for column in table.columns %}
+                                    <th scope="col">{{ column }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for row in rows %}
+                                <tr>
+                                    <td>{{ row.position }}</td>
+                                    <td>{{ row.label|default:"—" }}</td>
+
+                                    {% for cell in row.cells %}
+                                        <td>{{ cell }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% endif %}
                 </table>
             </div>
+            {% for note in tidied.footnotes %}
+                <p class="footnote">{{ note }}</p>
+            {% endfor %}
         {% else %}
             <p class="notice">
                 No rows are available for this table.
