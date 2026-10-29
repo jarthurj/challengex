@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>USPS Trends</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+        nav, form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+        a { color: #1756a9; }
+        select, button { padding: 0.5rem; max-width: 100%; font: inherit; }
+        .chart { position: relative; height: 420px; }
+        .table-wrapper { overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 0.65rem; border: 1px solid #ccc; text-align: left; vertical-align: top; }
+        caption { text-align: left; padding-bottom: 0.75rem; }
+        .notice { padding: 1rem; background: #f3f3f3; }
+        .review { font-weight: 600; }
+        .notes { white-space: pre-line; }
+    </style>
+</head>
+<body>
+    <nav aria-label="Main navigation">
+        <a href="{% url 'table-list' %}">Browse tables</a>
+        <a href="{% url 'trends' %}" aria-current="page">Trends</a>
+    </nav>
+    <h1>USPS Trends</h1>
+    <p>Explore household mail metrics using the preferred source for each fiscal year.</p>
+
+    <form method="get">
+        <label for="trend">Trend:</label>
+        <select name="trend" id="trend">
+            {% for value, label in trend_options %}
+                <option value="{{ value }}" {% if selected_trend == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+        {% if segments %}
+            <label for="segment">Household group:</label>
+            <select name="segment" id="segment">
+                {% for segment in segments %}
+                    <option value="{{ segment.pk }}" {% if selected_segment.pk == segment.pk %}selected{% endif %}>{{ segment }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+        <button type="submit">Show trend</button>
+    </form>
+    {% if notice %}<p class="notice" role="status">{{ notice }}</p>{% endif %}
+
+    {% if chart_data %}
+        <h2>{{ chart_title }}</h2>
+        <p><strong>Unit:</strong> {{ unit_label }}. <strong>Group:</strong> {{ selected_segment }}.</p>
+        {% for description in descriptions %}<p>{{ description }}</p>{% endfor %}
+        {% if category_chart %}
+            <p class="notice">These categories cover First-Class Mail received by households. They do not represent all USPS mail or all components of the First-Class total.</p>
+        {% endif %}
+        <p>Missing years are gaps. Unverified observations are identified in the source table.</p>
+        <div class="chart">
+            <canvas id="trend-chart" role="img" aria-label="{{ chart_title }}. Values and sources follow in the data table.">
+                Use the data table below for values, units, and sources.
+            </canvas>
+        </div>
+        <p id="chart-status" role="status"></p>
+        {% if breaks %}
+            <h3>Changes in survey methodology</h3>
+            <ul>
+                {% for change in breaks %}
+                    <li><strong>FY{{ change.fiscal_year }}: {{ change.title }}</strong> — {{ change.description }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <h3>Values and sources</h3>
+        <div class="table-wrapper">
+            <table>
+                <caption>Preferred observations. Source report years can differ from the fiscal years measured.</caption>
+                <thead><tr>
+                    <th scope="col">Fiscal year</th><th scope="col">Metric</th>
+                    <th scope="col">Value ({{ unit_label }})</th><th scope="col">Source</th>
+                    <th scope="col">Verification</th><th scope="col">Notes</th>
+                </tr></thead>
+                <tbody>
+                    {% for observation in observations %}
+                        <tr>
+                            <td>{{ observation.fiscal_year }}</td>
+                            <td>{{ observation.metric.name }}</td>
+                            <td>{{ observation.value|floatformat:"2g" }}</td>
+                            <td><a href="{% url 'table-detail' observation.source_table.pk %}">FY{{ observation.report_year }} report, page {{ observation.source_table.page }} — {{ observation.source_table.source_id }}</a></td>
+                            <td>{% if observation.verified %}Verified against source PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
+                            <td class="notes">{{ observation.notes|default:"—" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+        <script>
+            // Reset the group when switching metrics; each metric has its own groups.
+            document.getElementById("trend").addEventListener("change", () => {
+                const segment = document.getElementById("segment");
+                if (segment) segment.disabled = true;
+            });
+
+            const methodologyMarkers = {
+                id: "methodologyMarkers",
+                beforeLayout(chart) {
+                    const legend = chart.legend;
+
+                    if (!legend || legend.spacingAdded) return;
+
+                    const originalFit = legend.fit;
+
+                    legend.fit = function () {
+                        originalFit.call(this);
+                        this.height += 40;
+                    };
+
+                    legend.spacingAdded = true;
+                },
+                afterDraw(chart, args, options) {
+                    const {ctx, chartArea, scales} = chart;
+                    if (!chartArea) return;
+                    ctx.save();
+                    ctx.strokeStyle = "#666";
+                    ctx.fillStyle = "#444";
+                    ctx.setLineDash([4, 4]);
+                    for (const [level, change] of (options.breaks || []).entries()) {
+                        const index = chart.data.labels.indexOf(change.year);
+                        if (index < 0) continue;
+                        const x = scales.x.getPixelForValue(index);
+                        ctx.beginPath();
+                        ctx.moveTo(x, chartArea.top);
+                        ctx.lineTo(x, chartArea.bottom);
+                        ctx.stroke();
+                        ctx.textAlign = x > (chartArea.left + chartArea.right) / 2 ? "right" : "left";
+                        ctx.fillText("Method change " + change.year, x, chartArea.top - 8 - (level % 3) * 16);
+                    }
+                    ctx.restore();
+                }
+            };
+
+            async function loadChart() {
+                const status = document.getElementById("chart-status");
+                try {
+                    if (typeof Chart === "undefined") throw new Error("Chart library unavailable");
+                    const url = new URL("{{ data_url|escapejs }}", window.location.origin);
+                    url.search = window.location.search;
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error("Chart data unavailable");
+                    const payload = await response.json();
+                    const data = payload.chart;
+                    if (!data) throw new Error("No chart data");
+                    new Chart(document.getElementById("trend-chart"), {
+                        type: "line",
+                        data: {labels: data.years, datasets: data.datasets},
+                        plugins: [methodologyMarkers],
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            layout: {padding: {top: 20}},
+                            plugins: {
+                                legend: {display: true, labels: {usePointStyle: true}},
+                                methodologyMarkers: {breaks: data.breaks},
+                                tooltip: {callbacks: {
+                                    afterLabel(context) {
+                                        const source = context.dataset.sources[context.dataIndex];
+                                        return source ? [
+                                            `Source: FY${source.report_year}, page ${source.page}`,
+                                            source.verified ? "PDF verified" : "Unverified"
+                                        ] : [];
+                                    }
+                                }}
+                            },
+                            scales: {
+                                x: {title: {display: true, text: "Fiscal year"}},
+                                y: {beginAtZero: true, title: {display: true, text: data.unit}}
+                            }
+                        }
+                    });
+                } catch (error) {
+                    status.textContent = "The chart could not load. All available values and sources are in the table below.";
+                }
+            }
+            loadChart();
+        </script>
+    {% endif %}
+</body>
+</html>

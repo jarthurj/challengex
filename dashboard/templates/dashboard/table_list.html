@@ -1,4 +1,38 @@
 
+<style>
+    .year-dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .year-dropdown summary {
+        padding: 6px 12px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        cursor: pointer;
+        background: rgb(141, 141, 141);
+    }
+
+    .year-options {
+        position: absolute;
+        z-index: 10;
+        min-width: 150px;
+        max-height: 220px;
+        overflow-y: auto;
+        padding: 8px;
+        border: 1px solid #aaa;
+        background: white;
+    }
+
+    .year-options label {
+        display: block;
+        padding: 4px;
+        white-space: nowrap;
+    }
+</style>
+
+<a href="{% url 'trends' %}">View trends</a>
+
 <h1>Browse tables</h1>
 
 <form method="get">
@@ -9,12 +43,28 @@
         placeholder="Search title or source ID"
     >
 
-    <input
-        type="number"
-        name="year"
-        value="{{ year }}"
-        placeholder="Year"
-    >
+<details class="year-dropdown">
+    <summary>Select years</summary>
+
+    <div class="year-options">
+        {% for available_year in years %}
+            <label>
+                <input
+                    type="checkbox"
+                    name="year"
+                    value="{{ available_year }}"
+                    {% if available_year|stringformat:"s" in selected_years %}checked{% endif %}
+                >
+                {{ available_year }}
+            </label>
+        {% endfor %}
+    </div>
+</details>
+
+<small id="year-help">
+    Hold Ctrl to select multiple years, or Shift to select a range.
+    In order to view every year, unselect all.
+</small>
 
     <button type="submit">Search</button>
     <a href="{% url 'table-list' %}">Clear</a>
