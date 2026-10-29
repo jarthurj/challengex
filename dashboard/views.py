@@ -80,3 +80,6 @@ def table_detail(request, pk):
 def dashboard(request):
     # Returns a plain text response with an optional 200 OK status
     return HttpResponse("Hello, world! This is a basic Django view.")
+
+def trends(request):
+    return render(request, "dashboard/trends.html")
