@@ -51,13 +51,6 @@ def table_detail(request, pk):
 
     rows = list(table.rows.all())
 
-    print("COLUMNS:", table.columns)
-
-    for row in rows[:3]:
-        print("POSITION:", row.position)
-        print("LABEL:", row.label)
-        print("DATA:", row.data)
-
     for row in rows:
         row.cells = []
 
