@@ -102,6 +102,20 @@
 
             const methodologyMarkers = {
                 id: "methodologyMarkers",
+                beforeLayout(chart) {
+                    const legend = chart.legend;
+
+                    if (!legend || legend.spacingAdded) return;
+
+                    const originalFit = legend.fit;
+
+                    legend.fit = function () {
+                        originalFit.call(this);
+                        this.height += 40;
+                    };
+
+                    legend.spacingAdded = true;
+                },
                 afterDraw(chart, args, options) {
                     const {ctx, chartArea, scales} = chart;
                     if (!chartArea) return;
@@ -142,7 +156,7 @@
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
-                            layout: {padding: {top: 60}},
+                            layout: {padding: {top: 20}},
                             plugins: {
                                 legend: {display: true, labels: {usePointStyle: true}},
                                 methodologyMarkers: {breaks: data.breaks},
