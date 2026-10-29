@@ -114,7 +114,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2016-p014-1": {
   "excerpts": [
@@ -294,8 +294,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "20%",
+     "35%",
+     "27%",
+     "17%",
+     "100%"
+    ],
+    [
+     "$35 to $65",
+     "10%",
+     "33%",
+     "24%",
+     "33%",
+     "100%"
+    ],
+    [
+     "$65 to $100",
+     "7%",
+     "24%",
+     "22%",
+     "47%",
+     "100%"
+    ],
+    [
+     "Over $100",
+     "2%",
+     "12%",
+     "17%",
+     "69%",
+     "100%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "6%",
+     "25%",
+     "19%",
+     "45%",
+     "100%"
+    ],
+    [
+     "Mean",
+     "10%",
+     "27%",
+     "22%",
+     "39%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p022-6": {
   "excerpts": [
@@ -307,8 +373,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Don’t Know/ Refused",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "26%",
+     "26%",
+     "47%",
+     "1%",
+     "100%"
+    ],
+    [
+     "$35 to $65",
+     "24%",
+     "33%",
+     "43%",
+     "0%",
+     "100%"
+    ],
+    [
+     "$65 to $100",
+     "20%",
+     "39%",
+     "40%",
+     "0%",
+     "100%"
+    ],
+    [
+     "Over $100",
+     "15%",
+     "49%",
+     "36%",
+     "0%",
+     "100%"
+    ],
+    [
+     "Don’t know/",
+     "15%",
+     "33%",
+     "46%",
+     "6%",
+     "100%"
+    ],
+    [
+     "Refused Mean",
+     "21%",
+     "35%",
+     "43%",
+     "1%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p022-8": {
   "excerpts": [],
@@ -335,7 +467,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2016-p024-1": {
   "excerpts": [
@@ -398,8 +530,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "1.4",
+     "1.5",
+     "1.6",
+     "1.5",
+     "1.5"
+    ],
+    [
+     "$35 to $65",
+     "1.9",
+     "1.9",
+     "1.8",
+     "1.6",
+     "1.8"
+    ],
+    [
+     "$65 to $100",
+     "1.2",
+     "2.2",
+     "2.3",
+     "2.1",
+     "2.1"
+    ],
+    [
+     "Over $100",
+     "4.1",
+     "2.3",
+     "3.0",
+     "2.7",
+     "2.7"
+    ],
+    [
+     "Average",
+     "1.6",
+     "1.9",
+     "1.9",
+     "2.1",
+     "2.0"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p028-11": {
   "excerpts": [
@@ -411,60 +601,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 34",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of Head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "1.3",
-     "1.4",
-     "1.6",
-     "1.5"
-    ],
-    [
-     "$35 to $65",
-     "1.2",
-     "1.7",
-     "2.2",
-     "1.8"
-    ],
-    [
-     "$65 to $100",
-     "1.5",
-     "2.0",
-     "2.5",
-     "2.1"
-    ],
-    [
-     "Over $100",
-     "2.5",
-     "2.6",
-     "3.0",
-     "2.7"
-    ],
-    [
-     "Average",
-     "1.4",
-     "2.0",
-     "2.2",
-     "2.0"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2016-p028-6": {
   "excerpts": [
@@ -476,8 +614,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.7",
+     "0.4",
+     "0.7",
+     "0.6",
+     "0.6"
+    ],
+    [
+     "$35 to $65",
+     "0.4",
+     "0.7",
+     "0.6",
+     "0.6",
+     "0.6"
+    ],
+    [
+     "$65 to $100",
+     "0.5",
+     "0.8",
+     "0.6",
+     "0.7",
+     "0.7"
+    ],
+    [
+     "Over $100",
+     "0.6",
+     "0.3",
+     "0.9",
+     "1.0",
+     "0.9"
+    ],
+    [
+     "Average",
+     "0.6",
+     "0.6",
+     "0.7",
+     "0.8",
+     "0.7"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p029-1": {
   "excerpts": [
@@ -700,7 +896,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: two numbers fell into one cell"
  },
  "2016-p036-1": {
   "excerpts": [
@@ -723,7 +919,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2016-p037-1": {
   "excerpts": [
@@ -819,8 +1015,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.5",
+     "0.5",
+     "0.5",
+     "0.4",
+     "0.5"
+    ],
+    [
+     "$35 to $65",
+     "0.9",
+     "0.8",
+     "0.6",
+     "0.5",
+     "0.7"
+    ],
+    [
+     "$65 to $100",
+     "0.1",
+     "0.7",
+     "0.6",
+     "0.7",
+     "0.6"
+    ],
+    [
+     "Over $100",
+     "0.0",
+     "0.9",
+     "0.6",
+     "0.7",
+     "0.7"
+    ],
+    [
+     "Average",
+     "0.5",
+     "0.7",
+     "0.6",
+     "0.6",
+     "0.6"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p038-1": {
   "excerpts": [
@@ -911,7 +1165,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2016-p038-6": {
   "excerpts": [
@@ -929,7 +1183,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2016-p039-1": {
   "excerpts": [
@@ -1033,14 +1287,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p049-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table 5.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p049-2": {
   "excerpts": [
@@ -1280,7 +1534,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2016-p061-1": {
   "excerpts": [
@@ -1292,8 +1546,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.8",
+     "0.5",
+     "0.4",
+     "0.5",
+     "0.5"
+    ],
+    [
+     "$35 to $65",
+     "0.5",
+     "0.7",
+     "0.7",
+     "0.8",
+     "0.7"
+    ],
+    [
+     "$65 to $100",
+     "0.7",
+     "0.8",
+     "1.0",
+     "0.9",
+     "0.9"
+    ],
+    [
+     "Over $100",
+     "0.2",
+     "0.9",
+     "1.0",
+     "1.2",
+     "1.1"
+    ],
+    [
+     "Average",
+     "0.7",
+     "0.7",
+     "0.7",
+     "0.9",
+     "0.8"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p061-6": {
   "excerpts": [
@@ -1513,60 +1825,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 35",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "0.05",
-     "0.21",
-     "0.03",
-     "0.08"
-    ],
-    [
-     "$35 to $65",
-     "0.03",
-     "0.07",
-     "0.07",
-     "0.06"
-    ],
-    [
-     "$65 to $100",
-     "0.07",
-     "0.06",
-     "0.13",
-     "0.09"
-    ],
-    [
-     "Over $100",
-     "0.02",
-     "0.09",
-     "0.07",
-     "0.07"
-    ],
-    [
-     "Average",
-     "0.04",
-     "0.10",
-     "0.07",
-     "0.08"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2016-p066-3": {
   "excerpts": [
@@ -1578,8 +1838,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.46",
+     "0.53",
+     "0.38",
+     "0.41",
+     "0.41"
+    ],
+    [
+     "$35 to $65",
+     "0.78",
+     "0.52",
+     "0.75",
+     "0.74",
+     "0.67"
+    ],
+    [
+     "$65 to $100",
+     "0.36",
+     "0.81",
+     "0.96",
+     "1.04",
+     "0.90"
+    ],
+    [
+     "Over $100",
+     "0.87",
+     "0.81",
+     "0.98",
+     "1.08",
+     "0.98"
+    ],
+    [
+     "Average",
+     "0.54",
+     "0.59",
+     "0.68",
+     "0.86",
+     "0.71"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p067-1": {
   "excerpts": [
@@ -1591,8 +1909,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.18",
+     "0.04",
+     "0.09",
+     "0.05",
+     "0.08"
+    ],
+    [
+     "$35 to $65",
+     "0.01",
+     "0.04",
+     "0.09",
+     "0.07",
+     "0.06"
+    ],
+    [
+     "$65 to $100",
+     "0.16",
+     "0.08",
+     "0.06",
+     "0.10",
+     "0.09"
+    ],
+    [
+     "Over $100",
+     "0.00",
+     "0.05",
+     "0.05",
+     "0.09",
+     "0.07"
+    ],
+    [
+     "Average",
+     "0.13",
+     "0.05",
+     "0.07",
+     "0.08",
+     "0.08"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p067-6": {
   "excerpts": [
@@ -1617,37 +1993,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Type of Internet Access",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Broadband",
-     "0.76",
-     "0.07"
-    ],
-    [
-     "Dial-up",
-     "0.41",
-     "0.12"
-    ],
-    [
-     "None",
-     "0.39",
-     "0.08"
-    ],
-    [
-     "Average",
-     "0.71",
-     "0.08"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2016-p067-9": {
   "excerpts": [
@@ -1686,7 +2033,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2016-p069-1": {
   "excerpts": [
@@ -1699,7 +2046,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2016-p073-1": {
   "excerpts": [],
@@ -1720,7 +2067,7 @@
   "why_none": "The report's text never refers to Table A8-3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2016-p076-1": {
   "excerpts": [],
@@ -1762,7 +2109,7 @@
   "why_none": "The report's text never refers to Table A8-9.",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2016-p082-1": {
   "excerpts": [],
@@ -1783,7 +2130,7 @@
   "why_none": "The report's text never refers to Table A8-12.",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2016-p085-1": {
   "excerpts": [],
@@ -1844,42 +2191,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p093-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p093-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p093-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p094-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p094-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2016-p095-2": {
   "excerpts": [
@@ -1917,8 +2264,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Geographic Region 30",
+    "Largest Metro Areas",
+    "Other Metro Areas",
+    "30 Largest Metro Areas",
+    "Total Other Metro Areas"
+   ],
+   "groups": [
+    [
+     "Stratum (Urban/Rural Location)",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Northeast",
+     "647",
+     "553",
+     "647",
+     "553"
+    ],
+    [
+     "Midwest",
+     "959",
+     "769",
+     "959",
+     "769"
+    ],
+    [
+     "South",
+     "1,288",
+     "1,520",
+     "1,288",
+     "1,520"
+    ],
+    [
+     "West",
+     "1,082",
+     "622",
+     "1,082",
+     "622"
+    ],
+    [
+     "Total",
+     "3,976",
+     "3,464",
+     "3,976",
+     "3,464"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2016-p096-2": {
   "excerpts": [
@@ -2165,7 +2564,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p017-1": {
   "excerpts": [
@@ -2221,8 +2620,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "16%",
+     "36%",
+     "25%",
+     "23%",
+     "24%"
+    ],
+    [
+     "$35 to $65",
+     "7%",
+     "33%",
+     "25%",
+     "35%",
+     "21%"
+    ],
+    [
+     "$65 to $100",
+     "7%",
+     "25%",
+     "21%",
+     "46%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "3%",
+     "13%",
+     "18%",
+     "66%",
+     "19%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "8%",
+     "26%",
+     "21%",
+     "41%",
+     "17%"
+    ],
+    [
+     "Total",
+     "8%",
+     "27%",
+     "22%",
+     "41%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2017-p020-6": {
   "excerpts": [
@@ -2234,8 +2699,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Don’t Know/ Refused",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "23%",
+     "29%",
+     "47%",
+     "0%",
+     "24%"
+    ],
+    [
+     "$35 to $65",
+     "25%",
+     "29%",
+     "46%",
+     "0%",
+     "21%"
+    ],
+    [
+     "$65 to $100",
+     "19%",
+     "39%",
+     "42%",
+     "0%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "16%",
+     "47%",
+     "37%",
+     "0%",
+     "19%"
+    ],
+    [
+     "Don’t know/",
+     "16%",
+     "29%",
+     "49%",
+     "6%",
+     "17%"
+    ],
+    [
+     "Refused Total",
+     "20%",
+     "34%",
+     "44%",
+     "1%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2017-p020-8": {
   "excerpts": [],
@@ -2293,7 +2824,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p026-11": {
   "excerpts": [
@@ -2305,60 +2836,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 34",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of Head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "1.1",
-     "1.8",
-     "1.9",
-     "1.7"
-    ],
-    [
-     "$35 to $65",
-     "1.2",
-     "2.0",
-     "2.7",
-     "2.1"
-    ],
-    [
-     "$65 to $100",
-     "2.0",
-     "2.5",
-     "3.3",
-     "2.7"
-    ],
-    [
-     "Over $100",
-     "2.0",
-     "2.6",
-     "3.3",
-     "2.7"
-    ],
-    [
-     "Average",
-     "1.5",
-     "2.2",
-     "2.7",
-     "2.3"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2017-p026-6": {
   "excerpts": [
@@ -2371,7 +2850,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p027-1": {
   "excerpts": [
@@ -2503,7 +2982,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: two numbers fell into one cell"
  },
  "2017-p034-1": {
   "excerpts": [
@@ -2526,7 +3005,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2017-p035-1": {
   "excerpts": [
@@ -2622,8 +3101,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.3",
+     "0.5",
+     "0.4",
+     "0.4",
+     "0.4"
+    ],
+    [
+     "$35 to $65",
+     "0.6",
+     "0.4",
+     "0.6",
+     "0.6",
+     "0.5"
+    ],
+    [
+     "$65 to $100",
+     "0.3",
+     "0.8",
+     "0.8",
+     "0.7",
+     "0.7"
+    ],
+    [
+     "Over $100",
+     "0.3",
+     "0.6",
+     "0.7",
+     "0.6",
+     "0.6"
+    ],
+    [
+     "Average",
+     "0.3",
+     "0.6",
+     "0.6",
+     "0.6",
+     "0.6"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2017-p036-1": {
   "excerpts": [
@@ -2662,7 +3199,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2017-p036-5": {
   "excerpts": [
@@ -2680,7 +3217,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2017-p037-1": {
   "excerpts": [
@@ -2706,7 +3243,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2017-p041-1": {
   "excerpts": [
@@ -2732,7 +3269,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2017-p045-1": {
   "excerpts": [
@@ -2758,14 +3295,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p047-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table 5.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2017-p047-2": {
   "excerpts": [
@@ -2788,7 +3325,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p048-2": {
   "excerpts": [
@@ -2904,7 +3441,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2017-p058-2": {
   "excerpts": [
@@ -2917,7 +3454,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p058-8": {
   "excerpts": [
@@ -2930,7 +3467,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2017-p059-1": {
   "excerpts": [
@@ -3059,60 +3596,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 35",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "0.03",
-     "0.06",
-     "0.06",
-     "0.05"
-    ],
-    [
-     "$35 to $65",
-     "0.09",
-     "0.09",
-     "0.05",
-     "0.07"
-    ],
-    [
-     "$65 to $100",
-     "0.03",
-     "0.07",
-     "0.08",
-     "0.07"
-    ],
-    [
-     "Over $100",
-     "0.03",
-     "0.11",
-     "0.07",
-     "0.08"
-    ],
-    [
-     "Average",
-     "0.05",
-     "0.08",
-     "0.07",
-     "0.07"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2017-p062-3": {
   "excerpts": [
@@ -3124,8 +3609,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.57",
+     "0.37",
+     "0.38",
+     "0.62",
+     "0.45"
+    ],
+    [
+     "$35 to $65",
+     "0.84",
+     "0.60",
+     "0.56",
+     "0.77",
+     "0.63"
+    ],
+    [
+     "$65 to $100",
+     "0.45",
+     "0.81",
+     "0.87",
+     "0.89",
+     "0.80"
+    ],
+    [
+     "Over $100",
+     "0.90",
+     "1.21",
+     "1.23",
+     "1.19",
+     "1.13"
+    ],
+    [
+     "Average",
+     "0.59",
+     "0.65",
+     "0.69",
+     "0.92",
+     "0.77"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2017-p063-1": {
   "excerpts": [
@@ -3138,7 +3681,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p063-6": {
   "excerpts": [
@@ -3164,7 +3707,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2017-p063-9": {
   "excerpts": [
@@ -3203,7 +3746,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2017-p065-1": {
   "excerpts": [
@@ -3216,7 +3759,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2017-p069-1": {
   "excerpts": [],
@@ -3230,7 +3773,7 @@
   "why_none": "The report's text never refers to Table A8-2.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p071-1": {
   "excerpts": [],
@@ -3251,28 +3794,28 @@
   "why_none": "The report's text never refers to Table A8-5a.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p074-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p075-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p076-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p077-1": {
   "excerpts": [],
@@ -3286,7 +3829,7 @@
   "why_none": "The report's text never refers to Table A8-10.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p079-1": {
   "excerpts": [],
@@ -3300,21 +3843,21 @@
   "why_none": "The report's text never refers to Table A8-12.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p081-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-13A.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p082-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-13A2.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p083-1": {
   "excerpts": [],
@@ -3328,7 +3871,7 @@
   "why_none": "The report's text never refers to Table A8-15.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2017-p086-1": {
   "excerpts": [
@@ -3361,42 +3904,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p089-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p089-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p089-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p090-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2017-p090-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p091-2": {
   "excerpts": [
@@ -3435,7 +3978,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2017-p092-2": {
   "excerpts": [
@@ -3689,7 +4232,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p017-1": {
   "excerpts": [
@@ -3745,8 +4288,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "17%",
+     "36%",
+     "25%",
+     "21%",
+     "24%"
+    ],
+    [
+     "$35 to $65",
+     "8%",
+     "32%",
+     "22%",
+     "38%",
+     "22%"
+    ],
+    [
+     "$65 to $100",
+     "5%",
+     "25%",
+     "21%",
+     "49%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "3%",
+     "16%",
+     "18%",
+     "64%",
+     "21%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "6%",
+     "23%",
+     "25%",
+     "42%",
+     "15%"
+    ],
+    [
+     "Total",
+     "8%",
+     "27%",
+     "22%",
+     "42%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2018-p020-6": {
   "excerpts": [
@@ -3758,8 +4367,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Don’t Know/ Refused",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "24%",
+     "28%",
+     "48%",
+     "0%",
+     "24%"
+    ],
+    [
+     "$35 to $65",
+     "22%",
+     "28%",
+     "49%",
+     "1%",
+     "22%"
+    ],
+    [
+     "$65 to $100",
+     "21%",
+     "36%",
+     "43%",
+     "0%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "17%",
+     "47%",
+     "36%",
+     "0%",
+     "21%"
+    ],
+    [
+     "Don’t know/",
+     "14%",
+     "31%",
+     "48%",
+     "7%",
+     "15%"
+    ],
+    [
+     "Refused Total",
+     "20%",
+     "34%",
+     "45%",
+     "1%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2018-p020-8": {
   "excerpts": [],
@@ -3786,7 +4461,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p022-2": {
   "excerpts": [],
@@ -3837,7 +4512,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p026-11": {
   "excerpts": [
@@ -3849,60 +4524,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 34",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of Head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     ".9",
-     "1.8",
-     "1.9",
-     "1.7"
-    ],
-    [
-     "$35 to $65",
-     "1.2",
-     "1.6",
-     "2.6",
-     "2.0"
-    ],
-    [
-     "$65 to $100",
-     "1.7",
-     "2.3",
-     "3.1",
-     "2.5"
-    ],
-    [
-     "Over $100",
-     "1.8",
-     "2.6",
-     "3.5",
-     "2.8"
-    ],
-    [
-     "Average",
-     "1.4",
-     "2.1",
-     "2.7",
-     "2.2"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2018-p026-6": {
   "excerpts": [
@@ -3915,7 +4538,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p027-1": {
   "excerpts": [
@@ -3985,7 +4608,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2018-p028-1": {
   "excerpts": [
@@ -4086,7 +4709,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: two numbers fell into one cell"
  },
  "2018-p034-1": {
   "excerpts": [
@@ -4109,7 +4732,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p035-1": {
   "excerpts": [
@@ -4205,8 +4828,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.2",
+     "0.6",
+     "0.3",
+     "0.3",
+     "0.4"
+    ],
+    [
+     "$35 to $65",
+     "0.6",
+     "1.1",
+     "0.4",
+     "0.5",
+     "0.7"
+    ],
+    [
+     "$65 to $100",
+     "1.4",
+     "0.6",
+     "0.4",
+     "0.5",
+     "0.5"
+    ],
+    [
+     "Over $100",
+     "0.8",
+     "0.6",
+     "0.7",
+     "0.5",
+     "0.5"
+    ],
+    [
+     "Average",
+     "0.4",
+     "0.7",
+     "0.5",
+     "0.5",
+     "0.5"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2018-p036-1": {
   "excerpts": [
@@ -4245,7 +4926,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2018-p036-5": {
   "excerpts": [
@@ -4263,7 +4944,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2018-p037-1": {
   "excerpts": [
@@ -4289,7 +4970,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2018-p041-1": {
   "excerpts": [
@@ -4320,7 +5001,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2018-p043-2": {
   "excerpts": [
@@ -4345,66 +5026,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Medium",
-    "2016",
-    "2017",
-    "2018"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Direct Mail",
-     "-1.7%",
-     "-6.1%",
-     "1.0%"
-    ],
-    [
-     "TV",
-     "1.1%",
-     "-2.2%",
-     "-1.7%"
-    ],
-    [
-     "Radio",
-     "-2.9%",
-     "-2.3%",
-     "-2.2%"
-    ],
-    [
-     "Newspapers",
-     "-12.1%",
-     "-15.4%",
-     "-18.5%"
-    ],
-    [
-     "Magazines",
-     "-8.7%",
-     "-13.3%",
-     "-17.3%"
-    ],
-    [
-     "Internet",
-     "21.8%",
-     "21.4%",
-     "20.9%"
-    ],
-    [
-     "Other",
-     "27.6%",
-     "-27.7%",
-     "47.9%"
-    ],
-    [
-     "Total",
-     "6.8%",
-     "2.9%",
-     "8.6%"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2018-p046-3": {
   "excerpts": [
@@ -4417,14 +5040,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2018-p047-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table 5.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p047-2": {
   "excerpts": [
@@ -4447,7 +5070,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p048-2": {
   "excerpts": [
@@ -4640,7 +5263,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2018-p058-2": {
   "excerpts": [
@@ -4653,7 +5276,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p058-8": {
   "excerpts": [
@@ -4666,7 +5289,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2018-p059-1": {
   "excerpts": [
@@ -4821,60 +5444,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 35",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "0.05",
-     "0.01",
-     "0.03",
-     "0.03"
-    ],
-    [
-     "$35 to $65",
-     "0.01",
-     "0.05",
-     "0.11",
-     "0.07"
-    ],
-    [
-     "$65 to $100",
-     "0.06",
-     "0.06",
-     "0.08",
-     "0.07"
-    ],
-    [
-     "Over $100",
-     "0.08",
-     "0.11",
-     "0.09",
-     "0.10"
-    ],
-    [
-     "Average",
-     "0.05",
-     "0.06",
-     "0.07",
-     "0.06"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2018-p064-3": {
   "excerpts": [
@@ -4886,8 +5457,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.23",
+     "0.36",
+     "0.46",
+     "0.43",
+     "0.38"
+    ],
+    [
+     "$35 to $65",
+     "0.87",
+     "0.57",
+     "0.73",
+     "0.75",
+     "0.70"
+    ],
+    [
+     "$65 to $100",
+     "0.42",
+     "0.76",
+     "0.96",
+     "0.95",
+     "0.88"
+    ],
+    [
+     "Over $100",
+     "0.66",
+     "0.91",
+     "1.21",
+     "1.11",
+     "1.08"
+    ],
+    [
+     "Average",
+     "0.45",
+     "0.58",
+     "0.77",
+     "0.92",
+     "0.76"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2018-p065-1": {
   "excerpts": [
@@ -4900,7 +5529,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2018-p065-6": {
   "excerpts": [
@@ -4926,7 +5555,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2018-p065-9": {
   "excerpts": [
@@ -4965,7 +5594,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2018-p067-1": {
   "excerpts": [
@@ -4978,35 +5607,35 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2018-p071-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-1.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p072-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-2.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p073-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p074-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p075-1": {
   "excerpts": [],
@@ -5020,28 +5649,28 @@
   "why_none": "The report's text never refers to Table A8-6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p077-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p078-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p079-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-9.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p081-1": {
   "excerpts": [],
@@ -5062,28 +5691,28 @@
   "why_none": "The report's text never refers to Table A8-13A.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p084-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-13A2.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p085-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-14.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p086-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-15.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2018-p088-1": {
   "excerpts": [
@@ -5116,42 +5745,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p091-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p091-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p091-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p092-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p092-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2018-p093-2": {
   "excerpts": [
@@ -5189,8 +5818,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Geographic Region 30",
+    "Largest Metro Areas",
+    "Other Metro Areas",
+    "Non-Metro Areas",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Stratum (Urban/Rural Location)",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Northeast",
+     "642",
+     "499",
+     "118",
+     "1,259"
+    ],
+    [
+     "Midwest",
+     "994",
+     "832",
+     "250",
+     "2,076"
+    ],
+    [
+     "South",
+     "1,302",
+     "1,619",
+     "383",
+     "3,304"
+    ],
+    [
+     "West",
+     "1,138",
+     "760",
+     "136",
+     "2,034"
+    ],
+    [
+     "Total",
+     "4,076",
+     "3,710",
+     "887",
+     "8,673"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2018-p094-2": {
   "excerpts": [
@@ -5444,7 +6125,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2019-p017-1": {
   "excerpts": [
@@ -5500,8 +6181,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "16%",
+     "37%",
+     "23%",
+     "24%",
+     "22%"
+    ],
+    [
+     "$35 to $65",
+     "8%",
+     "33%",
+     "24%",
+     "35%",
+     "23%"
+    ],
+    [
+     "$65 to $100",
+     "7%",
+     "22%",
+     "22%",
+     "48%",
+     "21%"
+    ],
+    [
+     "Over $100",
+     "3%",
+     "14%",
+     "17%",
+     "66%",
+     "21%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "4%",
+     "24%",
+     "22%",
+     "44%",
+     "15%"
+    ],
+    [
+     "Total",
+     "8%",
+     "26%",
+     "22%",
+     "43%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p020-6": {
   "excerpts": [
@@ -5513,8 +6260,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Don’t Know/ Refused",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "24%",
+     "24%",
+     "52%",
+     "0%",
+     "22%"
+    ],
+    [
+     "$35 to $65",
+     "24%",
+     "30%",
+     "46%",
+     "0%",
+     "23%"
+    ],
+    [
+     "$65 to $100",
+     "22%",
+     "38%",
+     "40%",
+     "0%",
+     "21%"
+    ],
+    [
+     "Over $100",
+     "17%",
+     "46%",
+     "37%",
+     "0%",
+     "21%"
+    ],
+    [
+     "Don’t know/",
+     "12%",
+     "27%",
+     "53%",
+     "9%",
+     "15%"
+    ],
+    [
+     "Refused Total",
+     "20%",
+     "33%",
+     "46%",
+     "1%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p020-8": {
   "excerpts": [],
@@ -5541,7 +6354,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2019-p022-2": {
   "excerpts": [],
@@ -5591,8 +6404,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "1.9",
+     "1.9",
+     "1.9",
+     "1.4",
+     "1.8"
+    ],
+    [
+     "$35 to $65",
+     "1.3",
+     "2.2",
+     "2.1",
+     "1.8",
+     "2.0"
+    ],
+    [
+     "$65 to $100",
+     "1.7",
+     "2.3",
+     "2.2",
+     "2.1",
+     "2.2"
+    ],
+    [
+     "Over $100",
+     "2.2",
+     "2.6",
+     "2.3",
+     "2.6",
+     "2.6"
+    ],
+    [
+     "Average",
+     "1.8",
+     "2.1",
+     "2.1",
+     "2.2",
+     "2.1"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p026-11": {
   "excerpts": [
@@ -5604,60 +6475,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 34",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of Head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "1.2",
-     "1.7",
-     "2.1",
-     "1.8"
-    ],
-    [
-     "$35 to $65",
-     "1.4",
-     "1.6",
-     "2.5",
-     "2.0"
-    ],
-    [
-     "$65 to $100",
-     "1.5",
-     "2.0",
-     "2.7",
-     "2.2"
-    ],
-    [
-     "Over $100",
-     "1.8",
-     "2.4",
-     "3.2",
-     "2.6"
-    ],
-    [
-     "Average",
-     "1.4",
-     "1.9",
-     "2.5",
-     "2.1"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2019-p026-6": {
   "excerpts": [
@@ -5669,8 +6488,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     ".2",
+     ".5",
+     ".4",
+     ".5",
+     ".4"
+    ],
+    [
+     "$35 to $65",
+     ".3",
+     ".4",
+     ".6",
+     ".6",
+     ".5"
+    ],
+    [
+     "$65 to $100",
+     ".5",
+     ".6",
+     ".4",
+     ".6",
+     ".5"
+    ],
+    [
+     "Over $100",
+     ".8",
+     ".4",
+     ".6",
+     ".9",
+     ".8"
+    ],
+    [
+     "Average",
+     ".3",
+     ".5",
+     ".5",
+     ".7",
+     ".6"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p027-1": {
   "excerpts": [
@@ -5682,60 +6559,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 34",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of Head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     ".2",
-     ".3",
-     ".6",
-     ".4"
-    ],
-    [
-     "$35 to $65",
-     ".4",
-     ".3",
-     ".7",
-     ".5"
-    ],
-    [
-     "$65 to $100",
-     ".3",
-     ".4",
-     ".8",
-     ".5"
-    ],
-    [
-     "Over $100",
-     ".5",
-     ".7",
-     ".9",
-     ".8"
-    ],
-    [
-     "Average",
-     ".3",
-     ".5",
-     ".7",
-     ".6"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2019-p027-2": {
   "excerpts": [
@@ -5792,7 +6617,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2019-p028-1": {
   "excerpts": [
@@ -5867,7 +6692,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: two numbers fell into one cell"
  },
  "2019-p034-1": {
   "excerpts": [
@@ -5890,7 +6715,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2019-p035-1": {
   "excerpts": [
@@ -5986,8 +6811,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.3",
+     "0.4",
+     "0.4",
+     "0.4",
+     "0.4"
+    ],
+    [
+     "$35 to $65",
+     "0.9",
+     "0.6",
+     "0.4",
+     "0.5",
+     "0.5"
+    ],
+    [
+     "$65 to $100",
+     "0.2",
+     "0.6",
+     "0.4",
+     "0.5",
+     "0.5"
+    ],
+    [
+     "Over $100",
+     "0.4",
+     "0.6",
+     "0.5",
+     "0.5",
+     "0.5"
+    ],
+    [
+     "Average",
+     "0.4",
+     "0.5",
+     "0.4",
+     "0.5",
+     "0.5"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p036-1": {
   "excerpts": [
@@ -6026,7 +6909,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2019-p036-5": {
   "excerpts": [
@@ -6044,7 +6927,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2019-p037-1": {
   "excerpts": [
@@ -6070,7 +6953,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2019-p041-1": {
   "excerpts": [
@@ -6101,7 +6984,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2019-p043-2": {
   "excerpts": [
@@ -6126,66 +7009,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Medium",
-    "2017",
-    "2018",
-    "2019"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Direct Mail",
-     "-3.5%",
-     "-1.0%",
-     "0.0%"
-    ],
-    [
-     "TV",
-     "-2.4%",
-     "0.7%",
-     "-2.0%"
-    ],
-    [
-     "Radio",
-     "1.3%",
-     "-3.4%",
-     "2.0%"
-    ],
-    [
-     "Newspapers",
-     "-8.0%",
-     "-14.9%",
-     "-15.0%"
-    ],
-    [
-     "Magazines",
-     "-7.2%",
-     "-8.3%",
-     "-10.0%"
-    ],
-    [
-     "Internet",
-     "25.1%",
-     "22.1%",
-     "19.9%"
-    ],
-    [
-     "Other",
-     "-26.5%",
-     "49.1%",
-     "-33.2%"
-    ],
-    [
-     "Total",
-     "3.0%",
-     "8.8%",
-     "3.4%"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2019-p046-3": {
   "excerpts": [
@@ -6198,14 +7023,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p047-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table 5.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p047-2": {
   "excerpts": [
@@ -6228,7 +7053,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2019-p048-2": {
   "excerpts": [
@@ -6473,7 +7298,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2019-p058-2": {
   "excerpts": [
@@ -6486,7 +7311,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2019-p058-8": {
   "excerpts": [
@@ -6499,7 +7324,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2019-p059-1": {
   "excerpts": [
@@ -6641,60 +7466,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 35",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "0.03",
-     "0.04",
-     "0.03",
-     "0.03"
-    ],
-    [
-     "$35 to $65",
-     "0.02",
-     "0.07",
-     "0.05",
-     "0.05"
-    ],
-    [
-     "$65 to $100",
-     "0.05",
-     "0.10",
-     "0.03",
-     "0.06"
-    ],
-    [
-     "Over $100",
-     "0.03",
-     "0.04",
-     "0.12",
-     "0.07"
-    ],
-    [
-     "Average",
-     "0.03",
-     "0.06",
-     "0.05",
-     "0.05"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2019-p064-3": {
   "excerpts": [
@@ -6706,8 +7479,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.21",
+     "0.32",
+     "0.47",
+     "0.54",
+     "0.39"
+    ],
+    [
+     "$35 to $65",
+     "0.64",
+     "0.70",
+     "0.73",
+     "0.65",
+     "0.68"
+    ],
+    [
+     "$65 to $100",
+     "0.52",
+     "0.70",
+     "0.88",
+     "0.75",
+     "0.75"
+    ],
+    [
+     "Over $100",
+     "0.97",
+     "1.27",
+     "0.82",
+     "0.92",
+     "0.95"
+    ],
+    [
+     "Average",
+     "0.42",
+     "0.62",
+     "0.71",
+     "0.77",
+     "0.69"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p065-1": {
   "excerpts": [
@@ -6719,8 +7550,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.00",
+     "0.02",
+     "0.04",
+     "0.08",
+     "0.03"
+    ],
+    [
+     "$35 to $65",
+     "0.11",
+     "0.05",
+     "0.04",
+     "0.04",
+     "0.05"
+    ],
+    [
+     "$65 to $100",
+     "0.06",
+     "0.12",
+     "0.04",
+     "0.04",
+     "0.06"
+    ],
+    [
+     "Over $100",
+     "0.00",
+     "0.17",
+     "0.03",
+     "0.06",
+     "0.07"
+    ],
+    [
+     "Average",
+     "0.04",
+     "0.06",
+     "0.03",
+     "0.06",
+     "0.05"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p065-6": {
   "excerpts": [
@@ -6745,42 +7634,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Type of Internet Access",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Broadband",
-     "0.73",
-     "0.06"
-    ],
-    [
-     "Dial-up",
-     "0.61",
-     "0.00"
-    ],
-    [
-     "None",
-     "0.29",
-     "0.01"
-    ],
-    [
-     "Others",
-     "0.33",
-     "1.13"
-    ],
-    [
-     "Average",
-     "0.69",
-     "0.05"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2019-p065-9": {
   "excerpts": [
@@ -6819,7 +7674,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2019-p067-1": {
   "excerpts": [
@@ -6832,7 +7687,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2019-p086-1": {
   "excerpts": [
@@ -6865,42 +7720,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p089-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p089-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p089-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p090-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p090-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2019-p091-2": {
   "excerpts": [
@@ -6938,8 +7793,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Geographic Region 30",
+    "Largest Metro Areas",
+    "Other Metro Areas",
+    "Non-Metro Areas",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Stratum (Urban/Rural Location)",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Northeast",
+     "661",
+     "498",
+     "125",
+     "1,284"
+    ],
+    [
+     "Midwest",
+     "1,036",
+     "851",
+     "285",
+     "2,172"
+    ],
+    [
+     "South",
+     "1,386",
+     "1,684",
+     "389",
+     "3,459"
+    ],
+    [
+     "West",
+     "1,144",
+     "789",
+     "146",
+     "2,079"
+    ],
+    [
+     "Total",
+     "4,227",
+     "3,822",
+     "945",
+     "8,994"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2019-p092-2": {
   "excerpts": [
@@ -7246,8 +8153,90 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Mail Received (Pieces per Household per week)",
+    "Households (Millions)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     2,
+     5
+    ]
+   ],
+   "rows": [
+    [
+     "45 or more",
+     "2.5",
+     "2%",
+     "24%",
+     "20%",
+     "54%"
+    ],
+    [
+     "36-44",
+     "3.9",
+     "0%",
+     "22%",
+     "16%",
+     "60%"
+    ],
+    [
+     "30-35",
+     "5.9",
+     "6%",
+     "20%",
+     "21%",
+     "53%"
+    ],
+    [
+     "24-29",
+     "11.6",
+     "4%",
+     "23%",
+     "21%",
+     "50%"
+    ],
+    [
+     "18-23",
+     "20.4",
+     "5%",
+     "29%",
+     "20%",
+     "45%"
+    ],
+    [
+     "17-Dec",
+     "28.7",
+     "8%",
+     "25%",
+     "21%",
+     "45%"
+    ],
+    [
+     "Less than 12",
+     "55.3",
+     "8%",
+     "26%",
+     "22%",
+     "43%"
+    ],
+    [
+     "Total",
+     "128.5",
+     "7%",
+     "26%",
+     "21%",
+     "45%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p022-1": {
   "excerpts": [
@@ -7259,8 +8248,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "16%",
+     "38%",
+     "22%",
+     "23%",
+     "20%"
+    ],
+    [
+     "$35 to $65",
+     "8%",
+     "31%",
+     "26%",
+     "35%",
+     "20%"
+    ],
+    [
+     "$65 to $100",
+     "4%",
+     "27%",
+     "20%",
+     "49%",
+     "21%"
+    ],
+    [
+     "Over $100",
+     "2%",
+     "13%",
+     "15%",
+     "70%",
+     "24%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "4%",
+     "21%",
+     "24%",
+     "44%",
+     "15%"
+    ],
+    [
+     "Total",
+     "7%",
+     "26%",
+     "21%",
+     "45%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p022-6": {
   "excerpts": [
@@ -7299,7 +8354,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p023-3": {
   "excerpts": [
@@ -7368,8 +8423,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "2.0",
+     "1.5",
+     "1.5",
+     "1.5",
+     "1.6"
+    ],
+    [
+     "$35 to $65",
+     "1.9",
+     "2.1",
+     "1.9",
+     "1.7",
+     "1.9"
+    ],
+    [
+     "$65 to $100",
+     "3.5",
+     "2.1",
+     "2.0",
+     "2.2",
+     "2.2"
+    ],
+    [
+     "Over $100",
+     "1.7",
+     "2.3",
+     "2.3",
+     "2.4",
+     "2.4"
+    ],
+    [
+     "Average",
+     "2.0",
+     "1.9",
+     "1.9",
+     "2.2",
+     "2.0"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p028-6": {
   "excerpts": [
@@ -7381,8 +8494,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     ".4",
+     ".3",
+     ".3",
+     ".4",
+     ".3"
+    ],
+    [
+     "$35 to $65",
+     ".2",
+     ".4",
+     ".4",
+     ".4",
+     ".4"
+    ],
+    [
+     "$65 to $100",
+     ".7",
+     ".5",
+     ".5",
+     ".6",
+     ".6"
+    ],
+    [
+     "Over $100",
+     ".3",
+     ".4",
+     ".6",
+     ".7",
+     ".6"
+    ],
+    [
+     "Average",
+     ".3",
+     ".4",
+     ".4",
+     ".6",
+     ".5"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p029-1": {
   "excerpts": [
@@ -7394,8 +8565,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 34",
+    "35 to 54",
+    "Over 55",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "1.2",
+     "1.4",
+     "1.8",
+     "1.6"
+    ],
+    [
+     "$35 to $65",
+     "1.3",
+     "1.7",
+     "2.3",
+     "1.9"
+    ],
+    [
+     "$65 to $100",
+     "1.5",
+     "1.9",
+     "2.7",
+     "2.2"
+    ],
+    [
+     "Over $100",
+     "1.7",
+     "2.1",
+     "3.0",
+     "2.4"
+    ],
+    [
+     "Average",
+     "1.4",
+     "1.9",
+     "2.4",
+     "2.0"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p029-3": {
   "excerpts": [
@@ -7407,8 +8630,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 34",
+    "35 to 54",
+    "Over 55",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     ".2",
+     ".2",
+     ".5",
+     ".3"
+    ],
+    [
+     "$35 to $65",
+     ".2",
+     ".4",
+     ".5",
+     ".4"
+    ],
+    [
+     "$65 to $100",
+     ".5",
+     ".4",
+     ".7",
+     ".6"
+    ],
+    [
+     "Over $100",
+     ".5",
+     ".5",
+     ".8",
+     ".6"
+    ],
+    [
+     "Average",
+     ".3",
+     ".4",
+     ".6",
+     ".5"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p030-1": {
   "excerpts": [
@@ -7426,7 +8701,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a repeated or missing column heading"
+  "structure_note": "extraction already complete"
  },
  "2020-p030-2": {
   "excerpts": [
@@ -7470,7 +8745,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a repeated or missing column heading"
+  "structure_note": "extraction already complete"
  },
  "2020-p031-1": {
   "excerpts": [
@@ -7532,7 +8807,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: two numbers fell into one cell"
  },
  "2020-p036-1": {
   "excerpts": [
@@ -7555,7 +8830,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2020-p037-1": {
   "excerpts": [
@@ -7661,8 +8936,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.6",
+     "0.5",
+     "0.3",
+     "0.3",
+     "0.4"
+    ],
+    [
+     "$35 to $65",
+     "0.4",
+     "0.6",
+     "0.4",
+     "0.4",
+     "0.5"
+    ],
+    [
+     "$65 to $100",
+     "0.6",
+     "0.3",
+     "0.4",
+     "0.5",
+     "0.4"
+    ],
+    [
+     "Over $100",
+     "0.2",
+     "0.5",
+     "0.3",
+     "0.4",
+     "0.4"
+    ],
+    [
+     "Average",
+     "0.5",
+     "0.5",
+     "0.4",
+     "0.4",
+     "0.4"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p038-1": {
   "excerpts": [
@@ -7701,7 +9034,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2020-p038-6": {
   "excerpts": [
@@ -7713,42 +9046,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Type of Internet Access",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Broadband",
-     "2.5",
-     ".4"
-    ],
-    [
-     "Dial-up",
-     "3.0",
-     "1.2"
-    ],
-    [
-     "None",
-     "2.6",
-     ".8"
-    ],
-    [
-     "Others",
-     "2.5",
-     ".4"
-    ],
-    [
-     "Average",
-     "2.5",
-     ".4"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2020-p039-1": {
   "excerpts": [
@@ -7844,7 +9143,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2020-p045-2": {
   "excerpts": [
@@ -7874,66 +9173,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Medium",
-    "2018",
-    "2019",
-    "2020"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Direct Mail",
-     "-1.0%",
-     "-1.3%",
-     "-20.7%"
-    ],
-    [
-     "TV",
-     "1.9%",
-     "-5.5%",
-     "-2.5%"
-    ],
-    [
-     "Radio",
-     "-1.6%",
-     "0.9%",
-     "-26.2%"
-    ],
-    [
-     "Newspapers",
-     "-12.0%",
-     "-12.5%",
-     "-28.9%"
-    ],
-    [
-     "Magazines",
-     "-9.0%",
-     "-9.4%",
-     "-18.5%"
-    ],
-    [
-     "Internet",
-     "24.4%",
-     "16.1%",
-     "9.0%"
-    ],
-    [
-     "Other",
-     "-2.2%",
-     "0.3%",
-     "-32.1%"
-    ],
-    [
-     "Total",
-     "7.1%",
-     "3.4%",
-     "-3.9%"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2020-p048-2": {
   "excerpts": [
@@ -7946,7 +9187,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p049-1": {
   "excerpts": [
@@ -7959,7 +9200,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p049-2": {
   "excerpts": [
@@ -7982,7 +9223,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p050-2": {
   "excerpts": [
@@ -8004,8 +9245,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 34",
+    "35 to 54",
+    "Over 55",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "3.7",
+     "4.9",
+     "8.1",
+     "6.3"
+    ],
+    [
+     "$35 to $65",
+     "4.6",
+     "6.0",
+     "11.8",
+     "8.6"
+    ],
+    [
+     "$65 to $100",
+     "5.7",
+     "7.7",
+     "13.0",
+     "9.6"
+    ],
+    [
+     "Over $100",
+     "6.8",
+     "10.1",
+     "14.4",
+     "11.2"
+    ],
+    [
+     "Average",
+     "5.1",
+     "7.9",
+     "11.8",
+     "9.2"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p050-4": {
   "excerpts": [
@@ -8179,7 +9472,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2020-p060-2": {
   "excerpts": [
@@ -8204,8 +9497,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.0",
+     "0.2",
+     "0.7",
+     "0.4"
+    ],
+    [
+     "$35 to $65",
+     "0.1",
+     "0.2",
+     "0.8",
+     "0.5"
+    ],
+    [
+     "$65 to $100",
+     "0.2",
+     "0.5",
+     "1.1",
+     "0.7"
+    ],
+    [
+     "Over $100",
+     "0.3",
+     "0.5",
+     "1.0",
+     "0.6"
+    ],
+    [
+     "Average",
+     "0.2",
+     "0.4",
+     "0.9",
+     "0.6"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p061-2": {
   "excerpts": [
@@ -8347,60 +9692,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Household Income (Thousands)",
-    "Under 35",
-    "35 to 54",
-    "Over 55",
-    "Average"
-   ],
-   "groups": [
-    [
-     "Age of head of Household",
-     1,
-     3
-    ]
-   ],
-   "rows": [
-    [
-     "Under $35",
-     "0.02",
-     "0.07",
-     "0.07",
-     "0.05"
-    ],
-    [
-     "$35 to $65",
-     "0.06",
-     "0.07",
-     "0.06",
-     "0.06"
-    ],
-    [
-     "$65 to $100",
-     "0.01",
-     "0.10",
-     "0.07",
-     "0.07"
-    ],
-    [
-     "Over $100",
-     "0.05",
-     "0.11",
-     "0.10",
-     "0.10"
-    ],
-    [
-     "Average",
-     "0.04",
-     "0.10",
-     "0.07",
-     "0.07"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2020-p066-3": {
   "excerpts": [
@@ -8412,8 +9705,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.46",
+     "0.48",
+     "0.54",
+     "0.61",
+     "0.52"
+    ],
+    [
+     "$35 to $65",
+     "0.93",
+     "0.70",
+     "0.80",
+     "0.90",
+     "0.81"
+    ],
+    [
+     "$65 to $100",
+     "0.73",
+     "0.84",
+     "0.98",
+     "0.91",
+     "0.90"
+    ],
+    [
+     "Over $100",
+     "0.61",
+     "1.30",
+     "1.21",
+     "1.16",
+     "1.18"
+    ],
+    [
+     "Average",
+     "0.68",
+     "0.75",
+     "0.85",
+     "1.01",
+     "0.89"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p067-1": {
   "excerpts": [
@@ -8430,8 +9781,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.08",
+     "0.07",
+     "0.03",
+     "0.03",
+     "0.05"
+    ],
+    [
+     "$35 to $65",
+     "0.19",
+     "0.02",
+     "0.03",
+     "0.09",
+     "0.06"
+    ],
+    [
+     "$65 to $100",
+     "0.00",
+     "0.05",
+     "0.08",
+     "0.08",
+     "0.07"
+    ],
+    [
+     "Over $100",
+     "0.00",
+     "0.22",
+     "0.07",
+     "0.08",
+     "0.10"
+    ],
+    [
+     "Average",
+     "0.08",
+     "0.08",
+     "0.06",
+     "0.08",
+     "0.07"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p067-6": {
   "excerpts": [
@@ -8469,42 +9878,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Type of Internet Access",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Broadband",
-     "0.92",
-     "0.08"
-    ],
-    [
-     "Dial-up",
-     "0.55",
-     "0.03"
-    ],
-    [
-     "None",
-     "0.37",
-     "0.03"
-    ],
-    [
-     "Others",
-     "0.81",
-     "0.56"
-    ],
-    [
-     "Average",
-     "0.89",
-     "0.07"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2020-p068-2": {
   "excerpts": [
@@ -8530,7 +9905,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2020-p069-1": {
   "excerpts": [
@@ -8543,14 +9918,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2020-p072-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-1.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p073-1": {
   "excerpts": [],
@@ -8564,14 +9939,14 @@
   "why_none": "The report's text never refers to Table A8-3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p075-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p076-1": {
   "excerpts": [],
@@ -8585,35 +9960,35 @@
   "why_none": "The report's text never refers to Table A8-6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p078-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p079-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p080-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-9.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p081-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-10.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p082-1": {
   "excerpts": [],
@@ -8634,7 +10009,7 @@
   "why_none": "The report's text never refers to Table A8-13A.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p084-1": {
   "excerpts": [],
@@ -8648,14 +10023,14 @@
   "why_none": "The report's text never refers to Table A8-14.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p086-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-15.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2020-p088-1": {
   "excerpts": [
@@ -8688,42 +10063,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p091-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p091-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p091-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p092-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p092-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2020-p093-2": {
   "excerpts": [
@@ -8761,8 +10136,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Geographic Region 30",
+    "Largest Metro Areas",
+    "Other Metro Areas",
+    "Non-Metro Areas",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Stratum (Urban/Rural Location)",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Northeast",
+     "562",
+     "572",
+     "118",
+     "1,252"
+    ],
+    [
+     "Midwest",
+     "995",
+     "834",
+     "289",
+     "2,118"
+    ],
+    [
+     "South",
+     "1,124",
+     "1,534",
+     "371",
+     "3,029"
+    ],
+    [
+     "West",
+     "901",
+     "716",
+     "151",
+     "1,768"
+    ],
+    [
+     "Total",
+     "3,582",
+     "3,656",
+     "929",
+     "8,167"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2020-p094-2": {
   "excerpts": [
@@ -10220,70 +11647,70 @@
   "why_none": "The report's text never refers to Table A8-1.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p073-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-2.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p074-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p075-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p076-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-5a.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p077-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p078-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p079-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p080-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-9.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p081-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-10.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2021-p082-1": {
   "excerpts": [],
@@ -10297,14 +11724,14 @@
   "why_none": "The report's text never refers to Table A8-12.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p084-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-13A.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2021-p085-1": {
   "excerpts": [],
@@ -10318,14 +11745,14 @@
   "why_none": "The report's text never refers to Table A8-14.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2021-p087-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-15.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2021-p090-1": {
   "excerpts": [
@@ -10481,72 +11908,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Mail Classification",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "First-Class Mail",
-     "33.5",
-     "5.7"
-    ],
-    [
-     "Marketing Mail-Regular",
-     "46.8",
-     "—"
-    ],
-    [
-     "Marketing Mail Nonprofit",
-     "11.8",
-     "—"
-    ],
-    [
-     "Periodicals",
-     "3.3",
-     "—"
-    ],
-    [
-     "Package & Shipping Services",
-     "6.7",
-     "0.7"
-    ],
-    [
-     "Total",
-     "102.1",
-     "6.4"
-    ],
-    [
-     "Household to Household",
-     "2.6",
-     ""
-    ],
-    [
-     "Total Mail Received and Sent by Households *",
-     "105.9",
-     ""
-    ],
-    [
-     "FY 2021 RPW Total",
-     "127.3",
-     ""
-    ],
-    [
-     "Non-household to Non-household",
-     "21.4",
-     ""
-    ],
-    [
-     "Unaddressed",
-     "1.3",
-     "—"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2022-p004-1": {
   "excerpts": [
@@ -10569,7 +11932,7 @@
   "why_none": "",
   "units": "Billions of Pieces",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p004-2": {
   "excerpts": [
@@ -10605,7 +11968,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
+  "structure_note": "extraction already complete"
  },
  "2022-p005-1": {
   "excerpts": [
@@ -10803,8 +12166,90 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Mail Received (Pieces per Household per week)",
+    "Households (Millions)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     2,
+     5
+    ]
+   ],
+   "rows": [
+    [
+     "45 or more",
+     "2.8",
+     "0%",
+     "29%",
+     "15%",
+     "55%"
+    ],
+    [
+     "36-44",
+     "3.6",
+     "3%",
+     "16%",
+     "14%",
+     "67%"
+    ],
+    [
+     "30-35",
+     "6.5",
+     "4%",
+     "26%",
+     "16%",
+     "52%"
+    ],
+    [
+     "24-29",
+     "13.4",
+     "8%",
+     "24%",
+     "20%",
+     "46%"
+    ],
+    [
+     "18-23",
+     "21.2",
+     "7%",
+     "23%",
+     "20%",
+     "49%"
+    ],
+    [
+     "12-17",
+     "30.1",
+     "10%",
+     "27%",
+     "22%",
+     "40%"
+    ],
+    [
+     "Less than 12",
+     "53.6",
+     "9%",
+     "28%",
+     "21%",
+     "41%"
+    ],
+    [
+     "Total",
+     "131.2",
+     "8%",
+     "26%",
+     "21%",
+     "44%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2022-p014-1": {
   "excerpts": [
@@ -10816,8 +12261,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "14%",
+     "39%",
+     "27%",
+     "20%",
+     "19%"
+    ],
+    [
+     "$35 to $65",
+     "11%",
+     "27%",
+     "24%",
+     "38%",
+     "20%"
+    ],
+    [
+     "$65 to $100",
+     "5%",
+     "32%",
+     "19%",
+     "44%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "5%",
+     "14%",
+     "16%",
+     "65%",
+     "26%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "7%",
+     "24%",
+     "17%",
+     "46%",
+     "16%"
+    ],
+    [
+     "Total",
+     "8%",
+     "26%",
+     "21%",
+     "44%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2022-p014-6": {
   "excerpts": [
@@ -10829,8 +12340,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Don’t Know/ Refused",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "29%",
+     "28%",
+     "43%",
+     "0%",
+     "19%"
+    ],
+    [
+     "$35 to $65",
+     "25%",
+     "27%",
+     "49%",
+     "0%",
+     "20%"
+    ],
+    [
+     "$65 to $100",
+     "24%",
+     "31%",
+     "45%",
+     "0%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "15%",
+     "48%",
+     "37%",
+     "0%",
+     "26%"
+    ],
+    [
+     "Don’t know/ Refused",
+     "12%",
+     "27%",
+     "55%",
+     "7%",
+     "16%"
+    ],
+    [
+     "Total",
+     "21%",
+     "33%",
+     "45%",
+     "1%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2022-p015-1": {
   "excerpts": [
@@ -10843,7 +12420,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p015-2": {
   "excerpts": [
@@ -10944,7 +12521,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p019-7": {
   "excerpts": [
@@ -10957,7 +12534,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p020-1": {
   "excerpts": [
@@ -10970,7 +12547,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p020-3": {
   "excerpts": [
@@ -10983,7 +12560,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p021-1": {
   "excerpts": [
@@ -10996,7 +12573,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2022-p021-2": {
   "excerpts": [
@@ -11032,7 +12609,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2022-p021-4": {
   "excerpts": [
@@ -11101,7 +12678,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2022-p028-2": {
   "excerpts": [
@@ -11124,7 +12701,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p029-2": {
   "excerpts": [
@@ -11155,7 +12732,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p030-6": {
   "excerpts": [
@@ -11168,7 +12745,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p031-1": {
   "excerpts": [
@@ -11194,7 +12771,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2022-p031-4": {
   "excerpts": [
@@ -11207,7 +12784,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2022-p032-2": {
   "excerpts": [
@@ -11220,7 +12797,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2022-p032-3": {
   "excerpts": [
@@ -11233,7 +12810,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2022-p033-1": {
   "excerpts": [
@@ -11256,7 +12833,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read failed: no value columns found"
+  "structure_note": "extraction already complete"
  },
  "2022-p036-1": {
   "excerpts": [
@@ -11344,14 +12921,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p042-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table 5.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p042-2": {
   "excerpts": [
@@ -11374,7 +12951,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p043-2": {
   "excerpts": [
@@ -11397,7 +12974,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2022-p043-3": {
   "excerpts": [
@@ -11433,7 +13010,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p044-2": {
   "excerpts": [
@@ -11512,7 +13089,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p048-5": {
   "excerpts": [
@@ -11566,7 +13143,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2022-p053-2": {
   "excerpts": [
@@ -11579,7 +13156,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p054-1": {
   "excerpts": [
@@ -11592,7 +13169,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p054-3": {
   "excerpts": [
@@ -11893,8 +13470,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "0.13",
+     "0.02",
+     "0.03",
+     "0.06",
+     "0.05"
+    ],
+    [
+     "$35 to $65",
+     "0.00",
+     "0.12",
+     "0.06",
+     "0.09",
+     "0.08"
+    ],
+    [
+     "$65 to $100",
+     "0.00",
+     "0.08",
+     "0.21",
+     "0.07",
+     "0.09"
+    ],
+    [
+     "Over $100",
+     "0.00",
+     "0.14",
+     "0.12",
+     "0.12",
+     "0.11"
+    ],
+    [
+     "Average",
+     "0.06",
+     "0.07",
+     "0.10",
+     "0.09",
+     "0.08"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2022-p060-6": {
   "excerpts": [
@@ -11932,42 +13567,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Type of Internet Access",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Broadband",
-     "1.00",
-     "0.08"
-    ],
-    [
-     "Dial-up",
-     "0.63",
-     "0.05"
-    ],
-    [
-     "None",
-     "0.75",
-     "0.11"
-    ],
-    [
-     "Others",
-     "0.76",
-     "0.60"
-    ],
-    [
-     "Average",
-     "0.99",
-     "0.08"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2022-p061-2": {
   "excerpts": [
@@ -11993,7 +13594,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2022-p062-1": {
   "excerpts": [
@@ -12006,7 +13607,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2022-p064-1": {
   "excerpts": [],
@@ -12041,21 +13642,21 @@
   "why_none": "The report's text never refers to Table A8-5a.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p069-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p070-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p071-1": {
   "excerpts": [],
@@ -12076,7 +13677,7 @@
   "why_none": "The report's text never refers to Table A8-10.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p074-1": {
   "excerpts": [],
@@ -12097,14 +13698,14 @@
   "why_none": "The report's text never refers to Table A8-13A.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p077-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-13A2.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2022-p078-1": {
   "excerpts": [],
@@ -12118,7 +13719,7 @@
   "why_none": "The report's text never refers to Table A8-15.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2022-p081-1": {
   "excerpts": [
@@ -12151,42 +13752,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p084-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p084-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p084-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p085-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2022-p085-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2022-p086-2": {
   "excerpts": [
@@ -12224,8 +13825,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Geographic Region 30",
+    "Largest Metro Areas",
+    "Other Metro Areas",
+    "Non-Metro Areas",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Stratum (Urban/Rural Location)",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Northeast",
+     "848",
+     "580",
+     "110",
+     "1,538"
+    ],
+    [
+     "Midwest",
+     "714",
+     "894",
+     "368",
+     "1,976"
+    ],
+    [
+     "South",
+     "1,365",
+     "1,635",
+     "486",
+     "3,486"
+    ],
+    [
+     "West",
+     "1,271",
+     "721",
+     "194",
+     "2,186"
+    ],
+    [
+     "Total",
+     "4,198",
+     "3,830",
+     "1,158",
+     "9,186"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2022-p087-2": {
   "excerpts": [
@@ -12274,72 +13927,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Mail Classification",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "First-Class Mail",
-     "32.2",
-     "4.6"
-    ],
-    [
-     "Marketing Mail-Regular",
-     "41.1",
-     "—"
-    ],
-    [
-     "Marketing Mail Nonprofit",
-     "10.8",
-     "—"
-    ],
-    [
-     "Periodicals",
-     "3.4",
-     "—"
-    ],
-    [
-     "Package & Shipping Services",
-     "6.4",
-     "0.6"
-    ],
-    [
-     "Total",
-     "94.0",
-     "5.2"
-    ],
-    [
-     "Household to Household",
-     "1.8",
-     ""
-    ],
-    [
-     "Total Mail Received and Sent by Households *",
-     "97.4",
-     ""
-    ],
-    [
-     "FY 2022 RPW Total",
-     "116.2",
-     ""
-    ],
-    [
-     "Non-household to Non-household",
-     "18.8",
-     ""
-    ],
-    [
-     "Unaddressed",
-     "0.9",
-     "—"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2023-p011-1": {
   "excerpts": [
@@ -12362,7 +13951,7 @@
   "why_none": "",
   "units": "Billions of Pieces",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p011-2": {
   "excerpts": [],
@@ -12574,8 +14163,90 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Mail Received (Pieces per Household per week)",
+    "Households (Millions)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     2,
+     5
+    ]
+   ],
+   "rows": [
+    [
+     "45 or more",
+     "2.4",
+     "0%",
+     "27%",
+     "16%",
+     "58%"
+    ],
+    [
+     "36-44",
+     "3.2",
+     "4%",
+     "23%",
+     "18%",
+     "54%"
+    ],
+    [
+     "30-35",
+     "5.0",
+     "5%",
+     "21%",
+     "20%",
+     "53%"
+    ],
+    [
+     "24-29",
+     "10.4",
+     "7%",
+     "19%",
+     "20%",
+     "53%"
+    ],
+    [
+     "18-23",
+     "20.7",
+     "5%",
+     "27%",
+     "18%",
+     "49%"
+    ],
+    [
+     "12-17",
+     "29.1",
+     "6%",
+     "22%",
+     "23%",
+     "48%"
+    ],
+    [
+     "Less than 12",
+     "60.7",
+     "9%",
+     "29%",
+     "20%",
+     "41%"
+    ],
+    [
+     "Total",
+     "131.4",
+     "7%",
+     "26%",
+     "20%",
+     "46%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2023-p023-1": {
   "excerpts": [
@@ -12587,8 +14258,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School Graduate",
+    "Some College or Technical School",
+    "College Graduate",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Educational Attainment of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "18%",
+     "32%",
+     "27%",
+     "22%",
+     "19%"
+    ],
+    [
+     "$35 to $65",
+     "4%",
+     "37%",
+     "24%",
+     "35%",
+     "18%"
+    ],
+    [
+     "$65 to $100",
+     "7%",
+     "27%",
+     "18%",
+     "49%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "3%",
+     "14%",
+     "14%",
+     "68%",
+     "28%"
+    ],
+    [
+     "Don’t know/Refused",
+     "6%",
+     "26%",
+     "20%",
+     "43%",
+     "16%"
+    ],
+    [
+     "Total",
+     "7%",
+     "26%",
+     "20%",
+     "46%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2023-p023-6": {
   "excerpts": [
@@ -12600,8 +14337,74 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Under 35",
+    "35 to 54",
+    "Over 55",
+    "Don’t Know/ Refused",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Age of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "24%",
+     "30%",
+     "46%",
+     "0%",
+     "19%"
+    ],
+    [
+     "$35 to $65",
+     "27%",
+     "27%",
+     "47%",
+     "0%",
+     "18%"
+    ],
+    [
+     "$65 to $100",
+     "23%",
+     "29%",
+     "48%",
+     "0%",
+     "19%"
+    ],
+    [
+     "Over $100",
+     "15%",
+     "43%",
+     "42%",
+     "0%",
+     "28%"
+    ],
+    [
+     "Don’t know/Refused",
+     "14%",
+     "30%",
+     "49%",
+     "7%",
+     "16%"
+    ],
+    [
+     "Total",
+     "20%",
+     "33%",
+     "46%",
+     "1%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2023-p024-1": {
   "excerpts": [
@@ -12702,7 +14505,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p029-7": {
   "excerpts": [
@@ -12715,7 +14518,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p030-1": {
   "excerpts": [
@@ -12741,7 +14544,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p031-1": {
   "excerpts": [
@@ -12754,7 +14557,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2023-p031-2": {
   "excerpts": [
@@ -12785,7 +14588,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2023-p031-4": {
   "excerpts": [
@@ -12886,7 +14689,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p040-2": {
   "excerpts": [
@@ -12917,7 +14720,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p041-6": {
   "excerpts": [
@@ -12930,7 +14733,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p042-1": {
   "excerpts": [
@@ -12974,7 +14777,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2023-p043-2": {
   "excerpts": [
@@ -12987,7 +14790,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2023-p043-3": {
   "excerpts": [
@@ -13000,7 +14803,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a header line was read as a data row"
+  "structure_note": "extraction already complete"
  },
  "2023-p044-1": {
   "excerpts": [
@@ -13106,7 +14909,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p054-1": {
   "excerpts": [],
@@ -13135,8 +14938,66 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Household Income (Thousands)",
+    "Less than High School",
+    "High School graduate",
+    "Some College or Technical School",
+    "College graduate",
+    "Average"
+   ],
+   "groups": [
+    [
+     "Education of Head of Household",
+     1,
+     4
+    ]
+   ],
+   "rows": [
+    [
+     "Under $35",
+     "2.6",
+     "4.3",
+     "6.3",
+     "5.8",
+     "4.9"
+    ],
+    [
+     "$35 to $65",
+     "8.5",
+     "7.7",
+     "7.2",
+     "7.3",
+     "7.4"
+    ],
+    [
+     "$65 to $100",
+     "9.4",
+     "8.6",
+     "10.0",
+     "8.5",
+     "8.9"
+    ],
+    [
+     "Over $100",
+     "10.9",
+     "10.3",
+     "10.9",
+     "10.7",
+     "10.6"
+    ],
+    [
+     "Average",
+     "5.8",
+     "7.5",
+     "8.4",
+     "9.3",
+     "8.4"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2023-p055-2": {
   "excerpts": [
@@ -13159,7 +15020,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p055-4": {
   "excerpts": [
@@ -13334,7 +15195,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: its numbers don't match the extraction"
+  "structure_note": "extraction already complete"
  },
  "2023-p065-2": {
   "excerpts": [
@@ -13357,7 +15218,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p066-1": {
   "excerpts": [
@@ -13375,7 +15236,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2023-p066-3": {
   "excerpts": [
@@ -13585,7 +15446,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a repeated or missing column heading"
+  "structure_note": "extraction already complete"
  },
  "2023-p072-3": {
   "excerpts": [
@@ -13610,37 +15471,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Type of Internet Access",
-    "Received",
-    "Sent"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Broadband",
-     "0.96",
-     "0.06"
-    ],
-    [
-     "None",
-     "0.49",
-     "0.10"
-    ],
-    [
-     "Others",
-     "0.91",
-     "0.20"
-    ],
-    [
-     "Average",
-     "0.94",
-     "0.06"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2023-p073-2": {
   "excerpts": [
@@ -13666,7 +15498,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2023-p074-1": {
   "excerpts": [
@@ -13679,14 +15511,14 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a year heading was merged into a column name"
  },
  "2023-p077-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-1.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p078-1": {
   "excerpts": [],
@@ -13700,7 +15532,7 @@
   "why_none": "The report's text never refers to Table A8-3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p080-1": {
   "excerpts": [],
@@ -13714,42 +15546,42 @@
   "why_none": "The report's text never refers to Table A8-5a.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p082-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p083-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p084-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p085-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-9.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p086-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A8-10.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p087-1": {
   "excerpts": [],
@@ -13791,7 +15623,7 @@
   "why_none": "The report's text never refers to Table A8-15.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2023-p095-1": {
   "excerpts": [
@@ -13824,42 +15656,42 @@
   "why_none": "The report's text never refers to Table B.3.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p098-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p098-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p098-3": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.6.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p099-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p099-2": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2023-p100-2": {
   "excerpts": [
@@ -13897,8 +15729,60 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Geographic Region 30",
+    "Largest Metro Areas",
+    "Other Metro Areas",
+    "Non-Metro Areas",
+    "Total"
+   ],
+   "groups": [
+    [
+     "Stratum (Urban/Rural Location)",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Northeast",
+     "817",
+     "474",
+     "106",
+     "1,397"
+    ],
+    [
+     "Midwest",
+     "543",
+     "809",
+     "363",
+     "1,715"
+    ],
+    [
+     "South",
+     "1,240",
+     "1,434",
+     "512",
+     "3,186"
+    ],
+    [
+     "West",
+     "1,000",
+     "672",
+     "170",
+     "1,842"
+    ],
+    [
+     "Total",
+     "3,600",
+     "3,389",
+     "1,151",
+     "8,140"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2023-p101-2": {
   "excerpts": [
@@ -13979,7 +15863,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2024-p008-5": {
   "excerpts": [
@@ -14155,7 +16039,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read failed: no numbers in the table region"
+  "structure_note": "extraction already complete"
  },
  "2024-p019-1": {
   "excerpts": [
@@ -14698,7 +16582,7 @@
   "why_none": "The report's text never refers to Table A-14.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2024-p071-1": {
   "excerpts": [],
@@ -14794,14 +16678,14 @@
   "why_none": "The report's text never refers to Table B.4.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a header line was read as a data row"
  },
  "2024-p085-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table B.5.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2024-p085-2": {
   "excerpts": [],
@@ -14815,7 +16699,7 @@
   "why_none": "The report's text never refers to Table B.7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2024-p086-1": {
   "excerpts": [],
@@ -14835,7 +16719,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
+  "structure_note": "extraction already complete"
  },
  "2024-p087-3": {
   "excerpts": [
@@ -14968,7 +16852,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a repeated or missing column heading"
+  "structure_note": "extraction already complete"
  },
  "2025-p010-1": {
   "excerpts": [
@@ -14998,44 +16882,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Metro Area Classification",
-    "2015",
-    "2020",
-    "2025",
-    "% change 2015-2025",
-    "% change 2020-2025"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Large MSA",
-     "33.4",
-     "41.3",
-     "32.8",
-     "-2%",
-     "-21%"
-    ],
-    [
-     "Other MSA",
-     "27.4",
-     "46.9",
-     "46.0",
-     "68%",
-     "-2%"
-    ],
-    [
-     "Non-MSA",
-     "19.7",
-     "43.4",
-     "50.0",
-     "154%",
-     "15%"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2025-p012-1": {
   "excerpts": [
@@ -15175,7 +17023,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2025-p018-1": {
   "excerpts": [
@@ -15289,7 +17137,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2025-p027-1": {
   "excerpts": [
@@ -15345,8 +17193,48 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": null,
-  "structure_note": "extraction already complete"
+  "structure": {
+   "headers": [
+    "Bill Payment Method",
+    "2015",
+    "2020",
+    "2025"
+   ],
+   "groups": [
+    [
+     "Share of Bills Paid by Method",
+     1,
+     3
+    ]
+   ],
+   "rows": [
+    [
+     "Mail",
+     "31%",
+     "21%",
+     "14%"
+    ],
+    [
+     "Electronic",
+     "62%",
+     "73%",
+     "77%"
+    ],
+    [
+     "In-Person or Telephone",
+     "7%",
+     "6%",
+     "10%"
+    ],
+    [
+     "Total",
+     "100%",
+     "100%",
+     "100%"
+    ]
+   ]
+  },
+  "structure_note": "re-read from the PDF page"
  },
  "2025-p032-1": {
   "excerpts": [],
@@ -15407,7 +17295,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: caption text in the header"
+  "structure_note": "extraction already complete"
  },
  "2025-p040-1": {
   "excerpts": [
@@ -15448,7 +17336,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "re-read rejected: a repeated or missing column heading"
+  "structure_note": "extraction already complete"
  },
  "2025-p041-2": {
   "excerpts": [
@@ -15544,52 +17432,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Metro Area Classification",
-    "2015",
-    "2020",
-    "2025",
-    "% change 2015-2025",
-    "% change 2020-2025"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Large MSA",
-     "40.3",
-     "28.7",
-     "18.7",
-     "-54%",
-     "-35%"
-    ],
-    [
-     "Other MSA",
-     "37.1",
-     "27.0",
-     "22.4",
-     "-40%",
-     "-17%"
-    ],
-    [
-     "Non-MSA",
-     "49.9",
-     "43.0",
-     "31.3",
-     "-37%",
-     "-27%"
-    ],
-    [
-     "All Households",
-     "40.0",
-     "29.6",
-     "21.9",
-     "-45%",
-     "-26%"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2025-p048-1": {
   "excerpts": [
@@ -15602,7 +17446,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2025-p052-1": {
   "excerpts": [
@@ -15614,44 +17458,8 @@
   ],
   "why_none": "",
   "units": "",
-  "structure": {
-   "headers": [
-    "Metro Area Classification",
-    "2015",
-    "2020",
-    "2025",
-    "% change 2015-2025",
-    "% change 2020-2025"
-   ],
-   "groups": [],
-   "rows": [
-    [
-     "Large MSA",
-     "33.4",
-     "41.3",
-     "32.8",
-     "-2%",
-     "-21%"
-    ],
-    [
-     "Other MSA",
-     "27.4",
-     "46.9",
-     "46.0",
-     "67%",
-     "-2%"
-    ],
-    [
-     "Non-MSA",
-     "19.7",
-     "43.4",
-     "50.0",
-     "154%",
-     "15%"
-    ]
-   ]
-  },
-  "structure_note": "re-read from the PDF page"
+  "structure": null,
+  "structure_note": "extraction already complete"
  },
  "2025-p053-1": {
   "excerpts": [
@@ -15739,28 +17547,28 @@
   "why_none": "The report's text never refers to Table A-7.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a repeated or missing column heading"
  },
  "2025-p061-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A-8.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2025-p062-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A-9.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a repeated or missing column heading"
  },
  "2025-p063-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A-10.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: a different number of rows than the extraction (a split or merged label)"
  },
  "2025-p064-1": {
   "excerpts": [],
@@ -15830,14 +17638,14 @@
   "why_none": "The report's text never refers to Table A-20.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2025-p074-1": {
   "excerpts": [],
   "why_none": "The report's text never refers to Table A-21.",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: caption text in the header"
  },
  "2025-p075-1": {
   "excerpts": [
@@ -15850,7 +17658,7 @@
   "why_none": "",
   "units": "",
   "structure": null,
-  "structure_note": "extraction already complete"
+  "structure_note": "re-read rejected: its numbers don't match the extraction"
  },
  "2025-p076-1": {
   "excerpts": [

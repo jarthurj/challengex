@@ -280,15 +280,20 @@ analyst should be able to:
   - A name one column to the left of its values.
   - "Source:"/"Note:" lines extracted as rows; these become footnotes.
   - A single value column with no name in the report, which gets named from the title's units.
+  - Staggered values (Appendix A tables such as `2016-p084-1`): some rows sit one column left or
+    right of their year, in an unnamed spacer column. When no row fills both, they move under
+    the year. Long single-cell note lines become footnotes.
+  - The label column's heading ("Sector") one column right, over an empty column.
 
-  After tidying, 826 of 870 regular tables have every column named. Charts (`Figure x.y`), the
-  FY2021 OCR tables, and about 44 tables whose names were mangled in extraction still show
-  "Column N". Every table page has a "Show the raw extraction" link (`?raw=1`).
-- **Tables re-read from the PDF page (`dashboard/pdftables.py`).** For 51 tables the layout is
-  rebuilt from word positions on the page: lost row labels (e.g. `2016-p011-1`), headings shifted
-  one column (`2016-p067-8`), and group headings in a column's place (`2016-p037-1`). A re-read is
-  used only if every extracted number appears in it in order, it has the same row count, and no
-  caption text or second header row leaked in; otherwise the tidied extraction is shown. Most
+  With tidying and the PDF re-reads below, 116 of the 1,046 data tables still show a
+  "Column N" somewhere, mostly charts (`Figure x.y`) and FY2021 OCR tables. Every table page has
+  a "Show the raw extraction" link (`?raw=1`).
+- **Tables re-read from the PDF page (`dashboard/pdftables.py`).** For 76 tables the layout is
+  rebuilt from word positions on the page: lost row labels (e.g. `2016-p011-1`), and group
+  headings ("Educational Attainment of Head of Household") lost or put in a column's place
+  (`2016-p037-1`). A re-read is used only if it fixes something tidy can't, every extracted number
+  appears in it in order, it has the same row count, and no caption text, second header row or
+  merged year heading leaked in; otherwise the tidied extraction is shown. Most
   rejected re-reads are two-part tables or wrapped headings. Still display-only.
 - **"From the report" excerpts (`dashboard/context.py`).** 795 of 1,046 data tables have the
   report's own sentences about them, quoted verbatim with the PDF page. The other 251 are never
@@ -344,7 +349,7 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 71 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+- **Tests:** 73 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
   page), and `dashboard/test_context.py` (excerpt finding, the FY2021 transcriptions,
   `table_context.json`, re-read checks, and the table page). `dashboard/tests.py` covers:
   - header parsing, preference, and conversions

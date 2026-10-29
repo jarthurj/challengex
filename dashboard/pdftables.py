@@ -241,13 +241,16 @@ def rebuild(page, number, title=""):
                 k = covered[0] if covered else nearest((c[0] + c[2]) / 2)
                 headers[k + 1] = f"{headers[k + 1]} {c[4]}".strip()
     # A demographic heading ("Education of Head of Household") always spans every category column;
-    # only a closing Average/Total column sits outside it. Its printed width can be narrower.
+    # a closing Average/Total column and a leading measure like "Households (Millions)" sit outside
+    # it. Its printed width can be narrower than the columns it covers.
     for i, (label, first_col, last_col) in enumerate(groups):
         if DEMOGRAPHIC_GROUP.search(label):
-            last = len(headers) - 1
-            while last > 1 and SUMMARY_COLUMN.match(headers[last]):
+            first, last = first_col, len(headers) - 1
+            while first > 1 and "(" not in headers[first - 1]:
+                first -= 1
+            while last > first and SUMMARY_COLUMN.match(headers[last]):
                 last -= 1
-            groups[i] = (label, 1, last)
+            groups[i] = (label, first, last)
     return {"headers": headers, "groups": groups, "rows": body}, None
 
 

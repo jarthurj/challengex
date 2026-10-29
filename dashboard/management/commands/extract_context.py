@@ -47,6 +47,8 @@ def implausible(rebuilt, tidied):
     if any(any(c.strip() for c in r[1:]) and all(pdftables.YEAR.match(c.strip()) for c in r[1:] if c.strip())
            for r in rows):
         return "a second header row (years) inside the table"
+    if any(re.match(r"(19|20)\d\d \w", h) for h in rebuilt["headers"][1:]):
+        return "a year heading was merged into a column name"
     if any(len(r[0].split()) > 8 and not any(c.strip() for c in r[1:]) for r in rows):
         return "text from outside the table was read as a row"
     if sum(1 for r in rows if r[0].strip().lower() == rebuilt["headers"][0].strip().lower()) or \
@@ -127,11 +129,11 @@ class Command(BaseCommand):
                     note = "extraction already complete" if base == 0 else "chart or unnumbered table: not re-read"
                 else:
                     rebuilt, why = pdftables.rebuild(page, number, title)
-                    # A group heading the extraction put in a column's place ("Educational Attainment of
-                    # Head of Household" over "Less than High School") also counts against it.
+                    # A group heading the extraction lost, or put in a column's place ("Educational
+                    # Attainment of Head of Household" over "Less than High School"), counts against it.
                     if rebuilt:
-                        group_labels = {g[0] for g in rebuilt["groups"]}
-                        base += sum(1 for h in td["headers"] if h in group_labels)
+                        tidy_groups = {label for label, _ in td["groups"] or []}
+                        base += sum(1 for g in rebuilt["groups"] if g[0] not in tidy_groups)
                     if base == 0:
                         note = "extraction already complete"
                     elif rebuilt is None:
