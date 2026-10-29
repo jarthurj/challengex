@@ -326,7 +326,8 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **`dashboard/tests.py`** has 36 tests. They cover:
+- **Tests:** 45 in total, in `dashboard/tests.py` and `dashboard/test_trends.py` (the Trends
+  page). `dashboard/tests.py` covers:
   - header parsing, preference, and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
@@ -335,17 +336,26 @@ analyst should be able to:
   - the admin pages
   - `rebuild_db` on an empty database and on an existing one
   - column-name tidying (`tidy.py`) and the table page in tidy and raw modes
+  - the pinned, integrity-checked Chart.js script on the Trends page
 - **`views.py`:**
-  - `table_list` searches by title, ID, or number and filters by year.
+  - `table_list` searches by title, ID, or number and filters by one or more report years
+    (checkboxes).
   - `table_detail` renders one table with tidied column names (`dashboard/tidy.py`); `?raw=1` shows the extraction as stored.
   - `dashboard` is a "Hello world" placeholder.
-- **Templates:** `table_list.html` has no styling or `<html>` wrapper. `table_detail.html` is
-  styled.
+- **`trend_views.py` (Trends page, `/dashboard/trends/`):**
+  - Pick a metric (or "First-Class Mail received by category") and a household segment.
+  - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
+  - Methodology breaks are marked on the chart and listed.
+  - A values-and-sources table shows each point's report, page, and verification status.
+  - Mixed units are refused, and missing years show as gaps.
+  - "Mail delays" is a placeholder with no data yet.
+- **Templates:** `table_list.html` has no `<html>` wrapper. `table_detail.html` and
+  `trends.html` are full pages.
 - **`admin.py`:** all models are registered at `/admin/`. Run `python manage.py createsuperuser`
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
   - On the Observation list, `verified` is editable, and the `notes` field explains each check.
-- **Missing:** charts, forecasts, and any AI.
+- **Missing:** forecasts and any AI.
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -408,6 +418,9 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
   goal.
 - **Charts:** Chart.js from a CDN, rendered through Django templates, with data from small JSON
   views. No SPA framework unless the team decides otherwise.
+  - **Pin an exact version and add an `integrity` (SRI) hash.** It's currently 4.5.1.
+  - Avoid versions less than about two weeks old.
+  - To upgrade, update both the URL and the hash.
 
 ### 3. AI: use two different tools
 - **Forecasting is statistical, not an LLM.** Each series has roughly 10–25 yearly points, so use
@@ -433,12 +446,8 @@ demoable dashboard. Write tests with each step.
 
 1. ~~**Metric layer for a few series.**~~ **Done and verified.** See "Current code state" and
    `VERIFICATION.md`.
-2. **Trends page.**
-   - A Chart.js line chart from a JSON view, showing the preferred observations.
-   - Methodology breaks annotated, plus units.
-   - Each point's source report and table shown, since preferred series switch reports.
-   - A data-table fallback.
-   - Millions and per-household metrics are never put on the same axis.
+2. ~~**Trends page.**~~ **Done** (from the `year-filter` branch). See `trend_views.py` under
+   "Current code state." The forecast band arrives with step 3.
 3. **Forecasts.**
    - Naive baseline vs. linear and Holt (`statsmodels`).
    - Backtest error and a prediction band on the Trends chart.

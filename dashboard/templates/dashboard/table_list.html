@@ -44,7 +44,7 @@
     >
 
 <details class="year-dropdown">
-    <summary>Select years</summary>
+    <summary aria-describedby="year-help">Select years</summary>
 
     <div class="year-options">
         {% for available_year in years %}
@@ -62,8 +62,7 @@
 </details>
 
 <small id="year-help">
-    Hold Ctrl to select multiple years, or Shift to select a range.
-    In order to view every year, unselect all.
+    Tick one or more report years. Leave all unticked to show every year.
 </small>
 
     <button type="submit">Search</button>

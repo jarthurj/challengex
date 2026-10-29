@@ -182,6 +182,11 @@ class LoadMetricsTests(TestCase):
                                       report_year=2020)
         self.assertIn("Source inconsistency", obs.notes)
 
+    def test_trends_page_loads_chart_js_pinned_with_integrity_hash(self):
+        page = self.client.get("/dashboard/trends/").content.decode()
+        self.assertIn("chart.js@4.5.1/dist/chart.umd.min.js", page)
+        self.assertIn('integrity="sha384-', page)
+
     def test_table_page_shows_tidied_columns_and_raw_on_request(self):
         pk = Table.objects.get(source_id="2016-p021-8").pk
         page = self.client.get(f"/dashboard/tables/{pk}/").content.decode()
