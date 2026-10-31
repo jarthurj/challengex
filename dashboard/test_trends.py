@@ -25,7 +25,8 @@ class TrendTests(TestCase):
         values = dict(zip(chart["years"], chart["datasets"][0]["data"]))
         self.assertEqual(values[2020], 35729)
         self.assertEqual(values[2023], 32228)
-        self.assertEqual((chart["years"][0], chart["years"][-1]), (2000, 2023))
+        published = [y for y, v in values.items() if v is not None]
+        self.assertEqual((published[0], published[-1]), (2000, 2023))  # the axis runs on for the projection
         source = chart["datasets"][0]["sources"][chart["years"].index(2020)]
         self.assertEqual(source["report_year"], 2023)
         self.assertFalse(source["verified"])

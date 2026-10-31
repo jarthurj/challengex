@@ -331,7 +331,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`)
+## Current code state (`main`, plus the `forecasts` branch awaiting review)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`).
@@ -352,9 +352,11 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 75 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
-  page), and `dashboard/test_context.py` (excerpt finding, the FY2021 transcriptions,
-  `table_context.json`, re-read checks, and the table page). `dashboard/tests.py` covers:
+- **Tests:** 89 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+  page), `dashboard/test_forecast.py` (models, backtest, fit window and breaks, intervals, the
+  projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
+  transcriptions, `table_context.json`, re-read checks, and the table page).
+  `dashboard/tests.py` covers:
   - header parsing, preference, and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
@@ -378,13 +380,26 @@ analyst should be able to:
   - A values-and-sources table shows each point's report, page, and verification status.
   - Mixed units are refused, and missing years show as gaps.
   - "Mail delays" is a placeholder with no data yet.
+  - **Projections** (`dashboard/forecast.py`) for single-metric charts, 5 years ahead:
+    - Naive, drift, linear and Holt models are each backtested by rolling origin (fit on the
+      first k years, forecast the next 1–5, compare with what USPS published). The one with the
+      lowest mean absolute error is used; the page shows every model's MAE, MAPE and ratio to
+      naive. A flat series keeps the naive projection.
+    - 80%/95% intervals come from the chosen model's backtest error at each horizon (they never
+      narrow); percent values stay within 0–100.
+    - The fit uses the trailing run of consecutive years, starting at the latest methodology break
+      that still leaves 8 years (e.g. FY2010–FY2023 for First-Class totals). Breaks it can't avoid
+      are flagged (bills paid by mail crosses FY2024 and FY2025).
+    - Series with fewer than 8 consecutive years (the FY2025 demographic segments) and the
+      category chart get no projection, with the reason shown.
+    - Labelled as projections on the chart, in tooltips, and in a table with both intervals.
 - **Templates:** `table_list.html` has no `<html>` wrapper. `table_detail.html` and
   `trends.html` are full pages.
 - **`admin.py`:** all models are registered at `/admin/`. Run `python manage.py createsuperuser`
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
   - On the Observation list, `verified` is editable, and the `notes` field explains each check.
-- **Missing:** forecasts and any AI.
+- **Missing:** any AI (step 4).
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -454,11 +469,14 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
 ### 3. AI: use two different tools
 - **Forecasting is statistical, not an LLM.** Each series has roughly 10–25 yearly points, so use
   simple, explainable models:
-  - Linear or log-linear trend
-  - Holt's exponential smoothing (`statsmodels`)
-  - CAGR extrapolation
+  - Naive (last value) and drift baselines
+  - Linear trend
+  - Holt's exponential smoothing
 
   Show a confidence band and a backtest error. Never let an LLM invent forecast numbers.
+  **Decision:** these are written in plain Python in `dashboard/forecast.py`, not `statsmodels`.
+  Each model is a few lines, and statsmodels would add numpy, scipy, pandas and patsy (100+ MB) for
+  series this short. Revisit if the team needs ARIMA-class models.
 - **Summaries and explanations come from an LLM**, the Claude API through the `anthropic` SDK.
   - Send it only the structured observations, the forecast output, and the methodology notes.
   - Ask for trend summaries, year-over-year narratives, and "why it changed" explanations
@@ -476,10 +494,11 @@ demoable dashboard. Write tests with each step.
 1. ~~**Metric layer for a few series.**~~ **Done and verified.** See "Current code state" and
    `VERIFICATION.md`.
 2. ~~**Trends page.**~~ **Done** (from the `year-filter` branch). See `trend_views.py` under
-   "Current code state." The forecast band arrives with step 3.
-3. **Forecasts.**
-   - Naive baseline vs. linear and Holt (`statsmodels`).
-   - Backtest error and a prediction band on the Trends chart.
+   "Current code state."
+3. ~~**Forecasts.**~~ **Done** (`dashboard/forecast.py`). Naive, drift, linear and Holt, chosen by
+   rolling-origin backtest; 80%/95% intervals from backtest errors; shown on the Trends chart.
+   - Possible follow-ups: forecasts for demographic segments once they have 8+ consecutive
+     years, and per-line projections on the category chart.
 4. **AI summaries.**
    - Claude-generated, grounded in the observations and the forecast output.
    - A number-check against the database, cached in `Insight`, labeled as AI-generated.

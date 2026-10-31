@@ -3,8 +3,11 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
+from .forecast import forecast
 from .models import MethodologyBreak, Metric, Observation, Segment
 
+BAND = "rgba(90, 90, 90, 0.18)"
+DECIMALS = {"millions": 0, "percent": 1, "per_household_year": 1}
 
 CATEGORY_SLUGS = [
     "fcm-received-correspondence",
@@ -112,7 +115,24 @@ def trend_context(request):
         fiscal_year__gte=first,
         fiscal_year__lte=last,
     ).distinct().order_by("fiscal_year"))
+
+    # A projection for a single series (a stacked category chart would need one per line).
+    projection = None
+    if len(chosen) == 1:
+        series = sorted((o.fiscal_year, o.value) for o in observations)
+        projection = forecast(
+            [y for y, _ in series], [v for _, v in series], chosen[0].unit,
+            breaks=[b.fiscal_year for b in breaks],
+        )
+        if "points" in projection:
+            add_projection(years, datasets, projection, series[-1])
+            decimals = DECIMALS[chosen[0].unit]
+            context["forecast_rows"] = [
+                {key: (f"{p[key]:,.{decimals}f}" if key != "year" else p[key]) for key in p}
+                for p in projection["points"]
+            ]
     context.update({
+        "forecast": projection,
         "chart_title": (
             "First-Class Mail received by category"
             if selected == "category_volume" else chosen[0].name
@@ -131,6 +151,32 @@ def trend_context(request):
     return context
 
 
+def add_projection(years, datasets, projection, last_point):
+    """Extend the chart with the projection line and its 80% band (labelled as projections)."""
+    points = projection["points"]
+    years += [p["year"] for p in points]
+    for dataset in datasets:
+        dataset["data"] += [None] * len(points)
+        dataset["sources"] += [None] * len(points)
+    pad = [None] * (len(years) - len(points) - 1)
+    last_year, last_value = last_point
+    # The band starts at the last published value so it opens out from the line.
+    lo = pad + [last_value] + [p["lo80"] for p in points]
+    hi = pad + [last_value] + [p["hi80"] for p in points]
+    common = {"pointRadius": 0, "borderWidth": 0, "tension": 0, "spanGaps": False,
+              "sources": [None] * len(years)}
+    datasets += [
+        {**common, "label": "80% prediction interval (lower)", "data": lo, "fill": False,
+         "legendHidden": True, "backgroundColor": BAND, "borderColor": BAND},
+        {**common, "label": "80% prediction interval", "data": hi, "fill": "-1",
+         "backgroundColor": BAND, "borderColor": BAND},
+        {**common, "label": f"Projection ({projection['model_name']})",
+         "data": pad + [last_value] + [p["value"] for p in points],
+         "borderColor": "#5a5a5a", "backgroundColor": "#5a5a5a", "borderDash": [6, 4],
+         "borderWidth": 2, "pointRadius": 4, "pointStyle": "crossRot", "fill": False},
+    ]
+
+
 def trends(request):
     context = trend_context(request)
     context["data_url"] = reverse("trend-data")
@@ -142,4 +188,5 @@ def trend_data(request):
     return JsonResponse({
         "chart": context["chart_data"],
         "notice": context["notice"],
+        "forecast": context.get("forecast"),
     })
