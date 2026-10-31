@@ -1,3 +1,7 @@
+import functools
+import json
+
+from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -6,6 +10,47 @@ from django.db.models import Q
 
 from .models import Table
 from .tidy import tidy
+
+CONTEXT_FILE = settings.BASE_DIR / "table_context.json"
+
+
+@functools.lru_cache(maxsize=1)
+def _load_context(mtime):
+    with open(CONTEXT_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def table_context(source_id):
+    """This table's entry in table_context.json (written by `manage.py extract_context`), or {}."""
+    try:
+        return _load_context(CONTEXT_FILE.stat().st_mtime).get(source_id, {})
+    except FileNotFoundError:
+        return {}
+
+
+def join_wrapped_labels(tidied, joins):
+    """Join a label printed on two lines back into one row (see pdftables.wrapped_labels)."""
+    rows = tidied["rows"]
+    for join in sorted(joins, key=lambda j: -j["row"]):
+        i, k = join["row"], join["rows"]
+        parts = rows[i:i + k + 1]
+        if (len(parts) == k + 1 and not any(c.strip() for r in parts[1:] for c in r[1:])
+                and " ".join(r[0] for r in parts).split() == join["label"].split()):
+            rows[i:i + k + 1] = [[join["label"]] + rows[i][1:]]
+            tidied["notes"].append(f"Joined a row label printed on two lines: “{join['label']}”.")
+    return tidied
+
+
+def rebuilt_display(structure):
+    """A table re-read from its PDF page, in the shape the template draws (like tidy's output)."""
+    headers = structure["headers"]
+    groups, k = [], 0
+    starts = {first: (label, last) for label, first, last in structure["groups"]}
+    while structure["groups"] and k < len(headers):
+        label, last = starts.get(k, ("", k))
+        groups.append((label, last - k + 1))
+        k = last + 1
+    return {"headers": headers, "groups": groups or None, "rows": structure["rows"], "notes": [], "footnotes": []}
 
 
 def table_list(request):
@@ -67,13 +112,23 @@ def table_detail(request, pk):
 
     # Show tidied column names by default; ?raw=1 shows the extraction exactly as stored.
     show_raw = request.GET.get("raw") == "1"
-    tidied = None if show_raw else tidy([str(c) for c in table.columns], [row.cells for row in rows], table.title)
+    context = table_context(table.source_id)
+    reread = not show_raw and bool(context.get("structure"))
+    if show_raw:
+        tidied = None
+    elif reread:
+        tidied = rebuilt_display(context["structure"])
+    else:
+        tidied = tidy([str(c) for c in table.columns], [row.cells for row in rows], table.title)
+        tidied = join_wrapped_labels(tidied, context.get("label_joins", []))
 
     return render(request, "dashboard/table_detail.html", {
         "table": table,
         "rows": rows,
         "show_raw": show_raw,
         "tidied": tidied,
+        "reread": reread,
+        "context": context,
     })
 
 

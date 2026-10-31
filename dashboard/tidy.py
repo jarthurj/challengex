@@ -26,6 +26,12 @@ def _name(column):
     return "" if UNNAMED.fullmatch(column) else " ".join(column.split())
 
 
+def _is_note(text):
+    """A long line of words alone in a row: a footnote's continuation, not a row label."""
+    words = text.split()
+    return len(words) > 12 and sum(1 for w in words if re.search(r"[A-Za-z]{2}", w)) > 0.7 * len(words)
+
+
 def _is_header_row(cells):
     """Text or years only (no data values), and not just placeholders."""
     rest = [c.strip() for c in cells[1:] if c.strip()]
@@ -58,7 +64,7 @@ def tidy(columns, rows, title=""):
     footnotes = []
     for r in list(body):
         filled = [c.strip() for c in r if c.strip()]
-        if len(filled) == 1 and FOOTNOTE.match(filled[0]):
+        if len(filled) == 1 and (FOOTNOTE.match(filled[0]) or _is_note(filled[0])):
             footnotes.append(filled[0])
             body.remove(r)
 
@@ -82,6 +88,22 @@ def tidy(columns, rows, title=""):
         promoted += 1
     if promoted:
         notes.append(f"Moved {promoted} header row{'s' if promoted > 1 else ''} out of the data.")
+
+    # 1b. Staggered values (Appendix A tables): some rows sit one column left or right of their
+    #     year, in an unnamed spacer column. If no row fills both, they belong under the year.
+    staggered = 0
+    for i in range(1, n - 1):
+        for a, b in ((i, i + 1), (i + 1, i)):  # move values from unnamed column a to named column b
+            if (header[b] and not header[a] and any(r[a].strip() for r in body)
+                    and any(r[b].strip() for r in body)
+                    and not any(r[a].strip() and r[b].strip() for r in body)):
+                for r in body:
+                    if r[a].strip():
+                        r[a], r[b] = "", r[a]
+                staggered += 1
+                break
+    if staggered:
+        notes.append(f"Moved values from {staggered} unnamed spacer column(s) under the year they belong to.")
 
     has_val = [any(r[i].strip() for r in body) for i in range(n)]
 
@@ -114,6 +136,11 @@ def tidy(columns, rows, title=""):
                 header[j] = header[i]
             header[i] = ""
             moved_left += 1
+    # An unnamed label column next to a named column with no values: that name is the labels' heading.
+    if (len(keep) > 1 and not header[keep[0]] and header[keep[1]] and not has_val[keep[1]]
+            and not re.search(r"\d", header[keep[1]])):  # "2015" names values, never the labels
+        header[keep[0]], header[keep[1]] = header[keep[1]], ""
+        moved_left += 1
     if moved_left:
         notes.append(f"Re-aligned {moved_left} column name(s) that sat one column to the left of the values.")
 

@@ -165,6 +165,12 @@ analyst should be able to:
   - `python manage.py extract_titles` regenerates `table_titles.json` from the PDFs (about 30
     seconds). It's only needed if `tables.json` or `dashboard/titles.py` changes. The output is
     committed, so teammates without `docs/` still get the titles.
+  - `python manage.py extract_context` regenerates `table_context.json` (about 25 seconds), which
+    holds each table's "From the report" excerpts, units, and its layout re-read from the PDF page.
+    It needs `docs/`, a loaded database, and PyMuPDF (`pip install -r requirements-dev.txt`;
+    PyMuPDF is AGPL, so it isn't in `requirements.txt`). Rerun it after changing `tables.json`,
+    `table_titles.json`, `context.py`, `pdftables.py`, or `fy2021_quotes.py`. The output is
+    committed; the site only reads the JSON.
 - Run the tests: `python manage.py test dashboard`. They load the real `tables.json`, and they
   don't need `docs/`.
 - See `VERIFICATION.md` for the full check of the loaded data against every file in `docs/`.
@@ -252,7 +258,7 @@ analyst should be able to:
   - Numbers were sometimes taken from prose, such as "Table 1.6 presents…". In `2016-p050-2`, the
     extraction said "Table 5.6" but the table is really 5.5.
   - `dashboard/titles.py` recovers the real caption and number for all 1,095 tables, stored in
-    `table_titles.json` with the method used for each and the original values. 236 numbers were
+    `table_titles.json` with the method used for each and the original values. 234 numbers were
     corrected.
   - It matches by content: rows whose label and exact numbers appear once on the page vote for
     the caption above them. Titles come from each report's List of Tables, or from the page
@@ -274,10 +280,30 @@ analyst should be able to:
   - A name one column to the left of its values.
   - "Source:"/"Note:" lines extracted as rows; these become footnotes.
   - A single value column with no name in the report, which gets named from the title's units.
+  - Staggered values (Appendix A tables such as `2016-p084-1`): some rows sit one column left or
+    right of their year, in an unnamed spacer column. When no row fills both, they move under
+    the year. Long single-cell note lines become footnotes.
+  - The label column's heading ("Sector") one column right, over an empty column.
+  - A row label printed on two lines ("First-Class Ads / Share of Total Ads") that the
+    extraction split into a row plus an empty row. The PDF re-read's labels decide which empty
+    rows are second lines (`label_joins` in `table_context.json`), so section headings stay.
 
-  After tidying, 826 of 870 regular tables have every column named. Charts (`Figure x.y`), the
-  FY2021 OCR tables, and about 44 tables whose names were mangled in extraction still show
-  "Column N". Every table page has a "Show the raw extraction" link (`?raw=1`).
+  With tidying and the PDF re-reads below, 116 of the 1,046 data tables still show a
+  "Column N" somewhere, mostly charts (`Figure x.y`) and FY2021 OCR tables. Every table page has
+  a "Show the raw extraction" link (`?raw=1`).
+- **Tables re-read from the PDF page (`dashboard/pdftables.py`).** For 76 tables the layout is
+  rebuilt from word positions on the page: lost row labels (e.g. `2016-p011-1`), and group
+  headings ("Educational Attainment of Head of Household") lost or put in a column's place
+  (`2016-p037-1`). A re-read is used only if it fixes something tidy can't, every extracted number
+  appears in it in order, it has the same row count, and no caption text, second header row or
+  merged year heading leaked in; otherwise the tidied extraction is shown. Most
+  rejected re-reads are two-part tables or wrapped headings. Still display-only.
+- **"From the report" excerpts (`dashboard/context.py`).** 795 of 1,046 data tables have the
+  report's own sentences about them, quoted verbatim with the PDF page. The other 251 are never
+  cited in their report's text: 154 Appendix A trend tables, 71 Appendix B methodology tables,
+  23 chapter tables, and 3 charts. FY2021's scanned pages have no text layer, so their sentences
+  were transcribed by hand from the page images into `dashboard/fy2021_quotes.py` (49 pages, 115
+  sentences); the page labels them as transcribed.
 - **Unit changes (the biggest trap for trend lines):**
   - The A8 appendix tables (through FY2023) use **millions of pieces**.
   - Chapter tables up to FY2023 mostly use **billions of pieces** or **pieces per household per
@@ -305,7 +331,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (branch `test_titles`)
+## Current code state (branch `table-context`, awaiting review before it merges into `main`)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`).
@@ -326,8 +352,9 @@ analyst should be able to:
   `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 45 in total, in `dashboard/tests.py` and `dashboard/test_trends.py` (the Trends
-  page). `dashboard/tests.py` covers:
+- **Tests:** 75 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+  page), and `dashboard/test_context.py` (excerpt finding, the FY2021 transcriptions,
+  `table_context.json`, re-read checks, and the table page). `dashboard/tests.py` covers:
   - header parsing, preference, and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
@@ -340,7 +367,9 @@ analyst should be able to:
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by one or more report years
     (checkboxes).
-  - `table_detail` renders one table with tidied column names (`dashboard/tidy.py`); `?raw=1` shows the extraction as stored.
+  - `table_detail` renders one table with tidied column names (`dashboard/tidy.py`), or the
+    layout re-read from the PDF when `table_context.json` has one, plus a "From the report" box
+    and the caption's units. `?raw=1` shows the extraction as stored.
   - `dashboard` is a "Hello world" placeholder.
 - **`trend_views.py` (Trends page, `/dashboard/trends/`):**
   - Pick a metric (or "First-Class Mail received by category") and a household segment.
@@ -460,8 +489,9 @@ demoable dashboard. Write tests with each step.
      Keep old and new age bands as separate segments.
    - An Overview page with KPI cards and the AI summary.
    - A Year page, and CSV export.
-6. **Table browser and raw-data cleanup.** Titles, table numbers, and display column names
-   (`tidy.py`) are done. Remaining, in `load_tables` and the browser:
+6. **Table browser and raw-data cleanup.** Titles, table numbers, display column names
+   (`tidy.py`), layouts re-read from the PDF (`pdftables.py`), and "From the report" excerpts
+   (`context.py`) are done. Remaining, in `load_tables` and the browser:
    - Hide the Appendix C survey-form "tables".
    - Add a `needs_review` flag, plus a badge, and market and OCR filters in the browser.
 7. **Data repairs, as needed.** Only if a mapped series needs them:

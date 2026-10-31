@@ -103,6 +103,23 @@
             font-size: 0.85rem;
             color: #555;
         }
+
+        .from-report blockquote {
+            margin: 0 0 1rem;
+            padding: 0.6rem 1rem;
+            border-left: 4px solid #1756a9;
+            background: #f5f8fc;
+        }
+
+        .from-report blockquote p {
+            margin: 0 0 0.4rem;
+        }
+
+        .from-report cite {
+            font-size: 0.85rem;
+            font-style: normal;
+            color: #555;
+        }
     </style>
 </head>
 
@@ -150,6 +167,13 @@
                 <dd>{{ table.table_number|default:"—" }}</dd>
             </div>
 
+            {% if context.units %}
+                <div>
+                    <dt>Units (from the caption in the PDF)</dt>
+                    <dd>{{ context.units }}</dd>
+                </div>
+            {% endif %}
+
             <div>
                 <dt>Number of rows</dt>
                 <dd>{{ rows|length }}</dd>
@@ -162,11 +186,31 @@
         </dl>
     </section>
 
+    <section class="from-report" aria-labelledby="from-report-heading">
+        <h2 id="from-report-heading">From the report</h2>
+
+        {% for excerpt in context.excerpts %}
+            <blockquote>
+                <p>&ldquo;{{ excerpt.text }}&rdquo;</p>
+                <cite>FY{{ table.year }} report, PDF page {{ excerpt.page }}{% if excerpt.from_image %} (transcribed from the scanned page image){% endif %}</cite>
+            </blockquote>
+        {% empty %}
+            <p class="footnote">
+                {{ context.why_none|default:"No discussion of this table has been extracted yet. Run manage.py extract_context." }}
+            </p>
+        {% endfor %}
+    </section>
+
     <section>
         <h2>Data</h2>
 
         {% if show_raw %}
             <p>Showing the raw extraction exactly as stored. <a href="?">Show the tidied table</a></p>
+        {% elif reread %}
+            <p class="notice">
+                Row labels and column names were re-read from the table's PDF page ({{ table.page }}).
+                Every number matches the original extraction. <a href="?raw=1">Show the raw extraction</a>
+            </p>
         {% elif tidied.notes %}
             <details class="notice">
                 <summary>Column names were tidied for display. <a href="?raw=1">Show the raw extraction</a></summary>

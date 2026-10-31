@@ -1,0 +1,4 @@
+# Only for regenerating table_context.json (manage.py extract_context); the site doesn't need it.
+# PyMuPDF is AGPL-licensed, so it stays out of requirements.txt.
+-r requirements.txt
+pymupdf==1.28.2

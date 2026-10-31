@@ -1991,8 +1991,8 @@
   "was_number": "Table 2.6",
   "was_title": "",
   "table_number": "Table 2.6",
-  "title": "Households by Number of Adults (Mi l l i o n s o f H o u se h o l d s)",
-  "method": "caption above content"
+  "title": "Households by Number of Adults (Millions of Households)",
+  "method": "manual (see dashboard/titles.py)"
  },
  "2018-p021-1": {
   "was_number": "Table 2.7",
@@ -4195,9 +4195,9 @@
  "2021-p015-3": {
   "was_number": "Table 1.5",
   "was_title": "household | Originating Mail Received and Sent by Households",
-  "table_number": "Table E.1",
-  "title": "Mail Received and Sent by Households",
-  "method": "OCR caption matches List of Tables"
+  "table_number": "Table 1.5",
+  "title": "Mail Received and Sent by Households (Billions of Pieces)",
+  "method": "manual (see dashboard/titles.py)"
  },
  "2021-p015-4": {
   "was_number": "",
@@ -4216,9 +4216,9 @@
  "2021-p016-2": {
   "was_number": "Table 1.7",
   "was_title": "Mail Received and Sent by Households",
-  "table_number": "Table E.1",
+  "table_number": "Table 1.7",
   "title": "Mail Received and Sent by Households",
-  "method": "OCR caption matches List of Tables"
+  "method": "manual (see dashboard/titles.py)"
  },
  "2021-p019-1": {
   "was_number": "Table 2.1",

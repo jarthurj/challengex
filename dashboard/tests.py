@@ -238,6 +238,25 @@ class TidyTests(SimpleTestCase):
         self.assertEqual(out["rows"], [["45 or more", "4.8", "8%", "18%", "59%"]])
         self.assertEqual(out["groups"], [("", 1), ("", 1), ("Educational Attainment of Head of Household", 3)])
 
+    def test_staggered_rows_move_under_their_year(self):
+        # 2016-p084-1 (A8-12): most rows sit under the years, "Secondary" one column to the left.
+        cols = ["Table A8-12 Advertising Volume", "col_2", "col_3", "col_4", "col_5"]
+        rows = [["", "", "2000", "", "2001"], ["First-Class Ads", "", "16,875", "", "19,556"],
+                ["Secondary", "7,404", "", "8,402", ""],
+                ["1 Prior to 2007 Standard mail volumes were inflated by about 3 billion pieces due to a double "
+                 "count of Detached Address Labels", "", "", "", ""],
+                ["2 to 3 billion pieces in the CCS. These CCS volumes are used as a control for survey results.",
+                 "", "", "", ""]]
+        out = tidy(cols, rows)
+        self.assertEqual(out["headers"], ["", "2000", "2001"])
+        self.assertEqual(out["rows"], [["First-Class Ads", "16,875", "19,556"], ["Secondary", "7,404", "8,402"]])
+        self.assertEqual(len(out["footnotes"]), 2)
+
+    def test_label_heading_one_column_right(self):
+        # 2023-p028-1 (Table 3.1): "Sector" sits over an empty column right of the labels.
+        out = tidy(["", "Sector", "2022"], [["Total", "", "14,512"]])
+        self.assertEqual(out["headers"], ["Sector", "2022"])
+
     def test_years_row_promoted_and_realigned_caption_dropped(self):
         # 2023-p077-1: caption in columns[0], years as the first data row, values one column left.
         cols = ["Table A8-1 First Class Mail Received by Type", "col_2", "col_3", "col_4", "col_5"]
