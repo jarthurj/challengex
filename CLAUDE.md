@@ -331,7 +331,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (branch `table-context`, awaiting review before it merges into `main`)
+## Current code state (`main`)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`).
