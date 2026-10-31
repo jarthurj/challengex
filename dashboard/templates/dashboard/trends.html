@@ -60,6 +60,71 @@
             </canvas>
         </div>
         <p id="chart-status" role="status"></p>
+        {% if forecast.points %}
+            <section aria-labelledby="projection-heading">
+                {% with last_row=forecast_rows|last %}
+                    <h3 id="projection-heading">Projection, FY{{ forecast_rows.0.year }}–FY{{ last_row.year }}</h3>
+                {% endwith %}
+                <p class="notice"><strong>These are statistical projections, not published USPS figures.</strong>
+                    The dashed line continues the series with {{ forecast.model_name|lower }}; the shaded band is the
+                    80% prediction interval. They assume the conditions of FY{{ forecast.fit_years.0 }}–FY{{ forecast.fit_years.1 }}
+                    continue, and can't anticipate events such as a pandemic, rate changes or a new survey design.</p>
+                <p><strong>Model:</strong> {{ forecast.model_name }}. {{ forecast.model_description }}
+                    {% if forecast.holt_params %}Smoothing weights: level {{ forecast.holt_params.0 }}, trend {{ forecast.holt_params.1 }}.{% endif %}
+                    It had the lowest error when tested on years it hadn't seen (below).
+                    {% if not forecast.beats_naive %}No trend model beat simply repeating the last value, so the projection is flat.{% endif %}</p>
+                <p><strong>Fitted on:</strong> FY{{ forecast.fit_years.0 }}–FY{{ forecast.fit_years.1 }}{% if forecast.after_break %}, the years from the FY{{ forecast.after_break }} methodology change on{% endif %}.
+                    {% if forecast.crossed_breaks %}<span class="review">This window crosses later methodology changes ({% for y in forecast.crossed_breaks %}FY{{ y }}{% if not forloop.last %}, {% endif %}{% endfor %}) that leave too few years to fit on their own; values on either side may not be fully comparable.</span>{% endif %}</p>
+                <div class="table-wrapper">
+                    <table>
+                        <caption>Projected values ({{ unit_label }}). Intervals come from this model's past forecast errors on this series.</caption>
+                        <thead><tr>
+                            <th scope="col">Fiscal year</th><th scope="col">Projection</th>
+                            <th scope="col">80% interval</th><th scope="col">95% interval</th>
+                        </tr></thead>
+                        <tbody>
+                            {% for row in forecast_rows %}
+                                <tr>
+                                    <td>{{ row.year }}</td>
+                                    <td>{{ row.value }}</td>
+                                    <td>{{ row.lo80 }} to {{ row.hi80 }}</td>
+                                    <td>{{ row.lo95 }} to {{ row.hi95 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Track record (backtest)</h4>
+                <p>Each model was fitted on the first years of the window and asked to forecast the next 1–5,
+                    repeatedly, and compared with the values USPS later published. Lower is better; a ratio
+                    below 1 beats the naive baseline.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <caption>Backtest errors on held-out years, FY{{ forecast.fit_years.0 }}–FY{{ forecast.fit_years.1 }}</caption>
+                        <thead><tr>
+                            <th scope="col">Model</th><th scope="col">Mean absolute error ({{ unit_label }})</th>
+                            <th scope="col">Mean absolute % error</th><th scope="col">Error vs. naive</th>
+                            <th scope="col">Forecasts tested</th>
+                        </tr></thead>
+                        <tbody>
+                            {% for row in forecast.backtest %}
+                                <tr>
+                                    <th scope="row">{{ row.name }}{% if row.chosen %} (used){% endif %}</th>
+                                    <td>{{ row.mae|floatformat:"1g" }}</td>
+                                    <td>{% if row.mape is not None %}{{ row.mape|floatformat:1 }}%{% else %}—{% endif %}</td>
+                                    <td>{{ row.vs_naive|floatformat:2 }}</td>
+                                    <td>{{ row.forecasts }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        {% elif forecast.reason %}
+            <p class="notice">No projection: {{ forecast.reason }}</p>
+        {% elif category_chart %}
+            <p class="notice">Projections are shown when a single metric is selected.</p>
+        {% endif %}
         {% if breaks %}
             <h3>Changes in survey methodology</h3>
             <ul>
@@ -161,10 +226,17 @@
                             maintainAspectRatio: false,
                             layout: {padding: {top: 20}},
                             plugins: {
-                                legend: {display: true, labels: {usePointStyle: true}},
+                                legend: {display: true, labels: {
+                                    usePointStyle: true,
+                                    filter: (item, chartData) => !chartData.datasets[item.datasetIndex].legendHidden
+                                }},
                                 methodologyMarkers: {breaks: data.breaks},
                                 tooltip: {callbacks: {
                                     afterLabel(context) {
+                                        if (context.dataset.label.startsWith("Projection") ||
+                                            context.dataset.label.startsWith("80%")) {
+                                            return ["Projection, not a published figure"];
+                                        }
                                         const source = context.dataset.sources[context.dataIndex];
                                         return source ? [
                                             `Source: FY${source.report_year}, page ${source.page}`,
