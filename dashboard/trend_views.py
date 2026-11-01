@@ -3,11 +3,11 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forecast import forecast
+from .forecast import DECIMALS, forecast
 from .models import MethodologyBreak, Metric, Observation, Segment
+from .overview_views import csv_response, fiscal_years, observation_row
 
 BAND = "rgba(90, 90, 90, 0.18)"
-DECIMALS = {"millions": 0, "percent": 1, "per_household_year": 1}
 
 CATEGORY_SLUGS = [
     "fcm-received-correspondence",
@@ -180,6 +180,7 @@ def add_projection(years, datasets, projection, last_point):
 def trends(request):
     context = trend_context(request)
     context["data_url"] = reverse("trend-data")
+    context["years"] = fiscal_years()  # for the "By year" link in the navigation
     return render(request, "dashboard/trends.html", context)
 
 
@@ -190,3 +191,20 @@ def trend_data(request):
         "notice": context["notice"],
         "forecast": context.get("forecast"),
     })
+
+
+def trend_csv(request):
+    """The selected series as CSV: published values with sources, then the projection."""
+    context = trend_context(request)
+    rows = [observation_row(o) for o in context["observations"]]
+    projection = context.get("forecast") or {}
+    for p in projection.get("points", []):
+        rows.append({
+            "fiscal_year": p["year"], "metric": context["chart_title"],
+            "metric_slug": context["selected_trend"], "household_group": str(context["selected_segment"]),
+            "kind": "projection (not a published figure)", "value": round(p["value"], 3),
+            "unit": context["unit_label"], "model": projection["model_name"],
+            "low_80": round(p["lo80"], 3), "high_80": round(p["hi80"], 3),
+            "low_95": round(p["lo95"], 3), "high_95": round(p["hi95"], 3),
+        })
+    return csv_response(f"usps-trend-{context['selected_trend']}.csv", rows)

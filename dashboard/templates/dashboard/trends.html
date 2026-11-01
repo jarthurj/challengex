@@ -7,6 +7,7 @@
     <style>
         body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
         nav, form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+        .main-nav a[aria-current="page"] { font-weight: 700; text-decoration: none; color: #222; }
         a { color: #1756a9; }
         select, button { padding: 0.5rem; max-width: 100%; font: inherit; }
         .chart { position: relative; height: 420px; }
@@ -20,10 +21,7 @@
     </style>
 </head>
 <body>
-    <nav aria-label="Main navigation">
-        <a href="{% url 'table-list' %}">Browse tables</a>
-        <a href="{% url 'trends' %}" aria-current="page">Trends</a>
-    </nav>
+    {% with current="trends" %}{% include "dashboard/_nav.html" %}{% endwith %}
     <h1>USPS Trends</h1>
     <p>Explore household mail metrics using the preferred source for each fiscal year.</p>
 
@@ -134,6 +132,8 @@
             </ul>
         {% endif %}
         <h3>Values and sources</h3>
+        <p><a href="{% url 'trend-csv' %}?{{ request.GET.urlencode }}">Download these values{% if forecast.points %} and the projection{% endif %} as CSV</a>
+            (with source report, page and verification status for every value).</p>
         <div class="table-wrapper">
             <table>
                 <caption>Preferred observations. Source report years can differ from the fiscal years measured.</caption>

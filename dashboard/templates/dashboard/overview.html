@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Household Mail Overview</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+        a { color: #1756a9; }
+        .main-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+        .main-nav a[aria-current="page"] { font-weight: 700; text-decoration: none; color: #222; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; padding: 0; list-style: none; }
+        .card { border: 1px solid #ccc; border-radius: 6px; padding: 1rem; }
+        .card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+        .kpi { font-size: 1.6rem; font-weight: 700; margin: 0.2rem 0; }
+        .small { font-size: 0.9rem; color: #444; }
+        .card dl { margin: 0.6rem 0; }
+        .card dt { font-size: 0.9rem; color: #444; margin-top: 0.4rem; }
+        .card dd { margin: 0; }
+        .review { font-weight: 600; }
+        .notice { padding: 1rem; background: #f3f3f3; }
+        .table-wrapper { overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 0.6rem; border: 1px solid #ccc; text-align: left; vertical-align: middle; }
+        td.num { text-align: right; white-space: nowrap; }
+        caption { text-align: left; padding-bottom: 0.6rem; }
+        .bar { background: #1756a9; height: 0.9rem; min-width: 2px; }
+        .bar-cell { width: 35%; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    </style>
+</head>
+<body>
+    {% with current="overview" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <h1>U.S. household mail at a glance</h1>
+    <p>Latest published values from the USPS Household Diary Study / Household Mail Survey, with the change
+        from 5 and 10 years earlier. Each card names its source report and page; select a card's link for the full trend.</p>
+    {% if notice %}<p class="notice" role="status">{{ notice }}</p>{% endif %}
+
+    {% if cards %}
+        <ul class="cards">
+            {% for card in cards %}
+                <li class="card">
+                    <h3>{{ card.metric.name }}</h3>
+                    <p class="small">FY{{ card.year }}</p>
+                    <p class="kpi">{{ card.value }}</p>
+                    <p class="small">Source: <a href="{{ card.source.url }}">{{ card.source.text }}</a>
+                        — {% if card.source.verified %}verified against the PDF{% else %}<span class="review">unverified</span>{% endif %}</p>
+                    {% if card.comparisons %}
+                        <dl>
+                            {% for c in card.comparisons %}
+                                <dt>{{ c.label }} ({{ c.value }})</dt>
+                                <dd>{{ c.change }}</dd>
+                            {% endfor %}
+                        </dl>
+                    {% else %}
+                        <p class="small">No values 5 or 10 years earlier to compare with.</p>
+                    {% endif %}
+                    <p><a href="{{ card.trend_url }}">See the trend<span class="visually-hidden"> for {{ card.metric.name }}</span></a></p>
+                </li>
+            {% endfor %}
+        </ul>
+        <p class="small">Changes are calculated from the two published values shown. Values for a year can come
+            from a later report that restated them; the source on each value says which.</p>
+    {% endif %}
+
+    {% if mix %}
+        <h2>Where household mail comes from, FY{{ mix.year }}</h2>
+        <p>Pieces sent and received per household per year, by market. The report's total for all household
+            mail is {{ mix.total }} (<a href="{{ mix.source.url }}">{{ mix.source.text }}</a>); the markets below add up
+            to {{ mix.shown }}, because USPS counts some pieces in more than one market and a small "Other" market
+            isn't shown. Shares are therefore of the five markets listed.</p>
+        <div class="table-wrapper">
+            <table>
+                <caption>Market volumes per household, FY{{ mix.year }}. Shares are calculated from these published values.</caption>
+                <thead><tr>
+                    <th scope="col">Market</th><th scope="col">Pieces per household per year</th>
+                    <th scope="col">Share of the markets shown</th><th scope="col">Share (bar)</th>
+                </tr></thead>
+                <tbody>
+                    {% for row in mix.rows %}
+                        <tr>
+                            <th scope="row">{{ row.name }}</th>
+                            <td class="num">{{ row.value }}</td>
+                            <td class="num">{{ row.share|floatformat:1 }}%</td>
+                            <td class="bar-cell" aria-hidden="true"><div class="bar" style="width: {{ row.share|floatformat:0 }}%"></div></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+</body>
+</html>

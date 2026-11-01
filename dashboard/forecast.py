@@ -30,6 +30,7 @@ MODEL_INFO = {
     "holt": ("Holt's exponential smoothing",
              "Tracks a level and a trend, weighting recent years more heavily than older ones."),
 }
+DECIMALS = {"millions": 0, "percent": 1, "per_household_year": 1}  # display precision per unit
 BOUNDS = {"percent": (0.0, 100.0), "millions": (0.0, None), "per_household_year": (0.0, None)}
 
 

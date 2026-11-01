@@ -38,6 +38,11 @@ def row_values(cells):
     return [c.strip() for c in cells[1:] if c.strip()]
 
 
+def change_columns(table):
+    """How many "change" columns ("% change 2015-2025") the table's header names."""
+    return sum(1 for c in table.columns if "change" in str(c).lower())
+
+
 def find_row(rows, label, nth):
     matches = [r for r in rows if norm(r.label) == norm(label)]
     return matches[nth - 1] if len(matches) >= nth else None
@@ -104,6 +109,9 @@ class Command(BaseCommand):
                 if row is None:
                     raise CommandError(f"{source_id}: row {rm.label!r} (occurrence {rm.nth}) not found.")
                 values = row_values(row_cells(table, row))
+                # FY2024/FY2025 tables follow the years with "% change" columns; drop exactly those.
+                if len(values) == len(years) + change_columns(table):
+                    values = values[:len(years)]
                 if len(values) != len(years):
                     raise CommandError(
                         f"{source_id}: row {rm.label!r} has {len(values)} values for {len(years)} years "
