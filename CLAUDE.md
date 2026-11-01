@@ -151,7 +151,8 @@ analyst should be able to:
 - Hosting is local only. `SECRET_KEY` is hard-coded in `mysite/settings.py` and `DEBUG=True`,
   which is fine because nothing is deployed. Never commit API keys. Put them in `.env`, which
   `python-dotenv` reads.
-- Run the server: `python manage.py runserver`, then open `/dashboard/tables/`.
+- Run the server: `python manage.py runserver`, then open `http://127.0.0.1:8000/` (it goes to
+  the Overview at `/dashboard/`).
 - The individual steps that `rebuild_db` runs, in order. Every step is safe to re-run, and
   reviewers' `verified` flags and notes survive:
   1. `python manage.py load_tables tables.json`. This updates tables in place by `source_id`
@@ -331,7 +332,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`)
+## Current code state (`main`, plus the `broaden` branch awaiting review)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`).
@@ -369,8 +370,9 @@ analyst should be able to:
   columns and labels that wrap onto two lines). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 89 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
-  page), `dashboard/test_forecast.py` (models, backtest, fit window and breaks, intervals, the
+- **Tests:** 103 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+  page), `dashboard/test_overview.py` (Overview cards and market mix, Year page, CSV export
+  and its formula-injection guard), `dashboard/test_forecast.py` (models, backtest, fit window and breaks, intervals, the
   projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
   transcriptions, `table_context.json`, re-read checks, and the table page).
   `dashboard/tests.py` covers:
@@ -389,7 +391,6 @@ analyst should be able to:
   - `table_detail` renders one table with tidied column names (`dashboard/tidy.py`), or the
     layout re-read from the PDF when `table_context.json` has one, plus a "From the report" box
     and the caption's units. `?raw=1` shows the extraction as stored.
-  - `dashboard` is a "Hello world" placeholder.
 - **`trend_views.py` (Trends page, `/dashboard/trends/`):**
   - Pick a metric (or "First-Class Mail received by category") and a household segment.
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
@@ -410,8 +411,22 @@ analyst should be able to:
     - Series with fewer than 8 consecutive years (the FY2025 demographic segments) and the
       category chart get no projection, with the reason shown.
     - Labelled as projections on the chart, in tooltips, and in a table with both intervals.
-- **Templates:** `table_list.html` has no `<html>` wrapper. `table_detail.html` and
-  `trends.html` are full pages.
+- **`overview_views.py`:**
+  - **Overview** (`/dashboard/`; the site root redirects here): KPI cards for six headline
+    series (`KPIS`) with the latest published value, the change vs. 5 and 10 years earlier
+    (percent and absolute; percentage points for shares), and each value's source and
+    verification. Below, the market mix per household for the latest year (FY2025 E.2); the
+    published markets don't add up to the published total, so shares are of the markets shown,
+    and the page says so.
+  - **Year page** (`/dashboard/year/<FY>/`, picker at `/dashboard/year/?year=`): every preferred
+    value for that fiscal year with its source, the household-group tables (FY2015/2020/2025),
+    and a link to that report's tables.
+  - **CSV export**: `/dashboard/year/<FY>/csv/` and `/dashboard/trends/csv/?trend=...` (the
+    Trends selection: published values with source report, page, table and verification, then
+    the projection rows labelled as projections with both intervals and the model). Text cells
+    that a spreadsheet would run as formulas are quoted.
+- **Templates:** `table_list.html` has no `<html>` wrapper. `table_detail.html`, `trends.html`,
+  `overview.html` and `year.html` are full pages; the last three share `_nav.html`.
 - **`admin.py`:** all models are registered at `/admin/`. Run `python manage.py createsuperuser`
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
@@ -518,11 +533,13 @@ demoable dashboard. Write tests with each step.
 4. **AI summaries. Deferred** (team decision, 2026-10-31): skipped for now; return to it later.
    - Claude-generated, grounded in the observations and the forecast output.
    - A number-check against the database, cached in `Insight`, labeled as AI-generated.
-5. **Broaden.** (in progress on the `broaden` branch)
+5. ~~**Broaden.**~~ **Done** on the `broaden` branch (awaiting review).
    - ~~The series under "Still to map"~~ **done**: 23 metrics, 869 verified observations, FY2025
      household groups for four of them.
-   - An Overview page with KPI cards (the AI summary waits for step 4).
-   - A Year page, and CSV export.
+   - ~~An Overview page with KPI cards~~ **done** (the AI summary waits for step 4).
+   - ~~A Year page, and CSV export~~ **done**.
+   - Still open: demographic groups before FY2025, and package/periodical detail (see
+     "Still to map").
 6. **Table browser and raw-data cleanup.** Titles, table numbers, display column names
    (`tidy.py`), layouts re-read from the PDF (`pdftables.py`), and "From the report" excerpts
    (`context.py`) are done. Remaining, in `load_tables` and the browser:

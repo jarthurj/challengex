@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Household Mail FY{{ year }}</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+        a { color: #1756a9; }
+        .main-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+        .main-nav a[aria-current="page"] { font-weight: 700; text-decoration: none; color: #222; }
+        form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+        select, button { padding: 0.5rem; font: inherit; }
+        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 0.6rem; border: 1px solid #ccc; text-align: left; vertical-align: top; }
+        td.num { text-align: right; white-space: nowrap; }
+        caption { text-align: left; padding-bottom: 0.6rem; }
+        .review { font-weight: 600; }
+        .small { font-size: 0.9rem; color: #444; }
+    </style>
+</head>
+<body>
+    {% with current="year" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <h1>Household mail in FY{{ year }}</h1>
+
+    <form method="get" action="{% url 'year-pick' %}" id="year-form">
+        <label for="year-select">Fiscal year:</label>
+        <select id="year-select" name="year">
+            {% for y in years %}<option value="{{ y }}" {% if y == year %}selected{% endif %}>FY{{ y }}</option>{% endfor %}
+        </select>
+        <button type="submit">Show year</button>
+    </form>
+    <p>Every published value for fiscal year {{ year }}, using the preferred source for each series (the most
+        recent non-OCR report that gives it, so some values come from later reports that restated them).
+        <a href="{% url 'year-csv' year %}">Download these values as CSV</a>.</p>
+    <p>The FY{{ year }} report itself has {{ report_tables }} tables: <a href="{{ tables_url }}">browse the FY{{ year }} tables</a>.</p>
+
+    <h2>All households</h2>
+    {% if headline %}
+        <div class="table-wrapper">
+            <table>
+                <caption>FY{{ year }} values for all households</caption>
+                <thead><tr>
+                    <th scope="col">Metric</th><th scope="col">Value</th><th scope="col">Source</th>
+                    <th scope="col">Verification</th>
+                </tr></thead>
+                <tbody>
+                    {% for row in headline %}
+                        <tr>
+                            <th scope="row"><a href="{% url 'trends' %}?trend={{ row.observation.metric.slug }}">{{ row.observation.metric.name }}</a></th>
+                            <td class="num">{{ row.value }}</td>
+                            <td><a href="{{ row.source.url }}">{{ row.source.text }}</a></td>
+                            <td>{% if row.source.verified %}Verified against the PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>No all-household values for this year.</p>
+    {% endif %}
+
+    <h2>By household group</h2>
+    {% if groups %}
+        {% for metric, rows in groups %}
+            <div class="table-wrapper">
+                <table>
+                    <caption>{{ metric.name }}, FY{{ year }}, by household group ({{ metric.get_unit_display }})</caption>
+                    <thead><tr>
+                        <th scope="col">Household group</th><th scope="col">Value</th><th scope="col">Source</th>
+                    </tr></thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <th scope="row">{{ row.observation.segment }}</th>
+                                <td class="num">{{ row.number }}</td>
+                                <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not row.source.verified %} <span class="review">(unverified)</span>{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="small">The reports publish household-group breakdowns for these series only for FY2015, FY2020
+            and FY2025 so far.</p>
+    {% endif %}
+
+</body>
+</html>

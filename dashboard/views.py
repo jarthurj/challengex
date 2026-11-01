@@ -2,9 +2,6 @@ import functools
 import json
 
 from django.conf import settings
-from django.shortcuts import render
-from django.http import HttpResponse
-
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 
@@ -130,8 +127,3 @@ def table_detail(request, pk):
         "reread": reread,
         "context": context,
     })
-
-
-def dashboard(request):
-    # Returns a plain text response with an optional 200 OK status
-    return HttpResponse("Hello, world! This is a basic Django view.")
