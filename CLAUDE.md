@@ -332,7 +332,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`, plus the `table-browser` branch awaiting review)
+## Current code state (`main`)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`). `load_tables` also sets each table's
@@ -549,9 +549,9 @@ demoable dashboard. Write tests with each step.
    - ~~A Year page, and CSV export~~ **done**.
    - Still open: demographic groups before FY2025, and package/periodical detail (see
      "Still to map").
-6. ~~**Table browser and raw-data cleanup.**~~ **Done** on the `table-browser` branch (awaiting
-   review): titles, numbers, column names, PDF re-reads and excerpts earlier; now survey forms
-   hidden, `needs_review` flag and badge, topic and OCR filters, and source PDF links. 208 of
+6. ~~**Table browser and raw-data cleanup.**~~ **Done**
+   (titles, numbers, column names, PDF re-reads and excerpts earlier; now survey forms
+   hidden, `needs_review` flag and badge, topic and OCR filters, and source PDF links). 208 of
    the 1,046 data tables are flagged (111 OCR, 89 chart data, 116 with "Column N"; some have
    more than one reason).
 7. **Data repairs, as needed.** Only if a mapped series needs them:
