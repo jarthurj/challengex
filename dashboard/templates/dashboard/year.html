@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Household Mail FY{{ year }}</title>
     <style>
         body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
         a { color: #1756a9; }
-        .main-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
-        .main-nav a[aria-current="page"] { font-weight: 700; text-decoration: none; color: #222; }
         form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
         select, button { padding: 0.5rem; font: inherit; }
         .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
@@ -22,6 +22,7 @@
 </head>
 <body>
     {% with current="year" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
     <h1>Household mail in FY{{ year }}</h1>
 
     <form method="get" action="{% url 'year-pick' %}" id="year-form">
@@ -87,5 +88,6 @@
             and FY2025 so far.</p>
     {% endif %}
 
+    </main>
 </body>
 </html>

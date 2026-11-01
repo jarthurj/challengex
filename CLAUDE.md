@@ -332,7 +332,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`)
+## Current code state (`main`, plus the `polish` branch awaiting review)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`). `load_tables` also sets each table's
@@ -373,8 +373,9 @@ analyst should be able to:
   columns and labels that wrap onto two lines). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 113 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
-  page), `dashboard/test_browser.py` (sections, review reasons, browser filters, survey forms
+- **Tests:** 118 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+  page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
+  heading order, labelled controls, chart band contrast), `dashboard/test_browser.py` (sections, review reasons, browser filters, survey forms
   hidden, the table page's review notice and PDF link), `dashboard/test_overview.py` (Overview cards and market mix, Year page, CSV export
   and its formula-injection guard), `dashboard/test_forecast.py` (models, backtest, fit window and breaks, intervals, the
   projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
@@ -434,8 +435,19 @@ analyst should be able to:
     Trends selection: published values with source report, page, table and verification, then
     the projection rows labelled as projections with both intervals and the model). Text cells
     that a spreadsheet would run as formulas are quoted.
-- **Templates:** `table_list.html` has no `<html>` wrapper. `table_detail.html`, `trends.html`,
-  `overview.html` and `year.html` are full pages; the last three share `_nav.html`.
+- **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html` and
+  `table_detail.html` are full pages. All include `_nav.html` (skip link + main navigation),
+  wrap their content in one `<main id="main">`, and load `static/dashboard/base.css` (skip
+  link, visible focus ring, nav styles).
+- **Accessibility (WCAG 2.1 AA), checked 2026-10-31:** axe-core 4.10.2 in Chrome finds 0
+  violations of the WCAG 2.0/2.1 A and AA rules and 0 best-practice issues on every page type;
+  every control is reachable by Tab (the year dropdown opens with Enter); the skip link is the
+  first Tab stop; no page scrolls sideways at 320 px; the projection band has 4.5:1 edges and
+  its values are also in a table. `dashboard/test_accessibility.py` guards the structure. To
+  re-run the browser checks, use Playwright with the installed Chrome and inject axe-core
+  (no Node needed).
+- **Dependencies:** `python -m pip_audit -r requirements.txt -r requirements-dev.txt` reports no
+  known vulnerabilities (pypdf moved to 6.21.4 for three CVEs; outputs re-checked unchanged).
 - **`admin.py`:** all models are registered at `/admin/`. Run `python manage.py createsuperuser`
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
@@ -554,13 +566,15 @@ demoable dashboard. Write tests with each step.
    hidden, `needs_review` flag and badge, topic and OCR filters, and source PDF links). 208 of
    the 1,046 data tables are flagged (111 OCR, 89 chart data, 116 with "Column N"; some have
    more than one reason).
-7. **Data repairs, as needed.** Only if a mapped series needs them:
+7. **Data repairs, as needed. Checked 2026-10-31: none needed now.** Every annual series is
+   complete from first to last year, none uses an OCR table, and the per-household gaps are
+   years USPS never published. Revisit only if a newly mapped series needs one of these:
    - The FY2021 chapter tables. They are OCR'd from scanned pages; the appendix is fine.
    - The FY2019 appendix, which is images. Read it from rendered pages.
    - FY2018 A8-10.
    - Older PDFs. FY2004 is scanned.
-8. **Polish and hardening.**
-   - Accessibility pass (WCAG 2.1 AA).
-   - `pip-audit`.
-   - "Ask the data" box (optional).
-   - Demo script.
+8. ~~**Polish and hardening.**~~ **Done** on the `polish` branch (awaiting review):
+   - ~~Accessibility pass (WCAG 2.1 AA)~~ done; see "Accessibility" under Current code state.
+   - ~~`pip-audit`~~ done; clean after the pypdf upgrade.
+   - ~~Demo script~~ done: `DEMO.md` (7-minute walk-through, setup checklist, likely questions).
+   - "Ask the data" box (optional): waits for the AI step (4).

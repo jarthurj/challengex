@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ table.title|default:"Table details" }}</title>
@@ -140,6 +142,8 @@
 </head>
 
 <body>
+    {% with current="tables" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
 
     <p>
         <a href="{% url 'table-list' %}">&larr; Back to tables</a>
@@ -332,5 +336,6 @@
         </p>
     </footer>
 
+    </main>
 </body>
 </html>
