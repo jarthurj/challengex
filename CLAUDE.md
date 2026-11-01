@@ -332,7 +332,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`, plus the `broaden` branch awaiting review)
+## Current code state (`main`)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`).
@@ -533,7 +533,7 @@ demoable dashboard. Write tests with each step.
 4. **AI summaries. Deferred** (team decision, 2026-10-31): skipped for now; return to it later.
    - Claude-generated, grounded in the observations and the forecast output.
    - A number-check against the database, cached in `Insight`, labeled as AI-generated.
-5. ~~**Broaden.**~~ **Done** on the `broaden` branch (awaiting review).
+5. ~~**Broaden.**~~ **Done.**
    - ~~The series under "Still to map"~~ **done**: 23 metrics, 869 verified observations, FY2025
      household groups for four of them.
    - ~~An Overview page with KPI cards~~ **done** (the AI summary waits for step 4).
