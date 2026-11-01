@@ -1,5 +1,21 @@
 from django.db import models
 
+# Report chapters mean the same topic in every report, FY2016-FY2025.
+SECTIONS = [
+    ("summary", "Executive summary"),
+    ("volumes", "Mail volumes and flows"),
+    ("demographics", "Household profile and demographics"),
+    ("correspondence", "Correspondence"),
+    ("transactions", "Transactions and bill payment"),
+    ("advertising", "Advertising"),
+    ("periodicals", "Periodicals"),
+    ("packages", "Packages"),
+    ("trends", "Appendix A: annual trends"),
+    ("methodology", "Appendix B: survey methodology"),
+    ("survey_form", "Appendix C: survey forms"),
+    ("other", "Other"),
+]
+
 
 class Table(models.Model):
     source_id = models.CharField(max_length=32, unique=True)  # e.g. 2021-p020-1
@@ -9,6 +25,11 @@ class Table(models.Model):
     title = models.CharField(max_length=500, blank=True, db_index=True)
     columns = models.JSONField(default=list)
     ocr = models.BooleanField(default=False)  # True = read from scanned page
+    # Set by load_tables (see dashboard/display.py): the report chapter, and whether a reader should
+    # check the table against its PDF page (OCR values, chart data, unrecovered column names).
+    section = models.CharField(max_length=20, blank=True, db_index=True, choices=SECTIONS)
+    needs_review = models.BooleanField(default=False, db_index=True)
+    review_reason = models.TextField(blank=True)
 
     class Meta:
         ordering = ["year", "page", "source_id"]

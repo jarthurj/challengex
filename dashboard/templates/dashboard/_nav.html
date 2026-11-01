@@ -2,5 +2,5 @@
     <a href="{% url 'dashboard' %}"{% if current == "overview" %} aria-current="page"{% endif %}>Overview</a>
     <a href="{% url 'trends' %}"{% if current == "trends" %} aria-current="page"{% endif %}>Trends</a>
     {% if years %}<a href="{% url 'year-detail' years.0 %}"{% if current == "year" %} aria-current="page"{% endif %}>By year</a>{% endif %}
-    <a href="{% url 'table-list' %}">Browse tables</a>
+    <a href="{% url 'table-list' %}"{% if current == "tables" %} aria-current="page"{% endif %}>Browse tables</a>
 </nav>
