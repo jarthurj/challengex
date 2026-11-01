@@ -27,6 +27,11 @@ class SectionTests(SimpleTestCase):
         for (number, title), section in cases.items():
             self.assertEqual(section_of(number, title), section, number or title)
 
+    def test_fy2003_chapters_are_numbered_differently(self):
+        self.assertEqual(section_of("Table 5.4", "Transactions Mail Received by Income and Age", 2003), "transactions")
+        self.assertEqual(section_of("Table 8.6", "Postal Service Sent and Received Packages", 2003), "packages")
+        self.assertEqual(section_of("Table 5.4", "Ad Mail Received by Income and Education", 2005), "advertising")
+
     def test_review_reasons(self):
         self.assertEqual(review_reasons(False, "Table 3.1", ["Sector", "2021", "2022"]), [])
         reasons = review_reasons(True, "Figure 2.1b", ["", "Column 2"])
@@ -49,7 +54,7 @@ class BrowserTests(TestCase):
     def test_every_table_gets_a_section_and_ocr_tables_need_review(self):
         self.assertFalse(Table.objects.filter(section__in=["", "other"]).exists())
         self.assertEqual(Table.objects.filter(section="survey_form").count(), 49)
-        self.assertEqual(Table.objects.filter(section="trends").count(), 154)
+        self.assertEqual(Table.objects.filter(section="trends", year__gte=2016).count(), 154)
         self.assertFalse(Table.objects.filter(ocr=True, needs_review=False).exists())
         self.assertFalse(Table.objects.filter(table_number__startswith="Figure", needs_review=False).exists())
 
