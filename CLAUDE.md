@@ -342,14 +342,31 @@ analyst should be able to:
   - `SOURCES`: `source_id` → (the table's unit, `RowMap`s)
   - `CONVERSIONS`
   - `BREAKS`
-- **Six metrics are loaded so far:**
-  - `fcm-received-total`, `-correspondence`, `-transactions`, and `-advertising`, in millions,
-    2000–2023.
-  - `fcm-received-per-household`, 2014–2024.
-  - `bills-paid-by-mail-share`, in percent, 2000–2025, plus 16 FY2025 demographic segments for
-    2015, 2020, and 2025.
-- **All 313 loaded observations are verified** against their source PDF page. See
-  `VERIFICATION.md`.
+- **23 metrics are loaded (869 observations):**
+  - First-Class Mail received: `fcm-received-total`, `-correspondence`, `-transactions`,
+    `-advertising` (millions, 2000–2023, A8-1) and `fcm-received-per-household` (2014–2024, A-1).
+  - First-Class Mail sent: `fcm-sent-total`, `-correspondence`, `-transactions` (millions,
+    2000–2023, A8-3) and `fcm-sent-per-household` (2014–2024, A-3).
+  - Bill payment: `bills-paid-by-mail-share` (2000–2025, plus 16 FY2025 household groups) and
+    `bills-paid-electronic-share` (2000–2024; A8-6 "Total Electronic" and FY2024 A-6 agree
+    exactly for 2014–2023), in percent.
+  - Advertising: `advertising-received-total` and `marketing-mail-ads-received` (millions,
+    2000–2023, A8-12).
+  - All markets from Table E.2, in millions converted from billions (one decimal, so ±50 million):
+    `household-mail-total`, `packages-volume`, `periodicals-volume` (2014–2023; FY2021 is OCR
+    and skipped). E.2 correspondence is deliberately not mapped: FY2017 reclassified it.
+  - Per household per year from FY2024/FY2025 E.2 (2014, 2015, 2019, 2020, 2024, 2025):
+    `household-mail-per-household`, `correspondence-`, `transactions-`, `advertising-`,
+    `packages-` and `periodicals-per-household`. FY2025 A-3/A-6 add the 16 household groups for
+    correspondence and transactions (their all-households rows match E.2).
+  - `ads-received-per-household`: FY2025 A-11, all households plus 16 groups. It counts
+    First-Class and Marketing Mail ads only, so it is narrower than E.2's advertising market
+    (643.6 vs. 658.9 in 2015) and is kept as its own metric.
+  - The loader skips "% change" columns after the years, only when the header names exactly that
+    many of them.
+- **All 869 loaded observations are verified** against their source PDF page by `verify_pdfs`
+  (it compares the extracted cell, so converted values are checked too, and it handles "% change"
+  columns and labels that wrap onto two lines). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
 - **Tests:** 89 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
@@ -399,7 +416,7 @@ analyst should be able to:
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
   - On the Observation list, `verified` is editable, and the `notes` field explains each check.
-- **Missing:** any AI (step 4).
+- **Missing:** any AI (step 4, deferred).
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -430,17 +447,16 @@ The layer is populated from `dashboard/metric_sources.py`, a mapping from `sourc
 (+ nth)` to metric (+ segment). Years are read from each table's own header.
 
 **Done:**
-- First-Class Mail received, total and by market
-- Bills paid by mail
+- First-Class Mail received and sent, total and by market
+- Bills paid by mail and electronically
+- Advertising totals and Marketing Mail ads
+- All markets, packages and periodicals (Table E.2), in volume and per household
+- FY2025 household groups for bills, correspondence, transactions and ads received
 
 **Still to map:**
-- First-Class Mail sent (A8-3 / A-3)
-- Electronic bill-payment share (A8-6 "Total Electronic")
-- Advertising totals (A8-12)
-- Periodicals and packages
-
-Packages and periodicals are **not in the A8 appendix**. Take them from chapter 7 and 6 tables
-and from the FY2024/2025 A-x demographic tables.
+- Demographic groups before FY2025 (chapter tables by income, age, education; old age bands
+  are separate segments).
+- Package and periodical detail from chapters 6 and 7.
 
 A smaller set of correct series is worth more than full coverage. Spot-check the mapped values
 against the PDFs in `docs/`, especially around restatements and methodology breaks.
@@ -499,14 +515,13 @@ demoable dashboard. Write tests with each step.
    rolling-origin backtest; 80%/95% intervals from backtest errors; shown on the Trends chart.
    - Possible follow-ups: forecasts for demographic segments once they have 8+ consecutive
      years, and per-line projections on the category chart.
-4. **AI summaries.**
+4. **AI summaries. Deferred** (team decision, 2026-10-31): skipped for now; return to it later.
    - Claude-generated, grounded in the observations and the forecast output.
    - A number-check against the database, cached in `Insight`, labeled as AI-generated.
-   - *This is the end-to-end demo.*
-5. **Broaden.**
-   - The series under "Still to map," plus more demographic `Segment`s (a slide requirement).
-     Keep old and new age bands as separate segments.
-   - An Overview page with KPI cards and the AI summary.
+5. **Broaden.** (in progress on the `broaden` branch)
+   - ~~The series under "Still to map"~~ **done**: 23 metrics, 869 verified observations, FY2025
+     household groups for four of them.
+   - An Overview page with KPI cards (the AI summary waits for step 4).
    - A Year page, and CSV export.
 6. **Table browser and raw-data cleanup.** Titles, table numbers, display column names
    (`tidy.py`), layouts re-read from the PDF (`pdftables.py`), and "From the report" excerpts

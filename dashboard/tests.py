@@ -54,6 +54,9 @@ class ConversionTests(SimpleTestCase):
     def test_per_week_to_per_year(self):
         self.assertEqual(CONVERSIONS["per_household_week", "per_household_year"](2.5), 130)
 
+    def test_billions_to_millions(self):
+        self.assertEqual(CONVERSIONS["billions", "millions"](4.9), 4900)
+
 
 class MappingTests(SimpleTestCase):
     def test_sources_reference_declared_metrics(self):
@@ -92,6 +95,20 @@ class PdfTextTests(SimpleTestCase):
         self.assertIsNone(found)
         self.assertIn("4 numbers for 3 years", problem)
 
+    def test_change_columns_after_the_years_are_ignored(self):
+        page = "\n".join([
+            "Market 2014 2019 2024 Change  2014 – 2024 Change 2019 - 2024",
+            "Packages 28.3 37.7 51.8 83% 37%",
+            "  2015 2020 2025 % change 2015-2025 % change 2020-2025",
+        ])
+        found, _ = verify_pdfs.page_series(page, "Packages", 1)
+        self.assertEqual(found, {2014: "28.3", 2019: "37.7", 2024: "51.8"})
+
+    def test_wrapped_label(self):
+        page = "2015 2020 2025\nSome college or technical \nschool graduate 139.5 116.3 102.7 -26% -12%"
+        found, _ = verify_pdfs.page_series(page, "Some college or technical school graduate", 1)
+        self.assertEqual(found, {2015: "139.5", 2020: "116.3", 2025: "102.7"})
+
     def test_note_keeps_reviewer_text(self):
         notes = verify_pdfs.set_note("Checked by Sam", "[pdf-check] old")
         notes = verify_pdfs.set_note(notes, "matches docs/2023.pdf p.77 (35,729)")
@@ -116,6 +133,30 @@ class LoadMetricsTests(TestCase):
         self.assertEqual(self.preferred("bills-paid-by-mail-share", 2025).value, 14)
         self.assertEqual(self.preferred("fcm-received-total", 2023).value, 32228)
         self.assertEqual(self.preferred("fcm-received-per-household", 2024).value, 221.7)
+
+    def test_known_values_of_the_broadened_series(self):
+        self.assertEqual(self.preferred("fcm-sent-total", 2023).value, 4637)
+        self.assertEqual(self.preferred("fcm-sent-correspondence", 2023).value, 2305)  # first "Total"
+        self.assertEqual(self.preferred("fcm-sent-transactions", 2023).value, 2097)  # second "Total"
+        self.assertEqual(self.preferred("bills-paid-electronic-share", 2000).value, 11)
+        self.assertEqual(self.preferred("bills-paid-electronic-share", 2024).value, 85)  # FY2024 A-6
+        self.assertEqual(self.preferred("advertising-received-total", 2023).value, 57286)
+        self.assertEqual(self.preferred("packages-volume", 2023).value, 6700)  # 6.7 billion
+        self.assertEqual(self.preferred("packages-volume", 2023).raw_value, "6.7")
+        self.assertEqual(self.preferred("household-mail-per-household", 2025).value, 637.3)
+
+    def test_change_columns_skipped_and_fy2025_groups_loaded(self):
+        packages = {o.fiscal_year: o.value for o in Observation.objects.filter(
+            metric__slug="packages-per-household", is_preferred=True)}
+        self.assertEqual(packages, {2014: 28.3, 2015: 32.1, 2019: 37.7, 2020: 47.0, 2024: 51.8, 2025: 41.5})
+        under_45 = Observation.objects.get(metric__slug="correspondence-per-household", fiscal_year=2025,
+                                           segment__value="Under 45", is_preferred=True)
+        self.assertEqual(under_45.value, 71.5)
+        groups = Observation.objects.filter(metric__slug="transactions-per-household", fiscal_year=2025,
+                                            is_preferred=True)
+        self.assertEqual(groups.count(), 17)  # all households + 16 groups
+        # All-households values come from E.2, which the demographic table matches.
+        self.assertEqual(self.preferred("transactions-per-household", 2025).source_table.source_id, "2025-p007-2")
 
     def test_repeated_label_uses_occurrence(self):
         # A8-1 has two rows labelled "Total": correspondence first, transactions second.
@@ -208,7 +249,7 @@ class RebuildDbTests(TestCase):
         from django.contrib.auth.models import User
         call_command("rebuild_db", skip_verify=True, stdout=StringIO())
         self.assertEqual(Table.objects.count(), 1095)
-        self.assertEqual(Observation.objects.count(), 313)
+        self.assertEqual(Observation.objects.count(), 869)
 
         User.objects.create_superuser("me", "me@example.com", "pw")
         obs = Observation.objects.filter(metric__slug="fcm-received-total", is_preferred=True).first()

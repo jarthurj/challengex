@@ -19,9 +19,15 @@ def norm(text):
 
 
 def year_header(text):
-    """Years from the first line that is (almost) only years."""
+    """Years from the first line that is (almost) only years.
+
+    From FY2024 the years are followed by "% change 2015-2025" columns; only the years before the
+    first "change"/"%" count.
+    """
     for line in text.splitlines():
         toks = norm(line).split()
+        cut = next((i for i, t in enumerate(toks) if t.lower() in ("change", "%", "%change")), len(toks))
+        toks = toks[:cut]
         years = [int(t) for t in toks if YEAR.fullmatch(t)]
         if len(years) >= 2 and len(years) >= len(toks) - 2:
             return years
@@ -35,7 +41,12 @@ def label_rows(text, label):
     """
     want = label.lower().replace(" ", "")
     hits = []
-    for line in text.splitlines():
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        # A label that wraps ("Some college or technical" / "school graduate 139.5 ...") is tried
+        # joined with the next line; the line itself then has no numbers, so it can't match alone.
+        if index + 1 < len(lines) and not re.search(r"\d", line):
+            line = f"{line} {lines[index + 1]}"
         n = norm(line)
         if not n.lower().replace(" ", "").startswith(want):
             continue
@@ -64,6 +75,8 @@ def page_series(text, label, nth):
     if len(rows) < nth:
         return None, f"row {label!r} not found in the PDF text"
     nums = rows[nth - 1]
+    if len(nums) > len(years) and all(t.endswith("%") for t in nums[len(years):]):
+        nums = nums[:len(years)]  # trailing "% change" columns
     if len(nums) != len(years):
         return None, f"row {label!r} has {len(nums)} numbers for {len(years)} years in the PDF text"
     return dict(zip(years, nums)), None
@@ -110,7 +123,9 @@ class Command(BaseCommand):
                         o.verified = False
                         o.notes = set_note(o.notes, f"not checked: {problem} ({where}); check by eye")
                         counts["unchecked"] += 1
-                    elif to_num(found.get(o.fiscal_year, "")) == o.value:
+                    # Compare with the extracted cell, not o.value, which may be converted
+                    # (billions -> millions); the conversion itself is tested separately.
+                    elif to_num(found.get(o.fiscal_year, "")) == to_num(o.raw_value):
                         o.verified = True
                         o.notes = set_note(o.notes, f"matches {where} ({found[o.fiscal_year]})")
                         counts["match"] += 1

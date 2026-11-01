@@ -7,6 +7,23 @@ USPS's own table, not an extraction error.
 
 Checked 2026-10-27, against the six metrics in `dashboard/metric_sources.py`.
 
+**Update 2026-10-31: 23 metrics, 869 values, all 869 match their source page** (`python manage.py
+verify_pdfs`: 869 match, 0 mismatch, 0 unchecked). The new series come from A8-3/A-3 (First-Class
+Mail sent), A8-6/A-6 (bills paid electronically), A8-12 (advertising), Table E.2 (all markets,
+packages, periodicals; in billions, and per household from FY2024), and FY2025 A-3, A-6 and A-11
+(household groups). Cross-report checks done while mapping them:
+
+| Check | Result |
+|---|---|
+| A8-3 sent totals and splits, FY2020 vs. FY2023 | identical for 2010–2019; 2020 restated in FY2023 |
+| A8-6 "Total Electronic" (FY2023) vs. A-6 "Electronic (including Internet)" (FY2024) | identical for 2014–2023 |
+| A8-12 total and Marketing Mail ads, FY2020 vs. FY2023 | identical for 2010–2019 |
+| FY2025 A-3 / A-6 "All Households" vs. FY2025 E.2 per household | identical (2015, 2020, 2025) |
+| FY2025 A-11 "All Households" vs. E.2 advertising | differ (643.6 vs. 658.9 in 2015): A-11 is First-Class and Marketing Mail ads only, so it is a separate metric |
+| E.2 correspondence in billions, FY2016 vs. FY2017 | differ (13.9 vs. 16.3 for 2015): reclassified, so not mapped |
+
+The rest of this document describes the original six-metric check.
+
 ## Headline numbers
 
 | Check | Result |
