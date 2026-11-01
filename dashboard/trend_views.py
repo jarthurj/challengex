@@ -8,6 +8,7 @@ from .models import MethodologyBreak, Metric, Observation, Segment
 from .overview_views import csv_response, fiscal_years, observation_row
 
 BAND = "rgba(90, 90, 90, 0.18)"
+BAND_EDGE = "#767676"  # 4.5:1 on white
 
 CATEGORY_SLUGS = [
     "fcm-received-correspondence",
@@ -163,13 +164,15 @@ def add_projection(years, datasets, projection, last_point):
     # The band starts at the last published value so it opens out from the line.
     lo = pad + [last_value] + [p["lo80"] for p in points]
     hi = pad + [last_value] + [p["hi80"] for p in points]
-    common = {"pointRadius": 0, "borderWidth": 0, "tension": 0, "spanGaps": False,
-              "sources": [None] * len(years)}
+    # The light fill alone is below 3:1 against white, so the band's edges get a thin line that
+    # meets it (WCAG 1.4.11); the same intervals are also in the projection table.
+    common = {"pointRadius": 0, "borderWidth": 1, "borderColor": BAND_EDGE, "tension": 0,
+              "spanGaps": False, "sources": [None] * len(years)}
     datasets += [
         {**common, "label": "80% prediction interval (lower)", "data": lo, "fill": False,
-         "legendHidden": True, "backgroundColor": BAND, "borderColor": BAND},
+         "legendHidden": True, "backgroundColor": BAND},
         {**common, "label": "80% prediction interval", "data": hi, "fill": "-1",
-         "backgroundColor": BAND, "borderColor": BAND},
+         "backgroundColor": BAND},
         {**common, "label": f"Projection ({projection['model_name']})",
          "data": pad + [last_value] + [p["value"] for p in points],
          "borderColor": "#5a5a5a", "backgroundColor": "#5a5a5a", "borderDash": [6, 4],

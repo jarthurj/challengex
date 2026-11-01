@@ -1,4 +1,6 @@
-# Only for regenerating table_context.json (manage.py extract_context); the site doesn't need it.
-# PyMuPDF is AGPL-licensed, so it stays out of requirements.txt.
+# Developer tools; the site itself only needs requirements.txt.
 -r requirements.txt
+# Regenerates table_context.json (manage.py extract_context). AGPL-licensed, so kept out of requirements.txt.
 pymupdf==1.28.2
+# Dependency vulnerability scan: python -m pip_audit -r requirements.txt -r requirements-dev.txt
+pip-audit==2.10.1

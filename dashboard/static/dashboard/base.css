@@ -1,0 +1,49 @@
+/* Shared accessibility basics for every dashboard page (WCAG 2.1 AA). */
+
+/* "Skip to main content": hidden until a keyboard user tabs to it (2.4.1 Bypass Blocks). */
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    padding: 0.5rem 0.8rem;
+    background: #fff;
+    color: #1756a9;
+    border: 2px solid #1756a9;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* A clear focus ring on everything focusable (2.4.7 Focus Visible); 3:1 against white. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+    outline: 3px solid #1756a9;
+    outline-offset: 2px;
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.main-nav a[aria-current="page"] {
+    font-weight: 700;
+    text-decoration: none;
+    color: #222;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
