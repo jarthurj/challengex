@@ -332,10 +332,13 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`)
+## Current code state (`main`, plus the `table-browser` branch awaiting review)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
-    `data = {col: {"raw": str, "num": float|None}}`).
+    `data = {col: {"raw": str, "num": float|None}}`). `load_tables` also sets each table's
+    `section` (report chapter: E, 1-7, A, B, or Appendix C survey form; chapters mean the same
+    topic in every report) and `needs_review` / `review_reason` (OCR values, chart data, or
+    "Column N" headers in what the table page shows), via `dashboard/display.py`.
   - **Metric layer:** `Metric`, `Segment`, `Observation`, and `MethodologyBreak`. A break with
     no metrics attached applies to every metric.
 - **`dashboard/metric_sources.py`** is the curated mapping that `load_metrics` reads:
@@ -370,8 +373,9 @@ analyst should be able to:
   columns and labels that wrap onto two lines). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 103 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
-  page), `dashboard/test_overview.py` (Overview cards and market mix, Year page, CSV export
+- **Tests:** 113 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+  page), `dashboard/test_browser.py` (sections, review reasons, browser filters, survey forms
+  hidden, the table page's review notice and PDF link), `dashboard/test_overview.py` (Overview cards and market mix, Year page, CSV export
   and its formula-injection guard), `dashboard/test_forecast.py` (models, backtest, fit window and breaks, intervals, the
   projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
   transcriptions, `table_context.json`, re-read checks, and the table page).
@@ -386,11 +390,16 @@ analyst should be able to:
   - column-name tidying (`tidy.py`) and the table page in tidy and raw modes
   - the pinned, integrity-checked Chart.js script on the Trends page
 - **`views.py`:**
-  - `table_list` searches by title, ID, or number and filters by one or more report years
-    (checkboxes).
-  - `table_detail` renders one table with tidied column names (`dashboard/tidy.py`), or the
-    layout re-read from the PDF when `table_context.json` has one, plus a "From the report" box
-    and the caption's units. `?raw=1` shows the extraction as stored.
+  - `table_list` searches by title, ID, or number and filters by report years (checkboxes),
+    topic, OCR and review status; Appendix C survey forms are hidden unless asked for. Each row
+    shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored.
+  - `source_pdf` serves `docs/<year>.pdf` (git-ignored, so only where the PDFs are present);
+    the table page links to `/dashboard/reports/<year>.pdf#page=N`, or names the page when the
+    PDF isn't there.
+  - `table_detail` renders one table through `display.display_table()`: the layout re-read
+    from the PDF when `table_context.json` has one, otherwise tidied column names
+    (`dashboard/tidy.py`). Plus the review notice with its reasons, the topic, the source PDF
+    link, a "From the report" box and the caption's units. `?raw=1` shows the extraction as stored.
 - **`trend_views.py` (Trends page, `/dashboard/trends/`):**
   - Pick a metric (or "First-Class Mail received by category") and a household segment.
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
@@ -540,11 +549,11 @@ demoable dashboard. Write tests with each step.
    - ~~A Year page, and CSV export~~ **done**.
    - Still open: demographic groups before FY2025, and package/periodical detail (see
      "Still to map").
-6. **Table browser and raw-data cleanup.** Titles, table numbers, display column names
-   (`tidy.py`), layouts re-read from the PDF (`pdftables.py`), and "From the report" excerpts
-   (`context.py`) are done. Remaining, in `load_tables` and the browser:
-   - Hide the Appendix C survey-form "tables".
-   - Add a `needs_review` flag, plus a badge, and market and OCR filters in the browser.
+6. ~~**Table browser and raw-data cleanup.**~~ **Done** on the `table-browser` branch (awaiting
+   review): titles, numbers, column names, PDF re-reads and excerpts earlier; now survey forms
+   hidden, `needs_review` flag and badge, topic and OCR filters, and source PDF links. 208 of
+   the 1,046 data tables are flagged (111 OCR, 89 chart data, 116 with "Column N"; some have
+   more than one reason).
 7. **Data repairs, as needed.** Only if a mapped series needs them:
    - The FY2021 chapter tables. They are OCR'd from scanned pages; the appendix is fine.
    - The FY2019 appendix, which is images. Read it from rendered pages.

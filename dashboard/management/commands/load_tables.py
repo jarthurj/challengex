@@ -5,10 +5,8 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-
-
-
-from dashboard.models import Row, Table  # change "reports" to your app name
+from dashboard.display import cells, display_table, review_reasons, section_of
+from dashboard.models import Row, Table
 
 
 def to_num(raw):
@@ -58,20 +56,24 @@ class Command(BaseCommand):
         for t in items:
             cols = unique_columns(t["columns"])
             fixed = titles.get(t["id"], {})
+            number = fixed.get("table_number", t["table_number"])
+            title = fixed.get("title", t["title"])
+            table_rows = [{c: {"raw": v, "num": to_num(v)} for c, v in zip(cols, r)} for r in t["rows"]]
+            # Review status describes what the table page shows (the same display_table call).
+            tidied, _ = display_table(t["id"], cols, [cells(cols, data) for data in table_rows], title)
+            reasons = review_reasons(t["ocr"], number, tidied["headers"])
             table, _ = Table.objects.update_or_create(
                 source_id=t["id"],
                 defaults={
                     "year": t["year"], "page": t["page"],
-                    "table_number": fixed.get("table_number", t["table_number"]),
-                    "title": fixed.get("title", t["title"]),
+                    "table_number": number, "title": title,
                     "columns": cols, "ocr": t["ocr"],
+                    "section": section_of(number, title),
+                    "needs_review": bool(reasons), "review_reason": "\n".join(reasons),
                 },
             )
-            for pos, r in enumerate(t["rows"]):
-                rows.append(Row(
-                    table=table, position=pos, label=r[0],
-                    data={c: {"raw": v, "num": to_num(v)} for c, v in zip(cols, r)},
-                ))
+            for pos, (r, data) in enumerate(zip(t["rows"], table_rows)):
+                rows.append(Row(table=table, position=pos, label=r[0], data=data))
         Row.objects.bulk_create(rows, batch_size=1000)
         self.stdout.write(self.style.SUCCESS(
             f"Loaded {len(items)} tables, {len(rows)} rows ({len(titles)} titles from table_titles.json)"
