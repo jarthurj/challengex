@@ -563,42 +563,75 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
   from the returned rows.
 
 ## Next steps (priority order)
-The plan is to build one thin end-to-end slice first, then broaden it. Steps 1–4 produce a
-demoable dashboard. Write tests with each step.
+Updated 2026-10-31. Write tests with every change, keep `verify_pdfs` at 0 mismatches, and update
+this file when a step finishes.
 
-1. ~~**Metric layer for a few series.**~~ **Done and verified.** See "Current code state" and
-   `VERIFICATION.md`.
-2. ~~**Trends page.**~~ **Done** (from the `year-filter` branch). See `trend_views.py` under
-   "Current code state."
-3. ~~**Forecasts.**~~ **Done** (`dashboard/forecast.py`). Naive, drift, linear and Holt, chosen by
-   rolling-origin backtest; 80%/95% intervals from backtest errors; shown on the Trends chart.
-   - Possible follow-ups: forecasts for demographic segments once they have 8+ consecutive
-     years, and per-line projections on the category chart.
-4. **AI summaries. Deferred** (team decision, 2026-10-31): skipped for now; return to it later.
-   - Claude-generated, grounded in the observations and the forecast output.
-   - A number-check against the database, cached in `Insight`, labeled as AI-generated.
-5. ~~**Broaden.**~~ **Done.**
-   - ~~The series under "Still to map"~~ **done**: 23 metrics, 869 verified observations, FY2025
-     household groups for four of them.
-   - ~~An Overview page with KPI cards~~ **done** (the AI summary waits for step 4).
-   - ~~A Year page, and CSV export~~ **done**.
-   - Still open: demographic groups before FY2025, and package/periodical detail (see
-     "Still to map").
-6. ~~**Table browser and raw-data cleanup.**~~ **Done**
-   (titles, numbers, column names, PDF re-reads and excerpts earlier; now survey forms
-   hidden, `needs_review` flag and badge, topic and OCR filters, and source PDF links). 208 of
-   the 1,046 data tables are flagged (111 OCR, 89 chart data, 116 with "Column N"; some have
-   more than one reason).
-7. **Data repairs, as needed. Checked 2026-10-31: none needed now.** Every annual series is
-   complete from first to last year, none uses an OCR table, and the per-household gaps are
-   years USPS never published. Revisit only if a newly mapped series needs one of these:
-   - The FY2021 chapter tables. They are OCR'd from scanned pages; the appendix is fine.
-   - The FY2019 appendix, which is images. Read it from rendered pages.
-   - FY2018 A8-10.
-   - Older PDFs: FY2003-FY2015 are now extracted (`tables_2000_2015.json`); FY2000, FY2001 and
-     FY2004 would need OCR.
-8. ~~**Polish and hardening.**~~ **Done:**
-   - ~~Accessibility pass (WCAG 2.1 AA)~~ done; see "Accessibility" under Current code state.
-   - ~~`pip-audit`~~ done; clean after the pypdf upgrade.
-   - ~~Demo script~~ done: `DEMO.md` (7-minute walk-through, setup checklist, likely questions).
-   - "Ask the data" box (optional): waits for the AI step (4).
+### Done
+1. **Metric layer:** 23 metrics, 869 observations, all verified against their PDF pages.
+2. **Trends page:** chart, methodology breaks, values and sources table.
+3. **Forecasts:** naive, drift, linear and Holt, chosen by backtest; 80%/95% bands (`forecast.py`).
+5. **Broaden:** new series, FY2025 household groups, Overview, Year page, CSV export.
+6. **Table browser:** titles, column repair, PDF re-reads, "From the report" excerpts, topics,
+   needs-review flags, OCR filter, source PDF links.
+7. **Data repairs:** checked; none needed for the current series.
+8. **Polish:** WCAG 2.1 AA pass, `pip-audit` clean, `DEMO.md`.
+- **FY2003–FY2015 tables extracted** (`tables_2000_2015.json`, 1,933 tables; see Source material).
+
+### To do
+1. **Before the demo** (whoever presents)
+   - Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
+     `python manage.py rebuild_db` (expect 869 match, 0 mismatch), tests pass, PDFs in `docs/`,
+     internet for the Chart.js CDN.
+   - Rehearse the 7-minute walk-through once with the real data.
+
+2. **Use the FY2003–FY2015 tables.** They can be browsed but feed no chart yet.
+   - **Demographic trends before FY2025** (a slide requirement). Map the yearly chapter tables
+     "by income", "by age", "by education" (e.g. FY2003 Table 5.4, Transactions Mail Received by
+     Income and Age) into `metric_sources.py` as segments. Keep the old age bands (Under 35 /
+     35–54 / 55+) as segments separate from the FY2025 bands, and map only tables whose `check`
+     is "two readers agree". Run `verify_pdfs` after mapping and get it to 0 mismatches (it
+     hasn't been tried on the older reports' layouts yet).
+   - **Longer packages, periodicals and all-mail series.** The market table (Table E.2,
+     billions) is in every report from FY2005 (FY2003's E.2 is a different table); adding them
+     extends `packages-volume`, `periodicals-volume` and `household-mail-total` back to about
+     2003. FY2007 onward are confirmed by both readers; check FY2005–FY2006 by eye. Compare
+     overlapping years first: E.2 correspondence was reclassified in FY2017, so check the other
+     markets before mixing reports.
+   - **Titles and excerpts for the new tables.** Run them through `extract_titles` (corrected
+     titles and numbers) and `extract_context` ("From the report" quotes). Both currently read
+     only `tables.json`.
+   - **Review the 671 flagged older tables.** Most are "one reader" (the values are there but
+     headings can be shifted by merged cells). Improving `extract_old_reports` for merged header
+     cells would clear many of them; check a sample by eye first.
+
+3. **AI summaries (step 4, deferred by the team on 2026-10-31).** When the team picks it up:
+   - Design: an `Insight` model; a `generate_insights` command run offline (pages never call the
+     API); Claude sees only one series' values, sources, precomputed changes, projection and
+     methodology notes; structured JSON output where every statement cites its fiscal years.
+   - Safeguards: an automated check that every number in the text matches the input (failures
+     are stored but never shown); an "AI-generated, not yet reviewed" label until a person ticks
+     `reviewed` in the admin; model ID, prompt version and input hash stored; a small eval set
+     of known facts; `--max-calls` cost cap and `--dry-run`.
+   - Needs `ANTHROPIC_API_KEY` in `.env` (git-ignored) and the `anthropic` package pinned in
+     `requirements.txt`. Then the optional "Ask the data" box, with its input treated as untrusted.
+
+4. **Forecast follow-ups** (after item 2 adds longer demographic series)
+   - Projections for household groups once they have 8 or more consecutive years.
+   - One projection per line on the "by category" chart.
+
+5. **Data gaps (low priority)**
+   - FY2000, FY2001 and FY2004 are scanned; extracting them needs OCR, and every value would
+     have to be checked by eye. Their key series are already in the FY2020 appendix (from 2000).
+   - FY2002 and FY2011 PDFs are missing from `docs/`; request them from USPS if needed.
+   - The FY2021 chapter tables are OCR'd and wrong; the FY2019 appendix is images; FY2018 lacks
+     A8-10. Only repair these if a mapped series needs them (none does now).
+   - About 418 tables still show some "Column N" headers (116 from FY2016–FY2025, 302 from the
+     older reports).
+
+6. **Upkeep**
+   - Re-run `python -m pip_audit -r requirements.txt -r requirements-dev.txt` before the demo and
+     after any dependency change.
+   - Chart.js is pinned at 4.5.1 with an SRI hash; to upgrade, change both the URL and the hash.
+   - Only if the dashboard is ever deployed: set `DEBUG=False`, read `SECRET_KEY` from the
+     environment, set `ALLOWED_HOSTS`, serve over HTTPS, and put authentication in front of the
+     admin (see the Security quality bar).
