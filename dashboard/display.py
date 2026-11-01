@@ -36,14 +36,26 @@ def table_context(source_id):
         return {}
 
 
-def section_of(table_number, title):
+def chapter_of(table_number):
+    match = re.match(r"(?:Table|Figure)\s+(?:([A-Z])\d*[.\-]|(\d+)\.)", table_number)  # A8-1, A-1, E.2, 7.4
+    return (match.group(1) or match.group(2)) if match else None
+
+
+# Reports whose chapters are numbered differently. Every report from FY2005 to FY2025 follows
+# CHAPTER_SECTIONS (checked by voting on table-title keywords per chapter); FY2003 adds a mail-
+# volume chapter, shifting the rest by one (read from its table titles).
+REPORT_CHAPTERS = {
+    2003: {"1": "volumes", "2": "volumes", "3": "demographics", "4": "correspondence", "5": "transactions",
+           "6": "advertising", "7": "periodicals", "8": "packages", "9": "methodology"},
+}
+
+
+def section_of(table_number, title, year=None):
     """The report section a table belongs to, from its corrected number ("Table 7.4" -> packages)."""
     if title.startswith(SURVEY_FORM):
         return "survey_form"
-    match = re.match(r"(?:Table|Figure)\s+(?:([A-Z])\d*[.\-]|(\d+)\.)", table_number)  # A8-1, A-1, E.2, 7.4
-    if not match:
-        return "other"
-    return CHAPTER_SECTIONS.get(match.group(1) or match.group(2), "other")
+    chapter = chapter_of(table_number)
+    return REPORT_CHAPTERS.get(year, {}).get(chapter) or CHAPTER_SECTIONS.get(chapter, "other")
 
 
 def join_wrapped_labels(tidied, joins):

@@ -172,6 +172,9 @@ analyst should be able to:
     PyMuPDF is AGPL, so it isn't in `requirements.txt`). Rerun it after changing `tables.json`,
     `table_titles.json`, `context.py`, `pdftables.py`, or `fy2021_quotes.py`. The output is
     committed; the site only reads the JSON.
+  - `python manage.py extract_old_reports` regenerates `tables_2000_2015.json` from the FY2003-FY2015
+    PDFs (about 8 minutes; needs `docs/` and PyMuPDF). `rebuild_db` loads that file after
+    `tables.json` when it exists. The output is committed.
 - Run the tests: `python manage.py test dashboard`. They load the real `tables.json`, and they
   don't need `docs/`.
 - See `VERIFICATION.md` for the full check of the loaded data against every file in `docs/`.
@@ -197,6 +200,24 @@ analyst should be able to:
     label).
   - Tables per year: 2016: 139, 2017: 127, 2018: 114, 2019: 96, 2020: 114, 2021: 128,
     2022: 115, 2023: 115, 2024: 79, 2025: 68.
+- **`tables_2000_2015.json`** holds 1,933 tables and 22,639 rows from the **FY2003–FY2015** reports
+  (FY2003, 2005–2010, 2012–2015), extracted by `manage.py extract_old_reports`, in the same format
+  plus two check fields:
+  - Each table is a ruled grid found by PyMuPDF under a "Table X" caption (title, units, years
+    and data source come from the caption lines). It is re-read independently by
+    `pdftables.py` (`check`: "two readers agree" when every number matches in order), and its
+    numbers are looked up in the page text read by pypdf (`text_check`).
+  - 1,423 tables pass all three checks; 450 have only one reader; 82 miss some numbers in the
+    pypdf text (often spacing quirks like "201 4"). `load_tables` flags both kinds as
+    needs-review. Spot-checked tables matched their pages; one-reader tables can have headings
+    shifted by a merged cell.
+  - Not extracted: **FY2000 and FY2001** are scanned page images with a hidden, error-filled OCR
+    text layer ("Periodicol", "Moil") and no table lines; **FY2004** is fully scanned. FY2002 and
+    FY2011 are missing. The key 2000-2002 series are already in the FY2020 appendix.
+  - **FY2003 numbers its chapters differently** (5 = transactions, 8 = packages, 9 = methodology);
+    `display.REPORT_CHAPTERS` maps it. FY2005-FY2025 share one layout (checked by keyword vote).
+  - These tables aren't used by any metric yet, and they have no corrected titles
+    (`table_titles.json`) or "From the report" excerpts.
 - **"15+ years" is already covered by the Appendix A trend tables** (A8-x before FY2024, A-x
   from FY2024). None of them are OCR'd:
   - The FY2020 report's A8 tables cover **2000–2020**. For example, `2020-p072-1` is A8-1,
@@ -332,7 +353,7 @@ analyst should be able to:
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
 
-## Current code state (`main`)
+## Current code state (`main`, plus the `polish` and `extract-2000-2015` branches awaiting review)
 - **`dashboard/models.py`:**
   - **Raw layer:** `Table` (metadata plus a `columns` JSON field) and `Row` (`label`, plus
     `data = {col: {"raw": str, "num": float|None}}`). `load_tables` also sets each table's
@@ -373,8 +394,9 @@ analyst should be able to:
   columns and labels that wrap onto two lines). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 113 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
-  page), `dashboard/test_browser.py` (sections, review reasons, browser filters, survey forms
+- **Tests:** 120 in total (with `polish`, 125), in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+  page), `dashboard/test_old_reports.py` (FY2003-FY2015 extraction helpers, loading two table
+  files), `dashboard/test_browser.py` (sections incl. FY2003, review reasons, browser filters, survey forms
   hidden, the table page's review notice and PDF link), `dashboard/test_overview.py` (Overview cards and market mix, Year page, CSV export
   and its formula-injection guard), `dashboard/test_forecast.py` (models, backtest, fit window and breaks, intervals, the
   projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
@@ -558,7 +580,8 @@ demoable dashboard. Write tests with each step.
    - The FY2021 chapter tables. They are OCR'd from scanned pages; the appendix is fine.
    - The FY2019 appendix, which is images. Read it from rendered pages.
    - FY2018 A8-10.
-   - Older PDFs. FY2004 is scanned.
+   - Older PDFs: FY2003-FY2015 are now extracted (`tables_2000_2015.json`); FY2000, FY2001 and
+     FY2004 would need OCR.
 8. **Polish and hardening.**
    - Accessibility pass (WCAG 2.1 AA).
    - `pip-audit`.

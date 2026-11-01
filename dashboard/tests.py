@@ -1,3 +1,4 @@
+import json
 from collections import Counter
 from io import StringIO
 
@@ -248,7 +249,9 @@ class RebuildDbTests(TestCase):
     def test_rebuild_fills_an_empty_database_and_keeps_local_work(self):
         from django.contrib.auth.models import User
         call_command("rebuild_db", skip_verify=True, stdout=StringIO())
-        self.assertEqual(Table.objects.count(), 1095)
+        old_reports = settings.BASE_DIR / "tables_2000_2015.json"  # loaded too when present
+        extra = len(json.loads(old_reports.read_text(encoding="utf-8"))) if old_reports.exists() else 0
+        self.assertEqual(Table.objects.count(), 1095 + extra)
         self.assertEqual(Observation.objects.count(), 869)
 
         User.objects.create_superuser("me", "me@example.com", "pw")

@@ -17,13 +17,16 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--tables", default=str(settings.BASE_DIR / "tables.json"))
+        parser.add_argument("--old-tables", default=str(settings.BASE_DIR / "tables_2000_2015.json"),
+                            help="FY2000-FY2015 tables from extract_old_reports; loaded if present.")
         parser.add_argument("--docs", default=str(settings.BASE_DIR / "docs"))
         parser.add_argument("--skip-verify", action="store_true", help="Don't check values against the PDFs.")
 
     def handle(self, *args, **opts):
         steps = [
             ("Creating/updating database tables (migrate)", "migrate", [], {"interactive": False}),
-            ("Loading extracted tables (load_tables)", "load_tables", [opts["tables"]], {}),
+            ("Loading extracted tables (load_tables)", "load_tables",
+             [opts["tables"]] + ([opts["old_tables"]] if Path(opts["old_tables"]).is_file() else []), {}),
             ("Building metrics (load_metrics)", "load_metrics", [], {}),
         ]
         for i, (label, command, args, kwargs) in enumerate(steps, 1):

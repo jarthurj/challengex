@@ -33,12 +33,14 @@ class Command(BaseCommand):
     help = "Load tables.json into Table and Row"
 
     def add_arguments(self, parser):
-        parser.add_argument("path")
+        parser.add_argument("paths", nargs="+", help="tables.json, and optionally tables_2000_2015.json")
 
     @transaction.atomic
     def handle(self, *args, **opts):
-        with open(opts["path"], encoding="utf-8") as f:
-            items = json.load(f)
+        items = []
+        for path in opts["paths"]:
+            with open(path, encoding="utf-8") as f:
+                items += json.load(f)
 
         # Titles and numbers recovered from the PDFs by `manage.py extract_titles`.
         titles = {}
@@ -62,13 +64,18 @@ class Command(BaseCommand):
             # Review status describes what the table page shows (the same display_table call).
             tidied, _ = display_table(t["id"], cols, [cells(cols, data) for data in table_rows], title)
             reasons = review_reasons(t["ocr"], number, tidied["headers"])
+            if t.get("check") == "one reader":  # FY2000-FY2015 extraction (extract_old_reports)
+                reasons.append("Only one of the two extraction methods could read this table; "
+                               "its layout may be off.")
+            if t.get("text_check", "").endswith("not found in the page text"):
+                reasons.append(f"Cross-check: {t['text_check']} (often a spacing quirk; check by eye).")
             table, _ = Table.objects.update_or_create(
                 source_id=t["id"],
                 defaults={
                     "year": t["year"], "page": t["page"],
                     "table_number": number, "title": title,
                     "columns": cols, "ocr": t["ocr"],
-                    "section": section_of(number, title),
+                    "section": section_of(number, title, t["year"]),
                     "needs_review": bool(reasons), "review_reason": "\n".join(reasons),
                 },
             )
@@ -77,5 +84,5 @@ class Command(BaseCommand):
         Row.objects.bulk_create(rows, batch_size=1000)
         self.stdout.write(self.style.SUCCESS(
             f"Loaded {len(items)} tables, {len(rows)} rows ({len(titles)} titles from table_titles.json)"
-            + (f"; removed {removed} objects no longer in {opts['path']}" if removed else "")
+            + (f"; removed {removed} objects no longer in {', '.join(opts['paths'])}" if removed else "")
         ))
