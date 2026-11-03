@@ -60,9 +60,8 @@ def trend_context(request):
         return context
 
     preferred = Observation.objects.filter(metric__in=chosen, is_preferred=True)
-    segments = list(Segment.objects.filter(
-        pk__in=preferred.values("segment_id")
-    ).order_by("dimension", "position", "value"))
+    segments = sorted(Segment.objects.filter(pk__in=preferred.values("segment_id")),
+                      key=lambda s: (s.dimension != "all", s.dimension, s.position, s.value))  # all first
     context["segments"] = segments
     segment_id = request.GET.get("segment", "")
     segment = next((s for s in segments if str(s.pk) == segment_id), None)

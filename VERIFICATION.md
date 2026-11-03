@@ -22,6 +22,18 @@ packages, periodicals; in billions, and per household from FY2024), and FY2025 A
 | FY2025 A-11 "All Households" vs. E.2 advertising | differ (643.6 vs. 658.9 in 2015): A-11 is First-Class and Marketing Mail ads only, so it is a separate metric |
 | E.2 correspondence in billions, FY2016 vs. FY2017 | differ (13.9 vs. 16.3 for 2015): reclassified, so not mapped |
 
+**Update 2026-11-03 (household groups): 1,568 values, all 1,568 match their source page.** 609
+new values come from the one-year tables "... Mail Received by Income and Age" and "... by Income
+and Education" (transactions, correspondence: FY2003–FY2023; advertising: FY2007–FY2023; not
+FY2021, which is OCR). `verify_pdfs` reads each table from its caption on the PDF page through the
+same code as the loader. The education tables repeat the age tables' income and all-households
+margins, an independent check:
+
+| Check | Result |
+|---|---|
+| Margins of the education tables vs. the age tables (255 values) | 245 identical; 2 differ only in print ("14" vs. "14.0", FY2015 advertising); 3 differ by 0.1 (FY2005 transactions $65K–$100K 6.1 vs. 6.2; FY2012 advertising Under $35K 8.1 vs. 8.2 and Over $100K 19.2 vs. 19.1), USPS rounding, and the age table's value is used |
+| FY2015 correspondence | Table 3.4 (by income and age, p. 30) was not extracted; Table 3.2 supplies the margins, so FY2015 has no age groups |
+
 **Update 2026-11-03: 959 values, all 959 match their source page.** Table E.2 from the FY2005–
 FY2015 reports (`tables_2000_2015.json`) extends `household-mail-total`, `packages-volume` and
 `periodicals-volume` back to 2003 (90 values). Every overlapping year was compared across reports:

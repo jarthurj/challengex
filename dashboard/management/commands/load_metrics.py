@@ -4,7 +4,8 @@ from collections import defaultdict
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from dashboard.metric_sources import BREAKS, CONVERSIONS, METRICS, REVIEW_NOTES, SOURCES
+from dashboard.crosstab import check_heading, crosstab_values, income_band
+from dashboard.metric_sources import BREAKS, CONVERSIONS, METRICS, REVIEW_NOTES, SOURCES, CrossTab
 from dashboard.models import MethodologyBreak, Metric, Observation, Segment, Table
 
 from .load_tables import to_num
@@ -46,6 +47,46 @@ def change_columns(table):
 def find_row(rows, label, nth):
     matches = [r for r in rows if norm(r.label) == norm(label)]
     return matches[nth - 1] if len(matches) >= nth else None
+
+
+def series_items(table, rows, row_maps):
+    """(metric, segment, year, raw) for each RowMap: one row read across the table's year columns."""
+    source_id = table.source_id
+    years = year_header([table.columns, *(row_cells(table, r) for r in rows)])
+    if not years:
+        raise CommandError(f"{source_id}: no year header found.")
+    for rm in row_maps:
+        row = find_row(rows, rm.label, rm.nth)
+        if row is None:
+            raise CommandError(f"{source_id}: row {rm.label!r} (occurrence {rm.nth}) not found.")
+        values = row_values(row_cells(table, row))
+        # FY2024/FY2025 tables follow the years with "% change" columns; drop exactly those.
+        if len(values) == len(years) + change_columns(table):
+            values = values[:len(years)]
+        if len(values) != len(years):
+            raise CommandError(
+                f"{source_id}: row {rm.label!r} has {len(values)} values for {len(years)} years "
+                f"{years}: {values}"
+            )
+        for year, raw in zip(years, values):
+            yield rm.metric, rm.segment, year, raw
+
+
+def crosstab_items(table, rows, ct):
+    """(metric, segment, year, raw) for a one-year household-group table, for the report's year."""
+    cells = [row_cells(table, r) for r in rows]
+    # The heading: column names plus the rows above the first income band.
+    first = next((i for i, c in enumerate(cells) if income_band(c[0])), len(cells))
+    heading = " ".join([*map(str, table.columns), *(" ".join(c) for c in cells[:first])])
+    problem = check_heading(heading, ct.columns)
+    if problem:
+        raise CommandError(f"{table.source_id}: {problem}")
+    try:
+        pairs = crosstab_values([(c[0], row_values(c)) for c in cells], ct.columns, ct.margins)
+    except ValueError as e:
+        raise CommandError(f"{table.source_id}: {e}")
+    for seg_key, raw in pairs:
+        yield ct.metric, seg_key, table.year, raw
 
 
 def mark_preferred(observations):
@@ -101,46 +142,27 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"{source_id} is OCR; its values are unverified."))
 
             rows = list(table.rows.all())
-            years = year_header([table.columns, *(row_cells(table, r) for r in rows)])
-            if not years:
-                raise CommandError(f"{source_id}: no year header found.")
-
-            for rm in row_maps:
-                row = find_row(rows, rm.label, rm.nth)
-                if row is None:
-                    raise CommandError(f"{source_id}: row {rm.label!r} (occurrence {rm.nth}) not found.")
-                values = row_values(row_cells(table, row))
-                # FY2024/FY2025 tables follow the years with "% change" columns; drop exactly those.
-                if len(values) == len(years) + change_columns(table):
-                    values = values[:len(years)]
-                if len(values) != len(years):
-                    raise CommandError(
-                        f"{source_id}: row {rm.label!r} has {len(values)} values for {len(years)} years "
-                        f"{years}: {values}"
-                    )
-
-                metric = metrics[rm.metric]
+            items = (crosstab_items(table, rows, row_maps) if isinstance(row_maps, CrossTab)
+                     else series_items(table, rows, row_maps))
+            for slug, seg_key, year, raw in items:
+                num = to_num(raw)
+                if num is None:  # "N/A" etc.: leave a gap rather than guess
+                    continue
+                metric = metrics[slug]
                 convert = (lambda v: v) if raw_unit == metric.unit else CONVERSIONS.get((raw_unit, metric.unit))
                 if convert is None:
                     raise CommandError(f"{source_id}: no conversion from {raw_unit} to {metric.unit}.")
-
-                seg = segment(*rm.segment)
-                for year, raw in zip(years, values):
-                    num = to_num(raw)
-                    if num is None:  # "N/A" etc.: leave a gap rather than guess
-                        continue
-                    verified, notes = kept.get(
-                        (metric.slug, seg.dimension, seg.value, year, table.year), (False, "")
-                    )
-                    fixed_note = REVIEW_NOTES.get((metric.slug, year, table.year))
-                    if fixed_note and fixed_note not in notes:
-                        notes = f"{fixed_note}\n{notes}".strip()
-                    observations.append(Observation(
-                        metric=metric, segment=seg, fiscal_year=year,
-                        value=convert(num), raw_value=raw, raw_unit=raw_unit,
-                        source_table=table, report_year=table.year,
-                        verified=verified, notes=notes,
-                    ))
+                seg = segment(*seg_key)
+                verified, notes = kept.get((metric.slug, seg.dimension, seg.value, year, table.year), (False, ""))
+                fixed_note = REVIEW_NOTES.get((metric.slug, year, table.year))
+                if fixed_note and fixed_note not in notes:
+                    notes = f"{fixed_note}\n{notes}".strip()
+                observations.append(Observation(
+                    metric=metric, segment=seg, fiscal_year=year,
+                    value=convert(num), raw_value=raw, raw_unit=raw_unit,
+                    source_table=table, report_year=table.year,
+                    verified=verified, notes=notes,
+                ))
 
         mark_preferred(observations)
         Observation.objects.bulk_create(observations)

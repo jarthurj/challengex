@@ -13,7 +13,7 @@ from . import titles
 from .tidy import tidy
 from .management.commands import verify_pdfs
 from .management.commands.load_metrics import mark_preferred, row_values, year_header
-from .metric_sources import BREAKS, CONVERSIONS, METRICS, SOURCES
+from .metric_sources import BREAKS, CONVERSIONS, METRICS, SOURCES, CrossTab
 from .models import MethodologyBreak, Metric, Observation, Table
 from .testdata import cited_old_tables, load_real_tables
 
@@ -67,7 +67,7 @@ class MappingTests(SimpleTestCase):
     def test_sources_reference_declared_metrics(self):
         slugs = {m["slug"] for m in METRICS}
         for source_id, (_, row_maps) in SOURCES.items():
-            for rm in row_maps:
+            for rm in [row_maps] if isinstance(row_maps, CrossTab) else row_maps:
                 self.assertIn(rm.metric, slugs, source_id)
 
 
@@ -284,7 +284,7 @@ class RebuildDbTests(TestCase):
         call_command("rebuild_db", skip_verify=True, stdout=StringIO())
         old_reports = settings.BASE_DIR / "tables_2000_2015.json"
         self.assertEqual(Table.objects.count(), 1095 + len(json.loads(old_reports.read_text(encoding="utf-8"))))
-        self.assertEqual(Observation.objects.count(), 959)
+        self.assertEqual(Observation.objects.count(), 1568)
 
         User.objects.create_superuser("me", "me@example.com", "pw")
         obs = Observation.objects.filter(metric__slug="fcm-received-total", is_preferred=True).first()

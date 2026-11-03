@@ -4,10 +4,19 @@
 every table that reports it in SOURCES. Map by row label (and `nth` when a label repeats);
 year columns are read from each table's own year header, so layout differences between
 reports don't matter. Only use tables with ocr=False unless the values have been verified.
+One-year household-group tables ("... by Income and Age") are mapped with CrossTab instead.
 """
 from dataclasses import dataclass
 
 ALL = ("all", "All households")
+
+# Shared by the household-group metrics read from the one-year chapter tables (CrossTab).
+GROUPS_NOTE = (
+    " Published per week to one decimal (about +/-2.6 a year once multiplied by 52). By age "
+    "(Under 35 / 35 to 54 / Over 55; FY2003 and FY2015 print \"Under 34\"), education, and income "
+    "in nominal dollars, so the income bands' make-up drifts with inflation. FY2021's tables are "
+    "OCR and skipped; there are no FY2004 or FY2011 reports."
+)
 
 METRICS = [
     {
@@ -219,6 +228,42 @@ METRICS = [
         "unit": "per_household_year",
         "description": "Periodicals received per household per year (FY2024/FY2025 Table E.2).",
     },
+    # Household groups before FY2025: one-year tables in each report's chapters, pieces per
+    # household per week, converted to per year.
+    {
+        "slug": "transactions-received-per-household",
+        "name": "Transactions mail received per household",
+        "market": "transactions",
+        "direction": "received",
+        "unit": "per_household_year",
+        "description": (
+            "Transactions mail received per household, FY2003-FY2023 (Tables 4.4 and 4.2 by income "
+            "and age and by income and education; FY2003 Tables 5.4 and 5.2)."
+        ) + GROUPS_NOTE,
+    },
+    {
+        "slug": "correspondence-received-per-household",
+        "name": "Correspondence mail received per household",
+        "market": "correspondence",
+        "direction": "received",
+        "unit": "per_household_year",
+        "description": (
+            "Correspondence mail received per household, FY2003-FY2023 (Tables 3.4 and 3.2; FY2003 "
+            "Tables 4.4 and 4.2). FY2015's Table 3.4 was not extracted, so FY2015 has no age groups."
+        ) + GROUPS_NOTE,
+    },
+    {
+        "slug": "advertising-mail-received-per-household",
+        "name": "Advertising mail received per household",
+        "market": "advertising",
+        "direction": "received",
+        "unit": "per_household_year",
+        "description": (
+            "Advertising mail received per household, FY2007-FY2023 (Tables 5.5 and 5.4). The "
+            "chapter's own definition: close to, but not the same as, Table E.2's advertising market "
+            "or FY2025 Table A-11."
+        ) + GROUPS_NOTE,
+    },
 ]
 
 # Household groups in the FY2025 demographic tables (A-3, A-6, A-9, A-11), as labelled there.
@@ -240,6 +285,19 @@ FY2025_SEGMENTS = [
     ("msa", "Other MSA"),
     ("msa", "Non-MSA"),
 ]
+
+
+@dataclass(frozen=True)
+class CrossTab:
+    """A one-year household-group table, read by dashboard/crosstab.py for the report's own year."""
+    metric: str
+    columns: str  # "age" or "education": the groups across the top; income bands are the rows
+    margins: bool = True  # also the income bands and all households (once per metric and year)
+
+
+def crosstabs(metric, columns, source_ids, margins=True):
+    """SOURCES entries for one-year household-group tables, published per household per week."""
+    return {source_id: ("per_household_week", CrossTab(metric, columns, margins)) for source_id in source_ids}
 
 
 @dataclass(frozen=True)
@@ -350,14 +408,49 @@ SOURCES = {
         RowMap("All Households", "ads-received-per-household"),
         *segment_rows("ads-received-per-household"),
     ]),
+    # Household groups FY2003-FY2023 (not FY2021, OCR): by income and age, then by income and
+    # education, whose margins repeat the age table's. Older tables come from tables_2000_2015.json.
+    **crosstabs("transactions-received-per-household", "age", (
+        "2003-p040-2", "2005-p034-3", "2006-p035-3", "2007-p036-3", "2008-p037-3", "2009-p039-3",
+        "2010-p039-3", "2012-p039-3", "2013-p039-3", "2014-p039-3", "2015-p039-3", "2016-p037-11",
+        "2017-p035-11", "2018-p035-11", "2019-p035-11", "2020-p037-11", "2022-p030-6", "2023-p041-6",
+    )),
+    **crosstabs("transactions-received-per-household", "education", (
+        "2003-p039-1", "2005-p033-2", "2006-p034-2", "2007-p035-2", "2008-p036-2", "2009-p038-2",
+        "2010-p038-2", "2012-p038-2", "2013-p038-2", "2014-p038-2", "2015-p039-1", "2016-p037-1",
+        "2017-p035-1", "2018-p035-1", "2019-p035-1", "2020-p037-1", "2022-p029-2", "2023-p040-2",
+    ), margins=False),
+    **crosstabs("correspondence-received-per-household", "age", (
+        "2003-p031-2", "2005-p025-3", "2006-p026-3", "2007-p027-3", "2008-p028-3", "2009-p030-3",
+        "2010-p030-3", "2012-p031-1", "2013-p030-3", "2014-p030-3", "2016-p028-11", "2017-p026-11",
+        "2018-p026-11", "2019-p026-11", "2020-p029-1", "2022-p020-1", "2023-p030-1",
+    )),
+    **crosstabs("correspondence-received-per-household", "education", (
+        "2003-p030-2", "2005-p025-1", "2006-p026-1", "2007-p027-1", "2008-p028-1", "2009-p030-1",
+        "2010-p030-1", "2012-p030-1", "2013-p030-1", "2014-p030-1", "2016-p028-1",
+        "2017-p026-1", "2018-p026-1", "2019-p026-1", "2020-p028-1", "2022-p019-1", "2023-p029-1",
+    ), margins=False),
+    # FY2015's Table 3.4 (by income and age) wasn't extracted, so Table 3.2 supplies the margins.
+    **crosstabs("correspondence-received-per-household", "education", ("2015-p030-1",)),
+    **crosstabs("advertising-mail-received-per-household", "age", (
+        "2007-p047-1", "2008-p049-1", "2009-p050-1", "2010-p050-1", "2012-p050-1", "2013-p050-1",
+        "2014-p052-2", "2015-p052-1", "2016-p050-2", "2017-p048-2", "2018-p048-2", "2019-p048-2",
+        "2020-p050-2", "2022-p043-2", "2023-p055-2",
+    )),
+    **crosstabs("advertising-mail-received-per-household", "education", (
+        "2007-p046-2", "2008-p048-1", "2009-p049-2", "2010-p049-2", "2012-p049-2", "2013-p049-2",
+        "2014-p052-1", "2015-p051-2", "2016-p049-2", "2017-p047-2", "2018-p047-2", "2019-p047-2",
+        "2020-p049-2", "2022-p042-2", "2023-p054-2",
+    ), margins=False),
 }
 
 # Conversions into a metric's unit. Values already in the metric's unit pass through.
 # Millions <-> per household needs an annual household count, which the reports don't
 # publish (only 2014/2015/2019/2020/2024/2025), so it is deliberately not converted.
 CONVERSIONS = {
-    ("per_household_week", "per_household_year"): lambda v: v * 52,
-    ("billions", "millions"): lambda v: v * 1000,  # E.2 publishes one decimal: +/- 50 million
+    # Rounded so that 5.9 * 52 is stored as 306.8, not 306.79999999999995.
+    ("per_household_week", "per_household_year"): lambda v: round(v * 52, 6),
+    ("billions", "millions"): lambda v: round(v * 1000, 6),  # E.2 publishes one decimal: +/- 50 million
 }
 
 # Notes attached to specific observations on every load: (metric, fiscal year, report year) -> note.
@@ -427,6 +520,18 @@ BREAKS = [
             "with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one."
         ),
         "metrics": ["household-mail-total", "packages-volume", "periodicals-volume"],
+    },
+    {
+        "fiscal_year": 2014,
+        "title": "Weighting by home ownership (household-group tables)",
+        "description": (
+            "The FY2014 report began weighting by home ownership and restated 2012-2013 in its "
+            "appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", "
+            "p. 249). The household-group series take each year from that year's own report, whose "
+            "chapter tables were not restated, so they change basis between 2013 and 2014."
+        ),
+        "metrics": ["transactions-received-per-household", "correspondence-received-per-household",
+                    "advertising-mail-received-per-household"],
     },
     {
         "fiscal_year": 2024,

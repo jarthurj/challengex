@@ -6,7 +6,7 @@ against its source PDF page, so it's safe to say out loud.
 ## Before the demo (10 minutes, the day before)
 
 1. `git pull`, then `pip install -r requirements.txt` and `python manage.py rebuild_db`.
-   It should end with **959 match, 0 mismatch** (that line needs the PDFs in `docs/`).
+   It should end with **1568 match, 0 mismatch** (that line needs the PDFs in `docs/`).
 2. `python manage.py test dashboard`: all tests pass.
 3. Put the report PDFs in `docs/` so the "Open the report at page N" links work.
 4. `python manage.py runserver`, open `http://127.0.0.1:8000/`, and click through every stop below
@@ -33,7 +33,7 @@ honest projections.
 | 4:30 | **By year** → FY2025 | Every published FY2025 value on one page, plus the breakdowns by age, income, education, homeownership and metro area. | Visualizations by year |
 | 5:15 | **Browse tables** → Topic "Transactions", years 2021 | All 1,095 extracted tables are searchable. Point at the **Needs review** and **OCR** badges: FY2021's chapters were scanned images, and we flag them rather than trust them. | Database design, data quality |
 | 5:45 | Open FY2021 Table 4.1 (search `2021-p035-1`) | The "Check this table against the PDF" box explains why it's flagged. **From the report** quotes the report's own sentence about the table, transcribed from the scanned page. "Open the FY2021 report at page 35" jumps to the source. | Provenance |
-| 6:30 | Close | 23 series, 959 values, every one matched to its PDF page; keyboard- and screen-reader-accessible (WCAG 2.1 AA checks pass). Next: AI-written summaries grounded in these numbers. | |
+| 6:30 | Close | 26 series, 1,568 values, every one matched to its PDF page; keyboard- and screen-reader-accessible (WCAG 2.1 AA checks pass). Next: AI-written summaries grounded in these numbers. | |
 
 ## Likely questions
 
@@ -42,7 +42,7 @@ honest projections.
   in our data, every number checked against the database, labelled and human-reviewed) but deferred
   by the team; they're next on the roadmap.
 - **"How do you know the numbers are right?"** `verify_pdfs` re-reads every loaded value from the text of
-  its source PDF page: 959 of 959 match. `VERIFICATION.md` has the cross-report checks.
+  its source PDF page: 1,568 of 1,568 match. `VERIFICATION.md` has the cross-report checks.
 - **"Reports disagree with each other. Which do you use?"** The most recent non-OCR report that gives
   the value (later reports restate earlier years). Every point shows which report it came from.
 - **"Why do some series have gaps?"** USPS only published those figures for some years (per-household
