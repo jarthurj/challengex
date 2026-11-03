@@ -95,7 +95,8 @@ class Command(BaseCommand):
         for source_id, (raw_unit, row_maps) in SOURCES.items():
             table = Table.objects.filter(source_id=source_id).first()
             if table is None:
-                raise CommandError(f"{source_id} not found. Run `manage.py load_tables tables.json` first.")
+                raise CommandError(f"{source_id} not found. Run `manage.py rebuild_db` (or `manage.py "
+                                   "load_tables tables.json tables_2000_2015.json`) first.")
             if table.ocr:
                 self.stdout.write(self.style.WARNING(f"{source_id} is OCR; its values are unverified."))
 

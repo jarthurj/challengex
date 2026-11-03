@@ -28,11 +28,13 @@ FY2015 reports (`tables_2000_2015.json`) extends `household-mail-total`, `packag
 
 | Check | Result |
 |---|---|
-| Total, packages, periodicals: each year in 2 or 3 reports, FY2005–FY2017 | identical, except the three restatements below |
+| Total, packages, periodicals: each year in 2 or 3 reports, FY2005–FY2017 | mostly identical; the differences are the rows below |
 | Packages 2005: FY2005/FY2006 2.4 vs. FY2007 3.1 billion | FY2007 counts CD/DVD rentals as packages (its note); break at 2005 |
-| Total 2006 and earlier | include Detached Address Labels counted separately (3 billion in 2006, FY2007 note); break at 2007 |
-| 2012–2013, FY2012/FY2013 vs. FY2014 (total 130.4 vs. 136.9; packages 3.3 vs. 3.9; periodicals 5.1 vs. 5.9 for 2012) | restated upward in FY2014, reason not given; FY2015 and FY2016 agree with FY2014; break at 2012 |
-| Total 2015, FY2016 vs. FY2017 (126.8 vs. 128.4) | restated in FY2017 (already loaded before this update) |
+| 2006: total 168.6 (FY2006) vs. 170.2 (FY2007, FY2008); packages 3.3 vs. 3.2 | small revision in FY2007, not explained; the FY2008 value is preferred |
+| Total through 2007 | carrier cost system: Detached Address Labels double-counted before 2007 (about +3 billion) and residential deliveries understated through 2007 (about −2 to −3 billion), per the FY2008 E.2 and FY2016 A8-12 notes; breaks at 2007 and 2008, also on the A8-12 advertising series |
+| Total 2010: 141.1 (FY2010) vs. 141.2 (FY2012); 2011: 139.1 (FY2012) vs. 138.3 (FY2013) | small revisions, not explained |
+| 2012–2013: total 2012 131.7 (FY2012), 130.4 (FY2013), 136.9 (FY2014); packages 3.3 vs. 3.9; periodicals 5.1 vs. 5.9 | FY2014: "Beginning in 2012 data was restated due to weighing by Home Ownership" (Appendix A, p. 249); FY2015 and FY2016 agree with FY2014; break at 2012 |
+| 2015: total 126.8 vs. 128.4, packages 4.7 vs. 4.3, periodicals 4.9 vs. 5.1 (FY2016 vs. FY2017) | restated in FY2017 (already loaded before this update; FY2017 is preferred) |
 
 `verify_pdfs` first skipped the FY2005 and FY2006 pages: Table E.1 above E.2 has rows with the same
 labels. It now reads only rows below the year header, and the original 869 values still match.
@@ -143,7 +145,13 @@ appendix tables of later reports.
 
 ```
 pip install -r requirements.txt
-python manage.py load_tables tables.json
+python manage.py rebuild_db
+```
+
+or step by step:
+
+```
+python manage.py load_tables tables.json tables_2000_2015.json
 python manage.py load_metrics
 python manage.py verify_pdfs
 ```

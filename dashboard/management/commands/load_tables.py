@@ -34,14 +34,16 @@ class Command(BaseCommand):
     help = "Load tables.json into Table and Row"
 
     def add_arguments(self, parser):
-        parser.add_argument("paths", nargs="+", help="tables.json, and optionally tables_2000_2015.json")
+        parser.add_argument("paths", nargs="+", help="tables.json and tables_2000_2015.json")
+        parser.add_argument("--keep-cited", action="store_true",
+                            help="Keep tables that left the files but that observations still cite, for "
+                                 "prune_stale() to remove after load_metrics (rebuild_db does this).")
+        parser.add_argument("--complete", action="store_true",
+                            help="The files hold every table: also remove tables of report years they lack.")
 
     @transaction.atomic
     def handle(self, *args, **opts):
-        items = []
-        for path in opts["paths"]:
-            with open(path, encoding="utf-8") as f:
-                items += json.load(f)
+        items = read_items(opts["paths"])
 
         # Titles and numbers recovered from the PDFs by `manage.py extract_titles`.
         titles = {}
@@ -53,16 +55,20 @@ class Command(BaseCommand):
         # Update tables in place (keyed by source_id) rather than wiping them, so Observations that
         # point at a table, and their reviewers' flags and notes, survive a reload. Only the report
         # years in the given files are replaced: `load_tables tables.json` keeps FY2003-FY2015.
-        years = {t["year"] for t in items}
-        stale = Table.objects.filter(year__in=years).exclude(source_id__in=[t["id"] for t in items])
+        stale = stale_tables(items, opts["complete"])
+        kept = []
+        if opts["keep_cited"]:
+            kept = list(stale.filter(observations__isnull=False).distinct().values_list("source_id", flat=True))
+            stale = stale.exclude(source_id__in=kept)
         try:
             removed, _ = stale.delete()
         except ProtectedError as e:
             used = sorted({o.source_table.source_id for o in e.protected_objects})
             raise CommandError(
                 f"Not loading: metric observations use tables that are no longer in {', '.join(opts['paths'])}: "
-                f"{', '.join(used[:10])}. Re-map them in metric_sources.py or restore the tables.")
-        Row.objects.filter(table__year__in=years).delete()
+                f"{', '.join(used[:10])}. Run `manage.py rebuild_db`, which re-maps the observations from "
+                f"metric_sources.py before removing old tables.")
+        Row.objects.filter(table__year__in={t["year"] for t in items}).exclude(table__source_id__in=kept).delete()
 
         rows = []
         for t in items:
@@ -95,4 +101,31 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             f"Loaded {len(items)} tables, {len(rows)} rows ({len(titles)} titles from table_titles.json)"
             + (f"; removed {removed} objects no longer in {', '.join(opts['paths'])}" if removed else "")
+            + (f"; kept {len(kept)} cited tables no longer in the files, until load_metrics re-maps them"
+               if kept else "")
         ))
+
+
+def read_items(paths):
+    items = []
+    for path in paths:
+        with open(path, encoding="utf-8") as f:
+            items += json.load(f)
+    return items
+
+
+def stale_tables(items, complete=False):
+    """Tables not in `items`: of the report years `items` covers, or of any year if `complete`."""
+    tables = Table.objects.exclude(source_id__in=[t["id"] for t in items])
+    return tables if complete else tables.filter(year__in={t["year"] for t in items})
+
+
+def prune_stale(paths):
+    """After load_metrics: remove every table not in `paths` (the complete set). Returns the count."""
+    try:
+        removed, by_model = stale_tables(read_items(paths), complete=True).delete()
+    except ProtectedError as e:
+        used = sorted({o.source_table.source_id for o in e.protected_objects})
+        raise CommandError(f"Observations still cite tables that are no longer extracted: {', '.join(used[:10])}. "
+                           "Re-map them in metric_sources.py.")
+    return by_model.get("dashboard.Table", 0)

@@ -130,7 +130,8 @@ METRICS = [
         "description": (
             "Mail received and sent by households across all markets (Table E.2, FY2005-FY2023 "
             "reports). Published in billions to one decimal, so values are accurate to about 50 "
-            "million pieces. Before 2007, Detached Address Labels counted as separate pieces."
+            "million pieces. Before 2007, Detached Address Labels were double-counted (about +3 "
+            "billion), and through 2007 residential deliveries were underestimated (about -2 to -3)."
         ),
     },
     {
@@ -387,13 +388,25 @@ BREAKS = [
     },
     {
         "fiscal_year": 2007,
-        "title": "Detached Address Labels no longer counted separately",
+        "title": "Detached Address Labels no longer double-counted",
         "description": (
-            "Prior to 2007, Detached Address Labels were counted as separate advertising pieces "
-            "(3 billion in 2006, FY2007 Table E.2 note), so totals before 2007 are inflated by "
-            "about that much."
+            "\"Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a "
+            "double count of Detached Address Labels\" in the Carrier Cost System, whose volumes are "
+            "the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The "
+            "FY2020 A8-12 drops the note but its pre-2007 values are no lower."
         ),
-        "metrics": ["household-mail-total"],
+        "metrics": ["household-mail-total", "advertising-received-total", "marketing-mail-ads-received"],
+    },
+    {
+        "fiscal_year": 2008,
+        "title": "Residential delivery estimates corrected",
+        "description": (
+            "\"Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in "
+            "the methodology used by the carrier cost system for estimating deliveries to residential "
+            "addresses\" (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly "
+            "offsets the Detached Address Label double count; 2007 itself is understated."
+        ),
+        "metrics": ["household-mail-total", "advertising-received-total", "marketing-mail-ads-received"],
     },
     {
         "fiscal_year": 2010,
@@ -405,12 +418,13 @@ BREAKS = [
     },
     {
         "fiscal_year": 2012,
-        "title": "FY2014 report restated 2012 and 2013",
+        "title": "FY2014 report restated 2012 and 2013 (weighting by home ownership)",
         "description": (
-            "The FY2014 report's Table E.2 restated 2012 and 2013 upward without explaining why "
-            "(2012 total: 130.4 billion in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals "
-            "5.1 to 5.9). Later reports agree with FY2014, so values from 2012 on share one basis and "
-            "values through 2011 come from earlier reports on the lower one."
+            "\"Beginning in 2012 data was restated due to weighing by Home Ownership\" (FY2014 "
+            "Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in "
+            "FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), "
+            "and its notes newly exclude pieces counted as both sent and received. Later reports agree "
+            "with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one."
         ),
         "metrics": ["household-mail-total", "packages-volume", "periodicals-volume"],
     },

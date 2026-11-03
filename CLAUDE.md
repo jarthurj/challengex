@@ -155,11 +155,14 @@ analyst should be able to:
   the Overview at `/dashboard/`).
 - The individual steps that `rebuild_db` runs, in order. Every step is safe to re-run, and
   reviewers' `verified` flags and notes survive:
-  1. `python manage.py load_tables tables.json`. This updates tables in place by `source_id`
-     (table IDs and URLs stay stable), rebuilds their rows, and applies the corrected titles and
-     numbers from `table_titles.json`. It replaces only the report years in the files it's given,
-     so `load_tables tables.json` keeps the FY2003–FY2015 tables. It refuses to remove a table
-     that observations still cite (`Observation.source_table` is `PROTECT`).
+  1. `python manage.py load_tables tables.json tables_2000_2015.json`. Both files are needed:
+     metrics use some FY2005–FY2015 tables. This updates tables in place by `source_id` (table IDs
+     and URLs stay stable), rebuilds their rows, and applies the corrected titles and numbers from
+     `table_titles.json`. It replaces only the report years in the files it's given, so
+     `load_tables tables.json` alone keeps the older tables. It refuses to remove a table that
+     observations still cite (`Observation.source_table` is `PROTECT`); `rebuild_db` instead
+     loads with `--keep-cited --complete`, re-maps the observations, then removes every table no
+     longer in either file (`prune_stale`), so a renumbered table never blocks a rebuild.
   2. `python manage.py load_metrics`. This rebuilds the metric layer from
      `dashboard/metric_sources.py`, including the fixed `REVIEW_NOTES`.
   3. `python manage.py verify_pdfs` checks every loaded value against the text of its source
@@ -175,8 +178,8 @@ analyst should be able to:
     `table_titles.json`, `context.py`, `pdftables.py`, or `fy2021_quotes.py`. The output is
     committed; the site only reads the JSON.
   - `python manage.py extract_old_reports` regenerates `tables_2000_2015.json` from the FY2003-FY2015
-    PDFs (about 8 minutes; needs `docs/` and PyMuPDF). `rebuild_db` loads that file after
-    `tables.json` when it exists. The output is committed.
+    PDFs (about 8 minutes; needs `docs/` and PyMuPDF). `rebuild_db` loads it with `tables.json` and
+    stops if either is missing. The output is committed.
 - Run the tests: `python manage.py test dashboard`. They load the real `tables.json`, and they
   don't need `docs/`.
 - See `VERIFICATION.md` for the full check of the loaded data against every file in `docs/`.
@@ -316,12 +319,14 @@ analyst should be able to:
     footnotes.
   - Column names wrapped onto a second line ("Under / 35", "35 to / 54") that the extraction
     made into an unlabelled first row.
+  - Row labels in the second column with the first empty (FY2024/FY2025 tables such as
+    `2024-p009-4`); otherwise "Magazines" showed under 2014 and every value one year late.
   - The label column's heading ("Sector") one column right, over an empty column.
   - A row label printed on two lines ("First-Class Ads / Share of Total Ads") that the
     extraction split into a row plus an empty row. The PDF re-read's labels decide which empty
     rows are second lines (`label_joins` in `table_context.json`), so section headings stay.
 
-  With tidying and the PDF re-reads below, 112 of the 1,046 data tables still show a
+  With tidying and the PDF re-reads below, 105 of the 1,046 data tables still show a
   "Column N" somewhere, mostly charts (`Figure x.y`) and FY2021 OCR tables. Every table page has
   a "Show the raw extraction" link (`?raw=1`).
 - **Tables re-read from the PDF page (`dashboard/pdftables.py`).** For 76 tables the layout is
@@ -391,12 +396,14 @@ analyst should be able to:
   - All markets from Table E.2, in millions converted from billions (one decimal, so ±50 million):
     `household-mail-total`, `packages-volume`, `periodicals-volume` (2003–2023, from the FY2005–
     FY2023 reports; FY2021 is OCR and skipped). E.2 correspondence is deliberately not mapped:
-    FY2017 reclassified it. Overlapping years agree across reports except three restatements,
-    each a methodology break attached to the metrics it affects: packages include CD/DVD
-    rentals from 2005 (FY2007 restated 2005 from 2.4 to 3.1 billion); Detached Address Labels
-    stopped counting as separate pieces in 2007 (total); and FY2014 restated 2012–2013 upward
-    without saying why (total 130.4 → 136.9 billion for 2012). Projections for these series
-    therefore fit 2012–2023 only.
+    FY2017 reclassified it. Most overlapping years agree across reports (small revisions are
+    listed in `VERIFICATION.md`). The documented changes are methodology breaks attached to the
+    metrics they affect: packages include CD/DVD rentals from 2005 (FY2007 restated 2005 from
+    2.4 to 3.1 billion); the carrier cost system double-counted Detached Address Labels before
+    2007 (about +3 billion) and understated residential deliveries through 2007 (about −2 to −3
+    billion), breaks at 2007 and 2008 that also cover the A8-12 advertising series; and FY2014
+    restated 2012–2013 "due to weighing by Home Ownership" (total 130.4 → 136.9 billion for
+    2012). Projections for the E.2 series therefore fit 2012–2023 only.
   - `BREAKS` entries can name `metrics`; without them a break applies to every metric.
   - Per household per year from FY2024/FY2025 E.2 (2014, 2015, 2019, 2020, 2024, 2025):
     `household-mail-per-household`, `correspondence-`, `transactions-`, `advertising-`,
@@ -413,7 +420,7 @@ analyst should be able to:
   FY2005–FY2006 print Table E.1 with the same row labels above E.2). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 134 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+- **Tests:** 138 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
   page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -640,7 +647,7 @@ this file when a step finishes.
    - FY2002 and FY2011 PDFs are missing from `docs/`; request them from USPS if needed.
    - The FY2021 chapter tables are OCR'd and wrong; the FY2019 appendix is images; FY2018 lacks
      A8-10. Only repair these if a mapped series needs them (none does now).
-   - About 415 tables still show some "Column N" headers (112 from FY2016–FY2025, 303 from the
+   - About 408 tables still show some "Column N" headers (105 from FY2016–FY2025, 303 from the
      older reports).
 
 6. **Upkeep**
