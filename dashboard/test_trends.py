@@ -6,12 +6,13 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .models import MethodologyBreak, Metric, Observation, Segment
+from .testdata import load_real_tables
 
 
 class TrendTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
 
     def chart(self, **params):

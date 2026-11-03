@@ -12,12 +12,13 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .models import Table
+from .testdata import load_real_tables
 
 
 class PageStructureTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
 
     def pages(self):

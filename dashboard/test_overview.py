@@ -8,6 +8,7 @@ from django.urls import reverse
 
 from . import overview_views
 from .models import Observation
+from .testdata import load_real_tables
 
 
 class FormatTests(SimpleTestCase):
@@ -28,7 +29,7 @@ class FormatTests(SimpleTestCase):
 class OverviewYearCsvTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
 
     def get(self, name, *args, query=""):

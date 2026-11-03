@@ -20,6 +20,7 @@ GROUP_ONLY = re.compile(r"(Age|Educational Attainment|Education) of (the )?(Head
 SUMMARY = re.compile(r"(Average|Total|All\b|Overall)", re.I)
 YEAR_END = re.compile(r"(^|\D)(19|20)\d\d$")  # "2015", "Volume (Millions of Pieces) 2018"
 CHANGE = re.compile(r"change|%", re.I)  # "Change, 2018-2020", "% change 2015-2025"
+NUMBER = re.compile(r"[-+(]?\$?[\d,.]+%?\)?|[—–-]")  # "34.3", "-64%", "(1.2)", "—"
 FOOTNOTE = re.compile(r"(Sources?|Notes?)\s*:|\*\s*\w|\d\s+[A-Z][a-z]")
 
 
@@ -104,6 +105,14 @@ def tidy(columns, rows, title=""):
             body.pop(0)
             notes.append("Joined column names that wrap onto a second line.")
 
+    # 1-b. Row labels one column right (FY2024/FY2025 "Magazines" in column 2, column 1 empty): an
+    #      unnamed second column holding only text, never a number, is the label column.
+    if (n > 2 and not header[1] and not any(r[0].strip() for r in body)
+            and any(r[1].strip() for r in body) and not any(NUMBER.fullmatch(r[1].strip()) for r in body)):
+        for r in body:
+            r[0], r[1] = r[1], ""
+        notes.append("Moved the row labels from the second column into the first.")
+
     # 1a. Year tables (the rule load_metrics uses): a row with exactly one value per year column
     #     (plus any "% change" columns) has its k-th value under the k-th of those columns, wherever
     #     the extraction put it. Values often sit one column left of their year label, and two-part
@@ -122,11 +131,14 @@ def tidy(columns, rows, title=""):
     if by_year:
         went, rest = {}, []
         for r in body:
-            for filled in ([j for j in range(1, n) if r[j].strip() and r[j].strip() != "—"],
-                           [j for j in range(1, n) if r[j].strip()]):  # "—" holding a year's place
-                cols = next((c for c in (sorted(year_cols + change_cols), year_cols) if len(c) == len(filled)), None)
-                if cols:
-                    break
+            # A "—" usually holds a year's place; failing that it is filler. Years plus changes first,
+            # so a row like "5, —, 7, 3%" never puts its change under a year.
+            cols = filled = None
+            for c in (sorted(year_cols + change_cols), year_cols):
+                for f in ([j for j in range(1, n) if r[j].strip()],
+                          [j for j in range(1, n) if r[j].strip() and r[j].strip() != "—"]):
+                    if not cols and len(c) == len(f):
+                        cols, filled = c, f
             if not cols:
                 rest.append(r)
                 continue

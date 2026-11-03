@@ -24,13 +24,19 @@ def year_header(text):
     From FY2024 the years are followed by "% change 2015-2025" columns; only the years before the
     first "change"/"%" count.
     """
-    for line in text.splitlines():
+    found = header_line(text)
+    return found[1] if found else None
+
+
+def header_line(text):
+    """(line index, years) of the first line that is (almost) only years, or None."""
+    for index, line in enumerate(text.splitlines()):
         toks = norm(line).split()
         cut = next((i for i, t in enumerate(toks) if t.lower() in ("change", "%", "%change")), len(toks))
         toks = toks[:cut]
         years = [int(t) for t in toks if YEAR.fullmatch(t)]
         if len(years) >= 2 and len(years) >= len(toks) - 2:
-            return years
+            return index, years
     return None
 
 
@@ -68,10 +74,13 @@ def page_series(text, label, nth):
     reported; if it doesn't, the bad parse shows up as a MISMATCH against the independently
     extracted loaded value, never as a false match.
     """
-    years = year_header(text)
-    rows = label_rows(text, label)
-    if not years:
+    found = header_line(text)
+    if not found:
         return None, "no year header in the PDF text"
+    # Only rows below the year header: another table above it can share labels (FY2005-FY2006
+    # print Table E.1, with its own "Packages" and "Total" rows, above E.2).
+    start, years = found
+    rows = label_rows("\n".join(text.splitlines()[start + 1:]), label)
     if len(rows) < nth:
         return None, f"row {label!r} not found in the PDF text"
     nums = rows[nth - 1]
