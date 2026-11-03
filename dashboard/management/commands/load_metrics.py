@@ -39,8 +39,8 @@ def row_values(cells):
 
 
 def change_columns(table):
-    """How many "change" columns ("% change 2015-2025") the table's header names."""
-    return sum(1 for c in table.columns if "change" in str(c).lower())
+    """How many "change" columns ("% change 2015-2025") the table's header names (not the label column)."""
+    return sum(1 for c in table.columns[1:] if "change" in str(c).lower())
 
 
 def find_row(rows, label, nth):

@@ -2,8 +2,9 @@ import json
 import re
 
 from django.conf import settings
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from django.db.models import ProtectedError
 
 from dashboard.display import cells, display_table, review_reasons, section_of
 from dashboard.models import Row, Table
@@ -50,9 +51,18 @@ class Command(BaseCommand):
                 titles = {k: v for k, v in json.load(f).items() if v.get("title")}
 
         # Update tables in place (keyed by source_id) rather than wiping them, so Observations that
-        # point at a table, and their reviewers' flags and notes, survive a reload.
-        removed, _ = Table.objects.exclude(source_id__in=[t["id"] for t in items]).delete()
-        Row.objects.all().delete()
+        # point at a table, and their reviewers' flags and notes, survive a reload. Only the report
+        # years in the given files are replaced: `load_tables tables.json` keeps FY2003-FY2015.
+        years = {t["year"] for t in items}
+        stale = Table.objects.filter(year__in=years).exclude(source_id__in=[t["id"] for t in items])
+        try:
+            removed, _ = stale.delete()
+        except ProtectedError as e:
+            used = sorted({o.source_table.source_id for o in e.protected_objects})
+            raise CommandError(
+                f"Not loading: metric observations use tables that are no longer in {', '.join(opts['paths'])}: "
+                f"{', '.join(used[:10])}. Re-map them in metric_sources.py or restore the tables.")
+        Row.objects.filter(table__year__in=years).delete()
 
         rows = []
         for t in items:
