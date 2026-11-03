@@ -296,6 +296,46 @@ class TidyTests(SimpleTestCase):
         self.assertEqual(out["rows"], [["First-Class Ads", "16,875", "19,556"], ["Secondary", "7,404", "8,402"]])
         self.assertEqual(len(out["footnotes"]), 2)
 
+    def test_two_part_table_values_go_under_their_years_in_order(self):
+        # 2025-p009-1: the year row repeats for the second part, so every spacer column sits between
+        # two named columns. Values are placed in order, never shifted one column left.
+        cols = ["Household Bills Paid by Method", "col_2", "col_3", "col_4", "col_5", "col_6", "col_7", "col_8"]
+        rows = [["", "Shares", "", "2015", "", "2020", "", "2025"],
+                ["Mail", "", "31%", "", "21%", "", "14%", ""],
+                ["Household Bills and Statements Received by Method", "", "", "", "", "", "", ""],
+                ["", "Shares", "", "2015", "", "2020", "", "2025"],
+                ["By Mail", "", "77%", "", "62%", "", "55%", ""]]
+        out = tidy(cols, rows)
+        years = [out["headers"].index(y) for y in ("2015", "2020", "2025")]
+        for label, values in (("Mail", ["31%", "21%", "14%"]), ("By Mail", ["77%", "62%", "55%"])):
+            row = next(r for r in out["rows"] if r[0] == label)
+            self.assertEqual([row[j] for j in years], values)
+
+    def test_year_values_with_change_column(self):
+        # 2020-p027-1: three years plus a "Change" column, each value one column left of its heading.
+        cols = ["Sector", "Volume (Millions of Pieces)", "col_3", "col_4", "col_5", "col_6", "col_7", "col_8",
+                "Change, 2018-2020"]
+        rows = [["", "", "2018", "", "2019", "", "2020", "", ""],
+                ["Household to household", "3,061", "", "2,803", "", "2,345", "", "-23.4%", ""]]
+        out = tidy(cols, rows)
+        shown = dict(zip(out["headers"], out["rows"][0]))
+        self.assertEqual([shown["2018"], shown["2019"], shown["2020"], shown["Change, 2018-2020"]],
+                         ["3,061", "2,803", "2,345", "-23.4%"])
+
+    def test_wrapped_column_names_joined(self):
+        # 2017-p035-11: "Under 35" and "35 to 54" wrap; their second lines were extracted as a row.
+        cols = ["Household Income (Thousands)", "Age of Head of Household", "Under", "col_4", "35 to",
+                "Over 55", "Average"]
+        rows = [["", "", "35", "", "54", "", ""], ["Under $35", "1.2", "", "1.9", "", "2.5", "2.0"]]
+        out = tidy(cols, rows)
+        self.assertEqual(out["headers"], ["Household Income (Thousands)", "Under 35", "35 to 54", "Over 55",
+                                          "Average"])
+        self.assertEqual(out["rows"], [["Under $35", "1.2", "1.9", "2.5", "2.0"]])
+        self.assertEqual(out["groups"], [("", 1), ("Age of Head of Household", 3), ("", 1)])
+        # a value such as "16%" in that position is data, not the rest of a name
+        self.assertNotIn("16%", " ".join(tidy(["", "col_2", "83%", "col_4"],
+                                              [["", "", "16%", ""], ["2%", "4%", "", "10%"]])["headers"]))
+
     def test_label_heading_one_column_right(self):
         # 2023-p028-1 (Table 3.1): "Sector" sits over an empty column right of the labels.
         out = tidy(["", "Sector", "2022"], [["Total", "", "14,512"]])

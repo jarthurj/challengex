@@ -157,7 +157,9 @@ analyst should be able to:
   reviewers' `verified` flags and notes survive:
   1. `python manage.py load_tables tables.json`. This updates tables in place by `source_id`
      (table IDs and URLs stay stable), rebuilds their rows, and applies the corrected titles and
-     numbers from `table_titles.json`.
+     numbers from `table_titles.json`. It replaces only the report years in the files it's given,
+     so `load_tables tables.json` keeps the FY2003–FY2015 tables. It refuses to remove a table
+     that observations still cite (`Observation.source_table` is `PROTECT`).
   2. `python manage.py load_metrics`. This rebuilds the metric layer from
      `dashboard/metric_sources.py`, including the fixed `REVIEW_NOTES`.
   3. `python manage.py verify_pdfs` checks every loaded value against the text of its source
@@ -302,15 +304,24 @@ analyst should be able to:
   - A name one column to the left of its values.
   - "Source:"/"Note:" lines extracted as rows; these become footnotes.
   - A single value column with no name in the report, which gets named from the title's units.
+  - Year tables (the `load_metrics` rule): a row with exactly one value per year column (plus any
+    "% change" columns) has its k-th value placed under the k-th year, wherever the extraction
+    put it. Other rows (a missing year, a second part's own heading) follow where the aligned
+    rows' values went, column by column. Skipped when other named columns sit among the years
+    (years heading "Sent / Received" groups). This fixed two-part tables such as `2025-p009-1`,
+    whose repeated year row had made values show one year off.
   - Staggered values (Appendix A tables such as `2016-p084-1`): some rows sit one column left or
     right of their year, in an unnamed spacer column. When no row fills both, they move under
-    the year. Long single-cell note lines become footnotes.
+    the year, but only when just one neighbour qualifies. Long single-cell note lines become
+    footnotes.
+  - Column names wrapped onto a second line ("Under / 35", "35 to / 54") that the extraction
+    made into an unlabelled first row.
   - The label column's heading ("Sector") one column right, over an empty column.
   - A row label printed on two lines ("First-Class Ads / Share of Total Ads") that the
     extraction split into a row plus an empty row. The PDF re-read's labels decide which empty
     rows are second lines (`label_joins` in `table_context.json`), so section headings stay.
 
-  With tidying and the PDF re-reads below, 116 of the 1,046 data tables still show a
+  With tidying and the PDF re-reads below, 112 of the 1,046 data tables still show a
   "Column N" somewhere, mostly charts (`Figure x.y`) and FY2021 OCR tables. Every table page has
   a "Show the raw extraction" link (`?raw=1`).
 - **Tables re-read from the PDF page (`dashboard/pdftables.py`).** For 76 tables the layout is
@@ -394,7 +405,7 @@ analyst should be able to:
   columns and labels that wrap onto two lines). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 125 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+- **Tests:** 130 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
   page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -600,7 +611,7 @@ this file when a step finishes.
    - **Titles and excerpts for the new tables.** Run them through `extract_titles` (corrected
      titles and numbers) and `extract_context` ("From the report" quotes). Both currently read
      only `tables.json`.
-   - **Review the 671 flagged older tables.** Most are "one reader" (the values are there but
+   - **Review the 672 flagged older tables.** Most are "one reader" (the values are there but
      headings can be shifted by merged cells). Improving `extract_old_reports` for merged header
      cells would clear many of them; check a sample by eye first.
 
@@ -625,7 +636,7 @@ this file when a step finishes.
    - FY2002 and FY2011 PDFs are missing from `docs/`; request them from USPS if needed.
    - The FY2021 chapter tables are OCR'd and wrong; the FY2019 appendix is images; FY2018 lacks
      A8-10. Only repair these if a mapped series needs them (none does now).
-   - About 418 tables still show some "Column N" headers (116 from FY2016–FY2025, 302 from the
+   - About 415 tables still show some "Column N" headers (112 from FY2016–FY2025, 303 from the
      older reports).
 
 6. **Upkeep**

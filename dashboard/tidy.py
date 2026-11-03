@@ -18,6 +18,8 @@ CAPTION = re.compile(r"Table\s+[A-Z]?\d*[.\-]?\d")
 UNITS = re.compile(r"\(([^()]+)\)\s*$")
 GROUP_ONLY = re.compile(r"(Age|Educational Attainment|Education) of (the )?(Head of Household|Householder)", re.I)
 SUMMARY = re.compile(r"(Average|Total|All\b|Overall)", re.I)
+YEAR_END = re.compile(r"(^|\D)(19|20)\d\d$")  # "2015", "Volume (Millions of Pieces) 2018"
+CHANGE = re.compile(r"change|%", re.I)  # "Change, 2018-2020", "% change 2015-2025"
 FOOTNOTE = re.compile(r"(Sources?|Notes?)\s*:|\*\s*\w|\d\s+[A-Z][a-z]")
 
 
@@ -89,19 +91,84 @@ def tidy(columns, rows, title=""):
     if promoted:
         notes.append(f"Moved {promoted} header row{'s' if promoted > 1 else ''} out of the data.")
 
+    # 1-. The second line of wrapped column names ("Under | 35", "35 to | 54"): a first row with no
+    #     label whose few words (not values like "16%" or "2.5") sit only under named columns that
+    #     hold no other value.
+    if len(body) > 1 and not body[0][0].strip():
+        first = {j: body[0][j].strip() for j in range(1, n) if body[0][j].strip()}
+        if first and all(header[j] and len(c.split()) <= 3 and not re.search(r"%|\d[.,]\d", c)
+                         and not any(r[j].strip() for r in body[1:])
+                         for j, c in first.items()):
+            for j, c in first.items():
+                header[j] = f"{header[j]} {c}"
+            body.pop(0)
+            notes.append("Joined column names that wrap onto a second line.")
+
+    # 1a. Year tables (the rule load_metrics uses): a row with exactly one value per year column
+    #     (plus any "% change" columns) has its k-th value under the k-th of those columns, wherever
+    #     the extraction put it. Values often sit one column left of their year label, and two-part
+    #     tables repeat the year row in the body, which defeats position-based repairs.
+    year_cols = [j for j in range(1, n) if YEAR_END.search(header[j]) and not CHANGE.search(header[j])]
+    change_cols = [j for j in range(1, n) if CHANGE.search(header[j])]
+    #     Other rows (a missing year, a second part's own heading) then follow where those rows'
+    #     values went, column by column, when every aligned row agrees.
+    #     Not when other named columns sit among the years: there the years head groups ("2010: Sent,
+    #     Received"), and a row has several values per year. A units heading ("Volume (Millions of
+    #     Pieces)") out of place doesn't count.
+    aligned = 0
+    others = [j for j in range(min(year_cols, default=n), n)
+              if header[j] and j not in year_cols + change_cols and not UNITS.search(header[j])]
+    by_year = year_cols + change_cols if len(year_cols) >= 2 and not others else []  # placed below
+    if by_year:
+        went, rest = {}, []
+        for r in body:
+            for filled in ([j for j in range(1, n) if r[j].strip() and r[j].strip() != "—"],
+                           [j for j in range(1, n) if r[j].strip()]):  # "—" holding a year's place
+                cols = next((c for c in (sorted(year_cols + change_cols), year_cols) if len(c) == len(filled)), None)
+                if cols:
+                    break
+            if not cols:
+                rest.append(r)
+                continue
+            for j, k in zip(filled, cols):
+                went.setdefault(j, set()).add(k)
+            if filled != cols:
+                values = [r[j] for j in filled]
+                r[1:] = [""] * (n - 1)
+                for j, v in zip(cols, values):
+                    r[j] = v
+                aligned += 1
+        for r in rest:
+            moved = [""] * n
+            for j in (j for j in range(1, n) if r[j].strip()):
+                k = next(iter(went[j])) if len(went.get(j, ())) == 1 else j
+                if moved[k]:
+                    break
+                moved[k] = r[j]
+            else:
+                if moved[1:] != r[1:]:
+                    r[1:] = moved[1:]
+                    aligned += 1
+    if aligned:
+        notes.append(f"Placed the values of {aligned} row(s) under their years, in order.")
+
     # 1b. Staggered values (Appendix A tables): some rows sit one column left or right of their
-    #     year, in an unnamed spacer column. If no row fills both, they belong under the year.
+    #     year, in an unnamed spacer column. If no row fills both, they belong under the year. Only
+    #     when exactly one neighbour qualifies: with two, the direction is a guess.
     staggered = 0
-    for i in range(1, n - 1):
-        for a, b in ((i, i + 1), (i + 1, i)):  # move values from unnamed column a to named column b
-            if (header[b] and not header[a] and any(r[a].strip() for r in body)
-                    and any(r[b].strip() for r in body)
-                    and not any(r[a].strip() and r[b].strip() for r in body)):
-                for r in body:
-                    if r[a].strip():
-                        r[a], r[b] = "", r[a]
-                staggered += 1
-                break
+
+    def qualifies(a, b):  # move values from unnamed column a to named column b
+        return (0 < b < n and header[b] and not header[a] and any(r[a].strip() for r in body)
+                and any(r[b].strip() for r in body)
+                and not any(r[a].strip() and r[b].strip() for r in body))
+
+    for a in range(1, n):
+        targets = [b for b in (a - 1, a + 1) if qualifies(a, b)]
+        if len(targets) == 1:
+            for r in body:
+                if r[a].strip():
+                    r[a], r[targets[0]] = "", r[a]
+            staggered += 1
     if staggered:
         notes.append(f"Moved values from {staggered} unnamed spacer column(s) under the year they belong to.")
 
@@ -112,7 +179,7 @@ def tidy(columns, rows, title=""):
     keep, group_of, merged = list(range(n)), {}, []
     i = 1
     while i < n - 1:
-        if has_val[i] and not has_val[i + 1] and header[i + 1]:
+        if has_val[i] and not has_val[i + 1] and header[i + 1] and i not in by_year:
             if header[i]:
                 group_of[i] = header[i]
             header[i] = header[i + 1]

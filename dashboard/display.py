@@ -78,6 +78,7 @@ def rebuilt_display(structure):
     starts = {first: (label, last) for label, first, last in structure["groups"]}
     while structure["groups"] and k < len(headers):
         label, last = starts.get(k, ("", k))
+        last = max(last, k)  # a malformed group (ending before it starts) still advances
         groups.append((label, last - k + 1))
         k = last + 1
     return {"headers": headers, "groups": groups or None, "rows": structure["rows"], "notes": [], "footnotes": []}

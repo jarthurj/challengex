@@ -103,8 +103,9 @@ def market_mix():
     if not years:
         return None
     year = max(years)
-    # The published markets don't add up to the published total (USPS counts some pieces in more
-    # than one market, and an "Other" market isn't mapped), so shares are of the markets shown.
+    # The published markets don't add up to the published total (E.2's note: Advertising includes
+    # First-Class ad-enclosed mail also counted in another market but only once in the total; the
+    # small "Other" market isn't mapped), so shares are of the markets shown.
     shown = sum(series[slug][year].value for slug, _ in MARKETS)
     rows = [{
         "name": name,

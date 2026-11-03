@@ -9,7 +9,7 @@ from io import StringIO
 from pathlib import Path
 
 from django.conf import settings
-from django.core.management import call_command
+from django.core.management import CommandError, call_command
 from django.test import SimpleTestCase, TestCase
 
 from .management.commands import extract_old_reports as old
@@ -76,3 +76,26 @@ class LoadTwoFilesTests(TestCase):
         before = Observation.objects.count()
         call_command("load_tables", str(settings.BASE_DIR / "tables.json"), str(self.old_path), stdout=StringIO())
         self.assertEqual(Observation.objects.count(), before)  # the new tables don't disturb old ones
+
+    def test_loading_one_file_keeps_the_other_files_years(self):
+        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), str(self.old_path), stdout=StringIO())
+        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        old = Table.objects.get(source_id="2010-p084-1")
+        self.assertEqual(old.rows.count(), 1)  # neither the table nor its rows were dropped
+        # within a year the file covers, a table that left the file is removed
+        self.old_path.write_text(json.dumps(self.OLD[:1]), encoding="utf-8")
+        call_command("load_tables", str(self.old_path), stdout=StringIO())
+        self.assertFalse(Table.objects.filter(source_id="2010-p120-1").exists())
+        self.assertEqual(Table.objects.count(), 1095 + 1)
+
+    def test_a_table_that_observations_cite_is_not_dropped(self):
+        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        call_command("load_metrics", stdout=StringIO())
+        cited = Observation.objects.values_list("source_table__source_id", flat=True).first()
+        items = [t for t in json.loads((settings.BASE_DIR / "tables.json").read_text(encoding="utf-8"))
+                 if t["id"] != cited]
+        path = Path(self.tmp.name) / "fewer.json"
+        path.write_text(json.dumps(items), encoding="utf-8")
+        with self.assertRaisesMessage(CommandError, cited):
+            call_command("load_tables", str(path), stdout=StringIO())
+        self.assertTrue(Table.objects.filter(source_id=cited).exists())

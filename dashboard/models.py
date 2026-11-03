@@ -115,8 +115,8 @@ class Observation(models.Model):
     value = models.FloatField()  # in metric.unit
     raw_value = models.CharField(max_length=50)  # cell text as extracted, e.g. "35,729"
     raw_unit = models.CharField(max_length=30)  # unit the source table reports in
-    # Cascades: re-run load_metrics after load_tables.
-    source_table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="observations")
+    # Protected: load_tables refuses to drop a table that observations still cite.
+    source_table = models.ForeignKey(Table, on_delete=models.PROTECT, related_name="observations")
     report_year = models.PositiveIntegerField()  # which annual report published this value
     is_preferred = models.BooleanField(default=False)  # the one value to chart for this year
     verified = models.BooleanField(default=False)  # checked against the source PDF page; notes say how

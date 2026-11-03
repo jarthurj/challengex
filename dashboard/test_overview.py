@@ -54,7 +54,7 @@ class OverviewYearCsvTests(TestCase):
         self.assertAlmostEqual(sum(r["share"] for r in mix["rows"]), 100)
         self.assertTrue(all(r["share"] > 0 for r in mix["rows"]))
         page = self.get("dashboard").content.decode()
-        self.assertIn("counts some pieces in more than one market", page)
+        self.assertIn("also counted in another market", page)
 
     def test_year_page_lists_published_values_and_groups(self):
         page = self.get("year-detail", 2025).content.decode()

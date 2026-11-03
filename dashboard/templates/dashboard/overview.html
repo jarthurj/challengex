@@ -68,8 +68,9 @@
         <h2>Where household mail comes from, FY{{ mix.year }}</h2>
         <p>Pieces sent and received per household per year, by market. The report's total for all household
             mail is {{ mix.total }} (<a href="{{ mix.source.url }}">{{ mix.source.text }}</a>); the markets below add up
-            to {{ mix.shown }}, because USPS counts some pieces in more than one market and a small "Other" market
-            isn't shown. Shares are therefore of the five markets listed.</p>
+            to {{ mix.shown }}. As the table's note says, Advertising includes First-Class Mail with advertising
+            enclosed that is also counted in another market, while the total counts it once; a small "Other"
+            market (unclassified First-Class Mail) isn't shown. Shares are therefore of the five markets listed.</p>
         <div class="table-wrapper">
             <table>
                 <caption>Market volumes per household, FY{{ mix.year }}. Shares are calculated from these published values.</caption>
