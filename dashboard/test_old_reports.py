@@ -14,6 +14,7 @@ from django.test import SimpleTestCase, TestCase
 
 from .management.commands import extract_old_reports as old
 from .models import Observation, Table
+from .testdata import load_real_tables
 
 
 class CaptionTests(SimpleTestCase):
@@ -71,11 +72,12 @@ class LoadTwoFilesTests(TestCase):
         self.assertIn("1 of 3 numbers not found", single.review_reason)
 
     def test_reloading_keeps_metrics_linked_to_their_tables(self):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
         before = Observation.objects.count()
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), str(self.old_path), stdout=StringIO())
+        load_real_tables(self.old_path)
         self.assertEqual(Observation.objects.count(), before)  # the new tables don't disturb old ones
+        self.assertTrue(Table.objects.filter(source_id="2010-p084-1").exists())
 
     def test_loading_one_file_keeps_the_other_files_years(self):
         call_command("load_tables", str(settings.BASE_DIR / "tables.json"), str(self.old_path), stdout=StringIO())
@@ -89,9 +91,10 @@ class LoadTwoFilesTests(TestCase):
         self.assertEqual(Table.objects.count(), 1095 + 1)
 
     def test_a_table_that_observations_cite_is_not_dropped(self):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
-        cited = Observation.objects.values_list("source_table__source_id", flat=True).first()
+        cited = (Observation.objects.filter(source_table__year__gte=2016)
+                 .values_list("source_table__source_id", flat=True).first())
         items = [t for t in json.loads((settings.BASE_DIR / "tables.json").read_text(encoding="utf-8"))
                  if t["id"] != cited]
         path = Path(self.tmp.name) / "fewer.json"

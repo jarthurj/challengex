@@ -10,8 +10,9 @@ from . import titles
 from .tidy import tidy
 from .management.commands import verify_pdfs
 from .management.commands.load_metrics import mark_preferred, row_values, year_header
-from .metric_sources import CONVERSIONS, METRICS, SOURCES
+from .metric_sources import BREAKS, CONVERSIONS, METRICS, SOURCES
 from .models import MethodologyBreak, Metric, Observation, Table
+from .testdata import load_real_tables
 
 
 class YearHeaderTests(SimpleTestCase):
@@ -110,6 +111,12 @@ class PdfTextTests(SimpleTestCase):
         found, _ = verify_pdfs.page_series(page, "Some college or technical school graduate", 1)
         self.assertEqual(found, {2015: "139.5", 2020: "116.3", 2025: "102.7"})
 
+    def test_rows_of_a_table_above_the_years_are_skipped(self):
+        # FY2005 p.8: Table E.1 (no year header) has its own "Packages" and "Total" rows above E.2.
+        page = "Packages 2.1 .3 \nTotal 151.6 21.7 \nMarket 2003 2004 2005 \nPackages 2.6 2.6 2.4 \n"
+        found, _ = verify_pdfs.page_series(page, "Packages", 1)
+        self.assertEqual(found, {2003: "2.6", 2004: "2.6", 2005: "2.4"})
+
     def test_note_keeps_reviewer_text(self):
         notes = verify_pdfs.set_note("Checked by Sam", "[pdf-check] old")
         notes = verify_pdfs.set_note(notes, "matches docs/2023.pdf p.77 (35,729)")
@@ -121,7 +128,7 @@ class LoadMetricsTests(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
 
     def preferred(self, slug, year, dimension="all"):
@@ -134,6 +141,25 @@ class LoadMetricsTests(TestCase):
         self.assertEqual(self.preferred("bills-paid-by-mail-share", 2025).value, 14)
         self.assertEqual(self.preferred("fcm-received-total", 2023).value, 32228)
         self.assertEqual(self.preferred("fcm-received-per-household", 2024).value, 221.7)
+
+    def test_market_series_reach_back_to_2003_from_the_older_reports(self):
+        # FY2005-FY2015 Table E.2 (tables_2000_2015.json); the newest report covering a year wins.
+        total_2003 = self.preferred("household-mail-total", 2003)
+        self.assertEqual((total_2003.value, total_2003.report_year), (158300, 2005))
+        self.assertEqual(self.preferred("periodicals-volume", 2009).report_year, 2010)
+        # FY2014 restated 2012 (packages 3.3 -> 3.9 billion); both values are kept, FY2014's preferred
+        packages_2012 = Observation.objects.filter(metric__slug="packages-volume", fiscal_year=2012)
+        self.assertEqual(sorted(packages_2012.values_list("report_year", "value")),
+                         [(2012, 3300), (2013, 3300), (2014, 3900)])
+        self.assertEqual(self.preferred("packages-volume", 2012).report_year, 2014)
+
+    def test_market_specific_breaks(self):
+        cd_dvd = MethodologyBreak.objects.get(fiscal_year=2005)
+        self.assertEqual(list(cd_dvd.metrics.values_list("slug", flat=True)), ["packages-volume"])
+        restated = MethodologyBreak.objects.get(fiscal_year=2012)
+        self.assertEqual(sorted(restated.metrics.values_list("slug", flat=True)),
+                         ["household-mail-total", "packages-volume", "periodicals-volume"])
+        self.assertFalse(MethodologyBreak.objects.get(fiscal_year=2010).metrics.exists())  # all metrics
 
     def test_known_values_of_the_broadened_series(self):
         self.assertEqual(self.preferred("fcm-sent-total", 2023).value, 4637)
@@ -208,12 +234,12 @@ class LoadMetricsTests(TestCase):
         before = Observation.objects.count()
         table_pk = obs.source_table.pk
 
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
 
         self.assertEqual(Observation.objects.count(), before)
         self.assertEqual(Metric.objects.count(), len(METRICS))
-        self.assertEqual(MethodologyBreak.objects.count(), 3)
+        self.assertEqual(MethodologyBreak.objects.count(), len(BREAKS))
         reloaded = self.preferred("fcm-received-total", 2023)
         self.assertTrue(reloaded.verified)
         self.assertEqual(reloaded.notes, "Checked against 2023.pdf p.77")
@@ -252,7 +278,7 @@ class RebuildDbTests(TestCase):
         old_reports = settings.BASE_DIR / "tables_2000_2015.json"  # loaded too when present
         extra = len(json.loads(old_reports.read_text(encoding="utf-8"))) if old_reports.exists() else 0
         self.assertEqual(Table.objects.count(), 1095 + extra)
-        self.assertEqual(Observation.objects.count(), 869)
+        self.assertEqual(Observation.objects.count(), 959)
 
         User.objects.create_superuser("me", "me@example.com", "pw")
         obs = Observation.objects.filter(metric__slug="fcm-received-total", is_preferred=True).first()

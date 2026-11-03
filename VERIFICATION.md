@@ -22,6 +22,21 @@ packages, periodicals; in billions, and per household from FY2024), and FY2025 A
 | FY2025 A-11 "All Households" vs. E.2 advertising | differ (643.6 vs. 658.9 in 2015): A-11 is First-Class and Marketing Mail ads only, so it is a separate metric |
 | E.2 correspondence in billions, FY2016 vs. FY2017 | differ (13.9 vs. 16.3 for 2015): reclassified, so not mapped |
 
+**Update 2026-11-03: 959 values, all 959 match their source page.** Table E.2 from the FY2005–
+FY2015 reports (`tables_2000_2015.json`) extends `household-mail-total`, `packages-volume` and
+`periodicals-volume` back to 2003 (90 values). Every overlapping year was compared across reports:
+
+| Check | Result |
+|---|---|
+| Total, packages, periodicals: each year in 2 or 3 reports, FY2005–FY2017 | identical, except the three restatements below |
+| Packages 2005: FY2005/FY2006 2.4 vs. FY2007 3.1 billion | FY2007 counts CD/DVD rentals as packages (its note); break at 2005 |
+| Total 2006 and earlier | include Detached Address Labels counted separately (3 billion in 2006, FY2007 note); break at 2007 |
+| 2012–2013, FY2012/FY2013 vs. FY2014 (total 130.4 vs. 136.9; packages 3.3 vs. 3.9; periodicals 5.1 vs. 5.9 for 2012) | restated upward in FY2014, reason not given; FY2015 and FY2016 agree with FY2014; break at 2012 |
+| Total 2015, FY2016 vs. FY2017 (126.8 vs. 128.4) | restated in FY2017 (already loaded before this update) |
+
+`verify_pdfs` first skipped the FY2005 and FY2006 pages: Table E.1 above E.2 has rows with the same
+labels. It now reads only rows below the year header, and the original 869 values still match.
+
 The rest of this document describes the original six-metric check.
 
 ## Headline numbers

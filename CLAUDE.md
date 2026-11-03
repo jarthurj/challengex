@@ -218,7 +218,7 @@ analyst should be able to:
     FY2011 are missing. The key 2000-2002 series are already in the FY2020 appendix.
   - **FY2003 numbers its chapters differently** (5 = transactions, 8 = packages, 9 = methodology);
     `display.REPORT_CHAPTERS` maps it. FY2005-FY2025 share one layout (checked by keyword vote).
-  - These tables aren't used by any metric yet, and they have no corrected titles
+  - Only Table E.2 from FY2005–FY2015 feeds metrics so far (see below). They have no corrected titles
     (`table_titles.json`) or "From the report" excerpts.
 - **"15+ years" is already covered by the Appendix A trend tables** (A8-x before FY2024, A-x
   from FY2024). None of them are OCR'd:
@@ -378,7 +378,7 @@ analyst should be able to:
   - `SOURCES`: `source_id` → (the table's unit, `RowMap`s)
   - `CONVERSIONS`
   - `BREAKS`
-- **23 metrics are loaded (869 observations):**
+- **23 metrics are loaded (959 observations):**
   - First-Class Mail received: `fcm-received-total`, `-correspondence`, `-transactions`,
     `-advertising` (millions, 2000–2023, A8-1) and `fcm-received-per-household` (2014–2024, A-1).
   - First-Class Mail sent: `fcm-sent-total`, `-correspondence`, `-transactions` (millions,
@@ -389,8 +389,15 @@ analyst should be able to:
   - Advertising: `advertising-received-total` and `marketing-mail-ads-received` (millions,
     2000–2023, A8-12).
   - All markets from Table E.2, in millions converted from billions (one decimal, so ±50 million):
-    `household-mail-total`, `packages-volume`, `periodicals-volume` (2014–2023; FY2021 is OCR
-    and skipped). E.2 correspondence is deliberately not mapped: FY2017 reclassified it.
+    `household-mail-total`, `packages-volume`, `periodicals-volume` (2003–2023, from the FY2005–
+    FY2023 reports; FY2021 is OCR and skipped). E.2 correspondence is deliberately not mapped:
+    FY2017 reclassified it. Overlapping years agree across reports except three restatements,
+    each a methodology break attached to the metrics it affects: packages include CD/DVD
+    rentals from 2005 (FY2007 restated 2005 from 2.4 to 3.1 billion); Detached Address Labels
+    stopped counting as separate pieces in 2007 (total); and FY2014 restated 2012–2013 upward
+    without saying why (total 130.4 → 136.9 billion for 2012). Projections for these series
+    therefore fit 2012–2023 only.
+  - `BREAKS` entries can name `metrics`; without them a break applies to every metric.
   - Per household per year from FY2024/FY2025 E.2 (2014, 2015, 2019, 2020, 2024, 2025):
     `household-mail-per-household`, `correspondence-`, `transactions-`, `advertising-`,
     `packages-` and `periodicals-per-household`. FY2025 A-3/A-6 add the 16 household groups for
@@ -400,12 +407,13 @@ analyst should be able to:
     (643.6 vs. 658.9 in 2015) and is kept as its own metric.
   - The loader skips "% change" columns after the years, only when the header names exactly that
     many of them.
-- **All 869 loaded observations are verified** against their source PDF page by `verify_pdfs`
+- **All 959 loaded observations are verified** against their source PDF page by `verify_pdfs`
   (it compares the extracted cell, so converted values are checked too, and it handles "% change"
-  columns and labels that wrap onto two lines). See `VERIFICATION.md`.
+  columns and labels that wrap onto two lines, and reads only rows below the year header, since
+  FY2005–FY2006 print Table E.1 with the same row labels above E.2). See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 130 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
+- **Tests:** 134 in total, in `dashboard/tests.py`, `dashboard/test_trends.py` (the Trends
   page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -578,7 +586,7 @@ Updated 2026-10-31. Write tests with every change, keep `verify_pdfs` at 0 misma
 this file when a step finishes.
 
 ### Done
-1. **Metric layer:** 23 metrics, 869 observations, all verified against their PDF pages.
+1. **Metric layer:** 23 metrics, 959 observations, all verified against their PDF pages.
 2. **Trends page:** chart, methodology breaks, values and sources table.
 3. **Forecasts:** naive, drift, linear and Holt, chosen by backtest; 80%/95% bands (`forecast.py`).
 5. **Broaden:** new series, FY2025 household groups, Overview, Year page, CSV export.
@@ -591,23 +599,19 @@ this file when a step finishes.
 ### To do
 1. **Before the demo** (whoever presents)
    - Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
-     `python manage.py rebuild_db` (expect 869 match, 0 mismatch), tests pass, PDFs in `docs/`,
+     `python manage.py rebuild_db` (expect 959 match, 0 mismatch), tests pass, PDFs in `docs/`,
      internet for the Chart.js CDN.
    - Rehearse the 7-minute walk-through once with the real data.
 
-2. **Use the FY2003–FY2015 tables.** They can be browsed but feed no chart yet.
+2. **Use the FY2003–FY2015 tables.** So far only Table E.2 (FY2005–FY2015) feeds metrics.
    - **Demographic trends before FY2025** (a slide requirement). Map the yearly chapter tables
      "by income", "by age", "by education" (e.g. FY2003 Table 5.4, Transactions Mail Received by
      Income and Age) into `metric_sources.py` as segments. Keep the old age bands (Under 35 /
      35–54 / 55+) as segments separate from the FY2025 bands, and map only tables whose `check`
      is "two readers agree". Run `verify_pdfs` after mapping and get it to 0 mismatches (it
      hasn't been tried on the older reports' layouts yet).
-   - **Longer packages, periodicals and all-mail series.** The market table (Table E.2,
-     billions) is in every report from FY2005 (FY2003's E.2 is a different table); adding them
-     extends `packages-volume`, `periodicals-volume` and `household-mail-total` back to about
-     2003. FY2007 onward are confirmed by both readers; check FY2005–FY2006 by eye. Compare
-     overlapping years first: E.2 correspondence was reclassified in FY2017, so check the other
-     markets before mixing reports.
+   - ~~Longer packages, periodicals and all-mail series~~ (done 2026-11-03: Table E.2 from
+     FY2005–FY2015, 2003–2023, all verified; restatements are breaks).
    - **Titles and excerpts for the new tables.** Run them through `extract_titles` (corrected
      titles and numbers) and `extract_context` ("From the report" quotes). Both currently read
      only `tables.json`.

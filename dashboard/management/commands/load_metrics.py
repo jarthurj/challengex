@@ -145,7 +145,9 @@ class Command(BaseCommand):
         Observation.objects.bulk_create(observations)
 
         for b in BREAKS:
-            MethodologyBreak.objects.create(**b)
+            b = dict(b)
+            slugs = b.pop("metrics", [])  # none: the break applies to every metric
+            MethodologyBreak.objects.create(**b).metrics.set([metrics[s] for s in slugs])
 
         for m in metrics.values():
             preferred = m.observations.filter(is_preferred=True, segment__dimension="all")

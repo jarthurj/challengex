@@ -128,8 +128,9 @@ METRICS = [
         "direction": "total",
         "unit": "millions",
         "description": (
-            "Mail received and sent by households across all markets (Table E.2). Published in "
-            "billions to one decimal, so values are accurate to about 50 million pieces."
+            "Mail received and sent by households across all markets (Table E.2, FY2005-FY2023 "
+            "reports). Published in billions to one decimal, so values are accurate to about 50 "
+            "million pieces. Before 2007, Detached Address Labels counted as separate pieces."
         ),
     },
     {
@@ -139,8 +140,9 @@ METRICS = [
         "direction": "total",
         "unit": "millions",
         "description": (
-            "Packages market volume (Table E.2), published in billions to one decimal. Some years "
-            "include about 0.2 billion CD/DVD rentals mailed as First-Class letters."
+            "Packages market volume (Table E.2), published in billions to one decimal. From 2005 "
+            "it includes CD/DVD rentals mailed as First-Class letters (0.8 billion in 2007, 0.6 "
+            "in 2014, 0.1 in 2023, per the table notes); 2003-2004 exclude them."
         ),
     },
     {
@@ -328,8 +330,11 @@ SOURCES = {
     "2020-p082-2": ("millions", A8_12_ROWS),  # 2000-2020
     "2022-p075-1": ("millions", A8_12_ROWS),  # 2010-2022
     "2023-p088-1": ("millions", A8_12_ROWS),  # 2010-2023
-    # Table E.2, household mail by market, billions; three years per report (FY2021 is OCR)
+    # Table E.2, household mail by market, billions; three years per report (FY2021 is OCR).
+    # FY2005-FY2015 come from tables_2000_2015.json; FY2003's E.2 is a different table.
     **{source_id: ("billions", E2_ROWS) for source_id in (
+        "2005-p008-2", "2006-p009-2", "2007-p009-1", "2008-p008-1", "2009-p010-2", "2010-p010-1",
+        "2012-p010-2", "2013-p010-2", "2014-p010-2", "2015-p012-2",
         "2016-p010-1", "2017-p010-1", "2018-p010-1", "2019-p010-1", "2020-p010-2",
         "2022-p004-1", "2023-p011-1",
     )},
@@ -370,12 +375,44 @@ REVIEW_NOTES = {
 
 BREAKS = [
     {
+        "fiscal_year": 2005,
+        "title": "Packages include CD/DVD rentals",
+        "description": (
+            "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as "
+            "First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 "
+            "billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes "
+            "count only ground and expedited packages."
+        ),
+        "metrics": ["packages-volume"],
+    },
+    {
+        "fiscal_year": 2007,
+        "title": "Detached Address Labels no longer counted separately",
+        "description": (
+            "Prior to 2007, Detached Address Labels were counted as separate advertising pieces "
+            "(3 billion in 2006, FY2007 Table E.2 note), so totals before 2007 are inflated by "
+            "about that much."
+        ),
+        "metrics": ["household-mail-total"],
+    },
+    {
         "fiscal_year": 2010,
         "title": "Diary data restated with new weighting",
         "description": (
             "Beginning in 2010, diary data were restated because of changes in weighting "
             "methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
         ),
+    },
+    {
+        "fiscal_year": 2012,
+        "title": "FY2014 report restated 2012 and 2013",
+        "description": (
+            "The FY2014 report's Table E.2 restated 2012 and 2013 upward without explaining why "
+            "(2012 total: 130.4 billion in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals "
+            "5.1 to 5.9). Later reports agree with FY2014, so values from 2012 on share one basis and "
+            "values through 2011 come from earlier reports on the lower one."
+        ),
+        "metrics": ["household-mail-total", "packages-volume", "periodicals-volume"],
     },
     {
         "fiscal_year": 2024,

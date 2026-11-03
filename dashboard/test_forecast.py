@@ -7,6 +7,7 @@ from django.urls import reverse
 
 from . import forecast as F
 from .models import Segment
+from .testdata import load_real_tables
 
 
 class ModelTests(SimpleTestCase):
@@ -90,7 +91,7 @@ class ForecastTests(SimpleTestCase):
 class TrendForecastTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        call_command("load_tables", str(settings.BASE_DIR / "tables.json"), stdout=StringIO())
+        load_real_tables()
         call_command("load_metrics", stdout=StringIO())
 
     def data(self, **params):
@@ -108,6 +109,13 @@ class TrendForecastTests(TestCase):
         page = self.client.get(reverse("trends")).content.decode()
         self.assertIn("statistical projections, not published USPS figures", page)
         self.assertIn("Naive (last value)", page)
+
+    def test_market_series_fit_after_the_fy2014_restatement(self):
+        # 2003-2023 from Table E.2, but 2012 on is the one basis later reports share.
+        payload = self.data(trend="packages-volume")
+        self.assertEqual(payload["chart"]["years"][0], 2003)
+        self.assertEqual(payload["forecast"]["fit_years"], [2012, 2023])
+        self.assertEqual([b["year"] for b in payload["chart"]["breaks"]], [2005, 2010, 2012])
 
     def test_bills_projection_flags_the_2024_and_2025_changes(self):
         payload = self.data(trend="bills-paid-by-mail-share")
