@@ -19,8 +19,9 @@ INCOME_BANDS = [
     ("Over $100K", "over$100"),
 ]
 
-# Column groups in printed order: (segment value, pattern of its heading). FY2003 and FY2015 print
-# "Under 34" for the youngest band. The education groups are the four FY2025 uses, so they share
+# Column groups in printed order: (segment value, pattern of its heading). The correspondence and
+# advertising tables (and FY2003's transactions table) print "Under 34" for the youngest band, the
+# other transactions tables "Under 35". The education groups are the four FY2025 uses, so they share
 # its segment names ("Some College or Technical School" there adds "graduate").
 COLUMN_GROUPS = {
     "age": [

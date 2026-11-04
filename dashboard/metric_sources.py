@@ -13,7 +13,8 @@ ALL = ("all", "All households")
 # Shared by the household-group metrics read from the one-year chapter tables (CrossTab).
 GROUPS_NOTE = (
     " Published per week to one decimal (about +/-2.6 a year once multiplied by 52). By age "
-    "(Under 35 / 35 to 54 / Over 55; FY2003 and FY2015 print \"Under 34\"), education, and income "
+    "(Under 35 / 35 to 54 / Over 55; the correspondence and advertising tables, and FY2003's, print "
+    "\"Under 34\"), education, and income "
     "in nominal dollars, so the income bands' make-up drifts with inflation. FY2021's tables are "
     "OCR and skipped; there are no FY2004 or FY2011 reports."
 )
@@ -259,7 +260,9 @@ METRICS = [
         "direction": "received",
         "unit": "per_household_year",
         "description": (
-            "Advertising mail received per household, FY2007-FY2023 (Tables 5.5 and 5.4). The "
+            "Advertising mail received per household, FY2003-FY2023 (Tables 5.5 and 5.4, \"Ad Mail "
+            "Received by ...\" before FY2007; FY2003 Tables 6.4 and 6.3). Before 2007 the volumes include "
+            "the Detached Address Label double count (see the 2007 and 2008 breaks). The "
             "chapter's own definition: close to, but not the same as, Table E.2's advertising market "
             "or FY2025 Table A-11."
         ) + GROUPS_NOTE,
@@ -433,12 +436,12 @@ SOURCES = {
     # FY2015's Table 3.4 (by income and age) wasn't extracted, so Table 3.2 supplies the margins.
     **crosstabs("correspondence-received-per-household", "education", ("2015-p030-1",)),
     **crosstabs("advertising-mail-received-per-household", "age", (
-        "2007-p047-1", "2008-p049-1", "2009-p050-1", "2010-p050-1", "2012-p050-1", "2013-p050-1",
+        "2003-p049-2", "2005-p045-1", "2006-p046-1", "2007-p047-1", "2008-p049-1", "2009-p050-1", "2010-p050-1", "2012-p050-1", "2013-p050-1",
         "2014-p052-2", "2015-p052-1", "2016-p050-2", "2017-p048-2", "2018-p048-2", "2019-p048-2",
         "2020-p050-2", "2022-p043-2", "2023-p055-2",
     )),
     **crosstabs("advertising-mail-received-per-household", "education", (
-        "2007-p046-2", "2008-p048-1", "2009-p049-2", "2010-p049-2", "2012-p049-2", "2013-p049-2",
+        "2003-p049-1", "2005-p044-2", "2006-p045-2", "2007-p046-2", "2008-p048-1", "2009-p049-2", "2010-p049-2", "2012-p049-2", "2013-p049-2",
         "2014-p052-1", "2015-p051-2", "2016-p049-2", "2017-p047-2", "2018-p047-2", "2019-p047-2",
         "2020-p049-2", "2022-p042-2", "2023-p054-2",
     ), margins=False),
@@ -455,6 +458,10 @@ CONVERSIONS = {
 
 # Notes attached to specific observations on every load: (metric, fiscal year, report year) -> note.
 REVIEW_NOTES = {
+    ("transactions-received-per-household", 2017, 2017): (
+        "FY2017 Tables 4.2 and 4.4 (and 4.3) cite \"HDS Recruitment Sample\" as their source, where every "
+        "other year's tables cite the Diary Sample. Possibly a misprint; kept as published."
+    ),
     ("fcm-received-correspondence", 2007, 2020): (
         "Source inconsistency in USPS FY2020 Table A8-1: correspondence + transactions + advertising + "
         "other categories exceed the printed total by 9M for 2007. The FY2017/FY2018 reports give 18,820, "
@@ -468,6 +475,46 @@ REVIEW_NOTES = {
 }
 
 BREAKS = [
+    {
+        "fiscal_year": 2008,
+        "title": "Correspondence/transactions split reclassified (FY2008 report)",
+        "description": (
+            "The FY2008 report moved mail between correspondence and transactions and restated "
+            "earlier years in Table E.2 (2007 correspondence from 14.6 to 16.9 billion; transactions unchanged). The household-group series take each year from "
+            "its own report, so they change classification here."
+        ),
+        "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
+    },
+    {
+        "fiscal_year": 2012,
+        "title": "Correspondence/transactions split reclassified (FY2012 report)",
+        "description": (
+            "The FY2012 report moved mail between correspondence and transactions and restated "
+            "earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion and transactions from 35.9 to 37.6). The household-group series take each year from "
+            "its own report, so they change classification here."
+        ),
+        "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
+    },
+    {
+        "fiscal_year": 2015,
+        "title": "Correspondence/transactions split reclassified (FY2015 report)",
+        "description": (
+            "The FY2015 report moved mail between correspondence and transactions and restated "
+            "earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion and transactions from 32.0 to 28.8). The household-group series take each year from "
+            "its own report, so they change classification here."
+        ),
+        "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
+    },
+    {
+        "fiscal_year": 2017,
+        "title": "Correspondence/transactions split reclassified (FY2017 report)",
+        "description": (
+            "The FY2017 report moved mail between correspondence and transactions and restated "
+            "earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion and transactions from 26.3 to 24.5). The household-group series take each year from "
+            "its own report, so they change classification here."
+        ),
+        "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
+    },
     {
         "fiscal_year": 2005,
         "title": "Packages include CD/DVD rentals",
@@ -488,7 +535,8 @@ BREAKS = [
             "the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The "
             "FY2020 A8-12 drops the note but its pre-2007 values are no lower."
         ),
-        "metrics": ["household-mail-total", "advertising-received-total", "marketing-mail-ads-received"],
+        "metrics": ["household-mail-total", "advertising-received-total", "marketing-mail-ads-received",
+                    "advertising-mail-received-per-household"],
     },
     {
         "fiscal_year": 2008,
@@ -499,7 +547,8 @@ BREAKS = [
             "addresses\" (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly "
             "offsets the Detached Address Label double count; 2007 itself is understated."
         ),
-        "metrics": ["household-mail-total", "advertising-received-total", "marketing-mail-ads-received"],
+        "metrics": ["household-mail-total", "advertising-received-total", "marketing-mail-ads-received",
+                    "advertising-mail-received-per-household"],
     },
     {
         "fiscal_year": 2010,

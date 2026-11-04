@@ -383,7 +383,7 @@ analyst should be able to:
   - `SOURCES`: `source_id` → (the table's unit, `RowMap`s)
   - `CONVERSIONS`
   - `BREAKS`
-- **26 metrics are loaded (1,568 observations):**
+- **26 metrics are loaded (1,604 observations):**
   - First-Class Mail received: `fcm-received-total`, `-correspondence`, `-transactions`,
     `-advertising` (millions, 2000–2023, A8-1) and `fcm-received-per-household` (2014–2024, A-1).
   - First-Class Mail sent: `fcm-sent-total`, `-correspondence`, `-transactions` (millions,
@@ -412,29 +412,34 @@ analyst should be able to:
   - `ads-received-per-household`: FY2025 A-11, all households plus 16 groups. It counts
     First-Class and Marketing Mail ads only, so it is narrower than E.2's advertising market
     (643.6 vs. 658.9 in 2015) and is kept as its own metric.
-  - **Household groups before FY2025** (609 values): `transactions-received-per-household`,
-    `correspondence-received-per-household` (FY2003–FY2023) and
-    `advertising-mail-received-per-household` (FY2007–FY2023), by age, income and education,
-    from the one-year chapter tables "... Received by Income and Age" and "... by Income and
-    Education" (Tables 3.2/3.4, 4.2/4.4, 5.4/5.5; FY2003 numbers them differently). Pieces per
+  - **Household groups before FY2025** (645 values): `transactions-received-per-household`,
+    `correspondence-received-per-household` and `advertising-mail-received-per-household`
+    (FY2003–FY2023), by age, income and education, from the one-year chapter tables "...
+    Received by Income and Age" and "... by Income and Education" (Tables 3.2/3.4, 4.2/4.4,
+    5.4/5.5; "Ad Mail Received by ..." before FY2007; FY2003 numbers them differently). Pieces per
     household per week ×52. `metric_sources.CrossTab` maps them and `dashboard/crosstab.py`
     reads them, for both `load_metrics` and `verify_pdfs`: income bands as rows, then the
     "Average"/"Total" row gives the age or education groups, the "Average" column the income
     bands and the corner all households, for the report's own year. It checks the column groups'
     order in the heading and refuses any other shape. The education tables repeat the age
-    tables' margins: 245 of 255 agree, 2 differ only in print ("14" vs "14.0"), 3 by 0.1 (USPS
+    tables' margins: of 260, 254 agree, 2 differ only in print ("14" vs "14.0"), 4 by 0.1 (USPS
     rounding; the age table's value is used), and FY2015's correspondence Table 3.4 was never
     extracted, so its Table 3.2 supplies the margins and FY2015 has no age groups.
-    - Segments use the reports' labels: age "Under 35 / 35 to 54 / Over 55" (FY2003 and FY2015
-      print "Under 34"), kept separate from FY2025's bands; income "Under $35K … Over $100K",
+    - Segments use the reports' labels: age "Under 35 / 35 to 54 / Over 55" (the
+      correspondence and advertising tables, and FY2003's, print "Under 34"), kept separate from FY2025's bands; income "Under $35K … Over $100K",
       nominal dollars, so the bands' make-up drifts with inflation; education shares FY2025's
       four segment names (the same categories).
-    - A methodology break at 2014 (weighting by home ownership from FY2014; the series take
-      each year from its own report, which wasn't restated).
+    - **Each year comes from its own report, which later reports don't restate**, so every
+      reclassification shows up as a break: correspondence/transactions splits at 2008, 2012,
+      2015 and 2017 (the FY2008/FY2012/FY2015/FY2017 reports restated earlier years in E.2;
+      e.g. 2014 correspondence 11.0 → 13.7 billion); weighting by home ownership at 2014; and,
+      for advertising, the carrier-system corrections at 2007 and 2008.
+    - FY2017 Tables 4.2–4.4 cite the "HDS Recruitment Sample" (all other years: Diary Sample);
+      the observations carry a note.
     - No projections yet: FY2021's tables are OCR, so the latest unbroken run is 2022–2023.
   - The loader skips "% change" columns after the years, only when the header names exactly that
     many of them.
-- **All 1,568 loaded observations are verified** against their source PDF page by `verify_pdfs`
+- **All 1,604 loaded observations are verified** against their source PDF page by `verify_pdfs`
   (it compares the extracted cell, so converted values are checked too, and it handles "% change"
   columns and labels that wrap onto two lines, and reads only rows below the year header, since
   FY2005–FY2006 print Table E.1 with the same row labels above E.2). Household-group tables are
@@ -442,7 +447,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 146 in total, in `dashboard/tests.py`, `dashboard/test_demographics.py` (household-group
+- **Tests:** 148 in total, in `dashboard/tests.py`, `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -617,7 +622,7 @@ Updated 2026-10-31. Write tests with every change, keep `verify_pdfs` at 0 misma
 this file when a step finishes.
 
 ### Done
-1. **Metric layer:** 26 metrics, 1,568 observations, all verified against their PDF pages.
+1. **Metric layer:** 26 metrics, 1,604 observations, all verified against their PDF pages.
 2. **Trends page:** chart, methodology breaks, values and sources table.
 3. **Forecasts:** naive, drift, linear and Holt, chosen by backtest; 80%/95% bands (`forecast.py`).
 5. **Broaden:** new series, FY2025 household groups, Overview, Year page, CSV export.
@@ -630,7 +635,7 @@ this file when a step finishes.
 ### To do
 1. **Before the demo** (whoever presents)
    - Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
-     `python manage.py rebuild_db` (expect 1568 match, 0 mismatch), tests pass, PDFs in `docs/`,
+     `python manage.py rebuild_db` (expect 1604 match, 0 mismatch), tests pass, PDFs in `docs/`,
      internet for the Chart.js CDN.
    - Rehearse the 7-minute walk-through once with the real data.
 
@@ -640,7 +645,9 @@ this file when a step finishes.
      loader reads values in order, not by heading, and `verify_pdfs` matched every value.
    - **FY2021 household-group tables** are OCR'd and wrong. Transcribing its six tables (3.2,
      3.4, 4.2, 4.4, 5.4, 5.5; about 130 numbers) from the page images, checked by eye, would
-     close the 2021 gap and give the groups 2012–2023 runs long enough for projections.
+     close the 2021 gap. Advertising groups would then have 2014–2023 (10 years) for projections;
+     correspondence and transactions only 2017–2023 (7) after the 2017 reclassification, so
+     their projections would fit from 2015 and be flagged as crossing it.
    - **More household-group series:** mail sent, periodicals and packages by income and
      age/education are in the same reports; add them with `crosstabs(...)`.
    - ~~Longer packages, periodicals and all-mail series~~ (done 2026-11-03: Table E.2 from

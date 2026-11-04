@@ -110,3 +110,18 @@ class LoadDemographicsTests(TestCase):
         self.assertEqual(transactions.values("segment", "fiscal_year").distinct().count(), transactions.count())
         weighting = MethodologyBreak.objects.get(fiscal_year=2014)
         self.assertIn("transactions-received-per-household", weighting.metrics.values_list("slug", flat=True))
+
+    def test_reclassifications_are_marked_on_the_one_year_series(self):
+        # Each year comes from its own report, so every correspondence/transactions reclassification
+        # (FY2008, FY2012, FY2015, FY2017 restated earlier years in E.2) is a break in these series.
+        years = sorted(MethodologyBreak.objects.filter(
+            metrics__slug="correspondence-received-per-household", title__startswith="Correspondence/transactions"
+        ).values_list("fiscal_year", flat=True))
+        self.assertEqual(years, [2008, 2012, 2015, 2017])
+        advertising = MethodologyBreak.objects.filter(metrics__slug="advertising-mail-received-per-household")
+        self.assertEqual(sorted(advertising.values_list("fiscal_year", flat=True)), [2007, 2008, 2014])
+
+    def test_advertising_reaches_back_to_fy2003(self):
+        # FY2003 Table 6.4 "Ad Mail by Income and Age" (later "Ad Mail Received by ..." and "Advertising ...")
+        self.assertEqual(self.value("advertising-mail-received-per-household", "all", "All households", 2003),
+                         ("14.3", 743.6, "2003-p049-2"))
