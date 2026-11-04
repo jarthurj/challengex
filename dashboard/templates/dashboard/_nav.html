@@ -1,7 +1,23 @@
+{% load static %}
 <a class="skip-link" href="#main">Skip to main content</a>
+
 <nav aria-label="Main navigation" class="main-nav">
-    <a href="{% url 'dashboard' %}"{% if current == "overview" %} aria-current="page"{% endif %}>Overview</a>
-    <a href="{% url 'trends' %}"{% if current == "trends" %} aria-current="page"{% endif %}>Trends</a>
-    {% if years %}<a href="{% url 'year-detail' years.0 %}"{% if current == "year" %} aria-current="page"{% endif %}>By year</a>{% endif %}
-    <a href="{% url 'table-list' %}"{% if current == "tables" %} aria-current="page"{% endif %}>Browse tables</a>
+    <a href="{% url 'dashboard' %}" class="brand">
+        <img src="{% static 'dashboard/logo_mobile.svg' %}" alt="Household Mail home" class="brand-logo">
+    </a>
+<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">&#9776;</button>
+    <div id="nav-links" class="nav-links">
+        <!-- your four existing links go here, unchanged -->
+
+        <a href="{% url 'dashboard' %}"{% if current == "overview" %} aria-current="page"{% endif %}>Overview</a>
+        <a href="{% url 'trends' %}"{% if current == "trends" %} aria-current="page"{% endif %}>Trends</a>
+       {% if years %}<a href="{% url 'year-detail' years.0 %}"{% if current == "year" %} aria-current="page"{% endif %}>By year</a>{% endif %}
+       <a href="{% url 'table-list' %}"{% if current == "tables" %} aria-current="page"{% endif %}>Browse tables</a>
+    </div>
 </nav>
+<script>
+    document.querySelector(".nav-toggle").addEventListener("click", function () {
+        const open = document.getElementById("nav-links").classList.toggle("open");
+        this.setAttribute("aria-expanded", open);
+    });
+</script>

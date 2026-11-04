@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}">
+    {% comment %} {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}"> {% endcomment %}
+    {% include "dashboard/_head.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Browse Tables</title>
-    <style>
+    {% comment %} <style>
         body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
         a { color: #1756a9; }
         form.filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.8rem 1.2rem; margin-bottom: 1rem; }
@@ -26,7 +27,7 @@
         .badge { display: inline-block; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.85rem;
                  border: 1px solid #767676; background: #f3f3f3; margin: 0.1rem 0.2rem 0.1rem 0; white-space: nowrap; }
         .badge.review { border-color: #8a4b00; background: #fff4e5; color: #5c3200; font-weight: 600; }
-    </style>
+    </style> {% endcomment %}
 </head>
 <body>
     {% with current="tables" %}{% include "dashboard/_nav.html" %}{% endwith %}

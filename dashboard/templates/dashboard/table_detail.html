@@ -2,13 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}">
+    {% comment %} {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}"> {% endcomment %}
+    {% include "dashboard/_head.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ table.title|default:"Table details" }}</title>
 
-    <style>
+    {% comment %} <style>
         body {
             font-family: system-ui, sans-serif;
             margin: 2rem auto;
@@ -138,7 +139,7 @@
             font-style: normal;
             color: #555;
         }
-    </style>
+    </style> {% endcomment %}
 </head>
 
 <body>
