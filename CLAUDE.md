@@ -623,76 +623,92 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
   from the returned rows.
 
 ## Next steps (priority order)
-Updated 2026-10-31. Write tests with every change, keep `verify_pdfs` at 0 mismatches, and update
-this file when a step finishes.
+Updated 2026-11-03. Write tests with every change, keep `verify_pdfs` at 0 mismatches, have the
+reviewer subagent check each branch before merging, and update this file when a step finishes.
 
 ### Done
 1. **Metric layer:** 26 metrics, 1,592 observations, all verified against their PDF pages.
 2. **Trends page:** chart, methodology breaks, values and sources table.
 3. **Forecasts:** naive, drift, linear and Holt, chosen by backtest; 80%/95% bands (`forecast.py`).
-5. **Broaden:** new series, FY2025 household groups, Overview, Year page, CSV export.
-6. **Table browser:** titles, column repair, PDF re-reads, "From the report" excerpts, topics,
+4. **Broaden:** new series, FY2025 household groups, Overview, Year page, CSV export.
+5. **Table browser:** titles, column repair, PDF re-reads, "From the report" excerpts, topics,
    needs-review flags, OCR filter, source PDF links.
-7. **Data repairs:** checked; none needed for the current series.
-8. **Polish:** WCAG 2.1 AA pass, `pip-audit` clean, `DEMO.md`.
-- **FY2003–FY2015 tables extracted** (`tables_2000_2015.json`, 1,933 tables; see Source material).
+6. **Data repairs:** checked; none needed for the current series.
+7. **Polish:** WCAG 2.1 AA pass, `pip-audit` clean, `DEMO.md`.
+8. **FY2003–FY2015 tables extracted** (`tables_2000_2015.json`, 1,933 tables; see Source material).
+9. **Longer market series:** Table E.2 from FY2005–FY2015, so total, packages and periodicals
+   run 2003–2023; restatements are methodology breaks.
+10. **Household groups before FY2025:** transactions and correspondence received (FY2003–FY2023)
+    and advertising received (FY2005–FY2023) by age, income and education, with every
+    reclassification marked as a break (reviewed twice by a subagent).
 
 ### To do
-1. **Before the demo** (whoever presents)
-   - Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
-     `python manage.py rebuild_db` (expect 1592 match, 0 mismatch), tests pass, PDFs in `docs/`,
-     internet for the Chart.js CDN.
-   - Rehearse the 7-minute walk-through once with the real data.
+Measured against the slides' required capabilities and the quality bar above.
 
-2. **Use the FY2003–FY2015 tables.** Table E.2 and the household-group tables feed metrics.
-   - ~~Demographic trends before FY2025~~ (done 2026-11-03 for transactions, correspondence and
-     advertising received; see Current code state). One-reader tables were included: the
-     loader reads values in order, not by heading, and `verify_pdfs` matched every value.
-   - **FY2021 household-group tables** are OCR'd and wrong. Transcribing its six tables (3.2,
-     3.4, 4.2, 4.4, 5.4, 5.5; about 130 numbers) from the page images, checked by eye, would
-     close the 2021 gap. Advertising groups would then have 2014–2023 (10 years) for projections;
-     correspondence and transactions only 2017–2023 (7) after the 2017 reclassification, so
-     their projections would fit from 2015 and be flagged as crossing it.
-   - **More household-group series:** mail sent, periodicals and packages by income and
-     age/education are in the same reports; add them with `crosstabs(...)`.
-   - ~~Longer packages, periodicals and all-mail series~~ (done 2026-11-03: Table E.2 from
-     FY2005–FY2015, 2003–2023, all verified; restatements are breaks).
-   - **Titles and excerpts for the new tables.** Run them through `extract_titles` (corrected
-     titles and numbers) and `extract_context` ("From the report" quotes). Both currently read
-     only `tables.json`.
-   - **Review the 672 flagged older tables.** Most are "one reader" (the values are there but
-     headings can be shifted by merged cells). Improving `extract_old_reports` for merged header
-     cells would clear many of them; check a sample by eye first.
-
-3. **AI summaries (step 4, deferred by the team on 2026-10-31).** When the team picks it up:
+**A. Required by the challenge, not built yet**
+1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3; the team
+   deferred it on 2026-10-31, so confirm with the team before starting). Covers the Overview's
+   AI summary card and plain-language "what changed and why" text an analyst can copy into a
+   report with its citations.
    - Design: an `Insight` model; a `generate_insights` command run offline (pages never call the
      API); Claude sees only one series' values, sources, precomputed changes, projection and
      methodology notes; structured JSON output where every statement cites its fiscal years.
-   - Safeguards: an automated check that every number in the text matches the input (failures
-     are stored but never shown); an "AI-generated, not yet reviewed" label until a person ticks
-     `reviewed` in the admin; model ID, prompt version and input hash stored; a small eval set
-     of known facts; `--max-calls` cost cap and `--dry-run`.
+   - Safeguards (Generative AI quality bar): an automated check that every number in the text
+     matches the input (failures are stored but never shown); an "AI-generated, not yet
+     reviewed" label until a person ticks `reviewed` in the admin; model ID, prompt version and
+     input hash stored; a small eval set of known facts; `--max-calls` cost cap and `--dry-run`.
    - Needs `ANTHROPIC_API_KEY` in `.env` (git-ignored) and the `anthropic` package pinned in
-     `requirements.txt`. Then the optional "Ask the data" box, with its input treated as untrusted.
+     `requirements.txt`. Then the optional "Ask the data" box, with its input treated as
+     untrusted.
+2. **Copy into a report.** CSV export exists (Year and Trends pages), but there is no copy
+   button on charts, numbers or summaries. The OIG goal is halving report-prep time: add a copy
+   button for a chart's values with their sources, and later for summaries.
 
-4. **Forecast follow-ups**
-   - Projections for household groups: they need 8 consecutive years, so first the FY2021
-     transcription in item 2 (the latest run is now 2022–2023).
-   - One projection per line on the "by category" chart.
-
-5. **Data gaps (low priority)**
-   - FY2000, FY2001 and FY2004 are scanned; extracting them needs OCR, and every value would
-     have to be checked by eye. Their key series are already in the FY2020 appendix (from 2000).
-   - FY2002 and FY2011 PDFs are missing from `docs/`; request them from USPS if needed.
-   - The FY2021 chapter tables are OCR'd and wrong; the FY2019 appendix is images; FY2018 lacks
-     A8-10. Only repair these if a mapped series needs them (none does now).
+**B. Data**
+3. **FY2021 household-group tables** are OCR'd and wrong. Transcribe its six tables (3.2, 3.4,
+   4.2, 4.4, 5.4, 5.5; about 130 numbers) from the page images, checked by eye. This closes the
+   2021 gap. Advertising groups would then have 2014–2023 (10 years) for projections;
+   correspondence and transactions only 2017–2023 (7) after the 2017 reclassification, so their
+   projections would fit from 2015 and be flagged as crossing it. Decide first whether to show
+   those flagged projections, fit 7 years, or show none.
+4. **More household-group series:** mail sent, periodicals and packages by income and
+   age/education are in the same reports; add them with `crosstabs(...)`, and compare each
+   market's own-year values with later reports' Table E.2 first, as for correspondence.
+5. **Package and periodical detail** from chapters 6 and 7 isn't mapped.
+6. **FY2015 correspondence by age:** Table 3.4 (p. 30) was never extracted, so FY2015 has no
+   correspondence age groups. Fix `extract_old_reports` for that page, or add the table by hand
+   from the pypdf text (it has a text layer).
+7. **The older tables (FY2003–FY2015):**
+   - Titles and excerpts: run them through `extract_titles` (corrected titles and numbers) and
+     `extract_context` ("From the report" quotes). Both currently read only `tables.json`.
+   - Review the 672 flagged ones. Most are "one reader" (the values are there but headings can
+     be shifted by merged cells). Improving `extract_old_reports` for merged header cells would
+     clear many of them; check a sample by eye first.
    - About 408 tables still show some "Column N" headers (105 from FY2016–FY2025, 303 from the
      older reports).
 
-6. **Upkeep**
-   - Re-run `python -m pip_audit -r requirements.txt -r requirements-dev.txt` before the demo and
-     after any dependency change.
-   - Chart.js is pinned at 4.5.1 with an SRI hash; to upgrade, change both the URL and the hash.
-   - Only if the dashboard is ever deployed: set `DEBUG=False`, read `SECRET_KEY` from the
-     environment, set `ALLOWED_HOSTS`, serve over HTTPS, and put authentication in front of the
-     admin (see the Security quality bar).
+**C. Forecasts and UI**
+8. **Projections for household groups**, after item 3.
+9. **One projection per line** on the "by category" chart.
+10. **Re-run the accessibility checks** (axe-core via Playwright, keyboard, 320 px reflow). They
+    were last run on 2026-10-31; the Trends and Year pages now show household groups. Page speed
+    is fine (every page under 0.3 s locally).
+
+**D. Before the demo** (whoever presents)
+11. Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
+    `python manage.py rebuild_db` (expect 1592 match, 0 mismatch), tests pass, PDFs in `docs/`,
+    internet for the Chart.js CDN. Update the walk-through to show a household-group chart
+    (e.g. transactions received by age, with its breaks), then rehearse the 7 minutes once.
+12. Re-run `python -m pip_audit -r requirements.txt -r requirements-dev.txt`.
+
+**E. Low priority**
+13. **Data gaps:** FY2000, FY2001 and FY2004 are scanned; extracting them needs OCR, and every
+    value would have to be checked by eye. Their key series are already in the FY2020 appendix
+    (from 2000). FY2002 and FY2011 PDFs are missing from `docs/`; request them from USPS if
+    needed. The FY2019 appendix is images and FY2018 lacks A8-10; only repair these if a mapped
+    series needs them (none does now).
+14. **Upkeep:** Chart.js is pinned at 4.5.1 with an SRI hash; to upgrade, change both the URL and
+    the hash. Re-run `pip-audit` after any dependency change.
+15. **Only if the dashboard is ever deployed:** set `DEBUG=False`, read `SECRET_KEY` from the
+    environment, set `ALLOWED_HOSTS`, serve over HTTPS, and put authentication in front of the
+    admin (see the Security quality bar).
