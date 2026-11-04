@@ -260,11 +260,12 @@ METRICS = [
         "direction": "received",
         "unit": "per_household_year",
         "description": (
-            "Advertising mail received per household, FY2003-FY2023 (Tables 5.5 and 5.4, \"Ad Mail "
-            "Received by ...\" before FY2007; FY2003 Tables 6.4 and 6.3). Before 2007 the volumes include "
-            "the Detached Address Label double count (see the 2007 and 2008 breaks). The "
-            "chapter's own definition: close to, but not the same as, Table E.2's advertising market "
-            "or FY2025 Table A-11."
+            "Advertising mail received per household, FY2005-FY2023 (Tables 5.5 and 5.4, \"Ad Mail "
+            "Received by ...\" before FY2007). FY2003's Tables 6.3/6.4 count unaddressed mail too (from "
+            "FY2005 totals exclude it), so they aren't used. Before 2007 the volumes include the "
+            "Detached Address Label double count (see the 2007 and 2008 breaks). The chapter's own "
+            "definition: close to, but not the same as, Table E.2's advertising market or FY2025 "
+            "Table A-11."
         ) + GROUPS_NOTE,
     },
 ]
@@ -436,14 +437,14 @@ SOURCES = {
     # FY2015's Table 3.4 (by income and age) wasn't extracted, so Table 3.2 supplies the margins.
     **crosstabs("correspondence-received-per-household", "education", ("2015-p030-1",)),
     **crosstabs("advertising-mail-received-per-household", "age", (
-        "2003-p049-2", "2005-p045-1", "2006-p046-1", "2007-p047-1", "2008-p049-1", "2009-p050-1", "2010-p050-1", "2012-p050-1", "2013-p050-1",
-        "2014-p052-2", "2015-p052-1", "2016-p050-2", "2017-p048-2", "2018-p048-2", "2019-p048-2",
-        "2020-p050-2", "2022-p043-2", "2023-p055-2",
+        "2005-p045-1", "2006-p046-1", "2007-p047-1", "2008-p049-1", "2009-p050-1", "2010-p050-1",
+        "2012-p050-1", "2013-p050-1", "2014-p052-2", "2015-p052-1", "2016-p050-2", "2017-p048-2",
+        "2018-p048-2", "2019-p048-2", "2020-p050-2", "2022-p043-2", "2023-p055-2",
     )),
     **crosstabs("advertising-mail-received-per-household", "education", (
-        "2003-p049-1", "2005-p044-2", "2006-p045-2", "2007-p046-2", "2008-p048-1", "2009-p049-2", "2010-p049-2", "2012-p049-2", "2013-p049-2",
-        "2014-p052-1", "2015-p051-2", "2016-p049-2", "2017-p047-2", "2018-p047-2", "2019-p047-2",
-        "2020-p049-2", "2022-p042-2", "2023-p054-2",
+        "2005-p044-2", "2006-p045-2", "2007-p046-2", "2008-p048-1", "2009-p049-2", "2010-p049-2",
+        "2012-p049-2", "2013-p049-2", "2014-p052-1", "2015-p051-2", "2016-p049-2", "2017-p047-2",
+        "2018-p047-2", "2019-p047-2", "2020-p049-2", "2022-p042-2", "2023-p054-2",
     ), margins=False),
 }
 
@@ -475,33 +476,45 @@ REVIEW_NOTES = {
 }
 
 BREAKS = [
+    # The household-group series take each year from its own report, which later reports don't
+    # restate, so each reclassification of correspondence or transactions is a break for them.
     {
         "fiscal_year": 2008,
-        "title": "Correspondence/transactions split reclassified (FY2008 report)",
+        "title": "Correspondence redefined (FY2008 report)",
         "description": (
-            "The FY2008 report moved mail between correspondence and transactions and restated "
-            "earlier years in Table E.2 (2007 correspondence from 14.6 to 16.9 billion; transactions unchanged). The household-group series take each year from "
-            "its own report, so they change classification here."
+            "\"Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare "
+            "to previously published reports\" (FY2008, p. 27). Table E.2 moved 2007 correspondence "
+            "from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged."
         ),
-        "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
+        "metrics": ["correspondence-received-per-household"],
     },
     {
         "fiscal_year": 2012,
         "title": "Correspondence/transactions split reclassified (FY2012 report)",
         "description": (
-            "The FY2012 report moved mail between correspondence and transactions and restated "
-            "earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion and transactions from 35.9 to 37.6). The household-group series take each year from "
-            "its own report, so they change classification here."
+            "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to "
+            "12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values "
+            "change classification here."
         ),
         "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
+    },
+    {
+        "fiscal_year": 2013,
+        "title": "Transactions restated: 2011 questionnaire (FY2013 report)",
+        "description": (
+            "\"Historical data for payments by mail was restated as a result of improved 2011 survey "
+            "questionnaires which restated previously unclassified mail pieces\" (FY2013, pp. 38, 41). "
+            "Table E.2 lowered 2012 transactions from 34.3 to 33.1 billion and 2011 from 35.6 to 34.9."
+        ),
+        "metrics": ["transactions-received-per-household"],
     },
     {
         "fiscal_year": 2015,
         "title": "Correspondence/transactions split reclassified (FY2015 report)",
         "description": (
-            "The FY2015 report moved mail between correspondence and transactions and restated "
-            "earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion and transactions from 32.0 to 28.8). The household-group series take each year from "
-            "its own report, so they change classification here."
+            "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to "
+            "13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values "
+            "change classification here."
         ),
         "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
     },
@@ -509,9 +522,9 @@ BREAKS = [
         "fiscal_year": 2017,
         "title": "Correspondence/transactions split reclassified (FY2017 report)",
         "description": (
-            "The FY2017 report moved mail between correspondence and transactions and restated "
-            "earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion and transactions from 26.3 to 24.5). The household-group series take each year from "
-            "its own report, so they change classification here."
+            "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to "
+            "16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values "
+            "change classification here."
         ),
         "metrics": ["correspondence-received-per-household", "transactions-received-per-household"],
     },

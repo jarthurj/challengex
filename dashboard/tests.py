@@ -165,7 +165,7 @@ class LoadMetricsTests(TestCase):
         self.assertFalse(MethodologyBreak.objects.get(fiscal_year=2010).metrics.exists())  # all metrics
         # the carrier-system notes cover the A8-12 advertising series as well as the E.2 total
         for year in (2007, 2008):
-            carrier = MethodologyBreak.objects.exclude(title__startswith="Correspondence/").get(fiscal_year=year)
+            carrier = MethodologyBreak.objects.exclude(title__startswith="Correspondence").get(fiscal_year=year)
             self.assertEqual(sorted(carrier.metrics.values_list("slug", flat=True)),
                              ["advertising-mail-received-per-household", "advertising-received-total",
                               "household-mail-total", "marketing-mail-ads-received"])
@@ -286,7 +286,7 @@ class RebuildDbTests(TestCase):
         call_command("rebuild_db", skip_verify=True, stdout=StringIO())
         old_reports = settings.BASE_DIR / "tables_2000_2015.json"
         self.assertEqual(Table.objects.count(), 1095 + len(json.loads(old_reports.read_text(encoding="utf-8"))))
-        self.assertEqual(Observation.objects.count(), 1604)
+        self.assertEqual(Observation.objects.count(), 1592)
 
         User.objects.create_superuser("me", "me@example.com", "pw")
         obs = Observation.objects.filter(metric__slug="fcm-received-total", is_preferred=True).first()

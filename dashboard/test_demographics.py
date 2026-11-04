@@ -112,16 +112,18 @@ class LoadDemographicsTests(TestCase):
         self.assertIn("transactions-received-per-household", weighting.metrics.values_list("slug", flat=True))
 
     def test_reclassifications_are_marked_on_the_one_year_series(self):
-        # Each year comes from its own report, so every correspondence/transactions reclassification
-        # (FY2008, FY2012, FY2015, FY2017 restated earlier years in E.2) is a break in these series.
-        years = sorted(MethodologyBreak.objects.filter(
-            metrics__slug="correspondence-received-per-household", title__startswith="Correspondence/transactions"
-        ).values_list("fiscal_year", flat=True))
-        self.assertEqual(years, [2008, 2012, 2015, 2017])
-        advertising = MethodologyBreak.objects.filter(metrics__slug="advertising-mail-received-per-household")
-        self.assertEqual(sorted(advertising.values_list("fiscal_year", flat=True)), [2007, 2008, 2014])
+        # Each year comes from its own report, so every reclassification a later report made by
+        # restating earlier years in Table E.2 is a break in these series, on the metrics it moved.
+        def years(slug):
+            return sorted(MethodologyBreak.objects.filter(metrics__slug=slug).values_list("fiscal_year", flat=True))
+        self.assertEqual(years("correspondence-received-per-household"), [2008, 2012, 2014, 2015, 2017])
+        self.assertEqual(years("transactions-received-per-household"), [2012, 2013, 2014, 2015, 2017])
+        self.assertEqual(years("advertising-mail-received-per-household"), [2007, 2008, 2014])
 
-    def test_advertising_reaches_back_to_fy2003(self):
-        # FY2003 Table 6.4 "Ad Mail by Income and Age" (later "Ad Mail Received by ..." and "Advertising ...")
-        self.assertEqual(self.value("advertising-mail-received-per-household", "all", "All households", 2003),
-                         ("14.3", 743.6, "2003-p049-2"))
+    def test_advertising_starts_in_fy2005(self):
+        # FY2005 Table 5.5 "Ad Mail Received by Income and Age"; FY2003's tables count unaddressed
+        # mail too, so they aren't used.
+        self.assertEqual(self.value("advertising-mail-received-per-household", "all", "All households", 2005),
+                         ("17.3", 899.6, "2005-p045-1"))
+        self.assertFalse(Observation.objects.filter(metric__slug="advertising-mail-received-per-household",
+                                                    fiscal_year=2003).exists())

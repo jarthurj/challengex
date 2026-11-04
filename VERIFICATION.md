@@ -22,17 +22,18 @@ packages, periodicals; in billions, and per household from FY2024), and FY2025 A
 | FY2025 A-11 "All Households" vs. E.2 advertising | differ (643.6 vs. 658.9 in 2015): A-11 is First-Class and Marketing Mail ads only, so it is a separate metric |
 | E.2 correspondence in billions, FY2016 vs. FY2017 | differ (13.9 vs. 16.3 for 2015): reclassified, so not mapped |
 
-**Update 2026-11-03 (household groups): 1,604 values, all 1,604 match their source page.** 645
+**Update 2026-11-03 (household groups): 1,592 values, all 1,592 match their source page.** 633
 new values come from the one-year tables "... Mail Received by Income and Age" and "... by Income
-and Education" (transactions, correspondence and advertising, FY2003–FY2023; not FY2021, which
-is OCR). `verify_pdfs` reads each table from its caption on the PDF page through the
+and Education" (transactions and correspondence FY2003–FY2023, advertising FY2005–FY2023; not
+FY2021, which is OCR). `verify_pdfs` reads each table from its caption on the PDF page through the
 same code as the loader. The education tables repeat the age tables' income and all-households
 margins, an independent check:
 
 | Check | Result |
 |---|---|
 | Margins of the education tables vs. the age tables (260 values) | 254 identical; 2 differ only in print ("14" vs. "14.0", FY2015 advertising); 4 differ by 0.1 (FY2005 transactions $65K–$100K 6.1 vs. 6.2; FY2006 advertising $35K–$65K 16.3 vs. 16.2; FY2012 advertising Under $35K 8.1 vs. 8.2 and Over $100K 19.2 vs. 19.1), USPS rounding, and the age table's value is used |
-| Own-year values vs. later reports | correspondence and transactions were reclassified by the FY2008, FY2012, FY2015 and FY2017 reports (Table E.2 restatements, e.g. 2014 correspondence 11.0 → 13.7 billion in FY2015); these one-year series aren't restated, so each is a break |
+| Own-year values vs. later reports (Table E.2) | these one-year series aren't restated, so each reclassification is a break on the metrics it moved: FY2008 redefined correspondence (2007: 14.6 → 16.9 billion, from unclassified; p. 27); FY2012, FY2015 and FY2017 moved mail between correspondence and transactions (e.g. 2014 correspondence 11.0 → 13.7); FY2013 restated transactions after the 2011 questionnaire (2012: 34.3 → 33.1; pp. 38, 41). Smaller ones (FY2007: 2006 transactions 41.6 → 42.7; FY2022: 2020 correspondence 14.6 → 15.0) are within about one rounding step of the weekly values and aren't breaks |
+| FY2003 advertising (Tables 6.3/6.4) | "Base: Total Advertising Mail (including Unaddressed)"; from FY2005 totals exclude unaddressed mail (FY2005 Table 5.3 restates 2003 at 15.9 a week vs. FY2003's 14.3), so FY2003 isn't used |
 | FY2017 Tables 4.2–4.4 | cite the "HDS Recruitment Sample" instead of the Diary Sample; kept as published, with a note |
 | FY2015 correspondence | Table 3.4 (by income and age, p. 30) was not extracted; Table 3.2 supplies the margins, so FY2015 has no age groups |
 

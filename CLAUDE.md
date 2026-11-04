@@ -383,7 +383,7 @@ analyst should be able to:
   - `SOURCES`: `source_id` → (the table's unit, `RowMap`s)
   - `CONVERSIONS`
   - `BREAKS`
-- **26 metrics are loaded (1,604 observations):**
+- **26 metrics are loaded (1,592 observations):**
   - First-Class Mail received: `fcm-received-total`, `-correspondence`, `-transactions`,
     `-advertising` (millions, 2000–2023, A8-1) and `fcm-received-per-household` (2014–2024, A-1).
   - First-Class Mail sent: `fcm-sent-total`, `-correspondence`, `-transactions` (millions,
@@ -412,11 +412,13 @@ analyst should be able to:
   - `ads-received-per-household`: FY2025 A-11, all households plus 16 groups. It counts
     First-Class and Marketing Mail ads only, so it is narrower than E.2's advertising market
     (643.6 vs. 658.9 in 2015) and is kept as its own metric.
-  - **Household groups before FY2025** (645 values): `transactions-received-per-household`,
-    `correspondence-received-per-household` and `advertising-mail-received-per-household`
-    (FY2003–FY2023), by age, income and education, from the one-year chapter tables "...
-    Received by Income and Age" and "... by Income and Education" (Tables 3.2/3.4, 4.2/4.4,
-    5.4/5.5; "Ad Mail Received by ..." before FY2007; FY2003 numbers them differently). Pieces per
+  - **Household groups before FY2025** (633 values): `transactions-received-per-household`,
+    `correspondence-received-per-household` (FY2003–FY2023) and
+    `advertising-mail-received-per-household` (FY2005–FY2023), by age, income and education,
+    from the one-year chapter tables "... Received by Income and Age" and "... by Income and
+    Education" (Tables 3.2/3.4, 4.2/4.4, 5.4/5.5; "Ad Mail Received by ..." before FY2007;
+    FY2003 numbers them differently). FY2003's advertising tables (6.3/6.4) count unaddressed
+    mail, which later totals exclude, so they aren't used. Pieces per
     household per week ×52. `metric_sources.CrossTab` maps them and `dashboard/crosstab.py`
     reads them, for both `load_metrics` and `verify_pdfs`: income bands as rows, then the
     "Average"/"Total" row gives the age or education groups, the "Average" column the income
@@ -430,16 +432,19 @@ analyst should be able to:
       nominal dollars, so the bands' make-up drifts with inflation; education shares FY2025's
       four segment names (the same categories).
     - **Each year comes from its own report, which later reports don't restate**, so every
-      reclassification shows up as a break: correspondence/transactions splits at 2008, 2012,
-      2015 and 2017 (the FY2008/FY2012/FY2015/FY2017 reports restated earlier years in E.2;
-      e.g. 2014 correspondence 11.0 → 13.7 billion); weighting by home ownership at 2014; and,
-      for advertising, the carrier-system corrections at 2007 and 2008.
+      reclassification shows up as a break, on the metrics it moved: correspondence redefined
+      at 2008 (FY2008 p. 27); the correspondence/transactions split at 2012, 2015 and 2017 (the
+      reports restated earlier years in E.2, e.g. 2014 correspondence 11.0 → 13.7 billion);
+      transactions at 2013 (the 2011 questionnaire, FY2013 pp. 38, 41); weighting by home
+      ownership at 2014; and, for advertising, the carrier-system corrections at 2007 and 2008.
+      Smaller restatements (FY2007's 2006 transactions +2.6%, FY2022's 2020 correspondence
+      +2.7%) are about one rounding step of the weekly values and aren't breaks.
     - FY2017 Tables 4.2–4.4 cite the "HDS Recruitment Sample" (all other years: Diary Sample);
       the observations carry a note.
     - No projections yet: FY2021's tables are OCR, so the latest unbroken run is 2022–2023.
   - The loader skips "% change" columns after the years, only when the header names exactly that
     many of them.
-- **All 1,604 loaded observations are verified** against their source PDF page by `verify_pdfs`
+- **All 1,592 loaded observations are verified** against their source PDF page by `verify_pdfs`
   (it compares the extracted cell, so converted values are checked too, and it handles "% change"
   columns and labels that wrap onto two lines, and reads only rows below the year header, since
   FY2005–FY2006 print Table E.1 with the same row labels above E.2). Household-group tables are
@@ -622,7 +627,7 @@ Updated 2026-10-31. Write tests with every change, keep `verify_pdfs` at 0 misma
 this file when a step finishes.
 
 ### Done
-1. **Metric layer:** 26 metrics, 1,604 observations, all verified against their PDF pages.
+1. **Metric layer:** 26 metrics, 1,592 observations, all verified against their PDF pages.
 2. **Trends page:** chart, methodology breaks, values and sources table.
 3. **Forecasts:** naive, drift, linear and Holt, chosen by backtest; 80%/95% bands (`forecast.py`).
 5. **Broaden:** new series, FY2025 household groups, Overview, Year page, CSV export.
@@ -635,7 +640,7 @@ this file when a step finishes.
 ### To do
 1. **Before the demo** (whoever presents)
    - Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
-     `python manage.py rebuild_db` (expect 1604 match, 0 mismatch), tests pass, PDFs in `docs/`,
+     `python manage.py rebuild_db` (expect 1592 match, 0 mismatch), tests pass, PDFs in `docs/`,
      internet for the Chart.js CDN.
    - Rehearse the 7-minute walk-through once with the real data.
 
