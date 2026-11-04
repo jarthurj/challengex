@@ -13,7 +13,7 @@ from . import titles
 from .tidy import tidy
 from .management.commands import verify_pdfs
 from .management.commands.load_metrics import mark_preferred, row_values, year_header
-from .metric_sources import BREAKS, CONVERSIONS, METRICS, SOURCES
+from .metric_sources import BREAKS, CONVERSIONS, METRICS, SOURCES, CrossTab
 from .models import MethodologyBreak, Metric, Observation, Table
 from .testdata import cited_old_tables, load_real_tables
 
@@ -67,7 +67,7 @@ class MappingTests(SimpleTestCase):
     def test_sources_reference_declared_metrics(self):
         slugs = {m["slug"] for m in METRICS}
         for source_id, (_, row_maps) in SOURCES.items():
-            for rm in row_maps:
+            for rm in [row_maps] if isinstance(row_maps, CrossTab) else row_maps:
                 self.assertIn(rm.metric, slugs, source_id)
 
 
@@ -159,14 +159,16 @@ class LoadMetricsTests(TestCase):
     def test_market_specific_breaks(self):
         cd_dvd = MethodologyBreak.objects.get(fiscal_year=2005)
         self.assertEqual(list(cd_dvd.metrics.values_list("slug", flat=True)), ["packages-volume"])
-        restated = MethodologyBreak.objects.get(fiscal_year=2012)
+        restated = MethodologyBreak.objects.get(fiscal_year=2012, title__startswith="FY2014 report")
         self.assertEqual(sorted(restated.metrics.values_list("slug", flat=True)),
                          ["household-mail-total", "packages-volume", "periodicals-volume"])
         self.assertFalse(MethodologyBreak.objects.get(fiscal_year=2010).metrics.exists())  # all metrics
         # the carrier-system notes cover the A8-12 advertising series as well as the E.2 total
         for year in (2007, 2008):
-            self.assertEqual(sorted(MethodologyBreak.objects.get(fiscal_year=year).metrics.values_list("slug", flat=True)),
-                             ["advertising-received-total", "household-mail-total", "marketing-mail-ads-received"])
+            carrier = MethodologyBreak.objects.exclude(title__startswith="Correspondence").get(fiscal_year=year)
+            self.assertEqual(sorted(carrier.metrics.values_list("slug", flat=True)),
+                             ["advertising-mail-received-per-household", "advertising-received-total",
+                              "household-mail-total", "marketing-mail-ads-received"])
 
     def test_known_values_of_the_broadened_series(self):
         self.assertEqual(self.preferred("fcm-sent-total", 2023).value, 4637)
@@ -284,7 +286,7 @@ class RebuildDbTests(TestCase):
         call_command("rebuild_db", skip_verify=True, stdout=StringIO())
         old_reports = settings.BASE_DIR / "tables_2000_2015.json"
         self.assertEqual(Table.objects.count(), 1095 + len(json.loads(old_reports.read_text(encoding="utf-8"))))
-        self.assertEqual(Observation.objects.count(), 959)
+        self.assertEqual(Observation.objects.count(), 1592)
 
         User.objects.create_superuser("me", "me@example.com", "pw")
         obs = Observation.objects.filter(metric__slug="fcm-received-total", is_preferred=True).first()

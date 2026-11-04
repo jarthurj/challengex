@@ -4,7 +4,8 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from dashboard.metric_sources import SOURCES
+from dashboard.crosstab import check_heading, crosstab_values, income_band
+from dashboard.metric_sources import SOURCES, CrossTab
 from dashboard.models import Observation, Table
 
 from .load_tables import to_num
@@ -12,6 +13,7 @@ from .load_tables import to_num
 TAG = "[pdf-check]"
 NUM = re.compile(r"N/A|-?[\d,]*\.?\d+%?")
 YEAR = re.compile(r"(19|20)\d{2}")
+VALUE = re.compile(r"[-–]?(\d[\d,]*)?\.?\d+%?")  # a table value, not "$35" (a label's band)
 
 
 def norm(text):
@@ -91,6 +93,45 @@ def page_series(text, label, nth):
     return dict(zip(years, nums)), None
 
 
+def crosstab_page(text, number, title):
+    """(rows, heading, problem) for a one-year household-group table on its PDF page.
+
+    `rows` is [(label, [values])] for crosstab_values(), from the first income band to the
+    Average/Total row. The table starts at its caption ("Table 4.4:", sometimes printed "Table 5. 4:",
+    followed by the title, not a mention in the prose) and ends at the next caption. Some pages print
+    the "Source" line above the table. From FY2022 a row label and its values are on separate lines;
+    they are joined.
+    """
+    words = " ".join(re.findall(r"[a-z]+", title.lower())[:4])
+    caption = r"\s*".join(map(re.escape, number.replace(" ", ""))) + r"\s*:"
+    start = None
+    for m in re.finditer(caption, text):
+        if words in " ".join(re.findall(r"[a-z]+", text[m.end():m.end() + 300].lower())):
+            start = m.end()
+            break
+    if start is None:
+        return None, None, f"caption {number!r} not found in the PDF text"
+    after = re.search(r"Table\s*[A-Z]?\d+\s*[.\-]\s*\d+\s*:", text[start:])
+    lines = text[start:start + after.start() if after else None].splitlines()[1:]
+    rows = []
+    for line in lines:
+        toks = line.split()
+        k = len(toks)
+        while k and VALUE.fullmatch(toks[k - 1]):
+            k -= 1
+        label, values = " ".join(toks[:k]), toks[k:]
+        if not label and values and rows and not rows[-1][1]:
+            rows[-1] = (rows[-1][0], values)  # the values of the label on the line before
+        elif label or values:
+            rows.append((label, values))
+    first = next((i for i, (label, _) in enumerate(rows) if income_band(label)), None)
+    if first is None:
+        return None, None, "no table rows in the PDF text (the table may be an image)"
+    last = next((i for i in range(first, len(rows))
+                 if rows[i][0].strip().lower() in ("average", "total") and rows[i][1]), len(rows) - 1)
+    heading = " ".join(f"{label} {' '.join(values)}" for label, values in rows[:first])
+    return rows[first:last + 1], heading, None
+
 def set_note(notes, line):
     kept = [n for n in notes.splitlines() if not n.startswith(TAG)]
     return "\n".join([*kept, f"{TAG} {line}"]).strip()
@@ -120,6 +161,9 @@ class Command(BaseCommand):
             except FileNotFoundError:
                 raise CommandError(f"{path} not found. The PDFs are git-ignored; copy them into docs/.")
 
+            if isinstance(row_maps, CrossTab):
+                self.check_crosstab(table, row_maps, text, counts)
+                continue
             for rm in row_maps:
                 found, problem = page_series(text, rm.label, rm.nth)
                 obs = Observation.objects.filter(
@@ -148,3 +192,29 @@ class Command(BaseCommand):
         self.stdout.write(style(
             f"{counts['match']} match, {counts['mismatch']} mismatch, {counts['unchecked']} could not be checked"
         ))
+
+    def check_crosstab(self, table, ct, text, counts):
+        rows, heading, problem = crosstab_page(text, table.table_number, table.title)
+        problem = problem or check_heading(heading, ct.columns)
+        found = {}
+        if not problem:
+            try:
+                found = dict(crosstab_values(rows, ct.columns, ct.margins))
+            except ValueError as e:
+                problem = str(e)
+        where = f"docs/{table.year}.pdf p.{table.page}"
+        for o in Observation.objects.filter(source_table=table, metric__slug=ct.metric).select_related("segment"):
+            shown = found.get((o.segment.dimension, o.segment.value))
+            if problem:
+                o.verified = False
+                o.notes = set_note(o.notes, f"not checked: {problem} ({where}); check by eye")
+                counts["unchecked"] += 1
+            elif to_num(shown or "") == to_num(o.raw_value):
+                o.verified = True
+                o.notes = set_note(o.notes, f"matches {where} ({shown})")
+                counts["match"] += 1
+            else:
+                o.verified = False
+                o.notes = set_note(o.notes, f"MISMATCH: {where} shows {shown!r}")
+                counts["mismatch"] += 1
+            o.save(update_fields=["verified", "notes"])
