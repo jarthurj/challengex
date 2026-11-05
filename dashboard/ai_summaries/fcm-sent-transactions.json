@@ -1,0 +1,252 @@
+{
+  "section": "First-Class transaction mail sent",
+  "summaries": {
+    "yearly:2023": {
+      "section": "First-Class transaction mail sent",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class transaction mail sent: published values for FY2023 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2023, First-Class transaction mail sent was 2,097 (millions of pieces). That fell by 260 (11.0%) from the previous year, FY2022. That fell by 1,411 (40.2%) from five years earlier, FY2018.",
+            "metric": "fcm-sent-transactions",
+            "years": [
+              2023,
+              2022,
+              2018
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "64c9c7c93ffc8c9c6974aa5f0888357bd802c131c238a7d2812c89e8d074b470",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "fcm-sent-transactions",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "First-Class transaction mail sent",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class transaction mail sent: long-term change in the published values, FY2000 to FY2023.",
+        "statements": [
+          {
+            "text": "First-Class transaction mail sent (millions of pieces) went from 9,468 in FY2000 to 2,097 in FY2023: it fell by 7,371 (77.9%) over the period. Since FY2018 (five years earlier) it fell by 1,411 (40.2%). Since FY2013 (ten years earlier) it fell by 2,992 (58.8%).",
+            "metric": "fcm-sent-transactions",
+            "years": [
+              2000,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts First-Class transaction mail sent at 303 in FY2028 (80% range 0 to 677). On past years it beat the naive baseline.",
+            "metric": "fcm-sent-transactions",
+            "years": [
+              2023,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "e41388f03ddc1b4314723186e7f834b33419d55b726d2d34b10b17dae4f2cd0a",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "fcm-sent-transactions",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

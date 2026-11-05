@@ -1,0 +1,254 @@
+{
+  "section": "Marketing Mail advertising received",
+  "summaries": {
+    "yearly:2023": {
+      "section": "Marketing Mail advertising received",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Marketing Mail advertising received: published values for FY2023 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2023, Marketing Mail advertising received was 51,942 (millions of pieces). That fell by 6,629 (11.3%) from the previous year, FY2022. That fell by 15,739 (23.3%) from five years earlier, FY2018.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2023,
+              2022,
+              2018
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "bcaf8555c875fcfeea3ad2f908667e56d6a6d8afa9fd6777a8c40832682b650d",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Marketing Mail advertising received",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Marketing Mail advertising received: long-term change in the published values, FY2000 to FY2023.",
+        "statements": [
+          {
+            "text": "Marketing Mail advertising received (millions of pieces) went from 60,496 in FY2000 to 51,942 in FY2023: it fell by 8,554 (14.1%) over the period. Since FY2018 (five years earlier) it fell by 15,739 (23.3%). Since FY2013 (ten years earlier) it fell by 22,423 (30.2%).",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2000,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Holt's exponential smoothing model, fitted on FY2010 to FY2023, puts Marketing Mail advertising received at 40,343 in FY2028 (80% range 27,631 to 53,054). On past years it beat the naive baseline.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2023,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
+          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
+          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "2dd211f3ab2a4f9683639d506ad891d93ce6a463b7b595fe229ed825f9e096ee",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

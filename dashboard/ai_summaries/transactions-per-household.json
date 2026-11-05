@@ -1,0 +1,825 @@
+{
+  "section": "Transaction mail per household",
+  "summaries": {
+    "yearly:2025": {
+      "section": "Transaction mail per household",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Transaction mail per household: published values for FY2025 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2025, Transaction mail per household was 93.7 (pieces per household per year). That fell by 17.3 (15.6%) from the previous year, FY2024. That fell by 47.5 (33.6%) from five years earlier, FY2020.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025,
+              2024,
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2025, Transaction mail per household (pieces per household per year) was highest for $150,000 and Over at 109.1 and lowest for Less than $50,000 at 81.6.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, Transaction mail per household (pieces per household per year) was highest for 65 and Over at 133.4 and lowest for Under 45 at 51.8.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, Transaction mail per household (pieces per household per year) was highest for Some college or technical school graduate at 99.3 and lowest for Less than high school at 87.6.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, Transaction mail per household (pieces per household per year) was highest for Non-MSA at 101.8 and lowest for Large MSA at 89.4.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, Transaction mail per household (pieces per household per year) was highest for Own at 114.5 and lowest for Rent at 53.8.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "6603bbc45ae36268c023889a92da6843a4fc240b924668b4e7a1cee05662a742",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Transaction mail per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Transaction mail per household: long-term change in the published values, FY2014 to FY2025.",
+        "statements": [
+          {
+            "text": "Transaction mail per household (pieces per household per year) went from 214.7 in FY2014 to 93.7 in FY2025: it fell by 121.0 (56.4%) over the period. Since FY2020 (five years earlier) it fell by 47.5 (33.6%). Since FY2015 (ten years earlier) it fell by 95.8 (50.6%).",
+            "metric": "transactions-per-household",
+            "years": [
+              2014,
+              2025,
+              2020,
+              2015
+            ]
+          },
+          {
+            "text": "By income in FY2025, Transaction mail per household (pieces per household per year) was highest for $150,000 and Over at 109.1 and lowest for Less than $50,000 at 81.6.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, Transaction mail per household (pieces per household per year) was highest for 65 and Over at 133.4 and lowest for Under 45 at 51.8.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, Transaction mail per household (pieces per household per year) was highest for Some college or technical school graduate at 99.3 and lowest for Less than high school at 87.6.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, Transaction mail per household (pieces per household per year) was highest for Non-MSA at 101.8 and lowest for Large MSA at 89.4.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, Transaction mail per household (pieces per household per year) was highest for Own at 114.5 and lowest for Rent at 53.8.",
+            "metric": "transactions-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for Transaction mail per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Transaction mail per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "626161323d404df49020483d123a5e6a6ef31640c3ac1406aad54e5bd7d3f04c",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 59,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

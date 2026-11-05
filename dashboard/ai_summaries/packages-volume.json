@@ -1,0 +1,271 @@
+{
+  "section": "Packages sent and received by households",
+  "summaries": {
+    "comparative": {
+      "section": "Packages sent and received by households",
+      "kind": "comparative",
+      "fiscal_year": null,
+      "summary": {
+        "headline": "Household Package Volume Shows Long-Term Growth Despite Recent Decline, with Projected Future Increases",
+        "statements": [
+          {
+            "text": "Packages sent and received by households increased by 4100.0 million pieces, or 157.7%, from FY 2003 to FY 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2003,
+              2023
+            ]
+          },
+          {
+            "text": "Over the last 10 years, packages sent and received by households grew by 2600.0 million pieces, a 63.4% increase, from FY 2013 to FY 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2013,
+              2023
+            ]
+          },
+          {
+            "text": "In the last 5 years, packages sent and received by households increased by 1400.0 million pieces, or 26.4%, from FY 2018 to FY 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "However, packages sent and received by households decreased by 600.0 million pieces, or 8.2%, from FY 2022 to FY 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "A projection for packages sent and received by households indicates continued growth, reaching 7315.0 million pieces in FY 2024 (ranging from 6526.0 to 8104.0 million pieces) and 8550.0 million pieces in FY 2028 (ranging from 6786.0 to 10314.0 million pieces).",
+            "metric": "packages-volume",
+            "years": [
+              2024,
+              2028
+            ]
+          },
+          {
+            "text": "This projection for packages sent and received by households beats the naive baseline.",
+            "metric": "packages-volume",
+            "years": [
+              2024,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons of packages-volume across fiscal years 2005, 2010, 2012, 2024, and 2025 should be made cautiously due to methodology breaks.",
+          "In FY 2005, packages-volume began including CD/DVD rentals, and the FY2005 value was restated.",
+          "In FY 2010, diary data for packages-volume were restated due to changes in weighting methodology, affecting values before 2010.",
+          "In FY 2012, packages-volume data were restated due to weighting by home ownership, affecting values from 2012 onwards.",
+          "In FY 2024, packages-volume reporting changed to pieces per household per year with a new survey contractor, and 2014-2023 values were restated on this new basis.",
+          "In FY 2025, the Household Mail Survey for packages-volume will undergo a redesign, with changes to age bands and the definition of 'Large MSA'.",
+          "The projection for packages-volume has a mean absolute backtest error of 736.0 million pieces."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-2.5-flash",
+      "prompt_version": "summary-v1",
+      "input_hash": "b2de98d9d54ae6df0545f525b0af9c2d8c43dea77afc5c0d80d0a90ed42a9c96",
+      "generated_at": "2026-11-05T10:34:23+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2023": {
+      "section": "Packages sent and received by households",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Packages sent and received by households: published values for FY2023 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2023, Packages sent and received by households was 6,700 (millions of pieces). That fell by 600 (8.2%) from the previous year, FY2022. That rose by 1,400 (26.4%) from five years earlier, FY2018.",
+            "metric": "packages-volume",
+            "years": [
+              2023,
+              2022,
+              2018
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "07609a69cc60c970c3b396b5a0129edceee4e9609733bdc807c539d7e93b222a",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

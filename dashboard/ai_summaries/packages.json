@@ -1,0 +1,443 @@
+{
+  "section": "Packages",
+  "summaries": {
+    "yearly": {
+      "section": "Packages",
+      "kind": "yearly",
+      "fiscal_year": 2025,
+      "summary": {
+        "headline": "Packages per household decreased in fiscal year 2025 compared to the previous year and five years prior.",
+        "statements": [
+          {
+            "text": "In fiscal year 2025, the packages-per-household metric was 41.5 pieces per household per year.",
+            "metric": "packages-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "This represents a decrease of 10.3 pieces per household per year, or 19.9%, from the 51.8 pieces per household per year recorded in fiscal year 2024 for packages-per-household.",
+            "metric": "packages-per-household",
+            "years": [
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "Compared to fiscal year 2020, packages-per-household decreased by 5.5 pieces per household per year, or 11.7%, from 47.0 pieces per household per year.",
+            "metric": "packages-per-household",
+            "years": [
+              2020,
+              2025
+            ]
+          },
+          {
+            "text": "A methodology break in fiscal year 2024, involving a new survey contractor and per-household reporting, means comparisons for packages-per-household across this break should be made cautiously.",
+            "metric": "packages-per-household",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "Additionally, a Household Mail Survey redesign in fiscal year 2025, where Q1 was still covered by the old survey, affects the packages-per-household data for that year.",
+            "metric": "packages-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons for packages-per-household across fiscal year 2024 should be made cautiously due to a methodology break involving a new survey contractor and per-household reporting.",
+          "The packages-per-household data for fiscal year 2025 is affected by a Household Mail Survey redesign, with Q1 still covered by the old survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-2.5-flash",
+      "prompt_version": "summary-v1",
+      "input_hash": "4b06a6aef823a7498cade4ead9d04795f31d78d86e18545edfd29dfa2b655d66",
+      "generated_at": "2026-11-05T10:07:24+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Packages",
+      "kind": "comparative",
+      "fiscal_year": null,
+      "summary": {
+        "headline": "Packages per household have increased significantly since 2014 but saw a recent decline, while total package volume has grown substantially over two decades and is projected to continue rising despite a recent dip.",
+        "statements": [
+          {
+            "text": "Packages per household increased by 13.2 pieces per household per year (46.6%) from 2014 to 2025.",
+            "metric": "packages-per-household",
+            "years": [
+              2014,
+              2025
+            ]
+          },
+          {
+            "text": "Packages per household increased by 9.4 pieces per household per year (29.3%) over the last 10 years, from 2015 to 2025.",
+            "metric": "packages-per-household",
+            "years": [
+              2015,
+              2025
+            ]
+          },
+          {
+            "text": "However, Packages per household decreased by 5.5 pieces per household per year (-11.7%) over the last 5 years, from 2020 to 2025, and by 10.3 pieces per household per year (-19.9%) from 2024 to 2025.",
+            "metric": "packages-per-household",
+            "years": [
+              2020,
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "Packages sent and received by households increased by 4100.0 millions of pieces (157.7%) from 2003 to 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2003,
+              2023
+            ]
+          },
+          {
+            "text": "Packages sent and received by households increased by 2600.0 millions of pieces (63.4%) over the last 10 years, from 2013 to 2023, and by 1400.0 millions of pieces (26.4%) over the last 5 years, from 2018 to 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2013,
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "Packages sent and received by households decreased by 600.0 millions of pieces (-8.2%) from 2022 to 2023.",
+            "metric": "packages-volume",
+            "years": [
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "A linear trend projection for Packages sent and received by households, which beats the naive baseline, forecasts an increase from 7315.0 millions of pieces in 2024 to 8550.0 millions of pieces in 2028, with an 80% confidence interval ranging from 6526.0 to 8104.0 millions of pieces in 2024 and from 6786.0 to 10314.0 millions of pieces in 2028.",
+            "metric": "packages-volume",
+            "years": [
+              2024,
+              2025,
+              2026,
+              2027,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "For \"Packages sent and received by households\", comparisons across fiscal year 2005 should be cautious because packages began to include CD/DVD rentals, and 2005 was restated from 2.4 to 3.1 billion, while 2003 and 2004 only counted ground and expedited packages.",
+          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2010 should be cautious due to changes in weighting methodology, with values before 2010 using an earlier weighting.",
+          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2012 should be cautious because the FY2014 report restated 2012 and 2013 data due to weighting by home ownership, establishing a new basis for values from 2012 onward.",
+          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2024 should be cautious due to a new survey contractor and a shift to per-household reporting, which also involved restating 2014-2023 data.",
+          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2025 should be cautious due to a new Household Mail Survey design, including changes to age bands and the definition of 'Large MSA'.",
+          "Projections for \"Packages per household\" are not available because the series has fewer than the 8 consecutive annual values required.",
+          "The \"Packages per household\" metric has missing data for fiscal years 2016, 2017, 2018, 2021, 2022, and 2023."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-2.5-flash",
+      "prompt_version": "summary-v1",
+      "input_hash": "976297fa4e585eeb46305ab7848e7beb424fb2b491c682a4744ea37097185d82",
+      "generated_at": "2026-11-05T10:17:54+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2020": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2020",
+      "fiscal_year": 2020,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Packages: published values for FY2020 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2020, Packages per household was 47.0 (pieces per household per year). That rose by 9.3 (24.7%) from the previous year, FY2019. That rose by 14.9 (46.4%) from five years earlier, FY2015.",
+            "metric": "packages-per-household",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          },
+          {
+            "text": "In FY2020, Packages sent and received by households was 6,300 (millions of pieces). That rose by 1,300 (26.0%) from the previous year, FY2019. That rose by 2,000 (46.5%) from five years earlier, FY2015.",
+            "metric": "packages-volume",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "008aab24d86d7c8df6aa62fc70714a37d5fb6b9817fb59035e20cb086a42050c",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

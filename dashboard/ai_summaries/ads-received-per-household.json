@@ -1,0 +1,803 @@
+{
+  "section": "First-Class and Marketing Mail ads received per household",
+  "summaries": {
+    "yearly:2025": {
+      "section": "First-Class and Marketing Mail ads received per household",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class and Marketing Mail ads received per household: published values for FY2025 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2025, First-Class and Marketing Mail ads received per household was 378.0 (pieces per household per year). That fell by 109.7 (22.5%) from five years earlier, FY2020.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025,
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for $150,000 and Over at 527.0 and lowest for Less than $50,000 at 277.3.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for 65 and Over at 529.1 and lowest for Under 45 at 232.7.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for College graduate at 432.0 and lowest for Less than high school at 271.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Large MSA at 401.6 and lowest for Non-MSA at 317.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Own at 465.1 and lowest for Rent at 212.9.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "bff25454f7c245802dcd2aa0360ebed14b5a5bcc6246611b171d6bb871755bb3",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "First-Class and Marketing Mail ads received per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class and Marketing Mail ads received per household: long-term change in the published values, FY2015 to FY2025.",
+        "statements": [
+          {
+            "text": "First-Class and Marketing Mail ads received per household (pieces per household per year) went from 643.6 in FY2015 to 378.0 in FY2025: it fell by 265.6 (41.3%) over the period. Since FY2020 (five years earlier) it fell by 109.7 (22.5%).",
+            "metric": "ads-received-per-household",
+            "years": [
+              2015,
+              2025,
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for $150,000 and Over at 527.0 and lowest for Less than $50,000 at 277.3.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for 65 and Over at 529.1 and lowest for Under 45 at 232.7.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for College graduate at 432.0 and lowest for Less than high school at 271.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Large MSA at 401.6 and lowest for Non-MSA at 317.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Own at 465.1 and lowest for Rent at 212.9.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for First-Class and Marketing Mail ads received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "First-Class and Marketing Mail ads received per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "5191fdfe955d5f3e8388524b22b0c99b365443992ef39fc0a4b14a4c6ec28ec1",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

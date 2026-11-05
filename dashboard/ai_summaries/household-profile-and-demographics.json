@@ -1,0 +1,4448 @@
+{
+  "section": "Household profile and demographics",
+  "summaries": {
+    "yearly:2020": {
+      "section": "Household profile and demographics",
+      "kind": "yearly",
+      "key": "yearly:2020",
+      "fiscal_year": 2020,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household profile and demographics: published values for FY2020 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2020, First-Class and Marketing Mail ads received per household was 487.7 (pieces per household per year). That fell by 155.9 (24.2%) from five years earlier, FY2015.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020,
+              2015
+            ]
+          },
+          {
+            "text": "In FY2020, Advertising mail received per household was 478.4 (pieces per household per year). That fell by 88.4 (15.6%) from the previous year, FY2019. That fell by 150.8 (24.0%) from five years earlier, FY2015.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          },
+          {
+            "text": "In FY2020, Correspondence mail received per household was 104.0 (pieces per household per year). That fell by 5.2 (4.8%) from the previous year, FY2019. That rose by 5.2 (5.3%) from five years earlier, FY2015.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          },
+          {
+            "text": "In FY2020, Transactions mail received per household was 130.0 (pieces per household per year). That fell by 5.2 (3.8%) from the previous year, FY2019. That fell by 52.0 (28.6%) from five years earlier, FY2015.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          },
+          {
+            "text": "By income in FY2020, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for $150,000 and Over at 692.3 and lowest for Less than $50,000 at 358.7.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By age in FY2020, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for 65 and Over at 685.6 and lowest for Under 45 at 311.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By education in FY2020, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for College graduate at 530.6 and lowest for Less than high school at 365.9.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By msa in FY2020, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Large MSA at 513.8 and lowest for Non-MSA at 431.0.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By tenure in FY2020, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Own at 586.4 and lowest for Rent at 280.3.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2020, Advertising mail received per household (pieces per household per year) was highest for Over $100K at 582.4 and lowest for Under $35K at 327.6.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By age in FY2020, Advertising mail received per household (pieces per household per year) was highest for Over 55 at 613.6 and lowest for Under 35 at 265.2.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By education in FY2020, Advertising mail received per household (pieces per household per year) was highest for College graduate at 509.6 and lowest for Less than high school at 353.6.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2020, Correspondence mail received per household (pieces per household per year) was highest for Over $100K at 124.8 and lowest for Under $35K at 83.2.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By age in FY2020, Correspondence mail received per household (pieces per household per year) was highest for Over 55 at 124.8 and lowest for Under 35 at 72.8.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By education in FY2020, Correspondence mail received per household (pieces per household per year) was highest for College graduate at 114.4 and lowest for High school graduate at 98.8.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2020, Transactions mail received per household (pieces per household per year) was highest for $65K to $100K at 150.8 and lowest for Under $35K at 93.6.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By age in FY2020, Transactions mail received per household (pieces per household per year) was highest for Over 55 at 161.2 and lowest for Under 35 at 62.4.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2020
+            ]
+          },
+          {
+            "text": "By education in FY2020, Transactions mail received per household (pieces per household per year) was highest for High school graduate at 140.4 and lowest for College graduate at 124.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2020
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2017: Correspondence/transactions split reclassified (FY2017 report). Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "8af037f594824bc7aa9860137e42cda9b32394bf606aa8e88de8d2f6b451b6cd",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Household profile and demographics",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household profile and demographics: long-term change in the published values, FY2003 to FY2025.",
+        "statements": [
+          {
+            "text": "First-Class and Marketing Mail ads received per household (pieces per household per year) went from 643.6 in FY2015 to 378.0 in FY2025: it fell by 265.6 (41.3%) over the period. Since FY2020 (five years earlier) it fell by 109.7 (22.5%).",
+            "metric": "ads-received-per-household",
+            "years": [
+              2015,
+              2025,
+              2020
+            ]
+          },
+          {
+            "text": "Advertising mail received per household (pieces per household per year) went from 899.6 in FY2005 to 436.8 in FY2023: it fell by 462.8 (51.4%) over the period. Since FY2018 (five years earlier) it fell by 156.0 (26.3%). Since FY2013 (ten years earlier) it fell by 213.2 (32.8%).",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2005,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Correspondence mail received per household (pieces per household per year) went from 130.0 in FY2003 to 98.8 in FY2023: it fell by 31.2 (24.0%) over the period. Since FY2018 (five years earlier) it fell by 15.6 (13.6%). Since FY2013 (ten years earlier) it rose by 15.6 (18.7%).",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2003,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Transactions mail received per household (pieces per household per year) went from 275.6 in FY2003 to 114.4 in FY2023: it fell by 161.2 (58.5%) over the period. Since FY2018 (five years earlier) it fell by 31.2 (21.4%). Since FY2013 (ten years earlier) it fell by 104.0 (47.6%).",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2003,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "By income in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for $150,000 and Over at 527.0 and lowest for Less than $50,000 at 277.3.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for 65 and Over at 529.1 and lowest for Under 45 at 232.7.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for College graduate at 432.0 and lowest for Less than high school at 271.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Large MSA at 401.6 and lowest for Non-MSA at 317.6.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Own at 465.1 and lowest for Rent at 212.9.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By income in FY2023, Advertising mail received per household (pieces per household per year) was highest for Over $100K at 551.2 and lowest for Under $35K at 254.8.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By age in FY2023, Advertising mail received per household (pieces per household per year) was highest for Over 55 at 577.2 and lowest for Under 35 at 202.8.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By education in FY2023, Advertising mail received per household (pieces per household per year) was highest for College graduate at 483.6 and lowest for Less than high school at 301.6.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By income in FY2023, Correspondence mail received per household (pieces per household per year) was highest for Over $100K at 114.4 and lowest for Under $35K at 72.8.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By age in FY2023, Correspondence mail received per household (pieces per household per year) was highest for Over 55 at 119.6 and lowest for Under 35 at 62.4.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By education in FY2023, Correspondence mail received per household (pieces per household per year) was highest for College graduate at 98.8 and lowest for Some college or technical school graduate at 93.6.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By income in FY2023, Transactions mail received per household (pieces per household per year) was highest for $65K to $100K at 130.0 and lowest for Under $35K at 72.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By age in FY2023, Transactions mail received per household (pieces per household per year) was highest for Over 55 at 145.6 and lowest for Under 35 at 57.2.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By education in FY2023, Transactions mail received per household (pieces per household per year) was highest for High school graduate at 124.8 and lowest for Less than high school at 98.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for First-Class and Marketing Mail ads received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "First-Class and Marketing Mail ads received per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "No projection is shown for Advertising mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Advertising mail received per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
+          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
+          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
+          "Methodology change in FY2014: Weighting by home ownership (household-group tables). Comparisons across it should be cautious.",
+          "No projection is shown for Correspondence mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Correspondence mail received per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2008: Correspondence redefined (FY2008 report). Comparisons across it should be cautious.",
+          "Methodology change in FY2012: Correspondence/transactions split reclassified (FY2012 report). Comparisons across it should be cautious.",
+          "Methodology change in FY2015: Correspondence/transactions split reclassified (FY2015 report). Comparisons across it should be cautious.",
+          "Methodology change in FY2017: Correspondence/transactions split reclassified (FY2017 report). Comparisons across it should be cautious.",
+          "No projection is shown for Transactions mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Transactions mail received per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2013: Transactions restated: 2011 questionnaire (FY2013 report). Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "449962da89fafcdf930c1186cc43ea6542bfc8fcd1ce1cb6a75ec9a9f5487720",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 46,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 47,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 49,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 50,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 50,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 42,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 54,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 42,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 54,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 42,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 54,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 51,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 49,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 47,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 47,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 47,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 49,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 42,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 54,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 31,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 26,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 27,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 28,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 30,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 30,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 19,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 19,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 19,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 28,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 19,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 29,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 40,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 34,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 35,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 36,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 37,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 39,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 39,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 39,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 39,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

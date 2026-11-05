@@ -1,0 +1,145 @@
+{
+  "section": "Periodicals per household",
+  "summaries": {
+    "yearly:2025": {
+      "section": "Periodicals per household",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Periodicals per household: published values for FY2025 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2025, Periodicals per household was 21.9 (pieces per household per year). That rose by 2.0 (10.1%) from the previous year, FY2024. That fell by 7.7 (26.0%) from five years earlier, FY2020.",
+            "metric": "periodicals-per-household",
+            "years": [
+              2025,
+              2024,
+              2020
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "8559531400145d51c03830cae7a2a273f6bdd39565bf718a57da901b0dde7e9a",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "periodicals-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Periodicals per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Periodicals per household: long-term change in the published values, FY2014 to FY2025.",
+        "statements": [
+          {
+            "text": "Periodicals per household (pieces per household per year) went from 43.3 in FY2014 to 21.9 in FY2025: it fell by 21.4 (49.4%) over the period. Since FY2020 (five years earlier) it fell by 7.7 (26.0%). Since FY2015 (ten years earlier) it fell by 18.1 (45.2%).",
+            "metric": "periodicals-per-household",
+            "years": [
+              2014,
+              2025,
+              2020,
+              2015
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for Periodicals per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Periodicals per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "c67374a857461d233b7b593f4cfece2c9c2206e56a85b4806df7fc58a9987e57",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "periodicals-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

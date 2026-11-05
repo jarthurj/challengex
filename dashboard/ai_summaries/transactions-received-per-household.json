@@ -1,0 +1,1229 @@
+{
+  "section": "Transactions mail received per household",
+  "summaries": {
+    "yearly:2023": {
+      "section": "Transactions mail received per household",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Transactions mail received per household: published values for FY2023 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2023, Transactions mail received per household was 114.4 (pieces per household per year). That was unchanged from the previous year, FY2022. That fell by 31.2 (21.4%) from five years earlier, FY2018.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023,
+              2022,
+              2018
+            ]
+          },
+          {
+            "text": "By income in FY2023, Transactions mail received per household (pieces per household per year) was highest for $65K to $100K at 130.0 and lowest for Under $35K at 72.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By age in FY2023, Transactions mail received per household (pieces per household per year) was highest for Over 55 at 145.6 and lowest for Under 35 at 57.2.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By education in FY2023, Transactions mail received per household (pieces per household per year) was highest for High school graduate at 124.8 and lowest for Less than high school at 98.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "21601077a6c88dc501711fbecfb349b650a32868af2fd0978e03240595c27138",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Transactions mail received per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Transactions mail received per household: long-term change in the published values, FY2003 to FY2023.",
+        "statements": [
+          {
+            "text": "Transactions mail received per household (pieces per household per year) went from 275.6 in FY2003 to 114.4 in FY2023: it fell by 161.2 (58.5%) over the period. Since FY2018 (five years earlier) it fell by 31.2 (21.4%). Since FY2013 (ten years earlier) it fell by 104.0 (47.6%).",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2003,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "By income in FY2023, Transactions mail received per household (pieces per household per year) was highest for $65K to $100K at 130.0 and lowest for Under $35K at 72.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By age in FY2023, Transactions mail received per household (pieces per household per year) was highest for Over 55 at 145.6 and lowest for Under 35 at 57.2.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          },
+          {
+            "text": "By education in FY2023, Transactions mail received per household (pieces per household per year) was highest for High school graduate at 124.8 and lowest for Less than high school at 98.8.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for Transactions mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Transactions mail received per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
+          "Methodology change in FY2012: Correspondence/transactions split reclassified (FY2012 report). Comparisons across it should be cautious.",
+          "Methodology change in FY2013: Transactions restated: 2011 questionnaire (FY2013 report). Comparisons across it should be cautious.",
+          "Methodology change in FY2014: Weighting by home ownership (household-group tables). Comparisons across it should be cautious.",
+          "Methodology change in FY2015: Correspondence/transactions split reclassified (FY2015 report). Comparisons across it should be cautious.",
+          "Methodology change in FY2017: Correspondence/transactions split reclassified (FY2017 report). Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "8dbc9e16c85f93c397a28071aa79eceb6823ecc6a4e8ad59ade80b73cb9dede2",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 40,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 34,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 35,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 36,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 37,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 39,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 39,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 39,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 39,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$35K to $65K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$65K to $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "35 to 54"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Over $100K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Over 55"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 38,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 29,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 40,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Under $35K"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "transactions-received-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 35"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 39,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 39,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 37,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 35,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 35,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 35,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 37,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 30,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 41,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

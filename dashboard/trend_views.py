@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
+from .ai_summary import section_for_trend, trend_summaries
 from .forecast import DECIMALS, forecast
 from .models import MethodologyBreak, Metric, Observation, Segment
 from .overview_views import csv_response, fiscal_years, observation_row
@@ -183,6 +184,24 @@ def trends(request):
     context = trend_context(request)
     context["data_url"] = reverse("trend-data")
     context["years"] = fiscal_years()  # for the "By year" link in the navigation
+    # Stored AI summaries for the selected metric (read from files; the page never calls the API).
+    context["ai_section"] = section_for_trend(context["selected_trend"])
+    context["ai_summaries"] = trend_summaries(context["selected_trend"]) if context["chart_data"] else []
+
+    # --- OPTIONAL: real-time generation when "Show trend" is pressed (currently switched off) ---
+    # Uncomment to call Gemini on every Show trend instead of reading the stored files. Each page
+    # load then spends tokens and waits up to ~60 s, and anyone who can open the page can trigger it.
+    # CLAUDE.md says pages must not call the API on every load; prefer a POST button with a rate
+    # limit. Also add `from .ai_summary import get_summary` at the top of this file.
+    #
+    # if context["ai_section"] and context["chart_data"] and request.GET.get("trend"):  # only after the form is submitted
+    #     live = []
+    #     for label, kind in (("Long-term summary", "comparative"), ("Latest-year summary", "yearly")):
+    #         record = get_summary(context["ai_section"], kind, live=True)  # None if the API fails or the check fails
+    #         if record:
+    #             live.append({"label": label, "record": record})
+    #     if live:                                  # otherwise keep the stored summaries above
+    #         context["ai_summaries"] = live
     return render(request, "dashboard/trends.html", context)
 
 

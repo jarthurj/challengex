@@ -1,0 +1,145 @@
+{
+  "section": "All household mail per household",
+  "summaries": {
+    "yearly:2025": {
+      "section": "All household mail per household",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "All household mail per household: published values for FY2025 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2025, All household mail per household was 637.3 (pieces per household per year). That fell by 44.7 (6.6%) from the previous year, FY2024. That fell by 199.7 (23.9%) from five years earlier, FY2020.",
+            "metric": "household-mail-per-household",
+            "years": [
+              2025,
+              2024,
+              2020
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "ac4432302c2255a752bab98b8091dc55b84506a80a2f41843c48596b44453e4a",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "household-mail-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "All household mail per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "All household mail per household: long-term change in the published values, FY2014 to FY2025.",
+        "statements": [
+          {
+            "text": "All household mail per household (pieces per household per year) went from 1,074.7 in FY2014 to 637.3 in FY2025: it fell by 437.4 (40.7%) over the period. Since FY2020 (five years earlier) it fell by 199.7 (23.9%). Since FY2015 (ten years earlier) it fell by 403.3 (38.8%).",
+            "metric": "household-mail-per-household",
+            "years": [
+              2014,
+              2025,
+              2020,
+              2015
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for All household mail per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "All household mail per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "ecf5107741da6703aca129cc1d6f97e05ea8a694bed46ddfdc1e1d31264ac0e3",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "household-mail-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}
