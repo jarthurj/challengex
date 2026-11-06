@@ -12,6 +12,7 @@ from django.urls import reverse
 from .ai_summary import year_summaries
 from .forecast import DECIMALS
 from .models import Metric, Observation, Table
+# from .ai_summary import SECTIONS, TOPIC_SECTIONS, get_summary
 
 # Headline series for the cards, in display order.
 KPIS = [
@@ -181,7 +182,7 @@ def year_detail(request, year):
     # One call per topic section = 8 API calls per page view (loop over SECTIONS instead for "all
     # the metrics" = 35), so it is slow and costs tokens, and anyone who opens the page triggers it.
     # CLAUDE.md says pages must not call the API on every load; prefer a POST button with a rate limit.
-    #
+    
     # live = []
     # for key in TOPIC_SECTIONS:                     # or SECTIONS for every metric as well
     #     record = get_summary(key, "yearly", live=True, year=year)  # None if the API or the check fails

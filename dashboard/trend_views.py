@@ -7,6 +7,7 @@ from .ai_summary import section_for_trend, trend_summaries
 from .forecast import DECIMALS, forecast
 from .models import MethodologyBreak, Metric, Observation, Segment
 from .overview_views import csv_response, fiscal_years, observation_row
+# from .ai_summary import get_summary
 
 BAND = "rgba(90, 90, 90, 0.18)"
 BAND_EDGE = "#767676"  # 4.5:1 on white
@@ -193,8 +194,8 @@ def trends(request):
     # load then spends tokens and waits up to ~60 s, and anyone who can open the page can trigger it.
     # CLAUDE.md says pages must not call the API on every load; prefer a POST button with a rate
     # limit. Also add `from .ai_summary import get_summary` at the top of this file.
-    #
-    # if context["ai_section"] and context["chart_data"] and request.GET.get("trend"):  # only after the form is submitted
+    
+    # if context["ai_section"] and context["chart_data"]:  # only after the form is submitted
     #     live = []
     #     for label, kind in (("Long-term summary", "comparative"), ("Latest-year summary", "yearly")):
     #         record = get_summary(context["ai_section"], kind, live=True)  # None if the API fails or the check fails
