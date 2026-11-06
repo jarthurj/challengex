@@ -42,7 +42,7 @@ class PageStructureTests(TestCase):
             self.assertEqual(page.count("<h1"), 1, name)
             # the shared styles (_head.html): Tailwind pinned with an integrity hash, like Chart.js
             self.assertIn("@tailwindcss/browser@4.1.11/dist/index.global.js", page, name)
-            self.assertRegex(page, r'tailwindcss/browser[^>]*integrity="sha384-[^"]+"', name)
+            self.assertRegex(page, r'tailwindcss/browser[^>]*integrity="sha384-[^"]+"\s*crossorigin="anonymous"', name)
 
     def test_current_page_is_marked_in_the_navigation(self):
         for name, url in self.pages().items():

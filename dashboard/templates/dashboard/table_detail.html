@@ -120,11 +120,12 @@
             </p>
         {% elif tidied.notes %}
             <details class="notice">
-                <summary>Column names were tidied for display. <a href="?raw=1">Show the raw extraction</a></summary>
+                <summary>Column names were tidied for display.</summary>
                 <ul>
                     {% for note in tidied.notes %}<li>{{ note }}</li>{% endfor %}
                 </ul>
             </details>
+            <p><a href="?raw=1">Show the raw extraction</a></p>
         {% else %}
             <p><a href="?raw=1">Show the raw extraction</a></p>
         {% endif %}
@@ -137,7 +138,7 @@
                             {% if tidied.groups %}
                                 <tr>
                                     {% for label, span in tidied.groups %}
-                                        <th scope="colgroup" colspan="{{ span }}">{{ label }}</th>
+                                        {% if label %}<th scope="colgroup" colspan="{{ span }}">{{ label }}</th>{% else %}<td colspan="{{ span }}"></td>{% endif %}
                                     {% endfor %}
                                 </tr>
                             {% endif %}
@@ -153,7 +154,7 @@
                                 <tr>
                                     {% for cell in cells %}
                                         {% if forloop.first %}
-                                            <th scope="row" class="label">{{ cell }}</th>
+                                            {% if cell %}<th scope="row" class="label">{{ cell }}</th>{% else %}<td class="label"></td>{% endif %}
                                         {% else %}
                                             <td class="numeric">{{ cell }}</td>
                                         {% endif %}

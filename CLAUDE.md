@@ -452,7 +452,8 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 148 in total, in `dashboard/tests.py`, `dashboard/test_demographics.py` (household-group
+- **Tests:** 156 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+  validation, storage and display), `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -534,7 +535,8 @@ analyst should be able to:
   4.10.2 in Chrome finds 0 violations of the WCAG 2.0/2.1 A and AA rules and 0 best-practice
   issues on all 13 page types checked (including household groups and AI summaries), after the
   styles have applied; links in text are underlined (colour alone failed link-in-text-block);
-  every control is reachable by Tab with a visible focus ring (36 stops on Trends); the ☰ menu
+  every control is reachable by Tab with a visible focus ring (36 stops on Trends; white on the
+  navy nav, where the page-wide navy ring measured 1.3:1); the ☰ menu
   opens and closes with Enter/Space and updates `aria-expanded`; the skip link is the
   first Tab stop; no page scrolls sideways at 320 px; the projection band has 4.5:1 edges and
   its values are also in a table. `dashboard/test_accessibility.py` guards the structure. To
@@ -546,7 +548,13 @@ analyst should be able to:
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
   - On the Observation list, `verified` is editable, and the `notes` field explains each check.
-- **Missing:** any AI (step 4, deferred).
+- **AI summaries (`dashboard/ai_summary.py`, added 2026-11-05 by the team, using Google Gemini,
+  `gemini-2.5-flash`):** `python -m dashboard.ai_summary` builds each section's data packet,
+  asks Gemini for a headline, statements and caveats, checks the numbers and stores the result in
+  `dashboard/ai_summaries/<section>.json` (model, prompt version, input hash, `reviewed`). Pages
+  only read those files; the commented-out live-call code in the views stays off. Needs
+  `GEMINI_API_KEY` in `.env` only to generate (see `.env.example`). A subagent review on
+  2026-11-05 found the number check too loose and every stored summary stale; see To do A1.
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -660,8 +668,10 @@ reviewer subagent check each branch before merging, and update this file when a 
 Measured against the slides' required capabilities and the quality bar above.
 
 **A. Required by the challenge, not built yet**
-1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3; the team
-   deferred it on 2026-10-31, so confirm with the team before starting). Covers the Overview's
+1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3). Built by
+   the team with Gemini on 2026-11-05 (see Current code state); being hardened after a review
+   (number check tied to cited metric and years, direction and percentage-point checks,
+   break-crossing changes, staleness). The original design notes follow. Covers the Overview's
    AI summary card and plain-language "what changed and why" text an analyst can copy into a
    report with its citations.
    - Design: an `Insight` model; a `generate_insights` command run offline (pages never call the
