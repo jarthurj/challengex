@@ -6,7 +6,8 @@ from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
 from . import forecast as F
-from .models import Segment
+from . import trend_views
+from .models import MethodologyBreak, Metric, Segment
 from .testdata import load_real_tables
 
 
@@ -123,11 +124,54 @@ class TrendForecastTests(TestCase):
         page = self.client.get(reverse("trends"), {"trend": "bills-paid-by-mail-share"}).content.decode()
         self.assertIn("crosses later methodology changes (FY2024, FY2025)", page)
 
-    def test_no_projection_for_sparse_groups_or_the_category_chart(self):
+    def test_no_projection_for_sparse_groups(self):
         segment = Segment.objects.get(dimension="age", value="65 and Over")
         payload = self.data(trend="bills-paid-by-mail-share", segment=segment.pk)
         self.assertIn("reason", payload["forecast"])
         self.assertEqual(payload["chart"]["years"][-1], 2025)
-        self.assertIsNone(self.data(trend="category_volume")["forecast"])
+
+    def test_the_category_chart_projects_each_line_on_its_own(self):
+        payload = self.data(trend="category_volume")
+        self.assertIsNone(payload["forecast"])
+        chart = payload["chart"]
+        self.assertEqual(chart["years"][-5:], [2024, 2025, 2026, 2027, 2028])
+        published = [d for d in chart["datasets"] if not d.get("projection")]
+        projected = [d for d in chart["datasets"] if d.get("projection")]
+        self.assertEqual(len(published), 3)
+        self.assertEqual(len(projected), 3)   # one dashed line each, no overlapping bands
+        for line, own in zip(published, projected):
+            self.assertTrue(own["label"].startswith(f"Projection: {line['label']} – "))
+            self.assertEqual(own["borderColor"], line["borderColor"])
+            # A pattern no published line uses, so a projection can't pass for a published line.
+            self.assertEqual(own["borderDash"], trend_views.PROJECTION_DASH)
+            self.assertNotIn(own["borderDash"], [d["borderDash"] for d in published])
+            self.assertEqual(line["data"][-5:], [None] * 5)   # projections never enter published lines
+            last = chart["years"].index(2023)
+            self.assertEqual(own["data"][last], line["data"][last])   # each starts at its last value
+            # ...which is a published value: no projection marker or tooltip there.
+            self.assertEqual(own["joinIndex"], last)
+            self.assertEqual(own["pointRadius"][last], 0)
+            self.assertEqual(own["pointRadius"][last + 1], 4)
+        by_metric = {p["metric"]: p for p in payload["projections"]}
+        self.assertEqual(set(by_metric), {"fcm-received-correspondence", "fcm-received-transactions",
+                                          "fcm-received-advertising"})
+        for p in by_metric.values():
+            self.assertEqual(len(p["points"]), 5)
+            self.assertEqual(p["fit_years"], [2010, 2023])   # after the FY2010 break (all metrics)
+            self.assertEqual(p["after_break"], 2010)
         page = self.client.get(reverse("trends"), {"trend": "category_volume"}).content.decode()
-        self.assertIn("Projections are shown when a single metric is selected", page)
+        self.assertIn("Projections, one per category", page)
+        self.assertIn("statistical projections, not published USPS figures", page)
+        self.assertEqual(page.count("projected values (Millions of pieces)"), 3)
+
+    def test_each_category_line_uses_only_its_own_breaks(self):
+        transactions = Metric.objects.get(slug="fcm-received-transactions")
+        change = MethodologyBreak.objects.create(fiscal_year=2015, title="Test break",
+                                                 description="Only transactions.")
+        change.metrics.add(transactions)
+        by_metric = {p["metric"]: p for p in self.data(trend="category_volume")["projections"]}
+        self.assertEqual(by_metric["fcm-received-transactions"]["fit_years"], [2015, 2023])
+        self.assertEqual(by_metric["fcm-received-transactions"]["after_break"], 2015)
+        for slug in ("fcm-received-correspondence", "fcm-received-advertising"):
+            self.assertEqual(by_metric[slug]["fit_years"], [2010, 2023], slug)
+            self.assertEqual(by_metric[slug]["after_break"], 2010, slug)
