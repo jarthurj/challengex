@@ -1,0 +1,976 @@
+{
+  "section": "Mail volumes and flows",
+  "summaries": {
+    "yearly": {
+      "section": "Mail volumes and flows",
+      "kind": "yearly",
+      "fiscal_year": 2020,
+      "summary": {
+        "headline": "Mail usage by households declined in fiscal year 2020, with decreases in both sent and received First-Class Mail and overall household mail volumes.",
+        "statements": [
+          {
+            "text": "First-Class Mail received per household was 278.1 pieces per household per year in fiscal year 2020, a decrease of 10.7 pieces (-3.7%) from fiscal year 2019 and a decrease of 51.2 pieces (-15.5%) from fiscal year 2015.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2015,
+              2019,
+              2020
+            ]
+          },
+          {
+            "text": "Total First-Class Mail received by households was 35729.0 millions of pieces in fiscal year 2020, which was 1270.0 millions of pieces (-3.4%) less than in fiscal year 2019 and 5671.0 millions of pieces (-13.7%) less than in fiscal year 2015.",
+            "metric": "fcm-received-total",
+            "years": [
+              2015,
+              2019,
+              2020
+            ]
+          },
+          {
+            "text": "Households sent 50.9 pieces of First-Class Mail per household per year in fiscal year 2020, a drop of 1.3 pieces (-2.5%) from fiscal year 2019 and 26.3 pieces (-34.1%) from fiscal year 2015.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2015,
+              2019,
+              2020
+            ]
+          },
+          {
+            "text": "The total volume of First-Class Mail sent by households was 6470.0 millions of pieces in fiscal year 2020, representing a decrease of 198.0 millions of pieces (-3.0%) from fiscal year 2019 and 3389.0 millions of pieces (-34.4%) from fiscal year 2015.",
+            "metric": "fcm-sent-total",
+            "years": [
+              2015,
+              2019,
+              2020
+            ]
+          },
+          {
+            "text": "All household mail per household was 837.0 pieces per household per year in fiscal year 2020, a decrease of 84.8 pieces (-9.2%) from fiscal year 2019 and 203.6 pieces (-19.6%) from fiscal year 2015.",
+            "metric": "household-mail-per-household",
+            "years": [
+              2015,
+              2019,
+              2020
+            ]
+          },
+          {
+            "text": "The total volume of all household mail, sent and received, was 104800.0 millions of pieces in fiscal year 2020, a decrease of 11200.0 millions of pieces (-9.7%) from fiscal year 2019 and 23600.0 millions of pieces (-18.4%) from fiscal year 2015.",
+            "metric": "household-mail-total",
+            "years": [
+              2015,
+              2019,
+              2020
+            ]
+          }
+        ],
+        "caveats": [
+          "Data for All household mail per household is missing for fiscal years 2016, 2017, and 2018.",
+          "Comparisons involving First-Class Mail received by households, First-Class Mail sent by households, and All household mail, sent and received for fiscal years 2015, 2019, and 2020 should be cautious as these values are from reports published prior to the FY2024 restatement of 2014-2023 data.",
+          "Comparisons for All household mail per household between fiscal year 2019 (from the FY2024 report) and fiscal years 2015 and 2020 (from the FY2025 report) should be cautious due to the FY2025 survey redesign."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-2.5-flash",
+      "prompt_version": "summary-v1",
+      "input_hash": "e9d49ea9a55b5b9e400d821dfd9b9690d857c08a3c6b41493ee3faf5baf9a05a",
+      "generated_at": "2026-11-05T10:40:22+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "household-mail-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "household-mail-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Mail volumes and flows",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Mail volumes and flows: long-term change in the published values, FY2000 to FY2025.",
+        "statements": [
+          {
+            "text": "First-Class Mail received per household (pieces per household per year) went from 348.2 in FY2014 to 221.7 in FY2024: it fell by 126.5 (36.3%) over the period. Since FY2019 (five years earlier) it fell by 67.1 (23.2%).",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2014,
+              2024,
+              2019
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Drift model, fitted on FY2014 to FY2024, puts First-Class Mail received per household at 158.4 in FY2029 (80% range 142.1 to 174.8). On past years it beat the naive baseline.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2024,
+              2029
+            ]
+          },
+          {
+            "text": "First-Class Mail received by households (millions of pieces) went from 56,805 in FY2000 to 32,228 in FY2023: it fell by 24,577 (43.3%) over the period. Since FY2018 (five years earlier) it fell by 6,730 (17.3%). Since FY2013 (ten years earlier) it fell by 11,914 (27.0%).",
+            "metric": "fcm-received-total",
+            "years": [
+              2000,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Drift model, fitted on FY2010 to FY2023, puts First-Class Mail received by households at 25,368 in FY2028 (80% range 23,270 to 27,467). On past years it beat the naive baseline.",
+            "metric": "fcm-received-total",
+            "years": [
+              2023,
+              2028
+            ]
+          },
+          {
+            "text": "First-Class Mail sent per household (pieces per household per year) went from 80.3 in FY2014 to 26.6 in FY2024: it fell by 53.7 (66.9%) over the period. Since FY2019 (five years earlier) it fell by 25.6 (49.0%).",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2014,
+              2024,
+              2019
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2014 to FY2024, puts First-Class Mail sent per household at 5.1 in FY2029 (80% range 0.0 to 19.9). On past years it beat the naive baseline.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2024,
+              2029
+            ]
+          },
+          {
+            "text": "First-Class Mail sent by households (millions of pieces) went from 19,341 in FY2000 to 4,637 in FY2023: it fell by 14,704 (76.0%) over the period. Since FY2018 (five years earlier) it fell by 2,631 (36.2%). Since FY2013 (ten years earlier) it fell by 5,855 (55.8%).",
+            "metric": "fcm-sent-total",
+            "years": [
+              2000,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts First-Class Mail sent by households at 1,656 in FY2028 (80% range 515 to 2,797). On past years it beat the naive baseline.",
+            "metric": "fcm-sent-total",
+            "years": [
+              2023,
+              2028
+            ]
+          },
+          {
+            "text": "All household mail per household (pieces per household per year) went from 1,074.7 in FY2014 to 637.3 in FY2025: it fell by 437.4 (40.7%) over the period. Since FY2020 (five years earlier) it fell by 199.7 (23.9%). Since FY2015 (ten years earlier) it fell by 403.3 (38.8%).",
+            "metric": "household-mail-per-household",
+            "years": [
+              2014,
+              2025,
+              2020,
+              2015
+            ]
+          },
+          {
+            "text": "All household mail, sent and received (millions of pieces) went from 158,300 in FY2003 to 97,400 in FY2023: it fell by 60,900 (38.5%) over the period. Since FY2018 (five years earlier) it fell by 23,600 (19.5%). Since FY2013 (ten years earlier) it fell by 36,500 (27.3%).",
+            "metric": "household-mail-total",
+            "years": [
+              2003,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Drift model, fitted on FY2012 to FY2023, puts All household mail, sent and received at 79,445 in FY2028 (80% range 65,020 to 93,871). On past years it beat the naive baseline.",
+            "metric": "household-mail-total",
+            "years": [
+              2023,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
+          "No projection is shown for All household mail per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "All household mail per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
+          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
+          "Methodology change in FY2012: FY2014 report restated 2012 and 2013 (weighting by home ownership). Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "c116707f1e11cd24ff3effdefcddb88fb2f84537e5a804993626dbf2b5140626",
+      "generated_at": "2026-11-05T11:04:59+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "household-mail-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "household-mail-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "section": "First-Class correspondence received",
+  "summaries": {
+    "yearly:2023": {
+      "section": "First-Class correspondence received",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class correspondence received: published values for FY2023 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2023, First-Class correspondence received was 12,864 (millions of pieces). That fell by 777 (5.7%) from the previous year, FY2022. That fell by 1,911 (12.9%) from five years earlier, FY2018.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2023,
+              2022,
+              2018
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "1aab593dead32076558db745142af1bdd581bf8573a04184cb38d49e83e29185",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "First-Class correspondence received",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class correspondence received: long-term change in the published values, FY2000 to FY2023.",
+        "statements": [
+          {
+            "text": "First-Class correspondence received (millions of pieces) went from 19,470 in FY2000 to 12,864 in FY2023: it fell by 6,606 (33.9%) over the period. Since FY2018 (five years earlier) it fell by 1,911 (12.9%). Since FY2013 (ten years earlier) it fell by 2,633 (17.0%).",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2000,
+              2023,
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts First-Class correspondence received at 12,113 in FY2028 (80% range 11,509 to 12,717). On past years it beat the naive baseline.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2023,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "5eea54d3052733a27c480db783b309b0ec3d4f336d891a5bb19cbb90cc6810ad",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

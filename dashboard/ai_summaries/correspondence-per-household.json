@@ -1,0 +1,825 @@
+{
+  "section": "Correspondence per household",
+  "summaries": {
+    "yearly:2025": {
+      "section": "Correspondence per household",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Correspondence per household: published values for FY2025 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2025, Correspondence per household was 98.6 (pieces per household per year). That rose by 1.4 (1.4%) from the previous year, FY2024. That fell by 26.5 (21.2%) from five years earlier, FY2020.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025,
+              2024,
+              2020
+            ]
+          },
+          {
+            "text": "By income in FY2025, Correspondence per household (pieces per household per year) was highest for $150,000 and Over at 115.7 and lowest for Less than $50,000 at 90.8.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, Correspondence per household (pieces per household per year) was highest for 65 and Over at 130.4 and lowest for Under 45 at 71.5.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, Correspondence per household (pieces per household per year) was highest for Some college or technical school graduate at 102.7 and lowest for Less than high school at 83.9.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, Correspondence per household (pieces per household per year) was highest for Non-MSA at 102.5 and lowest for Large MSA at 94.0.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, Correspondence per household (pieces per household per year) was highest for Own at 111.7 and lowest for Rent at 72.7.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "e76ef4ad64943d14f4fa3fc5df8b4dc9435c310eefa5cc14bd3e319b63d207cf",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Correspondence per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Correspondence per household: long-term change in the published values, FY2014 to FY2025.",
+        "statements": [
+          {
+            "text": "Correspondence per household (pieces per household per year) went from 135.1 in FY2014 to 98.6 in FY2025: it fell by 36.5 (27.0%) over the period. Since FY2020 (five years earlier) it fell by 26.5 (21.2%). Since FY2015 (ten years earlier) it fell by 43.8 (30.8%).",
+            "metric": "correspondence-per-household",
+            "years": [
+              2014,
+              2025,
+              2020,
+              2015
+            ]
+          },
+          {
+            "text": "By income in FY2025, Correspondence per household (pieces per household per year) was highest for $150,000 and Over at 115.7 and lowest for Less than $50,000 at 90.8.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By age in FY2025, Correspondence per household (pieces per household per year) was highest for 65 and Over at 130.4 and lowest for Under 45 at 71.5.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By education in FY2025, Correspondence per household (pieces per household per year) was highest for Some college or technical school graduate at 102.7 and lowest for Less than high school at 83.9.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By msa in FY2025, Correspondence per household (pieces per household per year) was highest for Non-MSA at 102.5 and lowest for Large MSA at 94.0.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "By tenure in FY2025, Correspondence per household (pieces per household per year) was highest for Own at 111.7 and lowest for Rent at 72.7.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for Correspondence per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Correspondence per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
+          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "03cdb62d4f208fccd76d151ec8bac9a423bc87f4251dd4a3d3d7c0dd57128160",
+      "generated_at": "2026-11-05T11:05:09+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$100,000-$149,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$150,000 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "$50,000-$99,999"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "45-64"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "65 and Over"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "College graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "High school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Large MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "income",
+            "value": "Less than $50,000"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Less than high school"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Non-MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "msa",
+            "value": "Other MSA"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Own"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "tenure",
+            "value": "Rent"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "education",
+            "value": "Some college or technical school graduate"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "age",
+            "value": "Under 45"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 57,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

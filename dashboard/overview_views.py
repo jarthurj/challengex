@@ -9,6 +9,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
+from .ai_summary import year_summaries
 from .forecast import DECIMALS
 from .models import Metric, Observation, Table
 
@@ -164,14 +165,32 @@ def year_detail(request, year):
     if year not in years:
         raise Http404("No published values for that fiscal year.")
     headline, groups = year_rows(year)
-    return render(request, "dashboard/year.html", {
+    context = {
         "year": year,
         "years": years,
         "headline": headline,
         "groups": list(groups.items()),
         "report_tables": Table.objects.filter(year=year).exclude(title__startswith="Survey form").count(),
         "tables_url": f"{reverse('table-list')}?year={year}",
-    })
+        "ai_summaries": year_summaries(year),  # stored text only; the page never calls the API
+    }
+
+    # --- OPTIONAL: real-time generation when "Show year" is pressed (currently switched off) ---
+    # Uncomment to call Gemini on every year page load instead of reading the stored files. Add
+    # `from .ai_summary import SECTIONS, TOPIC_SECTIONS, get_summary` at the top of this file.
+    # One call per topic section = 8 API calls per page view (loop over SECTIONS instead for "all
+    # the metrics" = 35), so it is slow and costs tokens, and anyone who opens the page triggers it.
+    # CLAUDE.md says pages must not call the API on every load; prefer a POST button with a rate limit.
+    #
+    # live = []
+    # for key in TOPIC_SECTIONS:                     # or SECTIONS for every metric as well
+    #     record = get_summary(key, "yearly", live=True, year=year)  # None if the API or the check fails
+    #     if record:
+    #         live.append({"title": SECTIONS[key][0], "record": record, "topic": True})
+    # if live:                                       # otherwise keep the stored summaries above
+    #     context["ai_summaries"] = live
+
+    return render(request, "dashboard/year.html", context)
 
 
 def safe_cell(value):

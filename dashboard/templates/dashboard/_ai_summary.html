@@ -1,0 +1,22 @@
+{# One stored AI summary. Everything is autoescaped; never mark AI text |safe. Expects `record`. #}
+{% with s=record.summary %}
+<div class="ai-summary">
+    <p class="small">
+        {% if record.ai_generated %}<strong>AI-generated summary</strong> ({{ record.model }}, prompt {{ record.prompt_version }},
+        {{ record.generated_at|slice:":10" }}).{% else %}<strong>Automatically written summary</strong> (rule-based from the published values, not AI;
+        {{ record.generated_at|slice:":10" }}).{% endif %}
+        {% if record.reviewed %}Reviewed by a person.{% else %}Not yet reviewed by a person; check it against the values above before using it.{% endif %}
+        Every number in it was checked against the published values.</p>
+    <p><strong>{{ s.headline }}</strong></p>
+    <ul>
+        {% for st in s.statements %}
+            <li>{{ st.text }} <span class="small">(<a href="{% url 'trends' %}?trend={{ st.metric }}">{{ st.metric }}</a>,
+                FY{% for y in st.years %}{{ y }}{% if not forloop.last %}, {% endif %}{% endfor %})</span></li>
+        {% endfor %}
+    </ul>
+    {% if s.caveats %}
+        <p><strong>Caveats</strong></p>
+        <ul>{% for c in s.caveats %}<li>{{ c }}</li>{% endfor %}</ul>
+    {% endif %}
+</div>
+{% endwith %}

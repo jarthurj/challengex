@@ -1,0 +1,145 @@
+{
+  "section": "Packages per household",
+  "summaries": {
+    "yearly:2025": {
+      "section": "Packages per household",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Packages per household: published values for FY2025 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2025, Packages per household was 41.5 (pieces per household per year). That fell by 10.3 (19.9%) from the previous year, FY2024. That fell by 5.5 (11.7%) from five years earlier, FY2020.",
+            "metric": "packages-per-household",
+            "years": [
+              2025,
+              2024,
+              2020
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "02000fb0b2ec43b73afa2cd0b613dd369466a5c45c126c4769993c0528fa602e",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "Packages per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Packages per household: long-term change in the published values, FY2014 to FY2025.",
+        "statements": [
+          {
+            "text": "Packages per household (pieces per household per year) went from 28.3 in FY2014 to 41.5 in FY2025: it rose by 13.2 (46.6%) over the period. Since FY2020 (five years earlier) it fell by 5.5 (11.7%). Since FY2015 (ten years earlier) it rose by 9.4 (29.3%).",
+            "metric": "packages-per-household",
+            "years": [
+              2014,
+              2025,
+              2020,
+              2015
+            ]
+          }
+        ],
+        "caveats": [
+          "No projection is shown for Packages per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Packages per household has no published value for some years in between, so gaps are left as gaps.",
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
+          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "44d3b72bd039617cf53ad76a3c1cd3123eb79d67243b18f79c0d9245b18afe1b",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

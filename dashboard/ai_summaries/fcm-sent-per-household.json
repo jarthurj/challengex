@@ -1,0 +1,188 @@
+{
+  "section": "First-Class Mail sent per household",
+  "summaries": {
+    "yearly:2024": {
+      "section": "First-Class Mail sent per household",
+      "kind": "yearly",
+      "key": "yearly:2024",
+      "fiscal_year": 2024,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class Mail sent per household: published values for FY2024 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2024, First-Class Mail sent per household was 26.6 (pieces per household per year). That fell by 6.8 (20.4%) from the previous year, FY2023. That fell by 25.6 (49.0%) from five years earlier, FY2019.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2024,
+              2023,
+              2019
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "4284c1271e74f75eabc5f2af834bb5de6fc4367be5e7f828c45235656de47bf0",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "fcm-sent-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2019": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "comparative": {
+      "section": "First-Class Mail sent per household",
+      "kind": "comparative",
+      "key": "comparative",
+      "fiscal_year": null,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "First-Class Mail sent per household: long-term change in the published values, FY2014 to FY2024.",
+        "statements": [
+          {
+            "text": "First-Class Mail sent per household (pieces per household per year) went from 80.3 in FY2014 to 26.6 in FY2024: it fell by 53.7 (66.9%) over the period. Since FY2019 (five years earlier) it fell by 25.6 (49.0%).",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2014,
+              2024,
+              2019
+            ]
+          },
+          {
+            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2014 to FY2024, puts First-Class Mail sent per household at 5.1 in FY2029 (80% range 0.0 to 19.9). On past years it beat the naive baseline.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2024,
+              2029
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "9a4ee59ba49a30e825800f157ffbf496c2668f7bdc8f9af419c271c427d32166",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "fcm-sent-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 59,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

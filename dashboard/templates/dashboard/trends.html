@@ -160,6 +160,17 @@
             </table>
         </div>
 
+        <section aria-labelledby="ai-heading">
+            <h3 id="ai-heading">AI summary</h3>
+            {% for item in ai_summaries %}
+                <h4>{{ item.label }}</h4>
+                {% include "dashboard/_ai_summary.html" with record=item.record %}
+            {% empty %}
+                <p class="small">No AI summary has been generated for this metric yet
+                    (<code>python -m dashboard.ai_summary --section {{ ai_section }}</code>).</p>
+            {% endfor %}
+        </section>
+
         <!-- Pinned version + integrity hash: the browser refuses the file if the CDN serves anything else. -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
                 integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"

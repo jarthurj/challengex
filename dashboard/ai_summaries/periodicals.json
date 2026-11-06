@@ -1,0 +1,339 @@
+{
+  "section": "Periodicals",
+  "summaries": {
+    "comparative": {
+      "section": "Periodicals",
+      "kind": "comparative",
+      "fiscal_year": null,
+      "summary": {
+        "headline": "Periodicals mail volume and per-household receipt have declined significantly over the long term, with projections indicating continued decreases.",
+        "statements": [
+          {
+            "text": "Periodicals per household decreased by 49.4% from 43.3 pieces per household per year in FY2014 to 21.9 pieces per household per year in FY2025. It also decreased by 45.2% over the last 10 years (from 40.0 pieces in FY2015 to 21.9 pieces in FY2025) and by 26.0% over the last 5 years (from 29.6 pieces in FY2020 to 21.9 pieces in FY2025).",
+            "metric": "periodicals-per-household",
+            "years": [
+              2014,
+              2025,
+              2015,
+              2020
+            ]
+          },
+          {
+            "text": "However, Periodicals per household increased by 2.0 pieces, or 10.1%, from 19.9 pieces per household per year in FY2024 to 21.9 pieces per household per year in FY2025.",
+            "metric": "periodicals-per-household",
+            "years": [
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "Periodicals received by households decreased by 50.0% from 6800.0 millions of pieces in FY2003 to 3400.0 millions of pieces in FY2023. It also decreased by 40.4% over the last 10 years (from 5700.0 millions of pieces in FY2013 to 3400.0 millions of pieces in FY2023) and by 22.7% over the last 5 years (from 4400.0 millions of pieces in FY2018 to 3400.0 millions of pieces in FY2023).",
+            "metric": "periodicals-volume",
+            "years": [
+              2003,
+              2023,
+              2013,
+              2018
+            ]
+          },
+          {
+            "text": "Periodicals received by households increased by 100.0 millions of pieces, or 3.0%, from 3300.0 millions of pieces in FY2022 to 3400.0 millions of pieces in FY2023.",
+            "metric": "periodicals-volume",
+            "years": [
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "A linear trend projection for Periodicals received by households, which beats the naive baseline, forecasts a decline from 2995.0 millions of pieces in FY2024 to 2023.0 millions of pieces in FY2028. The 80% confidence interval for FY2024 is 2782.0 to 3209.0 millions of pieces, and for FY2028 it is 1546.0 to 2500.0 millions of pieces.",
+            "metric": "periodicals-volume",
+            "years": [
+              2024,
+              2028
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons for Periodicals per household and Periodicals received by households across FY2010 should be cautious due to a restatement of diary data with new weighting methodology.",
+          "Comparisons for Periodicals per household and Periodicals received by households across FY2012 should be cautious because FY2014 data restated 2012 and 2013 values due to weighting by home ownership.",
+          "Comparisons for Periodicals per household and Periodicals received by households across FY2024 should be cautious due to a new survey contractor and a change to per-household reporting, which also restated 2014-2023 data.",
+          "Comparisons for Periodicals per household and Periodicals received by households across FY2025 should be cautious due to a new Household Mail Survey design.",
+          "The metric Periodicals per household has missing data for FY2016, FY2017, FY2018, FY2021, FY2022, and FY2023.",
+          "Projections for Periodicals received by households are based on a linear trend model, with the fit starting after the FY2012 methodology break, and are not published figures.",
+          "Projections are not available for Periodicals per household because the series has fewer than 8 consecutive annual values."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-2.5-flash",
+      "prompt_version": "summary-v1",
+      "input_hash": "22c028b704b9aeeb86d0349b9cf38a308d9935a37f2bb27d59ea468932f1dbc5",
+      "generated_at": "2026-11-05T10:41:46+00:00",
+      "sources": [
+        {
+          "metric": "periodicals-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "periodicals-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": false
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": false
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": false
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": false
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": false
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": false
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": false
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": false
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": false
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": false
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": false
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": false
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2020": {
+      "section": "Periodicals",
+      "kind": "yearly",
+      "key": "yearly:2020",
+      "fiscal_year": 2020,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Periodicals: published values for FY2020 and how they moved.",
+        "statements": [
+          {
+            "text": "In FY2020, Periodicals per household was 29.6 (pieces per household per year). That fell by 2.8 (8.6%) from the previous year, FY2019. That fell by 10.4 (26.0%) from five years earlier, FY2015.",
+            "metric": "periodicals-per-household",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          },
+          {
+            "text": "In FY2020, Periodicals received by households was 3,900 (millions of pieces). That fell by 300 (7.1%) from the previous year, FY2019. That fell by 1,200 (23.5%) from five years earlier, FY2015.",
+            "metric": "periodicals-volume",
+            "years": [
+              2020,
+              2019,
+              2015
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": false,
+      "reviewed": false,
+      "model": "rule-based template (no AI)",
+      "prompt_version": "template-v1",
+      "input_hash": "3c042c84bc1b89a652fac560d8a592ea37ae3618400ff39deed5b44db3fe7f42",
+      "generated_at": "2026-11-05T11:05:00+00:00",
+      "sources": [
+        {
+          "metric": "periodicals-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": false
+            }
+          }
+        },
+        {
+          "metric": "periodicals-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": false
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": false
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": false
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": false
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}
