@@ -1,0 +1,19 @@
+{# One summary in a list: a foldable row (subject, kind and years, badges, headline) and its text. #}
+{# Expects `item` (from ai_views._item) and `open_all`. #}
+<details class="ai-item" id="{{ item.dom_id }}"{% if open_all %} open{% endif %}>
+    <summary>
+        <span class="ai-item-title">{{ item.title }}</span>
+        <span class="badge">{{ item.label }}</span>
+        {% if item.record.ai_generated %}<span class="badge">AI-generated</span>{% else %}<span class="badge">Rule-based</span>{% endif %}
+        {% if item.record.reviewed %}<span class="badge badge-ok">Reviewed</span>{% else %}<span class="badge badge-warn">Not yet reviewed</span>{% endif %}
+        {% if item.record.stale %}<span class="badge">Data changed since</span>{% endif %}
+        <span class="ai-item-headline">{{ item.record.summary.headline }}</span>
+    </summary>
+    {% include "dashboard/_ai_summary.html" with record=item.record compact=True %}
+    <p class="item-actions">
+        <a href="{{ item.url }}">Sources and details<span class="visually-hidden"> for {{ item.title }}, {{ item.label }}</span></a>
+        <button type="button" class="button-secondary copy-button" data-copy="{{ item.dom_id }}-copy" hidden>Copy with sources<span class="visually-hidden">: {{ item.title }}, {{ item.label }}</span></button>
+        <span class="copy-status small" role="status" aria-live="polite"></span>
+    </p>
+    <pre class="copy-source" id="{{ item.dom_id }}-copy" hidden>{{ item.copy }}</pre>
+</details>

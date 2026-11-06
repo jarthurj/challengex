@@ -2,8 +2,9 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.http import urlencode
 
-from .ai_summary import section_for_trend, trend_summaries
+from .ai_summary import section_for_trend
 from .forecast import DECIMALS, forecast
 from .models import MethodologyBreak, Metric, Observation, Segment
 from .overview_views import csv_response, fiscal_years, observation_row
@@ -185,9 +186,10 @@ def trends(request):
     context = trend_context(request)
     context["data_url"] = reverse("trend-data")
     context["years"] = fiscal_years()  # for the "By year" link in the navigation
-    # Stored AI summaries for the selected metric (read from files; the page never calls the API).
+    # The AI summaries are on their own tab (ai_views); this page links to the selected metric's.
     context["ai_section"] = section_for_trend(context["selected_trend"])
-    context["ai_summaries"] = trend_summaries(context["selected_trend"]) if context["chart_data"] else []
+    if context["ai_section"]:
+        context["ai_url"] = f"{reverse('ai-summaries')}?{urlencode({'section': context['ai_section']})}"
 
     # --- OPTIONAL: real-time generation when "Show trend" is pressed (currently switched off) ---
     # Uncomment to call Gemini on every Show trend instead of reading the stored files. Each page

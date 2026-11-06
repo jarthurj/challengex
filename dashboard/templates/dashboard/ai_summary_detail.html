@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
+    <title>{{ title }}: AI Summary</title>
+</head>
+<body>
+    {% with current="ai" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
+    <p class="small"><a href="{% url 'ai-summaries' %}">AI summaries</a> ›
+        <a href="{% url 'ai-summaries' %}?category={{ category_key }}">{{ category }}</a></p>
+    <h1>{{ title }}: {{ label }}</h1>
+    {% include "dashboard/_messages.html" %}
+
+    {% if item %}
+        {% include "dashboard/_ai_summary.html" with record=item.record %}
+        <p class="item-actions">
+            <button type="button" class="button-secondary copy-button" data-copy="summary-copy" hidden>Copy with sources</button>
+            <span class="copy-status small" role="status" aria-live="polite"></span>
+            {% for slug, name in trend_metrics %}<a href="{% url 'trends' %}?trend={{ slug|urlencode }}">See the trend: {{ name }}</a>{% endfor %}
+        </p>
+        <h2>Text to copy into a report</h2>
+        <pre class="copy-source copy-visible" id="summary-copy">{{ item.copy }}</pre>
+
+        <h2>Sources</h2>
+        {% if sources %}
+            <div class="table-wrapper">
+                <table>
+                    <caption>The report and page of each published value the statements cite</caption>
+                    <thead><tr>
+                        <th scope="col">Metric</th><th scope="col">Household group</th><th scope="col">Fiscal year</th>
+                        <th scope="col">Source</th><th scope="col">Checked against the PDF</th>
+                    </tr></thead>
+                    <tbody>
+                        {% for row in sources %}
+                            <tr>
+                                <th scope="row">{{ row.metric }}</th>
+                                <td>{{ row.group }}</td>
+                                <td>FY{{ row.fiscal_year }}</td>
+                                <td>{% if row.pdf_url %}<a href="{{ row.pdf_url }}">FY{{ row.report_year }} report, page {{ row.page }}</a>{% else %}FY{{ row.report_year }} report, page {{ row.page }}{% endif %}</td>
+                                <td>{% if row.verified %}Verified{% else %}<span class="review">Unverified</span>{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="small">This summary cites only projections, so it has no published sources to list.</p>
+        {% endif %}
+
+        <h2>How it was made</h2>
+        <dl class="metadata">
+            <div><dt>Written by</dt><dd>{% if item.record.ai_generated %}{{ item.record.model }}{% else %}Rule-based template (not AI){% endif %}</dd></div>
+            <div><dt>Prompt version</dt><dd>{{ item.record.prompt_version }}</dd></div>
+            <div><dt>Written on</dt><dd>{{ item.record.generated_at|slice:":10" }}</dd></div>
+            <div><dt>Input hash</dt><dd>{{ item.record.input_hash|slice:":12" }}</dd></div>
+            <div><dt>Reviewed</dt><dd>{% if item.record.reviewed %}Yes{% if item.record.reviewed_by %}, by {{ item.record.reviewed_by }} on {{ item.record.reviewed_at|slice:":10" }}{% endif %}{% else %}Not yet{% endif %}</dd></div>
+        </dl>
+        {% if item.record.recheck_note %}<p class="small">{{ item.record.recheck_note }}</p>{% endif %}
+
+        {% if can_review %}
+            <form method="post" action="{% url 'ai-review' section key %}">
+                {% csrf_token %}
+                {% if item.record.reviewed %}
+                    <input type="hidden" name="reviewed" value="0">
+                    <button type="submit" class="button-secondary">Remove the reviewed mark</button>
+                {% else %}
+                    <input type="hidden" name="reviewed" value="1">
+                    <button type="submit">I have read it against the sources: mark as reviewed</button>
+                {% endif %}
+            </form>
+        {% else %}
+            <p class="small">Staff can mark a summary reviewed after logging in at <a href="/admin/">the admin site</a>.</p>
+        {% endif %}
+    {% else %}
+        <div class="notice review-notice" role="status">
+            <p><strong>This summary is hidden: it fails the number check against the current data.</strong>
+                Its text isn't shown. The check found: {{ problems|join:"; " }}.</p>
+            <p><a href="{% url 'ai-summaries' %}?section={{ section }}#create">Ask for a new one</a>.</p>
+        </div>
+    {% endif %}
+    </main>
+    <script>
+        (function () {
+            document.querySelectorAll(".copy-button").forEach(function (button) {
+                var source = document.getElementById(button.getAttribute("data-copy"));
+                var status = button.parentNode.querySelector(".copy-status");
+                if (!source || !navigator.clipboard) { return; }
+                button.hidden = false;
+                button.addEventListener("click", function () {
+                    navigator.clipboard.writeText(source.textContent).then(function () {
+                        status.textContent = "Copied, with its sources.";
+                    }, function () {
+                        status.textContent = "Couldn't copy; select the text below instead.";
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

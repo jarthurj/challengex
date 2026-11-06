@@ -1,21 +1,23 @@
-{# One stored AI summary. Everything is autoescaped; never mark AI text |safe. Expects `record`. #}
+{# One stored AI summary. Everything is autoescaped; never mark AI text |safe. Expects `record`; #}
+{# `compact` (lists) gives a one-line note instead of the full explanation of the check. #}
 {% with s=record.summary %}
 <div class="ai-summary">
     <p class="small">
         {% if record.ai_generated %}<strong>AI-generated summary</strong> ({{ record.model }}, prompt {{ record.prompt_version }},
         {{ record.generated_at|slice:":10" }}).{% else %}<strong>Automatically written summary</strong> (rule-based from the published values, not AI;
         {{ record.generated_at|slice:":10" }}).{% endif %}
-        {% if record.reviewed %}Reviewed by a person.{% else %}Not yet reviewed by a person; check it against the values above before using it.{% endif %}
-        Checked automatically against the current data: each number in a statement is a published value,
+        {% if record.reviewed %}Reviewed by a person{% if record.reviewed_by %} ({{ record.reviewed_by }}, {{ record.reviewed_at|slice:":10" }}){% endif %}.{% else %}Not yet reviewed by a person; check it against the published values before using it.{% endif %}
+        {% if compact %}Its numbers were checked automatically against the current data.
+        {% else %}Checked automatically against the current data: each number in a statement is a published value,
         change, labelled projection or backtest error of the metric it cites, for the household group named
         nearest to it (or all households) and the fiscal year it is given for; rises and falls quoted with a
         number match the data; changes in shares are in percentage points; comparisons across methodology
         breaks name them; and the headline and caveats give no figures beyond fiscal years and the numbers
         in break notes or in why a projection is missing. The check catches most numeric errors, not every
-        wrong sentence.</p>
+        wrong sentence.{% endif %}</p>
     {% if record.stale %}
         <p class="small"><strong>The data has changed since this summary was written.</strong> It is still shown
-            because every check above passes against the current data.</p>
+            because every check passes against the current data.</p>
     {% endif %}
     <p><strong>{{ s.headline }}</strong></p>
     <ul>

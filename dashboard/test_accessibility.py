@@ -28,6 +28,9 @@ class PageStructureTests(TestCase):
             "trends": reverse("trends"),
             "year": reverse("year-detail", args=[2025]),
             "tables": reverse("table-list"),
+            "ai": reverse("ai-summaries"),
+            "ai-long": reverse("ai-summaries") + "?view=long",
+            "ai-search": reverse("ai-summaries") + "?q=packages",
             "table": reverse("table-detail", args=[table.pk]),
         }
 

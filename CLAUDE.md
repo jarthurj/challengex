@@ -452,8 +452,11 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 196 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
-  validation, storage and display, incl. the Overview card and its year slider), `dashboard/test_demographics.py` (household-group
+- **Tests:** 216 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+  validation, storage and display), `dashboard/test_ai_page.py` (the AI summaries tab: views,
+  slider, search, categories, hidden list, copy and export, summary page, staff review mark, and
+  "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
+  failing reply never shown), `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -510,16 +513,8 @@ analyst should be able to:
     verification. Below, the market mix per household for the latest year (FY2025 E.2); the
     published markets don't add up to the published total, so shares are of the markets shown,
     and the page says so.
-  - **AI summary card** (Overview, below the KPI cards; `summary_card()` and
-    `ai_summary.overview_summaries()`), stored text only:
-    - **Long term:** the 8 topic sections' comparative summaries, the executive summary open and
-      the others folded in `<details>`. These appear on no other page.
-    - **Year by year:** a range slider over the loaded fiscal years (`?year=`, validated against
-      them; anything else falls back to the latest year with a summary) with a "Show this year"
-      button, since moving it doesn't reload the page (WCAG 3.2.2); a small inline script only
-      updates the FY label and `aria-valuetext`. Previous/next year links, the topic sections'
-      yearly summaries for that year (executive first), the years that have one, and a link to
-      that Year page (which also has each metric's summary).
+  - The Overview, Trends and Year pages show **no AI summaries**; each links to the matching
+    ones on the AI summaries tab (below). `year_param()` validates every `?year=` as text first.
   - **Year page** (`/dashboard/year/<FY>/`, picker at `/dashboard/year/?year=`): every preferred
     value for that fiscal year with its source, the household-group tables (FY2015/2020/2025),
     and a link to that report's tables.
@@ -527,10 +522,51 @@ analyst should be able to:
     Trends selection: published values with source report, page, table and verification, then
     the projection rows labelled as projections with both intervals and the model). Text cells
     that a spreadsheet would run as formulas are quoted.
-- **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html` and
-  `table_detail.html` are full pages. All include `_head.html` (after the `<meta>` tags) and
-  `_nav.html` (skip link, logo, main navigation with a ☰ menu button below the `md` width), and
-  wrap their content in one `<main id="main">`. `_ai_summary.html` renders one stored summary.
+- **`ai_views.py` (AI summaries tab, `/dashboard/ai/`, added 2026-11-06), the only page with AI
+  text:** every stored summary in one place, read from the files (no API call on a page load).
+  - **Browse:** tabs "Year by year" (the default: a range slider over the loaded fiscal years with
+    a "Show this year" button, as moving it mustn't reload the page under WCAG 3.2.2, plus
+    previous/next links), "Long term", "Custom ranges", and "Search results".
+  - **Search** (`?q=`, at most 100 characters, every word must match, "FY2019" = "2019") over
+    subject, category, kind, years, headline, statements, the cited metrics' names, caveats and
+    household groups ("income", "Under $35K"); filters for category, subject, kind, fiscal year
+    (summaries about that year) and review status. Every parameter is checked against its fixed
+    list; anything else is ignored.
+  - **Grouped by category**: the 8 topic sections, each subject under the first topic that holds
+    all its metrics (`ai_summary.category_of`; household-group series under demographics; mixed
+    ones under mail volumes). Jump links, foldable summaries, "Open all", 40 per page; only the
+    page's summaries are re-checked (`check_batch()` reads the data version once), so a cold
+    "all summaries" page takes about 0.5 s, not 2.4.
+  - **Hidden ones** are counted and linked (per page); each one's page gives the check's reasons,
+    never its text. Search never reads the text of a summary that failed when it was written.
+  - **Robustness** (after a subagent review): a dropped connection (`OSError`,
+    `http.client.HTTPException`) or any error in the call ends in the "didn't answer" message,
+    never an error page; the key is marked `sensitive_variables`, so even a DEBUG error page
+    wouldn't list it; malformed replies or files (a list as a metric, `"sources": 5`) can't
+    break search or the pages; files are written through a temporary file of their own.
+  - **Copy with sources** (clipboard, progressive enhancement) and **Download as text**
+    (`/dashboard/ai/export.txt`, same filters, every match; exporting all 257 takes about 4 s
+    cold, a search's matches about 1 s): headline, statements with what they
+    cite, caveats, how it was made and checked, and the report and page of each cited value.
+  - **A page per summary** (`/dashboard/ai/<section>/<key>/`): the full text, a sources table
+    (with PDF page links where `docs/` has the PDF), model, prompt version, input hash, review.
+  - **Reviewed mark**: staff only (log in at `/admin/`), a POST with CSRF; records `reviewed_by`
+    and `reviewed_at`; only a summary that passes its check can be marked.
+  - **Create a new summary** (`/dashboard/ai/generate/`, POST with CSRF): subject, kind and
+    year(s) picked from fixed lists, so no free text reaches the model; pre-filled from the
+    search when nothing matches. Refused without a key (`GEMINI_API_KEY` and `GEMINI_MODEL` are
+    read from `.env` with `dotenv_values`, never loaded into `os.environ`) or with
+    `AI_LIVE_GENERATION = False` in settings; an existing summary is shown instead of a new call;
+    5 per client per hour and 30 a day (`AI_LIVE_LIMITS`, Django's cache); one request at a time;
+    30 s timeout and at most 2 requests (`LIVE_TIMEOUT`, `LIVE_MAX_CALLS`). The result goes
+    through `save_summary()`, so text that fails the check is never shown. Checked live once on
+    2026-11-06 (a FY2015–FY2020 packages range: 2 s, passed).
+- **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html`,
+  `table_detail.html`, `ai_summaries.html` and `ai_summary_detail.html` are full pages. All
+  include `_head.html` (after the `<meta>` tags) and `_nav.html` (skip link, logo, main navigation
+  with a ☰ menu button below the `md` width), and wrap their content in one `<main id="main">`.
+  `_ai_summary.html` renders one stored summary (`compact` in lists), `_ai_item.html` one in a
+  list, `_ai_generate_form.html` the create form, `_messages.html` the notices.
 - **Styling (Tailwind, from 2026-11-04):** `_head.html` loads the Tailwind 4.1.11 browser build,
   pinned to the package's own `dist/index.global.js` with an SRI hash (not the bare URL, which
   jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
@@ -563,7 +599,8 @@ analyst should be able to:
   with `gemini-3.5-flash-lite`):** `python -m dashboard.ai_summary` builds each section's data packet,
   asks Gemini for a headline, statements and caveats, checks the numbers and stores the result in
   `dashboard/ai_summaries/<section>.json` (model, prompt version, input hash, `reviewed`). Pages
-  only read those files; the commented-out live-call code in the views stays off. Needs
+  only read those files and show them on the AI summaries tab only; the one live call is that
+  tab's "Create a new summary" (see `ai_views.py` above). Needs
   `GEMINI_API_KEY` in `.env` only to generate (see `.env.example`).
   - **The check (`validate_ai_summary`, hardened 2026-11-05 after four subagent reviews):**
     - **Whose number:** each number in a statement is about the household group named nearest to
@@ -664,9 +701,9 @@ analyst should be able to:
     `--max-calls`).
   - **Still open:** 2 of the 71 stored records are still "rule-based template (no AI)"
     (`first-class-mail-received-by-category` yearly FY2023, shown; `advertising-received-total`
-    comparative, hidden) and the code that wrote them isn't in the repo; `reviewed` can only be set
-    by editing the JSON; the commented-out live-call code in the views must not be switched on
-    without a POST button and a rate limit (`load_dotenv` also only runs in the CLI).
+    comparative, hidden) and the code that wrote them isn't in the repo. The commented-out
+    live-call code in `trend_views.py` and `overview_views.py` is superseded by the AI tab's
+    "Create a new summary" (a POST with a rate limit); it is kept, off, as the team asked.
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -796,13 +833,12 @@ Measured against the slides' required capabilities and the quality bar above.
    - [ ] **The 2 remaining rule-based records** ("rule-based template (no AI)"): the code that
      wrote them isn't in the repo. Replace them with Gemini ones (re-run those two sections) or
      drop them from `dashboard/ai_summaries/`.
-   - [ ] **Mark summaries reviewed without hand-editing JSON**, e.g. a management command or an
-     admin action that sets `reviewed` on one record (and who/when). Today `reviewed` can only
-     be set by editing the file.
-   - [ ] **Before any live API call from a page:** a POST button (with CSRF) and a rate limit,
-     plus the timeout and graceful failure from the Security quality bar. The commented-out
-     live-call code in `trend_views.py` and `overview_views.py` stays off until then
-     (`load_dotenv` also only runs in the CLI).
+   - [x] **Mark summaries reviewed without hand-editing JSON** (2026-11-06): staff button on each
+     summary's page on the AI tab.
+   - [x] **A live call from a page, safely** (2026-11-06): the AI tab's "Create a new summary"
+     (POST with CSRF, fixed criteria, rate limit, timeout, graceful failure).
+   - [ ] **Browser accessibility check of the AI tab** (axe-core, keyboard walk-through, 320 px),
+     not yet run; `test_accessibility.py` covers its structure.
 
    The original design notes follow. Covers the Overview's
    AI summary card and plain-language "what changed and why" text an analyst can copy into a
@@ -817,9 +853,9 @@ Measured against the slides' required capabilities and the quality bar above.
    - Needs `ANTHROPIC_API_KEY` in `.env` (git-ignored) and the `anthropic` package pinned in
      `requirements.txt`. Then the optional "Ask the data" box, with its input treated as
      untrusted.
-2. **Copy into a report.** CSV export exists (Year and Trends pages), but there is no copy
-   button on charts, numbers or summaries. The OIG goal is halving report-prep time: add a copy
-   button for a chart's values with their sources, and later for summaries.
+2. **Copy into a report.** Summaries: done (2026-11-06, the AI tab's "Copy with sources" and
+   text download). Still missing: a copy button for a chart's values with their sources (CSV
+   export exists on the Year and Trends pages).
 
 **B. Data**
 3. **FY2021 household-group tables** are OCR'd and wrong. Transcribe its six tables (3.2, 3.4,

@@ -77,12 +77,29 @@
   /* AI summaries (_ai_summary.html) */
   .ai-summary { @apply mb-6 rounded-xl border border-l-4 border-slate-200 border-l-usps-blue bg-white p-4 shadow-sm; }
   .notes { @apply whitespace-pre-line; }
-  /* The Overview's AI summary card, its topics and its year slider */
-  .summary-card { @apply mt-8 rounded-xl border border-t-4 border-slate-200 border-t-usps-blue bg-white p-5 shadow-sm; }
-  .summary-card h2 { @apply mt-0; }
-  .summary-topic { @apply mb-3 rounded-lg border border-slate-200; }
-  .summary-topic summary { @apply cursor-pointer rounded-lg bg-slate-50 px-4 py-2 font-semibold text-usps-navy; }
-  .summary-topic .ai-summary { @apply m-3 mb-3; }
+  /* The AI summaries tab: browse tabs, foldable summaries, copy, the year slider */
+  .tabs { @apply mb-4 flex flex-wrap gap-2 border-b-2 border-slate-200 pb-2; }
+  .tabs a, .tabs .tab-current { @apply rounded-md px-3 py-1.5 font-semibold no-underline; }
+  .tabs a:hover { @apply bg-slate-100 underline; }
+  .tabs [aria-current] { @apply bg-usps-navy text-white; }
+  .tabs a[aria-current]:focus-visible { @apply outline-usps-red; }
+  .ai-category { @apply mb-6; }
+  .ai-item { @apply mb-3 rounded-lg border border-slate-200 bg-white; }
+  .ai-item > summary { @apply cursor-pointer rounded-lg px-4 py-3; }
+  .ai-item[open] > summary { @apply border-b border-slate-200 bg-slate-50; }
+  .ai-item-title { @apply mr-2 font-semibold text-usps-navy; }
+  .ai-item-headline { @apply mt-1 block text-slate-700; }
+  .ai-item .ai-summary { @apply m-3 mb-2 border-0 p-1 shadow-none; }
+  .ai-item .item-actions { @apply mx-4; }
+  .item-actions { @apply flex flex-wrap items-center gap-x-4 gap-y-2; }
+  .badge-ok { @apply border-green-800 bg-green-50 text-green-900; }
+  .badge-warn { @apply border-amber-800 bg-amber-50 text-amber-900; }
+  .button-secondary { @apply border border-usps-navy bg-white text-usps-navy hover:bg-slate-100; }
+  .copy-visible { @apply mb-6 overflow-x-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-white p-4 text-sm; }
+  .jump-links a { @apply mr-3 inline-block; }
+  .messages { @apply mb-4; }
+  .messages p { @apply mb-2; }
+  .generate-form button[disabled] { @apply cursor-not-allowed bg-slate-500; }
   .year-slider { @apply mb-2; }
   .year-slider input[type="range"] { @apply w-full max-w-md accent-usps-red; }
   .year-slider output { @apply min-w-[4.5rem] text-lg font-bold text-usps-navy; }

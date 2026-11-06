@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
+    <title>AI Summaries</title>
+</head>
+<body>
+    {% with current="ai" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
+    <h1>AI summaries</h1>
+    <p>Plain-language summaries of the published USPS household mail figures: one per subject for each fiscal
+        year, over the long term with a projection, or between two chosen years. Every number in them was
+        checked automatically against the data (<a href="#about">how</a>). Use "Copy with sources" to paste
+        one into a report with the report and page of each value it cites.</p>
+    {% include "dashboard/_messages.html" %}
+
+    <form method="get" action="{% url 'ai-summaries' %}" class="filters" role="search" aria-label="Search the AI summaries">
+        <label for="q">Search
+            <input type="search" id="q" name="q" value="{{ f.q }}" maxlength="100" placeholder="e.g. packages FY2019, bills income">
+        </label>
+        <label for="f-category">Category
+            <select id="f-category" name="category">
+                <option value="">All categories</option>
+                {% for value, label in categories %}<option value="{{ value }}"{% if f.category == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <label for="f-section">Subject
+            <select id="f-section" name="section">
+                <option value="">All subjects</option>
+                {% for category, options in subjects %}
+                    <optgroup label="{{ category }}">
+                        {% for value, label in options %}<option value="{{ value }}"{% if f.section == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+                    </optgroup>
+                {% endfor %}
+            </select>
+        </label>
+        <label for="f-kind">Kind
+            <select id="f-kind" name="kind">
+                {% for value, label in kinds.items %}<option value="{{ value }}"{% if f.kind == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <label for="f-year">Fiscal year
+            <select id="f-year" name="year">
+                <option value="">Any year</option>
+                {% for y in form_years %}<option value="{{ y }}"{% if f.year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+            </select>
+        </label>
+        <label for="f-status">Review
+            <select id="f-status" name="status">
+                {% for value, label in statuses.items %}<option value="{{ value }}"{% if f.status == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <input type="hidden" name="view" value="search">
+        <button type="submit">Search</button>
+        {% if f.view == "search" %}<a href="{% url 'ai-summaries' %}">Clear the search</a>{% endif %}
+    </form>
+
+    <nav aria-label="Ways to browse the summaries" class="tabs">
+        <a href="?view=year"{% if f.view == "year" %} aria-current="true"{% endif %}>Year by year</a>
+        <a href="?view=long"{% if f.view == "long" %} aria-current="true"{% endif %}>Long term</a>
+        <a href="?view=range"{% if f.view == "range" %} aria-current="true"{% endif %}>Custom ranges</a>
+        {% if f.view == "search" %}<span class="tab-current" aria-current="true">Search results</span>{% endif %}
+    </nav>
+
+    {% if f.view == "year" %}
+        <h2 id="results-heading">FY{{ year }}, year by year</h2>
+        {% if slider %}
+            <form method="get" action="{% url 'ai-summaries' %}#results-heading" class="year-slider">
+                <input type="hidden" name="view" value="year">
+                <label for="summary-year">Fiscal year</label>
+                <input type="range" id="summary-year" name="year" min="{{ slider.min }}" max="{{ slider.max }}"
+                       step="1" value="{{ slider.year }}" aria-valuetext="FY{{ slider.year }}"
+                       aria-describedby="summary-year-help">
+                <output for="summary-year" id="summary-year-value">FY{{ slider.year }}</output>
+                <button type="submit">Show this year</button>
+            </form>
+            <p id="summary-year-help" class="small">Move the slider (or use the arrow keys), then select "Show this
+                year". Yearly summaries are stored for {% if slider.stored %}{{ slider.stored }}{% else %}no year yet{% endif %}.</p>
+            <p class="year-steps">
+                {% if slider.previous %}<a href="?view=year&amp;year={{ slider.previous }}#results-heading">Previous year (FY{{ slider.previous }})</a>{% endif %}
+                {% if slider.next %}<a href="?view=year&amp;year={{ slider.next }}#results-heading">Next year (FY{{ slider.next }})</a>{% endif %}
+                <a href="{% url 'year-detail' year %}">FY{{ year }}'s published values</a>
+            </p>
+        {% endif %}
+    {% elif f.view == "long" %}
+        <h2 id="results-heading">Long-term summaries</h2>
+        <p class="small">Each covers its subject's whole published series and a projection for the next years,
+            with its prediction interval.</p>
+    {% elif f.view == "range" %}
+        <h2 id="results-heading">Summaries between two chosen years</h2>
+        <p class="small">Written on request with "Create a new summary" below.</p>
+    {% else %}
+        <h2 id="results-heading">Search results</h2>
+    {% endif %}
+
+    <p class="small results-line">
+        {% if pages.pages > 1 %}Page {{ pages.page }} of {{ pages.pages }}: stored summaries {{ pages.first }}–{{ pages.last }}
+            of {{ pages.matching }} that match ({{ count }} shown here){% else %}{{ count }} summar{{ count|pluralize:"y,ies" }}{% endif %}{% if groups|length > 1 %} in {{ groups|length }} categories{% endif %}.
+        {% if count %}<a href="{{ export_url }}">Download {% if pages.pages > 1 %}every match{% elif count == 1 %}it{% else %}these{% endif %} as text with sources</a>{% endif %}
+        {% if count > 1 %}<button type="button" class="button-secondary" id="open-all" hidden>Open all</button>{% endif %}
+    </p>
+    {% if groups|length > 1 %}
+        <p class="jump-links small">Jump to:
+            {% for g in groups %}<a href="#cat-{{ g.key }}">{{ g.title }} ({{ g.items|length }})</a>{% endfor %}</p>
+    {% endif %}
+
+    {% for g in groups %}
+        <section aria-labelledby="cat-{{ g.key }}" class="ai-category">
+            <h3 id="cat-{{ g.key }}">{{ g.title }}</h3>
+            {% for item in g.items %}{% include "dashboard/_ai_item.html" %}{% endfor %}
+        </section>
+    {% empty %}
+        <div class="notice">
+            <p><strong>No summaries match{% if f.q %} "{{ f.q }}"{% endif %}{% if f.view == "year" %} for FY{{ year }}{% endif %}.</strong></p>
+            <p>You can <a href="#create">ask Gemini to write one</a>: the form below is filled in from your search.</p>
+        </div>
+    {% endfor %}
+
+    {% if pages.pages > 1 %}
+        <nav aria-label="Pages of results" class="year-steps">
+            {% if pages.previous_url %}<a href="{{ pages.previous_url }}">Previous page</a>{% endif %}
+            <span>Page {{ pages.page }} of {{ pages.pages }}</span>
+            {% if pages.next_url %}<a href="{{ pages.next_url }}">Next page</a>{% endif %}
+        </nav>
+    {% endif %}
+
+    {% if hidden %}
+        <details class="notice hidden-summaries">
+            <summary>{{ hidden|length }} stored summar{{ hidden|length|pluralize:"y is,ies are" }}{% if pages.pages > 1 %} on this page{% endif %} hidden because
+                {{ hidden|length|pluralize:"it fails,they fail" }} the number check</summary>
+            <p class="small">Their text is never shown; each one's page says what the check found. Ask for a new
+                one below, or rerun <code>python -m dashboard.ai_summary</code> for that subject.</p>
+            <ul>{% for h in hidden %}<li><a href="{{ h.url }}">{{ h.title }}, {{ h.label }}</a></li>{% endfor %}</ul>
+        </details>
+    {% endif %}
+
+    <section aria-labelledby="create-heading" id="create">
+        <h2 id="create-heading">Create a new summary</h2>
+        <p>Pick a subject and the year or years to cover, and Gemini will write a summary from the published values.</p>
+        {% include "dashboard/_ai_generate_form.html" %}
+    </section>
+
+    <section aria-labelledby="about-heading" id="about">
+        <h2 id="about-heading">How these summaries are made and checked</h2>
+        <p>Gemini (or, for two older ones, a rule-based template) sees only the published values for one subject,
+            the changes between them, the statistical projection and its error, and the methodology notes. Before a
+            summary is stored, and again every time a page shows it, every number in it is checked against the data:
+            each is a published value, change, labelled projection or backtest error of the metric it cites, for the
+            household group named nearest to it and the fiscal year it is given for; rises and falls match the data;
+            changes in shares are in percentage points; comparisons across methodology breaks name them; and the
+            headline and caveats carry no figures. A summary that fails is never shown. The check catches most
+            numeric errors, not every wrong sentence, so each summary says whether a person has reviewed it.</p>
+    </section>
+    </main>
+    <script>
+        // Progressive enhancement only: the page works without it.
+        (function () {
+            var slider = document.getElementById("summary-year");
+            var shown = document.getElementById("summary-year-value");
+            if (slider && shown) {   // the page changes only when "Show this year" is selected (WCAG 3.2.2)
+                slider.addEventListener("input", function () {
+                    shown.textContent = "FY" + slider.value;
+                    slider.setAttribute("aria-valuetext", "FY" + slider.value);
+                });
+            }
+            var openAll = document.getElementById("open-all");
+            if (openAll) {
+                openAll.hidden = false;
+                openAll.addEventListener("click", function () {
+                    var items = document.querySelectorAll("details.ai-item");
+                    var open = openAll.textContent === "Open all";
+                    items.forEach(function (d) { d.open = open; });
+                    openAll.textContent = open ? "Close all" : "Open all";
+                });
+            }
+            document.querySelectorAll(".copy-button").forEach(function (button) {
+                var source = document.getElementById(button.getAttribute("data-copy"));
+                var status = button.parentNode.querySelector(".copy-status");
+                if (!source || !navigator.clipboard) { return; }
+                button.hidden = false;
+                button.addEventListener("click", function () {
+                    navigator.clipboard.writeText(source.textContent).then(function () {
+                        status.textContent = "Copied, with its sources.";
+                    }, function () {
+                        status.textContent = "Couldn't copy; open its page and select the text instead.";
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

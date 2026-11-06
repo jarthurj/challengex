@@ -1,0 +1,43 @@
+{# "Create a summary": criteria from fixed lists only (no free text reaches the model). Expects #}
+{# subjects, suggest, form_years, live_unavailable, live_left. #}
+<form method="post" action="{% url 'ai-generate' %}" class="filters generate-form" aria-describedby="generate-help">
+    {% csrf_token %}
+    <label for="gen-section">Subject
+        <select id="gen-section" name="section" required>
+            {% for category, options in subjects %}
+                <optgroup label="{{ category }}">
+                    {% for value, label in options %}<option value="{{ value }}"{% if suggest.section == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+                </optgroup>
+            {% endfor %}
+        </select>
+    </label>
+    <label for="gen-kind">Kind
+        <select id="gen-kind" name="kind">
+            <option value="yearly"{% if suggest.kind == "yearly" %} selected{% endif %}>One fiscal year</option>
+            <option value="comparative"{% if suggest.kind == "comparative" %} selected{% endif %}>Long term, with projection</option>
+            <option value="range"{% if suggest.kind == "range" %} selected{% endif %}>Between two fiscal years</option>
+        </select>
+    </label>
+    <label for="gen-year">Fiscal year (one year)
+        <select id="gen-year" name="year">
+            {% for y in form_years %}<option value="{{ y }}"{% if suggest.year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+        </select>
+    </label>
+    <label for="gen-from">From (between two years)
+        <select id="gen-from" name="from_year">
+            {% for y in form_years %}<option value="{{ y }}"{% if suggest.from_year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+        </select>
+    </label>
+    <label for="gen-to">To
+        <select id="gen-to" name="to_year">
+            {% for y in form_years %}<option value="{{ y }}"{% if suggest.to_year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+        </select>
+    </label>
+    <button type="submit"{% if live_unavailable %} disabled aria-disabled="true"{% endif %}>Ask Gemini for this summary</button>
+</form>
+<p id="generate-help" class="small">
+    {% if live_unavailable %}{{ live_unavailable }}
+    {% else %}Gemini sees only the published values, changes, projections and methodology notes for the subject
+        and years you pick. Its text goes through the same number check as every other summary: if it fails, it
+        isn't shown. Writing one takes up to a minute. You can ask for {{ live_left }} more this hour.{% endif %}
+    If a summary for the same subject and years already exists, you are taken to it instead.</p>
