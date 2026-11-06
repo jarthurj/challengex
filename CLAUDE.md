@@ -452,7 +452,8 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 148 in total, in `dashboard/tests.py`, `dashboard/test_demographics.py` (household-group
+- **Tests:** 156 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+  validation, storage and display), `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -517,12 +518,26 @@ analyst should be able to:
     the projection rows labelled as projections with both intervals and the model). Text cells
     that a spreadsheet would run as formulas are quoted.
 - **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html` and
-  `table_detail.html` are full pages. All include `_nav.html` (skip link + main navigation),
-  wrap their content in one `<main id="main">`, and load `static/dashboard/base.css` (skip
-  link, visible focus ring, nav styles).
-- **Accessibility (WCAG 2.1 AA), checked 2026-10-31:** axe-core 4.10.2 in Chrome finds 0
-  violations of the WCAG 2.0/2.1 A and AA rules and 0 best-practice issues on every page type;
-  every control is reachable by Tab (the year dropdown opens with Enter); the skip link is the
+  `table_detail.html` are full pages. All include `_head.html` (after the `<meta>` tags) and
+  `_nav.html` (skip link, logo, main navigation with a ☰ menu button below the `md` width), and
+  wrap their content in one `<main id="main">`. `_ai_summary.html` renders one stored summary.
+- **Styling (Tailwind, from 2026-11-04):** `_head.html` loads the Tailwind 4.1.11 browser build,
+  pinned to the package's own `dist/index.global.js` with an SRI hash (not the bare URL, which
+  jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
+  `<style type="text/tailwindcss">` block; templates use only those semantic class names
+  (`.card`, `.notice`, `.badge` …). The browser compiles it on each load, so pages need the
+  internet (as Chart.js does) and can flash unstyled for a moment. To upgrade: change the
+  version, check the file against the npm package, and hash it
+  (`openssl dgst -sha384 -binary index.global.js | openssl base64 -A`). Compiling the block once
+  into a static CSS file with the Tailwind CLI would remove the CDN script entirely; that needs
+  the standalone CLI binary (no Node here), so ask before downloading it. `base.css` is gone.
+- **Accessibility (WCAG 2.1 AA), re-checked 2026-11-05 with the Tailwind styling:** axe-core
+  4.10.2 in Chrome finds 0 violations of the WCAG 2.0/2.1 A and AA rules and 0 best-practice
+  issues on all 13 page types checked (including household groups and AI summaries), after the
+  styles have applied; links in text are underlined (colour alone failed link-in-text-block);
+  every control is reachable by Tab with a visible focus ring (36 stops on Trends; white on the
+  navy nav, where the page-wide navy ring measured 1.3:1); the ☰ menu
+  opens and closes with Enter/Space and updates `aria-expanded`; the skip link is the
   first Tab stop; no page scrolls sideways at 320 px; the projection band has 4.5:1 edges and
   its values are also in a table. `dashboard/test_accessibility.py` guards the structure. To
   re-run the browser checks, use Playwright with the installed Chrome and inject axe-core
@@ -533,7 +548,13 @@ analyst should be able to:
   to log in.
   - `Table` can be filtered by year and OCR status, with its rows inline.
   - On the Observation list, `verified` is editable, and the `notes` field explains each check.
-- **Missing:** any AI (step 4, deferred).
+- **AI summaries (`dashboard/ai_summary.py`, added 2026-11-05 by the team, using Google Gemini,
+  `gemini-2.5-flash`):** `python -m dashboard.ai_summary` builds each section's data packet,
+  asks Gemini for a headline, statements and caveats, checks the numbers and stores the result in
+  `dashboard/ai_summaries/<section>.json` (model, prompt version, input hash, `reviewed`). Pages
+  only read those files; the commented-out live-call code in the views stays off. Needs
+  `GEMINI_API_KEY` in `.env` only to generate (see `.env.example`). A subagent review on
+  2026-11-05 found the number check too loose and every stored summary stale; see To do A1.
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -597,7 +618,8 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
   goal.
 - **Charts:** Chart.js from a CDN, rendered through Django templates, with data from small JSON
   views. No SPA framework unless the team decides otherwise.
-  - **Pin an exact version and add an `integrity` (SRI) hash.** It's currently 4.5.1.
+  - **Pin an exact version and add an `integrity` (SRI) hash.** It's currently 4.5.1. The same
+    rule applies to the Tailwind script in `_head.html` (4.1.11).
   - Avoid versions less than about two weeks old.
   - To upgrade, update both the URL and the hash.
 
@@ -646,8 +668,10 @@ reviewer subagent check each branch before merging, and update this file when a 
 Measured against the slides' required capabilities and the quality bar above.
 
 **A. Required by the challenge, not built yet**
-1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3; the team
-   deferred it on 2026-10-31, so confirm with the team before starting). Covers the Overview's
+1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3). Built by
+   the team with Gemini on 2026-11-05 (see Current code state); being hardened after a review
+   (number check tied to cited metric and years, direction and percentage-point checks,
+   break-crossing changes, staleness). The original design notes follow. Covers the Overview's
    AI summary card and plain-language "what changed and why" text an analyst can copy into a
    report with its citations.
    - Design: an `Insight` model; a `generate_insights` command run offline (pages never call the
@@ -690,9 +714,9 @@ Measured against the slides' required capabilities and the quality bar above.
 **C. Forecasts and UI**
 8. **Projections for household groups**, after item 3.
 9. **One projection per line** on the "by category" chart.
-10. **Re-run the accessibility checks** (axe-core via Playwright, keyboard, 320 px reflow). They
-    were last run on 2026-10-31; the Trends and Year pages now show household groups. Page speed
-    is fine (every page under 0.3 s locally).
+10. ~~Re-run the accessibility checks~~ (done 2026-11-05 after the Tailwind styling: 0
+    violations). Re-run them after any styling change. Optional: compile Tailwind to a static CSS
+    file (see Styling) so the demo doesn't need the CDN for styles.
 
 **D. Before the demo** (whoever presents)
 11. Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
@@ -707,8 +731,8 @@ Measured against the slides' required capabilities and the quality bar above.
     (from 2000). FY2002 and FY2011 PDFs are missing from `docs/`; request them from USPS if
     needed. The FY2019 appendix is images and FY2018 lacks A8-10; only repair these if a mapped
     series needs them (none does now).
-14. **Upkeep:** Chart.js is pinned at 4.5.1 with an SRI hash; to upgrade, change both the URL and
-    the hash. Re-run `pip-audit` after any dependency change.
+14. **Upkeep:** Chart.js (4.5.1) and Tailwind (4.1.11) are pinned with SRI hashes; to upgrade,
+    change both the URL and the hash. Re-run `pip-audit` after any dependency change.
 15. **Only if the dashboard is ever deployed:** set `DEBUG=False`, read `SECRET_KEY` from the
     environment, set `ALLOWED_HOSTS`, serve over HTTPS, and put authentication in front of the
     admin (see the Security quality bar).

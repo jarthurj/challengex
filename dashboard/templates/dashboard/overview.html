@@ -1,33 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% comment %} {% load static %}
-    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}"> {% endcomment %}
-    {% include "dashboard/_head.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
     <title>Household Mail Overview</title>
-    {% comment %} <style>
-        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
-        a { color: #1756a9; }
-        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; padding: 0; list-style: none; }
-        .card { border: 1px solid #ccc; border-radius: 6px; padding: 1rem; }
-        .card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
-        .kpi { font-size: 1.6rem; font-weight: 700; margin: 0.2rem 0; }
-        .small { font-size: 0.9rem; color: #444; }
-        .card dl { margin: 0.6rem 0; }
-        .card dt { font-size: 0.9rem; color: #444; margin-top: 0.4rem; }
-        .card dd { margin: 0; }
-        .review { font-weight: 600; }
-        .notice { padding: 1rem; background: #f3f3f3; }
-        .table-wrapper { overflow-x: auto; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { padding: 0.6rem; border: 1px solid #ccc; text-align: left; vertical-align: middle; }
-        td.num { text-align: right; white-space: nowrap; }
-        caption { text-align: left; padding-bottom: 0.6rem; }
-        .bar { background: #1756a9; height: 0.9rem; min-width: 2px; }
-        .bar-cell { width: 35%; }
-    </style> {% endcomment %}
 </head>
 <body>
     {% with current="overview" %}{% include "dashboard/_nav.html" %}{% endwith %}

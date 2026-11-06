@@ -2,144 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% comment %} {% load static %}
-    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}"> {% endcomment %}
-    {% include "dashboard/_head.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
     <title>{{ table.title|default:"Table details" }}</title>
 
-    {% comment %} <style>
-        body {
-            font-family: system-ui, sans-serif;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            max-width: 1200px;
-            color: #222;
-        }
-
-        .metadata {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .metadata div {
-            padding: 0.8rem;
-            background: #f5f5f5;
-            border-radius: 6px;
-        }
-
-        .metadata dt {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .metadata dd {
-            margin: 0.25rem 0 0;
-            font-weight: 600;
-            overflow-wrap: anywhere;
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            margin-top: 1rem;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 0.95rem;
-        }
-
-        th, td {
-            padding: 0.65rem 0.8rem;
-            border: 1px solid #ddd;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        thead th {
-            background: #eee;
-            position: sticky;
-            top: 0;
-        }
-
-        tbody tr:nth-child(even) {
-            background: #fafafa;
-        }
-
-        .label {
-            font-weight: 600;
-            min-width: 180px;
-        }
-
-        .numeric {
-            text-align: right;
-            white-space: nowrap;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            background: #eee;
-            font-size: 0.85rem;
-        }
-
-        .badge.review {
-            border: 1px solid #8a4b00;
-            background: #fff4e5;
-            color: #5c3200;
-            font-weight: 600;
-        }
-
-        .review-notice {
-            border-left: 4px solid #8a4b00;
-            margin: 0.8rem 0;
-        }
-
-        .review-notice ul {
-            margin: 0.4rem 0 0;
-        }
-
-        .notice {
-            padding: 1rem;
-            background: #f5f5f5;
-            border-radius: 6px;
-        }
-
-        a {
-            color: #1756a9;
-        }
-
-        thead th[scope="colgroup"] {
-            text-align: center;
-        }
-
-        .footnote {
-            font-size: 0.85rem;
-            color: #555;
-        }
-
-        .from-report blockquote {
-            margin: 0 0 1rem;
-            padding: 0.6rem 1rem;
-            border-left: 4px solid #1756a9;
-            background: #f5f8fc;
-        }
-
-        .from-report blockquote p {
-            margin: 0 0 0.4rem;
-        }
-
-        .from-report cite {
-            font-size: 0.85rem;
-            font-style: normal;
-            color: #555;
-        }
-    </style> {% endcomment %}
 </head>
 
 <body>
@@ -253,11 +120,12 @@
             </p>
         {% elif tidied.notes %}
             <details class="notice">
-                <summary>Column names were tidied for display. <a href="?raw=1">Show the raw extraction</a></summary>
+                <summary>Column names were tidied for display.</summary>
                 <ul>
                     {% for note in tidied.notes %}<li>{{ note }}</li>{% endfor %}
                 </ul>
             </details>
+            <p><a href="?raw=1">Show the raw extraction</a></p>
         {% else %}
             <p><a href="?raw=1">Show the raw extraction</a></p>
         {% endif %}
@@ -270,7 +138,7 @@
                             {% if tidied.groups %}
                                 <tr>
                                     {% for label, span in tidied.groups %}
-                                        <th scope="colgroup" colspan="{{ span }}">{{ label }}</th>
+                                        {% if label %}<th scope="colgroup" colspan="{{ span }}">{{ label }}</th>{% else %}<td colspan="{{ span }}"></td>{% endif %}
                                     {% endfor %}
                                 </tr>
                             {% endif %}
@@ -286,7 +154,7 @@
                                 <tr>
                                     {% for cell in cells %}
                                         {% if forloop.first %}
-                                            <th scope="row" class="label">{{ cell }}</th>
+                                            {% if cell %}<th scope="row" class="label">{{ cell }}</th>{% else %}<td class="label"></td>{% endif %}
                                         {% else %}
                                             <td class="numeric">{{ cell }}</td>
                                         {% endif %}

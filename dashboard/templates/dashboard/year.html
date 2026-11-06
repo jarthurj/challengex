@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% comment %} {% load static %}
-    <link rel="stylesheet" href="{% static 'dashboard/base.css' %}"> {% endcomment %}
-    {% include "dashboard/_head.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
     <title>Household Mail FY{{ year }}</title>
-    {% comment %} <style>
-        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; color: #222; }
-        a { color: #1756a9; }
-        form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
-        select, button { padding: 0.5rem; font: inherit; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { padding: 0.6rem; border: 1px solid #ccc; text-align: left; vertical-align: top; }
-        td.num { text-align: right; white-space: nowrap; }
-        caption { text-align: left; padding-bottom: 0.6rem; }
-        .review { font-weight: 600; }
-        .small { font-size: 0.9rem; color: #444; }
-    </style> {% endcomment %}
 </head>
 <body>
     {% with current="year" %}{% include "dashboard/_nav.html" %}{% endwith %}

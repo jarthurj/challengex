@@ -10,8 +10,9 @@ against its source PDF page, so it's safe to say out loud.
 2. `python manage.py test dashboard`: all tests pass.
 3. Put the report PDFs in `docs/` so the "Open the report at page N" links work.
 4. `python manage.py runserver`, open `http://127.0.0.1:8000/`, and click through every stop below
-   once. The charts load Chart.js from a CDN, so check the venue's internet. Without it, each chart
-   says it couldn't load and the data table underneath still has every value.
+   once. The charts load Chart.js, and the page styling loads Tailwind, from a CDN, so check the
+   venue's internet. Without it, each chart says it couldn't load and the data table underneath
+   still has every value; pages stay readable but unstyled.
 5. Zoom the browser to 125% so the room can read it.
 
 ## The story in one line
@@ -54,6 +55,7 @@ honest projections.
 
 ## If something goes wrong
 
-- **Chart doesn't appear:** no internet for the Chart.js CDN. Use the values table under the chart.
+- **Chart doesn't appear, or the page looks unstyled:** no internet for the CDN (Chart.js and
+  Tailwind). Use the values table under the chart; every page still works unstyled.
 - **PDF link says the file isn't there:** `docs/` is missing on this computer; the page still names the report and page.
 - **Empty pages:** the database wasn't built; run `python manage.py rebuild_db` (a few seconds).
