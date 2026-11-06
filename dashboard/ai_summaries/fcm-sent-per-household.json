@@ -8,32 +8,47 @@
       "fiscal_year": 2024,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class Mail sent per household: published values for FY2024 and how they moved.",
+        "headline": "Summary of First-Class Mail sent per household for fiscal year 2024.",
         "statements": [
           {
-            "text": "In FY2024, First-Class Mail sent per household was 26.6 (pieces per household per year). That fell by 6.8 (20.4%) from the previous year, FY2023. That fell by 25.6 (49.0%) from five years earlier, FY2019.",
+            "text": "For All households, First-Class Mail sent per household was 26.6 pieces per household per year in FY2024.",
             "metric": "fcm-sent-per-household",
             "years": [
-              2024,
+              2024
+            ]
+          },
+          {
+            "text": "First-Class Mail sent per household decreased by 6.8 pieces per household per year from the previous year across the FY2024 methodology break.",
+            "metric": "fcm-sent-per-household",
+            "years": [
               2023,
-              2019
+              2024
+            ]
+          },
+          {
+            "text": "First-Class Mail sent per household fell by 25.6 pieces per household per year from 2019 to FY2024 across the FY2024 methodology break.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2019,
+              2024
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "4284c1271e74f75eabc5f2af834bb5de6fc4367be5e7f828c45235656de47bf0",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "f99249631a1b6d981d922528fc3bc8205e32fb40fd25bb7f7863f7864dfc051e",
+      "generated_at": "2026-11-06T16:45:49+00:00",
       "sources": [
         {
           "metric": "fcm-sent-per-household",
@@ -45,32 +60,32 @@
             "2019": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -83,40 +98,63 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class Mail sent per household: long-term change in the published values, FY2014 to FY2024.",
+        "headline": "Long-term analysis of First-Class Mail sent per household across available years.",
         "statements": [
           {
-            "text": "First-Class Mail sent per household (pieces per household per year) went from 80.3 in FY2014 to 26.6 in FY2024: it fell by 53.7 (66.9%) over the period. Since FY2019 (five years earlier) it fell by 25.6 (49.0%).",
+            "text": "For All households, the metric fcm-sent-per-household fell by 53.7 pieces per household per year from the fiscal year 2014 to the fiscal year 2024 across the FY2024 methodology break.",
             "metric": "fcm-sent-per-household",
             "years": [
               2014,
-              2024,
-              2019
+              2024
             ]
           },
           {
-            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2014 to FY2024, puts First-Class Mail sent per household at 5.1 in FY2029 (80% range 0.0 to 19.9). On past years it beat the naive baseline.",
+            "text": "For All households, the metric fcm-sent-per-household decreased by 25.6 pieces per household per year from the fiscal year 2019 to the fiscal year 2024 across the FY2024 methodology break.",
             "metric": "fcm-sent-per-household",
             "years": [
-              2024,
+              2019,
+              2024
+            ]
+          },
+          {
+            "text": "For All households, the metric fcm-sent-per-household declined by 6.8 pieces per household per year from the fiscal year 2023 to the fiscal year 2024 across the FY2024 methodology break.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2023,
+              2024
+            ]
+          },
+          {
+            "text": "For All households, the projected value for fcm-sent-per-household in the fiscal year 2025 is a projected 25.0 pieces per household per year with an 80% prediction interval 18.4 to 31.6, beating the naive baseline.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "For All households, the projected value for fcm-sent-per-household in the fiscal year 2029 is a projected 5.1 pieces per household per year with an 80% prediction interval 0.0 to 19.9, beating the naive baseline.",
+            "metric": "fcm-sent-per-household",
+            "years": [
               2029
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "9a4ee59ba49a30e825800f157ffbf496c2668f7bdc8f9af419c271c427d32166",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "aae454cc99a5f1f52235312f13de9b3d4db7a354089fdc1002aed56d0b9754b8",
+      "generated_at": "2026-11-06T16:45:51+00:00",
       "sources": [
         {
           "metric": "fcm-sent-per-household",
@@ -128,57 +166,57 @@
             "2014": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         }

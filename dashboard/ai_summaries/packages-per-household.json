@@ -8,33 +8,48 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Packages per household: published values for FY2025 and how they moved.",
+        "headline": "Summary of Household Mail Survey statistics for fiscal year 2025.",
         "statements": [
           {
-            "text": "In FY2025, Packages per household was 41.5 (pieces per household per year). That fell by 10.3 (19.9%) from the previous year, FY2024. That fell by 5.5 (11.7%) from five years earlier, FY2020.",
+            "text": "For all households, packages-per-household was 41.5 pieces per household per year in FY2025.",
             "metric": "packages-per-household",
             "years": [
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, packages-per-household fell by 10.3 pieces per household per year, or 19.9 percent, from the previous year to FY2025, across the FY2025 methodology break.",
+            "metric": "packages-per-household",
+            "years": [
               2024,
-              2020
+              2025
+            ]
+          },
+          {
+            "text": "For all households, packages-per-household decreased by 5.5 pieces per household per year, or 11.7 percent, from FY2020 to FY2025, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "packages-per-household",
+            "years": [
+              2020,
+              2025
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "02000fb0b2ec43b73afa2cd0b613dd369466a5c45c126c4769993c0528fa602e",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "26d55c4a09d587fff2ceefe9880011aa2f7d4e82020ecfaf86a368f51ade748b",
+      "generated_at": "2026-11-06T16:46:33+00:00",
       "sources": [
         {
           "metric": "packages-per-household",
@@ -46,17 +61,17 @@
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -69,36 +84,58 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Packages per household: long-term change in the published values, FY2014 to FY2025.",
+        "headline": "Comparative long-term summary of packages per household statistics from FY2014 to FY2025.",
         "statements": [
           {
-            "text": "Packages per household (pieces per household per year) went from 28.3 in FY2014 to 41.5 in FY2025: it rose by 13.2 (46.6%) over the period. Since FY2020 (five years earlier) it fell by 5.5 (11.7%). Since FY2015 (ten years earlier) it rose by 9.4 (29.3%).",
+            "text": "For packages-per-household, the value for all households was 28.3 pieces per household per year in FY2014 and 41.5 pieces per household per year in FY2025, representing an increase of 13.2 pieces per household per year from FY2014 to FY2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "packages-per-household",
             "years": [
               2014,
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "For packages-per-household, the value for all households was 32.1 pieces per household per year in FY2015 and 41.5 pieces per household per year in FY2025, representing an increase of 9.4 pieces per household per year from FY2015 to FY2025 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "packages-per-household",
+            "years": [
+              2015,
+              2025
+            ]
+          },
+          {
+            "text": "For packages-per-household, the value for all households was 47.0 pieces per household per year in FY2020 and 41.5 pieces per household per year in FY2025, representing a decrease of 5.5 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "packages-per-household",
+            "years": [
               2020,
-              2015
+              2025
+            ]
+          },
+          {
+            "text": "For packages-per-household, the value for all households was 51.8 pieces per household per year in FY2024 and 41.5 pieces per household per year in FY2025, representing a decrease of 10.3 pieces per household per year from the previous year across the FY2025 methodology break.",
+            "metric": "packages-per-household",
+            "years": [
+              2024,
+              2025
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for Packages per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Packages per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF. The FY2024 report restated 2014-2023 on its own basis.",
+          "FY2025 used a new survey design renamed the Household Mail Survey; Q1 was still covered by the old survey, age bands changed, and Large MSA was redefined.",
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "44d3b72bd039617cf53ad76a3c1cd3123eb79d67243b18f79c0d9245b18afe1b",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9019fa56cfbfbeff4637a0ceb365adfa046c1eca0cdd72831fe99c1bb775032e",
+      "generated_at": "2026-11-06T16:46:35+00:00",
       "sources": [
         {
           "metric": "packages-per-household",
@@ -110,32 +147,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         }

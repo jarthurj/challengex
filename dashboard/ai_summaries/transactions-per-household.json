@@ -8,69 +8,68 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Transaction mail per household: published values for FY2025 and how they moved.",
+        "headline": "In fiscal year 2025, transaction mail per household for all households stood at 93.7 pieces per household per year.",
         "statements": [
           {
-            "text": "In FY2025, Transaction mail per household was 93.7 (pieces per household per year). That fell by 17.3 (15.6%) from the previous year, FY2024. That fell by 47.5 (33.6%) from five years earlier, FY2020.",
+            "text": "For all households, transaction mail per household was 93.7 pieces per household per year in FY2025, falling by 17.3 pieces per household per year from FY2024 to FY2025 across the FY2025 methodology break, and falling by 47.5 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
-              2025,
+              2020,
               2024,
-              2020
-            ]
-          },
-          {
-            "text": "By income in FY2025, Transaction mail per household (pieces per household per year) was highest for $150,000 and Over at 109.1 and lowest for Less than $50,000 at 81.6.",
-            "metric": "transactions-per-household",
-            "years": [
               2025
             ]
           },
           {
-            "text": "By age in FY2025, Transaction mail per household (pieces per household per year) was highest for 65 and Over at 133.4 and lowest for Under 45 at 51.8.",
+            "text": "For the $100,000-$149,999 income group, transaction mail per household was 89.8 pieces per household per year in FY2025, decreasing by 56.4 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By education in FY2025, Transaction mail per household (pieces per household per year) was highest for Some college or technical school graduate at 99.3 and lowest for Less than high school at 87.6.",
+            "text": "For the 65 and Over age group, transaction mail per household was 133.4 pieces per household per year in FY2025, dropping by 58.1 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By msa in FY2025, Transaction mail per household (pieces per household per year) was highest for Non-MSA at 101.8 and lowest for Large MSA at 89.4.",
+            "text": "For the College graduate education group, transaction mail per household was 90.4 pieces per household per year in FY2025, dropping by 42.5 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By tenure in FY2025, Transaction mail per household (pieces per household per year) was highest for Own at 114.5 and lowest for Rent at 53.8.",
+            "text": "For the Large MSA segment, transaction mail per household was 89.4 pieces per household per year in FY2025, declining by 47.7 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
+              2020,
               2025
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology. Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF. The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports.",
+          "FY2025 used a new survey design, renamed the Household Mail Survey; Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+, and Large MSA was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
-        "passed": true,
-        "problems": []
+        "passed": false,
+        "problems": [
+          "headline: number 93.7 belongs in a statement, which names its metric and years"
+        ]
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "6603bbc45ae36268c023889a92da6843a4fc240b924668b4e7a1cee05662a742",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "59073f083074a124fe4dc29d6b6ad5f432a58c88a3453408e2d8fef951af2b9e",
+      "generated_at": "2026-11-06T17:01:42+00:00",
       "sources": [
         {
           "metric": "transactions-per-household",
@@ -82,17 +81,17 @@
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -106,12 +105,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -125,12 +124,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -144,12 +143,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -163,12 +162,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -182,12 +181,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -201,12 +200,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -220,12 +219,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -239,12 +238,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -258,12 +257,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -277,12 +276,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -296,12 +295,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -315,12 +314,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -334,12 +333,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -353,12 +352,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -372,12 +371,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -391,12 +390,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -409,72 +408,74 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Transaction mail per household: long-term change in the published values, FY2014 to FY2025.",
+        "headline": "Transaction mail per household decreased across all demographic segments and overall from FY2014 to FY2025 across methodology breaks.",
         "statements": [
           {
-            "text": "Transaction mail per household (pieces per household per year) went from 214.7 in FY2014 to 93.7 in FY2025: it fell by 121.0 (56.4%) over the period. Since FY2020 (five years earlier) it fell by 47.5 (33.6%). Since FY2015 (ten years earlier) it fell by 95.8 (50.6%).",
+            "text": "For all households, transaction mail per household fell by 121.0 pieces per household per year (or 56.4 percent) from 214.7 in FY2014 to 93.7 in FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
               2014,
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, transaction mail per household decreased by 95.8 pieces per household per year (or 50.6 percent) from 189.5 in FY2015 to 93.7 in FY2025, 10 years earlier, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "transactions-per-household",
+            "years": [
+              2015,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, transaction mail per household decreased by 47.5 pieces per household per year (or 33.6 percent) from 141.2 in FY2020 to 93.7 in FY2025, 5 years earlier, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "transactions-per-household",
+            "years": [
               2020,
-              2015
-            ]
-          },
-          {
-            "text": "By income in FY2025, Transaction mail per household (pieces per household per year) was highest for $150,000 and Over at 109.1 and lowest for Less than $50,000 at 81.6.",
-            "metric": "transactions-per-household",
-            "years": [
               2025
             ]
           },
           {
-            "text": "By age in FY2025, Transaction mail per household (pieces per household per year) was highest for 65 and Over at 133.4 and lowest for Under 45 at 51.8.",
+            "text": "For all households, transaction mail per household fell by 17.3 pieces per household per year (or 15.6 percent) from 111.0 in FY2024 to 93.7 in FY2025 from the previous year, crossing the FY2025 methodology break.",
             "metric": "transactions-per-household",
             "years": [
+              2024,
               2025
             ]
           },
           {
-            "text": "By education in FY2025, Transaction mail per household (pieces per household per year) was highest for Some college or technical school graduate at 99.3 and lowest for Less than high school at 87.6.",
+            "text": "For the $100,000-$149,999 income group, transaction mail per household dropped by 56.4 pieces per household per year (or 38.6 percent) from 146.2 in FY2020 to 89.8 in FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By msa in FY2025, Transaction mail per household (pieces per household per year) was highest for Non-MSA at 101.8 and lowest for Large MSA at 89.4.",
+            "text": "For the 65 and Over age group, transaction mail per household decreased by 58.1 pieces per household per year (or 30.3 percent) from 191.5 in FY2020 to 133.4 in FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "transactions-per-household",
             "years": [
-              2025
-            ]
-          },
-          {
-            "text": "By tenure in FY2025, Transaction mail per household (pieces per household per year) was highest for Own at 114.5 and lowest for Rent at 53.8.",
-            "metric": "transactions-per-household",
-            "years": [
+              2020,
               2025
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for Transaction mail per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Transaction mail per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more.",
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "626161323d404df49020483d123a5e6a6ef31640c3ac1406aad54e5bd7d3f04c",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "26c954823d1f516983127da890648ac1bc1955c9419e22ddc86018bbce93c1e7",
+      "generated_at": "2026-11-06T16:47:00+00:00",
       "sources": [
         {
           "metric": "transactions-per-household",
@@ -486,32 +487,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -525,12 +526,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -544,12 +545,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -563,12 +564,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -582,12 +583,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -601,12 +602,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -620,12 +621,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -639,12 +640,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -658,12 +659,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -677,12 +678,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -696,12 +697,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -715,12 +716,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -734,12 +735,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -753,12 +754,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -772,12 +773,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -791,12 +792,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -810,12 +811,12 @@
             "2020": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 59,
-              "verified": false
+              "verified": true
             }
           }
         }

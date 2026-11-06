@@ -1,102 +1,17 @@
 {
   "section": "Packages",
   "summaries": {
-    "yearly": {
-      "section": "Packages",
-      "kind": "yearly",
-      "fiscal_year": 2025,
-      "summary": {
-        "headline": "Packages per household decreased in fiscal year 2025 compared to the previous year and five years prior.",
-        "statements": [
-          {
-            "text": "In fiscal year 2025, the packages-per-household metric was 41.5 pieces per household per year.",
-            "metric": "packages-per-household",
-            "years": [
-              2025
-            ]
-          },
-          {
-            "text": "This represents a decrease of 10.3 pieces per household per year, or 19.9%, from the 51.8 pieces per household per year recorded in fiscal year 2024 for packages-per-household.",
-            "metric": "packages-per-household",
-            "years": [
-              2024,
-              2025
-            ]
-          },
-          {
-            "text": "Compared to fiscal year 2020, packages-per-household decreased by 5.5 pieces per household per year, or 11.7%, from 47.0 pieces per household per year.",
-            "metric": "packages-per-household",
-            "years": [
-              2020,
-              2025
-            ]
-          },
-          {
-            "text": "A methodology break in fiscal year 2024, involving a new survey contractor and per-household reporting, means comparisons for packages-per-household across this break should be made cautiously.",
-            "metric": "packages-per-household",
-            "years": [
-              2024
-            ]
-          },
-          {
-            "text": "Additionally, a Household Mail Survey redesign in fiscal year 2025, where Q1 was still covered by the old survey, affects the packages-per-household data for that year.",
-            "metric": "packages-per-household",
-            "years": [
-              2025
-            ]
-          }
-        ],
-        "caveats": [
-          "Comparisons for packages-per-household across fiscal year 2024 should be made cautiously due to a methodology break involving a new survey contractor and per-household reporting.",
-          "The packages-per-household data for fiscal year 2025 is affected by a Household Mail Survey redesign, with Q1 still covered by the old survey."
-        ]
-      },
-      "validation": {
-        "passed": true,
-        "problems": []
-      },
-      "ai_generated": true,
-      "reviewed": false,
-      "model": "gemini-2.5-flash",
-      "prompt_version": "summary-v1",
-      "input_hash": "4b06a6aef823a7498cade4ead9d04795f31d78d86e18545edfd29dfa2b655d66",
-      "generated_at": "2026-11-05T10:07:24+00:00",
-      "sources": [
-        {
-          "metric": "packages-per-household",
-          "segment": {
-            "dimension": "all",
-            "value": "All households"
-          },
-          "sources": {
-            "2020": {
-              "report_year": 2025,
-              "page": 7,
-              "verified": false
-            },
-            "2024": {
-              "report_year": 2024,
-              "page": 7,
-              "verified": false
-            },
-            "2025": {
-              "report_year": 2025,
-              "page": 7,
-              "verified": false
-            }
-          }
-        }
-      ]
-    },
     "comparative": {
       "section": "Packages",
       "kind": "comparative",
+      "key": "comparative",
       "fiscal_year": null,
+      "fiscal_year_range": null,
       "summary": {
-        "headline": "Packages per household have increased significantly since 2014 but saw a recent decline, while total package volume has grown substantially over two decades and is projected to continue rising despite a recent dip.",
+        "headline": "Comparative long-term analysis of household package volume and per-household statistics from available survey reports.",
         "statements": [
           {
-            "text": "Packages per household increased by 13.2 pieces per household per year (46.6%) from 2014 to 2025.",
+            "text": "For All households, packages-per-household was 41.5 pieces per household per year in FY2025, representing an increase of 13.2 pieces per household per year from FY2014 across the FY2024 and FY2025 methodology breaks.",
             "metric": "packages-per-household",
             "years": [
               2014,
@@ -104,24 +19,15 @@
             ]
           },
           {
-            "text": "Packages per household increased by 9.4 pieces per household per year (29.3%) over the last 10 years, from 2015 to 2025.",
+            "text": "For All households, packages-per-household decreased by 10.3 pieces per household per year from FY2024 to FY2025, crossing the FY2025 methodology break.",
             "metric": "packages-per-household",
             "years": [
-              2015,
-              2025
-            ]
-          },
-          {
-            "text": "However, Packages per household decreased by 5.5 pieces per household per year (-11.7%) over the last 5 years, from 2020 to 2025, and by 10.3 pieces per household per year (-19.9%) from 2024 to 2025.",
-            "metric": "packages-per-household",
-            "years": [
-              2020,
               2024,
               2025
             ]
           },
           {
-            "text": "Packages sent and received by households increased by 4100.0 millions of pieces (157.7%) from 2003 to 2023.",
+            "text": "For All households, packages-volume was 6,700.0 million of pieces in FY2023, rising by 4,100.0 million of pieces from FY2003 across the FY2005, FY2010, and FY2012 methodology breaks.",
             "metric": "packages-volume",
             "years": [
               2003,
@@ -129,16 +35,15 @@
             ]
           },
           {
-            "text": "Packages sent and received by households increased by 2600.0 millions of pieces (63.4%) over the last 10 years, from 2013 to 2023, and by 1400.0 millions of pieces (26.4%) over the last 5 years, from 2018 to 2023.",
+            "text": "For All households, packages-volume grew by 2,800.0 million of pieces since the FY2012 latest break through FY2023.",
             "metric": "packages-volume",
             "years": [
-              2013,
-              2018,
+              2012,
               2023
             ]
           },
           {
-            "text": "Packages sent and received by households decreased by 600.0 millions of pieces (-8.2%) from 2022 to 2023.",
+            "text": "For All households, packages-volume fell by 600.0 million of pieces from FY2022 to FY2023.",
             "metric": "packages-volume",
             "years": [
               2022,
@@ -146,25 +51,16 @@
             ]
           },
           {
-            "text": "A linear trend projection for Packages sent and received by households, which beats the naive baseline, forecasts an increase from 7315.0 millions of pieces in 2024 to 8550.0 millions of pieces in 2028, with an 80% confidence interval ranging from 6526.0 to 8104.0 millions of pieces in 2024 and from 6786.0 to 10314.0 millions of pieces in 2028.",
+            "text": "For All households, the projected packages-volume is 7,315.0 million of pieces in FY2024, with an 80% prediction interval 6,526.0 to 8,104.0 million of pieces, beating the naive baseline.",
             "metric": "packages-volume",
             "years": [
-              2024,
-              2025,
-              2026,
-              2027,
-              2028
+              2024
             ]
           }
         ],
         "caveats": [
-          "For \"Packages sent and received by households\", comparisons across fiscal year 2005 should be cautious because packages began to include CD/DVD rentals, and 2005 was restated from 2.4 to 3.1 billion, while 2003 and 2004 only counted ground and expedited packages.",
-          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2010 should be cautious due to changes in weighting methodology, with values before 2010 using an earlier weighting.",
-          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2012 should be cautious because the FY2014 report restated 2012 and 2013 data due to weighting by home ownership, establishing a new basis for values from 2012 onward.",
-          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2024 should be cautious due to a new survey contractor and a shift to per-household reporting, which also involved restating 2014-2023 data.",
-          "For \"Packages per household\" and \"Packages sent and received by households\", comparisons across fiscal year 2025 should be cautious due to a new Household Mail Survey design, including changes to age bands and the definition of 'Large MSA'.",
-          "Projections for \"Packages per household\" are not available because the series has fewer than the 8 consecutive annual values required.",
-          "The \"Packages per household\" metric has missing data for fiscal years 2016, 2017, 2018, 2021, 2022, and 2023."
+          "Comparisons across methodology breaks must be made with caution because of changes in definitions, weighting, contractors, and survey designs.",
+          "Projections for packages-per-household are unavailable because the series has fewer than 8 consecutive annual values."
         ]
       },
       "validation": {
@@ -173,10 +69,10 @@
       },
       "ai_generated": true,
       "reviewed": false,
-      "model": "gemini-2.5-flash",
-      "prompt_version": "summary-v1",
-      "input_hash": "976297fa4e585eeb46305ab7848e7beb424fb2b491c682a4744ea37097185d82",
-      "generated_at": "2026-11-05T10:17:54+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "67e431a2c443819bcde4de60f41b867a04cb5740e22bd70c5dc2ff7c686191de",
+      "generated_at": "2026-11-06T16:45:35+00:00",
       "sources": [
         {
           "metric": "packages-per-household",
@@ -188,32 +84,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -227,107 +123,107 @@
             "2003": {
               "report_year": 2005,
               "page": 8,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2006,
               "page": 9,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2007,
               "page": 9,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2008,
               "page": 8,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2009,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2010,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2010,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2012,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2013,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2014,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2015,
               "page": 12,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2016,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2017,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2018,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2019,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2022,
               "page": 4,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -340,39 +236,43 @@
       "fiscal_year": 2020,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Packages: published values for FY2020 and how they moved.",
+        "headline": "Overview of package statistics for fiscal year 2020.",
         "statements": [
           {
-            "text": "In FY2020, Packages per household was 47.0 (pieces per household per year). That rose by 9.3 (24.7%) from the previous year, FY2019. That rose by 14.9 (46.4%) from five years earlier, FY2015.",
+            "text": "For All households, packages-per-household was 47.0 pieces per household per year in FY2020, which increased by 9.3 pieces per household per year from FY2019 and rose by 14.9 pieces per household per year from FY2015.",
             "metric": "packages-per-household",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, Packages sent and received by households was 6,300 (millions of pieces). That rose by 1,300 (26.0%) from the previous year, FY2019. That rose by 2,000 (46.5%) from five years earlier, FY2015.",
+            "text": "For All households, packages-volume was 6,300.0 millions of pieces in FY2020, which increased by 1,300.0 millions of pieces from FY2019, rose by 2,000.0 millions of pieces from FY2015, and grew by 2,400.0 millions of pieces since the FY2012 methodology break.",
             "metric": "packages-volume",
             "years": [
-              2020,
+              2012,
+              2015,
               2019,
-              2015
+              2020
             ]
           }
         ],
-        "caveats": []
+        "caveats": [
+          "Beginning in 2012 data was restated due to weighing by Home Ownership.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology."
+        ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "008aab24d86d7c8df6aa62fc70714a37d5fb6b9817fb59035e20cb086a42050c",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9f8577177fc09471e55763256604b61669069d858b2d441a1280695e7cfe813a",
+      "generated_at": "2026-11-06T16:57:14+00:00",
       "sources": [
         {
           "metric": "packages-per-household",
@@ -384,17 +284,17 @@
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -408,36 +308,1862 @@
             "2015": {
               "report_year": 2017,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2018,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2019,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2022,
               "page": 4,
-              "verified": false
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2025": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of Household Diary/Mail Survey statistics for fiscal year 2025.",
+        "statements": [
+          {
+            "text": "For All households, packages-per-household was 41.5 pieces per household per year in FY2025, falling by 10.3 pieces per household per year from the previous year across the FY2025 methodology break, and falling by 5.5 pieces per household per year from 5 years earlier across the FY2024 and FY2025 methodology breaks.",
+            "metric": "packages-per-household",
+            "years": [
+              2020,
+              2024,
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "Methodology breaks affect comparisons across the FY2024 and FY2025 methodology breaks for packages-per-household."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "aa20287ac4a2f0caf3ea2ffd09527aabdf5378abd0f909fa4adcfa6a2bce04c7",
+      "generated_at": "2026-11-06T17:23:21+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2024": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2024",
+      "fiscal_year": 2024,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of Household Mail Survey Package Statistics for Fiscal Year 2024",
+        "statements": [
+          {
+            "text": "For all households, packages-per_household was 51.8 pieces per household per year in FY2024.",
+            "metric": "packages-per-household",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For all households, packages-per_household increased by 14.1 pieces per household per year from 2019 to 2024 across the FY2024 methodology break.",
+            "metric": "packages-per-household",
+            "years": [
+              2019,
+              2024
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024)."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "3d5cd4278b71c0da93f3d2ff1b3a3d4505a47f69dc44789545a0b8056617d5c8",
+      "generated_at": "2026-11-06T17:24:16+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2023": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Yearly summary of household mail statistics for fiscal year 2023.",
+        "statements": [
+          {
+            "text": "For All households, packages-volume was 6,700.0 millions of pieces in FY2023, down by -600.0 millions of pieces from the previous year in FY2022 and up by 1,400.0 millions of pieces from 5 years earlier in FY2018.",
+            "metric": "packages-volume",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "772953a97ce94eb9a80c9ab8fb0ad7b73b7465dd4f235d6ce0b3cc5e5be2f3ee",
+      "generated_at": "2026-11-06T17:25:12+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2022": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2022",
+      "fiscal_year": 2022,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household package volume statistics and changes for fiscal year 2022.",
+        "statements": [
+          {
+            "text": "For All households, packages-volume was 7,300.0 millions of pieces in FY2022, which rose by 500.0 millions of pieces from the previous year in FY2021, and rose by 2,300.0 millions of pieces from 5 years earlier in FY2017.",
+            "metric": "packages-volume",
+            "years": [
+              2017,
+              2021,
+              2022
+            ]
+          }
+        ],
+        "caveats": [
+          "Packages-volume is affected by methodology breaks in FY2005, FY2010, FY2012, FY2024, and FY2025; comparisons across these breaks should be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0cfdf7d4832bccdce0c19f80142deae51c5e927c0176da2e180c5528232f4c02",
+      "generated_at": "2026-11-06T17:26:17+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2021": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2021",
+      "fiscal_year": 2021,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of household mail statistics and package volumes for fiscal year 2021",
+        "statements": [
+          {
+            "text": "For All households, packages sent and received by households was 6,800 million in FY2021, which increased by 500 million from the previous year in FY2020 and grew by 2,100 million from five years earlier in FY2016.",
+            "metric": "packages-volume",
+            "years": [
+              2016,
+              2020,
+              2021
+            ]
+          },
+          {
+            "text": "For All households, packages sent and received by households rose by 2,900 million from the latest methodology break in FY2012 to FY2021.",
+            "metric": "packages-volume",
+            "years": [
+              2012,
+              2021
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2012 methodology break are cautious due to weighting by home ownership.",
+          "Comparisons across the FY2024 methodology bag or break are cautious.",
+          "Comparisons across the FY2025 methodology break are cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "620f0fb8c7995084af7fc65ed3c14a6e6cf982a133f3e12cf5b3221ea378131a",
+      "generated_at": "2026-11-06T17:27:13+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2019": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2019",
+      "fiscal_year": 2019,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household package statistics for fiscal year 2019.",
+        "statements": [
+          {
+            "text": "For packages-per-household, all households had 37.7 pieces per household per year in FY2019, which increased by 9.4 pieces per household per year from the 2014 level of 28.3 pieces per household per year.",
+            "metric": "packages-per-household",
+            "years": [
+              2014,
+              2019
+            ]
+          },
+          {
+            "text": "For packages-volume, all households sent and received 5,000.0 millions of pieces in FY2019, which fell by 300.0 millions of pieces from the FY2018 level of 5,300.0 millions of pieces.",
+            "metric": "packages-volume",
+            "years": [
+              2018,
+              2019
+            ]
+          },
+          {
+            "text": "For packages-volume, all households sent and received 5,000.0 millions of pieces in FY2019, which grew by 700.0 millions of pieces from the 2014 level of 4,300.0 millions of pieces.",
+            "metric": "packages-volume",
+            "years": [
+              2014,
+              2019
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "42e7fc572c23f7d3890bcffb911a6d697f8bafbfff460449ed3d26848dc02b5e",
+      "generated_at": "2026-11-06T17:28:28+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2018": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2018",
+      "fiscal_year": 2018,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of package statistics for fiscal year 2018",
+        "statements": [
+          {
+            "text": "For All households, packages-volume was 5,300.0 millions of pieces in FY2018, which increased by 300.0 millions of pieces from the previous year in FY2017.",
+            "metric": "packages-volume",
+            "years": [
+              2018,
+              2017
+            ]
+          },
+          {
+            "text": "For All households, packages-volume grew by 1,200.0 millions of pieces from 5 years earlier in FY2013, when it was 4,100.0 millions of pieces.",
+            "metric": "packages-volume",
+            "years": [
+              2018,
+              2013
+            ]
+          },
+          {
+            "text": "For All households, packages-volume rose by 1,400.0 millions of pieces from the latest break in FY2012.",
+            "metric": "packages-volume",
+            "years": [
+              2018,
+              2012
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "3981e4932923563a5fad1453ca9198eb240e8841731245e7631455082161dc49",
+      "generated_at": "2026-11-06T17:29:35+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2017": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2017",
+      "fiscal_year": 2017,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of household package volume statistics for fiscal year 2017.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 5,000.0 millions of pieces in FY2017.",
+            "metric": "packages-volume",
+            "years": [
+              2017
+            ]
+          },
+          {
+            "text": "For all households, packages-volume increased by 300.0 millions of pieces from FY2016 to FY2017.",
+            "metric": "packages-volume",
+            "years": [
+              2016,
+              2017
+            ]
+          },
+          {
+            "text": "For all households, packages-volume grew by 1,100.0 millions of pieces from FY2012 to FY2017.",
+            "metric": "packages-volume",
+            "years": [
+              2012,
+              2017
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "a0f3a5326e05a269edbc240cb36450cfe85f698ea33973c36082c53e9fa25daa",
+      "generated_at": "2026-11-06T17:30:40+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2016": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2016",
+      "fiscal_year": 2016,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household package volume summary for fiscal year 2016",
+        "statements": [
+          {
+            "text": "For All households, packages-volume was 4,700.0 millions of pieces in FY2016, which increased by 400.0 millions of pieces from the previous year in FY2015.",
+            "metric": "packages-volume",
+            "years": [
+              2015,
+              2016
+            ]
+          },
+          {
+            "text": "For All households, packages-volume was 4,700.0 millions of pieces in FY2016, and grew by 800.0 millions of pieces since the latest break from FY2012.",
+            "metric": "packages-volume",
+            "years": [
+              2012,
+              2016
+            ]
+          },
+          {
+            "text": "For All households, packages-volume was 4,700.0 millions of pieces in FY2016, and rose by 700.0 millions of pieces from FY2011 to FY2016 across the FY2012 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2011,
+              2012,
+              2016
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2012 methodology break are cautious.",
+          "The FY2014 report restated 2012 and 2013 due to weighting by home ownership, placing values from 2012 on a single basis while values through 2011 are on the old one."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "41729f5847f7139327deaecc39d036cebf214ef034d48badac8a615f87755419",
+      "generated_at": "2026-11-06T17:31:46+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2015": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2015",
+      "fiscal_year": 2015,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of package metrics for fiscal year 2015, including changes from the previous year and five years earlier.",
+        "statements": [
+          {
+            "text": "For all households, packages-per-household was 32.1 pieces per household per year in FY2015, which increased by 3.8 pieces per household per year from the previous year in FY2014.",
+            "metric": "packages-per-household",
+            "years": [
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, packages-volume was 4,300.0 million of pieces in FY2015, which was unchanged from the previous year in FY2014.",
+            "metric": "packages-volume",
+            "years": [
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, packages-volume was 4,300.0 million of pieces in FY2015, representing an increase of 400.0 million of pieces since the latest break in FY2012.",
+            "metric": "packages-volume",
+            "years": [
+              2012,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, packages-volume was 4,300.0 million of pieces in FY2015, which rose by 700.0 million of pieces from 5 years earlier in FY2010 across the FY2012 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2010,
+              2012,
+              2015
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership, meaning values from 2012 on share one basis while values through 2011 are on the old one.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed, restating 2014-2023 on its own basis.",
+          "FY2025 used a new survey design, renamed the Household Mail Survey, with changed age bands and redefined Large MSA."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "54ea4eef7053fee23a5293061389f5bb3e30e0647beb73ad7517f68ab6fc3152",
+      "generated_at": "2026-11-06T17:32:54+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2014": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2014",
+      "fiscal_year": 2014,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of fiscal year 2014 statistics for packages sent and received by households.",
+        "statements": [
+          {
+            "text": "For All households, packages-per-household was 28.3 pieces per household per year in FY2014.",
+            "metric": "packages-per-household",
+            "years": [
+              2014
+            ]
+          },
+          {
+            "text": "For All households, packages-volume was 4,300.0 millions of pieces in FY2014.",
+            "metric": "packages-volume",
+            "years": [
+              2014
+            ]
+          },
+          {
+            "text": "For All households, packages-volume increased by 200.0 millions of pieces from FY2013 to FY2014.",
+            "metric": "packages-volume",
+            "years": [
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "For All households, packages-volume increased by 400.0 millions of pieces from FY2012 to FY2014, across the FY2012 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2012,
+              2014
+            ]
+          },
+          {
+            "text": "For All households, packages-volume rose by 700.0 millions of pieces from FY2009 to FY2014, across the FY2010 and FY2012 methodology breaks.",
+            "metric": "packages-volume",
+            "years": [
+              2009,
+              2014
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed.",
+          "Comparisons across methodology breaks should be viewed with caution."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "c580f7aae0c978b4e92c7d58f75aa7c0c0615353adad5e3eebec87000d492f5c",
+      "generated_at": "2026-11-06T17:34:05+00:00",
+      "sources": [
+        {
+          "metric": "packages-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2013": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2013",
+      "fiscal_year": 2013,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of packages-volume statistics for fiscal year 2013.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 4,100.0 millions of pieces in FY2013, which rose by 200.0 millions of pieces from FY2012.",
+            "metric": "packages-volume",
+            "years": [
+              2012,
+              2013
+            ]
+          },
+          {
+            "text": "For all households, packages-volume grew by 700.0 millions of pieces from FY2008 to FY2013, across the FY2010 and FY2012 methodology breaks.",
+            "metric": "packages-volume",
+            "years": [
+              2008,
+              2013
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership.",
+          "Comparisons across methodology breaks for packages-volume are cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "593cbcdd0a0c3e16de661fb66fbd26198525a29e4d2dfecdf4e3f4b78eadea29",
+      "generated_at": "2026-11-06T17:35:13+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2012": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2012",
+      "fiscal_year": 2012,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household mail survey statistics for fiscal year 2012.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 3,900.0 million of pieces in FY2012, which fell by -100.0 millions of pieces from the previous year across the FY2012 methodology break, and increased by 800.0 millions of pieces from 5 years earlier across the FY2010 and FY2012 methodology breaks.",
+            "metric": "packages-volume",
+            "years": [
+              2007,
+              2011,
+              2012
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership, and comparisons across the FY2010 and FY2012 methodology breaks must be cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "996d2748983ad4c513ea972db14f8ce43220640732d7cc0c704608f83fd944f9",
+      "generated_at": "2026-11-06T17:36:18+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2011": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2011",
+      "fiscal_year": 2011,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of Household Diary/Mail Survey statistics for fiscal year 2011.",
+        "statements": [
+          {
+            "text": "For packages-volume, all households recorded 4,000.0 million of pieces in FY2011, which increased by 400.0 million of pieces (or 11.1 percent) from FY2010.",
+            "metric": "packages-volume",
+            "years": [
+              2010,
+              2011
+            ]
+          },
+          {
+            "text": "For packages-volume, all households recorded 4,000.0 million of pieces in FY2011, which rose by 800.0 million of pieces (or 25.0 percent) from FY2006 across the FY2010 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2006,
+              2010,
+              2011
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one.",
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "5a05f4189c1b298128cccd7f49295167fb579f4720ab7e10fdfbc6816330d39d",
+      "generated_at": "2026-11-06T17:37:19+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2010": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2010",
+      "fiscal_year": 2010,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of household package statistics for fiscal year 2010.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 3,600.0 millions of pieces in FY2010, which was unchanged from FY2009 and rose by 500.0 millions of pieces from FY2005, crossing the FY2010 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "bf674adf0969e78116ecec082fb87a54904864d3822aed3708636a9451d0fecc",
+      "generated_at": "2026-11-06T17:38:52+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2009": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2009",
+      "fiscal_year": 2009,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Household mail and package statistics for fiscal year 2009.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 3,600.0 millions of pieces in FY2009, which increased by 200.0 millions of pieces from FY2008.",
+            "metric": "packages-volume",
+            "years": [
+              2009,
+              2008
+            ]
+          },
+          {
+            "text": "For all households, packages-volume rose by 500.0 millions of pieces from 2005 to FY2009 since the latest break in FY2005.",
+            "metric": "packages-volume",
+            "years": [
+              2009,
+              2005
+            ]
+          },
+          {
+            "text": "For all households, packages-volume grew by 1,000.0 millions of pieces from 2004 to FY2009, which crosses the FY2005 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2009,
+              2004,
+              2005
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2005 methodology break are cautious because packages include CD/DVD rentals and 2005 was restated.",
+          "Comparisons across the FY2010, FY2012, FY2024, and FY2025 methodology breaks are cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "6e10d419341b0634de0d42239d39c3c4409b98b17b1e108624208fc93d202a0c",
+      "generated_at": "2026-11-06T17:39:59+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2008": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2008",
+      "fiscal_year": 2008,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of Household Mail Survey statistics for fiscal year 2008.",
+        "statements": [
+          {
+            "text": "For all households, the packages-volume metric was 3,400.0 millions of pieces in FY2008.",
+            "metric": "packages-volume",
+            "years": [
+              2008
+            ]
+          },
+          {
+            "text": "The packages-volume metric for all households increased by 300.0 millions of pieces from the previous year in FY2008.",
+            "metric": "packages-volume",
+            "years": [
+              2007,
+              2008
+            ]
+          },
+          {
+            "text": "The packages-volume metric for all households rose by 300.0 millions of pieces since the latest break across the FY2005 methodology break in FY2008.",
+            "metric": "packages-volume",
+            "years": [
+              2005,
+              2008
+            ]
+          },
+          {
+            "text": "The packages-volume metric for all households grew by 800.0 millions of pieces from 5 years earlier, crossing the FY2005 methodology break, in FY2008.",
+            "metric": "packages-volume",
+            "years": [
+              2003,
+              2008
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages.",
+          "Comparisons across the FY2005 methodology break are cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "415b353c19fc231fb13dbfd1b59f17dd04cc90fc8d7b0da6a233a73a7e745c3f",
+      "generated_at": "2026-11-06T17:41:08+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2007": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2007",
+      "fiscal_year": 2007,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of packages-volume statistics for fiscal year 2007.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 3,100.0 millions of pieces in FY2007, down by -100.0 millions of pieces from the previous year across the FY2005 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2006,
+              2007
+            ]
+          },
+          {
+            "text": "For all households, packages-volume was 3,100.0 millions of pieces in FY2007, and changed by 0.0 millions of pieces from FY2005 across the FY2005 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2005,
+              2007
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "eab9b6af9e2bed12344ca883c1f2b57a1f2f91e019178fc78501ebd0cd0940a0",
+      "generated_at": "2026-11-06T17:42:13+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2009,
+              "page": 10,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2006": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2006",
+      "fiscal_year": 2006,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Analysis of packages volume statistics for fiscal year 2006.",
+        "statements": [
+          {
+            "text": "For All households, packages-volume was 3,200.0 millions of pieces in FY2006, which increased by 100.0 millions of pieces from the previous year.",
+            "metric": "packages-volume",
+            "years": [
+              2005,
+              2006
+            ]
+          },
+          {
+            "text": "For All households, packages-volume increased by 100.0 millions of pieces from FY2005 to FY2006 across the FY2005 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2005,
+              2006
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2005 methodology break are cautious because packages include CD/DVD rentals and 2005 was restated."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "8bcca22fc2a3ee20c7fe2ce914d230921702ad98748180518b39c09588a353c6",
+      "generated_at": "2026-11-06T17:43:24+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2008,
+              "page": 8,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2005": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2005",
+      "fiscal_year": 2005,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "A summary of household mail statistics for fiscal year 2005.",
+        "statements": [
+          {
+            "text": "For All households, packages-volume was 3,100 million of pieces in FY2005.",
+            "metric": "packages-volume",
+            "years": [
+              2005
+            ]
+          },
+          {
+            "text": "For All households, packages-volume increased by 500.0 millions of pieces from the previous year across the FY2005 methodology break.",
+            "metric": "packages-volume",
+            "years": [
+              2004,
+              2005
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "a32e8031379446619388a39413cf4dea5c86fa759f94ba79047bc6ca1b92119d",
+      "generated_at": "2026-11-06T17:44:55+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2007,
+              "page": 9,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2004": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2004",
+      "fiscal_year": 2004,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of household mail statistics for fiscal year 2004.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 2,600.0 millions of pieces in FY2004, which was unchanged with an absolute change of 0.0 and a percent change of 0.0 from FY2003.",
+            "metric": "packages-volume",
+            "years": [
+              2003,
+              2004
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "a79c69022ba8bb6a944a707bb0c3286957ab3674f53da96c44c6c4ac3f91c792",
+      "generated_at": "2026-11-06T17:45:53+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2006,
+              "page": 9,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2003": {
+      "section": "Packages",
+      "kind": "yearly",
+      "key": "yearly:2003",
+      "fiscal_year": 2003,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of packages-volume statistics for fiscal year 2003.",
+        "statements": [
+          {
+            "text": "For all households, packages-volume was 2,600.0 millions of pieces in FY2003.",
+            "metric": "packages-volume",
+            "years": [
+              2003
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2007 report, Table E.2's packages include CD/DVD rentals mailed as First-Class letters (0.8 billion pieces in 2007), and 2005 was restated from 2.4 to 3.1 billion. The 2003 and 2004 values come from the FY2005 and FY2006 reports, whose notes count only ground and expedited packages."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "af8b0e56caa821ec747b036a4f3583f0282b2cff21a1cff818cb1b47a9372239",
+      "generated_at": "2026-11-06T17:46:56+00:00",
+      "sources": [
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2005,
+              "page": 8,
+              "verified": true
             }
           }
         }
       ]
     }
-  }
+  },
+  "rejected": {}
 }

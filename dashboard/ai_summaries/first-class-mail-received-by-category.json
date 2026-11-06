@@ -177,77 +177,110 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class Mail received by category: long-term change in the published values, FY2000 to FY2023.",
+        "headline": "First-Class Mail categories received by all households showed long-term declines across the FY2010 methodology break, with various projected trajectories through FY2028.",
         "statements": [
           {
-            "text": "First-Class advertising received (ads only) (millions of pieces) went from 9,471 in FY2000 to 3,236 in FY2023: it fell by 6,235 (65.8%) over the period. Since FY2018 (five years earlier) it fell by 268 (7.6%). Since FY2013 (ten years earlier) it fell by 1,004 (23.7%).",
+            "text": "For All households, First-Class advertising received (ads only) fell across the FY2010 methodology break by 6,235.0 millions of pieces or 65.8 percent from 2000 to 2023.",
             "metric": "fcm-received-advertising",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2010,
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Naive (last value) model, fitted on FY2010 to FY2023, puts First-Class advertising received (ads only) at 3,236 in FY2028 (80% range 2,658 to 3,814). On past years it did not beat the naive baseline.",
+            "text": "For All households, First-Class advertising received (ads only) decreased since the latest break by 2,879.0 millions of pieces or 47.1 percent from 2010 to 2023, and fell by 268.0 millions of pieces or 7.6 percent from 2018 to 2023.",
             "metric": "fcm-received-advertising",
             "years": [
-              2023,
-              2028
+              2010,
+              2018,
+              2023
             ]
           },
           {
-            "text": "First-Class correspondence received (millions of pieces) went from 19,470 in FY2000 to 12,864 in FY2023: it fell by 6,606 (33.9%) over the period. Since FY2018 (five years earlier) it fell by 1,911 (12.9%). Since FY2013 (ten years earlier) it fell by 2,633 (17.0%).",
+            "text": "For All households, First-Class advertising received (ads only) is projected at 3,236.0 millions of pieces in 2024 with an 80% prediction interval 2,737.0 to 3,735.0.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received fell across the FY2010 methodology break by 6,606.0 millions of pieces or 33.9 percent from 2000 to 2023.",
             "metric": "fcm-received-correspondence",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2010,
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts First-Class correspondence received at 12,113 in FY2028 (80% range 11,509 to 12,717). On past years it beat the naive baseline.",
+            "text": "For All households, First-Class correspondence received decreased since the latest break by 3,131.0 millions of pieces or 19.6 percent from 2010 to 2023, and fell by 1,911.0 millions of pieces or 12.9 percent from 2018 to 2023.",
             "metric": "fcm-received-correspondence",
             "years": [
-              2023,
-              2028
+              2010,
+              2018,
+              2023
             ]
           },
           {
-            "text": "First-Class transaction mail received (millions of pieces) went from 24,514 in FY2000 to 14,879 in FY2023: it fell by 9,635 (39.3%) over the period. Since FY2018 (five years earlier) it fell by 4,017 (21.3%). Since FY2013 (ten years earlier) it fell by 6,633 (30.8%).",
+            "text": "For All households, First-Class correspondence received is projected at 13,068.0 millions of pieces in 2024 with an 80% prediction interval 12,694.0 to 13,442.0.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For All households, First-Class transaction mail received fell across the FY2010 methodology break by 9,635.0 millions of pieces or 39.3 percent from 2000 to 2023.",
             "metric": "fcm-received-transactions",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2010,
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Holt's exponential smoothing model, fitted on FY2010 to FY2023, puts First-Class transaction mail received at 11,387 in FY2028 (80% range 9,454 to 13,320). On past years it beat the naive baseline.",
+            "text": "For All households, First-Class transaction mail received decreased since the latest break by 8,384.0 millions of pieces or 36.0 percent from 2010 to 2023, and fell by 4,017.0 millions of pieces or 21.3 percent from 2018 to 2023.",
             "metric": "fcm-received-transactions",
             "years": [
-              2023,
-              2028
+              2010,
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, First-Class transaction mail received is projected at 13,927.0 millions of pieces in 2024 with an 80% prediction interval 13,204.0 to 14,650.0.",
+            "metric": "fcm-received-transactions",
+            "years": [
+              2024
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
-        "passed": true,
-        "problems": []
+        "passed": false,
+        "problems": [
+          "statement 1: say which years the change 6,235.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 2,879.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 268.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 6,606.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 3,131.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 1,911.0 is between (\"from FY2018 to FY2023\")",
+          "statement 7: say which years the change 9,635.0 is between (\"from FY2018 to FY2023\")",
+          "statement 8: say which years the change 8,384.0 is between (\"from FY2018 to FY2023\")",
+          "statement 8: say which years the change 4,017.0 is between (\"from FY2018 to FY2023\")"
+        ]
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "03f8f7f908c5e0d73dc9f51240e44bdaa7003e2362108b9a04302d9a0c098f83",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "f65cf72e53cc856d92d5951afc4c18a19a4f100782faf185d59e4bfd1d289eda",
+      "generated_at": "2026-11-06T16:59:28+00:00",
       "sources": [
         {
           "metric": "fcm-received-advertising",
@@ -259,122 +292,122 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -388,122 +421,122 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -517,122 +550,301 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  "rejected": {
+    "yearly:2023": {
+      "section": "First-Class Mail received by category",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of First-Class Mail received by category for fiscal year 2023.",
+        "statements": [
+          {
+            "text": "All households received 3,236.0 millions of pieces of First-Class advertising received (ads only) in FY2023, which decreased by 711.0 millions of pieces from FY2022 and decreased by 268.0 millions of pieces from FY2018.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "All households received 12,864.0 millions of pieces of First-Class correspondence received in FY2023, which decreased by 777.0 millions of pieces from FY2022 and decreased by 1,911.0 millions of pieces from FY2018.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "All households received 14,879.0 millions of pieces of First-Class transaction mail received in FY2023, which decreased by 27.0 millions of pieces from FY2022 and decreased by 4,017.0 millions of pieces from FY2018.",
+            "metric": "fcm-received-transactions",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 1: say which fiscal year 3,236.0 is for (write the year right after it)",
+          "statement 2: say which fiscal year 12,864.0 is for (write the year right after it)",
+          "statement 3: say which fiscal year 14,879.0 is for (write the year right after it)"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "a0a344c6b232459a70111145465409bc042d709b6b5c19d74b0abcf90318c4c5",
+      "generated_at": "2026-11-06T17:05:41+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-transactions",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
             }
           }
         }

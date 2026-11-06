@@ -8,74 +8,80 @@
       "fiscal_year": 2020,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Advertising: published values for FY2020 and how they moved.",
+        "headline": "Overview of advertising mail statistics for fiscal year 2020.",
         "statements": [
           {
-            "text": "In FY2020, First-Class and Marketing Mail ads received per household was 487.7 (pieces per household per year). That fell by 155.9 (24.2%) from five years earlier, FY2015.",
+            "text": "For all households, First-Class and Marketing Mail ads received per household was 487.7 pieces per household per year in FY2020, which fell by 155.9 pieces per household per year from FY2015.",
             "metric": "ads-received-per-household",
             "years": [
-              2020,
-              2015
+              2015,
+              2020
             ]
           },
           {
-            "text": "In FY2020, Advertising mail received per household was 478.4 (pieces per household per year). That fell by 88.4 (15.6%) from the previous year, FY2019. That fell by 150.8 (24.0%) from five years earlier, FY2015.",
+            "text": "For all households, Advertising mail received per household was 478.4 pieces per household per year in FY2020, which decreased by 88.4 pieces per household per year from FY2019 and decreased by 150.8 pieces per household per year from FY2015, across the FY2014 methodology break.",
             "metric": "advertising-mail-received-per-household",
             "years": [
-              2020,
+              2014,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, Advertising mail per household was 502.9 (pieces per household per year). That fell by 84.9 (14.4%) from the previous year, FY2019. That fell by 156.0 (23.7%) from five years earlier, FY2015.",
+            "text": "For all households, Advertising mail per household was 502.9 pieces per household per year in FY2020, which declined by 84.9 pieces per household per year from FY2019 and fell by 156.0 pieces per household per year from FY2015.",
             "metric": "advertising-per-household",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, Advertising mail received by households was 61,150 (millions of pieces). That fell by 12,011 (16.4%) from the previous year, FY2019. That fell by 18,851 (23.6%) from five years earlier, FY2015.",
+            "text": "For all households, Advertising mail received by households was 61,150.0 millions of pieces in FY2020, which decreased by 12,011.0 millions of pieces from FY2019 and fell by 18,851.0 millions of pieces from FY2015.",
             "metric": "advertising-received-total",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, First-Class advertising received (ads only) was 3,470 (millions of pieces). That fell by 503 (12.7%) from the previous year, FY2019. That fell by 123 (3.4%) from five years earlier, FY2015.",
+            "text": "For all households, First-Class advertising received (ads only) was 3,470.0 millions of pieces in FY2020, which decreased by 503.0 millions of pieces from FY2019 and decreased by 123.0 millions of pieces from FY2015.",
             "metric": "fcm-received-advertising",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, Marketing Mail advertising received was 54,867 (millions of pieces). That fell by 10,819 (16.5%) from the previous year, FY2019. That fell by 16,764 (23.4%) from five years earlier, FY2015.",
+            "text": "For all households, Marketing Mail advertising received was 54,867.0 millions of pieces in FY2020, which fell by 10,819.0 millions of pieces from FY2019 and decreased by 16,764.0 millions of pieces from FY2015.",
             "metric": "marketing-mail-ads-received",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           }
         ],
-        "caveats": []
+        "caveats": [
+          "Comparisons involving advertising-mail-received-per-household across FY2014 are cautious due to the FY2014 methodology break for weighting by home ownership.",
+          "Comparisons involving advertising-mail-received-per-household and advertising-received-total across FY2007 and FY2008 are cautious due to methodology breaks for Detached Address Labels and residential delivery estimates.",
+          "Comparisons involving advertising-mail-received-per-household across FY2010 are cautious due to the FY2010 methodology break for diary data restated with new weighting.",
+          "Comparisons involving advertising-mail-received-per-household across FY2024 and FY2025 are cautious due to methodology breaks for new contractors, per-household reporting, and the Household Mail Survey redesign."
+        ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "b57efab344ed23d625544c17d04f05c754fcf45b582acd66e1a1393045a42dbc",
-      "generated_at": "2026-11-05T11:04:59+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "1cb187f1965ddd3470307f88d3b24661f15f57a6997161fb539c65203ec0a730",
+      "generated_at": "2026-11-06T16:45:22+00:00",
       "sources": [
         {
           "metric": "ads-received-per-household",
@@ -87,12 +93,12 @@
             "2015": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -106,32 +112,32 @@
             "2015": {
               "report_year": 2015,
               "page": 52,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 48,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 48,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 48,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 50,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -145,17 +151,17 @@
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -169,32 +175,32 @@
             "2015": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -208,32 +214,32 @@
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -247,32 +253,32 @@
             "2015": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -285,117 +291,86 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Advertising: long-term change in the published values, FY2000 to FY2025.",
+        "headline": "Advertising mail and advertising per household declined across multiple years, while total advertising mail and marketing mail advertising projections indicate further downward trends.",
         "statements": [
           {
-            "text": "First-Class and Marketing Mail ads received per household (pieces per household per year) went from 643.6 in FY2015 to 378.0 in FY2025: it fell by 265.6 (41.3%) over the period. Since FY2020 (five years earlier) it fell by 109.7 (22.5%).",
+            "text": "For First-Class and Marketing Mail ads received per household, all households saw a decrease of 265.6 pieces per household per year, or 41.3 percent, from FY2015 to FY2025, crossing the FY2024 and FY2025 methodology breaks.",
             "metric": "ads-received-per-household",
             "years": [
               2015,
-              2025,
-              2020
+              2025
             ]
           },
           {
-            "text": "Advertising mail received per household (pieces per household per year) went from 899.6 in FY2005 to 436.8 in FY2023: it fell by 462.8 (51.4%) over the period. Since FY2018 (five years earlier) it fell by 156.0 (26.3%). Since FY2013 (ten years earlier) it fell by 213.2 (32.8%).",
+            "text": "For Advertising mail received per household, all households experienced a decline of 462.8 pieces per household per year, or 51.4 percent, from FY2005 to FY2023, across the FY2007, FY2008, FY2010, and FY2014 methodology breaks.",
             "metric": "advertising-mail-received-per-household",
             "years": [
               2005,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Advertising mail per household (pieces per household per year) went from 673.5 in FY2014 to 393.0 in FY2025: it fell by 280.5 (41.6%) over the period. Since FY2020 (five years earlier) it fell by 109.9 (21.9%). Since FY2015 (ten years earlier) it fell by 265.9 (40.4%).",
+            "text": "For Advertising mail per household, all households saw the metric fall by 280.5 pieces per household per year, or 41.6 percent, from FY2014 to FY2025, crossing the FY2024 and FY2025 methodology breaks.",
             "metric": "advertising-per-household",
             "years": [
               2014,
-              2025,
-              2020,
-              2015
+              2025
             ]
           },
           {
-            "text": "Advertising mail received by households (millions of pieces) went from 77,370 in FY2000 to 57,286 in FY2023: it fell by 20,084 (26.0%) over the period. Since FY2018 (five years earlier) it fell by 17,989 (23.9%). Since FY2013 (ten years earlier) it fell by 26,788 (31.9%).",
+            "text": "For Advertising mail received by households, all households decreased by 20,084.0 million of pieces, or 26.0 percent, from FY2000 to FY2023, crossing the FY2007, FY2008, and FY2010 methodology breaks.",
             "metric": "advertising-received-total",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts Advertising mail received by households at 49,387 in FY2028 (80% range 38,755 to 60,019). On past years it beat the naive baseline.",
+            "text": "For Advertising mail received by households, the projected value for FY2024 is 58,560.0 millions of pieces with an 80% prediction interval 53,030.0 to 64,090.0.",
             "metric": "advertising-received-total",
             "years": [
-              2023,
-              2028
+              2024
             ]
           },
           {
-            "text": "First-Class advertising received (ads only) (millions of pieces) went from 9,471 in FY2000 to 3,236 in FY2023: it fell by 6,235 (65.8%) over the period. Since FY2018 (five years earlier) it fell by 268 (7.6%). Since FY2013 (ten years earlier) it fell by 1,004 (23.7%).",
+            "text": "For First-Class advertising received (ads only), all households decreased by 6,235.0 millions of pieces, or 65.8 percent, from FY2000 to FY2023, crossing the FY2010 methodology break.",
             "metric": "fcm-received-advertising",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Naive (last value) model, fitted on FY2010 to FY2023, puts First-Class advertising received (ads only) at 3,236 in FY2028 (80% range 2,658 to 3,814). On past years it did not beat the naive baseline.",
-            "metric": "fcm-received-advertising",
-            "years": [
-              2023,
-              2028
-            ]
-          },
-          {
-            "text": "Marketing Mail advertising received (millions of pieces) went from 60,496 in FY2000 to 51,942 in FY2023: it fell by 8,554 (14.1%) over the period. Since FY2018 (five years earlier) it fell by 15,739 (23.3%). Since FY2013 (ten years earlier) it fell by 22,423 (30.2%).",
+            "text": "For Marketing Mail advertising received, all households saw a drop of 8,554.0 millions of pieces, or 14.1 percent, from FY2000 to FY2023, crossing the FY2007, FY2008, and FY2010 methodology breaks.",
             "metric": "marketing-mail-ads-received",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Holt's exponential smoothing model, fitted on FY2010 to FY2023, puts Marketing Mail advertising received at 40,343 in FY2028 (80% range 27,631 to 53,054). On past years it beat the naive baseline.",
+            "text": "For Marketing Mail advertising received, the projected value for FY2024 is 50,617.0 millions of pieces with an 80% prediction interval 43,656.0 to 57,579.0.",
             "metric": "marketing-mail-ads-received",
             "years": [
-              2023,
-              2028
+              2024
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for First-Class and Marketing Mail ads received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "First-Class and Marketing Mail ads received per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "No projection is shown for Advertising mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Advertising mail received per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
-          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
-          "Methodology change in FY2014: Weighting by home ownership (household-group tables). Comparisons across it should be cautious.",
-          "No projection is shown for Advertising mail per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Advertising mail per household has no published value for some years in between, so gaps are left as gaps."
+          "Projections need at least 8 consecutive annual values; series with fewer do not show projections.",
+          "Comparisons across methodology breaks such as FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 must be approached with caution due to changes in weighting, contractor, delivery estimation, or survey design."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "58402edc6e20c5adae19a538f025611a6469e7a25ee5fc5da887ff1f0dd33837",
-      "generated_at": "2026-11-05T11:04:59+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "5a45fb733a8a555d6e3648843407087b4f2aae1f8f2ea8f79319840b56314297",
+      "generated_at": "2026-11-06T17:05:08+00:00",
       "sources": [
         {
           "metric": "ads-received-per-household",
@@ -407,17 +382,17 @@
             "2015": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -431,87 +406,87 @@
             "2005": {
               "report_year": 2005,
               "page": 45,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2006,
               "page": 46,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2007,
               "page": 47,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2008,
               "page": 49,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2009,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2010,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2012,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2013,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2014,
               "page": 52,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 52,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 48,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 48,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 48,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 50,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 43,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 55,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -525,32 +500,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -564,122 +539,122 @@
             "2000": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -693,122 +668,122 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -822,122 +797,4822 @@
             "2000": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2025": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of Advertising Mail and Ads Received Per Household for Fiscal Year 2025",
+        "statements": [
+          {
+            "text": "For all households, First-Class and Marketing Mail ads received per household was 378.0 pieces per household per year in FY2025, and fell by 109.7 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, Advertising mail per household was 393.0 pieces per household per year in FY2025.",
+            "metric": "advertising-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "For all households, Advertising mail per household fell by 16.9 pieces per household per year from FY2024 to FY2025 across the FY2025 methodology break.",
+            "metric": "advertising-per-household",
+            "years": [
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, Advertising mail per household fell by 109.9 pieces per household per year from FY2020 to FY2025 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "advertising-per-household",
+            "years": [
+              2020,
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 methodology breaks must be made with caution because of changes in data collection, weighting, contractors, and survey design."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9750c9ed412380e12cf9ba68675a700ad42c7278cb4bc192b727a6cce8a95435",
+      "generated_at": "2026-11-06T17:23:06+00:00",
+      "sources": [
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": true
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2024": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2024",
+      "fiscal_year": 2024,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Advertising mail per household fell from FY2019 to FY2024 across the FY2024 methodology break.",
+        "statements": [
+          {
+            "text": "For all households, advertising-per-household was 409.9 pieces per household per year in FY2024.",
+            "metric": "advertising-per-household",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For all households, advertising-per-household fell by 177.9 pieces per household per year from 2019 to 2024 across the FY2024 methodology break.",
+            "metric": "advertising-per-household",
+            "years": [
+              2019,
+              2024
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports.",
+          "Comparisons across the FY2024 methodology break are cautious because the change crosses methodology breaks."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "97f256eb7e0103efe40adc0ad9e33ea00e30edfe106476d4c97649979375995f",
+      "generated_at": "2026-11-06T17:24:00+00:00",
+      "sources": [
+        {
+          "metric": "advertising-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2023": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2023, advertising mail metrics across all households generally declined compared to the previous year and five years earlier, though comparisons across methodology breaks require caution.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 436.8 pieces per household per year in FY2023, falling by 62.4 pieces per household per year from FY2022 and by 156.0 pieces per household per year from FY2018; this series crosses the FY2014 methodology break.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2014,
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 57,286.0 millions of pieces in FY2023, decreasing by 8,033.0 millions of pieces from FY2022 and by 17,989.0 millions of pieces from FY2018.",
+            "metric": "advertising-received-total",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 3,236.0 millions of pieces in FY2023, down by 711.0 millions of pieces from FY2022 and down by 268.0 millions of pieces from FY2018.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 51,942.0 millions of pieces in FY2023, falling by 6,629.0 millions of pieces from FY2022 and by 15,739.0 millions of pieces from FY2018.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 methodology breaks must be made with caution because they mix different weighting, contractor, design, or volume estimation methods."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "4ab1bbe476bbdb5f980637c3f0c399d97ce6befc66759ec6bfbef2643fef78cf",
+      "generated_at": "2026-11-06T17:24:57+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 55,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2022": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2022",
+      "fiscal_year": 2022,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2022.",
+        "statements": [
+          {
+            "text": "For all households, advertising-mail-received-per-household was 499.2 pieces per household per year in FY2022, which fell by 109.2 pieces from FY2017 and fell by 156.0 pieces from FY2014 across the FY2014 methodology break.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2022,
+              2017,
+              2014
+            ]
+          },
+          {
+            "text": "For all households, advertising-received-total was 65,319.0 millions of pieces in FY2022, which increased by 149.0 millions of pieces from FY2021 and decreased by 11,552.0 millions of pieces from FY2017.",
+            "metric": "advertising-received-total",
+            "years": [
+              2022,
+              2021,
+              2017
+            ]
+          },
+          {
+            "text": "For all households, fcm-received-advertising was 3,947.0 millions of pieces in FY2022, which increased by 305.0 millions of pieces from FY2021 and grew by 235.0 millions of pieces from FY2017.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2022,
+              2021,
+              2017
+            ]
+          },
+          {
+            "text": "For all households, marketing-mail-ads-received was 58,571.0 millions of pieces in FY2022, which increased by 43.0 millions of pieces from FY2021 and fell by 10,504.0 millions of pieces from FY2017.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2022,
+              2021,
+              2017
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design and renamed the survey to the Household Mail Survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "680f55c7639e04ec6abf0f1808b149d8a1b3fd701942d1699a1ada1391e4d9fd",
+      "generated_at": "2026-11-06T17:26:01+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 50,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 43,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2021": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2021",
+      "fiscal_year": 2021,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2021.",
+        "statements": [
+          {
+            "text": "For All households, advertising-received-total was 65,170.0 millions of pieces in FY2021, which increased by 4,020.0 millions of pieces from FY2020 and fell by 14,876.0 millions of pieces from FY2016.",
+            "metric": "advertising-received-total",
+            "years": [
+              2016,
+              2020,
+              2021
+            ]
+          },
+          {
+            "text": "For All households, fcm-received-advertising was 3,642.0 millions of pieces in FY2021, which increased by 172.0 millions of pieces from FY2020 and decreased by 184.0 millions of pieces from FY2016.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2016,
+              2020,
+              2021
+            ]
+          },
+          {
+            "text": "For All households, marketing-mail-ads-received was 58,528.0 millions of pieces in FY2021, which grew by 3,661.0 millions of pieces from FY2020 and declined by 13,226.0 millions of pieces from FY2016.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2016,
+              2020,
+              2021
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF, with the FY2024 report restating 2014-2023 on its own basis.",
+          "FY2025 used a new survey design renamed the Household Mail Survey, with updated age bands and Redefined Large MSA."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9481ae53eb84a21398ef43ab144d316f7f509789e11d251f07a5338b833ecd49",
+      "generated_at": "2026-11-06T17:26:57+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2019": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2019",
+      "fiscal_year": 2019,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2019, advertising mail metrics showed varied changes across different categories compared to the previous year and five years earlier.",
+        "statements": [
+          {
+            "text": "For All households, Advertising mail received per household was 566.8 pieces per household per year in FY2019, which fell by 26.0 pieces per household per year from FY2018 and decreased by 88.4 pieces per household per year from FY2014.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2014,
+              2018,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, Advertising mail per household was 587.8 pieces per household per year in FY2019, down by 85.7 pieces per household per year from FY2014.",
+            "metric": "advertising-per-household",
+            "years": [
+              2014,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, Advertising mail received by households was 73,161.0 millions of pieces in FY2019, which decreased by 2,114.0 millions of pieces from FY2018 and fell by 7,614.0 millions of pieces from FY2014.",
+            "metric": "advertising-received-total",
+            "years": [
+              2014,
+              2018,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, First-Class advertising received (ads only) was 3,973.0 millions of pieces in FY2019, rising by 469.0 millions of pieces from FY2018 and increasing by 48.0 millions of pieces from FY2014.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2014,
+              2018,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, Marketing Mail advertising received was 65,686.0 millions of pieces in FY2019, dropping by 1,995.0 millions of pieces from FY2018 and falling by 6,102.0 millions of pieces from FY2014.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2014,
+              2018,
+              2019
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design and renamed the survey to Household Mail Survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "b15623ae91ff51d3c5d0c2a1a70b99735e6c7ce4947347e1d83b1c476c6e91e6",
+      "generated_at": "2026-11-06T17:28:12+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 48,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2018": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2018",
+      "fiscal_year": 2018,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2018, advertising mail and marketing mail volumes for all households continued to fall across multiple metrics.",
+        "statements": [
+          {
+            "text": "Advertising mail received per household for all households was 592.8 pieces per household per year in FY2018, having fallen by 15.6 pieces per household per year from the previous year, and falling by 57.2 pieces per household per year across the FY2014 methodology break from FY2013.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          },
+          {
+            "text": "Advertising mail received by households for all households was 75,275.0 millions of pieces in FY2018, dropping by 1,596.0 millions of pieces from FY2017, and decreasing by 8,799.0 millions of pieces from FY2013.",
+            "metric": "advertising-received-total",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          },
+          {
+            "text": "First-Class advertising received (ads only) for all households stood at 3,504.0 millions of pieces in FY2018, which was down by 208.0 millions of pieces from the previous year and lower by 736.0 millions of pieces compared to FY2013.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          },
+          {
+            "text": "Marketing Mail advertising received for all households was 67,681.0 millions of pieces in FY2018, which decreased by 1,394.0 millions of pieces from FY2017 and fell by 6,684.0 millions of pieces from FY2013.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 methodology breaks are cautious.",
+          "The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 3: 736.0 is a change of its metric, but not between the years the sentence names"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "6cc1a1b692a7ce5cb0895608944f4424fe1afe6961f73123754b8235038eed7f",
+      "generated_at": "2026-11-06T17:29:19+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 48,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2017": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2017",
+      "fiscal_year": 2017,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2017, advertising mail metrics for all households generally decreased across the board compared to previous periods.",
+        "statements": [
+          {
+            "text": "For All households, Advertising mail received per household was 608.4 pieces per household per year in FY2017, which fell by 20.8 pieces per household per year from the previous year in FY2016 and fell by 46.8 pieces per household per year across the FY2014 methodology break from FY2012.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2012,
+              2014,
+              2016,
+              2017
+            ]
+          },
+          {
+            "text": "For All households, Advertising mail received by households was 76,871.0 millions of pieces in FY2017, which decreased by 3,175.0 millions of pieces from the previous year in FY2016 and decreased by 8,440.0 millions of pieces from FY2012.",
+            "metric": "advertising-received-total",
+            "years": [
+              2012,
+              2016,
+              2017
+            ]
+          },
+          {
+            "text": "For All households, First-Class advertising received (ads only) was 3,712.0 millions of pieces in FY2017, down 114.0 millions of pieces from the previous year in FY2016 and down 1,309.0 millions of pieces from FY2012.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2012,
+              2016,
+              2017
+            ]
+          },
+          {
+            "text": "For All households, Marketing Mail advertising received was 69,075.0 millions of pieces in FY2017, which declined by 2,679.0 millions of pieces from the previous year in FY2016 and declined by 4,799.0 millions of pieces from FY2012.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2012,
+              2016,
+              2017
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership, meaning household-group series change basis between 2013 and 2014."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "5363c9f18e89693b20f657039aa702030759532ad66e992cf66cfa5368a6fcb7",
+      "generated_at": "2026-11-06T17:30:24+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 48,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2016": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2016",
+      "fiscal_year": 2016,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "A summary of advertising mail metrics for fiscal year 2016.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 629.2 pieces per household per year in FY2016, unchanged from FY2015 and down by 26.0 pieces per household per year from the FY2014 methodology break.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2016,
+              2015,
+              2014
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 80,046.0 millions of pieces in FY2016, up by 45.0 millions of pieces from FY2015, lower by 10,411.0 millions of pieces from FY2011, and down by 5,681.0 millions of pieces from the FY2010 methodology break across the FY2010 methodology break.",
+            "metric": "advertising-received-total",
+            "years": [
+              2016,
+              2015,
+              2011,
+              2010
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 3,826.0 millions of pieces in FY2016, increasing by 233.0 millions of pieces from FY2015, lower by 1,622.0 millions of pieces from FY2011, and down by 2,289.0 millions of pieces from the FY2010 methodology break across the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2016,
+              2015,
+              2011,
+              2010
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 71,754.0 millions of pieces in FY2016, up by 123.0 millions of pieces from FY2015, lower by 5,993.0 millions of pieces from FY2011, and down by 1,180.0 millions of pieces from the FY2010 methodology break across the FY2010 methodology break.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2016,
+              2015,
+              2011,
+              2010
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The FY2020 A8-12 drops the note but its pre-2007 values are no lower.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly offsets the Detached Address Label double count; 2007 itself is understated.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (Beginning in 2012 data was restated due to weighing by Home Ownership, p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and Large MSA was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 1: 26.0 is a change of its metric, but not between the years the sentence names",
+          "statement 2: say which years the change 5,681.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 2,289.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1,180.0 is between (\"from FY2018 to FY2023\")"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "cbc9fd0ba7fd7622db03df8ba878e511a8198f63d079a5dd2c042264ef74f943",
+      "generated_at": "2026-11-06T17:31:30+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 50,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2015": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2015",
+      "fiscal_year": 2015,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2015.",
+        "statements": [
+          {
+            "text": "For all households, First-Class and Marketing Mail ads received per household was 643.6 pieces per household per year in FY2015.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2015
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received per household was 629.2 pieces per household per year in FY2015, which decreased by 26.0 pieces per household per year from the previous year in FY2014, and fell by 83.2 pieces per household per year from FY2010 across the FY2014 methodology break.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2010,
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, advertising mail per household was 658.9 pieces per household per year in FY2015, down 14.6 pieces per household per year from the previous year in FY2014.",
+            "metric": "advertising-per-household",
+            "years": [
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 80,001.0 millions of pieces in FY2015, which dropped by 774.0 millions of pieces from the previous year in FY2014, and decreased by 5,726.0 millions of pieces from five years earlier in FY2010.",
+            "metric": "advertising-received-total",
+            "years": [
+              2010,
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 3,593.0 millions of pieces in FY2015, lower by 332.0 millions of pieces from the previous year in FY2014, and fell by 2,522.0 millions of pieces from five years earlier in FY2010 across the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2010,
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 71,631.0 millions of pieces in FY2015, declining by 157.0 millions of pieces from the previous year in FY2014, and decreased by 1,303.0 millions of pieces from five years earlier in FY2010 across the FY2010 methodology break.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2010,
+              2014,
+              2015
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership, causing the household-group series to change basis between 2013 and 2014.",
+          "Comparisons across the FY2010 and FY2014 methodology breaks must be made with caution."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "655667d5441c6b01401bd0c4bde55ef82233102c3a9a599622641c516a87a9b9",
+      "generated_at": "2026-11-06T17:32:37+00:00",
+      "sources": [
+        {
+          "metric": "ads-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2015": {
+              "report_year": 2025,
+              "page": 64,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2010,
+              "page": 50,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 52,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2014": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2014",
+      "fiscal_year": 2014,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "For fiscal year 2014, advertising mail statistics show distinct patterns of change across various metrics compared to previous periods.",
+        "statements": [
+          {
+            "text": "For All households, Advertising mail received per household was 655.2 pieces per household per year in FY2014, which increased by 5.2 pieces per household per year from FY2013 across the FY2014 methodology break and fell by 72.8 pieces per household per year from FY2009 across the FY2010 and FY2014 methodology breaks.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2009,
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "For All households, Advertising mail per household was 673.5 pieces per household per year in FY2014.",
+            "metric": "advertising-per-household",
+            "years": [
+              2014
+            ]
+          },
+          {
+            "text": "For All households, Advertising mail received by households was 80,775.0 millions of pieces in FY2014, which decreased by 3,299.0 millions of pieces from FY2013 and fell by 4,934.0 millions of pieces from FY2009 across the FY2010 methodology break.",
+            "metric": "advertising-received-total",
+            "years": [
+              2009,
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "For All households, First-Class advertising received (ads only) was 3,925.0 millions of pieces in FY2014, which decreased by 315.0 millions of pieces from FY2013 and fell by 2,723.0 millions of pieces from FY2009 across the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2009,
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "For All households, Marketing Mail advertising received was 71,788.0 millions of pieces in FY2014, which decreased by 2,577.0 millions of pieces from FY2013 and grew by 562.0 millions of pieces from FY2009 across the FY2010 methodology break.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2009,
+              2013,
+              2014
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2010 methodology break involve changes in weighting methodology.",
+          "Comparisons across the FY2014 methodology break involve weighting by home ownership.",
+          "Comparisons across the FY2024 methodology break involve a new survey contractor and per-household reporting.",
+          "Comparisons across the FY2025 methodology break involve a new survey design."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9f56acd24293ca6aa84aac03f6fe6f7e423359e00a6b705c9ed23e3d516ebfe2",
+      "generated_at": "2026-11-06T17:33:48+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2009,
+              "page": 50,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 50,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 52,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2013": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2013",
+      "fiscal_year": 2013,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2013, advertising mail metrics showed varied changes compared to previous years across several categories.",
+        "statements": [
+          {
+            "text": "For advertising-mail-received-per-household, all households received 650.0 pieces per household per year in FY2013, which was down by 5.2 pieces per household per year from FY2012, down by 62.4 pieces per household per year since the FY2010 methodology break, and down by 202.8 pieces per household per year across the FY2010 methodology break from FY2008.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2013
+            ]
+          },
+          {
+            "text": "For advertising-received-total, all households received 84,074.0 millions of pieces in FY2013, decreasing by 1,237.0 millions of pieces from FY2012, decreasing by 1,653.0 millions of pieces since the FY2010 methodology break, and decreasing by 15,971.0 millions of pieces across the FY2010 methodology break from FY2008.",
+            "metric": "advertising-received-total",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2013
+            ]
+          },
+          {
+            "text": "For fcm-received-advertising, all households received 4,240.0 millions of pieces in FY2013, falling by 781.0 millions of pieces from FY2012, falling by 1,875.0 millions of pieces since the FY2010 methodology break, and falling by 4,017.0 millions of pieces across the FY2010 methodology break from FY2008.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2013
+            ]
+          },
+          {
+            "text": "For marketing-mail-ads-received, all households received 74,365.0 millions of pieces in FY2013, increasing by 491.0 millions of pieces from FY2012, increasing by 1,431.0 millions of pieces since the FY2010 methodology break, but decreasing by 9,235.0 millions of pieces across the FY2010 methodology break from FY2008.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2013
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 methodology breaks are cautious because they mix different estimation, weighting, reporting, or survey designs.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix, causing household-group series to change basis between 2013 and 2014."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "146cb3a283761374ec767797766aaf48fde5cb3f597d07af6a73b5654c0de6da",
+      "generated_at": "2026-11-06T17:34:55+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2008,
+              "page": 49,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 50,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 50,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 50,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2012": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2012",
+      "fiscal_year": 2012,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2012, advertising mail metrics for all households generally decreased compared to previous years and five years earlier.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 655.2 pieces per household per year in FY2012, which fell by 57.2 pieces per household per year (or 8.0 percent) since the FY2010 break and fell by 213.2 pieces per household per year (or 24.6 percent) from FY2007 to FY2012 across the FY2008 and FY2010 methodology breaks.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2007,
+              2008,
+              2010,
+              2012
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 85311.0 millions of pieces in FY2012, which decreased by 5146.0 millions of pieces (or 5.7 percent) from the previous year in FY2011, fell by 416.0 millions of pieces (or 0.5 percent) since the FY2010 break, and fell by 15649.0 millions of pieces (or 15.5 percent) from FY2007 to FY2012 across the FY2008 and FY2010 methodology breaks.",
+            "metric": "advertising-received-total",
+            "years": [
+              2007,
+              2008,
+              2010,
+              2011,
+              2012
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 5021.0 millions of pieces in FY2012, which decreased by 427.0 millions of pieces (or 7.8 percent) from the previous year in FY2011, fell by 1094.0 millions of pieces (or 17.9 percent) since the FY2010 break, and fell by 4013.0 millions of pieces (or 44.4 percent) from FY2007 to FY2012 across the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2007,
+              2010,
+              2011,
+              2012
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 73874.0 millions of pieces in FY2012, which decreased by 3873.0 millions of pieces (or 5.0 percent) from the previous year in FY2011, increased by 940.0 millions of pieces (or 1.3 percent) since the FY2010 break, and fell by 10198.0 millions of pieces (or 12.1 percent) from FY2007 to FY2012 across the FY2008 and FY2010 methodology breaks.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2007,
+              2008,
+              2010,
+              2011,
+              2012
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology, and values before 2010 use the earlier weighting."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "eb1f2f28e67096972d1f0fc42ac03b1b590f1e54094a8b36d5ed812128b8dd80",
+      "generated_at": "2026-11-06T17:36:03+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2007,
+              "page": 47,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 49,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 50,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 50,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 50,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2011": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2011",
+      "fiscal_year": 2011,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for all households in fiscal year 2011.",
+        "statements": [
+          {
+            "text": "For All households, advertising-received-total was 90,457 million of pieces in FY2011, which increased by 4,730 million of pieces or 5.5 percent from FY2010 since the latest break, but fell by 15,102 million of pieces or -14.3 percent from FY2006 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "metric": "advertising-received-total",
+            "years": [
+              2006,
+              2010,
+              2011
+            ]
+          },
+          {
+            "text": "For All households, fcm-received-advertising was 5,448 million of pieces in FY2011, showing a decrease of 667 million of pieces or -10.9 percent from FY2010 since the latest break, and a decrease of 4,896 million of pieces or -47.3 percent from FY2006 across the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2006,
+              2010,
+              2011
+            ]
+          },
+          {
+            "text": "For All households, marketing-mail-ads-received stood at 77,747 million of pieces in FY2011, which rose by 4,813 million of pieces or 6.6 percent from FY2010 since the latest break, while declining by 9,814 million of pieces or -11.2 percent from FY2006 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2006,
+              2010,
+              2011
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across FY2007, FY2008, and FY2010 methodology breaks are cautious.",
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 1: say which years the change 4,730 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 15,102 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 667 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 4,896 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 4,813 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 9,814 is between (\"from FY2018 to FY2023\")"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "462a52cd6b15976f278aa2b85f333b60b52658771cc72fed5aa6aa49dd66b73f",
+      "generated_at": "2026-11-06T17:37:01+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2010": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2010",
+      "fiscal_year": 2010,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2010.",
+        "statements": [
+          {
+            "text": "For all households, advertising-mail-received-per-household was 712.4 pieces per household per year in FY2010, which decreased by 15.6 pieces from the previous year across the FY2010 methodology break and fell by 187.2 pieces from 2005 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          },
+          {
+            "text": "For all households, advertising-received-total was 85,727.0 millions of pieces in FY2010, increasing by 18.0 millions of pieces from the previous year across the FY2010 methodology break and dropping by 17,240.0 millions of pieces from 2005 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "metric": "advertising-received-total",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          },
+          {
+            "text": "For all households, fcm-received-advertising was 6,115.0 millions of pieces in FY2010, which fell by 533.0 millions of pieces from the previous year across the FY2010 methodology break and decreased by 4,667.0 millions of pieces from 2005 across the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          },
+          {
+            "text": "For all households, marketing-mail-ads-received stood at 72,934.0 millions of pieces in FY2010, rising by 1,708.0 millions of pieces from the previous year across the FY2010 methodology break and declining by 11,401.0 millions of pieces from 2005 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology, meaning comparisons across FY2010 must be made cautiously."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "2ce3a0b973ff9da4ed9e8341f51c2a0d9e6883e56dcac7fd5b7f7e1d84a83f84",
+      "generated_at": "2026-11-06T17:38:32+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 46,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 47,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 49,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 50,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 50,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2009": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2009",
+      "fiscal_year": 2009,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2009, advertising mail metrics across all households declined significantly compared to the previous year.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 728.0 pieces per household per year in FY2009, having decreased by 124.8 pieces per household per year from FY2008.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2008,
+              2009
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 85,709.0 millions of pieces in FY2009, which fell by 14,336.0 millions of pieces from FY2008, and fell by 9,180.0 millions of pieces from FY2004 across the FY2007 and FY2008 methodology breaks.",
+            "metric": "advertising-received-total",
+            "years": [
+              2004,
+              2007,
+              2008,
+              2009
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) stood at 6,648.0 millions of pieces in FY2009, dropping by 1,609.0 millions of pieces from FY2008 and by 2,611.0 millions of pieces from FY2004.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2004,
+              2008,
+              2009
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 71,226.0 millions of pieces in FY2009, decreasing by 12,374.0 millions of pieces from FY2008 and by 6,916.0 millions of pieces from FY2004 across the FY2007 and FY2008 methodology breaks.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2004,
+              2007,
+              2008,
+              2009
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "6efc50d6c5a8e30200754bdde9709a1ca684ce306bfc0ef0cde4eb8969051018",
+      "generated_at": "2026-11-06T17:39:43+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 46,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 47,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 49,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 50,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2008": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2008",
+      "fiscal_year": 2008,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2008.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 852.8 pieces per household per year in FY2008, which decreased by 15.6 pieces per household per year across the FY2008 methodology break from FY2007.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2007,
+              2008
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 100,045.0 millions of pieces in FY2008, down by 915.0 millions of pieces across the FY2008 methodology break from FY2007, and up by 7,815.0 millions of pieces across the FY2007 and FY2008 methodology breaks from FY2003.",
+            "metric": "advertising-received-total",
+            "years": [
+              2003,
+              2007,
+              2008
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 8,257.0 millions of pieces in FY2008, falling by 777.0 millions of pieces from FY2007, and decreasing by 1,964.0 millions of pieces from FY2003.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2003,
+              2007,
+              2008
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 83,600.0 millions of pieces in FY2008, dropping by 472.0 millions of pieces across the FY2008 methodology break from FY2007, and growing by 9,382.0 millions of pieces across the FY2007 and FY2008 methodology breaks from FY2003.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2003,
+              2007,
+              2008
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2007 and FY2008 methodology breaks are cautious due to changes in Detached Address Labels double-counting and residential delivery estimates."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "cdc47a3a2caa51bac807a8753d4eb539be3d09cac94c59136bb21fbbb81b6660",
+      "generated_at": "2026-11-06T17:40:52+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 46,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 47,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 49,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2007": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2007",
+      "fiscal_year": 2007,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for all households in fiscal year 2007.",
+        "statements": [
+          {
+            "text": "For all households, Advertising mail received per household was 868.4 pieces per household per year in FY2007, down by 46.8 pieces per household per year from the previous year across the FY2007 methodology break.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2006,
+              2007
+            ]
+          },
+          {
+            "text": "For all households, Advertising mail received by households was 100,960.0 millions of pieces in FY2007, which decreased by 4,599.0 millions of pieces from the previous year across the FY2007 methodology break and increased by 11,067.0 millions of pieces from five years earlier across the FY2007 methodology break.",
+            "metric": "advertising-received-total",
+            "years": [
+              2002,
+              2006,
+              2007
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 9,034.0 millions of pieces in FY2007, falling by 1,310.0 millions of pieces from the previous year and decreasing by 2,011.0 millions of pieces from five years earlier.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2002,
+              2006,
+              2007
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 84,072.0 millions of pieces in FY2007, lower by 3,489.0 millions of pieces from the previous year across the FY2007 methodology break and higher by 12,975.0 millions of pieces from five years earlier across the FY2007 methodology break.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2002,
+              2006,
+              2007
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design renamed the Household Mail Survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0d20facf9e0310dcf5279236d1fd4e826cc6cdcfbef98378ce610926bcff84a0",
+      "generated_at": "2026-11-06T17:41:57+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 46,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 47,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2006": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2006",
+      "fiscal_year": 2006,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2006, advertising mail statistics for all households showed varied movements compared to previous years across multiple metrics.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 915.2 pieces per household per year in FY2006, which increased by 15.6 pieces per household per year from the previous year in FY2005.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2005,
+              2006
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 105,559.0 millions of pieces in FY2006, rising by 2,592.0 millions of pieces from the previous year in FY2005 and growing by 13,830.0 millions of pieces from 5 years earlier in FY2001.",
+            "metric": "advertising-received-total",
+            "years": [
+              2001,
+              2005,
+              2006
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 10,344.0 millions of pieces in FY2006, which decreased by 438.0 millions of pieces from the previous year in FY2005 and fell by 809.0 millions of pieces from 5 years earlier in FY2001.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2001,
+              2005,
+              2006
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 87,561.0 millions of pieces in FY2006, increasing by 3,226.0 millions of pieces from the previous year in FY2005 and growing by 15,387.0 millions of pieces from 5 years earlier in FY2001.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2001,
+              2005,
+              2006
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across methodology breaks, such as the FY2007 Detached Address Labels no longer double-counted break, the FY2008 residential delivery estimates corrected break, the FY2010 diary data restated with new weighting break, the FY2014 weighting by home ownership break, the FY2014 new contractor and per-household reporting break, and the FY2025 Household Mail Survey redesign break, should be made with caution."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "583dc8c7e8ff4c0222eebb4c42123a8d0e6e400dfe301f5a119a581077f75b4c",
+      "generated_at": "2026-11-06T17:43:06+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 46,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2005": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2005",
+      "fiscal_year": 2005,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for all households in fiscal year 2005.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received per household was 899.6 pieces per household per year in FY2005.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2005
+            ]
+          },
+          {
+            "text": "For all households, advertising mail received by households was 102,967.0 millions of pieces in FY2005, which increased by 8,078.0 millions of pieces from FY2004 and increased by 25,597.0 millions of pieces from FY2000.",
+            "metric": "advertising-received-total",
+            "years": [
+              2000,
+              2004,
+              2005
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 10,782.0 millions of pieces in FY2005, which increased by 1,523.0 millions of pieces from FY2004 and increased by 1,311.0 millions of pieces from FY2000.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2000,
+              2004,
+              2005
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 84,335.0 millions of pieces in FY2005, which increased by 6,193.0 millions of pieces from FY2004 and increased by 23,839.0 millions of pieces from FY2000.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2000,
+              2004,
+              2005
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, crossing the FY2007 methodology break.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses, crossing the FY2008 methodology break.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology, crossing the FY2010 methodology break."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "fc24e344bc7727c982734331ca2395fc77a0cdb462feac2b2a819cfbf1bf476a",
+      "generated_at": "2026-11-06T17:44:36+00:00",
+      "sources": [
+        {
+          "metric": "advertising-mail-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 45,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2004": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2004",
+      "fiscal_year": 2004,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for all households in fiscal year 2004.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received by households was 94,889.0 millions of pieces in FY2004, which increased by 2,659.0 millions of pieces from the previous year.",
+            "metric": "advertising-received-total",
+            "years": [
+              2003,
+              2004
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 9,259.0 millions of pieces in FY2004, which decreased by 962.0 millions of pieces from the previous year.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2003,
+              2004
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 78,142.0 millions of pieces in FY2004, which rose by 3,924.0 millions of pieces from the previous year.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2003,
+              2004
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design and was renamed the Household Mail Survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "8cfb8d8a3085ab217fbbc7ba655f8125e842a28c10733aa7204e521a77c38e21",
+      "generated_at": "2026-11-06T17:45:37+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2003": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2003",
+      "fiscal_year": 2003,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2003.",
+        "statements": [
+          {
+            "text": "For all households, advertising-received-total was 92,230.0 millions of pieces in FY2003, which rose by 2,337.0 millions of pieces from the previous year in FY2002.",
+            "metric": "advertising-received-total",
+            "years": [
+              2003,
+              2002
+            ]
+          },
+          {
+            "text": "For all households, fcm-received-advertising was 10,221.0 millions of pieces in FY2003, which fell by 824.0 millions of pieces from the previous year in FY2002.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2003,
+              2002
+            ]
+          },
+          {
+            "text": "For all households, marketing-mail-ads-received was 74,218.0 millions of pieces in FY2003, which increased by 3,121.0 millions of pieces from the previous year in FY2002.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2003,
+              2002
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 methodology breaks should be treated with caution."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9b49f505b2ee4f9a183b375735164303dbc139f27a697fbfe55b119f33f1646e",
+      "generated_at": "2026-11-06T17:46:42+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2002": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2002",
+      "fiscal_year": 2002,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of Advertising mail metrics for fiscal year 2002.",
+        "statements": [
+          {
+            "text": "Advertising mail received by households for all households was 89,893 million of pieces in FY2002, which decreased by 1,836.0 millions of pieces from the previous year in FY2001.",
+            "metric": "advertising-received-total",
+            "years": [
+              2001,
+              2002
+            ]
+          },
+          {
+            "text": "First-Class advertising received (ads only) for all households was 11,045 million of pieces in FY2002, which decreased by 108.0 millions of pieces from the previous year in FY2001.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2001,
+              2002
+            ]
+          },
+          {
+            "text": "Marketing Mail advertising received for all households was 71,097 million of pieces in FY2002, which decreased by 1,077.0 millions of pieces from the previous year in FY2001.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2001,
+              2002
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design, renamed the Household Mail Survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "f14f9efcb50a2a261a1efaf321ddf525e2d0a0d5a2f76e171a03bb82add07531",
+      "generated_at": "2026-11-06T17:47:36+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2001": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2001",
+      "fiscal_year": 2001,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2001.",
+        "statements": [
+          {
+            "text": "For all households, advertising mail received by households was 91,729.0 millions of pieces in FY2001, which increased by 14,359.0 millions of pieces from the previous year in FY2000.",
+            "metric": "advertising-received-total",
+            "years": [
+              2000,
+              2001
+            ]
+          },
+          {
+            "text": "For all households, First-Class advertising received (ads only) was 11,153.0 millions of pieces in FY2001, which rose by 1,682.0 millions of pieces from the previous year in FY2000.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2000,
+              2001
+            ]
+          },
+          {
+            "text": "For all households, Marketing Mail advertising received was 72,174.0 millions of pieces in FY2001, which grew by 11,678.0 millions of pieces from the previous year in FY2000.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2000,
+              2001
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across methodology breaks, such as the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 breaks, should be approached with caution."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "dcf0c9f975d357669e078e8938817aa5943451dfd9689e93f09ad93718842009",
+      "generated_at": "2026-11-06T17:48:16+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2000": {
+      "section": "Advertising",
+      "kind": "yearly",
+      "key": "yearly:2000",
+      "fiscal_year": 2000,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of advertising mail statistics for fiscal year 2000.",
+        "statements": [
+          {
+            "text": "Advertising mail received by households for all households was 77,370.0 millions of pieces in FY2000.",
+            "metric": "advertising-received-total",
+            "years": [
+              2000
+            ]
+          },
+          {
+            "text": "First-Class advertising received (ads only) for all households was 9,471.0 millions of pieces in FY2000.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2000
+            ]
+          },
+          {
+            "text": "Marketing Mail advertising received for all households was 60,496.0 millions of pieces in FY2000.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2000
+            ]
+          }
+        ],
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The FY2020 A8-12 drops the note but its pre-2007 values are no lower.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly offsets the Detached Address Label double count; 2007 itself is understated.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "89331e4101f41e3dee5999e5f54dfeba9ad3dc26d1f8591ecbf2b1c2ee1d1a4d",
+      "generated_at": "2026-11-06T17:48:57+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-advertising",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "marketing-mail-ads-received",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
             }
           }
         }

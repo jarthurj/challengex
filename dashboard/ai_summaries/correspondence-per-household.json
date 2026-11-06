@@ -8,69 +8,58 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Correspondence per household: published values for FY2025 and how they moved.",
+        "headline": "In fiscal year 2025, household mail use shifted across various demographic segments and overall measures.",
         "statements": [
           {
-            "text": "In FY2025, Correspondence per household was 98.6 (pieces per household per year). That rose by 1.4 (1.4%) from the previous year, FY2024. That fell by 26.5 (21.2%) from five years earlier, FY2020.",
+            "text": "For all households, correspondence-per-household was 98.6 pieces per household per year in FY2025, which increased by 1.4 pieces per household per year from FY2024 and decreased by 26.5 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
-              2025,
+              2020,
               2024,
-              2020
-            ]
-          },
-          {
-            "text": "By income in FY2025, Correspondence per household (pieces per household per year) was highest for $150,000 and Over at 115.7 and lowest for Less than $50,000 at 90.8.",
-            "metric": "correspondence-per-household",
-            "years": [
               2025
             ]
           },
           {
-            "text": "By age in FY2025, Correspondence per household (pieces per household per year) was highest for 65 and Over at 130.4 and lowest for Under 45 at 71.5.",
+            "text": "For the $100,000-$149,999 income segment, correspondence-per-household was 97.1 pieces per household per year in FY2025, falling by 43.5 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By education in FY2025, Correspondence per household (pieces per household per year) was highest for Some college or technical school graduate at 102.7 and lowest for Less than high school at 83.9.",
+            "text": "For the $150,000 and Over income segment, correspondence-per-household was 115.7 pieces per household per year in FY2025, declining by 56.2 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By msa in FY2025, Correspondence per household (pieces per household per year) was highest for Non-MSA at 102.5 and lowest for Large MSA at 94.0.",
+            "text": "For the 65 and Over age segment, correspondence-per-household was 130.4 pieces per household per year in FY2025, dropping by 30.9 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
-              2025
-            ]
-          },
-          {
-            "text": "By tenure in FY2025, Correspondence per household (pieces per household per year) was highest for Own at 111.7 and lowest for Rent at 72.7.",
-            "metric": "correspondence-per-household",
-            "years": [
+              2020,
               2025
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "e76ef4ad64943d14f4fa3fc5df8b4dc9435c310eefa5cc14bd3e319b63d207cf",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "2d705310127640aaac1b48b48b4716274bab9faaa15842798fa2a6f89ed7b7cc",
+      "generated_at": "2026-11-06T16:47:51+00:00",
       "sources": [
         {
           "metric": "correspondence-per-household",
@@ -82,17 +71,17 @@
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -106,12 +95,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -125,12 +114,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -144,12 +133,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -163,12 +152,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -182,12 +171,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -201,12 +190,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -220,12 +209,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -239,12 +228,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -258,12 +247,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -277,12 +266,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -296,12 +285,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -315,12 +304,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -334,12 +323,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -353,12 +342,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -372,12 +361,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -391,12 +380,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -409,72 +398,74 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Correspondence per household: long-term change in the published values, FY2014 to FY2025.",
+        "headline": "Long-term trends in correspondence per household across methodology breaks from FY2014 to FY2025.",
         "statements": [
           {
-            "text": "Correspondence per household (pieces per household per year) went from 135.1 in FY2014 to 98.6 in FY2025: it fell by 36.5 (27.0%) over the period. Since FY2020 (five years earlier) it fell by 26.5 (21.2%). Since FY2015 (ten years earlier) it fell by 43.8 (30.8%).",
+            "text": "For all households, correspondence-per-household fell by 36.5 pieces per household per year, or 27.0 percent, from FY2014 to FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
               2014,
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, correspondence-per-household decreased by 43.8 pieces per household per year, or 30.8 percent, from FY2015 to FY2025, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2015,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, correspondence-per-household declined by 26.5 pieces per household per year, or 21.2 percent, from FY2020 to FY2025, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "correspondence-per-household",
+            "years": [
               2020,
-              2015
-            ]
-          },
-          {
-            "text": "By income in FY2025, Correspondence per household (pieces per household per year) was highest for $150,000 and Over at 115.7 and lowest for Less than $50,000 at 90.8.",
-            "metric": "correspondence-per-household",
-            "years": [
               2025
             ]
           },
           {
-            "text": "By age in FY2025, Correspondence per household (pieces per household per year) was highest for 65 and Over at 130.4 and lowest for Under 45 at 71.5.",
+            "text": "For all households, correspondence-per-household increased by 1.4 pieces per household per year, or 1.4 percent, from FY2024 to FY2025, across the FY2025 methodology break.",
             "metric": "correspondence-per-household",
             "years": [
+              2024,
               2025
             ]
           },
           {
-            "text": "By education in FY2025, Correspondence per household (pieces per household per year) was highest for Some college or technical school graduate at 102.7 and lowest for Less than high school at 83.9.",
+            "text": "For $100,000-$149,999, correspondence-per-household fell by 43.5 pieces per household per year, or 30.9 percent, from FY2020 to FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By msa in FY2025, Correspondence per household (pieces per household per year) was highest for Non-MSA at 102.5 and lowest for Large MSA at 94.0.",
+            "text": "For $150,000 and Over, correspondence-per-household decreased by 56.2 pieces per household per year, or 32.7 percent, from FY2020 to FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
-              2025
-            ]
-          },
-          {
-            "text": "By tenure in FY2025, Correspondence per household (pieces per household per year) was highest for Own at 111.7 and lowest for Rent at 72.7.",
-            "metric": "correspondence-per-household",
-            "years": [
+              2020,
               2025
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for Correspondence per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Correspondence per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more.",
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "03cdb62d4f208fccd76d151ec8bac9a423bc87f4251dd4a3d3d7c0dd57128160",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "a5a02b012d08309729e8bb9873f524c986a9c56544f224dfec742d058aaf6ca4",
+      "generated_at": "2026-11-06T16:52:40+00:00",
       "sources": [
         {
           "metric": "correspondence-per-household",
@@ -486,32 +477,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -525,12 +516,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -544,12 +535,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -563,12 +554,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -582,12 +573,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -601,12 +592,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -620,12 +611,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -639,12 +630,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -658,12 +649,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -677,12 +668,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -696,12 +687,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -715,12 +706,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -734,12 +725,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -753,12 +744,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -772,12 +763,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -791,12 +782,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -810,12 +801,12 @@
             "2020": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         }

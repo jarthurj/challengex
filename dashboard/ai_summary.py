@@ -631,7 +631,8 @@ NUMBER_WORDS = re.compile(
     r"(?:a|one|two)[- ]thirds?|(?:a|one|three)[- ]quarters?)\b"
     r"(?![- ]?(?:count|year\b))", re.I)   # not "double-counted" (a break note) or "ten-year"
 # Where a clause ends: a full stop or semicolon before a space (not the point in "600.0" or in
-# "U.S."), or ", but" / ", while" / ", whereas" / ", and" between two changes.
+# "U.S."), or ", but" / ", while" / ", whereas" / ", and" between two changes. (Searched in the text
+# with lists of break years masked: "the FY2008, FY2010, and FY2012 breaks" is one phrase.)
 CLAUSE_END = re.compile(r"(?<!\b[A-Z])[.;](?=\s|$)|,\s+(?=(?:but|while|whereas|and)\b)", re.I)
 # Words for a rise or a fall: verbs and nouns (also used to spot a change), then comparatives.
 _RISE = (r"rose|ris(?:e|es|en|ing)|increas\w*|grew|grow(?:s|n|ing)?|growth|gain\w*|climb\w*|jump\w*|"
@@ -674,6 +675,19 @@ YEAR_RANGE = re.compile(rf"\b{_FY}{_YR}\s*[-–—]\s*{_FY}{_YR}", re.I)        
 BASE_LEVEL = re.compile(rf"\b(?:its|the|their)\s+{_FY}{_YR}\s+(?:level|value|figure|total|volume|share)s?\b",
                         re.I)                                                                   # from
 TO_YEAR = re.compile(rf"\b(?:to|through|until)\s+{_FY}{_YR}", re.I)                             # to
+# "since the FY2012 methodology break", "since the latest break in FY2010" (how the model words
+# `since_latest_break`).
+_BREAK_NOUN = r"(?:(?:methodology|survey)\s+)?(?:break|change|redesign)"
+SINCE_BREAK = re.compile(rf"\bsince\s+(?:the|its|their)\s+(?:{_FY}{_YR}\s+{_BREAK_NOUN}\b"
+                         rf"|(?:latest|last|most\s+recent)\s+{_BREAK_NOUN}\s+(?:in|of)\s+{_FY}{_YR})",
+                         re.I)                                                                  # from
+# A list of break years ("the FY2008, FY2010, and FY2012 methodology breaks"): its commas don't end a
+# clause or what is read after a number (see _mask_break_lists). Only "the <years> breaks" (or
+# methodology/survey changes, redesigns): a bare "changes" is an ordinary word ("and FY2023 changes
+# were largest for Under $35K households" must still end the clause).
+_LY = r"(?:FY\s?)?(?:19|20)\d\d"
+_LIST_BREAK_NOUN = r"(?:(?:methodology|survey)\s+(?:break|change|redesign)|break)s?"
+BREAK_LIST = re.compile(rf"\bthe\s+{_LY}(?:\s*,\s*(?:and\s+)?{_LY}|\s+and\s+{_LY})+\s+{_LIST_BREAK_NOUN}\b", re.I)
 # The second number of a range ("7,900 to 9,200 million") has the first one's year.
 RANGE_BEFORE = re.compile(r"(?<![\d.,])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)"
                           r"\s*(?:million|billion|pieces|percent|%)?\s*(?:to|-|–)\s*\$?$", re.I)
@@ -780,10 +794,17 @@ def _named_breaks(text):
     return years
 
 
+def _mask_break_lists(text):
+    """The text with the commas of break-year lists turned into spaces (same length, so positions
+    hold): "across the FY2008, FY2010, and FY2012 breaks from FY2007" stays one phrase."""
+    return BREAK_LIST.sub(lambda m: m.group(0).replace(",", " "), text) if "," in text else text
+
+
 def _clause(text, start, end):
     """The clause around text[start:end]: (the part before it, the part after it)."""
-    ends_before = [m.end() for m in CLAUSE_END.finditer(text, 0, start)]
-    next_end = CLAUSE_END.search(text, end)
+    masked = _mask_break_lists(text)
+    ends_before = [m.end() for m in CLAUSE_END.finditer(masked, 0, start)]
+    next_end = CLAUSE_END.search(masked, end)
     return (text[ends_before[-1] if ends_before else 0:start],
             text[end:next_end.start() if next_end else len(text)])
 
@@ -866,6 +887,8 @@ def _scope(data, metric, years, tokens, named):
             breaks.add(b["fiscal_year"])
             allowed_years.add(b["fiscal_year"])
             allowed_years.update(_note_years(b))   # its years only: a note's other numbers are not data
+    for g in groups.values():
+        g["breaks"] = breaks   # for "since the FY2012 break" (_check_change)
     return {"groups": groups, "years": allowed_years, "breaks": breaks, "published": published,
             "percent_unit": percent_unit}
 
@@ -902,6 +925,10 @@ def _markers(part):
         found += [(m.start(), m.end(), "from", int(m.group(1))), (m.start(), m.end(), "to", int(m.group(2)))]
     for m in BASE_LEVEL.finditer(part):
         found.append((m.start(), m.end(), "from", int(m.group(1))))
+    for m in SINCE_BREAK.finditer(part):
+        year = int(m.group(1) or m.group(2))
+        found += [(m.start(), m.end(), "from", year),
+                  (m.start(), m.end(), "break" if m.group(1) else "latest_break", year)]
     for m in TO_YEAR.finditer(part):
         found.append((m.start(), m.end(), "to", int(m.group(1))))
     for m in BACK.finditer(part):
@@ -912,9 +939,12 @@ def _markers(part):
 def _named_span(text, start, end):
     """{"from", "to", "back"} the sentence gives for the change at text[start:end] (each may be
     missing): what is said right after it (before any comma, with no other figure in between), else
-    what is said before it in its clause (with no other figure in between, bracketed asides apart)."""
+    what is said before it in its clause (with no other figure in between, bracketed asides apart).
+    A comma inside a list of break years ("across the FY2007, FY2008, and FY2010 breaks from FY2006")
+    doesn't end what is said after it. "since the FY2012 break" also gives "break" (2012), and "since
+    the latest break in FY2010" gives "latest_break": _check_change holds them to the metric's breaks."""
     before, after = _clause(text, start, end)
-    after = after.split(",")[0]
+    after = _mask_break_lists(after).split(",")[0]
     glossed = before.rfind("(") > before.rfind(")")   # "1,400 million (26.4%)": the years of 1,400
     found = [m for m in _markers(after) if not _other_figures(after[:m[0]])]
     if not found:
@@ -945,6 +975,15 @@ def _check_change(number, raw, text, start, end, kinds, group, where, problems):
             and ("back" not in span or c["to"] - c["from"] == span["back"])]
     if not tied:
         problems.append(f"{where}: {raw} is a change of its metric, but not between the years the sentence names")
+        return
+    breaks = group.get("breaks", set())
+    if "break" in span and span["break"] not in breaks:
+        problems.append(f"{where}: FY{span['break']} is not a methodology break of its metric")
+        return
+    if "latest_break" in span and all(span["latest_break"] != max((b for b in breaks if b <= c["to"]), default=None)
+                                      for c in tied):
+        problems.append(f"{where}: FY{span['latest_break']} is not its metric's latest methodology break "
+                        f"before the change {raw}")
         return
     direction = _direction(text, start, end)
     if direction and all(c["sign"] != direction for c in tied):
@@ -1480,6 +1519,48 @@ def year_summaries(year):
         if record:
             out.append({"title": title, "record": record, "topic": key in TOPIC_SECTIONS})
     return out
+
+
+def overview_summaries(year=None):
+    """
+    The Overview's AI summary card: each topic section's long-term summary, and the topic sections'
+    yearly summaries for one fiscal year (the executive summary first, as in TOPIC_SECTIONS). Only
+    reads files, never calls the API; text that fails the check against the current data is skipped.
+
+    Only the summaries shown are re-checked (a cold check of every year's took over 3 seconds), so
+    "years" lists the years that have a stored topic summary, whether or not it still passes.
+
+    @param year: the fiscal year for the yearly part, or None for the latest one that has a summary.
+    @return: {"long_term": [{"title", "record"}], "yearly": [...], "year": the year shown (None when
+             no yearly topic summary is stored), "years": the fiscal years that have one stored}.
+    """
+    long_term, files, stored = [], {}, set()
+    for key, (title, _slugs, _groups) in TOPIC_SECTIONS.items():
+        file = files[key] = _load_file(key)
+        record = shown(key, file["summaries"].get("comparative"))
+        if record:
+            long_term.append({"title": title, "record": record})
+        stored |= {r.get("fiscal_year") for k, r in file["summaries"].items() if k == "yearly" or k.startswith("yearly:")}
+    years = sorted(y for y in stored if isinstance(y, int) and not isinstance(y, bool))
+    if year is None:
+        year = years[-1] if years else None
+    yearly = []
+    for key, (title, _slugs, _groups) in TOPIC_SECTIONS.items():
+        record = shown(key, _find_yearly(files[key], year)) if year is not None else None
+        if record:
+            yearly.append({"title": title, "record": record})
+    return {"long_term": long_term, "yearly": yearly, "year": year, "years": years}
+
+
+def year_spans(years):
+    """'FY2000–FY2003, FY2005' for a sorted list of fiscal years (consecutive runs joined)."""
+    runs = []
+    for y in years:
+        if runs and y == runs[-1][1] + 1:
+            runs[-1][1] = y
+        else:
+            runs.append([y, y])
+    return ", ".join(f"FY{a}" if a == b else f"FY{a}–FY{b}" for a, b in runs)
 
 
 # ---------------------------------------------------------------------------------------------
