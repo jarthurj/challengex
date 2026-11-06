@@ -719,7 +719,7 @@ against the PDFs in `docs/`, especially around restatements and methodology brea
   from the returned rows.
 
 ## Next steps (priority order)
-Updated 2026-11-03. Write tests with every change, keep `verify_pdfs` at 0 mismatches, have the
+Updated 2026-11-06. Write tests with every change, keep `verify_pdfs` at 0 mismatches, have the
 reviewer subagent check each branch before merging, and update this file when a step finishes.
 
 ### Done
@@ -743,11 +743,26 @@ Measured against the slides' required capabilities and the quality bar above.
 
 **A. Required by the challenge, not built yet**
 1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3). Built by
-   the team with Gemini on 2026-11-05 and hardened the same day (see Current code state).
-   Remaining: regenerate the summaries with prompt `summary-v2` (needs `GEMINI_API_KEY`; most
-   stored ones are hidden now), commit the rule-based generator or drop its records, a way to
-   mark summaries reviewed without hand-editing JSON, and a POST button with a rate limit before
-   any live call. The original design notes follow. Covers the Overview's
+   the team with Gemini on 2026-11-05 and hardened the same day (see Current code state; merged
+   to `main` 2026-11-06). Remaining, in order:
+   - [ ] **Regenerate the summaries with prompt `summary-v2`.** Whoever holds `GEMINI_API_KEY`
+     (in `.env`) runs `python -m dashboard.ai_summary`. Only 19 of the 71 stored records show
+     now (16 yearly FY2023, 3 yearly FY2020); the other 52 stay hidden until replaced. A failing
+     new summary never replaces one that shows: it goes under `"rejected"` and the command
+     prints its problems, so read that output and re-run the sections that failed (each request
+     counts against `--max-calls`).
+   - [ ] **The 64 rule-based records** ("rule-based template (no AI)"): the code that wrote
+     them isn't in the repo, so they can't be reproduced. Either commit that generator or drop
+     those records from `dashboard/ai_summaries/`.
+   - [ ] **Mark summaries reviewed without hand-editing JSON**, e.g. a management command or an
+     admin action that sets `reviewed` on one record (and who/when). Today `reviewed` can only
+     be set by editing the file.
+   - [ ] **Before any live API call from a page:** a POST button (with CSRF) and a rate limit,
+     plus the timeout and graceful failure from the Security quality bar. The commented-out
+     live-call code in `trend_views.py` and `overview_views.py` stays off until then
+     (`load_dotenv` also only runs in the CLI).
+
+   The original design notes follow. Covers the Overview's
    AI summary card and plain-language "what changed and why" text an analyst can copy into a
    report with its citations.
    - Design: an `Insight` model; a `generate_insights` command run offline (pages never call the
