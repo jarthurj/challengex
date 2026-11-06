@@ -1537,7 +1537,7 @@ def section_for_trend(selected):
 # The AI summaries page: categories, search, copy text, provenance, the reviewed flag
 # ---------------------------------------------------------------------------------------------
 
-KIND_LABELS = {"yearly": "Year", "comparative": "Long term", RANGE: "Custom range"}
+KIND_LABELS = {"yearly": "One year", "comparative": "Long term", RANGE: "Custom range"}
 # The page's categories, in display order: the topic sections. Each subject belongs to one of them.
 CATEGORY_ORDER = list(TOPIC_SECTIONS)
 # A metric's category: the first topic here that holds all of its metrics (household-group series

@@ -10,12 +10,12 @@
     {% with current="ai" %}{% include "dashboard/_nav.html" %}{% endwith %}
     <main id="main">
     <h1>AI summaries</h1>
-    <p>Plain-language summaries of the published USPS household mail figures: one per subject for each fiscal
-        year, over the long term with a projection, or between two chosen years. Every number in them was
-        checked automatically against the data (<a href="#about">how</a>). Use "Copy with sources" to paste
-        one into a report with the report and page of each value it cites.</p>
+    <p class="lead">Plain-language summaries of the published USPS household mail figures, every number checked
+        against the data (<a href="#about">how</a>). Open one to read it, or copy it with its sources into a report.</p>
     {% include "dashboard/_messages.html" %}
 
+    <details class="search-panel" id="search"{% if f.view == "search" %} open{% endif %}>
+    <summary>Search and filter the summaries{% if f.view == "search" and f.q %}: "{{ f.q }}"{% endif %}</summary>
     <form method="get" action="{% url 'ai-summaries' %}" class="filters" role="search" aria-label="Search the AI summaries">
         <label for="q">Search
             <input type="search" id="q" name="q" value="{{ f.q }}" maxlength="100" placeholder="e.g. packages FY2019, bills income">
@@ -56,6 +56,14 @@
         <button type="submit">Search</button>
         {% if f.view == "search" %}<a href="{% url 'ai-summaries' %}">Clear the search</a>{% endif %}
     </form>
+    </details>
+
+    <details class="search-panel create-panel" id="create"{% if not count %} open{% endif %}>
+    <summary>Create a new summary with Gemini</summary>
+    <p class="panel-note small">Pick a subject and the year or years to cover, and Gemini will write a summary from
+        the published values.</p>
+    {% include "dashboard/_ai_generate_form.html" %}
+    </details>
 
     <nav aria-label="Ways to browse the summaries" class="tabs">
         <a href="?view=year"{% if f.view == "year" %} aria-current="true"{% endif %}>Year by year</a>
@@ -65,56 +73,56 @@
     </nav>
 
     {% if f.view == "year" %}
-        <h2 id="results-heading">FY{{ year }}, year by year</h2>
-        {% if slider %}
-            <form method="get" action="{% url 'ai-summaries' %}#results-heading" class="year-slider">
+        <h2 id="results-heading">{% if f.latest %}The latest year for each subject{% else %}FY{{ year }}, year by year{% endif %}</h2>
+        {% if f.bad_year %}
+            <p class="notice review-notice" role="alert">"{{ f.bad_year }}" isn't a fiscal year in the data
+                (FY{{ picker.min }} to FY{{ picker.max }}), so {% if f.latest %}each subject's latest year{% else %}FY{{ year }}{% endif %} is shown.</p>
+        {% endif %}
+        {% if picker %}
+            <form method="get" action="{% url 'ai-summaries' %}#results-heading" class="year-pick toolbar">
                 <input type="hidden" name="view" value="year">
-                <label for="summary-year">Fiscal year</label>
-                <input type="range" id="summary-year" name="year" min="{{ slider.min }}" max="{{ slider.max }}"
-                       step="1" value="{{ slider.year }}" aria-valuetext="FY{{ slider.year }}"
-                       aria-describedby="summary-year-help">
-                <output for="summary-year" id="summary-year-value">FY{{ slider.year }}</output>
-                <button type="submit">Show this year</button>
+                <span class="toolbar-group">
+                    {% if picker.previous %}<a class="button-link step" href="?view=year&amp;year={{ picker.previous }}#results-heading"><span class="visually-hidden">Previous year, </span><span aria-hidden="true">‹ </span>FY{{ picker.previous }}</a>{% endif %}
+                    <label for="summary-year">Fiscal year</label>
+                    <select id="summary-year" name="year" aria-describedby="summary-year-help">
+                        <option value="latest"{% if picker.latest %} selected{% endif %}>Latest year for each subject</option>
+                        <optgroup label="One fiscal year">
+                            {% for y in picker.choices %}<option value="{{ y }}"{% if not picker.latest and picker.year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+                        </optgroup>
+                    </select>
+                    <button type="submit">Show</button>
+                    {% if picker.next %}<a class="button-link step" href="?view=year&amp;year={{ picker.next }}#results-heading"><span class="visually-hidden">Next year, </span>FY{{ picker.next }}<span aria-hidden="true"> ›</span></a>{% endif %}
+                </span>
             </form>
-            <p id="summary-year-help" class="small">Move the slider (or use the arrow keys), then select "Show this
-                year". Yearly summaries are stored for {% if slider.stored %}{{ slider.stored }}{% else %}no year yet{% endif %}.</p>
-            <p class="year-steps">
-                {% if slider.previous %}<a href="?view=year&amp;year={{ slider.previous }}#results-heading">Previous year (FY{{ slider.previous }})</a>{% endif %}
-                {% if slider.next %}<a href="?view=year&amp;year={{ slider.next }}#results-heading">Next year (FY{{ slider.next }})</a>{% endif %}
-                <a href="{% url 'year-detail' year %}">FY{{ year }}'s published values</a>
-            </p>
+            <p id="summary-year-help" class="small help-line">Pick a fiscal year, or "Latest year for each subject" for each
+                one's most recent summary (the series end in different years), and select "Show".</p>
         {% endif %}
     {% elif f.view == "long" %}
         <h2 id="results-heading">Long-term summaries</h2>
-        <p class="small">Each covers its subject's whole published series and a projection for the next years,
-            with its prediction interval.</p>
+        <p class="small help-line">Each covers its subject's whole published series, with a projection for the next
+            years and its prediction interval.</p>
     {% elif f.view == "range" %}
         <h2 id="results-heading">Summaries between two chosen years</h2>
-        <p class="small">Written on request with "Create a new summary" below.</p>
+        <p class="small help-line">Written on request with <a href="#create">Create a new summary with Gemini</a> at the top of the page.</p>
     {% else %}
         <h2 id="results-heading">Search results</h2>
     {% endif %}
 
-    <p class="small results-line">
-        {% if pages.pages > 1 %}Page {{ pages.page }} of {{ pages.pages }}: stored summaries {{ pages.first }}–{{ pages.last }}
-            of {{ pages.matching }} that match ({{ count }} shown here){% else %}{{ count }} summar{{ count|pluralize:"y,ies" }}{% endif %}{% if groups|length > 1 %} in {{ groups|length }} categories{% endif %}.
-        {% if count %}<a href="{{ export_url }}">Download {% if pages.pages > 1 %}every match{% elif count == 1 %}it{% else %}these{% endif %} as text with sources</a>{% endif %}
-        {% if count > 1 %}<button type="button" class="button-secondary" id="open-all" hidden>Open all</button>{% endif %}
-    </p>
     {% if groups|length > 1 %}
-        <p class="jump-links small">Jump to:
-            {% for g in groups %}<a href="#cat-{{ g.key }}">{{ g.title }} ({{ g.items|length }})</a>{% endfor %}</p>
+        <nav aria-label="Categories on this page" class="jump-links">
+            {% for g in groups %}<a href="#cat-{{ g.key }}">{{ g.title }} <span class="chip-count">{{ g.items|length }}</span></a>{% endfor %}
+        </nav>
     {% endif %}
 
     {% for g in groups %}
         <section aria-labelledby="cat-{{ g.key }}" class="ai-category">
-            <h3 id="cat-{{ g.key }}">{{ g.title }}</h3>
+            <h3 id="cat-{{ g.key }}">{{ g.title }}{% if g.years %} <span class="small">({{ g.years }})</span>{% endif %}</h3>
             {% for item in g.items %}{% include "dashboard/_ai_item.html" %}{% endfor %}
         </section>
     {% empty %}
         <div class="notice">
-            <p><strong>No summaries match{% if f.q %} "{{ f.q }}"{% endif %}{% if f.view == "year" %} for FY{{ year }}{% endif %}.</strong></p>
-            <p>You can <a href="#create">ask Gemini to write one</a>: the form below is filled in from your search.</p>
+            <p><strong>No summaries match{% if f.q %} "{{ f.q }}"{% endif %}{% if f.view == "year" and year %} for FY{{ year }}{% endif %}.</strong></p>
+            <p>You can <a href="#create">ask Gemini to write one</a>: the form at the top of the page is filled in from your search.</p>
         </div>
     {% endfor %}
 
@@ -131,19 +139,13 @@
             <summary>{{ hidden|length }} stored summar{{ hidden|length|pluralize:"y is,ies are" }}{% if pages.pages > 1 %} on this page{% endif %} hidden because
                 {{ hidden|length|pluralize:"it fails,they fail" }} the number check</summary>
             <p class="small">Their text is never shown; each one's page says what the check found. Ask for a new
-                one below, or rerun <code>python -m dashboard.ai_summary</code> for that subject.</p>
+                one at the top of the page, or rerun <code>python -m dashboard.ai_summary</code> for that subject.</p>
             <ul>{% for h in hidden %}<li><a href="{{ h.url }}">{{ h.title }}, {{ h.label }}</a></li>{% endfor %}</ul>
         </details>
     {% endif %}
 
-    <section aria-labelledby="create-heading" id="create">
-        <h2 id="create-heading">Create a new summary</h2>
-        <p>Pick a subject and the year or years to cover, and Gemini will write a summary from the published values.</p>
-        {% include "dashboard/_ai_generate_form.html" %}
-    </section>
-
-    <section aria-labelledby="about-heading" id="about">
-        <h2 id="about-heading">How these summaries are made and checked</h2>
+    <details class="about-panel" id="about">
+        <summary><h2 id="about-heading">How these summaries are made and checked</h2></summary>
         <p>Gemini (or, for two older ones, a rule-based template) sees only the published values for one subject,
             the changes between them, the statistical projection and its error, and the methodology notes. Before a
             summary is stored, and again every time a page shows it, every number in it is checked against the data:
@@ -152,29 +154,35 @@
             changes in shares are in percentage points; comparisons across methodology breaks name them; and the
             headline and caveats carry no figures. A summary that fails is never shown. The check catches most
             numeric errors, not every wrong sentence, so each summary says whether a person has reviewed it.</p>
-    </section>
+    </details>
+
+    {% if count %}
+    <div class="results-bar results-bar-bottom">
+        <p class="small">
+            <strong>{% if pages.pages > 1 %}Page {{ pages.page }} of {{ pages.pages }}: stored summaries {{ pages.first }}–{{ pages.last }}
+                of {{ pages.matching }} that match ({{ count }} shown here){% else %}{{ count }} summar{{ count|pluralize:"y,ies" }}{% endif %}{% if groups|length > 1 %} in {{ groups|length }} categories{% endif %}.</strong>
+            {{ status_line }}
+            {% if f.view == "year" and year %}<a href="{% url 'year-detail' year %}">FY{{ year }}'s published values</a>{% endif %}
+        </p>
+    </div>
+    {% endif %}
+    {% if count %}
+        <p class="download-line" id="download">
+            <a href="{{ export_url }}">Download {% if pages.pages > 1 %}every match ({{ pages.matching }} stored, any that fail
+                the check left out){% elif count == 1 %}this summary{% else %}these {{ count }} summaries{% endif %} as text with sources</a>
+        </p>
+    {% endif %}
     </main>
     <script>
         // Progressive enhancement only: the page works without it.
         (function () {
-            var slider = document.getElementById("summary-year");
-            var shown = document.getElementById("summary-year-value");
-            if (slider && shown) {   // the page changes only when "Show this year" is selected (WCAG 3.2.2)
-                slider.addEventListener("input", function () {
-                    shown.textContent = "FY" + slider.value;
-                    slider.setAttribute("aria-valuetext", "FY" + slider.value);
-                });
+            // A link to a folded panel ("how" in the introduction) opens it.
+            function openTarget() {
+                var target = location.hash && document.getElementById(location.hash.slice(1));
+                if (target && target.tagName === "DETAILS") { target.open = true; }
             }
-            var openAll = document.getElementById("open-all");
-            if (openAll) {
-                openAll.hidden = false;
-                openAll.addEventListener("click", function () {
-                    var items = document.querySelectorAll("details.ai-item");
-                    var open = openAll.textContent === "Open all";
-                    items.forEach(function (d) { d.open = open; });
-                    openAll.textContent = open ? "Close all" : "Open all";
-                });
-            }
+            window.addEventListener("hashchange", openTarget);
+            openTarget();
             document.querySelectorAll(".copy-button").forEach(function (button) {
                 var source = document.getElementById(button.getAttribute("data-copy"));
                 var status = button.parentNode.querySelector(".copy-status");

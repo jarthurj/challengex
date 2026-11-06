@@ -7,28 +7,33 @@
         {{ record.generated_at|slice:":10" }}).{% else %}<strong>Automatically written summary</strong> (rule-based from the published values, not AI;
         {{ record.generated_at|slice:":10" }}).{% endif %}
         {% if record.reviewed %}Reviewed by a person{% if record.reviewed_by %} ({{ record.reviewed_by }}, {{ record.reviewed_at|slice:":10" }}){% endif %}.{% else %}Not yet reviewed by a person; check it against the published values before using it.{% endif %}
-        {% if compact %}Its numbers were checked automatically against the current data.
-        {% else %}Checked automatically against the current data: each number in a statement is a published value,
-        change, labelled projection or backtest error of the metric it cites, for the household group named
-        nearest to it (or all households) and the fiscal year it is given for; rises and falls quoted with a
-        number match the data; changes in shares are in percentage points; comparisons across methodology
-        breaks name them; and the headline and caveats give no figures beyond fiscal years and the numbers
-        in break notes or in why a projection is missing. The check catches most numeric errors, not every
-        wrong sentence.{% endif %}</p>
+        {% if compact %}Its numbers were checked automatically against the current data.{% endif %}</p>
+    {% if not compact %}
+        <details class="check-note">
+            <summary>How its numbers were checked</summary>
+            <p class="small">Checked automatically against the current data: each number in a statement is a published
+                value, change, labelled projection or backtest error of the metric it cites, for the household group
+                named nearest to it (or all households) and the fiscal year it is given for; rises and falls quoted with
+                a number match the data; changes in shares are in percentage points; comparisons across methodology
+                breaks name them; and the headline and caveats give no figures beyond fiscal years and the numbers in
+                break notes or in why a projection is missing. The check catches most numeric errors, not every wrong
+                sentence.</p>
+        </details>
+    {% endif %}
     {% if record.stale %}
         <p class="small"><strong>The data has changed since this summary was written.</strong> It is still shown
             because every check passes against the current data.</p>
     {% endif %}
-    <p><strong>{{ s.headline }}</strong></p>
-    <ul>
+    <p class="ai-headline"><strong>{{ s.headline }}</strong></p>
+    <ul class="ai-statements">
         {% for st in s.statements %}
-            <li>{{ st.text }} <span class="small">(<a href="{% url 'trends' %}?trend={{ st.metric|urlencode }}">{{ st.metric }}</a>,
-                FY{% for y in st.years %}{{ y }}{% if not forloop.last %}, {% endif %}{% endfor %})</span></li>
+            <li>{{ st.text }} <span class="small citation">(<a href="{% url 'trends' %}?trend={{ st.metric|urlencode }}">{{ st.metric_name|default:st.metric }}</a>,
+                {% for y in st.years %}FY{{ y }}{% if not forloop.last %}, {% endif %}{% endfor %})</span></li>
         {% endfor %}
     </ul>
     {% if s.caveats %}
-        <p><strong>Caveats</strong></p>
-        <ul>{% for c in s.caveats %}<li>{{ c }}</li>{% endfor %}</ul>
+        <p class="ai-caveats-heading"><strong>Caveats</strong></p>
+        <ul class="ai-caveats">{% for c in s.caveats %}<li>{{ c }}</li>{% endfor %}</ul>
     {% endif %}
 </div>
 {% endwith %}

@@ -452,9 +452,9 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 216 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 218 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display), `dashboard/test_ai_page.py` (the AI summaries tab: views,
-  slider, search, categories, hidden list, copy and export, summary page, staff review mark, and
+  the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
   failing reply never shown), `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
@@ -524,9 +524,33 @@ analyst should be able to:
     that a spreadsheet would run as formulas are quoted.
 - **`ai_views.py` (AI summaries tab, `/dashboard/ai/`, added 2026-11-06), the only page with AI
   text:** every stored summary in one place, read from the files (no API call on a page load).
-  - **Browse:** tabs "Year by year" (the default: a range slider over the loaded fiscal years with
-    a "Show this year" button, as moving it mustn't reload the page under WCAG 3.2.2, plus
-    previous/next links), "Long term", "Custom ranges", and "Search results".
+  - **Browse:** tabs "Year by year" (the default: a "Fiscal year" dropdown of the years that have
+    a stored yearly summary, latest first, with "Latest year for each subject" as its first
+    option, and a "Show" button, as changing it mustn't reload the page under WCAG 3.2.2;
+    previous/next buttons step through the same years; a `?year=` that isn't in the data says so
+    and shows the latest; "Latest year for each subject", `?year=latest`, is each subject's own most recent
+    yearly summary that passes, grouped by category, as the series end in different years, e.g.
+    First-Class Mail received in FY2023, the per-household figures in FY2024 or FY2025; per
+    category it would always be FY2025, since every topic has one), "Long term", "Custom ranges",
+    and "Search results". The search and
+    filters sit in a folding panel, closed in the browsing views and open on search results;
+    "Create a new summary with Gemini" is a second folding panel right below it (open by itself
+    when nothing matches; links to `#create` open it); "How these summaries are made and checked"
+    folds too (the intro's "how" link opens it); the count bar (summaries, review status, the
+    year's published values) and the download link are last on the page.
+  - **Layout (2026-11-06 design pass, checked in headless-Chrome screenshots):** a status line
+    for the whole list ("All AI-generated, none reviewed by a person yet") instead of three equal
+    badges on every row; each row has one status badge ("AI-generated · not yet reviewed",
+    green when reviewed, "Rule-based, not AI") and its year only where years differ; a topic's own
+    summary is titled "Overview" under its category; folded rows show the headline and the first
+    statement (the figures) as a two-line preview; category headings with a rule, jump chips with
+    counts; previous year, the year dropdown and next year in one toolbar; the create form shows only
+    the year fields its kind needs; "One year" everywhere (not "Year"/"One fiscal year"). The
+    summary page puts "Copy with sources" under its title, folds the check's explanation and the
+    copied text, and citations name the metric instead of its slug (`ai_views._named` adds
+    `metric_name` to each statement; not a template tag library, which a running dev server only
+    picks up after a restart: one briefly broke every AI page). Headless Chrome won't lay a window out narrower than about 485 px, so phone widths
+    still need a real browser check.
   - **Search** (`?q=`, at most 100 characters, every word must match, "FY2019" = "2019") over
     subject, category, kind, years, headline, statements, the cited metrics' names, caveats and
     household groups ("income", "Under $35K"); filters for category, subject, kind, fiscal year
@@ -534,7 +558,7 @@ analyst should be able to:
     list; anything else is ignored.
   - **Grouped by category**: the 8 topic sections, each subject under the first topic that holds
     all its metrics (`ai_summary.category_of`; household-group series under demographics; mixed
-    ones under mail volumes). Jump links, foldable summaries, "Open all", 40 per page; only the
+    ones under mail volumes). Jump links, foldable summaries, 40 per page; only the
     page's summaries are re-checked (`check_batch()` reads the data version once), so a cold
     "all summaries" page takes about 0.5 s, not 2.4.
   - **Hidden ones** are counted and linked (per page); each one's page gives the check's reasons,
@@ -681,7 +705,7 @@ analyst should be able to:
     or 65.8 percent, from 2000 to 2023"; and the old `packages` FY2025 `yearly` record, an unnamed
     FY2025 break). About half the requests of a full run hit 429/503 (free-tier rate limits);
     run the failed sections one at a time with a pause between them.
-    **Then, for the Overview's year slider, the 8 topic sections' yearly summaries for every
+    **Then, for browsing year by year, the 8 topic sections' yearly summaries for every
     fiscal year** (`--section <topic> --kind yearly --year <FY>`, one call at a time 6 s apart;
     208 slots, 13 with no data): **231 of the 257 stored records now show**, and every year
     FY2000–FY2025 has 4 to 8 topic summaries. Of the 31 that failed, 10 passed when their stored
@@ -884,10 +908,9 @@ Measured against the slides' required capabilities and the quality bar above.
 8. **Projections for household groups**, after item 3.
 9. **One projection per line** on the "by category" chart.
 10. ~~Re-run the accessibility checks~~ (done 2026-11-05 after the Tailwind styling: 0
-    violations). Re-run them after any styling change. **Due now:** the Overview's AI summary
-    card and year slider (2026-11-06) passed `test_accessibility.py` but not yet axe-core in a
-    browser (Playwright wasn't installed in this Python); check the range input's contrast and
-    focus ring too. Optional: compile Tailwind to a static CSS
+    violations). Re-run them after any styling change. **Due now:** the AI summaries tab
+    (2026-11-06) passed `test_accessibility.py` but not yet axe-core in a browser (Playwright
+    wasn't installed in this Python). Optional: compile Tailwind to a static CSS
     file (see Styling) so the demo doesn't need the CDN for styles.
 
 **D. Before the demo** (whoever presents)

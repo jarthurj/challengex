@@ -15,14 +15,16 @@
     {% include "dashboard/_messages.html" %}
 
     {% if item %}
-        {% include "dashboard/_ai_summary.html" with record=item.record %}
-        <p class="item-actions">
-            <button type="button" class="button-secondary copy-button" data-copy="summary-copy" hidden>Copy with sources</button>
+        <p class="item-actions page-actions">
+            <button type="button" class="copy-button" data-copy="summary-copy" hidden>Copy with sources</button>
             <span class="copy-status small" role="status" aria-live="polite"></span>
             {% for slug, name in trend_metrics %}<a href="{% url 'trends' %}?trend={{ slug|urlencode }}">See the trend: {{ name }}</a>{% endfor %}
         </p>
-        <h2>Text to copy into a report</h2>
-        <pre class="copy-source copy-visible" id="summary-copy">{{ item.copy }}</pre>
+        {% include "dashboard/_ai_summary.html" with record=item.record %}
+        <details class="copy-panel">
+            <summary>The text "Copy with sources" copies</summary>
+            <pre class="copy-source copy-visible" id="summary-copy">{{ item.copy }}</pre>
+        </details>
 
         <h2>Sources</h2>
         {% if sources %}
@@ -93,7 +95,7 @@
                     navigator.clipboard.writeText(source.textContent).then(function () {
                         status.textContent = "Copied, with its sources.";
                     }, function () {
-                        status.textContent = "Couldn't copy; select the text below instead.";
+                        status.textContent = "Couldn't copy; open the text below the summary and select it instead.";
                     });
                 });
             });

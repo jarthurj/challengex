@@ -1,5 +1,6 @@
 {# "Create a summary": criteria from fixed lists only (no free text reaches the model). Expects #}
-{# subjects, suggest, form_years, live_unavailable, live_left. #}
+{# subjects, suggest, form_years, live_unavailable, live_left. With JavaScript, only the year #}
+{# fields the chosen kind needs are shown; without it, all of them (the server ignores the rest). #}
 <form method="post" action="{% url 'ai-generate' %}" class="filters generate-form" aria-describedby="generate-help">
     {% csrf_token %}
     <label for="gen-section">Subject
@@ -13,31 +14,44 @@
     </label>
     <label for="gen-kind">Kind
         <select id="gen-kind" name="kind">
-            <option value="yearly"{% if suggest.kind == "yearly" %} selected{% endif %}>One fiscal year</option>
+            <option value="yearly"{% if suggest.kind == "yearly" %} selected{% endif %}>One year</option>
             <option value="comparative"{% if suggest.kind == "comparative" %} selected{% endif %}>Long term, with projection</option>
-            <option value="range"{% if suggest.kind == "range" %} selected{% endif %}>Between two fiscal years</option>
+            <option value="range"{% if suggest.kind == "range" %} selected{% endif %}>Custom range (two years)</option>
         </select>
     </label>
-    <label for="gen-year">Fiscal year (one year)
+    <label for="gen-year" data-for-kind="yearly">Fiscal year
         <select id="gen-year" name="year">
             {% for y in form_years %}<option value="{{ y }}"{% if suggest.year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
         </select>
     </label>
-    <label for="gen-from">From (between two years)
+    <label for="gen-from" data-for-kind="range">From
         <select id="gen-from" name="from_year">
             {% for y in form_years %}<option value="{{ y }}"{% if suggest.from_year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
         </select>
     </label>
-    <label for="gen-to">To
+    <label for="gen-to" data-for-kind="range">To
         <select id="gen-to" name="to_year">
             {% for y in form_years %}<option value="{{ y }}"{% if suggest.to_year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
         </select>
     </label>
     <button type="submit"{% if live_unavailable %} disabled aria-disabled="true"{% endif %}>Ask Gemini for this summary</button>
 </form>
-<p id="generate-help" class="small">
+<p id="generate-help" class="small help-line">
     {% if live_unavailable %}{{ live_unavailable }}
-    {% else %}Gemini sees only the published values, changes, projections and methodology notes for the subject
-        and years you pick. Its text goes through the same number check as every other summary: if it fails, it
-        isn't shown. Writing one takes up to a minute. You can ask for {{ live_left }} more this hour.{% endif %}
-    If a summary for the same subject and years already exists, you are taken to it instead.</p>
+    {% else %}Gemini sees only the published values, changes, projections and methodology notes for what you pick.
+        Its text gets the same number check as every other summary, and isn't shown if it fails. It takes up to a
+        minute; {{ live_left }} more can be asked for this hour.{% endif %}
+    If that summary already exists, you're taken to it instead.</p>
+<script>
+    (function () {   // show only the year fields the chosen kind uses
+        var kind = document.getElementById("gen-kind");
+        if (!kind) { return; }
+        function update() {
+            document.querySelectorAll(".generate-form [data-for-kind]").forEach(function (field) {
+                field.hidden = field.getAttribute("data-for-kind") !== kind.value;
+            });
+        }
+        kind.addEventListener("change", update);
+        update();
+    })();
+</script>

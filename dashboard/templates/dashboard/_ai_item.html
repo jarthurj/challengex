@@ -1,13 +1,15 @@
-{# One summary in a list: a foldable row (subject, kind and years, badges, headline) and its text. #}
-{# Expects `item` (from ai_views._item) and `open_all`. #}
+{# One summary in a list: a folded row (title, one status badge, the year where years differ, #}
+{# the headline and the first statement as a preview) and its text. Expects `item`, `open_all`, `mixed_years`. #}
 <details class="ai-item" id="{{ item.dom_id }}"{% if open_all %} open{% endif %}>
     <summary>
-        <span class="ai-item-title">{{ item.title }}</span>
-        <span class="badge">{{ item.label }}</span>
-        {% if item.record.ai_generated %}<span class="badge">AI-generated</span>{% else %}<span class="badge">Rule-based</span>{% endif %}
-        {% if item.record.reviewed %}<span class="badge badge-ok">Reviewed</span>{% else %}<span class="badge badge-warn">Not yet reviewed</span>{% endif %}
-        {% if item.record.stale %}<span class="badge">Data changed since</span>{% endif %}
+        <span class="ai-item-head">
+            <span class="ai-item-title"><span class="chevron" aria-hidden="true"></span>{{ item.short_title }}{% if item.short_title != item.title %}<span class="visually-hidden">: {{ item.title }}</span>{% endif %}</span>
+            {% if mixed_years %}<span class="badge">{{ item.label }}</span>{% endif %}
+            <span class="badge {{ item.status_style }}">{{ item.status }}</span>
+            {% if item.record.stale %}<span class="badge">Data changed since</span>{% endif %}
+        </span>
         <span class="ai-item-headline">{{ item.record.summary.headline }}</span>
+        {% if item.preview %}<span class="ai-item-preview">{{ item.preview }}</span>{% endif %}
     </summary>
     {% include "dashboard/_ai_summary.html" with record=item.record compact=True %}
     <p class="item-actions">

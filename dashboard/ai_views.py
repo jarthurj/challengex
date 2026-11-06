@@ -52,23 +52,76 @@ def _filters(request):
     status = _choice(g.get("status"), STATUSES)
     searching = bool(q or section or category or kind or status)
     view = _choice(g.get("view"), VIEWS, "search" if searching else "year")
+    raw_year = g.get("year", "").strip()
+    year = year_param(raw_year, years)
+    latest = raw_year == "latest" and view == "year"   # each subject's own latest year
     return {"q": q, "view": view, "section": section, "category": category, "kind": kind, "status": status,
-            "year": year_param(g.get("year", ""), years), "years": years}
+            "year": year, "years": years, "latest": latest,
+            # a typed year that isn't in the data: say so (cut short; escaped by the template)
+            "bad_year": raw_year[:12] if raw_year and year is None and raw_year != "latest" else ""}
 
 
 def _label(record):
     return f'{a.KIND_LABELS.get(record.get("kind"), "Summary")}, {a.years_label(record)}'.strip(", ")
 
 
+PREVIEW_CHARS = 220   # the first statement, shown under a folded summary's headline
+
+
+def _preview(record):
+    """The first statement: the headlines are often generic, the statements carry the figures."""
+    statements = a._statements(record)
+    text = " ".join(str(statements[0].get("text", "")).split()) if statements else ""
+    return text if len(text) <= PREVIEW_CHARS else text[:PREVIEW_CHARS].rsplit(" ", 1)[0] + " …"
+
+
+def _status(record):
+    """One badge for how a summary was made and whether a person has read it: (text, style)."""
+    if not record.get("ai_generated"):
+        return "Rule-based, not AI", ""
+    return ("AI-generated · reviewed", "badge-ok") if record.get("reviewed") else ("AI-generated · not yet reviewed",
+                                                                                  "badge-warn")
+
+
+def _named(record):
+    """A copy of the record whose statements also carry their metric's display name, for the
+    citation link (done here, not with a template tag library: a new one needs a server restart)."""
+    summary = dict(record.get("summary") or {})
+    summary["statements"] = [{**s, "metric_name": a.metric_name(s.get("metric"))} for s in a._statements(record)]
+    return {**record, "summary": summary}
+
+
 def _item(entry, record):
     section, key = entry["section"], entry["key"]
+    title = a.SECTIONS[section][0]
+    status, status_style = _status(record)
     return {
-        "section": section, "key": key, "record": record,
+        "section": section, "key": key, "record": _named(record),
         "dom_id": f"s-{section}-{key}".replace(":", "-"),
-        "title": a.SECTIONS[section][0], "label": _label(record),
+        "title": title, "label": _label(record),
+        # a topic's own summary sits under its own name as the category heading: call it what it is
+        "short_title": "Overview" if a.category_of(section) == section else title,
+        "preview": _preview(record), "status": status, "status_style": status_style,
         "url": reverse("ai-summary", args=[section, key]),
         "copy": a.plain_text(section, record),
     }
+
+
+def _status_line(groups):
+    """One line for the whole list, so each row needn't repeat it: '12 not yet reviewed, 2 reviewed'."""
+    items = [i for g in groups for i in g["items"]]
+    if not items:
+        return ""
+    ai = [i for i in items if i["record"].get("ai_generated")]
+    reviewed = sum(1 for i in ai if i["record"].get("reviewed"))
+    parts = []
+    if ai:
+        parts.append(f"{'All' if len(ai) == len(items) else len(ai)} AI-generated, "
+                     + ("none reviewed by a person yet" if not reviewed else
+                        "all reviewed by a person" if reviewed == len(ai) else f"{reviewed} reviewed by a person"))
+    if len(ai) < len(items):
+        parts.append(f"{len(items) - len(ai)} rule-based")
+    return "; ".join(parts) + "."
 
 
 def _hidden_reason(entry):
@@ -89,7 +142,7 @@ def _results(f, page=1, per_page=None):
     yearly_years = sorted({e["record"]["fiscal_year"] for e in entries
                            if e["record"].get("kind") == "yearly" and a.is_year(e["record"].get("fiscal_year"))})
     year = f["year"]
-    if f["view"] == "year":
+    if f["view"] == "year" and not f["latest"]:
         year = year or (yearly_years[-1] if yearly_years else (f["years"][-1] if f["years"] else None))
         entries = [e for e in entries if e["record"].get("fiscal_year") == year]
     elif f["view"] == "search" and year is not None:
@@ -98,6 +151,11 @@ def _results(f, page=1, per_page=None):
     entries = [e for e in entries if a.matches(e, terms)]
     if f["status"]:
         entries = [e for e in entries if bool(e["record"].get("reviewed")) == (f["status"] == "reviewed")]
+    if f["view"] == "year" and f["latest"]:
+        groups, hidden = _latest_by_subject(entries)
+        count = sum(len(g["items"]) for g in groups)
+        return groups, hidden, None, yearly_years, {"page": 1, "pages": 1, "matching": count, "first": 1,
+                                                    "last": count}
     entries.sort(key=lambda e: (a.CATEGORY_ORDER.index(a.category_of(e["section"])),
                                 a.entry_order(e["section"], e["record"])))
     pages = max(1, -(-len(entries) // per_page)) if per_page else 1
@@ -122,6 +180,37 @@ def _results(f, page=1, per_page=None):
             groups.append({"key": category, "title": a.TOPIC_SECTIONS[category][0], "items": items})
     info["last"] = info["first"] + len(entries) - 1
     return groups, hidden, year, yearly_years, info
+
+
+def _latest_by_subject(entries):
+    """Each subject's yearly summary for the latest fiscal year it has one that passes its check for
+    (an earlier year when the latest one is hidden), grouped by category. The series end in different
+    years (First-Class Mail received in FY2023, the per-household ones in FY2024 or FY2025), so each
+    subject shows its own latest. Only the summaries looked at are re-checked. Returns (groups, each
+    with "years", the fiscal years it shows; hidden entries looked at)."""
+    by_section = {}
+    for e in entries:
+        if e["record"].get("kind") == "yearly" and a.is_year(e["record"].get("fiscal_year")):
+            by_section.setdefault(e["section"], []).append(e)
+    latest, hidden = [], []
+    with a.check_batch():
+        for section, candidates in by_section.items():
+            for e in sorted(candidates, key=lambda e: -e["record"]["fiscal_year"]):
+                record = a.shown(section, e["record"])
+                if record:
+                    latest.append(_item(e, record))
+                    break
+                hidden.append({"title": a.SECTIONS[section][0], "label": _label(e["record"]),
+                               "url": reverse("ai-summary", args=[section, e["key"]])})
+    groups = []
+    for category in a.CATEGORY_ORDER:
+        items = sorted((i for i in latest if a.category_of(i["section"]) == category),
+                       key=lambda i: a.entry_order(i["section"], i["record"]))
+        if items:
+            years = sorted({i["record"]["fiscal_year"] for i in items})
+            groups.append({"key": category, "title": a.TOPIC_SECTIONS[category][0], "items": items,
+                           "years": a.year_spans(years)})
+    return groups, hidden
 
 
 def _suggestion(f, year):
@@ -208,20 +297,26 @@ def ai_summaries(request):
     page = int(asked_page) if asked_page.isascii() and asked_page.isdigit() and len(asked_page) < 5 else 1
     groups, hidden, year, yearly_years, pages = _results(f, page, PER_PAGE)
     count = sum(len(g["items"]) for g in groups)
-    slider = None
-    if f["view"] == "year" and year is not None and f["years"]:
-        slider = {"year": year, "min": f["years"][0], "max": f["years"][-1],
-                  "previous": max((y for y in f["years"] if y < year), default=None),
-                  "next": min((y for y in f["years"] if y > year), default=None),
+    picker = None   # the year view's dropdown: each subject's latest year, then the fiscal years
+    if f["view"] == "year" and f["years"]:
+        # the years that have a stored yearly summary (all loaded years if none is stored yet), latest first
+        choices = sorted(yearly_years or f["years"], reverse=True)
+        picker = {"year": year, "min": f["years"][0], "max": f["years"][-1], "latest": f["latest"],
+                  "choices": choices,
+                  "previous": max((y for y in choices if y < year), default=None) if year else None,
+                  "next": min((y for y in choices if y > year), default=None) if year else None,
                   "stored": a.year_spans(yearly_years)}
     query = {k: v for k, v in {"q": f["q"], "view": f["view"], "section": f["section"], "category": f["category"],
-                               "kind": f["kind"], "status": f["status"], "year": year or ""}.items() if v}
+                               "kind": f["kind"], "status": f["status"],
+                               "year": "latest" if f["latest"] else (year or "")}.items() if v}
     if pages["pages"] > 1:
         pages["previous_url"] = f"?{urlencode({**query, 'page': pages['page'] - 1})}" if pages["page"] > 1 else None
         pages["next_url"] = (f"?{urlencode({**query, 'page': pages['page'] + 1})}"
                              if pages["page"] < pages["pages"] else None)
     return render(request, "dashboard/ai_summaries.html", {
-        "f": f, "groups": groups, "hidden": hidden, "count": count, "year": year, "slider": slider, "pages": pages,
+        "f": f, "groups": groups, "hidden": hidden, "count": count, "year": year, "picker": picker, "pages": pages,
+        "status_line": _status_line(groups),
+        "mixed_years": f["view"] != "year" or f["latest"],   # rows show their year only where years differ
         "open_all": count <= OPEN_ALL_UP_TO,
         "views": VIEWS, "kinds": KIND_CHOICES, "statuses": STATUSES,
         "categories": [(k, a.TOPIC_SECTIONS[k][0]) for k in a.CATEGORY_ORDER],

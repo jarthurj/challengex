@@ -70,18 +70,32 @@ class AiPageTests(TestCase):
         self.assertEqual(a.category_of("first-class-mail-received-by-category"), "mail-volumes-and-flows")
         self.assertEqual(a.category_of("executive-summary"), "executive-summary")
 
-    def test_year_by_year_is_the_default_with_a_slider(self):
+    def test_year_by_year_is_the_default_with_a_year_dropdown(self):
         self.store("executive-summary", yearly("Packages were 6,300 million pieces in FY2020.", 2020))
         self.store("packages", yearly("Packages were 6,300 million pieces in FY2020.", 2020))
         self.store("packages-volume", yearly("Packages were 6,700 million pieces in FY2023.", 2023))
         html = self.page()
         self.assertIn("<h2 id=\"results-heading\">FY2023, year by year</h2>", html)   # the latest stored year
         self.assertEqual(html.count('class="ai-item"'), 1)
-        self.assertRegex(html, r'type="range" id="summary-year" name="year" min="2000" max="2025"\s+step="1" value="2023"')
+        self.assertNotIn('type="range"', html)                                         # no slider
+        self.assertNotRegex(html, r'<input[^>]+type="number"')                          # no typing box
         self.assertIn('<label for="summary-year">Fiscal year</label>', html)
-        self.assertIn("stored for FY2020, FY2023.", html)
-        self.assertIn('href="?view=year&amp;year=2022#results-heading"', html)
-        self.assertIn('href="?view=year&amp;year=2024#results-heading"', html)
+        # the dropdown: each subject's latest year first, then the years with a stored summary, latest first
+        select = html[html.index('<select id="summary-year"'):html.index("</select>", html.index('<select id="summary-year"'))]
+        options = re.findall(r'<option value="([^"]+)"( selected)?>([^<]+)</option>', select)
+        self.assertEqual([(v, t) for v, _, t in options],
+                         [("latest", "Latest year for each subject"), ("2023", "FY2023"), ("2020", "FY2020")])
+        self.assertEqual([v for v, s, _ in options if s], ["2023"])
+        self.assertIn('<optgroup label="One fiscal year">', select)
+        self.assertNotIn('class="button-link"', html[html.index('class="year-pick toolbar"'):])   # no separate button
+        self.assertRegex(html, r'</select>\s*<button type="submit">Show</button>')
+        # one toolbar: previous year, the dropdown, next year, stepping through the years it lists
+        toolbar = html[html.index('class="year-pick toolbar"'):html.index("</form>", html.index('class="year-pick toolbar"'))]
+        self.assertLess(toolbar.index("Previous year, "), toolbar.index('id="summary-year"'))
+        self.assertIn('href="?view=year&amp;year=2020#results-heading"', html)
+        self.assertNotIn("Next year, ", html)
+        self.assertIn("All AI-generated, none reviewed by a person yet.", html)   # said once, for the whole list
+        self.assertNotIn('<span class="badge">One year, FY2023</span>', html)     # the year is in the heading
         # another year: grouped by category, topic and subject sections together
         html = self.page("?view=year&year=2020")
         self.assertEqual(html.count('class="ai-item"'), 2)
@@ -93,9 +107,83 @@ class AiPageTests(TestCase):
         html = self.page("?view=year&year=2010")
         self.assertIn("No summaries match for FY2010", html)
         self.assertRegex(html, r'(?s)<select id="gen-year" name="year">.*?<option value="2010" selected>')
-        # values that aren't loaded fiscal years fall back to the default
-        for bad in ("1999", "abc", "2020.0", "２０２０", "-1", "9" * 5000):
-            self.assertIn("FY2023, year by year", self.page(f"?view=year&year={bad}"))
+        # a typed year that isn't in the data falls back to the default, and says so
+        for bad in ("1999", "abc", "2020.0", "２０２０", "-1", "9" * 5000, "<b>1</b>"):
+            html = " ".join(self.page(f"?view=year&year={bad}").split())
+            self.assertIn("FY2023, year by year", html)
+            self.assertIn("isn't a fiscal year in the data (FY2000 to FY2025), so FY2023 is shown", html)
+            self.assertNotIn("<b>1</b>", html)
+        self.assertIn(" 2020 ", self.page("?view=year&year=%202020%20").replace('"', " "))   # spaces are fine
+
+    def test_the_latest_year_for_each_subject(self):
+        self.store("executive-summary", yearly("Packages were 6,300 million pieces in FY2020.", 2020),
+                   yearly("Packages were 6,700 million pieces in FY2023.", 2023))
+        self.store("packages-volume", yearly("Packages were 6,300 million pieces in FY2020.", 2020),
+                   yearly("Packages were 6,700 million pieces in FY2023.", 2023))
+        self.store("packages-per-household",
+                   yearly("Packages were 9,999 pieces per household in FY2025.", 2025,
+                          metric="packages-per-household"),                             # fails: hidden
+                   yearly("Packages were 47.0 pieces per household per year in FY2020.", 2020,
+                          metric="packages-per-household"))                             # so this one shows
+        self.store("periodicals-volume", yearly("Periodicals were 3,900 million pieces in FY2020.", 2020,
+                                                metric="periodicals-volume"))
+        self.store("periodicals", record("Periodicals over time.", metric="periodicals-volume"))   # long term
+        html = self.page("?view=year&year=latest")
+        self.assertIn("The latest year for each subject", html)
+        self.assertIn('<option value="latest" selected>Latest year for each subject</option>', html)
+        dropdown = html[html.index('<select id="summary-year"'):html.index("</select>", html.index('<select id="summary-year"'))]
+        self.assertNotRegex(dropdown, r'<option value="20\d\d" selected>')   # no fiscal year is the selection
+        # each subject from its own latest year with a summary that shows, grouped by category
+        self.assertEqual(html.count('class="ai-item"'), 4)   # yearly summaries only, one per subject
+        self.assertIn('<h3 id="cat-executive-summary">Executive summary <span class="small">(FY2023)</span></h3>', html)
+        self.assertIn('<h3 id="cat-packages">Packages <span class="small">(FY2020, FY2023)</span></h3>', html)
+        self.assertIn('<h3 id="cat-periodicals">Periodicals <span class="small">(FY2020)</span></h3>', html)
+        self.assertIn("Packages per household (One year, FY2020)", html)     # its FY2025 one is hidden
+        self.assertNotIn("Packages sent and received by households (One year, FY2020)", html)   # FY2023 is its latest
+        self.assertIn('<span class="badge">One year, FY2020</span>', html)   # years differ here, so rows say theirs
+        self.assertIn('<span class="chevron" aria-hidden="true"></span>Overview<span class="visually-hidden">: '
+                      'Executive summary</span>', html)   # a topic's own summary, under its own heading
+        self.assertIn("1 stored summary is hidden", " ".join(html.split()))
+        self.assertNotIn("Previous year", html)
+        self.assertIn('href="/dashboard/ai/export.txt?view=year&amp;year=latest"', html)
+        self.assertIn("Periodicals were 3,900", self.client.get("/dashboard/ai/export.txt?view=year&year=latest")
+                      .content.decode())
+        # it narrows like the other views: one category
+        self.assertEqual(self.page("?view=year&year=latest&category=packages").count('class="ai-item"'), 2)
+
+    def test_folding_panels_and_the_download_link_at_the_bottom(self):
+        self.store("packages-volume", yearly("Packages were 6,700 million pieces in FY2023.", 2023))
+        year_view = self.page()
+        # the search is a folded panel in the year view (the slider comes first), open on search results
+        self.assertIn('<details class="search-panel" id="search">', year_view)
+        self.assertLess(year_view.index('class="search-panel"'), year_view.index('name="q"'))
+        self.assertIn('<details class="search-panel" id="search" open>', self.page("?q=packages"))
+        self.assertIn('<summary>Search and filter the summaries: "packages"</summary>', self.page("?q=packages"))
+        # "How these summaries are made and checked" folds too, and the introduction's link opens it
+        self.assertIn('<details class="about-panel" id="about">', year_view)
+        self.assertIn('<summary><h2 id="about-heading">How these summaries are made and checked</h2></summary>',
+                      year_view)
+        self.assertIn('href="#about"', year_view)
+        # the download link is the last thing on the page, after the explanation
+        main = year_view[:year_view.index("</main>")]
+        self.assertGreater(main.index('id="download"'), main.index('id="about"'))
+        self.assertIn('href="/dashboard/ai/export.txt?view=year&amp;year=2023"', main[main.index('id="download"'):])
+        self.assertEqual(main.count("/dashboard/ai/export.txt"), 1)
+        self.assertNotIn('id="download"', self.page("?q=zebra"))   # nothing to download
+        # the count bar is at the bottom too, right above the download link, after the summaries
+        self.assertLess(main.index('class="ai-category"'), main.index('class="results-bar'))
+        self.assertLess(main.index('id="about"'), main.index('class="results-bar'))
+        self.assertLess(main.index('class="results-bar'), main.index('id="download"'))
+        self.assertEqual(main.count('class="results-bar'), 1)
+        # "Create a new summary" is a folded panel at the top, next to the search panel and before the tabs
+        self.assertIn('<details class="search-panel create-panel" id="create">', main)
+        self.assertLess(main.index('id="search"'), main.index('id="create"'))
+        self.assertLess(main.index('id="create"'), main.index('class="tabs"'))
+        self.assertIn("<summary>Create a new summary with Gemini</summary>", main)
+        # ... and it opens by itself when nothing matches, since the notice points to it
+        nothing = self.page("?q=zebra")
+        self.assertIn('<details class="search-panel create-panel" id="create" open>', nothing)
+        self.assertIn('<a href="#create">ask Gemini to write one</a>: the form at the top of the page', nothing)
 
     def test_long_term_and_range_views(self):
         self.store("packages", record("Packages were 6,700 million pieces in FY2023."),
@@ -141,7 +229,8 @@ class AiPageTests(TestCase):
         self.assertIn('No summaries match "packages 2019"', html)
         self.assertIn('<option value="packages" selected>', html)
         self.assertRegex(html, r'(?s)<select id="gen-year" name="year">.*?<option value="2019" selected>')
-        self.assertRegex(html, r'<option value="yearly" selected>One fiscal year')
+        self.assertRegex(html, r'<option value="yearly" selected>One year')
+        self.assertIn('<label for="gen-from" data-for-kind="range">', html)   # shown only for a range
 
     def test_a_long_search_is_cut_and_escaped(self):
         html = self.page("?q=" + "<b>x</b>" * 50)
@@ -193,7 +282,8 @@ class AiPageTests(TestCase):
         self.store("packages-volume", yearly("Packages were 6,700 million pieces in FY2023.", 2023))
         html = self.page("?section=packages-volume")
         copy = re.search(r'<pre class="copy-source" id="[^"]+" hidden>(.*?)</pre>', html, re.S).group(1)
-        self.assertIn("Packages sent and received by households (Year, FY2023)", copy)
+        self.assertIn("Packages sent and received by households (One year, FY2023)", copy)
+        self.assertIn("Packages were 6,700 million pieces in FY2023.", html[html.index('class="ai-item-preview"'):])
         self.assertIn("- Packages were 6,700 million pieces in FY2023. [Packages sent and received by households; FY2023]", copy)
         self.assertIn("Not yet reviewed by a person.", copy)
         self.assertIn("FY2023: FY2023 report, page 10 (not verified against the PDF)", copy)
@@ -208,7 +298,10 @@ class AiPageTests(TestCase):
         response = self.client.get("/dashboard/ai/packages-volume/yearly:2023/")
         self.assertEqual(response.status_code, 200)
         html = response.content.decode()
-        self.assertIn("<h1>Packages sent and received by households: Year, FY2023</h1>", html)
+        self.assertIn("<h1>Packages sent and received by households: One year, FY2023</h1>", html)
+        self.assertIn("<summary>How its numbers were checked</summary>", html)   # folded, not a wall of text
+        self.assertIn('(<a href="/dashboard/trends/?trend=packages-volume">Packages sent and received by households</a>,'
+                      "\n                FY2023)", html)   # citations name the metric, not its slug
         self.assertIn("&lt;i&gt;were&lt;/i&gt;", html)
         self.assertNotIn("<i>were</i>", html)
         self.assertIn("FY2023 report, page 10", html)
@@ -241,7 +334,7 @@ class AiPageTests(TestCase):
         self.assertTrue(stored["reviewed"])
         self.assertEqual(stored["reviewed_by"], "analyst")
         self.assertIn("Reviewed by a person (analyst,", self.page("?section=packages-volume"))
-        self.assertIn('class="badge badge-ok">Reviewed', self.page("?section=packages-volume"))
+        self.assertIn('class="badge badge-ok">AI-generated · reviewed', self.page("?section=packages-volume"))
         self.client.post(url, {"reviewed": "0"})
         self.assertFalse(a._load_file("packages-volume")["summaries"]["yearly:2023"]["reviewed"])
         # a summary that fails its check can't be marked
