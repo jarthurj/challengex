@@ -81,7 +81,9 @@ class BrowserTests(TestCase):
         baseline = len(self.listing().context["tables"])
         odd = self.listing(section="<script>", ocr="x", review="1; DROP TABLE", year="abc")
         self.assertEqual(len(odd.context["tables"]), baseline)
-        self.assertNotContains(odd, "<script>")
+        # nothing from the hostile values reaches the page (the nav's own script is expected)
+        self.assertEqual(odd.content.count(b"<script"), self.listing().content.count(b"<script"))
+        self.assertNotContains(odd, "DROP TABLE")
 
     def test_list_shows_text_badges(self):
         page = self.listing(ocr="only").content.decode()

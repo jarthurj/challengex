@@ -40,14 +40,17 @@ class PageStructureTests(TestCase):
             self.assertIn('<nav aria-label="Main navigation"', page, name)
             self.assertEqual(page.count('<main id="main">'), 1, name)
             self.assertEqual(page.count("<h1"), 1, name)
-            self.assertIn("dashboard/base.css", page, name)
+            # the shared styles (_head.html): Tailwind pinned with an integrity hash, like Chart.js
+            self.assertIn("@tailwindcss/browser@4.1.11/dist/index.global.js", page, name)
+            self.assertRegex(page, r'tailwindcss/browser[^>]*integrity="sha384-[^"]+"', name)
 
     def test_current_page_is_marked_in_the_navigation(self):
         for name, url in self.pages().items():
             if name == "table":
                 continue
             page = self.client.get(url).content.decode()
-            self.assertEqual(page.count('aria-current="page"'), 1, name)
+            nav = page[page.index('<nav aria-label="Main navigation"'):page.index("</nav>")]
+            self.assertEqual(nav.count('aria-current="page"'), 1, name)  # the CSS names it too
 
     def test_headings_do_not_skip_levels(self):
         for name, url in self.pages().items():
