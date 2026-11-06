@@ -45,6 +45,11 @@
             </canvas>
         </div>
         <p id="chart-status" role="status"></p>
+        <p class="item-actions page-actions">
+            <button type="button" class="copy-button" data-copy="chart-copy" hidden>Copy the values with sources</button>
+            <span class="copy-status small" role="status" aria-live="polite"></span>
+            <a href="{% url 'trend-csv' %}?{{ request.GET.urlencode }}">Download as CSV</a>
+        </p>
         {% if forecast.points %}
             <section aria-labelledby="projection-heading">
                 {% with last_row=forecast_rows|last %}
@@ -107,8 +112,45 @@
             </section>
         {% elif forecast.reason %}
             <p class="notice">No projection: {{ forecast.reason }}</p>
-        {% elif category_chart %}
-            <p class="notice">Projections are shown when a single metric is selected.</p>
+        {% elif category_projections %}
+            <section aria-labelledby="projection-heading">
+                <h3 id="projection-heading">Projections, one per category</h3>
+                <p class="notice"><strong>These are statistical projections, not published USPS figures.</strong>
+                    Each category is projected on its own, with the model that had the lowest error when tested
+                    on years it hadn't seen; the dashed lines on the chart continue each series in its colour.
+                    Their 80% and 95% prediction intervals are in the tables (bands for three lines would hide
+                    each other). They can't anticipate events such as a pandemic, rate changes or a new survey design.</p>
+                {% for p in category_projections %}
+                    <h4>{{ p.metric.name }}</h4>
+                    {% if p.forecast.points %}
+                        <p><strong>Model:</strong> {{ p.forecast.model_name }}{% if not p.forecast.beats_naive %} (no trend model beat repeating the last value, so the projection is flat){% endif %}.
+                            <strong>Fitted on:</strong> FY{{ p.forecast.fit_years.0 }}–FY{{ p.forecast.fit_years.1 }}{% if p.forecast.after_break %}, the years from the FY{{ p.forecast.after_break }} methodology change on{% endif %}.
+                            {% for row in p.forecast.backtest %}{% if row.chosen %}Backtest mean absolute error: {{ row.mae|floatformat:"0g" }} ({{ unit_label|lower }}){% if row.vs_naive is not None %}, {{ row.vs_naive|floatformat:2 }} times the naive baseline's{% endif %}.{% endif %}{% endfor %}
+                            {% if p.forecast.crossed_breaks %}<span class="review">This window crosses later methodology changes ({% for y in p.forecast.crossed_breaks %}FY{{ y }}{% if not forloop.last %}, {% endif %}{% endfor %}).</span>{% endif %}</p>
+                        <div class="table-wrapper">
+                            <table>
+                                <caption>{{ p.metric.name }}: projected values ({{ unit_label }})</caption>
+                                <thead><tr>
+                                    <th scope="col">Fiscal year</th><th scope="col">Projection</th>
+                                    <th scope="col">80% interval</th><th scope="col">95% interval</th>
+                                </tr></thead>
+                                <tbody>
+                                    {% for row in p.rows %}
+                                        <tr>
+                                            <td>{{ row.year }}</td>
+                                            <td>{{ row.value }}</td>
+                                            <td>{{ row.lo80 }} to {{ row.hi80 }}</td>
+                                            <td>{{ row.lo95 }} to {{ row.hi95 }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="notice">No projection: {{ p.forecast.reason }}</p>
+                    {% endif %}
+                {% endfor %}
+            </section>
         {% endif %}
         {% if breaks %}
             <h3>Changes in survey methodology</h3>
@@ -119,8 +161,13 @@
             </ul>
         {% endif %}
         <h3>Values and sources</h3>
-        <p><a href="{% url 'trend-csv' %}?{{ request.GET.urlencode }}">Download these values{% if forecast.points %} and the projection{% endif %} as CSV</a>
+        <p><a href="{% url 'trend-csv' %}?{{ request.GET.urlencode }}">Download these values{% if forecast.points %} and the projection{% elif category_projections %} and the projections{% endif %} as CSV</a>
             (with source report, page and verification status for every value).</p>
+        <details class="copy-panel">
+            <summary>Text copied by "Copy the values with sources"</summary>
+            <p class="small">Columns are separated by tabs, so it pastes into a spreadsheet or a Word table.</p>
+            <pre class="copy-source copy-visible" id="chart-copy">{{ copy_text }}</pre>
+        </details>
         <div class="table-wrapper">
             <table>
                 <caption>Preferred observations. Source report years can differ from the fiscal years measured.</caption>
@@ -223,10 +270,12 @@
                                     filter: (item, chartData) => !chartData.datasets[item.datasetIndex].legendHidden
                                 }},
                                 methodologyMarkers: {breaks: data.breaks},
-                                tooltip: {callbacks: {
+                                tooltip: {
+                                    // Where a projection joins its line, the point is a published value.
+                                    filter: (item) => !(item.dataset.projection && item.dataIndex === item.dataset.joinIndex),
+                                    callbacks: {
                                     afterLabel(context) {
-                                        if (context.dataset.label.startsWith("Projection") ||
-                                            context.dataset.label.startsWith("80%")) {
+                                        if (context.dataset.projection) {
                                             return ["Projection, not a published figure"];
                                         }
                                         const source = context.dataset.sources[context.dataIndex];
@@ -248,6 +297,22 @@
                 }
             }
             loadChart();
+
+            // Copy the values with sources: shown only where the browser can copy.
+            document.querySelectorAll(".copy-button").forEach(function (button) {
+                const source = document.getElementById(button.getAttribute("data-copy"));
+                const status = button.parentNode.querySelector(".copy-status");
+                if (!source || !navigator.clipboard) return;
+                button.hidden = false;
+                button.addEventListener("click", function () {
+                    status.textContent = "";   // so copying again is announced again
+                    navigator.clipboard.writeText(source.textContent).then(function () {
+                        status.textContent = "Copied the values with their sources.";
+                    }, function () {
+                        status.textContent = "Couldn't copy; open the text under the values table and select it instead.";
+                    });
+                });
+            });
         </script>
     {% endif %}
     </main>

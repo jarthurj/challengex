@@ -452,12 +452,12 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 218 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 226 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display), `dashboard/test_ai_page.py` (the AI summaries tab: views,
   the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
   failing reply never shown), `dashboard/test_demographics.py` (household-group
-  tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
+  tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page and its copy text), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
   (sections incl. FY2003, review reasons, browser filters, survey forms
@@ -503,9 +503,21 @@ analyst should be able to:
     - The fit uses the trailing run of consecutive years, starting at the latest methodology break
       that still leaves 8 years (e.g. FY2010–FY2023 for First-Class totals). Breaks it can't avoid
       are flagged (bills paid by mail crosses FY2024 and FY2025).
-    - Series with fewer than 8 consecutive years (the FY2025 demographic segments) and the
-      category chart get no projection, with the reason shown.
+    - Series with fewer than 8 consecutive years (the FY2025 demographic segments) get no
+      projection, with the reason shown.
+    - The "by category" chart (2026-11-06) projects each line on its own series and its own
+      breaks, as a dash-dot line (a pattern no published line uses) in that line's colour; no
+      bands there (three would hide each other), so each line's 80%/95% intervals, model, fit
+      years and backtest error are in a table. The point where a projection joins its line is a
+      published value, so it has no projection marker or tooltip (`joinIndex`).
     - Labelled as projections on the chart, in tooltips, and in a table with both intervals.
+  - **Copy the values with sources** (2026-11-06), under the chart: a tab-separated table (pastes
+    into a spreadsheet or a Word table) with the title, unit and group, every published value with
+    its source report, page, table and verification, the missing years ("left as gaps"), the
+    methodology changes, then the projections labelled as not published figures, with both
+    intervals, the model and the fit years (`trend_views.copy_text`). Rendered escaped in a
+    `<pre>` (also visible in a folding panel), copied by progressive enhancement like the AI tab.
+    The CSV export includes every line's projection.
 - **`overview_views.py`:**
   - **Overview** (`/dashboard/`; the site root redirects here): KPI cards for six headline
     series (`KPIS`) with the latest published value, the change vs. 5 and 10 years earlier
@@ -877,9 +889,9 @@ Measured against the slides' required capabilities and the quality bar above.
    - Needs `ANTHROPIC_API_KEY` in `.env` (git-ignored) and the `anthropic` package pinned in
      `requirements.txt`. Then the optional "Ask the data" box, with its input treated as
      untrusted.
-2. **Copy into a report.** Summaries: done (2026-11-06, the AI tab's "Copy with sources" and
-   text download). Still missing: a copy button for a chart's values with their sources (CSV
-   export exists on the Year and Trends pages).
+2. ~~**Copy into a report.**~~ Done 2026-11-06: summaries (the AI tab's "Copy with sources" and
+   text download) and the Trends chart ("Copy the values with sources", plus CSV). The Year page
+   has CSV only.
 
 **B. Data**
 3. **FY2021 household-group tables** are OCR'd and wrong. Transcribe its six tables (3.2, 3.4,
@@ -906,7 +918,7 @@ Measured against the slides' required capabilities and the quality bar above.
 
 **C. Forecasts and UI**
 8. **Projections for household groups**, after item 3.
-9. **One projection per line** on the "by category" chart.
+9. ~~**One projection per line** on the "by category" chart.~~ Done 2026-11-06.
 10. ~~Re-run the accessibility checks~~ (done 2026-11-05 after the Tailwind styling: 0
     violations). Re-run them after any styling change. **Due now:** the AI summaries tab
     (2026-11-06) passed `test_accessibility.py` but not yet axe-core in a browser (Playwright
