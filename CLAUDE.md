@@ -452,7 +452,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 156 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 190 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display), `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
@@ -553,8 +553,82 @@ analyst should be able to:
   asks Gemini for a headline, statements and caveats, checks the numbers and stores the result in
   `dashboard/ai_summaries/<section>.json` (model, prompt version, input hash, `reviewed`). Pages
   only read those files; the commented-out live-call code in the views stays off. Needs
-  `GEMINI_API_KEY` in `.env` only to generate (see `.env.example`). A subagent review on
-  2026-11-05 found the number check too loose and every stored summary stale; see To do A1.
+  `GEMINI_API_KEY` in `.env` only to generate (see `.env.example`).
+  - **The check (`validate_ai_summary`, hardened 2026-11-05 after four subagent reviews):**
+    - **Whose number:** each number in a statement is about the household group named nearest to
+      it in its clause (by its segment label, "Under $35K"; tenure by "renters"/"homeowners"; "all
+      households"/"overall" for the total; a group named after it counts only with no other figure
+      between), else the group named last before it, else all households. It must belong to that
+      group's series of the metric the statement cites, in the fiscal years it cites.
+    - **Which year:** a value belongs to the year written right after it ("6,700 million in
+      FY2023"), else the nearest year before it in its clause (not a change's base year after
+      "from"/"since"/"than"; the second number of a range "7,900 to 9,200" takes the first one's;
+      "from A to B" after a named span "From FY2018 to FY2023" takes the span's two years).
+      With no year and more than one cited year it is refused ("say which fiscal year"). A value
+      that is only a projection or interval needs "projected"/"forecast"/"interval" in the
+      sentence. The backtest error is allowed when the sentence says "backtest"/"error".
+    - **Which change:** a change must be a precomputed one between the years the sentence names:
+      "from/since/between/than/over/above/below FY...", "FY2013-FY2023", "its FY2010 level",
+      "to FY2023", "five/10 years", "decade", "year over year", "the previous year". When the
+      cited years allow more than one starting year and none is named, it is refused.
+    - **How it is written decides what it must be:** "percentage points" is a change in a share;
+      "%" on a count is a percent change; a share never changes "by percent"; a number right after
+      "rose/fell (by)" or "by", or before "more"/"below", is a change.
+    - **Direction:** rise/fall words (a long list: "surged", "plunged", "exceeded"...) and signs
+      must match the change's sign; the word right after the number decides first, then the
+      nearest before it. Any other verb ending in -ed/-es right before a change is refused unless
+      neutral ("changed", "totaled"). "rose from A to B" must have B above A.
+    - **Breaks:** a statement whose published years straddle breaks of its metric must name every
+      one of them with its fiscal year, in the break word's own phrase ("across the FY2024 and
+      FY2025 methodology breaks", "the FY2005, FY2010 and FY2012 breaks", "the break in FY2010");
+      denials ("there was no break", "No, it
+      does not") fail. Breaks after the last published year (a projection) don't count.
+    - **Headline and caveats** carry no figures except fiscal years (a caveat may repeat a number
+      from a break note or from why a projection is missing). Break-note numbers are never values.
+    - Quantities in words are refused ("half", "twelve", "a third", "seven-fold"; "five years",
+      "ten years" and "three age groups" are allowed). Fixed phrases ("80% prediction interval",
+      "5 years") are not data, except right after a rise/fall word ("fell 10 years in a row").
+      Texts over 1,500 characters are refused; the look-behind windows are short, so a check
+      stays well under a second.
+    - **Known limits:** a rise/fall word with no number next to it ("...and volumes went up",
+      "increased, falling 17.3%") isn't checked; differences that aren't precomputed ("rose 1,300
+      from FY2019 to FY2020", a gap between groups) are refused, not computed; "households aged
+      65+" isn't recognised as the "65 and Over" group (so its figures are refused); "unchanged at
+      114.4 from FY2022 to FY2023" is refused (say the year right after the value); a statement
+      saying the right numbers with a wrong reason isn't caught. It is a strict filter, not a
+      proof: wrong text it misses is why `reviewed` exists.
+    - Tests: `test_ai_summary.py` holds the rule tests (with the reviews' near misses) and
+      an eval set of known FY2023 facts: packages, bills, household groups, a projection,
+      break-note numbers and the headline.
+  - **The input (prompt `summary-v2`):** every change that straddles a break lists
+    `crosses_methodology_breaks`, and `since_latest_break` gives the change within the current
+    method. The instructions spell out the rules above: group labels right before their figures,
+    a value's year right after it, a change's years, the allowed direction words, "projected"
+    with its interval, every crossed break named, percentage points, digits only, and no figures
+    in the headline or caveats.
+  - **Staleness:** pages show a stored summary only if it passed when made and passes again
+    against the current data with the current check (`shown()`). The result is cached per data
+    version (observation count, max id, sums of values, years, segments, metrics and report
+    years, preferred and verified counts, breaks' text and metrics) and per hash of the record's
+    text, so a hand edit of the JSON is re-checked. A malformed file or record is treated as
+    having no summary. If its `input_hash` no longer matches, it is labelled "The data has
+    changed since this summary was written". On 2026-11-05 all 71 stored summaries were stale and
+    19 still passed (16 yearly FY2023, 3 yearly FY2020); the rest (mostly comparisons across the
+    2010/2024/2025 breaks that don't name them, or figures in headlines) are hidden until
+    regenerated with `summary-v2`.
+  - **Saving (`save_summary`):** a new summary that fails its check never replaces one that pages
+    still show (including an old file's bare `yearly` record for that year); it goes under
+    `"rejected"` in the same file (pages never read it) and the command prints its problems.
+    Saving rewrites a hand-damaged file in the right shape (entries that aren't records are
+    dropped); a hand-edited `fiscal_year` that isn't a whole number is skipped by the pages. A
+    passing one replaces the old one and clears the rejected entry. A record marked `reviewed`
+    is kept when the new one came from identical input and the reviewed one still passes.
+    Failures are not retried automatically: run that section again (each request counts against
+    `--max-calls`).
+  - **Still open:** 64 of the 71 stored records are "rule-based template (no AI)" and the code
+    that wrote them isn't in the repo, so they can't be reproduced; `reviewed` can only be set
+    by editing the JSON; the commented-out live-call code in the views must not be switched on
+    without a POST button and a rate limit (`load_dotenv` also only runs in the CLI).
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
   `docs/`, including the slides. The team decided to keep it out of git.
 
@@ -669,9 +743,11 @@ Measured against the slides' required capabilities and the quality bar above.
 
 **A. Required by the challenge, not built yet**
 1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3). Built by
-   the team with Gemini on 2026-11-05 (see Current code state); being hardened after a review
-   (number check tied to cited metric and years, direction and percentage-point checks,
-   break-crossing changes, staleness). The original design notes follow. Covers the Overview's
+   the team with Gemini on 2026-11-05 and hardened the same day (see Current code state).
+   Remaining: regenerate the summaries with prompt `summary-v2` (needs `GEMINI_API_KEY`; most
+   stored ones are hidden now), commit the rule-based generator or drop its records, a way to
+   mark summaries reviewed without hand-editing JSON, and a POST button with a rate limit before
+   any live call. The original design notes follow. Covers the Overview's
    AI summary card and plain-language "what changed and why" text an analyst can copy into a
    report with its citations.
    - Design: an `Insight` model; a `generate_insights` command run offline (pages never call the
