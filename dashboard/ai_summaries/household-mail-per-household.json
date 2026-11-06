@@ -8,33 +8,34 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "All household mail per household: published values for FY2025 and how they moved.",
+        "headline": "Summary of household mail statistics for fiscal year 2025.",
         "statements": [
           {
-            "text": "In FY2025, All household mail per household was 637.3 (pieces per household per year). That fell by 44.7 (6.6%) from the previous year, FY2024. That fell by 199.7 (23.9%) from five years earlier, FY2020.",
+            "text": "For all households, the metric all household mail per household was 637.3 pieces per household per year in FY2025, falling by 44.7 pieces per household per year from the previous year across the FY2025 methodology break, and falling by 199.7 pieces per household per year from 5 years earlier across the FY2024 and FY2025 methodology breaks.",
             "metric": "household-mail-per-household",
             "years": [
-              2025,
+              2020,
               2024,
-              2020
+              2025
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "ac4432302c2255a752bab98b8091dc55b84506a80a2f41843c48596b44453e4a",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "a64917aa0764d5e15bdfb970ab0c3ef703762dc0dc23fa73fab6301de251bcf6",
+      "generated_at": "2026-11-06T16:47:17+00:00",
       "sources": [
         {
           "metric": "household-mail-per-household",
@@ -46,17 +47,17 @@
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -69,36 +70,58 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "All household mail per household: long-term change in the published values, FY2014 to FY2025.",
+        "headline": "Comparative summary of household mail per household across reporting years",
         "statements": [
           {
-            "text": "All household mail per household (pieces per household per year) went from 1,074.7 in FY2014 to 637.3 in FY2025: it fell by 437.4 (40.7%) over the period. Since FY2020 (five years earlier) it fell by 199.7 (23.9%). Since FY2015 (ten years earlier) it fell by 403.3 (38.8%).",
+            "text": "For All households, all household mail per household fell by 437.4 pieces per household per year from 2014 to 2025 across the FY2024 and FY2025 methodology breaks.",
             "metric": "household-mail-per-household",
             "years": [
               2014,
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "For All households, all household mail per household decreased by 403.3 pieces per household per year from 2015 to 2025 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "household-mail-per-household",
+            "years": [
+              2015,
+              2025
+            ]
+          },
+          {
+            "text": "For All households, all household mail per household declined by 199.7 pieces per household per year from 2020 to 2025 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "household-mail-per-household",
+            "years": [
               2020,
-              2015
+              2025
+            ]
+          },
+          {
+            "text": "For All households, all household mail per household dropped by 44.7 pieces per household per year from 2024 to 2025 across the FY2025 methodology break.",
+            "metric": "household-mail-per-household",
+            "years": [
+              2024,
+              2025
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for All household mail per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "All household mail per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design renamed the Household Mail Survey, with changes to age bands and the definition of Large MSA.",
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "ecf5107741da6703aca129cc1d6f97e05ea8a694bed46ddfdc1e1d31264ac0e3",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "6a6a43bfd2944a79567870dcdc501b51b8377a187313015faa234aa685a8d419",
+      "generated_at": "2026-11-06T16:47:19+00:00",
       "sources": [
         {
           "metric": "household-mail-per-household",
@@ -110,32 +133,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         }

@@ -8,30 +8,50 @@
       "fiscal_year": 2023,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Marketing Mail advertising received: published values for FY2023 and how they moved.",
+        "headline": "Overview of Marketing Mail advertising received statistics for fiscal year 2023.",
         "statements": [
           {
-            "text": "In FY2023, Marketing Mail advertising received was 51,942 (millions of pieces). That fell by 6,629 (11.3%) from the previous year, FY2022. That fell by 15,739 (23.3%) from five years earlier, FY2018.",
+            "text": "For All households, marketing-mail-ads-received was 51,942.0 millions of pieces in FY2023.",
             "metric": "marketing-mail-ads-received",
             "years": [
-              2023,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, marketing-mail-ads-received decreased by 6,629.0 millions of pieces from FY2022 to FY2023.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
               2022,
-              2018
+              2023
+            ]
+          },
+          {
+            "text": "For All households, marketing-mail-ads-received fell by 15,739.0 millions of pieces from FY2018 to FY2023.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2018,
+              2023
             ]
           }
         ],
-        "caveats": []
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The FY2020 A8-12 drops the note but its pre-2007 values are no lower.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly offsets the Detached Address Label double count; 2007 itself is understated.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "bcaf8555c875fcfeea3ad2f908667e56d6a6d8afa9fd6777a8c40832682b650d",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "8b161cb131d7c57e02cd2dcf6ca04297fd04e8da5a0de6ce6ef681e58b419e6e",
+      "generated_at": "2026-11-06T16:51:15+00:00",
       "sources": [
         {
           "metric": "marketing-mail-ads-received",
@@ -43,32 +63,32 @@
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -81,43 +101,88 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Marketing Mail advertising received: long-term change in the published values, FY2000 to FY2023.",
+        "headline": "Long-Term Trends and Projections for Marketing Mail Advertising Received from FY2000 to FY2028",
         "statements": [
           {
-            "text": "Marketing Mail advertising received (millions of pieces) went from 60,496 in FY2000 to 51,942 in FY2023: it fell by 8,554 (14.1%) over the period. Since FY2018 (five years earlier) it fell by 15,739 (23.3%). Since FY2013 (ten years earlier) it fell by 22,423 (30.2%).",
+            "text": "For All households, Marketing Mail advertising received fell by 8,554.0 millions of pieces, or 14.1 percent, from FY2000 to FY2023, across the FY2007, FY2008, and FY2010 methodology breaks.",
             "metric": "marketing-mail-ads-received",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Holt's exponential smoothing model, fitted on FY2010 to FY2023, puts Marketing Mail advertising received at 40,343 in FY2028 (80% range 27,631 to 53,054). On past years it beat the naive baseline.",
+            "text": "For All households, Marketing Mail advertising received decreased by 20,992.0 millions of pieces, or 28.8 percent, since the latest break from FY2010 to FY2023.",
             "metric": "marketing-mail-ads-received",
             "years": [
-              2023,
+              2010,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, Marketing Mail advertising received declined by 22,423.0 millions of pieces, or 30.2 percent, over 10 years from FY2013 to FY2023.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2013,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, Marketing Mail advertising received dropped by 15,739.0 millions of pieces, or 23.3 percent, over 5 years from FY2018 to FY2023.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, Marketing Mail advertising received decreased by 6,629.0 millions of pieces, or 11.3 percent, from the previous year from FY2022 to FY2023.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, the projected Marketing Mail advertising received is 50,617.0 millions of pieces in FY2024, with an 80% prediction interval 43,656.0 to 57,579.0, beating the naive baseline.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For All households, the projected Marketing Mail advertising received is 48,049.0 millions of pieces in FY2025, with an 80% prediction interval 37,768.0 to 58,330.0.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "For All households, the projected Marketing Mail advertising received is 40,343.0 millions of pieces in FY2028, with an 80% prediction interval 27,631.0 to 53,054.0.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
               2028
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
-          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design renamed the Household Mail Survey, changing age bands and redefining Large MSA."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "2dd211f3ab2a4f9683639d506ad891d93ce6a463b7b595fe229ed825f9e096ee",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "7ca1e55b627eb3428571816c61d8899adecf5f69e0d83a64a809404e283e4b1f",
+      "generated_at": "2026-11-06T16:46:31+00:00",
       "sources": [
         {
           "metric": "marketing-mail-ads-received",
@@ -129,122 +194,122 @@
             "2000": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         }

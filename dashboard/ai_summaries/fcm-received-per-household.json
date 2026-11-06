@@ -8,32 +8,48 @@
       "fiscal_year": 2024,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class Mail received per household: published values for FY2024 and how they moved.",
+        "headline": "Summary of First-Class Mail received per household statistics for fiscal year 2024.",
         "statements": [
           {
-            "text": "In FY2024, First-Class Mail received per household was 221.7 (pieces per household per year). That fell by 22.7 (9.3%) from the previous year, FY2023. That fell by 67.1 (23.2%) from five years earlier, FY2019.",
+            "text": "For All households, the metric First-Class Mail received per household was 221.7 pieces per household per year in FY2024.",
             "metric": "fcm-received-per-household",
             "years": [
-              2024,
+              2024
+            ]
+          },
+          {
+            "text": "For All households, First-Class Mail received per household decreased by 22.7 pieces per household per year from the previous year across the FY2024 methodology break.",
+            "metric": "fcm-received-per-household",
+            "years": [
               2023,
-              2019
+              2024
+            ]
+          },
+          {
+            "text": "For All households, First-Class Mail received per household fell by 67.1 pieces per household per year from 2019 to FY2024 across the FY2024 methodology break.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2019,
+              2024
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "9b9032253c31b9a92bd3e4be92b1b2f752ea53d73ab0df3bbd5f0438890bf16a",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "ac44c8271b1e72eeddfd7eecf078c4a95c3c8a5535970a0e94288ac06f2cd801",
+      "generated_at": "2026-11-06T16:45:41+00:00",
       "sources": [
         {
           "metric": "fcm-received-per-household",
@@ -45,32 +61,32 @@
             "2019": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -83,40 +99,78 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class Mail received per household: long-term change in the published values, FY2014 to FY2024.",
+        "headline": "A long-term comparative analysis of First-Class Mail received per household shows declining volumes alongside drift projections through FY2029.",
         "statements": [
           {
-            "text": "First-Class Mail received per household (pieces per household per year) went from 348.2 in FY2014 to 221.7 in FY2024: it fell by 126.5 (36.3%) over the period. Since FY2019 (five years earlier) it fell by 67.1 (23.2%).",
+            "text": "For All households, First-Class Mail received per household fell by 126.5 pieces per household per year from 2014 to 2024, across the FY2024 methodology break.",
             "metric": "fcm-received-per-household",
             "years": [
               2014,
-              2024,
-              2019
+              2024
             ]
           },
           {
-            "text": "Projection, not a published figure: the Drift model, fitted on FY2014 to FY2024, puts First-Class Mail received per household at 158.4 in FY2029 (80% range 142.1 to 174.8). On past years it beat the naive baseline.",
+            "text": "For All households, First-Class Mail received per household fell by 126.5 pieces per household per year from 10 years earlier, across the FY2024 methodology break.",
             "metric": "fcm-received-per-household",
             "years": [
-              2024,
+              2014,
+              2024
+            ]
+          },
+          {
+            "text": "For All households, First-Class Mail received per household fell by 67.1 pieces per household per year from 2019 to 2024, across the FY2024 methodology break.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2019,
+              2024
+            ]
+          },
+          {
+            "text": "For All households, First-Class Mail received per household decreased by 22.7 pieces per household per year from 2023 to 2024, across the FY2024 methodology break.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2023,
+              2024
+            ]
+          },
+          {
+            "text": "For All households, the projected First-Class Mail received per household is 209.0 pieces per household per year in 2025, with an 80% prediction interval 201.7 to 216.4.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "For All households, the projected First-Class Mail received per household is 196.4 pieces per household per year in 2026, with an 80% prediction interval 185.8 to 207.0.",
+            "metric": "fcm-received-per-household",
+            "years": [
+              2026
+            ]
+          },
+          {
+            "text": "For All households, the projected First-Class Mail received per household is 158.4 pieces per household per year in 2029, with an 80% prediction interval 142.1 to 174.8.",
+            "metric": "fcm-received-per-household",
+            "years": [
               2029
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "9c8a432de2a0e19ce54b03c004ab06119348387a3dfdd859a85bf37ac6ba4ae5",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "7b3e950c7fafa0bf797ba9747ace53f6a2826bb772e8f3a3250c59f05c4d6d66",
+      "generated_at": "2026-11-06T16:45:43+00:00",
       "sources": [
         {
           "metric": "fcm-received-per-household",
@@ -128,57 +182,57 @@
             "2014": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 57,
-              "verified": false
+              "verified": true
             }
           }
         }

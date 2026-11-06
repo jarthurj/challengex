@@ -8,53 +8,59 @@
       "fiscal_year": 2023,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Transactions mail received per household: published values for FY2023 and how they moved.",
+        "headline": "An overview of transactions mail received per household in fiscal year 2023 across demographic segments.",
         "statements": [
           {
-            "text": "In FY2023, Transactions mail received per household was 114.4 (pieces per household per year). That was unchanged from the previous year, FY2022. That fell by 31.2 (21.4%) from five years earlier, FY2018.",
+            "text": "For all households, transactions-received-per-household was 114.4 pieces per household per year in FY2023, unchanged from FY2022 and down from 145.6 pieces per household per year in FY2018.",
             "metric": "transactions-received-per-household",
             "years": [
-              2023,
+              2018,
               2022,
-              2018
-            ]
-          },
-          {
-            "text": "By income in FY2023, Transactions mail received per household (pieces per household per year) was highest for $65K to $100K at 130.0 and lowest for Under $35K at 72.8.",
-            "metric": "transactions-received-per-household",
-            "years": [
               2023
             ]
           },
           {
-            "text": "By age in FY2023, Transactions mail received per household (pieces per household per year) was highest for Over 55 at 145.6 and lowest for Under 35 at 57.2.",
+            "text": "For Under $35K, transactions-received-per-household was 72.8 pieces per household per year in FY2023, falling from 83.2 pieces per household per year in FY2022 and down from 114.4 pieces per household per year in FY2018.",
             "metric": "transactions-received-per-household",
             "years": [
+              2018,
+              2022,
               2023
             ]
           },
           {
-            "text": "By education in FY2023, Transactions mail received per household (pieces per household per year) was highest for High school graduate at 124.8 and lowest for Less than high school at 98.8.",
+            "text": "For Over $100K, transactions-received-per-household was 119.6 pieces per household per year in FY2023, decreasing from 130.0 pieces per household per year in FY2022 and down from 171.6 pieces per household per year in FY2018.",
             "metric": "transactions-received-per-household",
             "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For Over 55, transactions-received-per-household was 145.6 pieces per household per year in FY2023, unchanged from FY2022 and down from 182.0 pieces per household per year in FY2018.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2018,
+              2022,
               2023
             ]
           }
         ],
         "caveats": [
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Comparisons across methodology breaks for transactions-received-per-household should be made cautiously due to restatements and survey changes."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "21601077a6c88dc501711fbecfb349b650a32868af2fd0978e03240595c27138",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0c83223c61d768d2af63b1f5205dfc2246dd18295bd5b327642622a1d48ae033",
+      "generated_at": "2026-11-06T17:01:13+00:00",
       "sources": [
         {
           "metric": "transactions-received-per-household",
@@ -66,27 +72,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -100,27 +106,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -134,27 +140,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -168,27 +174,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -202,27 +208,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -236,27 +242,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -270,27 +276,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -304,27 +310,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -338,27 +344,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -372,27 +378,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -406,27 +412,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -440,27 +446,27 @@
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -473,62 +479,80 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Transactions mail received per household: long-term change in the published values, FY2003 to FY2023.",
+        "headline": "Long-term trends across all demographic segments show significant declines in transactions mail received per household from FY2003 and FY2014 through FY2023.",
         "statements": [
           {
-            "text": "Transactions mail received per household (pieces per household per year) went from 275.6 in FY2003 to 114.4 in FY2023: it fell by 161.2 (58.5%) over the period. Since FY2018 (five years earlier) it fell by 31.2 (21.4%). Since FY2013 (ten years earlier) it fell by 104.0 (47.6%).",
+            "text": "For all households, transactions mail received per household fell by 161.2 pieces per household per year, or 58.5 percent, from FY2003 to FY2023 across the FY2010, FY2012, FY2013, FY2014, FY2015, and FY2017 methodology breaks.",
             "metric": "transactions-received-per-household",
             "years": [
               2003,
-              2023,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, transactions mail received per household decreased by 104.0 pieces per household per year, or 47.6 percent, from FY2013 to FY2023 across the FY2014, FY2015, and FY2017 methodology breaks.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2013,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, transactions mail received per household declined by 31.2 pieces per household per year, or 21.4 percent, from FY2018 to FY2023.",
+            "metric": "transactions-received-per-household",
+            "years": [
               2018,
-              2013
-            ]
-          },
-          {
-            "text": "By income in FY2023, Transactions mail received per household (pieces per household per year) was highest for $65K to $100K at 130.0 and lowest for Under $35K at 72.8.",
-            "metric": "transactions-received-per-household",
-            "years": [
               2023
             ]
           },
           {
-            "text": "By age in FY2023, Transactions mail received per household (pieces per household per year) was highest for Over 55 at 145.6 and lowest for Under 35 at 57.2.",
+            "text": "For $35K to $65K, transactions mail received per household dropped by 114.4 pieces per household per year, or 52.4 percent, from FY2014 to FY2023 across the FY2015 and FY2017 methodology breaks.",
             "metric": "transactions-received-per-household",
             "years": [
+              2014,
               2023
             ]
           },
           {
-            "text": "By education in FY2023, Transactions mail received per household (pieces per household per year) was highest for High school graduate at 124.8 and lowest for Less than high school at 98.8.",
+            "text": "For Over $100K, transactions mail received per household decreased by 166.4 pieces per household per year, or 58.2 percent, from FY2014 to FY2023 across the FY2015 and FY2017 methodology breaks.",
             "metric": "transactions-received-per-household",
             "years": [
+              2014,
+              2023
+            ]
+          },
+          {
+            "text": "For Under $35K, transactions mail received per household fell by 93.6 pieces per household per year, or 56.2 percent, from FY2014 to FY2023 across the FY2015 and FY2017 methodology breaks.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2014,
+              2023
+            ]
+          },
+          {
+            "text": "For Under 35, transactions mail received per household dropped by 88.4 pieces per household per year, or 60.7 percent, from FY2014 to FY2023 across the FY2015 and FY2017 methodology breaks.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2014,
               2023
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for Transactions mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Transactions mail received per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
-          "Methodology change in FY2012: Correspondence/transactions split reclassified (FY2012 report). Comparisons across it should be cautious.",
-          "Methodology change in FY2013: Transactions restated: 2011 questionnaire (FY2013 report). Comparisons across it should be cautious.",
-          "Methodology change in FY2014: Weighting by home ownership (household-group tables). Comparisons across it should be cautious.",
-          "Methodology change in FY2015: Correspondence/transactions split reclassified (FY2015 report). Comparisons across it should be cautious.",
-          "Methodology change in FY2017: Correspondence/transactions split reclassified (FY2017 report). Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
+          "Multiple methodology breaks across fiscal years affect weighting, contractor changes, and reclassifications, so comparisons across these breaks must be made with caution."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "8dbc9e16c85f93c397a28071aa79eceb6823ecc6a4e8ad59ade80b73cb9dede2",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "b6fbffeec87d8d33033cade6be62cfdce2d08ca758236a0852b5f33b42f0460f",
+      "generated_at": "2026-11-06T16:47:06+00:00",
       "sources": [
         {
           "metric": "transactions-received-per-household",
@@ -540,92 +564,92 @@
             "2003": {
               "report_year": 2003,
               "page": 40,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2005,
               "page": 34,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2006,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2007,
               "page": 36,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2008,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2009,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2010,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2012,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2013,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -639,47 +663,47 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -693,47 +717,47 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -747,47 +771,47 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -801,47 +825,47 @@
             "2014": {
               "report_year": 2014,
               "page": 38,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -855,47 +879,47 @@
             "2014": {
               "report_year": 2014,
               "page": 38,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -909,47 +933,47 @@
             "2014": {
               "report_year": 2014,
               "page": 38,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -963,47 +987,47 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -1017,47 +1041,47 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -1071,47 +1095,47 @@
             "2014": {
               "report_year": 2014,
               "page": 38,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 40,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -1125,47 +1149,47 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -1179,51 +1203,52 @@
             "2014": {
               "report_year": 2014,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 39,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 35,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 37,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 41,
-              "verified": false
+              "verified": true
             }
           }
         }
       ]
     }
-  }
+  },
+  "rejected": {}
 }

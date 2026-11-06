@@ -8,59 +8,66 @@
       "fiscal_year": 2020,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Correspondence: published values for FY2020 and how they moved.",
+        "headline": "Summary of correspondence metrics for fiscal year 2020",
         "statements": [
           {
-            "text": "In FY2020, Correspondence per household was 125.1 (pieces per household per year). That rose by 7.6 (6.5%) from the previous year, FY2019. That fell by 17.3 (12.1%) from five years earlier, FY2015.",
+            "text": "For all households, correspondence-per-household was 125.1 pieces per household per year in FY2020, which rose by 7.6 pieces per household per year from FY2019 and fell by 17.3 pieces per household per year from FY2015 to FY2020.",
             "metric": "correspondence-per-household",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, Correspondence mail received per household was 104.0 (pieces per household per year). That fell by 5.2 (4.8%) from the previous year, FY2019. That rose by 5.2 (5.3%) from five years earlier, FY2015.",
+            "text": "For all households, correspondence-received-per-household was 104.0 pieces per household per year in FY2020, which decreased by 5.2 pieces per household per year from FY2019 and increased by 5.2 pieces per household per year from FY2015 to FY2020 across the FY2017 methodology break.",
             "metric": "correspondence-received-per-household",
             "years": [
-              2020,
+              2015,
+              2017,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, First-Class correspondence received was 14,005 (millions of pieces). That fell by 98 (0.7%) from the previous year, FY2019. That fell by 999 (6.7%) from five years earlier, FY2015.",
+            "text": "For all households, fcm-received-correspondence was 14005.0 millions of pieces in FY2020, which decreased by 98.0 millions of pieces from FY2019 and fell by 999.0 millions of pieces from FY2015 to FY2020.",
             "metric": "fcm-received-correspondence",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           },
           {
-            "text": "In FY2020, First-Class correspondence sent was 3,346 (millions of pieces). That rose by 27 (0.8%) from the previous year, FY2019. That fell by 1,261 (27.4%) from five years earlier, FY2015.",
+            "text": "For all households, fcm-sent-correspondence was 3346.0 millions of pieces in FY2020, which increased by 27.0 millions of pieces from FY2019 and declined by 1261.0 millions of pieces from FY2015 to FY2020.",
             "metric": "fcm-sent-correspondence",
             "years": [
-              2020,
+              2015,
               2019,
-              2015
+              2020
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2017: Correspondence/transactions split reclassified (FY2017 report). Comparisons across it should be cautious."
+          "Definition of correspondence was recalculated for FY 2006 and 2007, and numbers do not compare to previously published reports (FY2008 report).",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2012 report restated earlier years in Table E.2, so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "The FY2015, FY2017, and other reports restated earlier years in Table E.2, so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF, restating 2014-2023 on its own basis.",
+          "FY2025 used a new survey design (renamed the Household Mail Survey) with changed age bands and redefined Large MSA."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "892fb2abcaeb8cb44b67c75103d60904b4def97a4fab4e9c4cb7051eff317275",
-      "generated_at": "2026-11-05T11:04:59+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "ec2eb274805b85eb250524a857cb8424d97efd785d3edcfe54918f89c74cd20b",
+      "generated_at": "2026-11-06T16:45:14+00:00",
       "sources": [
         {
           "metric": "correspondence-per-household",
@@ -72,17 +79,17 @@
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -96,32 +103,32 @@
             "2015": {
               "report_year": 2015,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 28,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 29,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -135,32 +142,32 @@
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -174,32 +181,32 @@
             "2015": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -212,90 +219,70 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Correspondence: long-term change in the published values, FY2000 to FY2025.",
+        "headline": "Long-term trends across correspondence metrics show overall declines spanning multiple methodology breaks.",
         "statements": [
           {
-            "text": "Correspondence per household (pieces per household per year) went from 135.1 in FY2014 to 98.6 in FY2025: it fell by 36.5 (27.0%) over the period. Since FY2020 (five years earlier) it fell by 26.5 (21.2%). Since FY2015 (ten years earlier) it fell by 43.8 (30.8%).",
+            "text": "For all households, Correspondence per household fell from 135.1 pieces per household per year in FY2014 to 98.6 pieces per household per year in FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "correspondence-per-household",
             "years": [
               2014,
-              2025,
-              2020,
-              2015
+              2025
             ]
           },
           {
-            "text": "Correspondence mail received per household (pieces per household per year) went from 130.0 in FY2003 to 98.8 in FY2023: it fell by 31.2 (24.0%) over the period. Since FY2018 (five years earlier) it fell by 15.6 (13.6%). Since FY2013 (ten years earlier) it rose by 15.6 (18.7%).",
+            "text": "For all households, Correspondence mail received per household decreased from 130.0 pieces per household per year in FY2003 to 98.8 pieces per household per year in FY2023, across the FY2008, FY2010, FY2012, FY2014, FY2015, and FY2017 methodology breaks.",
             "metric": "correspondence-received-per-household",
             "years": [
               2003,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "First-Class correspondence received (millions of pieces) went from 19,470 in FY2000 to 12,864 in FY2023: it fell by 6,606 (33.9%) over the period. Since FY2018 (five years earlier) it fell by 1,911 (12.9%). Since FY2013 (ten years earlier) it fell by 2,633 (17.0%).",
+            "text": "For all households, First-Class correspondence received decreased from 19,470.0 million of pieces in FY2000 to 12,864.0 million of pieces in FY2023, across the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts First-Class correspondence received at 12,113 in FY2028 (80% range 11,509 to 12,717). On past years it beat the naive baseline.",
+            "text": "For all households, First-Class correspondence received has a projected value of 13,068.0 million of pieces in FY2024, with an 80% prediction interval 12,694.0 to 13,442.0.",
             "metric": "fcm-received-correspondence",
             "years": [
-              2023,
-              2028
+              2024
             ]
           },
           {
-            "text": "First-Class correspondence sent (millions of pieces) went from 9,512 in FY2000 to 2,305 in FY2023: it fell by 7,207 (75.8%) over the period. Since FY2018 (five years earlier) it fell by 1,136 (33.0%). Since FY2013 (ten years earlier) it fell by 2,611 (53.1%).",
+            "text": "For all households, First-Class correspondence sent decreased from 9,512.0 million of pieces in FY2000 to 2,305.0 million of pieces in FY2023, across the FY2010 methodology break.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts First-Class correspondence sent at 1,572 in FY2028 (80% range 983 to 2,162). On past years it beat the naive baseline.",
+            "text": "For all households, First-Class correspondence sent has a projected value of 2,421.0 million of pieces in FY2024, with an 80% prediction interval 1,983.0 to 2,858.0.",
             "metric": "fcm-sent-correspondence",
             "years": [
-              2023,
-              2028
+              2024
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for Correspondence per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Correspondence per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "No projection is shown for Correspondence mail received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Correspondence mail received per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2008: Correspondence redefined (FY2008 report). Comparisons across it should be cautious.",
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
-          "Methodology change in FY2012: Correspondence/transactions split reclassified (FY2012 report). Comparisons across it should be cautious.",
-          "Methodology change in FY2014: Weighting by home ownership (household-group tables). Comparisons across it should be cautious.",
-          "Methodology change in FY2015: Correspondence/transactions split reclassified (FY2015 report). Comparisons across it should be cautious.",
-          "Methodology change in FY2017: Correspondence/transactions split reclassified (FY2017 report). Comparisons across it should be cautious."
+          "Projections need at least 8 consecutive annual values; Correspondence per household and Correspondence mail received per household have fewer, so none is shown.",
+          "Multiple methodology breaks and restatements affect correspondence metrics, so comparisons across them must be cautious."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "a24a9b1b8d105b5d536b3ecd567058f6d399ad3340444205eff7dbb7d05feed9",
-      "generated_at": "2026-11-05T11:04:59+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0c490fd352c4a8ccafe155e0861b1d48a7f645e37ebb5359f5c0be7b30c711f2",
+      "generated_at": "2026-11-06T16:49:23+00:00",
       "sources": [
         {
           "metric": "correspondence-per-household",
@@ -307,32 +294,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -346,92 +333,92 @@
             "2003": {
               "report_year": 2003,
               "page": 31,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2005,
               "page": 25,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2006,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2007,
               "page": 27,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2008,
               "page": 28,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2009,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2010,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2012,
               "page": 31,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2013,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2014,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2015,
               "page": 30,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2016,
               "page": 28,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2017,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2018,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2019,
               "page": 26,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2020,
               "page": 29,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2022,
               "page": 20,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 30,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -445,122 +432,122 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -574,122 +561,3795 @@
             "2000": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 74,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 79,
-              "verified": false
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2025": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2025",
+      "fiscal_year": 2025,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of fiscal year 2025 household mail survey statistics.",
+        "statements": [
+          {
+            "text": "All households received 98.6 pieces per household per year in FY2025 for correspondence-per-household.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "Correspondence-per-household increased by 1.4 pieces per household per year from the previous year across the FY2025 methodology break.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "Correspondence-per-household fell by 26.5 pieces per household per year from 2020 across the FY2024 and FY2025 methodology breaks.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2020,
+              2025
+            ]
+          }
+        ],
+        "caveats": [
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "65662ced34957b8ead69c2a0cf72269446d05830c0ca7d30a3f256591e0e7d8e",
+      "generated_at": "2026-11-06T17:22:49+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2024": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2024",
+      "fiscal_year": 2024,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of Correspondence per household statistics for fiscal year 2024.",
+        "statements": [
+          {
+            "text": "For all households, correspondence-per-household was 97.2 pieces per household per year in FY2024, and it decreased by 20.3 pieces per household per year from 2019 to 2024, crossing the FY2024 methodology break.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2019,
+              2024
+            ]
+          }
+        ],
+        "caveats": [
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports.",
+          "A change that crosses methodology breaks mixes two methods and is not presented as a real change on its own."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "e771349b96a882d4206dff9c883d56977959103c095a20daa6d9e08bcbc87d61",
+      "generated_at": "2026-11-06T17:23:44+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2023": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2023",
+      "fiscal_year": 2023,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "A review of correspondence mail statistics for fiscal year 2023 shows decreases across all measured metrics for all households compared to previous years.",
+        "statements": [
+          {
+            "text": "For all households, correspondence-received-per-household was 98.8 pieces per household per year in FY2023, falling by 5.2 pieces per household per year from FY2022 and by 15.6 pieces per household per year from FY2018, crossing the FY2017 methodology break.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, fcm-received-correspondence stood at 12864.0 millions of pieces in FY2023, down by 777.0 millions of pieces from FY2022 and down by 1911.0 millions of pieces from FY2018.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, fcm-sent-correspondence was 2305.0 millions of pieces in FY2023, decreasing by 910.0 millions of pieces from FY2022 and by 1136.0 millions of pieces from FY2018.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2018,
+              2022,
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2008, FY2010, FY2012, FY2014, FY2015, and FY2017 methodology breaks for correspondence-received-per-household must be approached with caution due to reclassifications, weighting changes, and definition updates.",
+          "Data for correspondence-received-per-household is missing for FY2021."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9c9ed3437fdff196ec15b71e20e2b35b50c6e7ec8c1cb9d77c870883ff2c30c1",
+      "generated_at": "2026-11-06T17:24:41+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 30,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2022": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2022",
+      "fiscal_year": 2022,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of correspondence mail metrics for fiscal year 2022.",
+        "statements": [
+          {
+            "text": "For all households, correspondence-received-per-household was 104.0 pieces per household per year in FY2022, falling by 15.6 pieces per household per year from FY2017 across the FY2017 methodology break.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2017,
+              2022
+            ]
+          },
+          {
+            "text": "For all households, fcm-received-correspondence was 13,641.0 million of pieces in FY2022, decreasing by 328.0 million of pieces from FY2021 and falling by 1,374.0 million of pieces from FY2017.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2017,
+              2021,
+              2022
+            ]
+          },
+          {
+            "text": "For all households, fcm-sent-correspondence was 3,215.0 million of pieces in FY2022, declining by 224.0 million of pieces from FY2021 and dropping by 340.0 million of pieces from FY2017.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2017,
+              2021,
+              2022
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2017 methodology break for correspondence-received-per-household must be approached with caution.",
+          "Data for correspondence-received-per-household are missing for FY2021."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "f537250451fc55a9310df17ad175975361a3cf9e430488259bb1c37c98ffda10",
+      "generated_at": "2026-11-06T17:25:45+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2020,
+              "page": 29,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2022,
+              "page": 20,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2021": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2021",
+      "fiscal_year": 2021,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of First-Class correspondence statistics for fiscal year 2021.",
+        "statements": [
+          {
+            "text": "For All households, First-Class correspondence received was 13,969.0 millions of pieces in FY2021, which decreased by 36.0 millions of pieces from the previous year in FY2020 and fell by 1,175.0 millions of pieces from five years earlier in FY2016.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2021,
+              2020,
+              2016
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 3,439.0 millions of pieces in FY2021, which increased by 93.0 millions of pieces from the previous year in FY2020 and decreased by 608.0 millions of pieces from five years earlier in FY2016.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2021,
+              2020,
+              2016
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
+          "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 1: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
+          "statement 2: compares FY2016 with FY2021 across the FY2017 methodology break without naming it"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0bf59004ee5ff84dab18cb9fe6c50866b97c85bd7daf72c7e95285bd22908d73",
+      "generated_at": "2026-11-06T17:26:42+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2019": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2019",
+      "fiscal_year": 2019,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Overview of correspondence and mail volume statistics for fiscal year 2019.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence per household was 117.5 pieces per household per year in FY2019, which fell by 17.6 pieces per household per year from 2014 to 2019.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2014,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, Correspondence mail received per household was 109.2 pieces per household per year in FY2019, decreasing by 5.2 pieces per household per year from the previous year, and falling by 10.4 pieces per household per year since the latest break from 2017 to 2019.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2017,
+              2018,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 14,103.0 millions of pieces in FY2019, down by 672.0 millions of pieces from the previous year and down by 1,305.0 millions of pieces from 2014 to 2019.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2014,
+              2018,
+              2019
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 3,319.0 millions of pieces in FY2019, dropping by 122.0 millions of pieces from the previous year and decreasing by 1,084.0 millions of pieces from 2014 to 2019.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2014,
+              2018,
+              2019
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
+          "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "1d43d32ab9c8a56751aa1c30a1ad95a3f16445a51a4721992831d25fbf76e96a",
+      "generated_at": "2026-11-06T17:27:55+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2019,
+              "page": 26,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2018": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2018",
+      "fiscal_year": 2018,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "A review of correspondence mail statistics for fiscal year 2018 shows varying trends across metrics.",
+        "statements": [
+          {
+            "text": "Correspondence mail received per household for all households was 114.4 pieces per household per year in FY2018, falling by 5.2 pieces per household per year from FY2017, and rising by 31.2 pieces per household per year across the FY2014, FY2015, and FY2017 methodology breaks from FY2013.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          },
+          {
+            "text": "First-Class correspondence received for all households stood at 14,775.0 million of pieces in FY2018, decreasing by 240.0 million of pieces from FY2017, and decreasing by 722.0 million of pieces from FY2013.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent for all households was 3,441.0 million of pieces in FY2018, dropping by 114.0 million of pieces from FY2017, and dropping by 1,475.0 million of pieces from FY2013.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2013,
+              2017,
+              2018
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
+          "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "e9ca321de5b86b045aae91bd9a5c043620cd567e47b8f4be896d4a83db5b62aa",
+      "generated_at": "2026-11-06T17:29:02+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2018,
+              "page": 26,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ],
+      "rechecked_at": "2026-11-06",
+      "recheck_note": "Failed the check of the day it was written; its stored text was re-checked on 2026-11-06 with the check's new 'since the FY... break' and break-year-list rules, against the same input (same input_hash), and passed. No new API call."
+    },
+    "yearly:2017": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2017",
+      "fiscal_year": 2017,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of correspondence mail received and sent for fiscal year 2017.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence mail received per household was 119.6 pieces per household per year in FY2017, which increased by 15.6 pieces per household per year from the previous year across the FY2017 methodology break and grew by 36.4 pieces per household per year from five years earlier across the FY2014, FY2015, and FY2017 methodology breaks.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2012,
+              2016,
+              2017
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 15,015.0 millions of pieces in FY2017, falling by 129.0 millions of pieces from the previous year and decreasing by 1,296.0 millions of pieces from five years earlier.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2012,
+              2016,
+              2017
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 3,555.0 millions of pieces in FY2017, dropping by 492.0 millions of pieces from the previous year and down by 1,454.0 millions of pieces from five years earlier.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2012,
+              2016,
+              2017
+            ]
+          }
+        ],
+        "caveats": [
+          "The correspondence-received-per-household series crosses the FY2014, FY2015, and FY2017 methodology breaks, so comparisons across it are cautious.",
+          "First-Class correspondence received and First-Class correspondence sent cross the FY2010 weighting methodology break when comparing to earlier years."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "dc9204ef863d45fa700b26ffea44032d15beb08567f8c17d3cd0ee02698b10c3",
+      "generated_at": "2026-11-06T17:30:07+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2017,
+              "page": 26,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2016": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2016",
+      "fiscal_year": 2016,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of mail statistics for fiscal year 2016.",
+        "statements": [
+          {
+            "text": "Correspondence mail received per household for All households was 104.0 pieces per household per year in FY2016, which increased by 5.2 pieces per household per year from FY2015 across the FY2015 methodology break.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2015,
+              2016
+            ]
+          },
+          {
+            "text": "First-Class correspondence received for All households was 15,144.0 millions of pieces in FY2016, which rose by 140.0 millions of pieces from FY2015 and fell by 1,137.0 millions of pieces from FY2011.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2011,
+              2015,
+              2016
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent for All households was 4,047.0 millions of pieces in FY2016, which decreased by 560.0 millions of pieces from FY2015 and decreased by 918.0 millions of pieces from FY2011.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2011,
+              2015,
+              2016
+            ]
+          }
+        ],
+        "caveats": [
+          "Correspondence mail received per household crosses the FY2015 methodology break, so comparisons across it are cautious.",
+          "First-Class correspondence received and First-Class correspondence sent cross the FY2010 methodology break, so comparisons across it are cautious."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "f7b72ebb952818c9c577bf2bbfcc3d3b5bf2939d1dd5078ddf4313e1f87518bf",
+      "generated_at": "2026-11-06T17:31:13+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2016,
+              "page": 28,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2015": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2015",
+      "fiscal_year": 2015,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2015, metrics for correspondence showed mixed changes across household and national totals.",
+        "statements": [
+          {
+            "text": "Correspondence per household for all households was 142.4 pieces per household per year in FY2015, which rose by 7.3 pieces per household per year from the previous year in FY2014.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "Correspondence mail received per household for all households stood at 98.8 pieces per household per year in FY2015, increasing by 20.8 pieces per household per year across the FY2015 methodology break from FY2014, and falling by 10.4 pieces per household per year across the FY2012, FY2014, and FY2015 methodology breaks from FY2010.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2010,
+              2012,
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "First-Class correspondence received for all households was 15,004.0 millions of pieces in FY2015, decreasing by 404.0 millions of pieces from FY2014 and falling by 991.0 millions of pieces since the latest break from FY2010.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2010,
+              2014,
+              2015
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent for all households was 4,607.0 millions of pieces in FY2015, growing by 204.0 millions of pieces from FY2014 and decreasing by 984.0 millions of pieces since the latest break from FY2010.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2010,
+              2014,
+              2015
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2012 report restated earlier years in Table E.2, so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "The FY2015 report restated earlier years in Table E.2, so the one-year household-group values change classification here."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "494da11c7410eb65b34b789d2dfd48ce93a069f18123c620359b24618f98e3a0",
+      "generated_at": "2026-11-06T17:32:20+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2010,
+              "page": 30,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2015,
+              "page": 30,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ],
+      "rechecked_at": "2026-11-06",
+      "recheck_note": "Failed the check of the day it was written; its stored text was re-checked on 2026-11-06 with the check's new 'since the FY... break' and break-year-list rules, against the same input (same input_hash), and passed. No new API call."
+    },
+    "yearly:2014": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2014",
+      "fiscal_year": 2014,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of correspondence metrics for fiscal year 2014.",
+        "statements": [
+          {
+            "text": "For all households, correspondence-per-household was 135.1 pieces per household per year in FY2014.",
+            "metric": "correspondence-per-household",
+            "years": [
+              2014
+            ]
+          },
+          {
+            "text": "For all households, correspondence-received-per-household was 78.0 pieces per household per year in FY2014, which fell by 5.2 pieces per household per year from the previous year across the FY2014 methodology break, and fell by 36.4 pieces per household per year from five years earlier across the FY2010, FY2012, and FY2014 methodology breaks from FY2009 to FY2014.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2009,
+              2014
+            ]
+          },
+          {
+            "text": "For all households, fcm-received-correspondence was 15408.0 millions of pieces in FY2014, decreasing by 89.0 millions of pieces from FY2013 to FY2014, and decreasing by 1387.0 millions of pieces from FY2009 to FY2014 across the FY2010 methodology break.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2009,
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "For all households, fcm-sent-correspondence was 4403.0 millions of pieces in FY2014, down 513.0 millions of pieces from FY2013 to FY2014, and down 2733.0 millions of pieces from FY2009 to FY2014 across the FY2010 methodology break.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2009,
+              2013,
+              2014
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024)."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 2: 5.2 is not a change of its metric between the years it cites"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "70e669b89840159c0ca8558a15472fb0d0b0cec1a9466be06e26b1023881a08a",
+      "generated_at": "2026-11-06T17:33:28+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2014": {
+              "report_year": 2024,
+              "page": 7,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2009,
+              "page": 30,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 30,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2014,
+              "page": 30,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2013": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2013",
+      "fiscal_year": 2013,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2013, correspondence mail received per household and First-Class correspondence volumes showed mixed changes compared to previous years.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence mail received per household was 83.2 pieces per household per year in FY2013, unchanged from FY2012, and fell by 41.6 pieces per household per year from FY2008 across the FY2010 and FY2012 methodology breaks.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2008,
+              2012,
+              2013
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 15,497.0 millions of pieces in FY2013, which fell by 814.0 millions of pieces from FY2012, and decreased by 2,598.0 millions of pieces from FY2008 across the FY2010 methodology break.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2008,
+              2012,
+              2013
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 4,916.0 millions of pieces in FY2013, which declined by 93.0 millions of pieces from FY2012, and fell by 2,813.0 millions of pieces from FY2008 across the FY2010 methodology break.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2008,
+              2012,
+              2013
+            ]
+          }
+        ],
+        "caveats": [
+          "Comparisons across the FY2008, FY2010, and FY2012 methodology breaks are cautious because definitions, weighting, and classifications were revised in those years."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "210432fe28b908d4f490c3b7e3bedd9713fd3a3dd76c1e461639e511a3e6f9a7",
+      "generated_at": "2026-11-06T17:34:38+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2008,
+              "page": 28,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 30,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 30,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2013,
+              "page": 30,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2012": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2012",
+      "fiscal_year": 2012,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of U.S. Postal Service Household Diary and Mail Survey statistics for fiscal year 2012.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence mail received per household was 83.2 pieces per household per year in FY2012, which fell by 26.0 pieces per household per year from FY2007 to FY2012 across the FY2008, FY2010, and FY2012 methodology breaks.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2007,
+              2008,
+              2010,
+              2012
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 16,311.0 millions of pieces in FY2012, rising by 30.0 millions of pieces from FY2011 to FY2012, and falling by 2,517.0 millions of pieces from FY2007 to FY2012 across the FY2010 methodology break.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2007,
+              2010,
+              2011,
+              2012
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 5,009.0 millions of pieces in FY2012, increasing by 44.0 millions of pieces from FY2011 to FY2012, and decreasing by 2,935.0 millions of pieces from FY2007 to FY2012 across the FY2010 methodology break.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2007,
+              2010,
+              2011,
+              2012
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence was recalculated for FY 2006 and 2007 in the FY2008 report.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2012 report restated earlier years in Table E.2, so the one-year household-group values change classification here.",
+          "Comparisons across methodology breaks in FY2008, FY2010, and FY2012 must be treated with caution."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0ae2a87575f2a605d00def340d4676fdf573d9510b78d81276d7887be45c0624",
+      "generated_at": "2026-11-06T17:35:45+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2007,
+              "page": 27,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 28,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 30,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 30,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2012,
+              "page": 31,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2011": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2011",
+      "fiscal_year": 2011,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of First-Class correspondence statistics for fiscal year 2011.",
+        "statements": [
+          {
+            "text": "For All households, First-Class correspondence received was 16,281.0 millions of pieces in FY2011, which increased by 286.0 millions of pieces from FY2010.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2010,
+              2011
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 16,281.0 millions of pieces in FY2011, falling by 2,215.0 millions of pieces from FY2006 across the FY2010 methodology break.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2006,
+              2010,
+              2011
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 4,965.0 millions of pieces in FY2011, which decreased by 626.0 millions of pieces from FY2010.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2010,
+              2011
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 4,965.0 millions of pieces in FY2011, falling by 3,301.0 millions of pieces from FY2006 across the FY2010 methodology break.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2006,
+              2010,
+              2011
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 2: compares FY2006 with FY2011 across the FY2008 methodology break without naming it",
+          "statement 4: compares FY2006 with FY2011 across the FY2008 methodology break without naming it"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "9f1f55577c217f73d004b6814c59f1140f551a831e1b6512dbbf819b66abdfd3",
+      "generated_at": "2026-11-06T17:36:43+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2010": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2010",
+      "fiscal_year": 2010,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of correspondence mail metrics for fiscal year 2010.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence mail received per household was 109.2 pieces per household per year in FY2010, which decreased by 5.2 pieces per household per year from the previous year across the FY2010 methodology break, and decreased by 20.8 pieces per household per year from 5 years earlier across the FY2008 and FY2010 methodology breaks.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 15,995.0 millions of pieces in FY2010, which decreased by 800.0 millions of pieces from the previous year across the FY2010 methodology break, and decreased by 3,229.0 millions of pieces from 5 years earlier across the FY2010 methodology break.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 5,591.0 millions of pieces in FY2010, which decreased by 1,545.0 millions of pieces from the previous year across the FY2010 methodology break, and decreased by 2,398.0 millions of pieces from 5 years earlier across the FY2010 methodology break.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2005,
+              2009,
+              2010
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology. Values before 2010 use the earlier weighting.",
+          "Definition of correspondence was recalculated for FY 2006 and 2007; numbers do not compare to previously published reports."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "75fb23c0d893505afc89ee44de767807ea0ab5af80ac61d85219ed02a9d33984",
+      "generated_at": "2026-11-06T17:38:06+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 26,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 27,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 28,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 30,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2010,
+              "page": 30,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 79,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2009": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2009",
+      "fiscal_year": 2009,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of mail correspondence statistics for fiscal year 2009.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence mail received per household was 114.4 pieces per household per year in FY2009, which decreased by 10.4 pieces per household per year from FY2008 across the FY2008 methodology break.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2008,
+              2009
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 16,795.0 millions of pieces in FY2009, falling by 1,300.0 millions of pieces from FY2008 and falling by 2,654.0 millions of pieces from FY2004.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2004,
+              2008,
+              2009
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 7,136.0 millions of pieces in FY2009, decreasing by 593.0 millions of pieces from FY2008 and decreasing by 1,592.0 millions of pieces from FY2004.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2004,
+              2008,
+              2009
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "51b56243ef79362b51057d04a067161b24426d1aa01c5361a177b46afd1f6013",
+      "generated_at": "2026-11-06T17:39:26+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 26,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 27,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 28,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2009,
+              "page": 30,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2008": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2008",
+      "fiscal_year": 2008,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of mail correspondence statistics and changes for fiscal year 2008.",
+        "statements": [
+          {
+            "text": "For All households, Correspondence mail received per household was 124.8 pieces per household per year in FY2008, which increased by 15.6 pieces per household per year from FY2007 across the FY2008 methodology break, and decreased by 5.2 pieces per household per year from FY2003 across the FY2008 methodology break.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2003,
+              2007,
+              2008
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence received was 18,095.0 millions of pieces in FY2008, which decreased by 733.0 millions of pieces from FY2007, and decreased by 1,585.0 millions of pieces from FY2003.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2003,
+              2007,
+              2008
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 7,729.0 millions of pieces in FY2008, which decreased by 215.0 millions of pieces from FY2007, and decreased by 779.0 millions of pieces from FY2003.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2003,
+              2007,
+              2008
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
+          "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "8f30747e747d3d517f6776e047749462ad113c13a498ac756fa42f78f79194ec",
+      "generated_at": "2026-11-06T17:40:32+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 31,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 26,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 27,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2008,
+              "page": 28,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2008": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2007": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2007",
+      "fiscal_year": 2007,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "A summary of mail statistics for fiscal year 2007 shows changes in correspondence received and sent by households.",
+        "statements": [
+          {
+            "text": "Correspondence mail received per household for All households was 109.2 pieces per household per year in FY2007, down by 4.5 percentage points from FY2006.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2006,
+              2007
+            ]
+          },
+          {
+            "text": "First-Class correspondence received for All households was 18,828.0 millions of pieces in FY2007, which increased by 1,828.0 million from FY2006 and fell by 2,071.0 million from FY2002.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2002,
+              2006,
+              2007
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent for All households was 7,944.0 millions of pieces in FY2007, which fell by 322.0 million from FY2006 and decreased by 1,796.0 million from FY2002.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2002,
+              2006,
+              2007
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence was recalculated for FY 2006 and 2007, meaning numbers do not compare to previously published reports, crossing the FY2008 methodology break.",
+          "Diary data were restated beginning in FY2010 because of changes in weighting methodology, crossing the FY2010 methodology break.",
+          "The FY2012 report restated earlier years in Table E.2, crossing the FY2012 methodology break.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013, crossing the FY2014 methodology break.",
+          "The FY2015 report restated earlier years in Table E.2, crossing the FY2015 methodology break.",
+          "The FY2017 report restated earlier years in Table E.2, crossing the FY2017 methodology break.",
+          "Starting with the FY2024 report, results are published as pieces per household per year and the survey contractor changed, crossing the FY2024 methodology break.",
+          "FY2025 used a new survey design called the Household Mail Survey, crossing the FY2025 methodology break."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 1: 4.5 is not a change in percentage points of its metric between the years it cites",
+          "statement 2: 1,828.0 is not a change of its metric between the years it cites"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "e5ac7aaac2bbdce11ff3caf2132d8c89d264b6f6b233546854dbc0c5e3eb7c5e",
+      "generated_at": "2026-11-06T17:41:40+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 31,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 26,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2007,
+              "page": 27,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2007": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2006": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2006",
+      "fiscal_year": 2006,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of correspondence mail metrics for fiscal year 2006.",
+        "statements": [
+          {
+            "text": "For all households, correspondence mail received per household was 114.4 pieces per household per year in FY2006, which decreased by 15.6 pieces per household per year from FY2005.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2005,
+              2006
+            ]
+          },
+          {
+            "text": "First-Class correspondence received by all households stood at 18,496.0 million of pieces in FY2006, which fell by 728.0 million of pieces from FY2005 and fell by 2,031.0 million of pieces from FY2001.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2001,
+              2005,
+              2006
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent by all households was 8,266.0 million of pieces in FY2006, which increased by 277.0 million of pieces from FY2005 and decreased by 1,335.0 million of pieces from FY2001.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2001,
+              2005,
+              2006
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence was recalculated for FY 2006 and 2007, and numbers do not compare to previously published reports.",
+          "Beginning in FY2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2012 report restated earlier years in Table E.2.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix.",
+          "The FY2015 report restated earlier years in Table E.2.",
+          "The FY2017 report restated earlier years in Table E.2.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design and was renamed the Household Mail Survey."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "b3820aff9471afb5deb46a19ba53b0f79f1afd8261236e9853cc21e4533d149f",
+      "generated_at": "2026-11-06T17:42:49+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 31,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2006,
+              "page": 26,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2006": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2005": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2005",
+      "fiscal_year": 2005,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of correspondence mail metrics for fiscal year 2005.",
+        "statements": [
+          {
+            "text": "For all households, Correspondence mail received per household was 130.0 pieces per household per year in FY2003 and 130.0 pieces per household per year in FY2005.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2003,
+              2005
+            ]
+          },
+          {
+            "text": "For all households, First-Class correspondence received was 19,224.0 millions of pieces in FY2005, down from the previous year from FY2004, and lower by 246.0 millions of pieces from FY2000.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2000,
+              2004,
+              2005
+            ]
+          },
+          {
+            "text": "For all households, First-Class correspondence sent was 7,989.0 millions of pieces in FY2005, down from the previous year from FY2004, and lower by 1,523.0 millions of pieces from FY2000.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2000,
+              2004,
+              2005
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
+          "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "520076eb6f52a59a8083297cca180b8bde9e834e39c9a443b128480719cb42c6",
+      "generated_at": "2026-11-06T17:44:14+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 31,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2005,
+              "page": 25,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2005": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2004": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2004",
+      "fiscal_year": 2004,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "A summary of First-Class correspondence statistics for fiscal year 2004.",
+        "statements": [
+          {
+            "text": "First-Class correspondence received by All households was 19,449.0 millions of pieces in FY2004, which decreased by 231.0 millions of pieces from FY2003.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2004,
+              2003
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent by All households was 8,728.0 millions of pieces in FY2004, which increased by 220.0 millions of pieces from FY2003.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2004,
+              2003
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "db68b31a08aeb917e8156385da6b2399496d2c3c9932850138c790d8e744bcb2",
+      "generated_at": "2026-11-06T17:45:20+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2004": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2003": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2003",
+      "fiscal_year": 2003,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "In fiscal year 2003, household mail metrics showed varying levels of received and sent correspondence.",
+        "statements": [
+          {
+            "text": "For all households, correspondence mail received per household was 130.0 pieces per household per year in FY2003.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2003
+            ]
+          },
+          {
+            "text": "For all households, First-Class correspondence received was 19,680.0 million of pieces in FY2003, down 1,219.0 million of pieces from the previous year.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2002,
+              2003
+            ]
+          },
+          {
+            "text": "For all households, First-Class correspondence sent was 8,508.0 million of pieces in FY2003, falling 1,232.0 million of pieces from the previous year.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2002,
+              2003
+            ]
+          }
+        ],
+        "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
+          "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "7f2e6ffaa6f8bb064fa1210040a3bc3727fc71566cb3762b0fe5abf23fc10730",
+      "generated_at": "2026-11-06T17:46:26+00:00",
+      "sources": [
+        {
+          "metric": "correspondence-received-per-household",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2003": {
+              "report_year": 2003,
+              "page": 31,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2003": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2002": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2002",
+      "fiscal_year": 2002,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of First-Class correspondence statistics for fiscal year 2002.",
+        "statements": [
+          {
+            "text": "For All households, First-Class correspondence received was 20,899 million of pieces in FY2002, which increased by 372.0 millions of pieces from the previous year in FY2001.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2001,
+              2002
+            ]
+          },
+          {
+            "text": "For All households, First-Class correspondence sent was 9,740 million of pieces in FY2002, which rose by 139.0 millions of pieces from the previous year in FY2001.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2001,
+              2002
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0a8cd457e68e4bd421fd7e563953fe70031c9c514e220197405ac6387c02348d",
+      "generated_at": "2026-11-06T17:47:19+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2002": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2001": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2001",
+      "fiscal_year": 2001,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of First-Class correspondence statistics for fiscal year 2001.",
+        "statements": [
+          {
+            "text": "For all households, First-Class correspondence received was 20,527.0 millions of pieces in FY2001, which increased by 1,057.0 millions of pieces from the previous year from FY2000 to FY2001.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2000,
+              2001
+            ]
+          },
+          {
+            "text": "For all households, First-Class correspondence sent was 9,601.0 millions of pieces in FY2001, which increased by 89.0 millions of pieces from the previous year from FY2000 to FY2001.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2000,
+              2001
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "f334a202544214f1b93fa364a26058d01a2fad376703cb947f2cf40a28ba8b23",
+      "generated_at": "2026-11-06T17:47:59+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            },
+            "2001": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "yearly:2000": {
+      "section": "Correspondence",
+      "kind": "yearly",
+      "key": "yearly:2000",
+      "fiscal_year": 2000,
+      "fiscal_year_range": null,
+      "summary": {
+        "headline": "Summary of First-Class correspondence statistics for fiscal year 2000.",
+        "statements": [
+          {
+            "text": "For all households, First-Class correspondence received was 19,470.0 millions of pieces in FY2000.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2000
+            ]
+          },
+          {
+            "text": "For all households, First-Class correspondence sent was 9,512.0 millions of pieces in FY2000.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2000
+            ]
+          }
+        ],
+        "caveats": [
+          "No previous year or five-year prior data are available for comparison in FY2000."
+        ]
+      },
+      "validation": {
+        "passed": true,
+        "problems": []
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "01198cc06001061c772a89a6bd4bbb5b16021aa45253e7842784e53dacb16877",
+      "generated_at": "2026-11-06T17:48:41+00:00",
+      "sources": [
+        {
+          "metric": "fcm-received-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-sent-correspondence",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2000": {
+              "report_year": 2020,
+              "page": 74,
+              "verified": true
             }
           }
         }

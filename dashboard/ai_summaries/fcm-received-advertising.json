@@ -8,30 +8,34 @@
       "fiscal_year": 2023,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class advertising received (ads only): published values for FY2023 and how they moved.",
+        "headline": "Summary of First-Class advertising received statistics for fiscal year 2023.",
         "statements": [
           {
-            "text": "In FY2023, First-Class advertising received (ads only) was 3,236 (millions of pieces). That fell by 711 (18.0%) from the previous year, FY2022. That fell by 268 (7.6%) from five years earlier, FY2018.",
+            "text": "For all households, First-Class advertising received (ads only) was 3,236.0 millions of pieces in FY2023, down by 711.0 millions of pieces from the previous year, and decreased by 268.0 millions of pieces from 5 years earlier in FY2018.",
             "metric": "fcm-received-advertising",
             "years": [
-              2023,
+              2018,
               2022,
-              2018
+              2023
             ]
           }
         ],
-        "caveats": []
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "ba4484304028abe7e63fc55b8f9145e4f5c8a0a344b7ee1f3fbbf6e27c6f9418",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "98a53939aa50ae6192acba9440fd29c5970b2ee21ff8d89137fe8806addafbe5",
+      "generated_at": "2026-11-06T16:45:53+00:00",
       "sources": [
         {
           "metric": "fcm-received-advertising",
@@ -43,32 +47,32 @@
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -81,41 +85,86 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class advertising received (ads only): long-term change in the published values, FY2000 to FY2023.",
+        "headline": "Long-term trends and projections for First-Class advertising received from FY2000 to FY2028.",
         "statements": [
           {
-            "text": "First-Class advertising received (ads only) (millions of pieces) went from 9,471 in FY2000 to 3,236 in FY2023: it fell by 6,235 (65.8%) over the period. Since FY2018 (five years earlier) it fell by 268 (7.6%). Since FY2013 (ten years earlier) it fell by 1,004 (23.7%).",
+            "text": "For All households, the metric fcm-received-advertising fell by 6235.0 millions of pieces from the year 2000 to 2023, across the FY2010 methodology break.",
             "metric": "fcm-received-advertising",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Naive (last value) model, fitted on FY2010 to FY2023, puts First-Class advertising received (ads only) at 3,236 in FY2028 (80% range 2,658 to 3,814). On past years it did not beat the naive baseline.",
+            "text": "For All households, fcm-received-advertising decreased by 2879.0 millions of pieces since the latest break from 2010 to 2023.",
             "metric": "fcm-received-advertising",
             "years": [
-              2023,
+              2010,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, fcm-received-advertising declined by 1004.0 millions of pieces from 2013 to 2023.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2013,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, fcm-received-advertising fell by 268.0 millions of pieces from 2018 to 2023.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, fcm-received-advertising dropped by 711.0 millions of pieces from 2022 to 2023.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, the projected fcm-received-advertising is 3236.0 millions of pieces in FY2024 with an 80% prediction interval 2737.0 to 3735.0.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For All households, the projected fcm-received-advertising is 3236.0 millions of pieces in FY2025 with an 80% prediction interval 2737.0 to 3735.0.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "For All households, the projected fcm-received-advertising is 3236.0 millions of pieces in FY2028 with an 80% prediction interval 2658.0 to 3814.0.",
+            "metric": "fcm-received-advertising",
+            "years": [
               2028
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "3b09f1c39292e08062ca1f4b323dbb2e9f3466ed6437341fbc24e31b675c9d8c",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "051d69e2ab2a34d3ed73542ef4b99db9fef9fb3c0492883eef79acb27334e020",
+      "generated_at": "2026-11-06T16:45:59+00:00",
       "sources": [
         {
           "metric": "fcm-received-advertising",
@@ -127,122 +176,122 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 72,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 77,
-              "verified": false
+              "verified": true
             }
           }
         }

@@ -8,32 +8,39 @@
       "fiscal_year": 2024,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Share of bills paid electronically: published values for FY2024 and how they moved.",
+        "headline": "Overview of the share of bills paid electronically for fiscal year 2024.",
         "statements": [
           {
-            "text": "In FY2024, Share of bills paid electronically was 85.0 (percent). That rose by 3.0 percentage points from the previous year, FY2023. That rose by 12.0 percentage points from five years earlier, FY2019.",
+            "text": "For All households, the Share of bills paid electronically was 85.0 percent in FY2024, and increased by 3.0 percentage points from FY2023 across the FY2024 methodology break.",
             "metric": "bills-paid-electronic-share",
             "years": [
-              2024,
               2023,
-              2019
+              2024
+            ]
+          },
+          {
+            "text": "For All households, the Share of bills paid electronically rose by 12.0 percentage points from 2019 to FY2024 across the FY2024 methodology break.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2019,
+              2024
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024). Comparisons across this break should be cautious."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "2b3cc68492179b2666a6e4d565ea4171b6be75e1b463c7ee1cfb08fc3e190459",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "79a93f2aaca94e8c1193a843051e2f9313768ed7c82fb9143b8771934af26842",
+      "generated_at": "2026-11-06T16:46:54+00:00",
       "sources": [
         {
           "metric": "bills-paid-electronic-share",
@@ -45,32 +52,32 @@
             "2019": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -83,42 +90,85 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Share of bills paid electronically: long-term change in the published values, FY2000 to FY2024.",
+        "headline": "Long-term trends and projections for the share of bills paid electronically across fiscal years 2000 to 2029.",
         "statements": [
           {
-            "text": "Share of bills paid electronically (percent) went from 11.0 in FY2000 to 85.0 in FY2024: it rose by 74.0 percentage points over the period. Since FY2019 (five years earlier) it rose by 12.0 percentage points. Since FY2014 (ten years earlier) it rose by 23.0 percentage points.",
+            "text": "For all households, bills-paid-electronic-share rose by 74.0 percentage points from 2000 to 2024, crossing the FY2010 and FY2024 methodology breaks.",
             "metric": "bills-paid-electronic-share",
             "years": [
               2000,
-              2024,
-              2019,
-              2014
+              2024
             ]
           },
           {
-            "text": "Projection, not a published figure: the Drift model, fitted on FY2010 to FY2024, puts Share of bills paid electronically at 98.2 in FY2029 (80% range 92.5 to 100.0). On past years it beat the naive baseline.",
+            "text": "For all households, bills-paid-electronic-share increased by 23.0 percentage points from 2014 to 2024, crossing the FY2024 methodology break.",
             "metric": "bills-paid-electronic-share",
             "years": [
-              2024,
+              2014,
+              2024
+            ]
+          },
+          {
+            "text": "For all households, bills-paid-electronic-share grew by 12.0 percentage points from 2019 to 2024, crossing the FY2024 methodology break.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2019,
+              2024
+            ]
+          },
+          {
+            "text": "For all households, bills-paid-electronic-share rose by 3.0 percentage points from 2023 to 2024, crossing the FY2024 methodology break.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2023,
+              2024
+            ]
+          },
+          {
+            "text": "For all households, the projected bills-paid-electronic-share is 87.6 for 2025, with an 80% prediction interval 84.7 to 90.6, beating the naive baseline.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "For all households, the projected bills-paid-electronic-share is 90.3 for 2026, with an 80% prediction interval 85.8 to 94.8, beating the naive baseline.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2026
+            ]
+          },
+          {
+            "text": "For all households, the projected bills-paid-electronic-share is 92.9 for 2027, with an 80% prediction interval 88.0 to 97.8, beating the naive baseline.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2027
+            ]
+          },
+          {
+            "text": "For all households, the projected bills-paid-electronic-share is 98.2 for 2029, with an 80% prediction interval 92.5 to 100.0, beating the naive baseline.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
               2029
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design (renamed the Household Mail Survey), and age bands and large MSA definitions changed."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "2310413b021eedd3c48ca046f83cb4bec25a7ace7548b0197d4d17b053739aeb",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "20399021daabe02af004844b26659df7e6aca9f7e9da1b15617d9db0941f23f6",
+      "generated_at": "2026-11-06T16:46:57+00:00",
       "sources": [
         {
           "metric": "bills-paid-electronic-share",
@@ -130,127 +180,127 @@
             "2000": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 77,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 62,
-              "verified": false
+              "verified": true
             }
           }
         }

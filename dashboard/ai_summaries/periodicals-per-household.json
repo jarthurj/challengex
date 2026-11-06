@@ -8,33 +8,48 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Periodicals per household: published values for FY2025 and how they moved.",
+        "headline": "Summary of Periodicals per household statistics for fiscal year 2025.",
         "statements": [
           {
-            "text": "In FY2025, Periodicals per household was 21.9 (pieces per household per year). That rose by 2.0 (10.1%) from the previous year, FY2024. That fell by 7.7 (26.0%) from five years earlier, FY2020.",
+            "text": "For all households, Periodicals per household was 21.9 pieces per household per year in FY2025.",
             "metric": "periodicals-per-household",
             "years": [
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "Periodicals per household increased by 2.0 pieces per household per year from the previous year, crossing the FY2025 methodology break.",
+            "metric": "periodicals-per-household",
+            "years": [
               2024,
-              2020
+              2025
+            ]
+          },
+          {
+            "text": "Periodicals per household decreased by 7.7 pieces per household per year from five years earlier across the FY2024 and FY2025 methodology breaks.",
+            "metric": "periodicals-per-household",
+            "years": [
+              2020,
+              2025
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "8559531400145d51c03830cae7a2a273f6bdd39565bf718a57da901b0dde7e9a",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "d4a0405a97b4022dd6ff147c70bd977fedbe9f8b4193b7bf954b08c0bd31a9f8",
+      "generated_at": "2026-11-06T16:46:41+00:00",
       "sources": [
         {
           "metric": "periodicals-per-household",
@@ -46,17 +61,17 @@
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -69,36 +84,58 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Periodicals per household: long-term change in the published values, FY2014 to FY2025.",
+        "headline": "Long-term trends and changes in periodicals per household from FY2014 to FY2025.",
         "statements": [
           {
-            "text": "Periodicals per household (pieces per household per year) went from 43.3 in FY2014 to 21.9 in FY2025: it fell by 21.4 (49.4%) over the period. Since FY2020 (five years earlier) it fell by 7.7 (26.0%). Since FY2015 (ten years earlier) it fell by 18.1 (45.2%).",
+            "text": "For all households, periodicals-per-household fell by 21.4 pieces per household per year from 2014 to 2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "periodicals-per-household",
             "years": [
               2014,
-              2025,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, periodicals-per-household decreased by 18.1 pieces per household per year from 2015 to 2025, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "periodicals-per-household",
+            "years": [
+              2015,
+              2025
+            ]
+          },
+          {
+            "text": "For all households, periodicals-per-household declined by 7.7 pieces per household per year from 2020 to 2025, across the FY2024 and FY2025 methodology breaks.",
+            "metric": "periodicals-per-household",
+            "years": [
               2020,
-              2015
+              2025
+            ]
+          },
+          {
+            "text": "For all households, periodicals-per-household increased by 2.0 pieces per household per year from 2024 to 2025, across the FY2025 methodology break.",
+            "metric": "periodicals-per-household",
+            "years": [
+              2024,
+              2025
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for Periodicals per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "Periodicals per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more.",
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "c67374a857461d233b7b593f4cfece2c9c2206e56a85b4806df7fc58a9987e57",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "e262485f9904839c3f0ccaacdacdcc1db9085252a4b072cba078ed2a6af6ac27",
+      "generated_at": "2026-11-06T16:46:43+00:00",
       "sources": [
         {
           "metric": "periodicals-per-household",
@@ -110,32 +147,32 @@
             "2014": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2024": {
               "report_year": 2024,
               "page": 7,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 7,
-              "verified": false
+              "verified": true
             }
           }
         }

@@ -9,7 +9,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .ai_summary import year_summaries
+from .ai_summary import overview_summaries, year_spans, year_summaries
 from .forecast import DECIMALS
 from .models import Metric, Observation, Table
 # from .ai_summary import SECTIONS, TOPIC_SECTIONS, get_summary
@@ -122,17 +122,46 @@ def market_mix():
 def overview(request):
     by_slug = {m.slug: m for m in Metric.objects.filter(slug__in=KPIS)}
     cards = [card for card in (kpi_card(by_slug[s]) for s in KPIS if s in by_slug) if card]
+    years = fiscal_years()
     return render(request, "dashboard/overview.html", {
         "cards": cards,
         "mix": market_mix(),
-        "years": fiscal_years(),
+        "years": years,
+        "ai": summary_card(request, years),
         "notice": "" if cards else "No metrics are loaded yet. Run python manage.py rebuild_db.",
     })
+
+
+def summary_card(request, years):
+    """
+    The AI summary card's content: the topic sections' long-term summaries, then the yearly ones
+    for the fiscal year picked on the year slider (?year=, one of the loaded fiscal years; anything
+    else falls back to the latest year with a summary). Stored text only; never calls the API.
+    """
+    asked = year_param(request.GET.get("year", ""), years)
+    ai = overview_summaries(asked)
+    year = ai["year"] if ai["year"] is not None else (years[0] if years else None)
+    if year is None:
+        return {**ai, "slider": None}
+    ai["slider"] = {
+        "year": year, "min": min(years), "max": max(years),
+        "previous": max((y for y in years if y < year), default=None),
+        "next": min((y for y in years if y > year), default=None),
+        "stored": year_spans(ai["years"]),
+    }
+    ai["year"] = year
+    return ai
 
 
 def fiscal_years():
     return sorted(set(Observation.objects.filter(is_preferred=True).values_list("fiscal_year", flat=True)),
                   reverse=True)
+
+
+def year_param(value, years):
+    """A ?year= value that is one of `years`, as an int, else None. Compared as text first, so a
+    huge number never reaches int() (which refuses more than 4,300 digits)."""
+    return int(value) if isinstance(value, str) and value in {str(y) for y in years} else None
 
 
 def year_rows(year):
@@ -154,8 +183,7 @@ def year_rows(year):
 def year_pick(request):
     """The year form's target: validate ?year= and go to that year's page (or the latest)."""
     years = fiscal_years()
-    value = request.GET.get("year", "")
-    year = int(value) if value.isascii() and value.isdigit() and int(value) in years else (years[0] if years else None)
+    year = year_param(request.GET.get("year", ""), years) or (years[0] if years else None)
     if year is None:
         raise Http404("No published values yet.")
     return redirect("year-detail", year=year)

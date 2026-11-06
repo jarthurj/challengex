@@ -452,8 +452,8 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 190 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
-  validation, storage and display), `dashboard/test_demographics.py` (household-group
+- **Tests:** 196 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+  validation, storage and display, incl. the Overview card and its year slider), `dashboard/test_demographics.py` (household-group
   tables, their PDF reading and loaded values), `dashboard/test_trends.py` (the Trends page), `dashboard/test_accessibility.py` (lang, title, skip link, one main landmark and h1,
   heading order, labelled controls, chart band contrast), `dashboard/test_old_reports.py`
   (FY2003-FY2015 extraction helpers, loading two table files), `dashboard/test_browser.py`
@@ -510,6 +510,16 @@ analyst should be able to:
     verification. Below, the market mix per household for the latest year (FY2025 E.2); the
     published markets don't add up to the published total, so shares are of the markets shown,
     and the page says so.
+  - **AI summary card** (Overview, below the KPI cards; `summary_card()` and
+    `ai_summary.overview_summaries()`), stored text only:
+    - **Long term:** the 8 topic sections' comparative summaries, the executive summary open and
+      the others folded in `<details>`. These appear on no other page.
+    - **Year by year:** a range slider over the loaded fiscal years (`?year=`, validated against
+      them; anything else falls back to the latest year with a summary) with a "Show this year"
+      button, since moving it doesn't reload the page (WCAG 3.2.2); a small inline script only
+      updates the FY label and `aria-valuetext`. Previous/next year links, the topic sections'
+      yearly summaries for that year (executive first), the years that have one, and a link to
+      that Year page (which also has each metric's summary).
   - **Year page** (`/dashboard/year/<FY>/`, picker at `/dashboard/year/?year=`): every preferred
     value for that fiscal year with its source, the household-group tables (FY2015/2020/2025),
     and a link to that report's tables.
@@ -549,7 +559,8 @@ analyst should be able to:
   - `Table` can be filtered by year and OCR status, with its rows inline.
   - On the Observation list, `verified` is editable, and the `notes` field explains each check.
 - **AI summaries (`dashboard/ai_summary.py`, added 2026-11-05 by the team, using Google Gemini,
-  `gemini-2.5-flash`):** `python -m dashboard.ai_summary` builds each section's data packet,
+  `gemini-2.5-flash` by default, or `GEMINI_MODEL` from `.env`; the 2026-11-06 summaries were made
+  with `gemini-3.5-flash-lite`):** `python -m dashboard.ai_summary` builds each section's data packet,
   asks Gemini for a headline, statements and caveats, checks the numbers and stores the result in
   `dashboard/ai_summaries/<section>.json` (model, prompt version, input hash, `reviewed`). Pages
   only read those files; the commented-out live-call code in the views stays off. Needs
@@ -569,7 +580,15 @@ analyst should be able to:
       sentence. The backtest error is allowed when the sentence says "backtest"/"error".
     - **Which change:** a change must be a precomputed one between the years the sentence names:
       "from/since/between/than/over/above/below FY...", "FY2013-FY2023", "its FY2010 level",
-      "to FY2023", "five/10 years", "decade", "year over year", "the previous year". When the
+      "to FY2023", "five/10 years", "decade", "year over year", "the previous year", "since the
+      FY2012 methodology break" / "since the latest break in FY2010" (how the model words
+      `since_latest_break`); the year must be a methodology break of the metric, and for
+      "latest/last/most recent" its latest break before the change's end year. A list of break
+      years that ends in a break word ("across the FY2007, FY2008, and FY2010 breaks from
+      FY2006") is one phrase (`BREAK_LIST`: its commas end neither the clause nor what is read
+      after a number), so the "from" after it still counts; any other comma or ", and" still does
+      ("…, and FY2023 was the low point for Under $35K households" can't lend its group to the
+      figures before it). "across the FY2010 break" alone names no start year. When the
       cited years allow more than one starting year and none is named, it is refused.
     - **How it is written decides what it must be:** "percentage points" is a change in a share;
       "%" on a count is a percent change; a share never changes "by percent"; a number right after
@@ -594,7 +613,9 @@ analyst should be able to:
       "increased, falling 17.3%") isn't checked; differences that aren't precomputed ("rose 1,300
       from FY2019 to FY2020", a gap between groups) are refused, not computed; "households aged
       65+" isn't recognised as the "65 and Over" group (so its figures are refused); "unchanged at
-      114.4 from FY2022 to FY2023" is refused (say the year right after the value); a statement
+      114.4 from FY2022 to FY2023" is refused (say the year right after the value); breaks that
+      are named but not crossed aren't refused ("rose 1,400 million across the FY2005, FY2010, and
+      FY2012 breaks from FY2018": the number is right, the breaks claim is not); a statement
       saying the right numbers with a wrong reason isn't caught. It is a strict filter, not a
       proof: wrong text it misses is why `reviewed` exists.
     - Tests: `test_ai_summary.py` holds the rule tests (with the reviews' near misses) and
@@ -612,10 +633,26 @@ analyst should be able to:
     years, preferred and verified counts, breaks' text and metrics) and per hash of the record's
     text, so a hand edit of the JSON is re-checked. A malformed file or record is treated as
     having no summary. If its `input_hash` no longer matches, it is labelled "The data has
-    changed since this summary was written". On 2026-11-05 all 71 stored summaries were stale and
-    19 still passed (16 yearly FY2023, 3 yearly FY2020); the rest (mostly comparisons across the
-    2010/2024/2025 breaks that don't name them, or figures in headlines) are hidden until
-    regenerated with `summary-v2`.
+    changed since this summary was written". On 2026-11-05 only 19 of the 71 stored summaries
+    passed. **Regenerated 2026-11-06 with `summary-v2`** (`gemini-3.5-flash-lite`): 68 of the 71
+    records are now from that run and **65 show**. The 6 hidden: two that Gemini never answered
+    (503 overloaded on every try) and so keep an old record that fails (`advertising-received-total`
+    comparative, rule-based; `transactions-per-household` yearly FY2025), and four where the model
+    kept breaking a rule over three tries (`bills-paid-by-mail-share` yearly FY2025 and the
+    headline's figures; `mail-volumes-and-flows` and `first-class-mail-received-by-category`
+    comparative, which give a change's years only after an aside, "fell by 6,235.0 million pieces,
+    or 65.8 percent, from 2000 to 2023"; and the old `packages` FY2025 `yearly` record, an unnamed
+    FY2025 break). About half the requests of a full run hit 429/503 (free-tier rate limits);
+    run the failed sections one at a time with a pause between them.
+    **Then, for the Overview's year slider, the 8 topic sections' yearly summaries for every
+    fiscal year** (`--section <topic> --kind yearly --year <FY>`, one call at a time 6 s apart;
+    208 slots, 13 with no data): **231 of the 257 stored records now show**, and every year
+    FY2000–FY2025 has 4 to 8 topic summaries. Of the 31 that failed, 10 passed when their stored
+    text was re-checked with the patterns above (same input hash, no new API call; those records
+    carry `rechecked_at` and a `recheck_note`); 21 broke a rule, so with 5 from the first run 26
+    stored records are hidden. A second subagent review found that the first version of these
+    patterns let wrong text pass (a group named after ", and FY2023…", an aside after a comma, a
+    "since the FY2018 break" that isn't a break); fixed and tested, and the 231 still pass.
   - **Saving (`save_summary`):** a new summary that fails its check never replaces one that pages
     still show (including an old file's bare `yearly` record for that year); it goes under
     `"rejected"` in the same file (pages never read it) and the command prints its problems.
@@ -625,8 +662,9 @@ analyst should be able to:
     is kept when the new one came from identical input and the reviewed one still passes.
     Failures are not retried automatically: run that section again (each request counts against
     `--max-calls`).
-  - **Still open:** 64 of the 71 stored records are "rule-based template (no AI)" and the code
-    that wrote them isn't in the repo, so they can't be reproduced; `reviewed` can only be set
+  - **Still open:** 2 of the 71 stored records are still "rule-based template (no AI)"
+    (`first-class-mail-received-by-category` yearly FY2023, shown; `advertising-received-total`
+    comparative, hidden) and the code that wrote them isn't in the repo; `reviewed` can only be set
     by editing the JSON; the commented-out live-call code in the views must not be switched on
     without a POST button and a rate limit (`load_dotenv` also only runs in the CLI).
 - **Repo hygiene:** `.gitignore` excludes `__pycache__/`, `.env`, `.DS_Store`, and all of
@@ -745,15 +783,19 @@ Measured against the slides' required capabilities and the quality bar above.
 1. **AI-generated summaries** of yearly and long-term changes (slide requirement 3). Built by
    the team with Gemini on 2026-11-05 and hardened the same day (see Current code state; merged
    to `main` 2026-11-06). Remaining, in order:
-   - [ ] **Regenerate the summaries with prompt `summary-v2`.** Whoever holds `GEMINI_API_KEY`
-     (in `.env`) runs `python -m dashboard.ai_summary`. Only 19 of the 71 stored records show
-     now (16 yearly FY2023, 3 yearly FY2020); the other 52 stay hidden until replaced. A failing
-     new summary never replaces one that shows: it goes under `"rejected"` and the command
-     prints its problems, so read that output and re-run the sections that failed (each request
-     counts against `--max-calls`).
-   - [ ] **The 64 rule-based records** ("rule-based template (no AI)"): the code that wrote
-     them isn't in the repo, so they can't be reproduced. Either commit that generator or drop
-     those records from `dashboard/ai_summaries/`.
+   - [x] **Regenerate the summaries with prompt `summary-v2`** (2026-11-06, `gemini-3.5-flash-lite`):
+     65 of 71 show, plus the topic sections' yearly summaries for every fiscal year (231 of 257
+     stored records show). Still hidden: see Staleness above; re-run those sections one at a time,
+     e.g. `python -m dashboard.ai_summary --section bills-paid-by-mail-share --kind yearly
+     --max-calls 3`. A failing new summary never replaces one that shows.
+   - [ ] **Review the new summaries by eye** before treating them as final (none is `reviewed`).
+     The check passes correct numbers in awkward wording, e.g. "fell by -31.2" (a double
+     negative, 11 statements) and "rose to 6,700.0 … in FY2023, 10 years earlier" (should be
+     "later"). 465 of 1,037 statements name metrics by slug ("packages-volume was …"); a prompt
+     change (use the series' `name`) would fix that for the next run (bump `PROMPT_VERSION`).
+   - [ ] **The 2 remaining rule-based records** ("rule-based template (no AI)"): the code that
+     wrote them isn't in the repo. Replace them with Gemini ones (re-run those two sections) or
+     drop them from `dashboard/ai_summaries/`.
    - [ ] **Mark summaries reviewed without hand-editing JSON**, e.g. a management command or an
      admin action that sets `reviewed` on one record (and who/when). Today `reviewed` can only
      be set by editing the file.
@@ -806,7 +848,10 @@ Measured against the slides' required capabilities and the quality bar above.
 8. **Projections for household groups**, after item 3.
 9. **One projection per line** on the "by category" chart.
 10. ~~Re-run the accessibility checks~~ (done 2026-11-05 after the Tailwind styling: 0
-    violations). Re-run them after any styling change. Optional: compile Tailwind to a static CSS
+    violations). Re-run them after any styling change. **Due now:** the Overview's AI summary
+    card and year slider (2026-11-06) passed `test_accessibility.py` but not yet axe-core in a
+    browser (Playwright wasn't installed in this Python); check the range input's contrast and
+    focus ring too. Optional: compile Tailwind to a static CSS
     file (see Styling) so the demo doesn't need the CDN for styles.
 
 **D. Before the demo** (whoever presents)

@@ -8,68 +8,57 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class and Marketing Mail ads received per household: published values for FY2025 and how they moved.",
+        "headline": "Summary of First-Class and Marketing Mail ads received per household statistics for fiscal year 2025.",
         "statements": [
           {
-            "text": "In FY2025, First-Class and Marketing Mail ads received per household was 378.0 (pieces per household per year). That fell by 109.7 (22.5%) from five years earlier, FY2020.",
+            "text": "For all households, First-Class and Marketing Mail ads received per household was 378.0 pieces per household per year in FY2025, falling by 109.7 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "ads-received-per-household",
             "years": [
-              2025,
-              2020
-            ]
-          },
-          {
-            "text": "By income in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for $150,000 and Over at 527.0 and lowest for Less than $50,000 at 277.3.",
-            "metric": "ads-received-per-household",
-            "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By age in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for 65 and Over at 529.1 and lowest for Under 45 at 232.7.",
+            "text": "For the 65 and Over age group, First-Class and Marketing Mail ads received per household was 529.1 pieces per household per year in FY2025, decreasing by 156.5 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "ads-received-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By education in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for College graduate at 432.0 and lowest for Less than high school at 271.6.",
+            "text": "For the $150,000 and Over income group, First-Class and Marketing Mail ads received per household was 527.0 pieces per household per year in FY2025, dropping by 165.3 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "ads-received-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By msa in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Large MSA at 401.6 and lowest for Non-MSA at 317.6.",
+            "text": "For the Under 45 age group, First-Class and Marketing Mail ads received per household was 232.7 pieces per household per year in FY2025, down by 78.9 pieces per household per year from FY2020 across the FY2024 and FY2025 methodology breaks.",
             "metric": "ads-received-per-household",
             "years": [
-              2025
-            ]
-          },
-          {
-            "text": "By tenure in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Own at 465.1 and lowest for Rent at 212.9.",
-            "metric": "ads-received-per-household",
-            "years": [
+              2020,
               2025
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "bff25454f7c245802dcd2aa0360ebed14b5a5bcc6246611b171d6bb871755bb3",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "45a6af146bf474a67e03071b771e8218f4ff343e5e5a2888d0fd02f96ee69b6e",
+      "generated_at": "2026-11-06T16:46:01+00:00",
       "sources": [
         {
           "metric": "ads-received-per-household",
@@ -81,12 +70,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -100,12 +89,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -119,12 +108,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -138,12 +127,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -157,12 +146,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -176,12 +165,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -195,12 +184,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -214,12 +203,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -233,12 +222,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -252,12 +241,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -271,12 +260,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -290,12 +279,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -309,12 +298,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -328,12 +317,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -347,12 +336,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -366,12 +355,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -385,12 +374,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -403,71 +392,74 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class and Marketing Mail ads received per household: long-term change in the published values, FY2015 to FY2025.",
+        "headline": "Long-term trends show decreases in First-Class and Marketing Mail ads received per household across various demographic segments from 2015 to 2025.",
         "statements": [
           {
-            "text": "First-Class and Marketing Mail ads received per household (pieces per household per year) went from 643.6 in FY2015 to 378.0 in FY2025: it fell by 265.6 (41.3%) over the period. Since FY2020 (five years earlier) it fell by 109.7 (22.5%).",
+            "text": "For All households, ads-received-per-household fell from 643.6 pieces per household per year in FY2015 to 378.0 pieces per household per year in FY2025, decreasing by 41.3 percent across the FY2024 and FY2025 methodology breaks from FY2015 to FY2025.",
             "metric": "ads-received-per-household",
             "years": [
               2015,
-              2025,
-              2020
-            ]
-          },
-          {
-            "text": "By income in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for $150,000 and Over at 527.0 and lowest for Less than $50,000 at 277.3.",
-            "metric": "ads-received-per-household",
-            "years": [
               2025
             ]
           },
           {
-            "text": "By age in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for 65 and Over at 529.1 and lowest for Under 45 at 232.7.",
+            "text": "For All households, ads-received-per-household decreased from 487.7 pieces per household per year in FY2020 to 378.0 pieces per household per year in FY2025, falling by 22.5 percent across the FY2024 and FY2025 methodology breaks from FY2020 to FY2025.",
             "metric": "ads-received-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By education in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for College graduate at 432.0 and lowest for Less than high school at 271.6.",
+            "text": "For $100,000-$149,999, ads-received-per-household fell from 566.3 pieces per household per year in FY2020 to 451.2 pieces per household per year in FY2025, decreasing by 20.3 percent across the FY2024 and FY2025 methodology breaks from FY2020 to FY2025.",
             "metric": "ads-received-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By msa in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Large MSA at 401.6 and lowest for Non-MSA at 317.6.",
+            "text": "For $150,000 and Over, ads-received-per-household decreased from 692.3 pieces per household per year in FY2020 to 527.0 pieces per household per year in FY2025, falling by 23.9 percent across the FY2024 and FY2025 methodology breaks from FY2020 to FY2025.",
             "metric": "ads-received-per-household",
             "years": [
+              2020,
               2025
             ]
           },
           {
-            "text": "By tenure in FY2025, First-Class and Marketing Mail ads received per household (pieces per household per year) was highest for Own at 465.1 and lowest for Rent at 212.9.",
+            "text": "For 65 and Over, ads-received-per-household fell from 685.6 pieces per household per year in FY2020 to 529.1 pieces per household per year in FY2025, decreasing by 22.8 percent across the FY2024 and FY2025 methodology breaks from FY2020 to FY2025.",
             "metric": "ads-received-per-household",
             "years": [
+              2020,
+              2025
+            ]
+          },
+          {
+            "text": "For High school graduate, ads-received-per-household decreased from 464.7 pieces per household per year in FY2020 to 338.6 pieces per household per year in FY2025, falling by 27.1 percent across the FY2024 and FY2025 methodology breaks from FY2020 to FY2025.",
+            "metric": "ads-received-per-household",
+            "years": [
+              2020,
               2025
             ]
           }
         ],
         "caveats": [
-          "No projection is shown for First-Class and Marketing Mail ads received per household: Projections need at least 8 consecutive annual values; this series has fewer, so none is shown.",
-          "First-Class and Marketing Mail ads received per household has no published value for some years in between, so gaps are left as gaps.",
-          "Methodology change in FY2024: New contractor and per-household reporting. Comparisons across it should be cautious.",
-          "Methodology change in FY2025: Household Mail Survey redesign. Comparisons across it should be cautious.",
-          "Household-group bands (age, income, education) were redefined over time, so group comparisons across years should be read with the methodology notes."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design renamed the Household Mail Survey, with age bands and Large MSA definitions changing.",
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "5191fdfe955d5f3e8388524b22b0c99b365443992ef39fc0a4b14a4c6ec28ec1",
-      "generated_at": "2026-11-05T11:05:09+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "0928b674daf76f6ade9c1c49873f33e92bbc6c4b0f207e37975353290121c6b5",
+      "generated_at": "2026-11-06T16:46:04+00:00",
       "sources": [
         {
           "metric": "ads-received-per-household",
@@ -479,17 +471,17 @@
             "2015": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -503,12 +495,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -522,12 +514,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -541,12 +533,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -560,12 +552,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -579,12 +571,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -598,12 +590,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -617,12 +609,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -636,12 +628,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -655,12 +647,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -674,12 +666,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -693,12 +685,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -712,12 +704,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -731,12 +723,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -750,12 +742,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -769,12 +761,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         },
@@ -788,12 +780,12 @@
             "2020": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             },
             "2025": {
               "report_year": 2025,
               "page": 64,
-              "verified": false
+              "verified": true
             }
           }
         }

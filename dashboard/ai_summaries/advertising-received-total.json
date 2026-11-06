@@ -8,30 +8,50 @@
       "fiscal_year": 2023,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Advertising mail received by households: published values for FY2023 and how they moved.",
+        "headline": "Summary of advertising mail received by households in fiscal year 2023.",
         "statements": [
           {
-            "text": "In FY2023, Advertising mail received by households was 57,286 (millions of pieces). That fell by 8,033 (12.3%) from the previous year, FY2022. That fell by 17,989 (23.9%) from five years earlier, FY2018.",
+            "text": "For All households, advertising-received-total was 57286.0 millions of pieces in FY2023.",
             "metric": "advertising-received-total",
             "years": [
-              2023,
+              2023
+            ]
+          },
+          {
+            "text": "For All households, advertising-received-total decreased by 8033.0 millions of pieces from the previous year in FY2023.",
+            "metric": "advertising-received-total",
+            "years": [
               2022,
-              2018
+              2023
+            ]
+          },
+          {
+            "text": "For All households, advertising-received-total decreased by 17989.0 millions of pieces from 5 years earlier in FY2023, from FY2018 to FY2023.",
+            "metric": "advertising-received-total",
+            "years": [
+              2018,
+              2023
             ]
           }
         ],
-        "caveats": []
+        "caveats": [
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The FY2020 A8-12 drops the note but its pre-2007 values are no lower.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly offsets the Detached Address Label double count; 2007 itself is understated.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+        ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "257df11e09424dcefe4ff5268d73310a507b80a9c9dd8cf173ae6df722d2fd03",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "bf110e39f00fc7aafabdd1e3c1c37736df32cbae9fab3456356147ed7263e6d6",
+      "generated_at": "2026-11-06T16:51:54+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
@@ -43,32 +63,32 @@
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         }

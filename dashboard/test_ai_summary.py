@@ -128,6 +128,29 @@ class ValidateTests(SimpleTestCase):
         self.assertPasses("Packages were 26.4% above their FY2018 level.", **three)
         self.assertPasses("Packages rose 26.4% (FY2018-FY2023).", **three)
         self.assertFails("not between the years", "Packages rose 26.4% year over year.", **three)
+        # how the model words since_latest_break: the break's year is the change's start, and it must be
+        # a real break of the metric (packages here: FY2005 and FY2025), the latest one for "latest"
+        self.assertFails("FY2018 is not a methodology break", "Packages were 6,700 million in FY2023, up 1,400 "
+                         "million since the FY2018 methodology break.", **three)
+        self.assertFails("FY2018 is not a methodology break", "Packages rose 26.4% since the FY2018 break.", **three)
+        self.assertFails("not between the years", "Packages rose 1,400 million since the FY2022 methodology "
+                         "break.", **three)
+        self.assertFails("say which years", "Packages rose 1,400 million since the methodology break.", **three)
+        self.assertFails("not its metric's latest methodology break", "Packages were 6,700 million in FY2023, up "
+                         "1,400 million since the latest break in FY2018.", **three)
+        self.assertFails("not between the years", "Packages were 6,700 million in FY2023, up 1,400 million since "
+                         "the latest break in FY2022.", **three)
+        # "across" a break names the break, not where the change starts
+        self.assertFails("say which years", "Packages rose 1,400 million across the FY2005 methodology break.",
+                         **three)
+
+    def test_a_list_of_break_years_does_not_hide_the_years_after_it(self):
+        bills = {"metric": "bills-paid-by-mail-share", "years": (2018, 2022, 2023)}
+        lead = "Bills paid by mail were 15.0 percent in FY2023, down 2.0 percentage points from FY2022 and "
+        self.assertPasses(lead + "down 12.0 percentage points across the FY2020, and FY2025 methodology breaks "
+                          "from FY2018.", **bills)
+        self.assertFails("not between the years", lead + "down 12.0 percentage points across the FY2020, and "
+                         "FY2025 methodology breaks from FY2022.", **bills)
 
     def test_more_rise_and_fall_words(self):
         self.assertFails("data says the opposite", "Packages surged 8.2% from FY2022.")
@@ -521,6 +544,112 @@ class RealDataTests(TestCase):
                                            kind="yearly", year=2023))
         self.assertEqual(len(a.year_summaries(2023)), 1)
         self.assertEqual(a.year_summaries(2022), [])
+
+    def real_check(self, section, kind, year, years, text):
+        data = a.collect_section(section, kind, year)
+        return a.validate_ai_summary({"headline": "H", "caveats": [],
+                                      "statements": [{"text": text, "metric": section, "years": years}]}, data)
+
+    def test_since_a_break_and_lists_of_break_years_on_real_data(self):
+        # the second review's near misses: each passed with the first version of these patterns
+        tx = ("transactions-received-per-household", "yearly", 2023, [2017, 2018, 2022, 2023])
+        pk = ("packages-volume", "comparative", None, [2012, 2013, 2018, 2022, 2023])
+        fc = ("fcm-received-total", "comparative", None, [2010, 2013, 2023])
+        py = ("packages-volume", "yearly", 2020, [2012, 2015, 2019, 2020])
+        wrong = [
+            # ", and FY2023 ..." still ends the clause: Under $35K's figures can't pass as all households'
+            (tx, "Transactions received fell 41.6 pieces per household from FY2018 to FY2023, and FY2023 levels "
+                 "were lowest for Under $35K households."),
+            (tx, "Households received 72.8 pieces of transactions mail in FY2023, and FY2023 was the low point "
+                 "for Under $35K households."),
+            # a bare "changes" isn't a break word, so these lists don't join the clauses either
+            (tx, "Transactions received fell 41.6 pieces per household from FY2018 to FY2023, and FY2023 changes "
+                 "were largest for Under $35K households."),
+            (tx, "Households received 72.8 pieces of transactions mail in FY2023, and FY2023 changes hit Under "
+                 "$35K households hardest."),
+            # an aside after a comma doesn't set the change's years
+            (pk, "Since FY2012, package volume rose 1,400 million, FY2018-FY2023 being the fastest stretch."),
+            # "since the FY... break" must name a real break of the metric, "latest" the latest one
+            (pk, "Package volume rose 1,400 million since the FY2018 survey change."),
+            (pk, "Package volume rose 2,600 million since the FY2013 methodology break."),
+            (fc, "First-Class Mail received fell 11,914 million since the latest methodology break in FY2013."),
+        ]
+        for (section, kind, year, years), text in wrong:
+            self.assertFalse(self.real_check(section, kind, year, years, text)["passed"], text)
+        right = [
+            (tx, "Households received 114.4 pieces of transactions mail in FY2023, and FY2023 figures for Under "
+                 "$35K households were lower."),
+            (py, "Packages were 6,300 million pieces in FY2020, up 2,400 million since the FY2012 methodology break."),
+            (py, "Packages were 6,300 million pieces in FY2020, up 2,400 million since the latest break in FY2012."),
+        ]
+        for (section, kind, year, years), text in right:
+            result = self.real_check(section, kind, year, years, text)
+            self.assertTrue(result["passed"], (text, result["problems"]))
+
+    def test_overview_year_parameter_never_errors(self):
+        for bad in ("9" * 5000, "２０２０", "-2020", "20201", "2020 ", "0", ""):
+            self.assertEqual(self.client.get("/dashboard/", {"year": bad}).status_code, 200)
+            self.assertEqual(self.client.get("/dashboard/year/", {"year": bad}).status_code, 302)
+
+    def yearly(self, text, year):
+        return self.record(text, key=f"yearly:{year}", kind="yearly", year=year, years=(year,))
+
+    def test_overview_summaries_by_topic_and_year(self):
+        self.store("executive-summary", self.record("Packages were 6,700 million pieces in FY2023."),
+                   self.yearly("Packages were 6,700 million pieces in FY2023.", 2023),
+                   self.yearly("Packages were 6,300 million pieces in FY2020.", 2020))
+        self.store("packages", self.yearly("Packages were 6,300 million pieces in FY2020.", 2020),
+                   self.yearly("Packages were 9,999 million pieces in FY2021.", 2021))   # fails: not shown
+        self.store("packages-volume", self.yearly("Packages were 6,700 million pieces in FY2023.", 2023))
+        out = a.overview_summaries()
+        self.assertEqual([i["title"] for i in out["long_term"]], ["Executive summary"])
+        self.assertEqual(out["years"], [2020, 2021, 2023])  # stored topic years; metric sections don't count
+        self.assertEqual(out["year"], 2023)                 # the latest with a summary
+        self.assertEqual([i["title"] for i in out["yearly"]], ["Executive summary"])
+        self.assertEqual([i["title"] for i in a.overview_summaries(2020)["yearly"]], ["Executive summary", "Packages"])
+        self.assertEqual(a.overview_summaries(2021)["yearly"], [])   # stored, but it fails its check: hidden
+        self.assertEqual(a.overview_summaries(2010)["yearly"], [])
+        self.assertEqual(a.year_spans([2000, 2001, 2002, 2005, 2007, 2008]), "FY2000–FY2002, FY2005, FY2007–FY2008")
+
+    def test_overview_card_long_term_and_year_slider(self):
+        self.store("executive-summary", self.record("Packages <b>were</b> 6,700 million pieces in FY2023."),
+                   self.yearly("Packages were 6,300 million pieces in FY2020.", 2020))
+        self.store("packages", self.record("Packages were 6,700 million pieces in FY2023."),
+                   self.yearly("Packages were 6,300 million pieces in FY2020 (packages topic).", 2020))
+        with mock.patch.object(a, "generate_ai_summary", side_effect=AssertionError("no API calls")):
+            html = self.client.get("/dashboard/").content.decode()
+            card = html[html.index('id="ai-summary"'):]
+            self.assertIn("&lt;b&gt;were&lt;/b&gt;", card)                       # escaped
+            self.assertIn("<h4>Executive summary</h4>", card)                    # first topic open...
+            self.assertIn("<summary>Packages</summary>", card)                   # ...the rest folded
+            self.assertIn('<label for="summary-year">Fiscal year</label>', card)
+            self.assertRegex(card, r'type="range" id="summary-year" name="year" min="2000" max="2025"\s+step="1" value="2020"')
+            self.assertIn("<h4>FY2020</h4>", card)                              # default: latest stored year
+            self.assertIn("<summary>Packages, FY2020</summary>", card)
+            self.assertIn("stored for FY2020.", card)
+            self.assertIn('href="?year=2019#year-by-year"', card)
+            self.assertIn('href="?year=2021#year-by-year"', card)
+            self.assertIn('href="/dashboard/year/2020/"', card)
+            # another year: no topic summary yet, so say so; the long-term part stays
+            other = self.client.get("/dashboard/?year=2010").content.decode()
+            self.assertIn("No topic summary for FY2010", other)
+            self.assertIn('value="2010"', other)
+            self.assertIn("<h4>Executive summary</h4>", other)
+            # values that aren't a loaded fiscal year fall back to the default
+            for bad in ("1999", "abc", "2020.0", "２０２０", "-1"):
+                page = self.client.get("/dashboard/", {"year": bad})
+                self.assertEqual(page.status_code, 200)
+                self.assertIn("<h4>FY2020</h4>", page.content.decode())
+            # the first and last years have no step beyond them
+            last = self.client.get("/dashboard/?year=2025").content.decode()
+            self.assertNotIn("Next year", last)
+            self.assertIn('href="?year=2024#year-by-year"', last)
+
+    def test_overview_card_without_summaries(self):
+        html = self.client.get("/dashboard/").content.decode()
+        self.assertIn("No long-term summary has been generated yet", html)
+        self.assertIn("No topic summary for FY2025", html)                   # the latest loaded year
+        self.assertIn("stored for no year yet", html)
 
     def test_range_keys_do_not_overwrite_each_other(self):
         self.assertEqual(a.record_key("range", (2010, 2020)), "range:2010-2020")

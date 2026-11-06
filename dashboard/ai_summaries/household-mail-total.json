@@ -8,30 +8,46 @@
       "fiscal_year": 2023,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "All household mail, sent and received: published values for FY2023 and how they moved.",
+        "headline": "Yearly summary of all household mail, sent and received statistics for fiscal year 2023.",
         "statements": [
           {
-            "text": "In FY2023, All household mail, sent and received was 97,400 (millions of pieces). That fell by 8,500 (8.0%) from the previous year, FY2022. That fell by 23,600 (19.5%) from five years earlier, FY2018.",
+            "text": "For all households, the household-mail-total was 97,400 million in FY2023.",
             "metric": "household-mail-total",
             "years": [
-              2023,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, the household-mail-total decreased by 8,500 million from the previous year in FY2023.",
+            "metric": "household-mail-total",
+            "years": [
               2022,
-              2018
+              2023
+            ]
+          },
+          {
+            "text": "For all households, the household-mail-total fell by 23,600 million from 5 years earlier across the FY2024 and FY2025 methodology breaks in FY2023.",
+            "metric": "household-mail-total",
+            "years": [
+              2018,
+              2023
             ]
           }
         ],
-        "caveats": []
+        "caveats": [
+          "Comparisons across the FY2007, FY2008, FY2010, FY2012, FY2024, and FY2025 methodology breaks must be made cautiously."
+        ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "03dac98bbe6a3d48b90bea5fb0fbc92e1ad4cd14197d5dff11614ae12fb0789d",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "276c6ac977351f3fdbec1daccc7ab8cee1bd38d3d9ae253b4e035c542085dcfa",
+      "generated_at": "2026-11-06T16:51:42+00:00",
       "sources": [
         {
           "metric": "household-mail-total",
@@ -43,32 +59,32 @@
             "2018": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2022,
               "page": 4,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             }
           }
         }
@@ -81,44 +97,74 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "All household mail, sent and received: long-term change in the published values, FY2003 to FY2023.",
+        "headline": "Long-term trends and projections for all household mail, sent and received, show continuous volume declines across the study period.",
         "statements": [
           {
-            "text": "All household mail, sent and received (millions of pieces) went from 158,300 in FY2003 to 97,400 in FY2023: it fell by 60,900 (38.5%) over the period. Since FY2018 (five years earlier) it fell by 23,600 (19.5%). Since FY2013 (ten years earlier) it fell by 36,500 (27.3%).",
+            "text": "For all households, household-mail-total fell by 39,500.0 millions of pieces, or 28.9 percent, from 2012 to 2023 across the FY2012 methodology break.",
             "metric": "household-mail-total",
             "years": [
-              2003,
-              2023,
-              2018,
-              2013
+              2012,
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Drift model, fitted on FY2012 to FY2023, puts All household mail, sent and received at 79,445 in FY2028 (80% range 65,020 to 93,871). On past years it beat the naive baseline.",
+            "text": "For all households, household-mail-total decreased by 36,500.0 millions of pieces, or 27.3 percent, from 2013 to 2023.",
             "metric": "household-mail-total",
             "years": [
-              2023,
+              2013,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, household-mail-total declined by 23,600.0 millions of pieces, or 19.5 percent, from 2018 to 2023.",
+            "metric": "household-mail-total",
+            "years": [
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, household-mail-total went down by 8,500.0 millions of pieces, or 8.0 percent, from 2022 to 2023.",
+            "metric": "household-mail-total",
+            "years": [
+              2022,
+              2023
+            ]
+          },
+          {
+            "text": "For all households, the projected household-mail-total is 93,809.0 millions of pieces in 2024 with an 80% prediction interval 87,358.0 to 100,260.0.",
+            "metric": "household-mail-total",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "For all households, the projected household-mail-total is 79,445.0 millions of pieces in 2028 with an 80% prediction interval 65,020.0 to 93,871.0.",
+            "metric": "household-mail-total",
+            "years": [
               2028
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
-          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious.",
-          "Methodology change in FY2012: FY2014 report restated 2012 and 2013 (weighting by home ownership). Comparisons across it should be cautious."
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed.",
+          "FY2025 used a new survey design, renamed the Household Mail Survey, with changes to age bands and the definition of Large MSA."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "65cb959d348d8cd74c9ba6cd39cf289f02f4a1064a47ca4dcd9d5ff06cb05c26",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v2",
+      "input_hash": "8dce356306b56e2818ba7bf5b5f40ac6bde109f0fdc964ec74ee17511747dc09",
+      "generated_at": "2026-11-06T16:47:15+00:00",
       "sources": [
         {
           "metric": "household-mail-total",
@@ -130,107 +176,107 @@
             "2003": {
               "report_year": 2005,
               "page": 8,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2006,
               "page": 9,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2007,
               "page": 9,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2008,
               "page": 8,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2009,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2010,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2010,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2012,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2013,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2014,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2015,
               "page": 12,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2016,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2017,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2018,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2019,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2020,
               "page": 10,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2022,
               "page": 4,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 11,
-              "verified": false
+              "verified": true
             }
           }
         }
