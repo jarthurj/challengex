@@ -28,14 +28,19 @@ sets it. The key is read from GEMINI_API_KEY (.env), never logged.
 '''
 import argparse
 import hashlib
+import http.client
 import json
 import os
 import re
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
+from contextlib import contextmanager
 from datetime import datetime, timezone
+
+from django.views.decorators.debug import sensitive_variables
 from pathlib import Path
 
 #--------------------------------------GEMINI SETUP----------------------------------------
@@ -544,7 +549,8 @@ def build_prompt(data):
     return f"{task}\n\nDATA (JSON):\n{json.dumps(data, sort_keys=True)}"
 
 
-def generate_ai_summary(data, model=None, budget=None):
+@sensitive_variables("key", "api_key", "request")   # never on a Django error page
+def generate_ai_summary(data, model=None, budget=None, timeout=None, api_key=None):
     """
     Sends the structured input to the Gemini API and returns its answer. It retries on
     rate limits, server errors and replies that aren't a JSON object, times out, and never raises
@@ -553,9 +559,11 @@ def generate_ai_summary(data, model=None, budget=None):
     @param data: the AI input dict from prepare_summary_data().
     @param model: Gemini model name; defaults to GEMINI_MODEL or DEFAULT_MODEL.
     @param budget: {"left": n}, the HTTP requests this run may still make (retries count); None = no cap.
+    @param timeout: seconds per request (default TIMEOUT); a page uses a shorter one.
+    @param api_key: the key, when the caller read it from .env itself; default GEMINI_API_KEY.
     @return: the parsed summary dict (headline, statements, caveats, plus "_model"), or None on failure.
     """
-    key = os.environ.get("GEMINI_API_KEY")
+    key = api_key or os.environ.get("GEMINI_API_KEY")
     if not key:
         print("GEMINI_API_KEY is not set (put it in .env).", file=sys.stderr)
         return None
@@ -580,7 +588,7 @@ def generate_ai_summary(data, model=None, budget=None):
                 return None
             budget["left"] -= 1
         try:
-            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+            with urllib.request.urlopen(request, timeout=timeout or TIMEOUT) as response:
                 payload = json.load(response)
             text = payload["candidates"][0]["content"]["parts"][0]["text"]
             summary = json.loads(text)
@@ -593,7 +601,8 @@ def generate_ai_summary(data, model=None, budget=None):
             print(f"Gemini API error {e.code}", file=sys.stderr)   # never print headers (key)
             if not retryable or attempt == RETRIES:
                 return None
-        except (urllib.error.URLError, TimeoutError, KeyError, IndexError, TypeError, ValueError) as e:
+        except (urllib.error.URLError, OSError, http.client.HTTPException,   # incl. dropped connections
+                KeyError, IndexError, TypeError, ValueError) as e:
             print(f"Gemini call failed: {type(e).__name__}", file=sys.stderr)
             if attempt == RETRIES:
                 return None
@@ -1286,7 +1295,8 @@ def record_key(kind, span=None, year=None):
     return kind
 
 
-def make_summary(section_key, kind, year=None, model=None, span=None, budget=None):
+@sensitive_variables("api_key")
+def make_summary(section_key, kind, year=None, model=None, span=None, budget=None, timeout=None, api_key=None):
     """
     Runs the whole process for one section and kind: builds the input, calls Gemini,
     validates the answer and adds the metadata (model, prompt version, input hash, reviewed flag).
@@ -1297,12 +1307,14 @@ def make_summary(section_key, kind, year=None, model=None, span=None, budget=Non
     @param model: Gemini model name, or None for the default.
     @param span: (start_year, end_year) for a range summary.
     @param budget: {"left": n} shared HTTP-request cap (see generate_ai_summary), or None.
+    @param timeout: seconds per request (see generate_ai_summary).
+    @param api_key: the Gemini key, when the caller read it itself.
     @return: the record to store, or None when there is no data or the API call failed.
     """
     data = collect_section(section_key, kind, year, span)
     if not data["series"]:
         return None
-    summary = generate_ai_summary(data, model=model, budget=budget)
+    summary = generate_ai_summary(data, model=model, budget=budget, timeout=timeout, api_key=api_key)
     if summary is None:
         return None
     used_model = summary.pop("_model", model or DEFAULT_MODEL)
@@ -1357,8 +1369,27 @@ def save_summary(section_key, record):
         if legacy and record["validation"]["passed"]:
             del file["summaries"]["yearly"]   # replaced by the new keyed record
         outcome = "saved"
-    _path(section_key).write_text(json.dumps(file, indent=2, ensure_ascii=False), encoding="utf-8")
+    _write_file(section_key, file)
     return outcome
+
+
+def _write_file(section_key, file):
+    """Writes a section's file whole: to a temporary file of its own first, then moved into place, so
+    a page reading it at the same moment never sees half a file. (Windows refuses the move while
+    another thread has the file open, so it retries briefly.)"""
+    SUMMARY_DIR.mkdir(exist_ok=True)
+    path = _path(section_key)
+    temporary = path.with_name(f"{path.name}.{os.getpid()}.{threading.get_ident()}.tmp")
+    temporary.write_text(json.dumps(file, indent=2, ensure_ascii=False), encoding="utf-8")
+    for attempt in range(5):
+        try:
+            os.replace(temporary, path)
+            return
+        except PermissionError:
+            if attempt == 4:
+                temporary.unlink(missing_ok=True)
+                raise
+            time.sleep(0.05 * (attempt + 1))
 
 
 def get_summary(section_key, kind, live=False, year=None, span=None):
@@ -1388,6 +1419,26 @@ def get_summary(section_key, kind, live=False, year=None, span=None):
 
 # Re-check results for stored summaries: (section, record identity, data version) -> result.
 _CHECKS = {}
+_BATCH = threading.local()
+
+
+@contextmanager
+def check_batch():
+    """Within the block the data version is read once, not once per summary: for a page that checks
+    many summaries in one request (the data can't change in the middle of it)."""
+    _BATCH.active, _BATCH.version = True, None
+    try:
+        yield
+    finally:
+        _BATCH.active, _BATCH.version = False, None
+
+
+def _version_now():
+    if getattr(_BATCH, "active", False):
+        if _BATCH.version is None:
+            _BATCH.version = _data_version()
+        return _BATCH.version
+    return _data_version()
 
 
 def _data_version():
@@ -1425,7 +1476,7 @@ def current_check(section_key, record):
              was written from (its input_hash) is not the current data.
     """
     key = (section_key, record.get("key"), record.get("input_hash"), _record_hash(record),
-           _data_version())
+           _version_now())
     if key not in _CHECKS:
         try:
             span = tuple(record["fiscal_year_range"]) if record.get("fiscal_year_range") else None
@@ -1482,74 +1533,218 @@ def section_for_trend(selected):
     return selected if selected in METRIC_SECTIONS else None
 
 
-def trend_summaries(selected):
-    """
-    The stored summaries the Trends page shows under a selected metric: the long-term one and the
-    most recent yearly one. Only reads files, never calls the API; text that fails the check against
-    the current data is skipped.
+# ---------------------------------------------------------------------------------------------
+# The AI summaries page: categories, search, copy text, provenance, the reviewed flag
+# ---------------------------------------------------------------------------------------------
 
-    @param selected: the Trends picker value (metric slug or "category_volume").
-    @return: list of {"label": str, "record": dict}; empty when none are stored.
-    """
-    section = section_for_trend(selected)
-    if section is None:
-        return []
-    file = _load_file(section)
+KIND_LABELS = {"yearly": "One year", "comparative": "Long term", RANGE: "Custom range"}
+# The page's categories, in display order: the topic sections. Each subject belongs to one of them.
+CATEGORY_ORDER = list(TOPIC_SECTIONS)
+# A metric's category: the first topic here that holds all of its metrics (household-group series
+# first, so they sit with the demographics), else mail volumes and flows.
+_CATEGORY_PRIORITY = ["household-profile-and-demographics", "correspondence", "transactions-and-bill-payment",
+                      "advertising", "periodicals", "packages", "mail-volumes-and-flows"]
+LIVE_TIMEOUT = 30     # seconds per request when a page asks for a summary
+LIVE_MAX_CALLS = 2    # HTTP requests per page request (one retry)
+
+
+def category_of(section_key):
+    """The topic section a subject is grouped under (a topic is its own category)."""
+    if section_key in TOPIC_SECTIONS:
+        return section_key
+    slugs = set(SECTIONS[section_key][1])
+    for topic in _CATEGORY_PRIORITY:
+        if slugs <= set(TOPIC_SECTIONS[topic][1]):
+            return topic
+    return "mail-volumes-and-flows"
+
+
+def is_year(value):
+    return isinstance(value, int) and not isinstance(value, bool)
+
+
+def stored_entries(section_keys=None):
+    """Every stored record, not re-checked: [{"section", "key", "record"}] in SECTIONS order."""
     out = []
-    for label, record in (("Long-term summary", file["summaries"].get("comparative")),
-                          ("Latest-year summary", _find_yearly(file, None))):
-        record = shown(section, record)
-        if record:
-            out.append({"label": label, "record": record})
+    for section in section_keys or SECTIONS:
+        for key, record in _load_file(section)["summaries"].items():
+            if isinstance(record.get("summary"), dict):
+                out.append({"section": section, "key": key, "record": record})
     return out
 
 
-def year_summaries(year):
-    """
-    Every stored yearly summary for one fiscal year: the topic sections first, then each metric.
-    Only reads files, never calls the API; text that fails the check against the current data is
-    skipped.
+def _statements(record):
+    statements = record.get("summary", {}).get("statements")
+    return [s for s in statements if isinstance(s, dict)] if isinstance(statements, list) else []
 
-    @param year: the fiscal year.
-    @return: list of {"title": str, "record": dict}.
-    """
-    out = []
+
+def _statement_years(record):
+    return sorted({y for s in _statements(record) for y in (s.get("years") if isinstance(s.get("years"), list) else [])
+                   if is_year(y)})
+
+
+def years_label(record):
+    """'FY2023', 'FY2015–FY2023', or for a long-term summary the span its statements cite."""
+    kind = record.get("kind")
+    if kind == "yearly" and is_year(record.get("fiscal_year")):
+        return f"FY{record['fiscal_year']}"
+    span = record.get("fiscal_year_range")
+    if kind == RANGE and isinstance(span, list) and len(span) == 2 and all(is_year(y) for y in span):
+        return f"FY{span[0]}–FY{span[1]}"
+    years = _statement_years(record)
+    return f"FY{years[0]}–FY{years[-1]}" if len(years) > 1 else (f"FY{years[0]}" if years else "")
+
+
+def covers_year(record, year):
+    """True if a summary is about `year`: its fiscal year, inside its range, or one its statements cite."""
+    kind = record.get("kind")
+    if kind == "yearly":
+        return record.get("fiscal_year") == year
+    span = record.get("fiscal_year_range")
+    if kind == RANGE and isinstance(span, list) and len(span) == 2 and all(is_year(y) for y in span):
+        return span[0] <= year <= span[1]
+    return year in _statement_years(record)
+
+
+def entry_order(section_key, record):
+    """Within a category: the topic first, then its subjects; long term, ranges, then years (latest first)."""
+    kind_rank = {"comparative": 0, RANGE: 1, "yearly": 2}.get(record.get("kind"), 3)
+    year = record.get("fiscal_year") if is_year(record.get("fiscal_year")) else 0
+    return (section_key not in TOPIC_SECTIONS, list(SECTIONS).index(section_key), kind_rank, -year)
+
+
+def metric_name(slug):
+    """A metric's display name; anything that isn't a known slug (a malformed reply: a list...) as text."""
+    return METRIC_SECTIONS[slug][0] if isinstance(slug, str) and slug in METRIC_SECTIONS else str(slug)
+
+
+def search_terms(query):
+    """Lower-case words of a search, at most 8; "FY2019" and "2019" both find fiscal year 2019."""
+    words = re.findall(r"[\w$%.+-]+", (query or "").lower())[:8]
+    return [w[2:] if re.fullmatch(r"fy(?:19|20)\d\d", w) else w for w in words]
+
+
+def search_text(entry):
+    """Everything a search looks in: subject, category, kind, years, headline, statements (with the
+    names of the metrics they cite), caveats."""
+    record, section = entry["record"], entry["section"]
+    summary = record.get("summary", {})
+    parts = [SECTIONS[section][0], TOPIC_SECTIONS[category_of(section)][0], section,
+             KIND_LABELS.get(record.get("kind"), ""), years_label(record)]
+    if is_year(record.get("fiscal_year")):
+        parts.append(str(record["fiscal_year"]))
+    validation = record.get("validation")
+    if not (isinstance(validation, dict) and validation.get("passed") is True):
+        return " ".join(parts).lower()   # failed when written: never search its text, only what it is about
+    parts.append(str(summary.get("headline", "")))
+    for s in _statements(record):
+        parts += [str(s.get("text", "")), str(s.get("metric", "")), metric_name(s.get("metric"))]
+    caveats = summary.get("caveats")
+    parts += [str(c) for c in caveats] if isinstance(caveats, list) else []
+    parts += [str(y) for y in _statement_years(record)]
+    sources = record.get("sources") if isinstance(record.get("sources"), list) else []
+    for series in sources:   # its household groups: "income", "Under $35K", "age" ...
+        segment = series.get("segment") if isinstance(series, dict) else None
+        if isinstance(segment, dict) and segment.get("dimension") not in (None, "all"):
+            parts += [str(segment.get("dimension")), str(segment.get("value", "")), "household groups demographics"]
+    return " ".join(parts).lower()
+
+
+def matches(entry, terms):
+    if not terms:
+        return True
+    text = search_text(entry)
+    return all(t in text for t in terms)
+
+
+def section_for_words(query):
+    """The subject a search most plausibly names (its title's words or its key), or None."""
+    terms = [t for t in search_terms(query) if not t.isdigit() and len(t) > 2]
+    if not terms:
+        return None
+    best, best_score = None, 0
     for key, (title, _slugs, _groups) in SECTIONS.items():
-        record = shown(key, _find_yearly(_load_file(key), year))
-        if record:
-            out.append({"title": title, "record": record, "topic": key in TOPIC_SECTIONS})
-    return out
+        words = set(re.findall(r"\w+", f"{title} {key}".lower()))
+        score = sum(1 for t in terms if any(w.startswith(t) for w in words))
+        if score > best_score or (score == best_score and score and key in TOPIC_SECTIONS and best not in TOPIC_SECTIONS):
+            best, best_score = key, score
+    return best
 
 
-def overview_summaries(year=None):
-    """
-    The Overview's AI summary card: each topic section's long-term summary, and the topic sections'
-    yearly summaries for one fiscal year (the executive summary first, as in TOPIC_SECTIONS). Only
-    reads files, never calls the API; text that fails the check against the current data is skipped.
+def year_in_words(query, years):
+    for t in search_terms(query):
+        if t.isdigit() and int(t) in years:
+            return int(t)
+    return None
 
-    Only the summaries shown are re-checked (a cold check of every year's took over 3 seconds), so
-    "years" lists the years that have a stored topic summary, whether or not it still passes.
 
-    @param year: the fiscal year for the yearly part, or None for the latest one that has a summary.
-    @return: {"long_term": [{"title", "record"}], "yearly": [...], "year": the year shown (None when
-             no yearly topic summary is stored), "years": the fiscal years that have one stored}.
-    """
-    long_term, files, stored = [], {}, set()
-    for key, (title, _slugs, _groups) in TOPIC_SECTIONS.items():
-        file = files[key] = _load_file(key)
-        record = shown(key, file["summaries"].get("comparative"))
-        if record:
-            long_term.append({"title": title, "record": record})
-        stored |= {r.get("fiscal_year") for k, r in file["summaries"].items() if k == "yearly" or k.startswith("yearly:")}
-    years = sorted(y for y in stored if isinstance(y, int) and not isinstance(y, bool))
-    if year is None:
-        year = years[-1] if years else None
-    yearly = []
-    for key, (title, _slugs, _groups) in TOPIC_SECTIONS.items():
-        record = shown(key, _find_yearly(files[key], year)) if year is not None else None
-        if record:
-            yearly.append({"title": title, "record": record})
-    return {"long_term": long_term, "yearly": yearly, "year": year, "years": years}
+def plain_text(section_key, record):
+    """A summary as text for a report: headline, statements with what they cite, caveats, how it was
+    made and checked, and the source report and page of every value its statements cite."""
+    summary = record.get("summary", {})
+    label = f"{KIND_LABELS.get(record.get('kind'), 'Summary')}, {years_label(record)}".strip(", ")
+    lines = [f"{SECTIONS[section_key][0]} ({label})", str(summary.get("headline", "")), ""]
+    cited = {}
+    for s in _statements(record):
+        years = [y for y in (s.get("years") if isinstance(s.get("years"), list) else []) if is_year(y)]
+        cited.setdefault(str(s.get("metric")), set()).update(years)
+        lines.append(f"- {s.get('text', '')} [{metric_name(s.get('metric'))}; "
+                     f"{', '.join(f'FY{y}' for y in years)}]")
+    caveats = [str(c) for c in summary.get("caveats", []) if c] if isinstance(summary.get("caveats"), list) else []
+    if caveats:
+        lines += ["", "Caveats:"] + [f"- {c}" for c in caveats]
+    made = (f"AI-generated with {record.get('model')} (prompt {record.get('prompt_version')})"
+            if record.get("ai_generated") else "Written by a rule-based template (not AI)")
+    lines += ["", f"{made} on {str(record.get('generated_at', ''))[:10]}. Every number was checked automatically "
+                  "against the published USPS Household Diary Study / Household Mail Survey values. "
+                  + ("Reviewed by a person." if record.get("reviewed") else "Not yet reviewed by a person.")]
+    sources = []
+    for row in source_rows(record, cited):
+        sources.append(f"{row['metric']} ({row['group']}), FY{row['fiscal_year']}: FY{row['report_year']} report, "
+                       f"page {row['page']}{'' if row['verified'] else ' (not verified against the PDF)'}")
+    if sources:
+        lines += ["Sources:"] + [f"- {s}" for s in sources]
+    return "\n".join(lines)
+
+
+def source_rows(record, cited=None):
+    """The report and page of each published value the summary cites (all of them with cited=None
+    only for the years its statements name): [{"metric", "group", "fiscal_year", "report_year",
+    "page", "verified"}], skipping anything malformed."""
+    if cited is None:
+        cited = {}
+        for s in _statements(record):
+            cited.setdefault(str(s.get("metric")), set()).update(
+                y for y in (s.get("years") if isinstance(s.get("years"), list) else []) if is_year(y))
+    rows = []
+    for series in record.get("sources") if isinstance(record.get("sources"), list) else []:
+        if not (isinstance(series, dict) and isinstance(series.get("sources"), dict)
+                and isinstance(series.get("metric"), str)):
+            continue
+        wanted = cited.get(series.get("metric"), set())
+        segment = series.get("segment") if isinstance(series.get("segment"), dict) else {}
+        for year, src in sorted(series["sources"].items()):
+            if not (str(year).isdigit() and int(year) in wanted and isinstance(src, dict)):
+                continue
+            rows.append({"metric": metric_name(series.get("metric")), "metric_slug": series.get("metric"),
+                         "group": segment.get("value", "All households"), "fiscal_year": int(year),
+                         "report_year": src.get("report_year"), "page": src.get("page"),
+                         "verified": bool(src.get("verified"))})
+    return rows
+
+
+def set_reviewed(section_key, key, reviewed, by):
+    """Marks a stored summary reviewed (who and when) or unmarks it. Only a summary that pages show
+    (it passes its check now) can be marked. Returns False if there is no such summary or it fails."""
+    file = _load_file(section_key)
+    record = file["summaries"].get(key)
+    if record is None or (reviewed and not shown(section_key, record)):
+        return False
+    record["reviewed"] = bool(reviewed)
+    record["reviewed_by"] = by if reviewed else None
+    record["reviewed_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds") if reviewed else None
+    _write_file(section_key, file)
+    return True
 
 
 def year_spans(years):

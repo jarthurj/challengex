@@ -1,0 +1,21 @@
+{# One summary in a list: a folded row (title, one status badge, the year where years differ, #}
+{# the headline and the first statement as a preview) and its text. Expects `item`, `open_all`, `mixed_years`. #}
+<details class="ai-item" id="{{ item.dom_id }}"{% if open_all %} open{% endif %}>
+    <summary>
+        <span class="ai-item-head">
+            <span class="ai-item-title"><span class="chevron" aria-hidden="true"></span>{{ item.short_title }}{% if item.short_title != item.title %}<span class="visually-hidden">: {{ item.title }}</span>{% endif %}</span>
+            {% if mixed_years %}<span class="badge">{{ item.label }}</span>{% endif %}
+            <span class="badge {{ item.status_style }}">{{ item.status }}</span>
+            {% if item.record.stale %}<span class="badge">Data changed since</span>{% endif %}
+        </span>
+        <span class="ai-item-headline">{{ item.record.summary.headline }}</span>
+        {% if item.preview %}<span class="ai-item-preview">{{ item.preview }}</span>{% endif %}
+    </summary>
+    {% include "dashboard/_ai_summary.html" with record=item.record compact=True %}
+    <p class="item-actions">
+        <a href="{{ item.url }}">Sources and details<span class="visually-hidden"> for {{ item.title }}, {{ item.label }}</span></a>
+        <button type="button" class="button-secondary copy-button" data-copy="{{ item.dom_id }}-copy" hidden>Copy with sources<span class="visually-hidden">: {{ item.title }}, {{ item.label }}</span></button>
+        <span class="copy-status small" role="status" aria-live="polite"></span>
+    </p>
+    <pre class="copy-source" id="{{ item.dom_id }}-copy" hidden>{{ item.copy }}</pre>
+</details>

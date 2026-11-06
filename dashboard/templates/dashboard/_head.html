@@ -77,15 +77,74 @@
   /* AI summaries (_ai_summary.html) */
   .ai-summary { @apply mb-6 rounded-xl border border-l-4 border-slate-200 border-l-usps-blue bg-white p-4 shadow-sm; }
   .notes { @apply whitespace-pre-line; }
-  /* The Overview's AI summary card, its topics and its year slider */
-  .summary-card { @apply mt-8 rounded-xl border border-t-4 border-slate-200 border-t-usps-blue bg-white p-5 shadow-sm; }
-  .summary-card h2 { @apply mt-0; }
-  .summary-topic { @apply mb-3 rounded-lg border border-slate-200; }
-  .summary-topic summary { @apply cursor-pointer rounded-lg bg-slate-50 px-4 py-2 font-semibold text-usps-navy; }
-  .summary-topic .ai-summary { @apply m-3 mb-3; }
-  .year-slider { @apply mb-2; }
-  .year-slider input[type="range"] { @apply w-full max-w-md accent-usps-red; }
-  .year-slider output { @apply min-w-[4.5rem] text-lg font-bold text-usps-navy; }
+  /* The AI summaries tab: browse tabs, foldable summaries, copy, the year box */
+  .tabs { @apply mb-4 flex flex-wrap gap-2 border-b-2 border-slate-200 pb-2; }
+  .tabs a, .tabs .tab-current { @apply rounded-md px-3 py-1.5 font-semibold no-underline; }
+  .tabs a:hover { @apply bg-slate-100 underline; }
+  .tabs [aria-current] { @apply bg-usps-navy text-white; }
+  .tabs a[aria-current]:focus-visible { @apply outline-usps-red; }
+  /* Categories: more space between them than between their summaries (proximity), a clear heading */
+  .ai-category { @apply mb-8; }
+  .ai-category > h3 { @apply mb-3 flex items-baseline gap-2 border-b-2 border-slate-200 pb-1.5 text-lg; }
+  .ai-item { @apply mb-2 rounded-lg border border-slate-200 bg-white transition-shadow hover:shadow-sm; }
+  .ai-item > summary { @apply cursor-pointer list-none rounded-lg px-4 py-3; }
+  .ai-item > summary::-webkit-details-marker { @apply hidden; }
+  /* the row's own open/closed arrow, in line with its title (the browser's marker sat on a line of its own) */
+  .chevron { @apply mr-2 inline-block h-2.5 w-2.5 shrink-0 rotate-45 border-r-2 border-t-2 border-usps-navy align-[0.1em] transition-transform; }
+  .ai-item[open] .chevron { @apply rotate-[135deg]; }
+  .ai-item-headline, .ai-item-preview { @apply pl-[1.125rem]; }
+  .ai-item[open] > summary { @apply border-b border-slate-200 bg-slate-50; }
+  .ai-item-head { @apply flex flex-wrap items-center gap-x-2 gap-y-1; }
+  .ai-item-title { @apply font-semibold text-usps-navy; }
+  .ai-item-headline { @apply mt-1 block font-medium text-slate-800; }
+  .ai-item-preview { @apply mt-0.5 block text-sm text-slate-600 line-clamp-2; }
+  .ai-item[open] .ai-item-preview { @apply hidden; }
+  .ai-item .ai-summary { @apply m-3 mb-2 border-0 p-1 shadow-none; }
+  .ai-headline { @apply mb-2 text-base; }
+  .ai-statements li { @apply mb-1.5; }
+  .citation a { @apply text-slate-600; }
+  .check-note { @apply mb-3; }
+  .check-note > summary { @apply cursor-pointer text-sm font-medium text-usps-blue; }
+  .copy-panel { @apply mb-6; }
+  .copy-panel > summary { @apply mb-2 cursor-pointer font-medium text-usps-blue; }
+  .page-actions { @apply mb-4; }
+  .lead { @apply max-w-3xl text-slate-700; }
+  .help-line { @apply mb-4 mt-1; }
+  /* The year toolbar: previous, the box, next together; each subject's latest year apart from them */
+  .toolbar { @apply mb-1 flex flex-wrap items-center gap-x-6 gap-y-3; }
+  .toolbar-group { @apply flex flex-wrap items-center gap-2; }
+  .button-link.step { @apply px-3; }
+  .results-bar { @apply mb-3 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-slate-100 px-4 py-2; }
+  .results-bar p { @apply m-0; }
+  .jump-links { @apply mb-6 flex flex-wrap gap-2; }
+  .jump-links a { @apply rounded-full border border-slate-300 bg-white px-3 py-1 text-sm no-underline hover:border-usps-navy hover:underline; }
+  .chip-count { @apply ml-1 rounded-full bg-slate-100 px-1.5 text-xs text-slate-700; }
+  .generate-form label[hidden] { @apply hidden; }
+  .ai-item .item-actions { @apply mx-4; }
+  .item-actions { @apply flex flex-wrap items-center gap-x-4 gap-y-2; }
+  .badge-ok { @apply border-green-800 bg-green-50 text-green-900; }
+  .badge-warn { @apply border-amber-800 bg-amber-50 text-amber-900; }
+  .button-secondary { @apply border border-usps-navy bg-white text-usps-navy hover:bg-slate-100; }
+  .copy-visible { @apply mb-6 overflow-x-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-white p-4 text-sm; }
+  .messages { @apply mb-4; }
+  .messages p { @apply mb-2; }
+  .generate-form button[disabled] { @apply cursor-not-allowed bg-slate-500; }
+  .search-panel { @apply mb-4 rounded-xl border border-slate-200 bg-white shadow-sm; }
+  .search-panel > summary { @apply cursor-pointer rounded-xl px-4 py-3 font-semibold text-usps-navy; }
+  .search-panel[open] > summary { @apply border-b border-slate-200; }
+  .search-panel form.filters { @apply mb-0 rounded-t-none border-0 shadow-none; }
+  .create-panel { @apply -mt-2; }   /* with the search panel: the page's two tools, together at the top */
+  .create-panel > .panel-note { @apply mb-0 px-4 pt-3; }
+  .create-panel > .help-line { @apply mb-0 mt-0 px-4 pb-3; }
+  .results-bar-bottom { @apply mb-2 mt-8; }
+  .results-bar-bottom + .download-line { @apply mt-2 border-0 pt-0; }
+  .about-panel { @apply mt-8 rounded-xl border border-slate-200 bg-white px-4 py-1 shadow-sm; }
+  .about-panel > summary { @apply cursor-pointer py-2; }
+  .about-panel > summary h2 { @apply my-0 inline border-0 pl-0; }
+  .about-panel[open] > summary { @apply mb-2; }
+  .download-line { @apply mt-6 border-t border-slate-200 pt-4; }
+  .year-pick select { @apply min-w-[16rem]; }
+  .button-link { @apply rounded-md border border-usps-navy bg-white px-4 py-2 font-semibold text-usps-navy no-underline hover:bg-slate-100; }
   .year-steps { @apply flex flex-wrap gap-x-6; }
 
   /* Detail page */
@@ -102,7 +161,7 @@
   form.filters { @apply items-end gap-x-5 rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }
   form.filters label { @apply flex flex-col gap-1 text-sm font-medium; }
   form.filters label.inline { @apply flex-row items-center; }
-  input[type="search"], select { @apply max-w-full rounded-md border border-slate-400 bg-white px-3 py-2; }
+  input[type="search"], input[type="number"], select { @apply max-w-full rounded-md border border-slate-400 bg-white px-3 py-2; }
   button { @apply cursor-pointer rounded-md bg-usps-red px-4 py-2 font-semibold text-white hover:bg-red-800; }
   .year-dropdown { @apply relative; }
   .year-dropdown summary { @apply cursor-pointer rounded-md border border-slate-400 bg-white px-3 py-2; }

@@ -74,16 +74,8 @@
             and FY2025 so far.</p>
     {% endif %}
 
-    <section aria-labelledby="ai-heading">
-        <h2 id="ai-heading">AI summary for FY{{ year }}</h2>
-        {% for item in ai_summaries %}
-            <h3>{{ item.title }}</h3>
-            {% include "dashboard/_ai_summary.html" with record=item.record %}
-        {% empty %}
-            <p class="small">No AI summaries have been generated for FY{{ year }} yet
-                (<code>python -m dashboard.ai_summary --section all --kind yearly --year {{ year }}</code>).</p>
-        {% endfor %}
-    </section>
+    <p class="notice">Plain-language summaries of FY{{ year }} are on the AI summaries tab:
+        <a href="{{ ai_url }}">FY{{ year }}'s AI summaries</a>.</p>
 
     </main>
 </body>

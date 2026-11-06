@@ -420,7 +420,8 @@ class RealDataTests(TestCase):
         # stored as "passed", but wrong for today's data: never shown
         self.store("packages-volume", self.record("Packages were 9,999 million pieces in FY2023."))
         self.assertIsNone(a.get_summary("packages-volume", "comparative"))
-        self.assertEqual(a.trend_summaries("packages-volume"), [])
+        page = self.client.get("/dashboard/ai/?section=packages-volume").content.decode()
+        self.assertNotIn("9,999", page.split("hidden because")[0])   # only in the hidden list's reason
 
     def test_stale_and_fresh_summaries(self):
         text = "Packages were 6,700 million pieces in FY2023."
@@ -480,10 +481,12 @@ class RealDataTests(TestCase):
             (a.SUMMARY_DIR / "packages-volume.json").write_text(content)
             a._CHECKS.clear()
             self.assertIsNone(a.get_summary("packages-volume", "comparative"), content)
-            self.assertEqual(a.trend_summaries("packages-volume"), [], content)
-            self.assertEqual(a.year_summaries(2023), [], content)
-            self.assertEqual(self.client.get("/dashboard/trends/?trend=packages-volume").status_code, 200, content)
-            self.assertEqual(self.client.get("/dashboard/year/2023/").status_code, 200, content)
+            for url in ("/dashboard/ai/?section=packages-volume", "/dashboard/ai/?view=year&year=2023",
+                        "/dashboard/ai/?view=long", "/dashboard/ai/export.txt?section=packages-volume",
+                        "/dashboard/trends/?trend=packages-volume", "/dashboard/year/2023/"):
+                page = self.client.get(url)
+                self.assertEqual(page.status_code, 200, (url, content))
+                self.assertNotIn(b'class="ai-item"', page.content, (url, content))
 
     def test_a_reviewed_summary_that_no_longer_passes_is_replaced(self):
         old = self.made("Packages were 9,999 million pieces in FY2023.")   # same input, fails now
@@ -521,12 +524,14 @@ class RealDataTests(TestCase):
         self.store("packages-volume", record)
         self.assertIsNone(a.get_summary("packages-volume", "comparative"))
 
-    def test_trends_page_shows_the_summary_after_the_data_table_escaped_and_labelled(self):
+    def test_summaries_are_only_on_their_tab_escaped_and_labelled(self):
         self.store("packages-volume", self.record("Packages <b>were</b> 6,700 million pieces in FY2023."))
-        html = self.client.get("/dashboard/trends/?trend=packages-volume").content.decode()
-        self.assertIn("Values and sources", html)
-        self.assertLess(html.index("Values and sources"), html.index("AI-generated summary"))
+        trends = self.client.get("/dashboard/trends/?trend=packages-volume").content.decode()
+        self.assertNotIn("AI-generated summary", trends)   # the other tabs link to it instead
+        self.assertIn('href="/dashboard/ai/?section=packages-volume"', trends)
+        html = self.client.get("/dashboard/ai/?section=packages-volume").content.decode()
         self.assertIn("&lt;b&gt;were&lt;/b&gt;", html)
+        self.assertNotIn("<b>were</b>", html)
         self.assertIn("Not yet reviewed", html)
         self.assertIn("The data has changed since this summary was written", html)
         self.assertIn("?trend=packages-volume", html)
@@ -539,11 +544,11 @@ class RealDataTests(TestCase):
         out = render_to_string("dashboard/_ai_summary.html", {"record": record})
         self.assertIn("?trend=a%26b%3Dc%20d", out)
 
-    def test_year_summaries_match_the_year(self):
+    def test_year_view_matches_the_year(self):
         self.store("packages", self.record("Packages were 6,700 million pieces in FY2023.", key="yearly:2023",
                                            kind="yearly", year=2023))
-        self.assertEqual(len(a.year_summaries(2023)), 1)
-        self.assertEqual(a.year_summaries(2022), [])
+        self.assertContains(self.client.get("/dashboard/ai/?view=year&year=2023"), 'class="ai-item"', count=1)
+        self.assertNotContains(self.client.get("/dashboard/ai/?view=year&year=2022"), 'class="ai-item"')
 
     def real_check(self, section, kind, year, years, text):
         data = a.collect_section(section, kind, year)
@@ -586,70 +591,10 @@ class RealDataTests(TestCase):
             result = self.real_check(section, kind, year, years, text)
             self.assertTrue(result["passed"], (text, result["problems"]))
 
-    def test_overview_year_parameter_never_errors(self):
+    def test_year_parameters_never_error(self):
         for bad in ("9" * 5000, "２０２０", "-2020", "20201", "2020 ", "0", ""):
-            self.assertEqual(self.client.get("/dashboard/", {"year": bad}).status_code, 200)
+            self.assertEqual(self.client.get("/dashboard/ai/", {"year": bad}).status_code, 200)
             self.assertEqual(self.client.get("/dashboard/year/", {"year": bad}).status_code, 302)
-
-    def yearly(self, text, year):
-        return self.record(text, key=f"yearly:{year}", kind="yearly", year=year, years=(year,))
-
-    def test_overview_summaries_by_topic_and_year(self):
-        self.store("executive-summary", self.record("Packages were 6,700 million pieces in FY2023."),
-                   self.yearly("Packages were 6,700 million pieces in FY2023.", 2023),
-                   self.yearly("Packages were 6,300 million pieces in FY2020.", 2020))
-        self.store("packages", self.yearly("Packages were 6,300 million pieces in FY2020.", 2020),
-                   self.yearly("Packages were 9,999 million pieces in FY2021.", 2021))   # fails: not shown
-        self.store("packages-volume", self.yearly("Packages were 6,700 million pieces in FY2023.", 2023))
-        out = a.overview_summaries()
-        self.assertEqual([i["title"] for i in out["long_term"]], ["Executive summary"])
-        self.assertEqual(out["years"], [2020, 2021, 2023])  # stored topic years; metric sections don't count
-        self.assertEqual(out["year"], 2023)                 # the latest with a summary
-        self.assertEqual([i["title"] for i in out["yearly"]], ["Executive summary"])
-        self.assertEqual([i["title"] for i in a.overview_summaries(2020)["yearly"]], ["Executive summary", "Packages"])
-        self.assertEqual(a.overview_summaries(2021)["yearly"], [])   # stored, but it fails its check: hidden
-        self.assertEqual(a.overview_summaries(2010)["yearly"], [])
-        self.assertEqual(a.year_spans([2000, 2001, 2002, 2005, 2007, 2008]), "FY2000–FY2002, FY2005, FY2007–FY2008")
-
-    def test_overview_card_long_term_and_year_slider(self):
-        self.store("executive-summary", self.record("Packages <b>were</b> 6,700 million pieces in FY2023."),
-                   self.yearly("Packages were 6,300 million pieces in FY2020.", 2020))
-        self.store("packages", self.record("Packages were 6,700 million pieces in FY2023."),
-                   self.yearly("Packages were 6,300 million pieces in FY2020 (packages topic).", 2020))
-        with mock.patch.object(a, "generate_ai_summary", side_effect=AssertionError("no API calls")):
-            html = self.client.get("/dashboard/").content.decode()
-            card = html[html.index('id="ai-summary"'):]
-            self.assertIn("&lt;b&gt;were&lt;/b&gt;", card)                       # escaped
-            self.assertIn("<h4>Executive summary</h4>", card)                    # first topic open...
-            self.assertIn("<summary>Packages</summary>", card)                   # ...the rest folded
-            self.assertIn('<label for="summary-year">Fiscal year</label>', card)
-            self.assertRegex(card, r'type="range" id="summary-year" name="year" min="2000" max="2025"\s+step="1" value="2020"')
-            self.assertIn("<h4>FY2020</h4>", card)                              # default: latest stored year
-            self.assertIn("<summary>Packages, FY2020</summary>", card)
-            self.assertIn("stored for FY2020.", card)
-            self.assertIn('href="?year=2019#year-by-year"', card)
-            self.assertIn('href="?year=2021#year-by-year"', card)
-            self.assertIn('href="/dashboard/year/2020/"', card)
-            # another year: no topic summary yet, so say so; the long-term part stays
-            other = self.client.get("/dashboard/?year=2010").content.decode()
-            self.assertIn("No topic summary for FY2010", other)
-            self.assertIn('value="2010"', other)
-            self.assertIn("<h4>Executive summary</h4>", other)
-            # values that aren't a loaded fiscal year fall back to the default
-            for bad in ("1999", "abc", "2020.0", "２０２０", "-1"):
-                page = self.client.get("/dashboard/", {"year": bad})
-                self.assertEqual(page.status_code, 200)
-                self.assertIn("<h4>FY2020</h4>", page.content.decode())
-            # the first and last years have no step beyond them
-            last = self.client.get("/dashboard/?year=2025").content.decode()
-            self.assertNotIn("Next year", last)
-            self.assertIn('href="?year=2024#year-by-year"', last)
-
-    def test_overview_card_without_summaries(self):
-        html = self.client.get("/dashboard/").content.decode()
-        self.assertIn("No long-term summary has been generated yet", html)
-        self.assertIn("No topic summary for FY2025", html)                   # the latest loaded year
-        self.assertIn("stored for no year yet", html)
 
     def test_range_keys_do_not_overwrite_each_other(self):
         self.assertEqual(a.record_key("range", (2010, 2020)), "range:2010-2020")

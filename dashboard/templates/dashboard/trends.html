@@ -144,16 +144,10 @@
             </table>
         </div>
 
-        <section aria-labelledby="ai-heading">
-            <h3 id="ai-heading">AI summary</h3>
-            {% for item in ai_summaries %}
-                <h4>{{ item.label }}</h4>
-                {% include "dashboard/_ai_summary.html" with record=item.record %}
-            {% empty %}
-                <p class="small">No AI summary has been generated for this metric yet
-                    (<code>python -m dashboard.ai_summary --section {{ ai_section }}</code>).</p>
-            {% endfor %}
-        </section>
+        {% if ai_url %}
+            <p class="notice">Plain-language summaries of this metric, by year and over the long term, are on the
+                AI summaries tab: <a href="{{ ai_url }}">this metric's AI summaries</a>.</p>
+        {% endif %}
 
         <!-- Pinned version + integrity hash: the browser refuses the file if the CDN serves anything else. -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"

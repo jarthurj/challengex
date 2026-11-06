@@ -42,75 +42,9 @@
             from a later report that restated them; the source on each value says which.</p>
     {% endif %}
 
-    {% if ai.slider %}
-    <section id="ai-summary" class="summary-card" aria-labelledby="ai-summary-heading">
-        <h2 id="ai-summary-heading">AI summary</h2>
-        <p class="small">Written from the published values, projections and methodology notes only, and
-            checked automatically against them; each summary says how it was made and whether a person has
-            reviewed it. The executive summary is shown first; select a topic to open it.</p>
-
-        <h3>Long term</h3>
-        {% for item in ai.long_term %}
-            {% if forloop.first %}
-                <h4>{{ item.title }}</h4>
-                {% include "dashboard/_ai_summary.html" with record=item.record %}
-            {% else %}
-                <details class="summary-topic">
-                    <summary>{{ item.title }}</summary>
-                    {% include "dashboard/_ai_summary.html" with record=item.record %}
-                </details>
-            {% endif %}
-        {% empty %}
-            <p class="small">No long-term summary has been generated yet
-                (<code>python -m dashboard.ai_summary --section topics --kind comparative</code>).</p>
-        {% endfor %}
-
-        <h3 id="year-by-year">Year by year</h3>
-        <form method="get" action="{% url 'dashboard' %}#year-by-year" class="year-slider">
-            <label for="summary-year">Fiscal year</label>
-            <input type="range" id="summary-year" name="year" min="{{ ai.slider.min }}" max="{{ ai.slider.max }}"
-                   step="1" value="{{ ai.slider.year }}" aria-valuetext="FY{{ ai.slider.year }}"
-                   aria-describedby="summary-year-help">
-            <output for="summary-year" id="summary-year-value">FY{{ ai.slider.year }}</output>
-            <button type="submit">Show this year</button>
-        </form>
-        <p id="summary-year-help" class="small">Move the slider (or use the arrow keys), then select
-            "Show this year". Yearly summaries are stored for {% if ai.slider.stored %}{{ ai.slider.stored }}{% else %}no year yet{% endif %}.</p>
-        <p class="year-steps">
-            {% if ai.slider.previous %}<a href="?year={{ ai.slider.previous }}#year-by-year">Previous year (FY{{ ai.slider.previous }})</a>{% endif %}
-            {% if ai.slider.next %}<a href="?year={{ ai.slider.next }}#year-by-year">Next year (FY{{ ai.slider.next }})</a>{% endif %}
-        </p>
-
-        <h4>FY{{ ai.year }}</h4>
-        {% for item in ai.yearly %}
-            {% if forloop.first %}
-                <p><strong>{{ item.title }}</strong></p>
-                {% include "dashboard/_ai_summary.html" with record=item.record %}
-            {% else %}
-                <details class="summary-topic">
-                    <summary>{{ item.title }}, FY{{ ai.year }}</summary>
-                    {% include "dashboard/_ai_summary.html" with record=item.record %}
-                </details>
-            {% endif %}
-        {% empty %}
-            <p class="small">No topic summary for FY{{ ai.year }} has been generated yet
-                (<code>python -m dashboard.ai_summary --section topics --kind yearly --year {{ ai.year }}</code>).</p>
-        {% endfor %}
-        <p><a href="{% url 'year-detail' ai.year %}">Every summary and published value for FY{{ ai.year }}</a>, including each metric.</p>
-    </section>
-    <script>
-        // Shows the year while the slider moves; the page changes only when "Show this year" is selected.
-        (function () {
-            var slider = document.getElementById("summary-year");
-            var shown = document.getElementById("summary-year-value");
-            if (!slider || !shown) { return; }
-            slider.addEventListener("input", function () {
-                shown.textContent = "FY" + slider.value;
-                slider.setAttribute("aria-valuetext", "FY" + slider.value);
-            });
-        })();
-    </script>
-    {% endif %}
+    <p class="notice">Plain-language summaries of these figures, year by year and over the long term, are on the
+        <a href="{% url 'ai-summaries' %}">AI summaries</a> tab, where you can also search them and copy them with
+        their sources.</p>
 
     {% if mix %}
         <h2>Where household mail comes from, FY{{ mix.year }}</h2>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
+    <title>AI Summaries</title>
+</head>
+<body>
+    {% with current="ai" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
+    <h1>AI summaries</h1>
+    <p class="lead">Plain-language summaries of the published USPS household mail figures, every number checked
+        against the data (<a href="#about">how</a>). Open one to read it, or copy it with its sources into a report.</p>
+    {% include "dashboard/_messages.html" %}
+
+    <details class="search-panel" id="search"{% if f.view == "search" %} open{% endif %}>
+    <summary>Search and filter the summaries{% if f.view == "search" and f.q %}: "{{ f.q }}"{% endif %}</summary>
+    <form method="get" action="{% url 'ai-summaries' %}" class="filters" role="search" aria-label="Search the AI summaries">
+        <label for="q">Search
+            <input type="search" id="q" name="q" value="{{ f.q }}" maxlength="100" placeholder="e.g. packages FY2019, bills income">
+        </label>
+        <label for="f-category">Category
+            <select id="f-category" name="category">
+                <option value="">All categories</option>
+                {% for value, label in categories %}<option value="{{ value }}"{% if f.category == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <label for="f-section">Subject
+            <select id="f-section" name="section">
+                <option value="">All subjects</option>
+                {% for category, options in subjects %}
+                    <optgroup label="{{ category }}">
+                        {% for value, label in options %}<option value="{{ value }}"{% if f.section == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+                    </optgroup>
+                {% endfor %}
+            </select>
+        </label>
+        <label for="f-kind">Kind
+            <select id="f-kind" name="kind">
+                {% for value, label in kinds.items %}<option value="{{ value }}"{% if f.kind == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <label for="f-year">Fiscal year
+            <select id="f-year" name="year">
+                <option value="">Any year</option>
+                {% for y in form_years %}<option value="{{ y }}"{% if f.year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+            </select>
+        </label>
+        <label for="f-status">Review
+            <select id="f-status" name="status">
+                {% for value, label in statuses.items %}<option value="{{ value }}"{% if f.status == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+        </label>
+        <input type="hidden" name="view" value="search">
+        <button type="submit">Search</button>
+        {% if f.view == "search" %}<a href="{% url 'ai-summaries' %}">Clear the search</a>{% endif %}
+    </form>
+    </details>
+
+    <details class="search-panel create-panel" id="create"{% if not count %} open{% endif %}>
+    <summary>Create a new summary with Gemini</summary>
+    <p class="panel-note small">Pick a subject and the year or years to cover, and Gemini will write a summary from
+        the published values.</p>
+    {% include "dashboard/_ai_generate_form.html" %}
+    </details>
+
+    <nav aria-label="Ways to browse the summaries" class="tabs">
+        <a href="?view=year"{% if f.view == "year" %} aria-current="true"{% endif %}>Year by year</a>
+        <a href="?view=long"{% if f.view == "long" %} aria-current="true"{% endif %}>Long term</a>
+        <a href="?view=range"{% if f.view == "range" %} aria-current="true"{% endif %}>Custom ranges</a>
+        {% if f.view == "search" %}<span class="tab-current" aria-current="true">Search results</span>{% endif %}
+    </nav>
+
+    {% if f.view == "year" %}
+        <h2 id="results-heading">{% if f.latest %}The latest year for each subject{% else %}FY{{ year }}, year by year{% endif %}</h2>
+        {% if f.bad_year %}
+            <p class="notice review-notice" role="alert">"{{ f.bad_year }}" isn't a fiscal year in the data
+                (FY{{ picker.min }} to FY{{ picker.max }}), so {% if f.latest %}each subject's latest year{% else %}FY{{ year }}{% endif %} is shown.</p>
+        {% endif %}
+        {% if picker %}
+            <form method="get" action="{% url 'ai-summaries' %}#results-heading" class="year-pick toolbar">
+                <input type="hidden" name="view" value="year">
+                <span class="toolbar-group">
+                    {% if picker.previous %}<a class="button-link step" href="?view=year&amp;year={{ picker.previous }}#results-heading"><span class="visually-hidden">Previous year, </span><span aria-hidden="true">‹ </span>FY{{ picker.previous }}</a>{% endif %}
+                    <label for="summary-year">Fiscal year</label>
+                    <select id="summary-year" name="year" aria-describedby="summary-year-help">
+                        <option value="latest"{% if picker.latest %} selected{% endif %}>Latest year for each subject</option>
+                        <optgroup label="One fiscal year">
+                            {% for y in picker.choices %}<option value="{{ y }}"{% if not picker.latest and picker.year == y %} selected{% endif %}>FY{{ y }}</option>{% endfor %}
+                        </optgroup>
+                    </select>
+                    <button type="submit">Show</button>
+                    {% if picker.next %}<a class="button-link step" href="?view=year&amp;year={{ picker.next }}#results-heading"><span class="visually-hidden">Next year, </span>FY{{ picker.next }}<span aria-hidden="true"> ›</span></a>{% endif %}
+                </span>
+            </form>
+            <p id="summary-year-help" class="small help-line">Pick a fiscal year, or "Latest year for each subject" for each
+                one's most recent summary (the series end in different years), and select "Show".</p>
+        {% endif %}
+    {% elif f.view == "long" %}
+        <h2 id="results-heading">Long-term summaries</h2>
+        <p class="small help-line">Each covers its subject's whole published series, with a projection for the next
+            years and its prediction interval.</p>
+    {% elif f.view == "range" %}
+        <h2 id="results-heading">Summaries between two chosen years</h2>
+        <p class="small help-line">Written on request with <a href="#create">Create a new summary with Gemini</a> at the top of the page.</p>
+    {% else %}
+        <h2 id="results-heading">Search results</h2>
+    {% endif %}
+
+    {% if groups|length > 1 %}
+        <nav aria-label="Categories on this page" class="jump-links">
+            {% for g in groups %}<a href="#cat-{{ g.key }}">{{ g.title }} <span class="chip-count">{{ g.items|length }}</span></a>{% endfor %}
+        </nav>
+    {% endif %}
+
+    {% for g in groups %}
+        <section aria-labelledby="cat-{{ g.key }}" class="ai-category">
+            <h3 id="cat-{{ g.key }}">{{ g.title }}{% if g.years %} <span class="small">({{ g.years }})</span>{% endif %}</h3>
+            {% for item in g.items %}{% include "dashboard/_ai_item.html" %}{% endfor %}
+        </section>
+    {% empty %}
+        <div class="notice">
+            <p><strong>No summaries match{% if f.q %} "{{ f.q }}"{% endif %}{% if f.view == "year" and year %} for FY{{ year }}{% endif %}.</strong></p>
+            <p>You can <a href="#create">ask Gemini to write one</a>: the form at the top of the page is filled in from your search.</p>
+        </div>
+    {% endfor %}
+
+    {% if pages.pages > 1 %}
+        <nav aria-label="Pages of results" class="year-steps">
+            {% if pages.previous_url %}<a href="{{ pages.previous_url }}">Previous page</a>{% endif %}
+            <span>Page {{ pages.page }} of {{ pages.pages }}</span>
+            {% if pages.next_url %}<a href="{{ pages.next_url }}">Next page</a>{% endif %}
+        </nav>
+    {% endif %}
+
+    {% if hidden %}
+        <details class="notice hidden-summaries">
+            <summary>{{ hidden|length }} stored summar{{ hidden|length|pluralize:"y is,ies are" }}{% if pages.pages > 1 %} on this page{% endif %} hidden because
+                {{ hidden|length|pluralize:"it fails,they fail" }} the number check</summary>
+            <p class="small">Their text is never shown; each one's page says what the check found. Ask for a new
+                one at the top of the page, or rerun <code>python -m dashboard.ai_summary</code> for that subject.</p>
+            <ul>{% for h in hidden %}<li><a href="{{ h.url }}">{{ h.title }}, {{ h.label }}</a></li>{% endfor %}</ul>
+        </details>
+    {% endif %}
+
+    <details class="about-panel" id="about">
+        <summary><h2 id="about-heading">How these summaries are made and checked</h2></summary>
+        <p>Gemini (or, for two older ones, a rule-based template) sees only the published values for one subject,
+            the changes between them, the statistical projection and its error, and the methodology notes. Before a
+            summary is stored, and again every time a page shows it, every number in it is checked against the data:
+            each is a published value, change, labelled projection or backtest error of the metric it cites, for the
+            household group named nearest to it and the fiscal year it is given for; rises and falls match the data;
+            changes in shares are in percentage points; comparisons across methodology breaks name them; and the
+            headline and caveats carry no figures. A summary that fails is never shown. The check catches most
+            numeric errors, not every wrong sentence, so each summary says whether a person has reviewed it.</p>
+    </details>
+
+    {% if count %}
+    <div class="results-bar results-bar-bottom">
+        <p class="small">
+            <strong>{% if pages.pages > 1 %}Page {{ pages.page }} of {{ pages.pages }}: stored summaries {{ pages.first }}–{{ pages.last }}
+                of {{ pages.matching }} that match ({{ count }} shown here){% else %}{{ count }} summar{{ count|pluralize:"y,ies" }}{% endif %}{% if groups|length > 1 %} in {{ groups|length }} categories{% endif %}.</strong>
+            {{ status_line }}
+            {% if f.view == "year" and year %}<a href="{% url 'year-detail' year %}">FY{{ year }}'s published values</a>{% endif %}
+        </p>
+    </div>
+    {% endif %}
+    {% if count %}
+        <p class="download-line" id="download">
+            <a href="{{ export_url }}">Download {% if pages.pages > 1 %}every match ({{ pages.matching }} stored, any that fail
+                the check left out){% elif count == 1 %}this summary{% else %}these {{ count }} summaries{% endif %} as text with sources</a>
+        </p>
+    {% endif %}
+    </main>
+    <script>
+        // Progressive enhancement only: the page works without it.
+        (function () {
+            // A link to a folded panel ("how" in the introduction) opens it.
+            function openTarget() {
+                var target = location.hash && document.getElementById(location.hash.slice(1));
+                if (target && target.tagName === "DETAILS") { target.open = true; }
+            }
+            window.addEventListener("hashchange", openTarget);
+            openTarget();
+            document.querySelectorAll(".copy-button").forEach(function (button) {
+                var source = document.getElementById(button.getAttribute("data-copy"));
+                var status = button.parentNode.querySelector(".copy-status");
+                if (!source || !navigator.clipboard) { return; }
+                button.hidden = false;
+                button.addEventListener("click", function () {
+                    navigator.clipboard.writeText(source.textContent).then(function () {
+                        status.textContent = "Copied, with its sources.";
+                    }, function () {
+                        status.textContent = "Couldn't copy; open its page and select the text instead.";
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
