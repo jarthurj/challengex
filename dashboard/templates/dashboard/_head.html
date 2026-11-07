@@ -68,6 +68,14 @@
   tbody th { @apply bg-slate-50 font-semibold; }
   tbody tr:nth-child(even) td { @apply bg-slate-50/60; }
   td.num, td.numeric { @apply whitespace-nowrap text-right tabular-nums; }
+  /* column widths: a short column never wraps ("2016-p009-1"); a fill column takes what's left */
+  th.nowrap, td.nowrap { @apply w-px whitespace-nowrap; }
+  th.fill { @apply w-full; }
+  th.topic-col { @apply min-w-[11rem]; }
+  /* page links under a long table; the current page is filled (and marked aria-current) */
+  .pagination ul { @apply mb-6 flex list-none flex-wrap items-center gap-2 p-0; }
+  .pagination a { @apply inline-block min-w-10 rounded-md border border-slate-400 bg-white px-3 py-1.5 text-center no-underline hover:bg-slate-100; }
+  .pagination a[aria-current="page"] { @apply border-usps-navy bg-usps-navy font-semibold text-white; }
   thead th[scope="colgroup"] { @apply text-center; }
   td.label, th.label { @apply min-w-[180px] font-semibold; }
   .bar-cell { @apply w-[35%]; }
@@ -161,17 +169,33 @@
 
   /* Forms */
   form { @apply mb-6 flex flex-wrap items-center gap-3; }
+  /* a label kept on one line with its control; the control shrinks rather than wrapping below it */
+  .form-field { @apply flex min-w-0 max-w-full items-center gap-3; }
+  .form-field label { @apply shrink-0; }
+  .form-field select { @apply min-w-0; }
+  /* a full-width, zero-height item: what follows it starts a new line */
+  .form-break { @apply h-0 basis-full; }
   form.filters { @apply items-end gap-x-5 rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }
-  form.filters label { @apply flex flex-col gap-1 text-sm font-medium; }
-  form.filters label.inline { @apply flex-row items-center; }
+  /* room for a note hanging under a box (.filter-note), between rows and at the bottom */
+  form.filters.has-notes { @apply gap-y-8 pb-9; }
+  form.filters label, form.filters .filter-field { @apply flex flex-col gap-1 text-sm font-medium; }
+  form.filters .filter-field { @apply relative; }
+  .filter-note { @apply absolute left-0 top-full mt-1 whitespace-nowrap font-normal; }
+  form.filters label.inline { @apply flex-row items-center gap-2; }
+  .filter-actions { @apply flex flex-wrap items-center gap-x-5 gap-y-3; }
   input[type="search"], input[type="number"], select { @apply max-w-full rounded-md border border-slate-400 bg-white px-3 py-2; }
   button { @apply cursor-pointer rounded-md bg-usps-red px-4 py-2 font-semibold text-white hover:bg-red-800; }
   .year-dropdown { @apply relative; }
-  .year-dropdown summary { @apply cursor-pointer rounded-md border border-slate-400 bg-white px-3 py-2; }
+  /* a fixed width, so the box doesn't change size between "Select years" and "2 selected" */
+  .year-dropdown summary { @apply w-40 cursor-pointer whitespace-nowrap rounded-md border border-slate-400 bg-white px-3 py-2 font-normal; }
   .year-options { @apply absolute z-10 max-h-56 min-w-[150px] overflow-y-auto rounded-md border border-slate-400 bg-white p-2 shadow-lg; }
-  .year-options label { @apply flex-row whitespace-nowrap p-1 font-normal; }
+  /* as specific as "form.filters label" (which stacks a label's text over its control), so each
+     checkbox sits beside its year, centred on it */
+  form.filters .year-options label, .year-options label { @apply flex-row items-center gap-2 whitespace-nowrap p-1 font-normal; }
+  .year-options input[type="checkbox"] { @apply m-0 shrink-0; }
 
   /* Chart */
   .chart { @apply relative h-[420px] rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }
+  .chart-note { @apply mt-2; }
 }
 </style>

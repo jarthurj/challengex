@@ -80,6 +80,30 @@ class TrendTests(TestCase):
         self.assertContains(response, "&lt;script&gt;bad()&lt;/script&gt;")
         self.assertNotContains(response, "<script>bad()</script>")
 
+    def test_group_picker_only_when_there_is_a_group_to_choose(self):
+        only_all = self.client.get(reverse("trends"), {"trend": "fcm-received-total"}).content.decode()
+        self.assertNotIn('id="segment"', only_all)
+        self.assertIn("<strong>Group:</strong> All households", only_all)   # still says whose values these are
+        groups = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
+        self.assertIn('<select name="segment" id="segment">', groups)
+        self.assertIn('<label for="segment">Household group:</label>', groups)
+        # the group starts its own line, with its label and dropdown kept together
+        self.assertRegex(groups, r'<div class="form-break" aria-hidden="true"></div>\s*<div class="form-field">\s*'
+                                 r'<label for="segment">Household group:</label>\s*<select name="segment"')
+        self.assertNotIn('class="form-break"', only_all)
+
+    def test_break_markers_are_explained_and_laid_out_without_overlap(self):
+        page = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
+        self.assertIn('Dashed vertical lines ("Method changes" in the legend) mark changes', page)
+        # the chart script measures labels and stacks them in rows, and fits long legend entries
+        self.assertIn("function placeMarkers(chart, breaks)", page)
+        self.assertIn("generateLabels: fittedLegendLabels", page)
+        self.assertNotIn("(level % 3)", page)          # the old fixed 3-row cycle that overlapped
+        # the legend says what the dashed lines are, so each line is labelled with its year alone
+        self.assertIn('text: "Method changes"', page)
+        self.assertIn("const text = String(item.year);", page)
+        self.assertNotIn('"Method change " + ', page)
+
     def test_empty_database_renders_setup_notice(self):
         Metric.objects.all().delete()
         response = self.client.get(reverse("trends"))

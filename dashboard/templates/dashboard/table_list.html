@@ -14,14 +14,17 @@
         <strong>Needs review</strong> marks tables to check against the PDF before using them: values read by OCR,
         chart data, or column names that couldn't be recovered.</p>
 
-    <form method="get" class="filters">
+    <form method="get" class="filters has-notes">
         <label>Search
             <input type="search" name="q" value="{{ query }}" placeholder="Title, number or source ID">
         </label>
 
-        <div>
+        {% comment %}Laid out like the labelled filters: its name above the box, so the boxes line up; the note
+           hangs below without moving the box (form.filters.has-notes leaves room for it).{% endcomment %}
+        <div class="filter-field">
+            <span id="year-label">Report years</span>
             <details class="year-dropdown">
-                <summary aria-describedby="year-help">Report years{% if selected_years %} ({{ selected_years|length }}){% endif %}</summary>
+                <summary aria-labelledby="year-label year-summary" aria-describedby="year-help"><span id="year-summary">{% if selected_years %}{{ selected_years|length }} selected{% else %}Select years{% endif %}</span></summary>
                 <div class="year-options">
                     {% for available_year in years %}
                         <label>
@@ -32,7 +35,7 @@
                     {% endfor %}
                 </div>
             </details>
-            <small id="year-help" class="help">None ticked: every year.</small>
+            <small id="year-help" class="help filter-note">None ticked: every year.</small>
         </div>
 
         <label>Topic
@@ -60,13 +63,16 @@
             </select>
         </label>
 
-        <label class="inline">
-            <input type="checkbox" name="forms" value="1" {% if include_forms %}checked{% endif %}>
-            Include Appendix C survey forms
-        </label>
+        {# the checkbox, Filter and Clear share one centre line #}
+        <div class="filter-actions">
+            <label class="inline">
+                <input type="checkbox" name="forms" value="1" {% if include_forms %}checked{% endif %}>
+                Include Appendix C survey forms
+            </label>
 
-        <button type="submit">Filter</button>
-        <a href="{% url 'table-list' %}">Clear</a>
+            <button type="submit">Filter</button>
+            <a href="{% url 'table-list' %}">Clear</a>
+        </div>
     </form>
 
     {% if hidden_forms %}
@@ -76,32 +82,33 @@
 
     <div class="table-wrapper">
         <table>
-            <caption>{{ tables|length }} table{{ tables|length|pluralize }}</caption>
+            <caption>{% with total=page.paginator.count %}{% if page.has_other_pages %}Tables {{ page.start_index }}–{{ page.end_index }} of {{ total }}{% else %}{{ total }} table{{ total|pluralize }}{% endif %}{% endwith %}</caption>
             <thead>
                 <tr>
-                    <th scope="col">Year</th>
-                    <th scope="col">Page</th>
-                    <th scope="col">Number</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Topic</th>
+                    {# short columns take their content's width and never wrap; Title takes the rest #}
+                    <th scope="col" class="nowrap">Year</th>
+                    <th scope="col" class="nowrap">Page</th>
+                    <th scope="col" class="nowrap">Number</th>
+                    <th scope="col" class="fill">Title</th>
+                    <th scope="col" class="topic-col">Topic</th>
                     {% if advanced %}
-                        <th scope="col">Status</th>
-                        <th scope="col">Source ID</th>
+                        <th scope="col" class="nowrap">Status</th>
+                        <th scope="col" class="nowrap">Source ID</th>
                     {% endif %}
                 </tr>
             </thead>
             <tbody>
-                {% for table in tables %}
+                {% for table in page.object_list %}
                     <tr>
-                        <td>{{ table.year }}</td>
-                        <td>{{ table.page }}</td>
-                        <td>{{ table.table_number }}</td>
+                        <td class="nowrap">{{ table.year }}</td>
+                        <td class="nowrap">{{ table.page }}</td>
+                        <td class="nowrap">{{ table.table_number }}</td>
                         <td><a href="{% url 'table-detail' table.pk %}">{{ table.title|default:"Untitled" }}</a>
                             {% if not advanced %}{% include "dashboard/_table_badges.html" %}{% endif %}</td>
                         <td>{{ table.get_section_display }}</td>
                         {% if advanced %}
-                            <td>{% include "dashboard/_table_badges.html" %}</td>
-                            <td>{{ table.source_id }}</td>
+                            <td class="nowrap">{% include "dashboard/_table_badges.html" %}</td>
+                            <td class="nowrap">{{ table.source_id }}</td>
                         {% endif %}
                     </tr>
                 {% empty %}
@@ -112,6 +119,28 @@
             </tbody>
         </table>
     </div>
+
+    {% if page.has_other_pages %}
+        <nav class="pagination" aria-label="Table pages">
+            <ul>
+                {% if page.has_previous %}
+                    <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ page.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% for number in page_range %}
+                    {% if number == page.paginator.ELLIPSIS %}
+                        <li><span aria-hidden="true">…</span></li>
+                    {% elif number == page.number %}
+                        <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ number }}" aria-current="page">{{ number }}</a></li>
+                    {% else %}
+                        <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ number }}" aria-label="Page {{ number }}">{{ number }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page.has_next %}
+                    <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ page.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
     </main>
 </body>
 </html>

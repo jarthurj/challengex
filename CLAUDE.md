@@ -457,7 +457,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 244 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 247 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -484,9 +484,23 @@ analyst should be able to:
   - column-name tidying (`tidy.py`) and the table page in tidy and raw modes
   - the pinned, integrity-checked Chart.js script on the Trends page
 - **`views.py`:**
-  - `table_list` searches by title, ID, or number and filters by report years (checkboxes),
+  - `table_list` shows 100 tables per page (`PAGE_SIZE`; "Tables 101–200 of 2,979", with
+    Previous/Next and numbered page links that keep the filters, rebuilt from the validated values;
+    an odd `?page=` shows page 1, one past the end the last page). Context `tables` is every match,
+    `page` the rows shown. It searches by title, ID, or number and filters by report years (checkboxes),
     topic, OCR and review status; Appendix C survey forms are hidden unless asked for. Each row
-    shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored.
+    shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored. The years
+    filter is labelled "Report years" above its box like the others (the box reads "Select
+    years", or "2 selected" once years are ticked, at a fixed width so it never changes size),
+    and its note hangs below without moving the box
+    (`.filter-field`, `.filter-note`, `form.filters.has-notes`). OCR and Review status use short
+    option names ("Hide OCR", "Needs review only"), so on a 1280px screen Search, Report years,
+    Topic, OCR and Review status share the first row without cutting any option off (below
+    about 1,100px Review status wraps). The survey-forms checkbox, Filter and Clear share one
+    centre line (`.filter-actions`). In the results, Year, Page, Number, Status and Source ID
+    never wrap and take only their content's width (`th.nowrap`), so a source ID stays on one
+    line; Title takes the spare width (`th.fill`). Django's `{# #}` comments are
+    single-line only; use `{% comment %}` for longer ones.
   - `source_pdf` serves `docs/<year>.pdf` (git-ignored, so only where the PDFs are present);
     the table page links to `/dashboard/reports/<year>.pdf#page=N`, or names the page when the
     PDF isn't there.
@@ -495,9 +509,20 @@ analyst should be able to:
     (`dashboard/tidy.py`). Plus the review notice with its reasons, the topic, the source PDF
     link, a "From the report" box and the caption's units. `?raw=1` shows the extraction as stored.
 - **`trend_views.py` (Trends page, `/dashboard/trends/`):**
-  - Pick a metric (or "First-Class Mail received by category") and a household segment.
+  - Pick a metric (or "First-Class Mail received by category") and a household segment. The
+    household-group picker appears only when the metric has a group besides "All households"
+    (7 of the 26 metrics); otherwise the page just says "Group: All households". When shown, it
+    starts its own line, and each label stays on one line with its dropdown (`.form-field`,
+    `.form-break` in `_head.html`).
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
-  - Methodology breaks are marked on the chart and listed.
+  - Methodology breaks are marked on the chart and listed. Each is a dashed line labelled with
+    its year ("2012"); the legend's "Method changes" entry (a dashed line, not a dataset, so
+    clicking it does nothing) says what they are. The labels are measured and stacked in as many
+    rows as needed so none overlaps (the household-group series have six breaks a year or two
+    apart), and the space above the plot grows to fit them. A legend entry wider
+    than the chart drops its " – model" part (tooltips keep it). Checked in headless Chrome at
+    1280px and 500px (Chrome's minimum window; the site refuses to be framed, so narrower
+    widths can't be shot this way).
   - A values-and-sources table shows each point's report, page, and verification status.
   - Mixed units are refused, and missing years show as gaps.
   - "Mail delays" is a placeholder with no data yet.
@@ -626,7 +651,11 @@ analyst should be able to:
   jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
   `<style type="text/tailwindcss">` block; templates use only those semantic class names
   (`.card`, `.notice`, `.badge` …). The browser compiles it on each load, so pages need the
-  internet (as Chart.js does) and can flash unstyled for a moment. To upgrade: change the
+  internet (as Chart.js does), and a page can flash unstyled for a moment before the styles
+  apply. (2026-11-06: a script that hid pages until styled was tried and removed at the team's
+  request; Browse tables was paginated instead, since its unfiltered 1.6 MB, 2,980-row page
+  reflowed its columns while arriving. Compiling the CSS with the Tailwind CLI would end the
+  flash entirely; see below.) To upgrade: change the
   version, check the file against the npm package, and hash it
   (`openssl dgst -sha384 -binary index.global.js | openssl base64 -A`). Compiling the block once
   into a static CSS file with the Tailwind CLI would remove the CDN script entirely; that needs

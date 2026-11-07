@@ -13,19 +13,25 @@
     <p>Explore household mail metrics using the preferred source for each fiscal year.</p>
 
     <form method="get">
-        <label for="trend">Trend:</label>
-        <select name="trend" id="trend">
-            {% for value, label in trend_options %}
-                <option value="{{ value }}" {% if selected_trend == value %}selected{% endif %}>{{ label }}</option>
-            {% endfor %}
-        </select>
-        {% if segments %}
-            <label for="segment">Household group:</label>
-            <select name="segment" id="segment">
-                {% for segment in segments %}
-                    <option value="{{ segment.pk }}" {% if selected_segment.pk == segment.pk %}selected{% endif %}>{{ segment }}</option>
+        {# Each label stays on the same line as its dropdown; the household group starts a new line. #}
+        <div class="form-field">
+            <label for="trend">Trend:</label>
+            <select name="trend" id="trend">
+                {% for value, label in trend_options %}
+                    <option value="{{ value }}" {% if selected_trend == value %}selected{% endif %}>{{ label }}</option>
                 {% endfor %}
             </select>
+        </div>
+        {% if segments|length > 1 %}{# only when there is a group to choose besides the one shown #}
+            <div class="form-break" aria-hidden="true"></div>
+            <div class="form-field">
+                <label for="segment">Household group:</label>
+                <select name="segment" id="segment">
+                    {% for segment in segments %}
+                        <option value="{{ segment.pk }}" {% if selected_segment.pk == segment.pk %}selected{% endif %}>{{ segment }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         {% endif %}
         <button type="submit">Show trend</button>
     </form>
@@ -44,6 +50,8 @@
                 Use the data table below for values, units, and sources.
             </canvas>
         </div>
+        {% if breaks %}<p class="small chart-note">Dashed vertical lines ("Method changes" in the legend) mark changes in survey
+            methodology, labelled with their fiscal year and explained under "Changes in survey methodology" below.</p>{% endif %}
         <p id="chart-status" role="status"></p>
         <p class="item-actions page-actions">
             <button type="button" class="copy-button" data-copy="chart-copy" hidden>Copy the values with sources</button>
@@ -210,43 +218,146 @@
                 if (segment) segment.disabled = true;
             });
 
+            // Methodology breaks: a dashed line at each break year, labelled above the plot with its
+            // year; the legend's "Method changes" entry says what the dashed lines are. Labels are
+            // measured and stacked in as many rows as they need so none overlaps another, and the
+            // space between the legend and the plot grows to fit the rows.
+            const MARKER_LINE = 16, MARKER_GAP = 8, MARKER_COLOR = "#666", MARKER_DASH = [4, 4];
             const methodologyMarkers = {
                 id: "methodologyMarkers",
                 beforeLayout(chart) {
                     const legend = chart.legend;
-
-                    if (!legend || legend.spacingAdded) return;
-
+                    if (!legend || legend.markerSpace) return;
                     const originalFit = legend.fit;
-
                     legend.fit = function () {
                         originalFit.call(this);
-                        this.height += 40;
+                        const rows = chart.$markers ? chart.$markers.rows : 1;
+                        if (rows) this.height += rows * MARKER_LINE + 10;
                     };
-
-                    legend.spacingAdded = true;
+                    legend.markerSpace = true;
                 },
-                afterDraw(chart, args, options) {
-                    const {ctx, chartArea, scales} = chart;
-                    if (!chartArea) return;
+                afterLayout(chart, args, options) {
+                    const before = chart.$markers ? chart.$markers.rows : 1;
+                    chart.$markers = placeMarkers(chart, options.breaks || []);
+                    // The rows depend on the plot's width, not its height, so one more layout settles them.
+                    chart.$markersRelayout = chart.$markers.rows !== before;
+                },
+                afterRender(chart) {
+                    if (chart.$markersRelayout) {
+                        chart.$markersRelayout = false;
+                        chart.update("none");
+                    }
+                },
+                afterDraw(chart) {
+                    const {ctx, chartArea} = chart;
+                    if (!chartArea || !chart.$markers) return;
                     ctx.save();
-                    ctx.strokeStyle = "#666";
+                    ctx.font = markerFont();
+                    ctx.strokeStyle = MARKER_COLOR;
                     ctx.fillStyle = "#444";
-                    ctx.setLineDash([4, 4]);
-                    for (const [level, change] of (options.breaks || []).entries()) {
-                        const index = chart.data.labels.indexOf(change.year);
-                        if (index < 0) continue;
-                        const x = scales.x.getPixelForValue(index);
+                    ctx.textBaseline = "bottom";
+                    for (const m of chart.$markers.placed) {
+                        ctx.setLineDash(MARKER_DASH);
                         ctx.beginPath();
-                        ctx.moveTo(x, chartArea.top);
-                        ctx.lineTo(x, chartArea.bottom);
+                        ctx.moveTo(m.x, chartArea.top);
+                        ctx.lineTo(m.x, chartArea.bottom);
                         ctx.stroke();
-                        ctx.textAlign = x > (chartArea.left + chartArea.right) / 2 ? "right" : "left";
-                        ctx.fillText("Method change " + change.year, x, chartArea.top - 8 - (level % 3) * 16);
+                        ctx.textAlign = m.align;
+                        ctx.fillText(m.text, m.textX, chartArea.top - 4 - m.row * MARKER_LINE);
                     }
                     ctx.restore();
                 }
             };
+
+            // Legend entries don't wrap, so a long one ran off a narrow chart. One that is wider than the
+            // chart drops its " – model" part (the model is in the projection tables), then is cut with
+            // "…" if it still doesn't fit. Tooltips keep the full label.
+            function fittedLegendLabels(chart) {
+                const items = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                const ctx = chart.ctx;
+                const labels = chart.options.plugins.legend.labels;
+                ctx.save();
+                ctx.font = Chart.helpers.toFont(labels.font || Chart.defaults.font).string;
+                const room = chart.width - 2 * (labels.boxWidth || 40) - 2 * (labels.padding || 10);
+                const fits = (text) => ctx.measureText(text).width <= room;
+                for (const item of items) {
+                    let text = item.text;
+                    if (!fits(text)) text = text.replace(/ – [^–]*$/, "");
+                    if (!fits(text)) {
+                        while (text.length > 4 && !fits(text + "…")) text = text.slice(0, -1);
+                        text = text.trimEnd() + "…";
+                    }
+                    item.text = text;
+                }
+                ctx.restore();
+                if (chartBreaks(chart).length) {
+                    // What the dashed lines are, drawn as one. Not a dataset, so clicking it does nothing.
+                    items.push({text: "Method changes", pointStyle: methodChangeIcon(), methodChanges: true,
+                                hidden: false, lineWidth: 0, strokeStyle: MARKER_COLOR, fillStyle: MARKER_COLOR,
+                                fontColor: Chart.defaults.color});
+                }
+                return items;
+            }
+
+            // The breaks that fall on the chart's years.
+            function chartBreaks(chart) {
+                const breaks = (chart.options.plugins.methodologyMarkers || {}).breaks || [];
+                return breaks.filter(change => chart.data.labels.indexOf(change.year) >= 0);
+            }
+
+            // A short dashed vertical line, like the ones on the chart, for the legend.
+            let methodIcon = null;
+            function methodChangeIcon() {
+                if (methodIcon) return methodIcon;
+                const scale = window.devicePixelRatio || 1;
+                methodIcon = document.createElement("canvas");
+                methodIcon.width = 12 * scale;
+                methodIcon.height = 16 * scale;
+                methodIcon.style.width = "12px";
+                methodIcon.style.height = "16px";
+                const ctx = methodIcon.getContext("2d");
+                ctx.scale(scale, scale);
+                ctx.strokeStyle = MARKER_COLOR;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([3, 3]);
+                ctx.beginPath();
+                ctx.moveTo(6, 0);
+                ctx.lineTo(6, 16);
+                ctx.stroke();
+                return methodIcon;
+            }
+
+            function markerFont() {
+                return Chart.helpers.toFont({...Chart.defaults.font, size: 12}).string;
+            }
+
+            // Where each break label goes: [{x, text, textX, align, row}], and how many rows they take.
+            function placeMarkers(chart, breaks) {
+                const {ctx, scales} = chart;
+                if (!scales.x) return {placed: [], rows: 0};
+                const items = breaks
+                    .map(change => ({year: change.year, index: chart.data.labels.indexOf(change.year)}))
+                    .filter(item => item.index >= 0)
+                    .map(item => ({year: item.year, x: scales.x.getPixelForValue(item.index)}))
+                    .sort((a, b) => a.x - b.x);
+                ctx.save();
+                ctx.font = markerFont();
+                const rows = [];
+                const placed = items.map(item => {
+                    const text = String(item.year);
+                    const width = ctx.measureText(text).width;
+                    // Text runs right of its line, or left of it where it would leave the canvas.
+                    let align = "left", left = item.x + 4;
+                    if (left + width > chart.width - 2) { align = "right"; left = item.x - 4 - width; }
+                    const right = left + width;
+                    let row = rows.findIndex(spans => spans.every(([l, r]) => right + MARKER_GAP <= l || left >= r + MARKER_GAP));
+                    if (row < 0) { rows.push([]); row = rows.length - 1; }
+                    rows[row].push([left, right]);
+                    return {x: item.x, text, align, row, textX: align === "left" ? item.x + 4 : item.x - 4};
+                });
+                ctx.restore();
+                return {placed, rows: rows.length};
+            }
 
             async function loadChart() {
                 const status = document.getElementById("chart-status");
@@ -270,7 +381,12 @@
                             plugins: {
                                 legend: {display: true, labels: {
                                     usePointStyle: true,
-                                    filter: (item, chartData) => !chartData.datasets[item.datasetIndex].legendHidden
+                                    filter: (item, chartData) => item.methodChanges || !chartData.datasets[item.datasetIndex].legendHidden,
+                                    generateLabels: fittedLegendLabels
+                                },
+                                onClick(event, item, legend) {
+                                    if (item.methodChanges) return;   // not a dataset to hide
+                                    Chart.defaults.plugins.legend.onClick.call(this, event, item, legend);
                                 }},
                                 methodologyMarkers: {breaks: data.breaks},
                                 tooltip: {

@@ -1,4 +1,7 @@
+from urllib.parse import urlencode
+
 from django.conf import settings
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import FileResponse, Http404
 from django.shortcuts import render, get_object_or_404
@@ -6,8 +9,13 @@ from django.shortcuts import render, get_object_or_404
 from .display import SECTIONS, cells, display_table, table_context
 from .models import Table
 
-OCR_CHOICES = [("", "Any"), ("exclude", "Hide OCR tables"), ("only", "OCR tables only")]
-REVIEW_CHOICES = [("", "Any"), ("ok", "Hide tables that need review"), ("only", "Only tables that need review")]
+# Short labels keep these boxes narrow, so all the filters fit on one row (the box width follows
+# the longest option).
+OCR_CHOICES = [("", "Any"), ("exclude", "Hide OCR"), ("only", "OCR only")]
+REVIEW_CHOICES = [("", "Any"), ("ok", "Hide needs review"), ("only", "Needs review only")]
+# Rows per page: the unfiltered list is about 3,000 tables (1.6 MB in one page), which loaded slowly
+# and reflowed its columns while arriving.
+PAGE_SIZE = 100
 
 
 def table_list(request):
@@ -61,8 +69,24 @@ def table_list(request):
     elif review == "only":
         tables = tables.filter(needs_review=True)
 
+    # One page of the matches: anything but a positive whole number is page 1 (get_page() alone
+    # would send "0" or "-1" to the last page), and past the end is the last page.
+    raw_page = request.GET.get("page", "")
+    number = max(int(raw_page), 1) if raw_page.isascii() and raw_page.isdigit() and len(raw_page) < 9 else 1
+    paginator = Paginator(tables, PAGE_SIZE)
+    page = paginator.get_page(number)
+    # The page links repeat the filters from the checked values above, never the raw query string.
+    filters = [("q", query)] if query else []
+    filters += [("year", y) for y in selected_years]
+    filters += [(k, v) for k, v in (("section", section), ("ocr", ocr), ("review", review)) if v]
+    if include_forms:
+        filters.append(("forms", "1"))
+
     return render(request, "dashboard/table_list.html", {
-        "tables": tables,
+        "tables": tables,          # every match (the count, and what tests check)
+        "page": page,              # the rows shown
+        "page_range": paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1),
+        "filter_query": urlencode(filters),
         "query": query,
         "selected_years": selected_years,
         "years": years,
