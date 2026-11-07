@@ -365,6 +365,10 @@ analyst should be able to:
     35,729M in the FY2023 report.
   - Keep every value with its source report.
   - Prefer the most recent non-OCR report. `mark_preferred` in `load_metrics` does this.
+    An OCR value is never preferred: a year with only OCR values gets no preferred value and
+    shows as a gap. (No mapped source is OCR today, so this only guards future mappings.)
+  - Don't make preference depend on `verified`: it's set only where `docs/` is present, so
+    the preferred series would differ between teammates' databases.
   - Because of that rule, a preferred series can switch source reports partway through. Bills
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
@@ -452,7 +456,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 230 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 233 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
   the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
@@ -466,7 +470,8 @@ analyst should be able to:
   projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
   transcriptions, `table_context.json`, re-read checks, and the table page).
   `dashboard/tests.py` covers:
-  - header parsing, preference, and conversions
+  - header parsing, preference (latest clean report wins, OCR-only years stay gaps, each
+    segment chosen separately), and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
   - PDF-text parsing for `verify_pdfs`

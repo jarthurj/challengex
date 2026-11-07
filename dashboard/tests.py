@@ -38,8 +38,8 @@ class YearHeaderTests(SimpleTestCase):
 
 
 class PreferenceTests(SimpleTestCase):
-    def obs(self, report_year, ocr=False):
-        return Observation(metric_id=1, segment_id=1, fiscal_year=2020,
+    def obs(self, report_year, ocr=False, segment_id=1):
+        return Observation(metric_id=1, segment_id=segment_id, fiscal_year=2020,
                            report_year=report_year, source_table=Table(ocr=ocr))
 
     def test_latest_report_wins(self):
@@ -53,6 +53,25 @@ class PreferenceTests(SimpleTestCase):
         mark_preferred([clean, ocr])
         self.assertTrue(clean.is_preferred)
         self.assertFalse(ocr.is_preferred)
+
+    def test_only_ocr_values_leave_a_gap(self):
+        # An OCR value is never the one charted: with no clean report the year has no preferred value.
+        first, second = self.obs(2021, ocr=True), self.obs(2022, ocr=True)
+        mark_preferred([first, second])
+        self.assertFalse(first.is_preferred)
+        self.assertFalse(second.is_preferred)
+
+    def test_latest_clean_report_wins_among_many(self):
+        group = [self.obs(2020), self.obs(2023), self.obs(2024, ocr=True), self.obs(2022)]
+        mark_preferred(group)
+        self.assertEqual([o.is_preferred for o in group], [False, True, False, False])
+
+    def test_each_segment_is_chosen_separately(self):
+        a_old, a_new = self.obs(2020, segment_id=1), self.obs(2023, segment_id=1)
+        b_only = self.obs(2020, segment_id=2)
+        mark_preferred([a_old, a_new, b_only])
+        self.assertEqual([a_old.is_preferred, a_new.is_preferred, b_only.is_preferred],
+                         [False, True, True])
 
 
 class ConversionTests(SimpleTestCase):
