@@ -10,8 +10,8 @@ from .context_processors import ADVANCED_KEY
 from .models import Observation
 from .testdata import load_real_tables
 
-STATUS_TH = '<th scope="col">Status</th>'
-SOURCE_ID_TH = '<th scope="col">Source ID</th>'
+STATUS_TH = '<th scope="col" class="nowrap">Status</th>'
+SOURCE_ID_TH = '<th scope="col" class="nowrap">Source ID</th>'
 VERIFICATION_TH = '<th scope="col">Verification</th>'
 NOTES_TH = '<th scope="col">Notes</th>'
 ROW_NOTE = '<details class="row-note"><summary>Note'
@@ -62,14 +62,15 @@ class SettingsPageTests(TestCase):
         page = self.client.get(url).content.decode()
         self.assertNotIn(STATUS_TH, page)
         self.assertNotIn(SOURCE_ID_TH, page)
-        self.assertNotIn("<td>2021-p009-1</td>", page)
+        self.assertNotIn("2021-p009-1</td>", page)
         self.assertIn(">Needs review</span>", page)    # still flagged, next to the title
         self.assertIn(">OCR</span>", page)
         self.advanced_on()
         page = self.client.get(url).content.decode()
         self.assertIn(STATUS_TH, page)
         self.assertIn(SOURCE_ID_TH, page)
-        self.assertIn("<td>2021-p009-1</td>", page)
+        self.assertIn('<td class="nowrap">2021-p009-1</td>', page)       # one line, not "2021-" / "p009-1"
+        self.assertIn('<th scope="col" class="fill">Title</th>', page)    # Title takes the spare width
         self.assertEqual(page.count(">Needs review</span>"), page.count("<tr>") - 1)   # once per row, not twice
 
     def test_empty_listing_spans_every_column(self):

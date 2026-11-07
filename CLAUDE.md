@@ -493,7 +493,10 @@ analyst should be able to:
     (`.filter-field`, `.filter-note`, `form.filters.has-notes`). OCR and Review status use short
     option names ("Hide OCR", "Needs review only"), so on a 1280px screen Search, Report years,
     Topic, OCR and Review status share the first row without cutting any option off (below
-    about 1,100px Review status wraps). Django's `{# #}` comments are
+    about 1,100px Review status wraps). The survey-forms checkbox, Filter and Clear share one
+    centre line (`.filter-actions`). In the results, Year, Page, Number, Status and Source ID
+    never wrap and take only their content's width (`th.nowrap`), so a source ID stays on one
+    line; Title takes the spare width (`th.fill`). Django's `{# #}` comments are
     single-line only; use `{% comment %}` for longer ones.
   - `source_pdf` serves `docs/<year>.pdf` (git-ignored, so only where the PDFs are present);
     the table page links to `/dashboard/reports/<year>.pdf#page=N`, or names the page when the

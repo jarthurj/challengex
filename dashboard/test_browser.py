@@ -101,6 +101,10 @@ class BrowserTests(TestCase):
         self.assertNotIn("{#", page)                                   # no template comment leaks
         # each year's checkbox sits beside it: this rule must outrank "form.filters label" (flex-col)
         self.assertIn("form.filters .year-options label, .year-options label { @apply flex-row items-center", page)
+        # the survey-forms checkbox, Filter and Clear sit in one row, centred on each other
+        self.assertRegex(page, r'<div class="filter-actions">\s*<label class="inline">\s*<input type="checkbox" '
+                               r'name="forms"[^>]*>\s*Include Appendix C survey forms\s*</label>\s*'
+                               r'<button type="submit">Filter</button>\s*<a href="[^"]+">Clear</a>\s*</div>')
         # short option names keep OCR and Review status narrow, so all five filters share one row
         for option in ("Hide OCR", "OCR only", "Hide needs review", "Needs review only"):
             self.assertIn(f">{option}</option>", page)
