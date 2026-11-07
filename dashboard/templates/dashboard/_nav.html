@@ -14,7 +14,7 @@
        {% if years %}<a href="{% url 'year-detail' years.0 %}"{% if current == "year" %} aria-current="page"{% endif %}>By year</a>{% endif %}
        <a href="{% url 'ai-summaries' %}"{% if current == "ai" %} aria-current="page"{% endif %}>AI summaries</a>
        <a href="{% url 'table-list' %}"{% if current == "tables" %} aria-current="page"{% endif %}>Browse tables</a>
-       <a href="{% url 'settings' %}"{% if current == "settings" %} aria-current="page"{% endif %}>Settings</a>
+       <a class="nav-end" href="{% url 'settings' %}"{% if current == "settings" %} aria-current="page"{% endif %}>Settings</a>
     </div>
 </nav>
 <script>

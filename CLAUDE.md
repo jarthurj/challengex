@@ -457,7 +457,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 252 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 254 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -524,6 +524,10 @@ analyst should be able to:
     1280px and 500px (Chrome's minimum window; the site refuses to be framed, so narrower
     widths can't be shot this way).
   - A values-and-sources table shows each point's report, page, and verification status.
+  - Layout: the chart follows its title directly; the unit and group ("Millions of pieces · All
+    households", no "Unit:"/"Group:" labels), the metric's description and the gaps and
+    method-change notes sit under it. "Changes in survey methodology" and "Values and sources"
+    fold (`.section-panel`), closed by default.
   - Mixed units are refused, and missing years show as gaps.
   - "Mail delays" is a placeholder with no data yet.
   - **Projections** (`dashboard/forecast.py`) for single-metric charts, 5 years ahead:
@@ -606,7 +610,8 @@ analyst should be able to:
     list; anything else is ignored.
   - **Grouped by category**: the 8 topic sections, each subject under the first topic that holds
     all its metrics (`ai_summary.category_of`; household-group series under demographics; mixed
-    ones under mail volumes). Jump links, foldable summaries, 40 per page; only the
+    ones under mail volumes). Jump links, foldable categories (open by default) around foldable
+    summaries, 40 per page; only the
     page's summaries are re-checked (`check_batch()` reads the data version once), so a cold
     "all summaries" page takes about 0.5 s, not 2.4.
   - **Hidden ones** are counted and linked (per page); each one's page gives the check's reasons,
@@ -640,13 +645,15 @@ analyst should be able to:
     "Needs review"/"OCR" badges next to the title; Trends and By year hide the Verification and
     Notes columns, but tag unverified values "(unverified)" next to their source, and a value with
     a note gets a folded "Note" there (`_row_note.html`), because notes carry data caveats (e.g.
-    FY2020 A8-1 parts that exceed the printed total), not only reviewers' remarks.
+    FY2020 A8-1 parts that exceed the printed total), not only reviewers' remarks. The AI
+    summaries list drops each row's "AI-generated · not yet reviewed" tag (the list's status line
+    still says none is reviewed; "reviewed" and "Rule-based" tags stay).
   - On: those columns are shown in full (By year gains Notes, also for household groups).
   - CSV downloads and "Copy the values with sources" always include verification.
 - **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html`,
   `table_detail.html`, `ai_summaries.html`, `ai_summary_detail.html` and `settings.html` are full pages. All
   include `_head.html` (after the `<meta>` tags) and `_nav.html` (skip link, logo, main navigation
-  with a ☰ menu button below the `md` width), and wrap their content in one `<main id="main">`.
+  with a ☰ menu button below the `md` width; Settings sits at the bar's right end), and wrap their content in one `<main id="main">`.
   `_ai_summary.html` renders one stored summary (`compact` in lists), `_ai_item.html` one in a
   list, `_ai_generate_form.html` the create form, `_messages.html` the notices.
 - **Styling (Tailwind, from 2026-11-04):** `_head.html` loads the Tailwind 4.1.11 browser build,

@@ -36,6 +36,18 @@ class SettingsPageTests(TestCase):
         self.assertIn('aria-current="page">Settings</a>', page)
         self.assertNotIn("checked", checkbox(page))
         self.assertIn('>Settings</a>', self.client.get(reverse("dashboard")).content.decode())
+        # at the right end of the navigation bar
+        self.assertIn(f'<a class="nav-end" href="{reverse("settings")}"', page)
+
+    def test_ai_list_shows_the_unreviewed_tag_only_in_advanced_mode(self):
+        tag = "AI-generated · not yet reviewed</span>"
+        url = reverse("ai-summaries") + "?view=long"
+        page = self.client.get(url).content.decode()
+        self.assertIn('class="ai-item"', page)
+        self.assertNotIn(tag, page)
+        self.assertIn("AI-generated, none reviewed by a person yet", page)   # the list's status line still says so
+        self.advanced_on()
+        self.assertIn(tag, self.client.get(url).content.decode())
 
     def test_saving_turns_it_on_and_off(self):
         response = self.client.post(reverse("settings"), {"advanced": "1"}, follow=True)
