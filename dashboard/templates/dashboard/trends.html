@@ -219,6 +219,8 @@
                 integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"
                 crossorigin="anonymous"></script>
         <script>
+            // The chart's text in the site's font (Arial, as in _head.html), not Chart.js's own default.
+            if (window.Chart) Chart.defaults.font.family = "Arial, Helvetica, sans-serif";
             // Reset the group when switching metrics; each metric has its own groups.
             document.getElementById("trend").addEventListener("change", () => {
                 const segment = document.getElementById("segment");

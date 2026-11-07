@@ -24,6 +24,7 @@ class PageStructureTests(TestCase):
     def pages(self):
         table = Table.objects.get(source_id="2016-p011-1")
         return {
+            "welcome": reverse("welcome"),
             "overview": reverse("dashboard"),
             "trends": reverse("trends"),
             "year": reverse("year-detail", args=[2025]),

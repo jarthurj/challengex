@@ -11,11 +11,13 @@
     --color-usps-navy: #004b87;
     --color-usps-blue: #333366;
     --color-usps-red: #d52b1e;
+    /* Arial on every page (headings in Arial Bold); "font-sans" and everything built on it use it */
+    --font-sans: Arial, Helvetica, sans-serif;
   }
 
 @layer base {
   body { @apply mx-auto max-w-6xl bg-slate-50 px-4 py-6 font-sans text-slate-800 antialiased; }
-  h1 { @apply mb-3 text-3xl font-extrabold tracking-tight text-usps-navy; }
+  h1 { @apply mb-3 text-3xl font-bold tracking-tight text-usps-navy; }
   h2 { @apply mt-8 mb-3 border-l-4 border-usps-red pl-3 text-xl font-bold text-usps-navy; }
   h3, h4 { @apply mt-4 mb-2 font-semibold text-usps-navy; }
   p { @apply mb-3; }
@@ -36,7 +38,7 @@
   .main-nav a[aria-current="page"] { @apply bg-white text-usps-navy; }
   /* The page-wide focus ring is navy-on-navy here (1.3:1); white is about 8.6:1 (WCAG 2.4.7). */
   .main-nav a:focus-visible, .main-nav button:focus-visible { @apply outline-white; }
-  .main-nav .brand { @apply mr-3 flex items-center gap-2 py-1 text-lg font-extrabold; }
+  .main-nav .brand { @apply mr-3 flex items-center gap-2 py-1 text-lg font-bold; }
   .main-nav .brand-logo { @apply h-10 w-auto rounded bg-white p-1; }
   .main-nav .nav-toggle { @apply ml-auto bg-transparent px-3 py-2 text-2xl leading-none text-white hover:bg-white/15 md:hidden; }
   .nav-links { @apply hidden w-full flex-col gap-1 pt-2 md:flex md:w-auto md:flex-1 md:flex-row md:pt-0; }
@@ -48,7 +50,7 @@
   .card h3 { @apply mt-0; }
   .card dt { @apply mt-2 text-sm text-slate-600; }
   .card dd { @apply m-0; }
-  .kpi { @apply my-1 text-3xl font-extrabold text-usps-navy; }
+  .kpi { @apply my-1 text-3xl font-bold text-usps-navy; }
   .small { @apply text-sm text-slate-600; }
   .help { @apply text-sm text-slate-600; }
   .footnote { @apply text-sm text-slate-600; }
@@ -202,6 +204,68 @@
      checkbox sits beside its year, centred on it */
   form.filters .year-options label, .year-options label { @apply flex-row items-center gap-2 whitespace-nowrap p-1 font-normal; }
   .year-options input[type="checkbox"] { @apply m-0 shrink-0; }
+
+  /* Welcome page (welcome.html, the logo's link). Plain and editorial, like the rest of the site:
+     one navy banner, then sections that share one heading style and one spacing rhythm. */
+  /* A photo (welcome-mailbox.jpg, see CLAUDE.md) under a translucent USPS-navy layer, 90% opaque
+     behind the text: even over white, white text is 6.9:1 and the lead (blue-50) 6.4:1 (AA 4.5:1).
+     From 1024px it thins towards the right, where the mailbox is: there the text ends well before
+     the 58% stop. Not from 768px: at 768-860px the lead ran into the thin part (2.8:1, measured).
+     The navy colour is the fallback while the photo loads. */
+  .hero {
+    @apply rounded-xl bg-usps-navy bg-cover bg-no-repeat px-6 py-10 text-white md:px-10 md:py-14;
+    background-image: linear-gradient(rgb(0 75 135 / 0.9), rgb(0 75 135 / 0.9)),
+                      url("{% static 'dashboard/welcome-mailbox.jpg' %}");
+    background-position: center, 80% 55%;
+  }
+  @media (min-width: 64rem) {
+    .hero {
+      background-image: linear-gradient(90deg, rgb(0 75 135 / 0.95) 0%, rgb(0 75 135 / 0.9) 58%,
+                                        rgb(0 75 135 / 0.45) 100%),
+                        url("{% static 'dashboard/welcome-mailbox.jpg' %}");
+      background-position: center, right 55%;
+    }
+  }
+  .hero h1 { @apply mb-4 max-w-3xl text-4xl leading-tight text-white md:text-5xl; }
+  .hero a:focus-visible { @apply outline-white; }
+  .hero-lead { @apply mb-8 max-w-2xl text-lg leading-relaxed text-blue-50; }
+  .hero-actions { @apply mb-0 flex flex-wrap gap-3; }
+  .hero-button { @apply inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 font-semibold text-usps-navy no-underline hover:bg-blue-50 hover:no-underline; }
+  .hero-button-secondary { @apply inline-flex items-center gap-2 rounded-md border-2 border-white px-5 py-3 font-semibold text-white no-underline hover:bg-white/10 hover:no-underline; }
+  /* every section: the same space above it, the same space between its heading and what follows */
+  .welcome-section { @apply mt-12; }
+  .welcome-section h2, .welcome-section .side-heading { @apply mt-0 mb-4; }
+  .section-lead { @apply mb-4 max-w-3xl; }
+  /* "What this site is" with "Built for" beside it, both headings on the same line */
+  .about-grid { @apply grid gap-x-12 gap-y-8 md:grid-cols-[3fr_2fr]; }
+  .about-grid p { @apply leading-relaxed; }
+  .side-heading { @apply border-l-4 border-usps-red pl-3 text-xl font-bold text-usps-navy; }
+  main .about-grid ul { @apply mb-0 space-y-2; }
+  /* "Find your way around": a card per tab; the whole card is the link's target (its ::after covers
+     the card) and the focus ring shows on the card */
+  .tour { @apply grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3; }
+  main ul.tour { @apply pl-0; }
+  .tour-card { @apply relative flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-usps-navy hover:shadow-md has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-usps-blue; }
+  .tour-card h3 { @apply mt-3 mb-1 text-lg; }
+  .tour-card h3 a { @apply text-usps-navy no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none; }
+  .tour-card:hover h3 a { @apply underline; }
+  .tour-card p { @apply mb-0 text-slate-700; }
+  .tour-card .tour-try { @apply mt-3 text-sm text-slate-600; }
+  .icon-badge { @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-usps-navy; }
+  .icon-badge svg { @apply h-6 w-6; }
+  /* "How to read the numbers": short entries between rules */
+  .reading-notes { @apply grid gap-x-12 md:grid-cols-2 lg:grid-cols-3; }
+  .reading-notes div { @apply border-t border-slate-300 py-4; }
+  .reading-notes h3 { @apply mt-0 mb-1 text-base; }
+  .reading-notes p { @apply mb-0 text-slate-700; }
+  .tasks { @apply grid list-none gap-4 p-0 md:grid-cols-2; }
+  main ol.tasks { @apply pl-0; }
+  .tasks li { @apply flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm; }
+  .task-number { @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-usps-red font-bold text-white; }
+  .tasks h3 { @apply mt-0 mb-1; }
+  .tasks p { @apply mb-0 text-slate-700; }
+  /* no stray bottom margins, so the gap between sections is the same everywhere */
+  .welcome-section > :last-child, .about-grid > div > :last-child { @apply mb-0; }
 
   /* Chart */
   .chart { @apply relative h-[420px] rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }

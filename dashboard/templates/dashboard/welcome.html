@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
+    <title>Welcome to the Household Mail Dashboard</title>
+</head>
+<body>
+    {% with current="welcome" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
+        <section class="hero" aria-labelledby="welcome-title">
+            <h1 id="welcome-title">How America uses its mail{% if facts.first_year %}, FY{{ facts.first_year }} to FY{{ facts.last_year }}{% endif %}</h1>
+            <p class="hero-lead">Every year USPS surveys U.S. households about the mail they send and receive.
+                This dashboard brings those reports together, so you can find a figure, follow a trend and copy it
+                into a report with its source.</p>
+            <p class="hero-actions">
+                <a class="hero-button" href="{% url 'dashboard' %}">Start with the Overview <span aria-hidden="true">&rarr;</span></a>
+                <a class="hero-button-secondary" href="{% url 'trends' %}">Explore trends</a>
+            </p>
+        </section>
+
+        <section class="welcome-section about-grid" aria-labelledby="about-title">
+            <div>
+                <h2 id="about-title">What this site is</h2>
+                <p>USPS has run the Household Diary Study every year since 1987; in FY2025 it became the Household
+                    Mail Survey. Each report runs to about 80 pages of charts and tables, which makes a single
+                    figure hard to find and long-term change hard to see.</p>
+                <p>This dashboard takes the tables out of those reports and puts them in one place. You can look
+                    up any year, compare years and household groups on one chart, and read plain-language
+                    summaries of what changed. Every value names the report and page it came from.</p>
+            </div>
+            <div>
+                <h3 class="side-heading" id="audience-title">Built for</h3>
+                <ul aria-labelledby="audience-title">
+                    <li>Analysts at the USPS Office of Inspector General preparing <cite>How Americans Use Mail</cite></li>
+                    <li>Postal partners tracking U.S. mail trends by product and household group</li>
+                    <li>Anyone who wants a figure from the reports, with its source</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="welcome-section" aria-labelledby="tour-title">
+            <h2 id="tour-title">Find your way around</h2>
+            <p class="section-lead">Each section is a tab in the menu at the top of every page. The USPS logo
+                brings you back here.</p>
+            <ul class="tour">
+                <li class="tour-card">
+                    <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+                    <h3><a href="{% url 'dashboard' %}">Overview</a></h3>
+                    <p>The headline figures for the latest year, and how each one changed over 5 and 10 years.</p>
+                    <p class="tour-try">Try: mail per household in FY2025, against FY2015.</p>
+                </li>
+                <li class="tour-card">
+                    <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg></span>
+                    <h3><a href="{% url 'trends' %}">Trends</a></h3>
+                    <p>Chart any measure across the years, for all households or a group by age, income or
+                        education. Changes in survey method are marked, and projections are labelled as estimates.</p>
+                    <p class="tour-try">Try: packages sent and received, with its projection.</p>
+                </li>
+                {% if years %}{# like the navigation: no data, no "By year" (the year picker would 404) #}
+                <li class="tour-card">
+                    <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+                    <h3><a href="{% url 'year-detail' years.0 %}">By year</a></h3>
+                    <p>Every published value for one fiscal year on a single page, with the breakdowns by household
+                        group and a spreadsheet download.</p>
+                    <p class="tour-try">Try: FY2025, the first Household Mail Survey.</p>
+                </li>
+                {% endif %}
+                <li class="tour-card">
+                    <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
+                    <h3><a href="{% url 'ai-summaries' %}">AI summaries</a></h3>
+                    <p>Plain-language summaries of what changed, year by year and over the long term. Each one is
+                        labelled as AI-generated, and its numbers are checked against the data.</p>
+                    <p class="tour-try">Try: copy a summary with its sources into a document.</p>
+                </li>
+                <li class="tour-card">
+                    <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 10v10"/></svg></span>
+                    <h3><a href="{% url 'table-list' %}">Browse tables</a></h3>
+                    <p>Search {% if facts.tables != "0" %}all {{ facts.tables }} {% endif %}tables taken from the
+                        reports, read what the report says about each one, and open the original PDF page.</p>
+                    <p class="tour-try">Try: search for &ldquo;packages&rdquo;.</p>
+                </li>
+                <li class="tour-card">
+                    <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+                    <h3><a href="{% url 'settings' %}">Settings</a></h3>
+                    <p>Display options for this browser, such as showing the review details in full.</p>
+                    <p class="tour-try">Saved for this browser only; no account needed.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="welcome-section" aria-labelledby="tasks-title">
+            <h2 id="tasks-title">Common tasks</h2>
+            <ol class="tasks">
+                <li>
+                    <span class="task-number" aria-hidden="true">1</span>
+                    <div>
+                        <h3>Find one number and where it came from</h3>
+                        <p>Open the <a href="{% url 'dashboard' %}">Overview</a> or a year's page. Each value names its
+                            report and page; select it to open the table, which links to its PDF page.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-number" aria-hidden="true">2</span>
+                    <div>
+                        <h3>Compare years or household groups</h3>
+                        <p>On <a href="{% url 'trends' %}">Trends</a>, pick a measure, then a household group. Missing
+                            years show as gaps, never as guesses.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-number" aria-hidden="true">3</span>
+                    <div>
+                        <h3>Put figures into a report</h3>
+                        <p>Under a chart, use &ldquo;Copy the values with sources&rdquo; or download a spreadsheet. On
+                            <a href="{% url 'ai-summaries' %}">AI summaries</a>, &ldquo;Copy with sources&rdquo; does the same for text.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-number" aria-hidden="true">4</span>
+                    <div>
+                        <h3>Check a table against the original</h3>
+                        <p>In <a href="{% url 'table-list' %}">Browse tables</a>, open a table: it links to its PDF page
+                            and says if anything about it needs review.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="welcome-section" aria-labelledby="reading-title">
+            <h2 id="reading-title">How to read the numbers</h2>
+            <div class="reading-notes">
+                <div>
+                    <h3>Every value is sourced</h3>
+                    <p>It names the report and page it came from, and later reports' revisions are kept with their
+                        own source.</p>
+                </div>
+                <div>
+                    <h3>Checked against the PDF</h3>
+                    <p>Values are compared with the text of their source page. Anything not yet checked is marked
+                        as such.</p>
+                </div>
+                <div>
+                    <h3>Gaps stay gaps</h3>
+                    <p>When USPS didn't publish a figure for a year, the chart leaves it blank rather than filling
+                        it in.</p>
+                </div>
+                <div>
+                    <h3>Survey changes are marked</h3>
+                    <p>USPS changed how it runs the survey several times; charts show where, so a jump isn't
+                        mistaken for a trend.</p>
+                </div>
+                <div>
+                    <h3>Projections are estimates</h3>
+                    <p>They come from simple statistical models tested on past years, and are shown with their
+                        likely range, never as published figures.</p>
+                </div>
+                <div>
+                    <h3>AI text is labelled</h3>
+                    <p>Summaries are marked as AI-generated and stay &ldquo;not yet reviewed&rdquo; until a person
+                        signs them off.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

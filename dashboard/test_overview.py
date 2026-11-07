@@ -35,8 +35,14 @@ class OverviewYearCsvTests(TestCase):
     def get(self, name, *args, query=""):
         return self.client.get(reverse(name, args=args) + query)
 
-    def test_site_root_goes_to_the_overview(self):
-        self.assertRedirects(self.client.get("/"), reverse("dashboard"))
+    def test_site_root_goes_to_the_welcome_page(self):
+        self.assertRedirects(self.client.get("/"), reverse("welcome"))
+
+    def test_overview_has_no_intro_paragraph(self):
+        page = self.get("dashboard").content.decode()
+        self.assertNotIn("Latest published values from the USPS Household Diary Study", page)
+        self.assertNotIn("select a card's link for the full trend", page)
+        self.assertIn("<h1>U.S. household mail at a glance</h1>", page)
 
     def test_overview_cards_show_latest_value_changes_and_sources(self):
         page = self.get("dashboard").content.decode()

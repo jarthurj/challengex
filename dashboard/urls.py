@@ -1,9 +1,10 @@
 from django.urls import path
 
-from . import ai_views, overview_views, settings_views, trend_views, views
+from . import ai_views, overview_views, settings_views, trend_views, views, welcome_views
 
 urlpatterns = [
     path("", overview_views.overview, name="dashboard"),
+    path("welcome/", welcome_views.welcome, name="welcome"),
     path("ai/", ai_views.ai_summaries, name="ai-summaries"),
     path("ai/generate/", ai_views.ai_generate, name="ai-generate"),
     path("ai/export.txt", ai_views.ai_export, name="ai-export"),

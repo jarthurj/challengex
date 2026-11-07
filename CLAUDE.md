@@ -153,7 +153,7 @@ analyst should be able to:
   which is fine because nothing is deployed. Never commit API keys. Put them in `.env`, which
   `python-dotenv` reads.
 - Run the server: `python manage.py runserver`, then open `http://127.0.0.1:8000/` (it goes to
-  the Overview at `/dashboard/`).
+  the welcome page at `/dashboard/welcome/`; the Overview is at `/dashboard/`).
 - The individual steps that `rebuild_db` runs, in order. Every step is safe to re-run, and
   reviewers' `verified` flags and notes survive:
   1. `python manage.py load_tables tables.json tables_2000_2015.json`. Both files are needed:
@@ -457,7 +457,10 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 254 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 268 in total, in `dashboard/tests.py`, `dashboard/test_welcome.py` (the welcome page:
+  its introduction, links to every section, the table count from the data, no row of figures in
+  the banner, the logo's link on every page, the tab cards and their icons, the numbered tasks, the removed text and
+  icons staying out, Arial and no weight above bold, an empty database), `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -558,8 +561,24 @@ analyst should be able to:
     intervals, the model and the fit years (`trend_views.copy_text`). Rendered escaped in a
     `<pre>` (also visible in a folding panel), copied by progressive enhancement like the AI tab.
     The CSV export includes every line's projection.
+- **`welcome_views.py` (welcome page, `/dashboard/welcome/`, added 2026-11-06):** the site root
+  redirects here, and the USPS logo in the navigation links here from every page (marked
+  `aria-current` on this page). A banner (title with the years covered, a sentence, two buttons;
+  the team removed its row of counts) over a photo of a blue U.S. Mail collection box under a
+  translucent USPS-navy layer, as on usps.com: 90% opaque behind the text (even over white: 6.9:1
+  for white text, 6.4:1 for the lead), thinning to the right only from 1024 px. From 768 px the
+  lead text ran into the thin part (2.8:1 at 800 px, measured by the reviewer), so keep it there.
+  With no data loaded the "By year" card is hidden, as in the navigation. The photo is `dashboard/static/dashboard/welcome-mailbox.jpg`
+  (cropped and compressed, 240 KB), by Alex Perz on Unsplash
+  (https://unsplash.com/photos/61qBPJeUYcE), free under the Unsplash License, which needs no
+  credit on the page. It's served from `static/`, not a CDN. Then "What this site is" with "Built
+  for" beside it, a card per tab (icon, description, a "Try:" line; the whole card is the link),
+  the four common tasks as numbered boxes, and how to read the numbers as plain entries between
+  rules. The team's choices (2026-11-06): icons only on the tab cards; no checkmarks, eyebrow line,
+  row of counts or footer; sections share the site's `h2` style and one spacing. Styles are the "Welcome page" block
+  in `_head.html`.
 - **`overview_views.py`:**
-  - **Overview** (`/dashboard/`; the site root redirects here): KPI cards for six headline
+  - **Overview** (`/dashboard/`, the Overview tab; no intro paragraph under its heading): KPI cards for six headline
     series (`KPIS`) with the latest published value, the change vs. 5 and 10 years earlier
     (percent and absolute; percentage points for shares), and each value's source and
     verification. Below, the market mix per household for the latest year (FY2025 E.2); the
@@ -650,7 +669,7 @@ analyst should be able to:
     still says none is reviewed; "reviewed" and "Rule-based" tags stay).
   - On: those columns are shown in full (By year gains Notes, also for household groups).
   - CSV downloads and "Copy the values with sources" always include verification.
-- **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html`,
+- **Templates:** `welcome.html`, `overview.html`, `trends.html`, `year.html`, `table_list.html`,
   `table_detail.html`, `ai_summaries.html`, `ai_summary_detail.html` and `settings.html` are full pages. All
   include `_head.html` (after the `<meta>` tags) and `_nav.html` (skip link, logo, main navigation
   with a ☰ menu button below the `md` width; Settings sits at the bar's right end), and wrap their content in one `<main id="main">`.
@@ -660,7 +679,9 @@ analyst should be able to:
   pinned to the package's own `dist/index.global.js` with an SRI hash (not the bare URL, which
   jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
   `<style type="text/tailwindcss">` block; templates use only those semantic class names
-  (`.card`, `.notice`, `.badge` …). The browser compiles it on each load, so pages need the
+  (`.card`, `.notice`, `.badge` …). **Font (team decision, 2026-11-06):** Arial everywhere
+  (`--font-sans` in `@theme`; the Trends chart sets `Chart.defaults.font.family` to match), and
+  nothing heavier than `font-bold` (Arial Bold), so no `font-extrabold`/`font-black`. The browser compiles it on each load, so pages need the
   internet (as Chart.js does), and a page can flash unstyled for a moment before the styles
   apply. (2026-11-06: a script that hid pages until styled was tried and removed at the team's
   request; Browse tables was paginated instead, since its unfiltered 1.6 MB, 2,980-row page
