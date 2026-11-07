@@ -48,7 +48,8 @@ class WelcomePageTests(TestCase):
         tour = page[page.index('<ul class="tour">'):page.index("</ul>", page.index('<ul class="tour">'))]
         self.assertEqual(tour.count('<li class="tour-card">'), 6)
         self.assertEqual(tour.count('<svg aria-hidden="true" focusable="false"'), 6)   # icons are decoration
-        self.assertEqual(tour.count('class="tour-try"'), 6)
+        self.assertNotIn("tour-try", tour)            # the team removed the cards' "Try: ..." lines
+        self.assertNotIn("Try:", tour)
         main = page[page.index('<main id="main">'):page.index("</main>")]
         self.assertEqual(main.count("<svg"), 6)                                        # none elsewhere
 

@@ -572,7 +572,7 @@ analyst should be able to:
   (cropped and compressed, 240 KB), by Alex Perz on Unsplash
   (https://unsplash.com/photos/61qBPJeUYcE), free under the Unsplash License, which needs no
   credit on the page. It's served from `static/`, not a CDN. Then "What this site is" with "Built
-  for" beside it, a card per tab (icon, description, a "Try:" line; the whole card is the link),
+  for" beside it, a card per tab (icon and description, no "Try:" line; the whole card is the link),
   the four common tasks as numbered boxes, and how to read the numbers as plain entries between
   rules. The team's choices (2026-11-06): icons only on the tab cards; no checkmarks, eyebrow line,
   row of counts or footer; sections share the site's `h2` style and one spacing. Styles are the "Welcome page" block
