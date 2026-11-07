@@ -44,8 +44,9 @@ from django.views.decorators.debug import sensitive_variables
 from pathlib import Path
 
 #--------------------------------------GEMINI SETUP----------------------------------------
-PROMPT_VERSION = "summary-v3"   # v2: break-crossing changes marked, percentage points spelled out
+PROMPT_VERSION = "summary-v4"   # v2: break-crossing changes marked, percentage points spelled out
 # v3: numbered rules with example sentences the check accepts; every change names both its years
+# v4: a percent change goes in brackets before the years (v3's ", or 8.2%, from FY..." lost them)
 DEFAULT_MODEL = "gemini-2.5-flash"
 API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 TIMEOUT = 60          # seconds per call
@@ -215,7 +216,7 @@ Intructions fed to GeminiAI
 PROMPT_EXAMPLES = [
     ("a value", "Packages totaled 6,700.0 million pieces in FY2023.",
      "packages-volume", (2023,)),
-    ("a change, with its percent", "Packages fell by 600.0 million pieces, or 8.2%, from FY2022 to FY2023.",
+    ("a change, with its percent", "Packages fell by 600.0 million pieces (8.2%) from FY2022 to FY2023.",
      "packages-volume", (2022, 2023)),
     ("a value and its change", "Packages totaled 6,700.0 million pieces in FY2023, down 600.0 million "
      "pieces from FY2022.", "packages-volume", (2022, 2023)),
@@ -245,8 +246,10 @@ SYSTEM_INSTRUCTION = (
     "FY2023'. Call the metric by its plain name, not its slug.\n"
     "3. A change: quote only the precomputed changes under 'changes'. ALWAYS write both of its "
     "years in the same sentence, as 'from FY<from_year> to FY<latest_year>' (or, after a value "
-    "and its year, 'from FY<from_year>'). Put a percent change right after the absolute one, as "
-    "', or 8.2%,' before the years. Never give a change with only a break ('decreased by 10,452.0 "
+    "and its year, 'from FY<from_year>'). Put a percent change in brackets right after the "
+    "absolute one and before the years, as '600.0 million pieces (8.2%) from FY2022 to FY2023'. "
+    "Never put a comma between a change and its years: in '600.0 million pieces, or 8.2%, from "
+    "FY2022' the years are lost and the statement is refused. Never give a change with only a break ('decreased by 10,452.0 "
     "across the FY2010 methodology break') or only 'five years earlier': without its start year "
     "it can't be checked.\n"
     "4. Methodology breaks: a change that lists 'crosses_methodology_breaks' mixes two methods. "

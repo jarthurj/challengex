@@ -694,7 +694,7 @@ analyst should be able to:
     - Tests: `test_ai_summary.py` holds the rule tests (with the reviews' near misses) and
       an eval set of known FY2023 facts: packages, bills, household groups, a projection,
       break-note numbers and the headline.
-  - **The input (prompt `summary-v3`, 2026-11-06):** every change that straddles a break lists
+  - **The input (prompt `summary-v4`, 2026-11-06):** every change that straddles a break lists
     `crosses_methodology_breaks`, and `since_latest_break` gives the change within the current
     method. The instructions spell out the rules above as 10 numbered rules: group labels right
     before their figures, a value's year right after it, the allowed direction words,
@@ -708,8 +708,16 @@ analyst should be able to:
     - `PROMPT_EXAMPLES` (one sentence per rule, plus `PROMPT_HEADLINE_EXAMPLE`) are shown to
       the model and run through `validate_ai_summary` in `PromptExampleTests`, so the prompt
       can't teach a wording the check refuses. Change the examples and the check together.
-    - Stored summaries keep their `prompt_version`; only regenerated ones use v3. The 27 hidden
-      v2 records haven't been regenerated with v3 yet.
+    - **v4 fixes a v3 example that taught refused wording.** v3 showed "fell by 600.0 million
+      pieces, or 8.2%, from FY2022 to FY2023"; the check reads a change's years only up to the
+      first comma after it, so ", or 2.1%, from FY2017" loses them. The v3 regeneration (26
+      records, `gemini-3.5-flash-lite`) passed 5, got no answer for 2 (503) and failed 19, with
+      182 of its problems from that wording. The example passed its test only because the test
+      cited two years, leaving one possible start year. v4 puts the percent in brackets before
+      the years ("600.0 million pieces (8.2%) from FY2022 to FY2023", checked against the real
+      FY2018 input), and the test now also cites every year of the metric that doesn't cross a
+      break (`every_year(..., near=...)`), the case a yearly summary is in.
+    - Stored summaries keep their `prompt_version`; only regenerated ones use the new prompt.
   - **Staleness:** pages show a stored summary only if it passed when made and passes again
     against the current data with the current check (`shown()`). The result is cached per data
     version (observation count, max id, sums of values, years, segments, metrics and report
