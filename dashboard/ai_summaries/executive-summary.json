@@ -2586,95 +2586,114 @@
       "fiscal_year": 2018,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "A summary of U.S. Postal Service Household Diary and Mail Survey statistics for fiscal year 2018.",
+        "headline": "Household mail metrics changed across categories in FY2018.",
         "statements": [
           {
-            "text": "All households received 75,275.0 millions of pieces of advertising-received-total in FY2018, which fell by 1,596.0 millions of pieces from the previous year and fell by 8,799.0 millions of pieces from five years earlier in FY2013, and decreased by 10,452.0 millions of pieces across the FY2010 methodology break.",
+            "text": "Advertising mail received by households totaled 75,275.0 millions of pieces in FY2018, down 1,596.0 millions of pieces, or 2.1%, from FY2017, and down 8,799.0 millions of pieces, or 10.5%, from FY2013.",
             "metric": "advertising-received-total",
             "years": [
-              2018,
-              2017,
               2013,
-              2010
+              2017,
+              2018
             ]
           },
           {
-            "text": "All households recorded 27.0 percent for bills-paid-by-mail-share in FY2018, which decreased by 3.0 percentage points from the previous year and decreased by 10.0 percentage points from five years earlier in FY2013, and decreased by 20.0 percentage points across the FY2010 methodology break.",
+            "text": "Share of bills paid by mail was 27.0 percent in FY2018, down 3.0 percentage points from FY2017, and down 10.0 percentage points from FY2013.",
             "metric": "bills-paid-by-mail-share",
             "years": [
-              2018,
-              2017,
               2013,
-              2010
+              2017,
+              2018
             ]
           },
           {
-            "text": "All households received 38,958.0 millions of pieces of fcm-received-total in FY2018, which decreased by 836.0 millions of pieces from the previous year and fell by 5,184.0 millions of pieces from five years earlier in FY2013, and fell by 11,105.0 millions of pieces across the FY2010 methodology break.",
+            "text": "First-Class Mail received by households totaled 38,958.0 millions of pieces in FY2018, down 836.0 millions of pieces, or 2.1%, from FY2017, and down 5,184.0 millions of pieces, or 11.7%, from FY2013.",
             "metric": "fcm-received-total",
             "years": [
-              2018,
-              2017,
               2013,
-              2010
+              2017,
+              2018
             ]
           },
           {
-            "text": "All households handled 121,000.0 millions of pieces of household-mail-total in FY2018, which decreased by 2,700.0 millions of pieces from the previous year and fell by 12,900.0 millions of pieces from five years earlier in FY2013, and declined by 15,900.0 millions of pieces across the FY2012 methodology break.",
+            "text": "All household mail, sent and received, totaled 121,000.0 millions of pieces in FY2018, down 2,700.0 millions of pieces, or 2.2%, from FY2017, and down 12,900.0 millions of pieces, or 9.6%, from FY2013.",
             "metric": "household-mail-total",
             "years": [
-              2018,
-              2017,
               2013,
-              2012
+              2017,
+              2018
             ]
           },
           {
-            "text": "All households handled 5,300.0 millions of pieces of packages-volume in FY2018, which rose by 300.0 millions of pieces from the previous year and increased by 1,200.0 millions of pieces from five years earlier in FY2013, and grew by 1,400.0 millions of pieces across the FY2012 methodology break.",
+            "text": "Packages sent and received by households totaled 5,300.0 millions of pieces in FY2018, up 300.0 millions of pieces, or 6.0%, from FY2017, and up 1,200.0 millions of pieces, or 29.3%, from FY2013.",
             "metric": "packages-volume",
             "years": [
-              2018,
-              2017,
               2013,
-              2012
+              2017,
+              2018
             ]
           },
           {
-            "text": "All households received 4,400.0 millions of pieces of periodicals-volume in FY2018, which decreased by 500.0 millions of pieces from the previous year and fell by 1,300.0 millions of pieces from five years earlier in FY2013, and decreased by 1,500.0 millions of pieces across the FY2012 methodology break.",
+            "text": "Periodicals received by households totaled 4,400.0 millions of pieces in FY2018, down 500.0 millions of pieces, or 10.2%, from FY2017, and down 1,300.0 millions of pieces, or 22.8%, from FY2013.",
             "metric": "periodicals-volume",
             "years": [
-              2018,
-              2017,
               2013,
-              2012
+              2017,
+              2018
             ]
           }
         ],
         "caveats": [
-          "Comparisons across the FY2010 methodology break are cautious due to changes in weighting methodology.",
-          "Comparisons across the FY2012 methodology break are cautious because data was restated due to weighting by Home Ownership and newly excluded pieces counted as both sent and received."
+          "Advertising mail received by households fell by 10,452.0 millions of pieces, or 12.2%, from FY2010 to FY2018, since the FY2010 methodology break.",
+          "Share of bills paid by mail fell by 20.0 percentage points from FY2010 to FY2018, since the FY2010 methodology break.",
+          "First-Class Mail received by households fell by 11,105.0 millions of pieces, or 22.2%, from FY2010 to FY2018, since the FY2010 methodology break.",
+          "All household mail, sent and received, fell by 15,900.0 millions of pieces, or 11.6%, from FY2012 to FY2018, since the FY2012 methodology break.",
+          "Packages sent and received by households rose by 1,400.0 millions of pieces, or 35.9%, from FY2012 to FY2018, since the FY2012 methodology break.",
+          "Periodicals received by households fell by 1,500.0 millions of pieces, or 25.4%, from FY2012 to FY2018, since the FY2012 methodology break."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 1: say which fiscal year 75,275.0 is for (write the year right after it)",
-          "statement 1: say which years the change 10,452.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 20.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which fiscal year 38,958.0 is for (write the year right after it)",
-          "statement 3: say which years the change 11,105.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which fiscal year 121,000.0 is for (write the year right after it)",
-          "statement 4: say which years the change 15,900.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 1,400.0 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which fiscal year 4,400.0 is for (write the year right after it)",
-          "statement 6: say which years the change 1,500.0 is between (\"from FY2018 to FY2023\")"
+          "statement 1: say which years the change 1,596.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 2.1 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 8,799.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 10.5 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 836.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 2.1 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 5,184.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 11.7 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 2,700.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 2.2 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 12,900.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 9.6 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 300.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 6.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 1,200.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 29.3 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 500.0 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 10.2 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 1,300.0 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 22.8 is between (\"from FY2018 to FY2023\")",
+          "caveat 1: number 10,452.0 belongs in a statement, which names its metric and years",
+          "caveat 1: number 12.2 belongs in a statement, which names its metric and years",
+          "caveat 2: number 20.0 belongs in a statement, which names its metric and years",
+          "caveat 3: number 11,105.0 belongs in a statement, which names its metric and years",
+          "caveat 3: number 22.2 belongs in a statement, which names its metric and years",
+          "caveat 4: number 15,900.0 belongs in a statement, which names its metric and years",
+          "caveat 4: number 11.6 belongs in a statement, which names its metric and years",
+          "caveat 5: number 1,400.0 belongs in a statement, which names its metric and years",
+          "caveat 5: number 35.9 belongs in a statement, which names its metric and years",
+          "caveat 6: number 1,500.0 belongs in a statement, which names its metric and years",
+          "caveat 6: number 25.4 belongs in a statement, which names its metric and years"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "6d8aae683bbb7f81d61ced3e4a61ff4877d55ea8a682e19d1782ef6f5985d19b",
-      "generated_at": "2026-11-06T17:28:37+00:00",
+      "generated_at": "2026-11-07T00:59:47+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
@@ -3556,10 +3575,10 @@
       "fiscal_year": 2015,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "In fiscal year 2015, household mail metrics showed varying shifts across advertising, bills, First-Class Mail, total mail, packages, and periodicals.",
+        "headline": "Household mail volumes and bills paid by mail changed across FY2015",
         "statements": [
           {
-            "text": "For all households, advertising-received-total was 80,001.0 millions of pieces in FY2015, falling by 774.0 millions of pieces from FY2014 and decreasing by 5,726.0 millions of pieces from FY2010 since the latest break.",
+            "text": "Advertising mail received by households totaled 80,001.0 millions of pieces in FY2015, down 774.0 millions of pieces, or -1.0%, from FY2014, and down 5,726.0 millions of pieces, or -6.7%, from FY2010, since the FY2010 methodology break.",
             "metric": "advertising-received-total",
             "years": [
               2010,
@@ -3568,7 +3587,7 @@
             ]
           },
           {
-            "text": "For all households, bills-paid-by-mail-share stood at 31.0 percent in FY2015, dropping by 2.0 percentage points from FY2014 and falling by 16.0 percentage points from FY2010 since the latest break.",
+            "text": "Share of bills paid by mail was 31.0 percent in FY2015, down 2.0 percentage points from FY2014, and down 16.0 percentage points from FY2010, since the FY2010 methodology break.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2010,
@@ -3577,7 +3596,7 @@
             ]
           },
           {
-            "text": "For all households, fcm-received-total was 41,400.0 millions of pieces in FY2015, decreasing by 1,430.0 millions of pieces from FY2014 and down by 8,663.0 millions of pieces from FY2010 since the latest break.",
+            "text": "First-Class Mail received by households totaled 41,400.0 millions of pieces in FY2015, down 1,430.0 millions of pieces, or -3.3%, from FY2014, and down 8,663.0 millions of pieces, or -17.3%, from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-received-total",
             "years": [
               2010,
@@ -3586,7 +3605,7 @@
             ]
           },
           {
-            "text": "For all households, household-mail-total was 128,400.0 millions of pieces in FY2015, declining by 1,600.0 millions of pieces from FY2014, falling by 8,500.0 millions of pieces from FY2012 since the latest break, and decreasing by 12,800.0 millions of pieces from FY2010 across the FY2012 methodology break.",
+            "text": "All household mail, sent and received totaled 128,400.0 millions of pieces in FY2015, down 1,600.0 millions of pieces, or -1.2%, from FY2014, down 8,500.0 millions of pieces, or -6.2%, from FY2012, since the FY2012 methodology break, and down 12,800.0 millions of pieces, or -9.1%, from FY2010, across the FY2012 methodology break.",
             "metric": "household-mail-total",
             "years": [
               2010,
@@ -3596,7 +3615,7 @@
             ]
           },
           {
-            "text": "For all households, packages-volume reached 4,300.0 millions of pieces in FY2015, unchanged with 0.0 millions of pieces from FY2014, rising by 400.0 millions of pieces from FY2012 since the latest break, and growing by 700.0 millions of pieces from FY2010 across the FY2012 methodology break.",
+            "text": "Packages sent and received by households totaled 4,300.0 millions of pieces in FY2015, up 0.0 millions of pieces, or 0.0%, from FY2014, up 400.0 millions of pieces, or 10.3%, from FY2012, since the FY2012 methodology break, and up 700.0 millions of pieces, or 19.4%, from FY2010, across the FY2012 methodology break.",
             "metric": "packages-volume",
             "years": [
               2010,
@@ -3606,7 +3625,7 @@
             ]
           },
           {
-            "text": "For all households, periodicals-volume was 5,100.0 millions of pieces in FY2015, falling by 200.0 millions of pieces from FY2014, decreasing by 800.0 millions of pieces from FY2012 since the latest break, and down by 400.0 millions of pieces from FY2010 across the FY2012 methodology break.",
+            "text": "Periodicals received by households totaled 5,100.0 millions of pieces in FY2015, down 200.0 millions of pieces, or -3.8%, from FY2014, down 800.0 millions of pieces, or -13.6%, from FY2012, since the FY2012 methodology break, and down 400.0 millions of pieces, or -7.3%, from FY2010, across the FY2012 methodology break.",
             "metric": "periodicals-volume",
             "years": [
               2010,
@@ -3617,23 +3636,47 @@
           }
         ],
         "caveats": [
-          "Comparisons across the FY2010 methodology break for advertising-received-total, bills-paid-by-mail-share, and fcm-received-total should be cautious due to changes in weighting methodology.",
-          "Comparisons across the FY2012 methodology break for household-mail-total, packages-volume, and periodicals-volume should be cautious due to weighting by home ownership and newly excluded pieces.",
-          "Comparisons across the FY2024 and FY2025 methodology breaks involve contractor changes, per-household reporting, and survey redesigns."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 5: says 0.0 went up, but the data says the opposite"
+          "statement 1: say which years the change 774.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 1.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 5,726.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 6.7 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 1,430.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 3.3 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 8,663.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 17.3 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1,600.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1.2 is between (\"from FY2018 to FY2023\")",
+          "statement 4: 8,500.0 is a change of its metric, but not between the years the sentence names",
+          "statement 4: say which years the change 6.2 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 12,800.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 9.1 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 0.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 0.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: 400.0 is a change of its metric, but not between the years the sentence names",
+          "statement 5: say which years the change 10.3 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 700.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 19.4 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 200.0 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 3.8 is between (\"from FY2018 to FY2023\")",
+          "statement 6: 800.0 is a change of its metric, but not between the years the sentence names",
+          "statement 6: say which years the change 13.6 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 400.0 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 7.3 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "43a6bb0e3b7976f9f4a05532dcb5a62ab665b0fd74b5347d8996af82972733e0",
-      "generated_at": "2026-11-06T17:31:55+00:00",
+      "generated_at": "2026-11-07T00:59:58+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
@@ -7691,6 +7734,652 @@
             "2000": {
               "report_year": 2020,
               "page": 72,
+              "verified": true
+            }
+          }
+        }
+      ]
+    },
+    "range:2008-2025": {
+      "section": "Executive summary",
+      "kind": "range",
+      "key": "range:2008-2025",
+      "fiscal_year": null,
+      "fiscal_year_range": [
+        2008,
+        2025
+      ],
+      "summary": {
+        "headline": "Household mail volumes and payment methods changed significantly between FY2008 and FY2025 across multiple methodology breaks.",
+        "statements": [
+          {
+            "text": "Advertising mail received by households totaled 100,045.0 millions of pieces in FY2008 and 57,286.0 millions of pieces in FY2023, falling by 42,759.0 millions of pieces, or -42.7%, from FY2008 to FY2023, across the FY2010 methodology break.",
+            "metric": "advertising-received-total",
+            "years": [
+              2008,
+              2010,
+              2023
+            ]
+          },
+          {
+            "text": "Share of bills paid by mail totaled 54.0 percent in FY2008 and 14.0 percent in FY2025, down 40.0 percentage points from FY2008 to FY2025, across the FY2010, FY2024, and FY2025 methodology breaks.",
+            "metric": "bills-paid-by-mail-share",
+            "years": [
+              2008,
+              2010,
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "First-Class Mail received by households totaled 57,250.0 millions of pieces in FY2008 and 32,228.0 millions of pieces in FY2023, decreasing by 25,022.0 millions of pieces, or -43.7%, from FY2008 to FY2023, across the FY2010 methodology break.",
+            "metric": "fcm-received-total",
+            "years": [
+              2008,
+              2010,
+              2023
+            ]
+          },
+          {
+            "text": "All household mail, sent and received totaled 164,000.0 millions of pieces in FY2008 and 97,400.0 millions of pieces in FY2023, dropping by 66,600.0 millions of pieces, or -40.6%, from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
+            "metric": "household-mail-total",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2023
+            ]
+          },
+          {
+            "text": "Packages sent and received by households totaled 3,400.0 millions of pieces in FY2008 and 6,700.0 millions of pieces in FY2023, increasing by 3,300.0 millions of pieces, or 97.1%, from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
+            "metric": "packages-volume",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2023
+            ]
+          },
+          {
+            "text": "Periodicals received by households totaled 6,400.0 millions of pieces in FY2008 and 3,400.0 millions of pieces in FY2023, down 3,000.0 millions of pieces, or -46.9%, from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
+            "metric": "periodicals-volume",
+            "years": [
+              2008,
+              2010,
+              2012,
+              2023
+            ]
+          }
+        ],
+        "caveats": [
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design and was renamed the Household Mail Survey with altered age bands and a redefined Large MSA."
+        ]
+      },
+      "validation": {
+        "passed": false,
+        "problems": [
+          "statement 1: say which years the change 42,759.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 42.7 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 25,022.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 43.7 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 66,600.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 40.6 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 3,300.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 97.1 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 3,000.0 is between (\"from FY2018 to FY2023\")",
+          "statement 6: say which years the change 46.9 is between (\"from FY2018 to FY2023\")"
+        ]
+      },
+      "ai_generated": true,
+      "reviewed": false,
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v3",
+      "input_hash": "38c3c2112cdd91ab21a75ea78c5fe0237ed490e6b60e97b32aea651bdfb51cfb",
+      "generated_at": "2026-11-07T01:01:15+00:00",
+      "sources": [
+        {
+          "metric": "advertising-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 82,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 88,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "bills-paid-by-mail-share",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 77,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 77,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 82,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 82,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 82,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 82,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2025,
+              "page": 62,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2025,
+              "page": 62,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2024": {
+              "report_year": 2024,
+              "page": 62,
+              "verified": true
+            },
+            "2025": {
+              "report_year": 2025,
+              "page": 62,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "fcm-received-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2020,
+              "page": 72,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 77,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "household-mail-total",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "packages-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            }
+          }
+        },
+        {
+          "metric": "periodicals-volume",
+          "segment": {
+            "dimension": "all",
+            "value": "All households"
+          },
+          "sources": {
+            "2008": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2009": {
+              "report_year": 2010,
+              "page": 10,
+              "verified": true
+            },
+            "2010": {
+              "report_year": 2012,
+              "page": 10,
+              "verified": true
+            },
+            "2011": {
+              "report_year": 2013,
+              "page": 10,
+              "verified": true
+            },
+            "2012": {
+              "report_year": 2014,
+              "page": 10,
+              "verified": true
+            },
+            "2013": {
+              "report_year": 2015,
+              "page": 12,
+              "verified": true
+            },
+            "2014": {
+              "report_year": 2016,
+              "page": 10,
+              "verified": true
+            },
+            "2015": {
+              "report_year": 2017,
+              "page": 10,
+              "verified": true
+            },
+            "2016": {
+              "report_year": 2018,
+              "page": 10,
+              "verified": true
+            },
+            "2017": {
+              "report_year": 2019,
+              "page": 10,
+              "verified": true
+            },
+            "2018": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2019": {
+              "report_year": 2020,
+              "page": 10,
+              "verified": true
+            },
+            "2020": {
+              "report_year": 2022,
+              "page": 4,
+              "verified": true
+            },
+            "2021": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2022": {
+              "report_year": 2023,
+              "page": 11,
+              "verified": true
+            },
+            "2023": {
+              "report_year": 2023,
+              "page": 11,
               "verified": true
             }
           }

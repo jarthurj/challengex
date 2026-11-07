@@ -1206,52 +1206,63 @@
       "fiscal_year": 2024,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of household mail transaction metrics for fiscal year 2024.",
+        "headline": "Share of bills paid by mail fell while electronic payments rose in FY2024",
         "statements": [
           {
-            "text": "For all households, the share of bills paid by mail was 13.0 percent in FY2024, falling by 2.0 percentage points from FY2023 across the FY2024 methodology break, and falling by 10.0 percentage points from FY2019 across the FY2024 methodology break.",
+            "text": "All households had a share of bills paid by mail of 13.0 percent in FY2024, down 2.0 percentage points from FY2023, across the FY2024 methodology break.",
             "metric": "bills-paid-by-mail-share",
             "years": [
-              2019,
-              2023,
-              2024
+              2024,
+              2023
             ]
           },
           {
-            "text": "For all households, the share of bills paid electronically was 85.0 percent in FY2024, increasing by 3.0 percentage points from FY2023 across the FY2024 methodology break, and rising by 12.0 percentage points from FY2019 across the FY2024 methodology break.",
+            "text": "All households had a share of bills paid by mail of 13.0 percent in FY2024, down 10.0 percentage points from FY2019, across the FY2024 methodology break.",
+            "metric": "bills-paid-by-mail-share",
+            "years": [
+              2024,
+              2019
+            ]
+          },
+          {
+            "text": "All households had a share of bills paid electronically of 85.0 percent in FY2024, up 3.0 percentage points from FY2023, across the FY2024 methodology break.",
             "metric": "bills-paid-electronic-share",
             "years": [
-              2019,
-              2023,
-              2024
+              2024,
+              2023
             ]
           },
           {
-            "text": "For all households, transaction mail per household was 111.0 pieces per household per year in FY2024, decreasing by 48.1 pieces per household per year from FY2019 across the FY2024 methodology break.",
+            "text": "All households had a share of bills paid electronically of 85.0 percent in FY2024, up 12.0 percentage points from FY2019, across the FY2024 methodology break.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2024,
+              2019
+            ]
+          },
+          {
+            "text": "All households had transaction mail per household of 111.0 pieces per household per year in FY2024, down 48.1 pieces per household per year, or 30.2%, from FY2019, across the FY2024 methodology break.",
             "metric": "transactions-per-household",
             "years": [
-              2019,
-              2024
+              2024,
+              2019
             ]
           }
         ],
         "caveats": [
-          "Comparisons across the FY2024 methodology break are cautious because the survey contractor changed and results were published as pieces per household per year with restated historical figures.",
-          "Values for transaction mail per household are missing for FY2016, FY2017, FY2018, FY2021, FY2022, and FY2023."
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "caveat 2: year 2018 is not in the data"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "9dbcd141e887e72604f47a615a63de1a0bebe54ce7256a88d6d7cfc200d9b811",
-      "generated_at": "2026-11-06T17:23:53+00:00",
+      "generated_at": "2026-11-07T01:02:38+00:00",
       "sources": [
         {
           "metric": "bills-paid-by-mail-share",
@@ -1896,10 +1907,10 @@
       "fiscal_year": 2021,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of household mail and bill payment statistics for fiscal year 2021.",
+        "headline": "First-Class transactions and bills paid by mail declined in FY2021",
         "statements": [
           {
-            "text": "For all households, the share of bills paid by mail was 19.0 percent in FY2021, which fell by 2.0 percentage points from FY2020 and fell by 8.0 percentage points from FY2016.",
+            "text": "All households had a share of bills paid by mail of 19.0 percent in FY2021, down 2.0 percentage points from FY2020, and down 8.0 percentage points from FY2016.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2016,
@@ -1908,7 +1919,7 @@
             ]
           },
           {
-            "text": "For all households, the share of bills paid electronically was 79.0 percent in FY2021, which rose by 3.0 percentage points from FY2020 and rose by 10.0 percentage points from FY2016.",
+            "text": "All households had a share of bills paid electronically of 79.0 percent in FY2021, up 3.0 percentage points from FY2020, and up 10.0 percentage points from FY2016.",
             "metric": "bills-paid-electronic-share",
             "years": [
               2016,
@@ -1917,7 +1928,7 @@
             ]
           },
           {
-            "text": "For all households, First-Class transaction mail received was 15,708.0 million pieces in FY2021, which decreased by 1,020.0 million pieces from FY2020 and decreased by 4,575.0 million pieces from FY2016.",
+            "text": "First-Class transaction mail received by all households totaled 15,708.0 millions of pieces in FY2021, down 1,020.0 millions of pieces, or 6.1%, from FY2020, and down 4,575.0 millions of pieces, or 22.6%, from FY2016.",
             "metric": "fcm-received-transactions",
             "years": [
               2016,
@@ -1926,7 +1937,7 @@
             ]
           },
           {
-            "text": "For all households, First-Class transaction mail sent was 2,822.0 million pieces in FY2021, which decreased by 118.0 million pieces from FY2020 and decreased by 1,406.0 million pieces from FY2016.",
+            "text": "First-Class transaction mail sent by all households totaled 2,822.0 millions of pieces in FY2021, down 118.0 millions of pieces, or 4.0%, from FY2020, and down 1,406.0 millions of pieces, or 33.3%, from FY2016.",
             "metric": "fcm-sent-transactions",
             "years": [
               2016,
@@ -1935,9 +1946,7 @@
             ]
           }
         ],
-        "caveats": [
-          "Comparisons across methodology breaks in FY2010, FY2012, FY2013, FY2014, FY2015, FY2017, FY2024, and FY2025 should be approached with caution."
-        ]
+        "caveats": []
       },
       "validation": {
         "passed": false,
@@ -1945,15 +1954,23 @@
           "statement 1: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
           "statement 2: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
           "statement 3: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
-          "statement 4: compares FY2016 with FY2021 across the FY2017 methodology break without naming it"
+          "statement 3: say which years the change 1,020.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 6.1 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 4,575.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 22.6 is between (\"from FY2018 to FY2023\")",
+          "statement 4: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
+          "statement 4: say which years the change 118.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 4.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1,406.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 33.3 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "c63093b3203024f2c9a9a34995d8ee6a16d3f7f68d8e2c5d779605e0d6b1a92e",
-      "generated_at": "2026-11-06T17:26:49+00:00",
+      "generated_at": "2026-11-07T01:02:54+00:00",
       "sources": [
         {
           "metric": "bills-paid-by-mail-share",
@@ -5131,51 +5148,121 @@
       "fiscal_year": 2008,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "A summary of transactions and bill payment statistics for fiscal year 2008.",
+        "headline": "Transactions and bill payments shifted significantly in FY2008 compared to FY2007 and FY2003.",
         "statements": [
           {
-            "text": "For All households, the share of bills paid by mail was 54.0 percent in FY2008, which fell by 6.0 percentage points from FY2007 and fell by 20.0 percentage points from FY2003.",
+            "text": "All households had a share of bills paid by mail of 54.0 percent in FY2008, down 6.0 percentage points from FY2007, across the FY2010 and FY2024 methodology breaks.",
             "metric": "bills-paid-by-mail-share",
             "years": [
-              2008,
+              2003,
               2007,
-              2003
+              2008,
+              2010,
+              2024
             ]
           },
           {
-            "text": "For All households, the share of bills paid electronically was 41.0 percent in FY2008, which rose by 6.0 percentage points from FY2007 and increased by 21.0 percentage points from FY2003.",
+            "text": "All households had a share of bills paid by mail of 54.0 percent in FY2008, down 20.0 percentage points from FY2003, across the FY2010 and FY2024 methodology breaks.",
+            "metric": "bills-paid-by-mail-share",
+            "years": [
+              2003,
+              2008,
+              2010,
+              2024
+            ]
+          },
+          {
+            "text": "All households had a share of bills paid electronically of 41.0 percent in FY2008, up 6.0 percentage points from FY2007, across the FY2010 and FY2024 methodology breaks.",
             "metric": "bills-paid-electronic-share",
             "years": [
-              2008,
+              2003,
               2007,
-              2003
+              2008,
+              2010,
+              2024
             ]
           },
           {
-            "text": "For All households, First-Class transaction mail received was 27,128.0 millions of pieces in FY2008, which decreased by 786.0 millions of pieces from FY2007 and grew by 131.0 millions of pieces from FY2003.",
+            "text": "All households had a share of bills paid electronically of 41.0 percent in FY2008, up 21.0 percentage points from FY2003, across the FY2010 and FY2024 methodology breaks.",
+            "metric": "bills-paid-electronic-share",
+            "years": [
+              2003,
+              2008,
+              2010,
+              2024
+            ]
+          },
+          {
+            "text": "First-Class transaction mail received totaled 27,128.0 millions of pieces in FY2008, down 786.0 millions of pieces, or -2.8%, from FY2007, across the FY2010 and FY2024 methodology breaks.",
             "metric": "fcm-received-transactions",
             "years": [
-              2008,
+              2003,
               2007,
-              2003
+              2008,
+              2010,
+              2024
             ]
           },
           {
-            "text": "For All households, First-Class transaction mail sent was 8,189.0 millions of pieces in FY2008, which fell by 1,286.0 millions of pieces from FY2007 and decreased by 3,190.0 millions of pieces from FY2003.",
+            "text": "First-Class transaction mail received totaled 27,128.0 millions of pieces in FY2008, up 131.0 millions of pieces, or 0.5%, from FY2003, across the FY2010 and FY2024 methodology breaks.",
+            "metric": "fcm-received-transactions",
+            "years": [
+              2003,
+              2008,
+              2010,
+              2024
+            ]
+          },
+          {
+            "text": "First-Class transaction mail sent totaled 8,189.0 millions of pieces in FY2008, down 1,286.0 millions of pieces, or -13.6%, from FY2007, across the FY2010 and FY2024 methodology breaks.",
             "metric": "fcm-sent-transactions",
             "years": [
-              2008,
+              2003,
               2007,
-              2003
+              2008,
+              2010,
+              2024
             ]
           },
           {
-            "text": "For All households, transactions mail received per household was 265.2 pieces per household per year in FY2008, which dropped by 10.4 pieces per household per year from FY2007 and fell by 10.4 pieces per household per year across the FY2003 to FY2008 period.",
+            "text": "First-Class transaction mail sent totaled 8,189.0 millions of pieces in FY2008, down 3,190.0 millions of pieces, or -28.0%, from FY2003, across the FY2010 and FY2024 methodology breaks.",
+            "metric": "fcm-sent-transactions",
+            "years": [
+              2003,
+              2008,
+              2010,
+              2024
+            ]
+          },
+          {
+            "text": "Transactions mail received per household totaled 265.2 pieces per household per year in FY2008, down 10.4 pieces per household per year, or -3.8%, from FY2007, across the FY2010, FY2012, FY2013, FY2014, FY2015, FY2017, and FY2024 methodology breaks.",
             "metric": "transactions-received-per-household",
             "years": [
-              2008,
+              2003,
               2007,
-              2003
+              2008,
+              2010,
+              2012,
+              2013,
+              2014,
+              2015,
+              2017,
+              2024
+            ]
+          },
+          {
+            "text": "Transactions mail received per household totaled 265.2 pieces per household per year in FY2008, down 10.4 pieces per household per year, or -3.8%, from FY2003, across the FY2010, FY2012, FY2013, FY2014, FY2015, FY2017, and FY2024 methodology breaks.",
+            "metric": "transactions-received-per-household",
+            "years": [
+              2003,
+              2008,
+              2010,
+              2012,
+              2013,
+              2014,
+              2015,
+              2017,
+              2024
             ]
           }
         ],
@@ -5193,15 +5280,24 @@
       "validation": {
         "passed": false,
         "problems": [
-          "statement 5: say which years the change 10.4 is between (\"from FY2018 to FY2023\")"
+          "statement 1: year 2010 is not in the data for bills-paid-by-mail-share",
+          "statement 2: year 2010 is not in the data for bills-paid-by-mail-share",
+          "statement 3: year 2010 is not in the data for bills-paid-electronic-share",
+          "statement 4: year 2010 is not in the data for bills-paid-electronic-share",
+          "statement 5: year 2010 is not in the data for fcm-received-transactions",
+          "statement 6: year 2010 is not in the data for fcm-received-transactions",
+          "statement 7: year 2010 is not in the data for fcm-sent-transactions",
+          "statement 8: year 2010 is not in the data for fcm-sent-transactions",
+          "statement 9: year 2010 is not in the data for transactions-received-per-household",
+          "statement 10: year 2010 is not in the data for transactions-received-per-household"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "2a8596aedde9def9923c21ea095732285043d962f255b201e397d6e4d1ccdeb3",
-      "generated_at": "2026-11-06T17:40:44+00:00",
+      "generated_at": "2026-11-07T01:03:09+00:00",
       "sources": [
         {
           "metric": "bills-paid-by-mail-share",
@@ -5402,10 +5498,10 @@
       "fiscal_year": 2007,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of Household Transactions and Bill Payment Statistics for Fiscal Year 2007",
+        "headline": "Share of bills paid by mail declined in FY2007 while electronic payment share increased",
         "statements": [
           {
-            "text": "For all households, the share of bills paid by mail was 60.0 percent in FY2007, which fell by 2.0 percentage points from FY2006 and fell by 15.0 percentage points from FY2002 across the FY2010 and FY2024 methodology breaks.",
+            "text": "All households paid 60.0 percent of bills by mail in FY2007, down 2.0 percentage points from FY2006, and down 15.0 percentage points from FY2002.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2002,
@@ -5414,7 +5510,7 @@
             ]
           },
           {
-            "text": "For all households, the share of bills paid electronically was 35.0 percent in FY2007, which increased by 3.0 percentage points from FY2006 and rose by 18.0 percentage points from FY2002 across the FY2010 and FY2024 methodology breaks.",
+            "text": "All households paid 35.0 percent of bills electronically in FY2007, up 3.0 percentage points from FY2006, and up 18.0 percentage points from FY2002.",
             "metric": "bills-paid-electronic-share",
             "years": [
               2002,
@@ -5423,7 +5519,7 @@
             ]
           },
           {
-            "text": "For all households, First-Class transaction mail received was 27,914.0 million of pieces in FY2007, which increased by 245.0 million of pieces from FY2006 and grew by 521.0 million of pieces from FY2002 across the FY2010 and FY2024 methodology breaks.",
+            "text": "First-Class transaction mail received totaled 27,914.0 millions of pieces in FY2007, up 245.0 millions of pieces, or 0.9%, from FY2006, and up 521.0 millions of pieces, or 1.9%, from FY2002.",
             "metric": "fcm-received-transactions",
             "years": [
               2002,
@@ -5432,7 +5528,7 @@
             ]
           },
           {
-            "text": "For all households, First-Class transaction mail sent was 9,475.0 million of pieces in FY2007, which decreased by 394.0 million of pieces from FY2006 and fell by 1,579.0 million of pieces from FY2002 across the FY2010 and FY2024 methodology breaks.",
+            "text": "First-Class transaction mail sent totaled 9,475.0 millions of pieces in FY2007, down 394.0 millions of pieces, or -4.0%, from FY2006, and down 1,579.0 millions of pieces, or -14.3%, from FY2002.",
             "metric": "fcm-sent-transactions",
             "years": [
               2002,
@@ -5441,7 +5537,7 @@
             ]
           },
           {
-            "text": "For all households, transactions mail received per household was 275.6 pieces per household per year in FY2007, which increased by 0.0 pieces per household per year from FY2006 across the FY2010, FY2012, FY2013, FY2014, FY2015, FY2017, and FY2024 methodology breaks.",
+            "text": "Transactions mail received per household totaled 275.6 pieces per household per year in FY2007, up 0.0 pieces per household per year, or 0.0%, from FY2006.",
             "metric": "transactions-received-per-household",
             "years": [
               2006,
@@ -5453,7 +5549,7 @@
           "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
           "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
           "Historical data for payments by mail was restated as a result of improved 2011 survey questionnaires which restated previously unclassified mail pieces (FY2013, pp. 38, 41). Table E.2 lowered 2012 transactions from 34.3 to 33.1 billion and 2011 from 35.6 to 34.9.",
-          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (Beginning in 2012 data was restated due to weighing by Home Ownership, p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (Beginning in 2012 data was restated due to weighing by Home Ownership, p. 249). The household-group series take each year from that years own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
           "The FY2015 report restated earlier years in Table E.2 (2014 correspondence from 11.0 to 13.7 billion, transactions from 32.0 to 28.8), so the one-year household-group values change classification here.",
           "The FY2017 report restated earlier years in Table E.2 (2016 correspondence from 13.7 to 16.4 billion, transactions from 26.3 to 24.5), so the one-year household-group values change classification here.",
           "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
@@ -5463,15 +5559,24 @@
       "validation": {
         "passed": false,
         "problems": [
+          "statement 3: say which years the change 245.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 0.9 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 521.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 1.9 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 394.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 4.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1,579.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 14.3 is between (\"from FY2018 to FY2023\")",
+          "statement 5: says 0.0 went up, but the data says the opposite",
           "statement 5: says 0.0 went up, but the data says the opposite"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "c15e7e8329b97d20fb659e2510a9ef3e0c03ea0d2e55227812926899b1f6af5c",
-      "generated_at": "2026-11-06T17:41:49+00:00",
+      "generated_at": "2026-11-07T01:03:21+00:00",
       "sources": [
         {
           "metric": "bills-paid-by-mail-share",

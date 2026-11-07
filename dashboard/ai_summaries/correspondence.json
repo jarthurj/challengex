@@ -1156,28 +1156,29 @@
       "fiscal_year": 2021,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Overview of First-Class correspondence statistics for fiscal year 2021.",
+        "headline": "First-Class correspondence metrics moved in FY2021",
         "statements": [
           {
-            "text": "For All households, First-Class correspondence received was 13,969.0 millions of pieces in FY2021, which decreased by 36.0 millions of pieces from the previous year in FY2020 and fell by 1,175.0 millions of pieces from five years earlier in FY2016.",
+            "text": "First-Class correspondence received totaled 13,969.0 millions of pieces in FY2021, down 36.0 millions of pieces, or -0.3%, from FY2020, and down 1,175.0 millions of pieces, or -7.8%, from FY2016.",
             "metric": "fcm-received-correspondence",
             "years": [
-              2021,
+              2016,
               2020,
-              2016
+              2021
             ]
           },
           {
-            "text": "For All households, First-Class correspondence sent was 3,439.0 millions of pieces in FY2021, which increased by 93.0 millions of pieces from the previous year in FY2020 and decreased by 608.0 millions of pieces from five years earlier in FY2016.",
+            "text": "First-Class correspondence sent totaled 3,439.0 millions of pieces in FY2021, up 93.0 millions of pieces, or 2.8%, from FY2020, and down 608.0 millions of pieces, or -15.0%, from FY2016.",
             "metric": "fcm-sent-correspondence",
             "years": [
-              2021,
+              2016,
               2020,
-              2016
+              2021
             ]
           }
         ],
         "caveats": [
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
           "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
           "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
           "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
@@ -1191,15 +1192,23 @@
         "passed": false,
         "problems": [
           "statement 1: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
-          "statement 2: compares FY2016 with FY2021 across the FY2017 methodology break without naming it"
+          "statement 1: say which years the change 36.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 0.3 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 1,175.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 7.8 is between (\"from FY2018 to FY2023\")",
+          "statement 2: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
+          "statement 2: say which years the change 93.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 2.8 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 608.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 15.0 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "0bf59004ee5ff84dab18cb9fe6c50866b97c85bd7daf72c7e95285bd22908d73",
-      "generated_at": "2026-11-06T17:26:42+00:00",
+      "generated_at": "2026-11-07T01:01:36+00:00",
       "sources": [
         {
           "metric": "fcm-received-correspondence",
@@ -2215,62 +2224,100 @@
       "fiscal_year": 2014,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of correspondence metrics for fiscal year 2014.",
+        "headline": "Correspondence metrics changed across FY2014",
         "statements": [
           {
-            "text": "For all households, correspondence-per-household was 135.1 pieces per household per year in FY2014.",
+            "text": "Correspondence per household totaled 135.1 pieces per household per year in FY2014.",
             "metric": "correspondence-per-household",
             "years": [
               2014
             ]
           },
           {
-            "text": "For all households, correspondence-received-per-household was 78.0 pieces per household per year in FY2014, which fell by 5.2 pieces per household per year from the previous year across the FY2014 methodology break, and fell by 36.4 pieces per household per year from five years earlier across the FY2010, FY2012, and FY2014 methodology breaks from FY2009 to FY2014.",
+            "text": "Correspondence mail received per household totaled 78.0 pieces per household per year in FY2014, down 5.2 pieces per household per year, or -6.3%, from FY2013 to FY2014, across the FY2014 methodology break.",
+            "metric": "correspondence-received-per-household",
+            "years": [
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "Correspondence mail received per household fell by 36.4 pieces per household per year, or -31.8%, from FY2009 to FY2014, across the FY2010, FY2012, and FY2014 methodology breaks.",
             "metric": "correspondence-received-per-household",
             "years": [
               2009,
+              2010,
+              2012,
               2014
             ]
           },
           {
-            "text": "For all households, fcm-received-correspondence was 15408.0 millions of pieces in FY2014, decreasing by 89.0 millions of pieces from FY2013 to FY2014, and decreasing by 1387.0 millions of pieces from FY2009 to FY2014 across the FY2010 methodology break.",
+            "text": "First-Class correspondence received totaled 15,408.0 millions of pieces in FY2014, down 89.0 millions of pieces from FY2013, or -0.6%.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2013,
+              2014
+            ]
+          },
+          {
+            "text": "First-Class correspondence received fell by 587.0 millions of pieces from FY2010 to FY2014, or -3.7%, since the FY2010 methodology break.",
+            "metric": "fcm-received-correspondence",
+            "years": [
+              2010,
+              2014
+            ]
+          },
+          {
+            "text": "First-Class correspondence received decreased by 1,387.0 millions of pieces from FY2009 to FY2014, or -8.3%, across the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2009,
+              2010,
+              2014
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent totaled 4,403.0 millions of pieces in FY2014, down 513.0 millions of pieces from FY2013, or -10.4%.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
               2013,
               2014
             ]
           },
           {
-            "text": "For all households, fcm-sent-correspondence was 4403.0 millions of pieces in FY2014, down 513.0 millions of pieces from FY2013 to FY2014, and down 2733.0 millions of pieces from FY2009 to FY2014 across the FY2010 methodology break.",
+            "text": "First-Class correspondence sent decreased by 1,188.0 millions of pieces from FY2010 to FY2014, or -21.2%, since the FY2010 methodology break.",
+            "metric": "fcm-sent-correspondence",
+            "years": [
+              2010,
+              2014
+            ]
+          },
+          {
+            "text": "First-Class correspondence sent fell by 2,733.0 millions of pieces from FY2009 to FY2014, or -38.3%, across the FY2010 methodology break.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2009,
-              2013,
+              2010,
               2014
             ]
           }
         ],
         "caveats": [
-          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
-          "The FY2012 report restated earlier years in Table E.2 (2010 correspondence from 14.6 to 12.9 billion, transactions from 35.9 to 37.6), so the one-year household-group values change classification here.",
-          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (\"Beginning in 2012 data was restated due to weighing by Home Ownership\", p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024)."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2012 report restated earlier years in Table E.2.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 2: 5.2 is not a change of its metric between the years it cites"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "70e669b89840159c0ca8558a15472fb0d0b0cec1a9466be06e26b1023881a08a",
-      "generated_at": "2026-11-06T17:33:28+00:00",
+      "generated_at": "2026-11-07T01:01:48+00:00",
       "sources": [
         {
           "metric": "correspondence-per-household",
@@ -2745,10 +2792,10 @@
       "fiscal_year": 2011,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of First-Class correspondence statistics for fiscal year 2011.",
+        "headline": "First-Class correspondence received and sent changed in FY2011",
         "statements": [
           {
-            "text": "For All households, First-Class correspondence received was 16,281.0 millions of pieces in FY2011, which increased by 286.0 millions of pieces from FY2010.",
+            "text": "First-Class correspondence received totaled 16,281.0 millions of pieces in FY2011, up 286.0 millions of pieces, or 1.8%, from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2010,
@@ -2756,7 +2803,7 @@
             ]
           },
           {
-            "text": "For All households, First-Class correspondence received was 16,281.0 millions of pieces in FY2011, falling by 2,215.0 millions of pieces from FY2006 across the FY2010 methodology break.",
+            "text": "First-Class correspondence received fell by 2,215.0 millions of pieces, or -12.0%, from FY2006 to FY2011, across the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2006,
@@ -2765,7 +2812,7 @@
             ]
           },
           {
-            "text": "For All households, First-Class correspondence sent was 4,965.0 millions of pieces in FY2011, which decreased by 626.0 millions of pieces from FY2010.",
+            "text": "First-Class correspondence sent totaled 4,965.0 millions of pieces in FY2011, down 626.0 millions of pieces, or -11.2%, from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2010,
@@ -2773,7 +2820,7 @@
             ]
           },
           {
-            "text": "For All households, First-Class correspondence sent was 4,965.0 millions of pieces in FY2011, falling by 3,301.0 millions of pieces from FY2006 across the FY2010 methodology break.",
+            "text": "First-Class correspondence sent fell by 3,301.0 millions of pieces, or -39.9%, from FY2006 to FY2011, across the FY2010 methodology break.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2006,
@@ -2783,22 +2830,26 @@
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
           "statement 2: compares FY2006 with FY2011 across the FY2008 methodology break without naming it",
-          "statement 4: compares FY2006 with FY2011 across the FY2008 methodology break without naming it"
+          "statement 2: say which years the change 2,215.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 12.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: compares FY2006 with FY2011 across the FY2008 methodology break without naming it",
+          "statement 4: say which years the change 3,301.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 39.9 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "9f1f55577c217f73d004b6814c59f1140f551a831e1b6512dbbf819b66abdfd3",
-      "generated_at": "2026-11-06T17:36:43+00:00",
+      "generated_at": "2026-11-07T01:02:01+00:00",
       "sources": [
         {
           "metric": "fcm-received-correspondence",
@@ -3398,10 +3449,10 @@
       "fiscal_year": 2007,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "A summary of mail statistics for fiscal year 2007 shows changes in correspondence received and sent by households.",
+        "headline": "Correspondence metrics showed mixed results in FY2007",
         "statements": [
           {
-            "text": "Correspondence mail received per household for All households was 109.2 pieces per household per year in FY2007, down by 4.5 percentage points from FY2006.",
+            "text": "Correspondence mail received per household totaled 109.2 pieces per household per year in FY2007, down 5.2 pieces per household per year, or -4.5%, from FY2006.",
             "metric": "correspondence-received-per-household",
             "years": [
               2006,
@@ -3409,7 +3460,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence received for All households was 18,828.0 millions of pieces in FY2007, which increased by 1,828.0 million from FY2006 and fell by 2,071.0 million from FY2002.",
+            "text": "First-Class correspondence received totaled 18,828.0 millions of pieces in FY2007, up 332.0 millions of pieces, or 1.8%, from FY2006, and down 2,071.0 millions of pieces, or -9.9%, from FY2002.",
             "metric": "fcm-received-correspondence",
             "years": [
               2002,
@@ -3418,7 +3469,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence sent for All households was 7,944.0 millions of pieces in FY2007, which fell by 322.0 million from FY2006 and decreased by 1,796.0 million from FY2002.",
+            "text": "First-Class correspondence sent totaled 7,944.0 millions of pieces in FY2007, down 322.0 millions of pieces, or -3.9%, from FY2006, and down 1,796.0 millions of pieces, or -18.4%, from FY2002.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2002,
@@ -3428,29 +3479,29 @@
           }
         ],
         "caveats": [
-          "Definition of correspondence was recalculated for FY 2006 and 2007, meaning numbers do not compare to previously published reports, crossing the FY2008 methodology break.",
-          "Diary data were restated beginning in FY2010 because of changes in weighting methodology, crossing the FY2010 methodology break.",
-          "The FY2012 report restated earlier years in Table E.2, crossing the FY2012 methodology break.",
-          "The FY2014 report began weighting by home ownership and restated 2012-2013, crossing the FY2014 methodology break.",
-          "The FY2015 report restated earlier years in Table E.2, crossing the FY2015 methodology break.",
-          "The FY2017 report restated earlier years in Table E.2, crossing the FY2017 methodology break.",
-          "Starting with the FY2024 report, results are published as pieces per household per year and the survey contractor changed, crossing the FY2024 methodology break.",
-          "FY2025 used a new survey design called the Household Mail Survey, crossing the FY2025 methodology break."
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 1: 4.5 is not a change in percentage points of its metric between the years it cites",
-          "statement 2: 1,828.0 is not a change of its metric between the years it cites"
+          "statement 2: say which years the change 332.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 1.8 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 2,071.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 9.9 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 322.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 3.9 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 1,796.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 18.4 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "e5ac7aaac2bbdce11ff3caf2132d8c89d264b6f6b233546854dbc0c5e3eb7c5e",
-      "generated_at": "2026-11-06T17:41:40+00:00",
+      "generated_at": "2026-11-07T01:02:24+00:00",
       "sources": [
         {
           "metric": "correspondence-received-per-household",
