@@ -499,10 +499,11 @@ analyst should be able to:
     household-group picker appears only when the metric has a group besides "All households"
     (7 of the 26 metrics); otherwise the page just says "Group: All households".
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
-  - Methodology breaks are marked on the chart and listed. Each is a dashed line labelled
-    "Method change 2012"; the labels are measured and stacked in as many rows as needed so none
-    overlaps (the household-group series have six breaks a year or two apart), shortened to
-    "FY2012" past 3 rows, and the space above the plot grows to fit them. A legend entry wider
+  - Methodology breaks are marked on the chart and listed. Each is a dashed line labelled with
+    its year ("2012"); the legend's "Method changes" entry (a dashed line, not a dataset, so
+    clicking it does nothing) says what they are. The labels are measured and stacked in as many
+    rows as needed so none overlaps (the household-group series have six breaks a year or two
+    apart), and the space above the plot grows to fit them. A legend entry wider
     than the chart drops its " – model" part (tooltips keep it). Checked in headless Chrome at
     1280px and 500px (Chrome's minimum window; the site refuses to be framed, so narrower
     widths can't be shot this way).

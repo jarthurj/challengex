@@ -44,8 +44,8 @@
                 Use the data table below for values, units, and sources.
             </canvas>
         </div>
-        {% if breaks %}<p class="small chart-note">Dashed vertical lines mark changes in survey methodology, labelled with their
-            fiscal year and explained under "Changes in survey methodology" below.</p>{% endif %}
+        {% if breaks %}<p class="small chart-note">Dashed vertical lines ("Method changes" in the legend) mark changes in survey
+            methodology, labelled with their fiscal year and explained under "Changes in survey methodology" below.</p>{% endif %}
         <p id="chart-status" role="status"></p>
         <p class="item-actions page-actions">
             <button type="button" class="copy-button" data-copy="chart-copy" hidden>Copy the values with sources</button>
@@ -212,11 +212,11 @@
                 if (segment) segment.disabled = true;
             });
 
-            // Methodology breaks: a dashed line at each break year, labelled above the plot. Labels are
-            // measured and stacked in as many rows as they need so none overlaps another; past 3 rows
-            // (breaks a year apart, or a narrow screen) they shorten to "FY2012". The space between
-            // the legend and the plot grows to fit the rows, so labels never reach the legend.
-            const MARKER_LINE = 16, MARKER_GAP = 8, MARKER_MAX_FULL_ROWS = 3;
+            // Methodology breaks: a dashed line at each break year, labelled above the plot with its
+            // year; the legend's "Method changes" entry says what the dashed lines are. Labels are
+            // measured and stacked in as many rows as they need so none overlaps another, and the
+            // space between the legend and the plot grows to fit the rows.
+            const MARKER_LINE = 16, MARKER_GAP = 8, MARKER_COLOR = "#666", MARKER_DASH = [4, 4];
             const methodologyMarkers = {
                 id: "methodologyMarkers",
                 beforeLayout(chart) {
@@ -247,11 +247,11 @@
                     if (!chartArea || !chart.$markers) return;
                     ctx.save();
                     ctx.font = markerFont();
-                    ctx.strokeStyle = "#666";
+                    ctx.strokeStyle = MARKER_COLOR;
                     ctx.fillStyle = "#444";
                     ctx.textBaseline = "bottom";
                     for (const m of chart.$markers.placed) {
-                        ctx.setLineDash([4, 4]);
+                        ctx.setLineDash(MARKER_DASH);
                         ctx.beginPath();
                         ctx.moveTo(m.x, chartArea.top);
                         ctx.lineTo(m.x, chartArea.bottom);
@@ -284,7 +284,41 @@
                     item.text = text;
                 }
                 ctx.restore();
+                if (chartBreaks(chart).length) {
+                    // What the dashed lines are, drawn as one. Not a dataset, so clicking it does nothing.
+                    items.push({text: "Method changes", pointStyle: methodChangeIcon(), methodChanges: true,
+                                hidden: false, lineWidth: 0, strokeStyle: MARKER_COLOR, fillStyle: MARKER_COLOR,
+                                fontColor: Chart.defaults.color});
+                }
                 return items;
+            }
+
+            // The breaks that fall on the chart's years.
+            function chartBreaks(chart) {
+                const breaks = (chart.options.plugins.methodologyMarkers || {}).breaks || [];
+                return breaks.filter(change => chart.data.labels.indexOf(change.year) >= 0);
+            }
+
+            // A short dashed vertical line, like the ones on the chart, for the legend.
+            let methodIcon = null;
+            function methodChangeIcon() {
+                if (methodIcon) return methodIcon;
+                const scale = window.devicePixelRatio || 1;
+                methodIcon = document.createElement("canvas");
+                methodIcon.width = 12 * scale;
+                methodIcon.height = 16 * scale;
+                methodIcon.style.width = "12px";
+                methodIcon.style.height = "16px";
+                const ctx = methodIcon.getContext("2d");
+                ctx.scale(scale, scale);
+                ctx.strokeStyle = MARKER_COLOR;
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([3, 3]);
+                ctx.beginPath();
+                ctx.moveTo(6, 0);
+                ctx.lineTo(6, 16);
+                ctx.stroke();
+                return methodIcon;
             }
 
             function markerFont() {
@@ -302,26 +336,21 @@
                     .sort((a, b) => a.x - b.x);
                 ctx.save();
                 ctx.font = markerFont();
-                const arrange = (label) => {
-                    const rows = [];
-                    const placed = items.map(item => {
-                        const text = label(item.year);
-                        const width = ctx.measureText(text).width;
-                        // Text runs right of its line, or left of it where it would leave the canvas.
-                        let align = "left", left = item.x + 4;
-                        if (left + width > chart.width - 2) { align = "right"; left = item.x - 4 - width; }
-                        const right = left + width;
-                        let row = rows.findIndex(spans => spans.every(([l, r]) => right + MARKER_GAP <= l || left >= r + MARKER_GAP));
-                        if (row < 0) { rows.push([]); row = rows.length - 1; }
-                        rows[row].push([left, right]);
-                        return {x: item.x, text, align, row, textX: align === "left" ? item.x + 4 : item.x - 4};
-                    });
-                    return {placed, rows: rows.length};
-                };
-                let result = arrange(year => "Method change " + year);
-                if (result.rows > MARKER_MAX_FULL_ROWS) result = arrange(year => "FY" + year);
+                const rows = [];
+                const placed = items.map(item => {
+                    const text = String(item.year);
+                    const width = ctx.measureText(text).width;
+                    // Text runs right of its line, or left of it where it would leave the canvas.
+                    let align = "left", left = item.x + 4;
+                    if (left + width > chart.width - 2) { align = "right"; left = item.x - 4 - width; }
+                    const right = left + width;
+                    let row = rows.findIndex(spans => spans.every(([l, r]) => right + MARKER_GAP <= l || left >= r + MARKER_GAP));
+                    if (row < 0) { rows.push([]); row = rows.length - 1; }
+                    rows[row].push([left, right]);
+                    return {x: item.x, text, align, row, textX: align === "left" ? item.x + 4 : item.x - 4};
+                });
                 ctx.restore();
-                return result;
+                return {placed, rows: rows.length};
             }
 
             async function loadChart() {
@@ -346,8 +375,12 @@
                             plugins: {
                                 legend: {display: true, labels: {
                                     usePointStyle: true,
-                                    filter: (item, chartData) => !chartData.datasets[item.datasetIndex].legendHidden,
+                                    filter: (item, chartData) => item.methodChanges || !chartData.datasets[item.datasetIndex].legendHidden,
                                     generateLabels: fittedLegendLabels
+                                },
+                                onClick(event, item, legend) {
+                                    if (item.methodChanges) return;   // not a dataset to hide
+                                    Chart.defaults.plugins.legend.onClick.call(this, event, item, legend);
                                 }},
                                 methodologyMarkers: {breaks: data.breaks},
                                 tooltip: {
