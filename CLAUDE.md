@@ -457,9 +457,9 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 242 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
-  page: saving, CSRF, only "1" turns it on; which columns and tags each page shows in either mode;
-  exports unchanged), `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 244 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+  page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
+  either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
   the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
@@ -610,7 +610,9 @@ analyst should be able to:
   no account). `context_processors.display_settings` gives every template `advanced`.
   - Off (the default): Browse tables hides the Status and Source ID columns, but keeps the
     "Needs review"/"OCR" badges next to the title; Trends and By year hide the Verification and
-    Notes columns, but tag unverified values "(unverified)" next to their source.
+    Notes columns, but tag unverified values "(unverified)" next to their source, and a value with
+    a note gets a folded "Note" there (`_row_note.html`), because notes carry data caveats (e.g.
+    FY2020 A8-1 parts that exceed the printed total), not only reviewers' remarks.
   - On: those columns are shown in full (By year gains Notes, also for household groups).
   - CSV downloads and "Copy the values with sources" always include verification.
 - **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html`,

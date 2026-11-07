@@ -37,7 +37,8 @@
                         <tr>
                             <th scope="row"><a href="{% url 'trends' %}?trend={{ row.observation.metric.slug }}">{{ row.observation.metric.name }}</a></th>
                             <td class="num">{{ row.value }}</td>
-                            <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not advanced and not row.source.verified %} <span class="review">(unverified)</span>{% endif %}</td>
+                            <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not advanced and not row.source.verified %} <span class="review">(unverified)</span>{% endif %}
+                                {% if not advanced and row.observation.notes %}{% include "dashboard/_row_note.html" with notes=row.observation.notes label=row.observation.metric.name %}{% endif %}</td>
                             {% if advanced %}
                                 <td>{% if row.source.verified %}Verified against the PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
                                 <td class="notes">{{ row.observation.notes|default:"—" }}</td>
@@ -66,7 +67,8 @@
                             <tr>
                                 <th scope="row">{{ row.observation.segment }}</th>
                                 <td class="num">{{ row.number }}</td>
-                                <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not advanced and not row.source.verified %} <span class="review">(unverified)</span>{% endif %}</td>
+                                <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not advanced and not row.source.verified %} <span class="review">(unverified)</span>{% endif %}
+                                    {% if not advanced and row.observation.notes %}{% include "dashboard/_row_note.html" with notes=row.observation.notes label=row.observation.segment %}{% endif %}</td>
                                 {% if advanced %}
                                     <td>{% if row.source.verified %}Verified against the PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
                                     <td class="notes">{{ row.observation.notes|default:"—" }}</td>

@@ -182,7 +182,8 @@
                             <td>{{ observation.fiscal_year }}</td>
                             <td>{{ observation.metric.name }}</td>
                             <td>{{ observation.value|floatformat:"2g" }}</td>
-                            <td><a href="{% url 'table-detail' observation.source_table.pk %}">FY{{ observation.report_year }} report, page {{ observation.source_table.page }} — {{ observation.source_table.source_id }}</a>{% if not advanced and not observation.verified %} <span class="review">(unverified)</span>{% endif %}</td>
+                            <td><a href="{% url 'table-detail' observation.source_table.pk %}">FY{{ observation.report_year }} report, page {{ observation.source_table.page }} — {{ observation.source_table.source_id }}</a>{% if not advanced and not observation.verified %} <span class="review">(unverified)</span>{% endif %}
+                                {% if not advanced and observation.notes %}{% include "dashboard/_row_note.html" with notes=observation.notes year=observation.fiscal_year %}{% endif %}</td>
                             {% if advanced %}
                                 <td>{% if observation.verified %}Verified against source PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
                                 <td class="notes">{{ observation.notes|default:"—" }}</td>

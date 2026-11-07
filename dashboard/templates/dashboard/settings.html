@@ -17,20 +17,20 @@
         {% csrf_token %}
         <fieldset>
             <legend>Display</legend>
-            <label class="inline">
+            <label>
                 <input type="checkbox" name="advanced" value="1" aria-describedby="advanced-help"
                        {% if advanced %}checked{% endif %}>
                 Enable advanced settings
             </label>
-            <div id="advanced-help" class="help">
-                <p>Shows the review details in full:</p>
+            <p id="advanced-help" class="help">Shows the review details as full columns.</p>
+            <div class="help">
                 <ul>
                     <li><strong>Browse tables:</strong> the Status and Source ID columns.</li>
                     <li><strong>Trends</strong> and <strong>By year:</strong> the Verification and Notes columns.</li>
                 </ul>
-                <p>With it off, those columns are hidden, but a value that is unverified or a table that needs
-                    review is still tagged next to it. CSV downloads and copied text always include the
-                    verification status.</p>
+                <p>With it off, those columns are hidden, but nothing is lost: an unverified value is tagged
+                    "(unverified)", a table that needs review keeps its badge, and a value with a note gets a
+                    "Note" you can open. CSV downloads and copied text always include the verification status.</p>
             </div>
         </fieldset>
         <button type="submit">Save settings</button>
