@@ -457,7 +457,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 244 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 245 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -495,7 +495,9 @@ analyst should be able to:
     (`dashboard/tidy.py`). Plus the review notice with its reasons, the topic, the source PDF
     link, a "From the report" box and the caption's units. `?raw=1` shows the extraction as stored.
 - **`trend_views.py` (Trends page, `/dashboard/trends/`):**
-  - Pick a metric (or "First-Class Mail received by category") and a household segment.
+  - Pick a metric (or "First-Class Mail received by category") and a household segment. The
+    household-group picker appears only when the metric has a group besides "All households"
+    (7 of the 26 metrics); otherwise the page just says "Group: All households".
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
   - Methodology breaks are marked on the chart and listed.
   - A values-and-sources table shows each point's report, page, and verification status.

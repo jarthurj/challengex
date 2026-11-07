@@ -19,7 +19,7 @@
                 <option value="{{ value }}" {% if selected_trend == value %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
-        {% if segments %}
+        {% if segments|length > 1 %}{# only when there is a group to choose besides the one shown #}
             <label for="segment">Household group:</label>
             <select name="segment" id="segment">
                 {% for segment in segments %}

@@ -80,6 +80,14 @@ class TrendTests(TestCase):
         self.assertContains(response, "&lt;script&gt;bad()&lt;/script&gt;")
         self.assertNotContains(response, "<script>bad()</script>")
 
+    def test_group_picker_only_when_there_is_a_group_to_choose(self):
+        only_all = self.client.get(reverse("trends"), {"trend": "fcm-received-total"}).content.decode()
+        self.assertNotIn('id="segment"', only_all)
+        self.assertIn("<strong>Group:</strong> All households", only_all)   # still says whose values these are
+        groups = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
+        self.assertIn('<select name="segment" id="segment">', groups)
+        self.assertIn('<label for="segment">Household group:</label>', groups)
+
     def test_empty_database_renders_setup_notice(self):
         Metric.objects.all().delete()
         response = self.client.get(reverse("trends"))
