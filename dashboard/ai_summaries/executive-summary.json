@@ -7687,10 +7687,10 @@
         2025
       ],
       "summary": {
-        "headline": "Household mail volumes and payment methods changed significantly between FY2008 and FY2025 across multiple methodology breaks.",
+        "headline": "Household mail metrics experienced mixed trends across methodology breaks between FY2008 and FY2025.",
         "statements": [
           {
-            "text": "Advertising mail received by households totaled 100,045.0 millions of pieces in FY2008 and 57,286.0 millions of pieces in FY2023, falling by 42,759.0 millions of pieces, or -42.7%, from FY2008 to FY2023, across the FY2010 methodology break.",
+            "text": "Advertising mail received by households totaled 100,045.0 millions of pieces in FY2008 and 57,286.0 millions of pieces in FY2023, falling by 42,759.0 millions of pieces (-42.7%) from FY2008 to FY2023, across the FY2010 methodology break.",
             "metric": "advertising-received-total",
             "years": [
               2008,
@@ -7699,7 +7699,7 @@
             ]
           },
           {
-            "text": "Share of bills paid by mail totaled 54.0 percent in FY2008 and 14.0 percent in FY2025, down 40.0 percentage points from FY2008 to FY2025, across the FY2010, FY2024, and FY2025 methodology breaks.",
+            "text": "Share of bills paid by mail was 54.0 percent in FY2008 and 14.0 percent in FY2025, down 40.0 percentage points from FY2008 to FY2025, across the FY2010, FY2024, and FY2025 methodology breaks.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2008,
@@ -7709,7 +7709,7 @@
             ]
           },
           {
-            "text": "First-Class Mail received by households totaled 57,250.0 millions of pieces in FY2008 and 32,228.0 millions of pieces in FY2023, decreasing by 25,022.0 millions of pieces, or -43.7%, from FY2008 to FY2023, across the FY2010 methodology break.",
+            "text": "First-Class Mail received by households totaled 57,250.0 millions of pieces in FY2008 and 32,228.0 millions of pieces in FY2023, decreasing by 25,022.0 millions of pieces (-43.7%) from FY2008 to FY2023, across the FY2010 methodology break.",
             "metric": "fcm-received-total",
             "years": [
               2008,
@@ -7718,7 +7718,7 @@
             ]
           },
           {
-            "text": "All household mail, sent and received totaled 164,000.0 millions of pieces in FY2008 and 97,400.0 millions of pieces in FY2023, dropping by 66,600.0 millions of pieces, or -40.6%, from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
+            "text": "All household mail, sent and received, totaled 164,000.0 millions of pieces in FY2008 and 97,400.0 millions of pieces in FY2023, decreasing by 66,600.0 millions of pieces (-40.6%) from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
             "metric": "household-mail-total",
             "years": [
               2008,
@@ -7728,7 +7728,7 @@
             ]
           },
           {
-            "text": "Packages sent and received by households totaled 3,400.0 millions of pieces in FY2008 and 6,700.0 millions of pieces in FY2023, increasing by 3,300.0 millions of pieces, or 97.1%, from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
+            "text": "Packages sent and received by households totaled 3,400.0 millions of pieces in FY2008 and 6,700.0 millions of pieces in FY2023, up 3,300.0 millions of pieces (97.1%) from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
             "metric": "packages-volume",
             "years": [
               2008,
@@ -7738,7 +7738,7 @@
             ]
           },
           {
-            "text": "Periodicals received by households totaled 6,400.0 millions of pieces in FY2008 and 3,400.0 millions of pieces in FY2023, down 3,000.0 millions of pieces, or -46.9%, from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
+            "text": "Periodicals received by households totaled 6,400.0 millions of pieces in FY2008 and 3,400.0 millions of pieces in FY2023, falling by 3,000.0 millions of pieces (-46.9%) from FY2008 to FY2023, across the FY2010 and FY2012 methodology breaks.",
             "metric": "periodicals-volume",
             "years": [
               2008,
@@ -7749,33 +7749,22 @@
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
-          "Beginning in 2012 data was restated due to weighing by Home Ownership.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
-          "FY2025 used a new survey design and was renamed the Household Mail Survey with altered age bands and a redefined Large MSA."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249).",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF).",
+          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 1: say which years the change 42,759.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 42.7 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 25,022.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 43.7 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 66,600.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 40.6 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 3,300.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 97.1 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 3,000.0 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 46.9 is between (\"from FY2018 to FY2023\")"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "38c3c2112cdd91ab21a75ea78c5fe0237ed490e6b60e97b32aea651bdfb51cfb",
-      "generated_at": "2026-11-07T01:01:15+00:00",
+      "generated_at": "2026-11-07T01:23:57+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
