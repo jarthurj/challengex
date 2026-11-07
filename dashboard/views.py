@@ -6,8 +6,10 @@ from django.shortcuts import render, get_object_or_404
 from .display import SECTIONS, cells, display_table, table_context
 from .models import Table
 
-OCR_CHOICES = [("", "Any"), ("exclude", "Hide OCR tables"), ("only", "OCR tables only")]
-REVIEW_CHOICES = [("", "Any"), ("ok", "Hide tables that need review"), ("only", "Only tables that need review")]
+# Short labels keep these boxes narrow, so all the filters fit on one row (the box width follows
+# the longest option).
+OCR_CHOICES = [("", "Any"), ("exclude", "Hide OCR"), ("only", "OCR only")]
+REVIEW_CHOICES = [("", "Any"), ("ok", "Hide needs review"), ("only", "Needs review only")]
 
 
 def table_list(request):

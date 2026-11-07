@@ -490,7 +490,10 @@ analyst should be able to:
     filter is labelled "Report years" above its box like the others (the box reads "Select
     years", or "2 selected" once years are ticked, at a fixed width so it never changes size),
     and its note hangs below without moving the box
-    (`.filter-field`, `.filter-note`, `form.filters.has-notes`). Django's `{# #}` comments are
+    (`.filter-field`, `.filter-note`, `form.filters.has-notes`). OCR and Review status use short
+    option names ("Hide OCR", "Needs review only"), so on a 1280px screen Search, Report years,
+    Topic, OCR and Review status share the first row without cutting any option off (below
+    about 1,100px Review status wraps). Django's `{# #}` comments are
     single-line only; use `{% comment %}` for longer ones.
   - `source_pdf` serves `docs/<year>.pdf` (git-ignored, so only where the PDFs are present);
     the table page links to `/dashboard/reports/<year>.pdf#page=N`, or names the page when the

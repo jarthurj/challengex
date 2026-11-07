@@ -101,6 +101,9 @@ class BrowserTests(TestCase):
         self.assertNotIn("{#", page)                                   # no template comment leaks
         # each year's checkbox sits beside it: this rule must outrank "form.filters label" (flex-col)
         self.assertIn("form.filters .year-options label, .year-options label { @apply flex-row items-center", page)
+        # short option names keep OCR and Review status narrow, so all five filters share one row
+        for option in ("Hide OCR", "OCR only", "Hide needs review", "Needs review only"):
+            self.assertIn(f">{option}</option>", page)
         two = self.client.get(reverse("table-list"), {"year": ["2016", "2017"]}).content.decode()
         self.assertIn('<span id="year-summary">2 selected</span>', two)   # the count alone once years are ticked
         self.assertIn(".year-dropdown summary { @apply w-40 ", page)         # same width either way
