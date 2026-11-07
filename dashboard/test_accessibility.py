@@ -51,7 +51,8 @@ class PageStructureTests(TestCase):
             # the page shows even if the CDN is down; without JavaScript it is never hidden
             self.assertIn("<style>html.styles-pending body { visibility: hidden; }</style>", page, name)
             self.assertLess(page.index('root.classList.add("styles-pending")'), page.index("@tailwindcss/browser"), name)
-            self.assertIn("performance.now() - started > 1500", page, name)
+            self.assertIn('document.readyState !== "loading"', page, name)   # a long table has fully arrived
+            self.assertIn("performance.now() - started > 3000", page, name)
             self.assertNotIn("styles-pending", page[:page.index("<head>")], name)   # not set on <html> itself
 
     def test_current_page_is_marked_in_the_navigation(self):

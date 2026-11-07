@@ -1,7 +1,9 @@
-{# Tailwind compiles the styles below in the browser, after the page starts rendering, so the layout #}
-{# (table columns most of all) used to jump on load. The page stays invisible until the styles are on: #}
-{# the body's background only turns slate once they apply. Revealed after 1.5 s whatever happens (CDN #}
-{# down), and never hidden without JavaScript, since this script adds the class itself. #}
+{# The layout used to jump on load, table columns most of all, for two reasons: Tailwind compiles the #}
+{# styles below in the browser after the page starts rendering, and a long table (Browse tables sends #}
+{# about 3,000 rows) is drawn while it is still arriving, its columns widening as longer rows come in. #}
+{# So the page stays invisible until the whole document has arrived AND the styles are on (the body's #}
+{# background only turns slate once they apply). Revealed after 3 s whatever happens (CDN down, a very #}
+{# slow page), and never hidden without JavaScript, since this script adds the class itself. #}
 <style>html.styles-pending body { visibility: hidden; }</style>
 <script>
     (function () {
@@ -9,8 +11,9 @@
         root.classList.add("styles-pending");
         const started = performance.now();
         (function check() {
+            const parsed = document.readyState !== "loading";
             const styled = document.body && getComputedStyle(document.body).backgroundColor !== "rgba(0, 0, 0, 0)";
-            if (styled || performance.now() - started > 1500) root.classList.remove("styles-pending");
+            if ((parsed && styled) || performance.now() - started > 3000) root.classList.remove("styles-pending");
             else requestAnimationFrame(check);
         })();
     })();

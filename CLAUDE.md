@@ -648,10 +648,13 @@ analyst should be able to:
   jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
   `<style type="text/tailwindcss">` block; templates use only those semantic class names
   (`.card`, `.notice`, `.badge` …). The browser compiles it on each load, so pages need the
-  internet (as Chart.js does). Because it compiles after the page starts rendering, the layout
-  (table columns most of all) used to jump on load; a small script at the top of `_head.html`
-  keeps the body invisible (`html.styles-pending`) until the body's background shows the styles
-  are on, and reveals it after 1.5 s regardless (CDN down: the page shows unstyled, not blank).
+  internet (as Chart.js does). The layout used to jump on load, table columns most of all: the
+  styles compile after the page starts rendering, and an unfiltered Browse tables page (2,980
+  rows, about 1.6 MB) is drawn while it's still arriving, its columns widening as longer rows
+  come in. A small script at the top of `_head.html` keeps the body invisible
+  (`html.styles-pending`) until the document has finished parsing and the body's background
+  shows the styles are on, and reveals it after 3 s regardless (CDN down: the page shows
+  unstyled, not blank). Paginating Browse tables would shorten the blank moment on that page.
   Without JavaScript nothing is hidden. Checked in headless Chrome with the CDN blocked
   (decided 2026-11-06 over compiling the CSS, to keep the setup). To upgrade: change the
   version, check the file against the npm package, and hash it
