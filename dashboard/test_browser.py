@@ -102,7 +102,8 @@ class BrowserTests(TestCase):
         # each year's checkbox sits beside it: this rule must outrank "form.filters label" (flex-col)
         self.assertIn("form.filters .year-options label, .year-options label { @apply flex-row items-center", page)
         two = self.client.get(reverse("table-list"), {"year": ["2016", "2017"]}).content.decode()
-        self.assertIn('<span id="year-summary">Select years (2 selected)</span>', two)
+        self.assertIn('<span id="year-summary">2 selected</span>', two)   # the count alone once years are ticked
+        self.assertIn(".year-dropdown summary { @apply w-40 ", page)         # same width either way
 
     def test_table_page_explains_review_and_links_the_pdf_page(self):
         table = Table.objects.filter(ocr=True).first()

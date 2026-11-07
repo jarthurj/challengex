@@ -24,7 +24,7 @@
         <div class="filter-field">
             <span id="year-label">Report years</span>
             <details class="year-dropdown">
-                <summary aria-labelledby="year-label year-summary" aria-describedby="year-help"><span id="year-summary">Select years{% if selected_years %} ({{ selected_years|length }} selected){% endif %}</span></summary>
+                <summary aria-labelledby="year-label year-summary" aria-describedby="year-help"><span id="year-summary">{% if selected_years %}{{ selected_years|length }} selected{% else %}Select years{% endif %}</span></summary>
                 <div class="year-options">
                     {% for available_year in years %}
                         <label>

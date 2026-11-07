@@ -488,7 +488,8 @@ analyst should be able to:
     topic, OCR and review status; Appendix C survey forms are hidden unless asked for. Each row
     shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored. The years
     filter is labelled "Report years" above its box like the others (the box reads "Select
-    years", with the count ticked), and its note hangs below without moving the box
+    years", or "2 selected" once years are ticked, at a fixed width so it never changes size),
+    and its note hangs below without moving the box
     (`.filter-field`, `.filter-note`, `form.filters.has-notes`). Django's `{# #}` comments are
     single-line only; use `{% comment %}` for longer ones.
   - `source_pdf` serves `docs/<year>.pdf` (git-ignored, so only where the PDFs are present);
