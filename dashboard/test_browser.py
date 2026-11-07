@@ -90,6 +90,18 @@ class BrowserTests(TestCase):
         self.assertIn(">Needs review</span>", page)
         self.assertIn(">OCR</span>", page)
 
+    def test_report_years_filter_is_labelled_like_the_others(self):
+        page = self.listing().content.decode()
+        # the filter's name sits above the box like the other filters; the box says what to do
+        self.assertIn('<span id="year-label">Report years</span>', page)
+        self.assertIn('<summary aria-labelledby="year-label year-summary" aria-describedby="year-help">'
+                      '<span id="year-summary">Select years</span></summary>', page)
+        self.assertIn('<small id="year-help" class="help filter-note">None ticked: every year.</small>', page)
+        self.assertIn('<form method="get" class="filters has-notes">', page)
+        self.assertNotIn("{#", page)                                   # no template comment leaks
+        two = self.client.get(reverse("table-list"), {"year": ["2016", "2017"]}).content.decode()
+        self.assertIn('<span id="year-summary">Select years (2 selected)</span>', two)
+
     def test_table_page_explains_review_and_links_the_pdf_page(self):
         table = Table.objects.filter(ocr=True).first()
         page = self.client.get(reverse("table-detail", args=[table.pk])).content.decode()

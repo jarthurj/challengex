@@ -14,14 +14,17 @@
         <strong>Needs review</strong> marks tables to check against the PDF before using them: values read by OCR,
         chart data, or column names that couldn't be recovered.</p>
 
-    <form method="get" class="filters">
+    <form method="get" class="filters has-notes">
         <label>Search
             <input type="search" name="q" value="{{ query }}" placeholder="Title, number or source ID">
         </label>
 
-        <div>
+        {% comment %}Laid out like the labelled filters: its name above the box, so the boxes line up; the note
+           hangs below without moving the box (form.filters.has-notes leaves room for it).{% endcomment %}
+        <div class="filter-field">
+            <span id="year-label">Report years</span>
             <details class="year-dropdown">
-                <summary aria-describedby="year-help">Report years{% if selected_years %} ({{ selected_years|length }}){% endif %}</summary>
+                <summary aria-labelledby="year-label year-summary" aria-describedby="year-help"><span id="year-summary">Select years{% if selected_years %} ({{ selected_years|length }} selected){% endif %}</span></summary>
                 <div class="year-options">
                     {% for available_year in years %}
                         <label>
@@ -32,7 +35,7 @@
                     {% endfor %}
                 </div>
             </details>
-            <small id="year-help" class="help">None ticked: every year.</small>
+            <small id="year-help" class="help filter-note">None ticked: every year.</small>
         </div>
 
         <label>Topic

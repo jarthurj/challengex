@@ -457,7 +457,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 246 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 247 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -486,7 +486,11 @@ analyst should be able to:
 - **`views.py`:**
   - `table_list` searches by title, ID, or number and filters by report years (checkboxes),
     topic, OCR and review status; Appendix C survey forms are hidden unless asked for. Each row
-    shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored.
+    shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored. The years
+    filter is labelled "Report years" above its box like the others (the box reads "Select
+    years", with the count ticked), and its note hangs below without moving the box
+    (`.filter-field`, `.filter-note`, `form.filters.has-notes`). Django's `{# #}` comments are
+    single-line only; use `{% comment %}` for longer ones.
   - `source_pdf` serves `docs/<year>.pdf` (git-ignored, so only where the PDFs are present);
     the table page links to `/dashboard/reports/<year>.pdf#page=N`, or names the page when the
     PDF isn't there.
