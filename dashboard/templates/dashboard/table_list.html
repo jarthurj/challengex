@@ -84,8 +84,10 @@
                     <th scope="col">Number</th>
                     <th scope="col">Title</th>
                     <th scope="col">Topic</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Source ID</th>
+                    {% if advanced %}
+                        <th scope="col">Status</th>
+                        <th scope="col">Source ID</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -94,17 +96,17 @@
                         <td>{{ table.year }}</td>
                         <td>{{ table.page }}</td>
                         <td>{{ table.table_number }}</td>
-                        <td><a href="{% url 'table-detail' table.pk %}">{{ table.title|default:"Untitled" }}</a></td>
+                        <td><a href="{% url 'table-detail' table.pk %}">{{ table.title|default:"Untitled" }}</a>
+                            {% if not advanced %}{% include "dashboard/_table_badges.html" %}{% endif %}</td>
                         <td>{{ table.get_section_display }}</td>
-                        <td>
-                            {% if table.needs_review %}<span class="badge review" title="{{ table.review_reason }}">Needs review</span>{% endif %}
-                            {% if table.ocr %}<span class="badge">OCR</span>{% endif %}
-                        </td>
-                        <td>{{ table.source_id }}</td>
+                        {% if advanced %}
+                            <td>{% include "dashboard/_table_badges.html" %}</td>
+                            <td>{{ table.source_id }}</td>
+                        {% endif %}
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="7">No matching tables found.</td>
+                        <td colspan="{% if advanced %}7{% else %}5{% endif %}">No matching tables found.</td>
                     </tr>
                 {% endfor %}
             </tbody>

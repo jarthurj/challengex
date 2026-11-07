@@ -73,7 +73,8 @@ analyst should be able to:
 - **Provenance.** Every number shown traces back to `source_table`, report year, and page, and
   the UI links to it.
 - **Quality dimensions:**
-  - Accuracy: the `verified` flag, plus a visible badge on unverified values.
+  - Accuracy: the `verified` flag, plus a visible badge on unverified values. (The Settings
+    page's advanced mode only adds the full Verification/Status columns; the badge shows either way.)
   - Completeness: show gaps; never silently interpolate.
   - Consistency: canonical units.
   - Uniqueness: one preferred value per metric, segment, and year.
@@ -456,7 +457,9 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 233 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 242 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+  page: saving, CSRF, only "1" turns it on; which columns and tags each page shows in either mode;
+  exports unchanged), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
   the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
@@ -602,8 +605,16 @@ analyst should be able to:
     30 s timeout and at most 2 requests (`LIVE_TIMEOUT`, `LIVE_MAX_CALLS`). The result goes
     through `save_summary()`, so text that fails the check is never shown. Checked live once on
     2026-11-06 (a FY2015–FY2020 packages range: 2 s, passed).
+- **Settings page** (`/dashboard/settings/`, `settings_views.py`): one option, "Enable advanced
+  settings", saved by a CSRF-protected POST in the browser's session (Django's default two weeks;
+  no account). `context_processors.display_settings` gives every template `advanced`.
+  - Off (the default): Browse tables hides the Status and Source ID columns, but keeps the
+    "Needs review"/"OCR" badges next to the title; Trends and By year hide the Verification and
+    Notes columns, but tag unverified values "(unverified)" next to their source.
+  - On: those columns are shown in full (By year gains Notes, also for household groups).
+  - CSV downloads and "Copy the values with sources" always include verification.
 - **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html`,
-  `table_detail.html`, `ai_summaries.html` and `ai_summary_detail.html` are full pages. All
+  `table_detail.html`, `ai_summaries.html`, `ai_summary_detail.html` and `settings.html` are full pages. All
   include `_head.html` (after the `<meta>` tags) and `_nav.html` (skip link, logo, main navigation
   with a ☰ menu button below the `md` width), and wrap their content in one `<main id="main">`.
   `_ai_summary.html` renders one stored summary (`compact` in lists), `_ai_item.html` one in a

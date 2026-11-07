@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import ai_views, overview_views, trend_views, views
+from . import ai_views, overview_views, settings_views, trend_views, views
 
 urlpatterns = [
     path("", overview_views.overview, name="dashboard"),
@@ -18,4 +18,5 @@ urlpatterns = [
     path("trends/", trend_views.trends, name="trends"),
     path("trends/data/", trend_views.trend_data, name="trend-data"),
     path("trends/csv/", trend_views.trend_csv, name="trend-csv"),
+    path("settings/", settings_views.settings_page, name="settings"),
 ]

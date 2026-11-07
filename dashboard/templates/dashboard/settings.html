@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "dashboard/_head.html" %}
+    <title>Dashboard Settings</title>
+</head>
+<body>
+    {% with current="settings" %}{% include "dashboard/_nav.html" %}{% endwith %}
+    <main id="main">
+    <h1>Settings</h1>
+    {% include "dashboard/_messages.html" %}
+    <p>These options apply to this browser only. They are kept for two weeks, or until you clear its cookies.</p>
+
+    <form method="post" action="{% url 'settings' %}" class="settings-form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Display</legend>
+            <label class="inline">
+                <input type="checkbox" name="advanced" value="1" aria-describedby="advanced-help"
+                       {% if advanced %}checked{% endif %}>
+                Enable advanced settings
+            </label>
+            <div id="advanced-help" class="help">
+                <p>Shows the review details in full:</p>
+                <ul>
+                    <li><strong>Browse tables:</strong> the Status and Source ID columns.</li>
+                    <li><strong>Trends</strong> and <strong>By year:</strong> the Verification and Notes columns.</li>
+                </ul>
+                <p>With it off, those columns are hidden, but a value that is unverified or a table that needs
+                    review is still tagged next to it. CSV downloads and copied text always include the
+                    verification status.</p>
+            </div>
+        </fieldset>
+        <button type="submit">Save settings</button>
+    </form>
+    </main>
+</body>
+</html>
