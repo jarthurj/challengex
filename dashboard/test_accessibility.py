@@ -47,13 +47,6 @@ class PageStructureTests(TestCase):
             # the shared styles (_head.html): Tailwind pinned with an integrity hash, like Chart.js
             self.assertIn("@tailwindcss/browser@4.1.11/dist/index.global.js", page, name)
             self.assertRegex(page, r'tailwindcss/browser[^>]*integrity="sha384-[^"]+"\s*crossorigin="anonymous"', name)
-            # hidden until the styles apply (no layout jump), before Tailwind loads, with a timeout so
-            # the page shows even if the CDN is down; without JavaScript it is never hidden
-            self.assertIn("<style>html.styles-pending body { visibility: hidden; }</style>", page, name)
-            self.assertLess(page.index('root.classList.add("styles-pending")'), page.index("@tailwindcss/browser"), name)
-            self.assertIn('document.readyState !== "loading"', page, name)   # a long table has fully arrived
-            self.assertIn("performance.now() - started > 3000", page, name)
-            self.assertNotIn("styles-pending", page[:page.index("<head>")], name)   # not set on <html> itself
 
     def test_current_page_is_marked_in_the_navigation(self):
         for name, url in self.pages().items():

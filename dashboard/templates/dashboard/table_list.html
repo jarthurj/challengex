@@ -82,7 +82,7 @@
 
     <div class="table-wrapper">
         <table>
-            <caption>{{ tables|length }} table{{ tables|length|pluralize }}</caption>
+            <caption>{% with total=page.paginator.count %}{% if page.has_other_pages %}Tables {{ page.start_index }}–{{ page.end_index }} of {{ total }}{% else %}{{ total }} table{{ total|pluralize }}{% endif %}{% endwith %}</caption>
             <thead>
                 <tr>
                     {# short columns take their content's width and never wrap; Title takes the rest #}
@@ -98,7 +98,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for table in tables %}
+                {% for table in page.object_list %}
                     <tr>
                         <td class="nowrap">{{ table.year }}</td>
                         <td class="nowrap">{{ table.page }}</td>
@@ -119,6 +119,28 @@
             </tbody>
         </table>
     </div>
+
+    {% if page.has_other_pages %}
+        <nav class="pagination" aria-label="Table pages">
+            <ul>
+                {% if page.has_previous %}
+                    <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ page.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% for number in page_range %}
+                    {% if number == page.paginator.ELLIPSIS %}
+                        <li><span aria-hidden="true">…</span></li>
+                    {% elif number == page.number %}
+                        <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ number }}" aria-current="page">{{ number }}</a></li>
+                    {% else %}
+                        <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ number }}" aria-label="Page {{ number }}">{{ number }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page.has_next %}
+                    <li><a href="?{% if filter_query %}{{ filter_query }}&amp;{% endif %}page={{ page.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
     </main>
 </body>
 </html>

@@ -90,6 +90,42 @@ class BrowserTests(TestCase):
         self.assertIn(">Needs review</span>", page)
         self.assertIn(">OCR</span>", page)
 
+    def test_the_list_is_split_into_pages_of_100(self):
+        response = self.listing()
+        total = len(response.context["tables"])                  # every match, as before
+        self.assertGreater(total, 200)
+        page = response.content.decode()
+        self.assertEqual(page.count("<tr>") - 1, 100)            # header row + one page of rows
+        self.assertIn(f"<caption>Tables 1–100 of {total}</caption>", page)
+        self.assertIn('<nav class="pagination" aria-label="Table pages">', page)
+        self.assertIn('href="?page=2" aria-label="Page 2"', page)
+        self.assertIn('aria-current="page">1</a>', page)
+        second = self.listing(page="2").content.decode()
+        self.assertIn(f"<caption>Tables 101–200 of {total}</caption>", second)
+        self.assertIn('href="?page=1">Previous</a>', second)
+        self.assertIn('href="?page=3">Next</a>', second)
+
+    def test_page_links_keep_the_filters_and_only_checked_values(self):
+        page = self.client.get(reverse("table-list"), {"year": ["2016", "2017"], "ocr": "exclude",
+                                                       "q": "mail", "section": "<script>"}).content.decode()
+        if 'class="pagination"' in page:
+            self.assertIn("?q=mail&amp;year=2016&amp;year=2017&amp;ocr=exclude&amp;page=2", page)
+        self.assertNotIn("%3Cscript", page)                       # an unknown topic never reaches a link
+        self.assertNotIn("<script>", page.split("</nav>", 1)[0].split('class="pagination"')[-1])
+
+    def test_odd_page_numbers_show_a_real_page(self):
+        total = len(self.listing().context["tables"])
+        last = (total + 99) // 100
+        for odd, expected in (("abc", 1), ("-1", 1), ("0", 1), ("", 1), ("99999", last)):
+            response = self.listing(page=odd)
+            self.assertEqual(response.status_code, 200, odd)
+            self.assertEqual(response.context["page"].number, expected, odd)
+
+    def test_one_page_of_results_has_no_page_links(self):
+        page = self.listing(section="packages").content.decode()
+        self.assertNotIn('class="pagination"', page)
+        self.assertRegex(page, r"<caption>\d+ tables?</caption>")
+
     def test_report_years_filter_is_labelled_like_the_others(self):
         page = self.listing().content.decode()
         # the filter's name sits above the box like the other filters; the box says what to do

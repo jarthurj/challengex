@@ -484,7 +484,10 @@ analyst should be able to:
   - column-name tidying (`tidy.py`) and the table page in tidy and raw modes
   - the pinned, integrity-checked Chart.js script on the Trends page
 - **`views.py`:**
-  - `table_list` searches by title, ID, or number and filters by report years (checkboxes),
+  - `table_list` shows 100 tables per page (`PAGE_SIZE`; "Tables 101–200 of 2,979", with
+    Previous/Next and numbered page links that keep the filters, rebuilt from the validated values;
+    an odd `?page=` shows page 1, one past the end the last page). Context `tables` is every match,
+    `page` the rows shown. It searches by title, ID, or number and filters by report years (checkboxes),
     topic, OCR and review status; Appendix C survey forms are hidden unless asked for. Each row
     shows text badges ("Needs review", "OCR"). Unexpected filter values are ignored. The years
     filter is labelled "Report years" above its box like the others (the box reads "Select
@@ -648,15 +651,11 @@ analyst should be able to:
   jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
   `<style type="text/tailwindcss">` block; templates use only those semantic class names
   (`.card`, `.notice`, `.badge` …). The browser compiles it on each load, so pages need the
-  internet (as Chart.js does). The layout used to jump on load, table columns most of all: the
-  styles compile after the page starts rendering, and an unfiltered Browse tables page (2,980
-  rows, about 1.6 MB) is drawn while it's still arriving, its columns widening as longer rows
-  come in. A small script at the top of `_head.html` keeps the body invisible
-  (`html.styles-pending`) until the document has finished parsing and the body's background
-  shows the styles are on, and reveals it after 3 s regardless (CDN down: the page shows
-  unstyled, not blank). Paginating Browse tables would shorten the blank moment on that page.
-  Without JavaScript nothing is hidden. Checked in headless Chrome with the CDN blocked
-  (decided 2026-11-06 over compiling the CSS, to keep the setup). To upgrade: change the
+  internet (as Chart.js does), and a page can flash unstyled for a moment before the styles
+  apply. (2026-11-06: a script that hid pages until styled was tried and removed at the team's
+  request; Browse tables was paginated instead, since its unfiltered 1.6 MB, 2,980-row page
+  reflowed its columns while arriving. Compiling the CSS with the Tailwind CLI would end the
+  flash entirely; see below.) To upgrade: change the
   version, check the file against the npm package, and hash it
   (`openssl dgst -sha384 -binary index.global.js | openssl base64 -A`). Compiling the block once
   into a static CSS file with the Tailwind CLI would remove the CDN script entirely; that needs
