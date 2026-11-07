@@ -457,7 +457,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 245 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 246 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -499,7 +499,13 @@ analyst should be able to:
     household-group picker appears only when the metric has a group besides "All households"
     (7 of the 26 metrics); otherwise the page just says "Group: All households".
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
-  - Methodology breaks are marked on the chart and listed.
+  - Methodology breaks are marked on the chart and listed. Each is a dashed line labelled
+    "Method change 2012"; the labels are measured and stacked in as many rows as needed so none
+    overlaps (the household-group series have six breaks a year or two apart), shortened to
+    "FY2012" past 3 rows, and the space above the plot grows to fit them. A legend entry wider
+    than the chart drops its " – model" part (tooltips keep it). Checked in headless Chrome at
+    1280px and 500px (Chrome's minimum window; the site refuses to be framed, so narrower
+    widths can't be shot this way).
   - A values-and-sources table shows each point's report, page, and verification status.
   - Mixed units are refused, and missing years show as gaps.
   - "Mail delays" is a placeholder with no data yet.

@@ -88,6 +88,14 @@ class TrendTests(TestCase):
         self.assertIn('<select name="segment" id="segment">', groups)
         self.assertIn('<label for="segment">Household group:</label>', groups)
 
+    def test_break_markers_are_explained_and_laid_out_without_overlap(self):
+        page = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
+        self.assertIn("Dashed vertical lines mark changes in survey methodology", page)
+        # the chart script measures labels and stacks them in rows, and fits long legend entries
+        self.assertIn("function placeMarkers(chart, breaks)", page)
+        self.assertIn("generateLabels: fittedLegendLabels", page)
+        self.assertNotIn("(level % 3)", page)          # the old fixed 3-row cycle that overlapped
+
     def test_empty_database_renders_setup_notice(self):
         Metric.objects.all().delete()
         response = self.client.get(reverse("trends"))
