@@ -565,8 +565,10 @@ analyst should be able to:
   redirects here, and the USPS logo in the navigation links here from every page (marked
   `aria-current` on this page). A banner (title with the years covered, a sentence, two buttons;
   the team removed its row of counts) over a photo of a blue U.S. Mail collection box under a
-  translucent USPS-navy layer, as on usps.com: at least 90% opaque behind the text, thinning to
-  the right on wide screens. The photo is `dashboard/static/dashboard/welcome-mailbox.jpg`
+  translucent USPS-navy layer, as on usps.com: 90% opaque behind the text (even over white: 6.9:1
+  for white text, 6.4:1 for the lead), thinning to the right only from 1024 px. From 768 px the
+  lead text ran into the thin part (2.8:1 at 800 px, measured by the reviewer), so keep it there.
+  With no data loaded the "By year" card is hidden, as in the navigation. The photo is `dashboard/static/dashboard/welcome-mailbox.jpg`
   (cropped and compressed, 240 KB), by Alex Perz on Unsplash
   (https://unsplash.com/photos/61qBPJeUYcE), free under the Unsplash License, which needs no
   credit on the page. It's served from `static/`, not a CDN. Then "What this site is" with "Built

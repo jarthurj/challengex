@@ -207,9 +207,10 @@
 
   /* Welcome page (welcome.html, the logo's link). Plain and editorial, like the rest of the site:
      one navy banner, then sections that share one heading style and one spacing rhythm. */
-  /* A photo (welcome-mailbox.jpg, see CLAUDE.md) under a translucent USPS-navy layer. Behind the
-     text the layer stays at least 88% opaque, so white text keeps over 7:1 even on the light
-     pavement; on wide screens it thins towards the right, where the mailbox is and there's no text.
+  /* A photo (welcome-mailbox.jpg, see CLAUDE.md) under a translucent USPS-navy layer, 90% opaque
+     behind the text: even over white, white text is 6.9:1 and the lead (blue-50) 6.4:1 (AA 4.5:1).
+     From 1024px it thins towards the right, where the mailbox is: there the text ends well before
+     the 58% stop. Not from 768px: at 768-860px the lead ran into the thin part (2.8:1, measured).
      The navy colour is the fallback while the photo loads. */
   .hero {
     @apply rounded-xl bg-usps-navy bg-cover bg-no-repeat px-6 py-10 text-white md:px-10 md:py-14;
@@ -217,7 +218,7 @@
                       url("{% static 'dashboard/welcome-mailbox.jpg' %}");
     background-position: center, 80% 55%;
   }
-  @media (min-width: 48rem) {
+  @media (min-width: 64rem) {
     .hero {
       background-image: linear-gradient(90deg, rgb(0 75 135 / 0.95) 0%, rgb(0 75 135 / 0.9) 58%,
                                         rgb(0 75 135 / 0.45) 100%),

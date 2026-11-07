@@ -83,9 +83,13 @@ class WelcomePageTests(TestCase):
         self.assertIn("/static/dashboard/welcome-mailbox.jpg", page)   # served by the site, not a CDN
         self.assertNotIn("images.unsplash.com", page)
         self.assertIsNotNone(finders.find("dashboard/welcome-mailbox.jpg"))
-        # the overlay behind the text is at least 0.9 opaque USPS navy (#004b87), wide or narrow
+        # an even 0.9 USPS-navy (#004b87) layer below 1024px; from 1024px it thins to the right, past
+        # the 58% stop, where the text has ended (at 768-860px the lead reached it: 2.8:1, measured)
         self.assertIn("linear-gradient(rgb(0 75 135 / 0.9), rgb(0 75 135 / 0.9))", page)
         self.assertIn("rgb(0 75 135 / 0.95) 0%, rgb(0 75 135 / 0.9) 58%", page)
+        gradient = page.index("rgb(0 75 135 / 0.95) 0%")
+        self.assertEqual(page.rfind("@media (min-width: ", 0, gradient),
+                         page.rfind("@media (min-width: 64rem)", 0, gradient))
 
     def test_the_banner_has_no_row_of_figures(self):
         page = self.page()
@@ -117,4 +121,9 @@ class EmptyDatabaseWelcomeTests(TestCase):
         page = self.client.get(reverse("welcome")).content.decode()
         self.assertIn("Find your way around", page)
         self.assertNotIn('class="hero-facts"', page)          # no counts to show
-        self.assertIn(f'href="{reverse("year-pick")}"', page)  # "By year" without a latest year
+        # no "By year" card, as in the navigation: the year picker has nothing to show (404)
+        main = page[page.index('<main id="main">'):page.index("</main>")]
+        self.assertNotIn("By year", main)
+        self.assertNotIn(f'href="{reverse("year-pick")}"', main)
+        self.assertEqual(main.count('<li class="tour-card">'), 5)
+        self.assertIn("How America uses its mail</h1>", page)   # no year span without data

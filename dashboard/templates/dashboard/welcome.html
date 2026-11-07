@@ -58,13 +58,15 @@
                         education. Changes in survey method are marked, and projections are labelled as estimates.</p>
                     <p class="tour-try">Try: packages sent and received, with its projection.</p>
                 </li>
+                {% if years %}{# like the navigation: no data, no "By year" (the year picker would 404) #}
                 <li class="tour-card">
                     <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-                    <h3><a href="{% if years %}{% url 'year-detail' years.0 %}{% else %}{% url 'year-pick' %}{% endif %}">By year</a></h3>
+                    <h3><a href="{% url 'year-detail' years.0 %}">By year</a></h3>
                     <p>Every published value for one fiscal year on a single page, with the breakdowns by household
                         group and a spreadsheet download.</p>
                     <p class="tour-try">Try: FY2025, the first Household Mail Survey.</p>
                 </li>
+                {% endif %}
                 <li class="tour-card">
                     <span class="icon-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
                     <h3><a href="{% url 'ai-summaries' %}">AI summaries</a></h3>
@@ -96,7 +98,7 @@
                     <div>
                         <h3>Find one number and where it came from</h3>
                         <p>Open the <a href="{% url 'dashboard' %}">Overview</a> or a year's page. Each value names its
-                            report and page; select it to open the PDF at that page.</p>
+                            report and page; select it to open the table, which links to its PDF page.</p>
                     </div>
                 </li>
                 <li>
