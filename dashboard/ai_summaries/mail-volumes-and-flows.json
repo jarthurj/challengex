@@ -8,48 +8,44 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Long-term mail statistics for all households show substantial decreases across various metrics from their first recorded fiscal years to their latest available fiscal years.",
+        "headline": "Mail volumes and flows declined across long-term periods and methodology breaks",
         "statements": [
           {
-            "text": "For First-Class Mail received per household, the value fell by 126.5 pieces per household per year, or 36.3 percent, across the FY2024 methodology break from FY2014 to FY2024, and it is projected to be 209.0 pieces per household per year in FY2025 with an 80% prediction interval of 201.7 to 216.4.",
+            "text": "First-Class Mail received per household fell by 126.5 million pieces, or 36.3%, from FY2014 to FY2024, across the FY2024 methodology break.",
             "metric": "fcm-received-per-household",
             "years": [
               2014,
-              2024,
-              2025
+              2024
             ]
           },
           {
-            "text": "For First-Class Mail received by households, the total fell by 24,577.0 millions of pieces, or 43.3 percent, across the FY2010 methodology break from FY2000 to FY2023, and it is projected to be 30,856.0 millions of pieces in FY2024 with an 80% prediction interval of 29,998.0 to 31,714.0.",
+            "text": "First-Class Mail received by households decreased by 24,577.0 millions of pieces, or 43.3%, from FY2000 to FY2023, across the FY2010 methodology break.",
             "metric": "fcm-received-total",
             "years": [
               2000,
               2010,
-              2023,
+              2023
+            ]
+          },
+          {
+            "text": "First-Class Mail sent per household dropped by 53.7 pieces per household per year, or 66.9%, from FY2014 to FY2024, across the FY2024 methodology break.",
+            "metric": "fcm-sent-per-household",
+            "years": [
+              2014,
               2024
             ]
           },
           {
-            "text": "For First-Class Mail sent per household, the value fell by 53.7 pieces per household per year, or 66.9 percent, across the FY2024 methodology break from FY2014 to FY2024, and it is projected to be 25.0 pieces per household per year in FY2025 with an 80% prediction interval of 18.4 to 31.6.",
-            "metric": "fcm-sent-per-household",
-            "years": [
-              2014,
-              2024,
-              2025
-            ]
-          },
-          {
-            "text": "For First-Class Mail sent by households, the total fell by 14,704.0 millions of pieces, or 76.0 percent, across the FY2010 methodology break from FY2000 to FY2023, and it is projected to be 4,056.0 millions of pieces in FY2024 with an 80% prediction interval of 3,423.0 to 4,688.0.",
+            "text": "First-Class Mail sent by households fell by 14,704.0 millions of pieces, or 76.0%, from FY2000 to FY2023, across the FY2010 methodology break.",
             "metric": "fcm-sent-total",
             "years": [
               2000,
               2010,
-              2023,
-              2024
+              2023
             ]
           },
           {
-            "text": "For All household mail per household, the value fell by 437.4 pieces per household per year, or 40.7 percent, across the FY2024 and FY2025 methodology breaks from FY2014 to FY2025.",
+            "text": "All household mail per household declined by 437.4 pieces per household per year, or 40.7%, from FY2014 to FY2025, across the FY2024 and FY2025 methodology breaks.",
             "metric": "household-mail-per-household",
             "years": [
               2014,
@@ -58,7 +54,7 @@
             ]
           },
           {
-            "text": "For All household mail, sent and received, the total fell by 60,900.0 millions of pieces, or 38.5 percent, across the FY2007, FY2008, FY2010, and FY2012 methodology breaks from FY2003 to FY2023, and it is projected to be 93,809.0 millions of pieces in FY2024 with an 80% prediction interval of 87,358.0 to 100,260.0.",
+            "text": "All household mail, sent and received fell by 60,900.0 millions of pieces, or 38.5%, from FY2003 to FY2023, across the FY2007, FY2008, FY2010, and FY2012 methodology breaks.",
             "metric": "household-mail-total",
             "years": [
               2003,
@@ -66,15 +62,12 @@
               2008,
               2010,
               2012,
-              2023,
-              2024
+              2023
             ]
           }
         ],
         "caveats": [
-          "Comparisons across methodology breaks must be made with caution because they mix different calculation methods.",
-          "Projections need at least 8 consecutive annual values; since All household mail per household has fewer, no projection is shown for it.",
-          "Methodology breaks include changes in Detached Address Labels, residential delivery estimates, weighting methodology, contractor changes, per-household reporting, and survey redesigns."
+          "Projections need at least 8 consecutive annual values; this series has fewer, so none is shown."
         ]
       },
       "validation": {
@@ -93,9 +86,9 @@
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "ad9e699489d35173f2df76520bbce8173401be7b7a7970745b4e3a763f802ee1",
-      "generated_at": "2026-11-06T17:04:29+00:00",
+      "generated_at": "2026-11-07T01:00:20+00:00",
       "sources": [
         {
           "metric": "fcm-received-per-household",
@@ -1194,10 +1187,10 @@
       "fiscal_year": 2023,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "A summary of household mail volumes and flows for fiscal year 2023.",
+        "headline": "First-Class Mail and total household mail fell in FY2023 compared to FY2022 and FY2018",
         "statements": [
           {
-            "text": "For All households, First-Class Mail received per household was 244.4 pieces per household per year in FY2023, falling by 13.8 pieces per household per year from the previous year and by 62.3 pieces per household per year from 5 years earlier in FY2018.",
+            "text": "All households received First-Class Mail received per household at 244.4 pieces per household per year in FY2023, down 13.8 pieces per household per year, or -5.3%, from FY2022, and down 62.3 pieces per household per year, or -20.3%, from FY2018.",
             "metric": "fcm-received-per-household",
             "years": [
               2018,
@@ -1206,7 +1199,7 @@
             ]
           },
           {
-            "text": "For All households, First-Class Mail received by households was 32,228.0 millions of pieces in FY2023, decreasing by 1,319.0 millions of pieces from FY2022 and by 6,730.0 millions of pieces from FY2018.",
+            "text": "All households received First-Class Mail received by households totaling 32,228.0 millions of pieces in FY2023, down 1,319.0 millions of pieces, or -3.9%, from FY2022, and down 6,730.0 millions of pieces, or -17.3%, from FY2018.",
             "metric": "fcm-received-total",
             "years": [
               2018,
@@ -1215,7 +1208,7 @@
             ]
           },
           {
-            "text": "For All households, First-Class Mail sent per household was 33.4 pieces per household per year in FY2023, down by 10.5 pieces per household per year from FY2022 and down by 24.1 pieces per household per year from FY2018.",
+            "text": "All households sent First-Class Mail sent per household at 33.4 pieces per household per year in FY2023, down 10.5 pieces per household per year, or -23.9%, from FY2022, and down 24.1 pieces per household per year, or -41.9%, from FY2018.",
             "metric": "fcm-sent-per-household",
             "years": [
               2018,
@@ -1224,7 +1217,7 @@
             ]
           },
           {
-            "text": "For All households, First-Class Mail sent by households was 4,637.0 millions of pieces in FY2023, falling by 1,042.0 millions of pieces from the previous year and by 2,631.0 millions of pieces from 5 years earlier in FY2018.",
+            "text": "All households sent First-Class Mail sent by households totaling 4,637.0 millions of pieces in FY2023, down 1,042.0 millions of pieces, or -18.3%, from FY2022, and down 2,631.0 millions of pieces, or -36.2%, from FY2018.",
             "metric": "fcm-sent-total",
             "years": [
               2018,
@@ -1233,34 +1226,55 @@
             ]
           },
           {
-            "text": "For All households, All household mail, sent and received was 97,400.0 millions of pieces in FY2023, decreasing by 8,500.0 millions of pieces from FY2022 and by 23,600.0 millions of pieces from FY2018, across the FY2024 methodology break.",
+            "text": "All household mail, sent and received for all households totaled 97,400.0 millions of pieces in FY2023, down 8,500.0 millions of pieces, or -8.0%, from FY2022, and down 23,600.0 millions of pieces, or -19.5%, from FY2018.",
             "metric": "household-mail-total",
             "years": [
               2018,
               2022,
-              2023,
-              2024
+              2023
             ]
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF, restating 2014-2023 on its own basis.",
-          "FY2025 used a new survey design renamed the Household Mail Survey with changed age bands and redefined Large MSA."
+          "Detached Address Labels no longer double-counted",
+          "Residential delivery estimates corrected",
+          "Diary data restated with new weighting",
+          "FY2014 report restated 2012 and 2013 (weighting by home ownership)",
+          "New contractor and per-household reporting",
+          "Household Mail Survey redesign"
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 5: year 2024 is not in the data for household-mail-total"
+          "statement 1: say which years the change 13.8 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 5.3 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 62.3 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 20.3 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 1,319.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 3.9 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 6,730.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 17.3 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 10.5 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 23.9 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 24.1 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 41.9 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1,042.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 18.3 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 2,631.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 36.2 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 8,500.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 8.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 23,600.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 19.5 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "31b161dfdd91753ea52b1d03d19dc3c8d6026efbb0eee2b488bb4566cb8d6814",
-      "generated_at": "2026-11-06T17:24:24+00:00",
+      "generated_at": "2026-11-07T01:00:36+00:00",
       "sources": [
         {
           "metric": "fcm-received-per-household",
@@ -5532,17 +5546,17 @@
       "fiscal_year": 2000,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "In fiscal year 2000, First-Class Mail volumes for all households were recorded at 56,805.0 millions of pieces for mail received and 19,341.0 millions of pieces for mail sent.",
+        "headline": "First-Class Mail volumes for households in FY2000",
         "statements": [
           {
-            "text": "For all households, First-Class Mail received by households was 56,805.0 millions of pieces in FY2000.",
+            "text": "First-Class Mail received by households totaled 56,805.0 millions of pieces in FY2000.",
             "metric": "fcm-received-total",
             "years": [
               2000
             ]
           },
           {
-            "text": "For all households, First-Class Mail sent by households was 19,341.0 millions of pieces in FY2000.",
+            "text": "First-Class Mail sent by households totaled 19,341.0 millions of pieces in FY2000.",
             "metric": "fcm-sent-total",
             "years": [
               2000
@@ -5550,22 +5564,19 @@
           }
         ],
         "caveats": [
-          "Comparisons across methodology breaks, such as those in FY2007, FY2008, FY2010, FY2012, FY2024, and FY2025, must be approached cautiously."
+          "Changes from the previous year and from five years earlier are not available in the data for FY2000."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "headline: number 56,805.0 belongs in a statement, which names its metric and years",
-          "headline: number 19,341.0 belongs in a statement, which names its metric and years"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "13c4d0296a4db79164ae68f17065cc5952f6f227fd483c1548e437b062b43075",
-      "generated_at": "2026-11-06T17:48:31+00:00",
+      "generated_at": "2026-11-07T01:00:48+00:00",
       "sources": [
         {
           "metric": "fcm-received-total",
