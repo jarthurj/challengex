@@ -17,3 +17,6 @@ docs/
 
 # Local database. Rebuild it with: python manage.py rebuild_db
 db.sqlite3
+
+# graphify knowledge graph output (local; holds machine-specific paths). Rebuild with /graphify.
+graphify-out/

@@ -8,10 +8,18 @@
       "fiscal_year": 2025,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "In fiscal year 2025, the share of bills paid by mail for all households was 14.0 percent, increasing by 1.0 percentage points from the previous year across the FY2025 methodology break and falling by 7.0 percentage points from five years earlier across the FY2024 and FY2025 methodology breaks.",
+        "headline": "The share of bills paid by mail changed in FY2025 across multiple methodology breaks",
         "statements": [
           {
-            "text": "For all households, the share of bills paid by mail was 14.0 percent in fiscal year 2025, rising by 1.0 percentage points from the previous year across the FY2025 methodology break and falling by 7.0 percentage points from fiscal year 2020 across the FY2024 and FY2025 methodology breaks.",
+            "text": "All households paid 14.0 percent of bills by mail in FY2025, up 1.0 percentage points from FY2024, across the FY2025 methodology break.",
+            "metric": "bills-paid-by-mail-share",
+            "years": [
+              2024,
+              2025
+            ]
+          },
+          {
+            "text": "All households paid 14.0 percent of bills by mail in FY2025, down 7.0 percentage points from FY2020, across the FY2024 and FY2025 methodology breaks.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2020,
@@ -20,58 +28,40 @@
             ]
           },
           {
-            "text": "For the Under 45 age group, the share of bills paid by mail was 6.0 percent in fiscal year 2025, falling by 4.0 percentage points from fiscal year 2020 across the FY2024 and FY2025 methodology breaks.",
+            "text": "Households 65 and Over paid 22.0 percent of bills by mail in FY2025, down 12.0 percentage points from FY2020, across the FY2024 and FY2025 methodology breaks.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2020,
+              2024,
               2025
             ]
           },
           {
-            "text": "For the 65 and Over age group, the share of bills paid by mail was 22.0 percent in fiscal year 2025, decreasing by 12.0 percentage points from fiscal year 2020 across the FY2024 and FY2025 methodology breaks.",
+            "text": "Households Non-MSA paid 16.0 percent of bills by mail in FY2025, down 14.0 percentage points from FY2020, across the FY2024 and FY2025 methodology breaks.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2020,
-              2025
-            ]
-          },
-          {
-            "text": "For households with Less than high school education, the share of bills paid by mail stood at 17.0 percent in fiscal year 2025, declining by 13.0 percentage points from fiscal year 2020 across the FY2024 and FY2025 methodology breaks.",
-            "metric": "bills-paid-by-mail-share",
-            "years": [
-              2020,
-              2025
-            ]
-          },
-          {
-            "text": "For Non-MSA households, the share of bills paid by mail was 16.0 percent in fiscal year 2025, dropping by 14.0 percentage points from fiscal year 2020 across the FY2024 and FY2025 methodology breaks.",
-            "metric": "bills-paid-by-mail-share",
-            "years": [
-              2020,
+              2024,
               2025
             ]
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
-          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design renamed the Household Mail Survey, while Q1 was still covered by the old survey, age bands changed, and Large MSA was redefined."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "headline: number 14.0 belongs in a statement, which names its metric and years",
-          "headline: number 1.0 belongs in a statement, which names its metric and years",
-          "headline: number 7.0 belongs in a statement, which names its metric and years"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "5f3f93d6308ac3a9515d8aa8e0c5e8df8e940f269499fe10196a2620cd44a0c2",
-      "generated_at": "2026-11-06T17:06:06+00:00",
+      "generated_at": "2026-11-07T01:04:50+00:00",
       "sources": [
         {
           "metric": "bills-paid-by-mail-share",

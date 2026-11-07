@@ -90,12 +90,14 @@ def crosstab_items(table, rows, ct):
 
 
 def mark_preferred(observations):
-    """One preferred value per metric, segment and year: the latest non-OCR report wins."""
+    """One preferred value per metric, segment and year: the latest non-OCR report wins.
+    A year with only OCR values gets none, so it shows as a gap instead of a wrong number."""
     groups = defaultdict(list)
     for o in observations:
         groups[(o.metric_id, o.segment_id, o.fiscal_year)].append(o)
     for group in groups.values():
-        best = max(group, key=lambda o: (not o.source_table.ocr, o.report_year))
+        clean = [o for o in group if not o.source_table.ocr]
+        best = max(clean, key=lambda o: o.report_year) if clean else None
         for o in group:
             o.is_preferred = o is best
 

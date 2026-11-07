@@ -32,6 +32,7 @@ class PageStructureTests(TestCase):
             "ai-long": reverse("ai-summaries") + "?view=long",
             "ai-search": reverse("ai-summaries") + "?q=packages",
             "table": reverse("table-detail", args=[table.pk]),
+            "settings": reverse("settings"),
         }
 
     def test_every_page_has_language_title_skip_link_nav_and_one_main(self):

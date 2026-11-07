@@ -73,6 +73,7 @@ class TrendTests(TestCase):
 
     def test_html_fallback_sources_verification_and_notes_are_escaped(self):
         Observation.objects.filter(metric__slug="fcm-received-total").update(notes="<script>bad()</script>")
+        self.client.post(reverse("settings"), {"advanced": "1"})   # notes show with advanced settings on
         response = self.client.get(reverse("trends"))
         self.assertContains(response, "Unverified")
         self.assertContains(response, "2023-p077-1")

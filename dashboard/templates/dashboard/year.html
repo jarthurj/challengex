@@ -30,15 +30,19 @@
                 <caption>FY{{ year }} values for all households</caption>
                 <thead><tr>
                     <th scope="col">Metric</th><th scope="col">Value</th><th scope="col">Source</th>
-                    <th scope="col">Verification</th>
+                    {% if advanced %}<th scope="col">Verification</th><th scope="col">Notes</th>{% endif %}
                 </tr></thead>
                 <tbody>
                     {% for row in headline %}
                         <tr>
                             <th scope="row"><a href="{% url 'trends' %}?trend={{ row.observation.metric.slug }}">{{ row.observation.metric.name }}</a></th>
                             <td class="num">{{ row.value }}</td>
-                            <td><a href="{{ row.source.url }}">{{ row.source.text }}</a></td>
-                            <td>{% if row.source.verified %}Verified against the PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
+                            <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not advanced and not row.source.verified %} <span class="review">(unverified)</span>{% endif %}
+                                {% if not advanced and row.observation.notes %}{% include "dashboard/_row_note.html" with notes=row.observation.notes label=row.observation.metric.name %}{% endif %}</td>
+                            {% if advanced %}
+                                <td>{% if row.source.verified %}Verified against the PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
+                                <td class="notes">{{ row.observation.notes|default:"—" }}</td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -56,13 +60,19 @@
                     <caption>{{ metric.name }}, FY{{ year }}, by household group ({{ metric.get_unit_display }})</caption>
                     <thead><tr>
                         <th scope="col">Household group</th><th scope="col">Value</th><th scope="col">Source</th>
+                        {% if advanced %}<th scope="col">Verification</th><th scope="col">Notes</th>{% endif %}
                     </tr></thead>
                     <tbody>
                         {% for row in rows %}
                             <tr>
                                 <th scope="row">{{ row.observation.segment }}</th>
                                 <td class="num">{{ row.number }}</td>
-                                <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not row.source.verified %} <span class="review">(unverified)</span>{% endif %}</td>
+                                <td><a href="{{ row.source.url }}">{{ row.source.text }}</a>{% if not advanced and not row.source.verified %} <span class="review">(unverified)</span>{% endif %}
+                                    {% if not advanced and row.observation.notes %}{% include "dashboard/_row_note.html" with notes=row.observation.notes label=row.observation.segment %}{% endif %}</td>
+                                {% if advanced %}
+                                    <td>{% if row.source.verified %}Verified against the PDF{% else %}<span class="review">Unverified</span>{% endif %}</td>
+                                    <td class="notes">{{ row.observation.notes|default:"—" }}</td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -73,7 +73,8 @@ analyst should be able to:
 - **Provenance.** Every number shown traces back to `source_table`, report year, and page, and
   the UI links to it.
 - **Quality dimensions:**
-  - Accuracy: the `verified` flag, plus a visible badge on unverified values.
+  - Accuracy: the `verified` flag, plus a visible badge on unverified values. (The Settings
+    page's advanced mode only adds the full Verification/Status columns; the badge shows either way.)
   - Completeness: show gaps; never silently interpolate.
   - Consistency: canonical units.
   - Uniqueness: one preferred value per metric, segment, and year.
@@ -365,6 +366,10 @@ analyst should be able to:
     35,729M in the FY2023 report.
   - Keep every value with its source report.
   - Prefer the most recent non-OCR report. `mark_preferred` in `load_metrics` does this.
+    An OCR value is never preferred: a year with only OCR values gets no preferred value and
+    shows as a gap. (No mapped source is OCR today, so this only guards future mappings.)
+  - Don't make preference depend on `verified`: it's set only where `docs/` is present, so
+    the preferred series would differ between teammates' databases.
   - Because of that rule, a preferred series can switch source reports partway through. Bills
     paid by mail uses FY2023 for 2010–2013 (37% in 2013) but FY2024 for 2014 onward (33%;
     FY2023 said 34%). Charts must show each point's source report.
@@ -452,7 +457,9 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 230 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+- **Tests:** 244 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+  page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
+  either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
   the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
@@ -466,7 +473,8 @@ analyst should be able to:
   projection on the Trends page), and `dashboard/test_context.py` (excerpt finding, the FY2021
   transcriptions, `table_context.json`, re-read checks, and the table page).
   `dashboard/tests.py` covers:
-  - header parsing, preference, and conversions
+  - header parsing, preference (latest clean report wins, OCR-only years stay gaps, each
+    segment chosen separately), and conversions
   - the mapping, an end-to-end load against `tables.json`, and full reloads that keep review
     flags and notes
   - PDF-text parsing for `verify_pdfs`
@@ -597,8 +605,18 @@ analyst should be able to:
     30 s timeout and at most 2 requests (`LIVE_TIMEOUT`, `LIVE_MAX_CALLS`). The result goes
     through `save_summary()`, so text that fails the check is never shown. Checked live once on
     2026-11-06 (a FY2015–FY2020 packages range: 2 s, passed).
+- **Settings page** (`/dashboard/settings/`, `settings_views.py`): one option, "Enable advanced
+  settings", saved by a CSRF-protected POST in the browser's session (Django's default two weeks;
+  no account). `context_processors.display_settings` gives every template `advanced`.
+  - Off (the default): Browse tables hides the Status and Source ID columns, but keeps the
+    "Needs review"/"OCR" badges next to the title; Trends and By year hide the Verification and
+    Notes columns, but tag unverified values "(unverified)" next to their source, and a value with
+    a note gets a folded "Note" there (`_row_note.html`), because notes carry data caveats (e.g.
+    FY2020 A8-1 parts that exceed the printed total), not only reviewers' remarks.
+  - On: those columns are shown in full (By year gains Notes, also for household groups).
+  - CSV downloads and "Copy the values with sources" always include verification.
 - **Templates:** `overview.html`, `trends.html`, `year.html`, `table_list.html`,
-  `table_detail.html`, `ai_summaries.html` and `ai_summary_detail.html` are full pages. All
+  `table_detail.html`, `ai_summaries.html`, `ai_summary_detail.html` and `settings.html` are full pages. All
   include `_head.html` (after the `<meta>` tags) and `_nav.html` (skip link, logo, main navigation
   with a ☰ menu button below the `md` width), and wrap their content in one `<main id="main">`.
   `_ai_summary.html` renders one stored summary (`compact` in lists), `_ai_item.html` one in a
@@ -694,7 +712,7 @@ analyst should be able to:
     - Tests: `test_ai_summary.py` holds the rule tests (with the reviews' near misses) and
       an eval set of known FY2023 facts: packages, bills, household groups, a projection,
       break-note numbers and the headline.
-  - **The input (prompt `summary-v3`, 2026-11-06):** every change that straddles a break lists
+  - **The input (prompt `summary-v4`, 2026-11-06):** every change that straddles a break lists
     `crosses_methodology_breaks`, and `since_latest_break` gives the change within the current
     method. The instructions spell out the rules above as 10 numbered rules: group labels right
     before their figures, a value's year right after it, the allowed direction words,
@@ -708,8 +726,16 @@ analyst should be able to:
     - `PROMPT_EXAMPLES` (one sentence per rule, plus `PROMPT_HEADLINE_EXAMPLE`) are shown to
       the model and run through `validate_ai_summary` in `PromptExampleTests`, so the prompt
       can't teach a wording the check refuses. Change the examples and the check together.
-    - Stored summaries keep their `prompt_version`; only regenerated ones use v3. The 27 hidden
-      v2 records haven't been regenerated with v3 yet.
+    - **v4 fixes a v3 example that taught refused wording.** v3 showed "fell by 600.0 million
+      pieces, or 8.2%, from FY2022 to FY2023"; the check reads a change's years only up to the
+      first comma after it, so ", or 2.1%, from FY2017" loses them. The v3 regeneration (26
+      records, `gemini-3.5-flash-lite`) passed 5, got no answer for 2 (503) and failed 19, with
+      182 of its problems from that wording. The example passed its test only because the test
+      cited two years, leaving one possible start year. v4 puts the percent in brackets before
+      the years ("600.0 million pieces (8.2%) from FY2022 to FY2023", checked against the real
+      FY2018 input), and the test now also cites every year of the metric that doesn't cross a
+      break (`every_year(..., near=...)`), the case a yearly summary is in.
+    - Stored summaries keep their `prompt_version`; only regenerated ones use the new prompt.
   - **Staleness:** pages show a stored summary only if it passed when made and passes again
     against the current data with the current check (`shown()`). The result is cached per data
     version (observation count, max id, sums of values, years, segments, metrics and report

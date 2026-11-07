@@ -177,10 +177,10 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class Mail categories received by all households showed long-term declines across the FY2010 methodology break, with various projected trajectories through FY2028.",
+        "headline": "First-Class Mail volumes experienced long-term declines across categories and methodology breaks.",
         "statements": [
           {
-            "text": "For All households, First-Class advertising received (ads only) fell across the FY2010 methodology break by 6,235.0 millions of pieces or 65.8 percent from 2000 to 2023.",
+            "text": "First-Class advertising received (ads only) fell by 6,235.0 million pieces (-65.8%) from FY2000 to FY2023, across the FY2010 methodology break.",
             "metric": "fcm-received-advertising",
             "years": [
               2000,
@@ -189,23 +189,15 @@
             ]
           },
           {
-            "text": "For All households, First-Class advertising received (ads only) decreased since the latest break by 2,879.0 millions of pieces or 47.1 percent from 2010 to 2023, and fell by 268.0 millions of pieces or 7.6 percent from 2018 to 2023.",
+            "text": "First-Class advertising received (ads only) fell by 2,879.0 million pieces (-47.1%) from FY2010 to FY2023, since the FY2010 methodology break.",
             "metric": "fcm-received-advertising",
             "years": [
               2010,
-              2018,
               2023
             ]
           },
           {
-            "text": "For All households, First-Class advertising received (ads only) is projected at 3,236.0 millions of pieces in 2024 with an 80% prediction interval 2,737.0 to 3,735.0.",
-            "metric": "fcm-received-advertising",
-            "years": [
-              2024
-            ]
-          },
-          {
-            "text": "For All households, First-Class correspondence received fell across the FY2010 methodology break by 6,606.0 millions of pieces or 33.9 percent from 2000 to 2023.",
+            "text": "First-Class correspondence received fell by 6,606.0 million pieces (-33.9%) from FY2000 to FY2023, across the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2000,
@@ -214,23 +206,15 @@
             ]
           },
           {
-            "text": "For All households, First-Class correspondence received decreased since the latest break by 3,131.0 millions of pieces or 19.6 percent from 2010 to 2023, and fell by 1,911.0 millions of pieces or 12.9 percent from 2018 to 2023.",
+            "text": "First-Class correspondence received fell by 3,131.0 million pieces (-19.6%) from FY2010 to FY2023, since the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2010,
-              2018,
               2023
             ]
           },
           {
-            "text": "For All households, First-Class correspondence received is projected at 13,068.0 millions of pieces in 2024 with an 80% prediction interval 12,694.0 to 13,442.0.",
-            "metric": "fcm-received-correspondence",
-            "years": [
-              2024
-            ]
-          },
-          {
-            "text": "For All households, First-Class transaction mail received fell across the FY2010 methodology break by 9,635.0 millions of pieces or 39.3 percent from 2000 to 2023.",
+            "text": "First-Class transaction mail received fell by 9,635.0 million pieces (-39.3%) from FY2000 to FY2023, across the FY2010 methodology break.",
             "metric": "fcm-received-transactions",
             "years": [
               2000,
@@ -239,19 +223,11 @@
             ]
           },
           {
-            "text": "For All households, First-Class transaction mail received decreased since the latest break by 8,384.0 millions of pieces or 36.0 percent from 2010 to 2023, and fell by 4,017.0 millions of pieces or 21.3 percent from 2018 to 2023.",
+            "text": "First-Class transaction mail received fell by 8,384.0 million pieces (-36.0%) from FY2010 to FY2023, since the FY2010 methodology break.",
             "metric": "fcm-received-transactions",
             "years": [
               2010,
-              2018,
               2023
-            ]
-          },
-          {
-            "text": "For All households, First-Class transaction mail received is projected at 13,927.0 millions of pieces in 2024 with an 80% prediction interval 13,204.0 to 14,650.0.",
-            "metric": "fcm-received-transactions",
-            "years": [
-              2024
             ]
           }
         ],
@@ -262,25 +238,15 @@
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 1: say which years the change 6,235.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 2,879.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 268.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 6,606.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 3,131.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 1,911.0 is between (\"from FY2018 to FY2023\")",
-          "statement 7: say which years the change 9,635.0 is between (\"from FY2018 to FY2023\")",
-          "statement 8: say which years the change 8,384.0 is between (\"from FY2018 to FY2023\")",
-          "statement 8: say which years the change 4,017.0 is between (\"from FY2018 to FY2023\")"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v4",
       "input_hash": "f65cf72e53cc856d92d5951afc4c18a19a4f100782faf185d59e4bfd1d289eda",
-      "generated_at": "2026-11-06T16:59:28+00:00",
+      "generated_at": "2026-11-07T01:14:58+00:00",
       "sources": [
         {
           "metric": "fcm-received-advertising",
