@@ -1557,17 +1557,10 @@
       "fiscal_year": 2012,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "In fiscal year 2012, periodicals-volume for all households was 5,900 million pieces.",
+        "headline": "Periodicals received by households rose in FY2012 but stayed below FY2007",
         "statements": [
           {
-            "text": "For all households, periodicals-volume was 5,900 million pieces in FY2012.",
-            "metric": "periodicals-volume",
-            "years": [
-              2012
-            ]
-          },
-          {
-            "text": "For all households, periodicals-volume increased by 500.0 million pieces from the previous year in FY2012 across the FY2012 methodology break.",
+            "text": "Periodicals received by households totaled 5,900.0 millions of pieces in FY2012, up 500.0 millions of pieces, or 9.3%, from FY2011, across the FY2012 methodology break.",
             "metric": "periodicals-volume",
             "years": [
               2011,
@@ -1575,7 +1568,7 @@
             ]
           },
           {
-            "text": "For all households, periodicals-volume decreased by 700.0 million pieces from five years earlier in FY2012, crossing the FY2010 and FY2012 methodology breaks.",
+            "text": "Periodicals received by households fell by 700.0 millions of pieces, or -10.6%, from FY2007 to FY2012, across the FY2010 and FY2012 methodology breaks.",
             "metric": "periodicals-volume",
             "years": [
               2007,
@@ -1584,24 +1577,19 @@
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
-          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
-          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "headline: number 5,900 belongs in a statement, which names its metric and years"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "1076b0ec25e61408be41f5a5f4ea4c2524468c57c6950c3fc1878b1051d8b39f",
-      "generated_at": "2026-11-06T17:36:11+00:00",
+      "generated_at": "2026-11-07T01:04:15+00:00",
       "sources": [
         {
           "metric": "periodicals-volume",
@@ -1911,51 +1899,37 @@
       "fiscal_year": 2008,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "In fiscal year 2008, periodicals received by all households stood at 6,400.0 millions of pieces, falling from both the previous year and five years earlier.",
+        "headline": "Periodicals received by households fell in FY2008 compared to FY2007 and FY2003",
         "statements": [
           {
-            "text": "For all households, periodicals-volume was 6,400.0 millions of pieces in FY2008.",
-            "metric": "periodicals-volume",
-            "years": [
-              2008
-            ]
-          },
-          {
-            "text": "Periodicals received by all households fell by 200.0 millions of pieces from FY2007 to FY2008.",
-            "metric": "periodicals-volume",
-            "years": [
-              2007,
-              2008
-            ]
-          },
-          {
-            "text": "Periodicals received by all households decreased by 400.0 millions of pieces from 2003 to 2008.",
+            "text": "Periodicals received by households totaled 6,400.0 millions of pieces in FY2008, down 200.0 millions of pieces, or 3.0%, from FY2007, and down 400.0 millions of pieces, or 5.9%, from FY2003.",
             "metric": "periodicals-volume",
             "years": [
               2003,
+              2007,
               2008
             ]
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
-          "Beginning in 2012 data was restated due to weighing by Home Ownership (FY2014 Appendix A, p. 249). Its Table E.2 raised 2012 and 2013 (2012 total: 131.7 billion in FY2012, 130.4 in FY2013, 136.9 in FY2014; packages 3.3 to 3.9; periodicals 5.1 to 5.9), and its notes newly exclude pieces counted as both sent and received. Later reports agree with FY2014, so values from 2012 on share one basis; values through 2011 are on the old one.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
-          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "headline: number 6,400.0 belongs in a statement, which names its metric and years"
+          "statement 1: say which years the change 200.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 3.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 400.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 5.9 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "fc112245346aebc947f0042604b6a8daa18705e9d42430cf0a962938b5bd67c0",
-      "generated_at": "2026-11-06T17:41:00+00:00",
+      "generated_at": "2026-11-07T01:04:25+00:00",
       "sources": [
         {
           "metric": "periodicals-volume",
@@ -2005,44 +1979,31 @@
       "fiscal_year": 2007,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of Periodicals received by households statistics for fiscal year 2007.",
+        "headline": "Periodicals volume decreased in FY2007 compared to FY2006",
         "statements": [
           {
-            "text": "For all households, Periodicals received by households was 6,600.0 millions of pieces in FY2007, and decreased by 100.0 millions of pieces from the previous year.",
+            "text": "Periodicals received by households totaled 6,600.0 millions of pieces in FY2007, down 100.0 millions of pieces, or -1.5%, from FY2006.",
             "metric": "periodicals-volume",
             "years": [
               2006,
               2007
             ]
-          },
-          {
-            "text": "For all households, Periodicals received by households was 6,600.0 millions of pieces in FY2007, and fell by 200.0 millions of pieces from FY2003 to FY2007.",
-            "metric": "periodicals-volume",
-            "years": [
-              2003,
-              2007
-            ]
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
-          "FY2014 report restated 2012 and 2013 (weighting by home ownership)",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
-          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and 'Large MSA' was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 2: 200.0 is not a change of its metric between the years it cites"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "51549374ab6eb5f05b3d7a05ca8161503f5f54495d6bbb8d8eaed28d3c242b67",
-      "generated_at": "2026-11-06T17:42:05+00:00",
+      "generated_at": "2026-11-07T01:04:36+00:00",
       "sources": [
         {
           "metric": "periodicals-volume",
