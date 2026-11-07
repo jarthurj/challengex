@@ -2,8 +2,8 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <nav aria-label="Main navigation" class="main-nav">
-    <a href="{% url 'dashboard' %}" class="brand">
-        <img src="{% static 'dashboard/logo_mobile.svg' %}" alt="Household Mail home" class="brand-logo" height="40" width="76">
+    <a href="{% url 'welcome' %}" class="brand"{% if current == "welcome" %} aria-current="page"{% endif %}>
+        <img src="{% static 'dashboard/logo_mobile.svg' %}" alt="Household Mail home: the welcome page" class="brand-logo" height="40" width="76">
     </a>
 <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">&#9776;</button>
     <div id="nav-links" class="nav-links">

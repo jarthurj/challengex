@@ -10,8 +10,6 @@
     {% with current="overview" %}{% include "dashboard/_nav.html" %}{% endwith %}
     <main id="main">
     <h1>U.S. household mail at a glance</h1>
-    <p>Latest published values from the USPS Household Diary Study / Household Mail Survey, with the change
-        from 5 and 10 years earlier. Each card names its source report and page; select a card's link for the full trend.</p>
     {% if notice %}<p class="notice" role="status">{{ notice }}</p>{% endif %}
 
     {% if cards %}
