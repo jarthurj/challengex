@@ -1959,62 +1959,116 @@
       "fiscal_year": 2018,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "In fiscal year 2018, advertising mail and marketing mail volumes for all households continued to fall across multiple metrics.",
+        "headline": "Advertising mail metrics fell across the board in FY2018 compared to prior periods",
         "statements": [
           {
-            "text": "Advertising mail received per household for all households was 592.8 pieces per household per year in FY2018, having fallen by 15.6 pieces per household per year from the previous year, and falling by 57.2 pieces per household per year across the FY2014 methodology break from FY2013.",
+            "text": "Advertising mail received per household totaled 592.8 pieces per household per year in FY2018, down 15.6 pieces per household per year, or 2.6%, from FY2017, and down 62.4 pieces per household per year, or 9.5%, from FY2014, since the FY2014 methodology break.",
             "metric": "advertising-mail-received-per-household",
             "years": [
               2013,
+              2014,
               2017,
               2018
             ]
           },
           {
-            "text": "Advertising mail received by households for all households was 75,275.0 millions of pieces in FY2018, dropping by 1,596.0 millions of pieces from FY2017, and decreasing by 8,799.0 millions of pieces from FY2013.",
+            "text": "Advertising mail received per household fell by 57.2 pieces per household per year, or 8.8%, from FY2013 to FY2018, across the FY2014 methodology break.",
+            "metric": "advertising-mail-received-per-household",
+            "years": [
+              2013,
+              2014,
+              2018
+            ]
+          },
+          {
+            "text": "Advertising mail received by households totaled 75,275.0 millions of pieces in FY2018, down 1,596.0 millions of pieces, or 2.1%, from FY2017, and down 10,452.0 millions of pieces, or 12.2%, from FY2010, since the FY2010 methodology break.",
+            "metric": "advertising-received-total",
+            "years": [
+              2010,
+              2013,
+              2017,
+              2018
+            ]
+          },
+          {
+            "text": "Advertising mail received by households fell by 8,799.0 millions of pieces, or 10.5%, from FY2013 to FY2018.",
             "metric": "advertising-received-total",
             "years": [
               2013,
+              2018
+            ]
+          },
+          {
+            "text": "First-Class advertising received (ads only) totaled 3,504.0 millions of pieces in FY2018, down 208.0 millions of pieces, or 5.6%, from FY2017, and down 2,611.0 millions of pieces, or 42.7%, from FY2010, since the FY2010 methodology break.",
+            "metric": "fcm-received-advertising",
+            "years": [
+              2010,
+              2013,
               2017,
               2018
             ]
           },
           {
-            "text": "First-Class advertising received (ads only) for all households stood at 3,504.0 millions of pieces in FY2018, which was down by 208.0 millions of pieces from the previous year and lower by 736.0 millions of pieces compared to FY2013.",
+            "text": "First-Class advertising received (ads only) fell by 736.0 millions of pieces, or 17.4%, from FY2013 to FY2018.",
             "metric": "fcm-received-advertising",
             "years": [
               2013,
+              2018
+            ]
+          },
+          {
+            "text": "Marketing Mail advertising received totaled 67,681.0 millions of pieces in FY2018, down 1,394.0 millions of pieces, or 2.0%, from FY2017, and down 5,253.0 millions of pieces, or 7.2%, from FY2010, since the FY2010 methodology break.",
+            "metric": "marketing-mail-ads-received",
+            "years": [
+              2010,
+              2013,
               2017,
               2018
             ]
           },
           {
-            "text": "Marketing Mail advertising received for all households was 67,681.0 millions of pieces in FY2018, which decreased by 1,394.0 millions of pieces from FY2017 and fell by 6,684.0 millions of pieces from FY2013.",
+            "text": "Marketing Mail advertising received fell by 6,684.0 millions of pieces, or 9.0%, from FY2013 to FY2018.",
             "metric": "marketing-mail-ads-received",
             "years": [
               2013,
-              2017,
               2018
             ]
           }
         ],
         "caveats": [
-          "Comparisons across the FY2007, FY2008, FY2010, FY2014, FY2024, and FY2025 methodology breaks are cautious.",
-          "The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014."
+          "The advertising mail received per household series is subject to the FY2014 weighting by home ownership methodology break and crosses this break when comparing FY2013 to FY2018.",
+          "Advertising mail received and First-Class advertising received series are subject to the FY2010 diary weighting restatement methodology break."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 3: 736.0 is a change of its metric, but not between the years the sentence names"
+          "statement 1: say which years the change 15.6 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 2.6 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 62.4 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 9.5 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 57.2 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 8.8 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 1,596.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 2.1 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 10,452.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 12.2 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 208.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 5.6 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 2,611.0 is between (\"from FY2018 to FY2023\")",
+          "statement 5: say which years the change 42.7 is between (\"from FY2018 to FY2023\")",
+          "statement 7: say which years the change 1,394.0 is between (\"from FY2018 to FY2023\")",
+          "statement 7: say which years the change 2.0 is between (\"from FY2018 to FY2023\")",
+          "statement 7: say which years the change 5,253.0 is between (\"from FY2018 to FY2023\")",
+          "statement 7: say which years the change 7.2 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "6cc1a1b692a7ce5cb0895608944f4424fe1afe6961f73123754b8235038eed7f",
-      "generated_at": "2026-11-06T17:29:19+00:00",
+      "generated_at": "2026-11-07T01:03:32+00:00",
       "sources": [
         {
           "metric": "advertising-mail-received-per-household",
@@ -2402,72 +2456,86 @@
       "fiscal_year": 2016,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "A summary of advertising mail metrics for fiscal year 2016.",
+        "headline": "Advertising mail metrics showed mixed movements in FY2016 compared to earlier years.",
         "statements": [
           {
-            "text": "For all households, advertising mail received per household was 629.2 pieces per household per year in FY2016, unchanged from FY2015 and down by 26.0 pieces per household per year from the FY2014 methodology break.",
+            "text": "Advertising mail received per household totaled 629.2 pieces per household per year in FY2016, up 0.0 million pieces, or 0.0%, from FY2015, and down 26.0 pieces per household per year, or -4.0%, from FY2014, since the FY2014 methodology break.",
             "metric": "advertising-mail-received-per-household",
             "years": [
-              2016,
+              2014,
               2015,
-              2014
+              2016
             ]
           },
           {
-            "text": "For all households, advertising mail received by households was 80,046.0 millions of pieces in FY2016, up by 45.0 millions of pieces from FY2015, lower by 10,411.0 millions of pieces from FY2011, and down by 5,681.0 millions of pieces from the FY2010 methodology break across the FY2010 methodology break.",
+            "text": "Advertising mail received by households totaled 80,046.0 millions of pieces in FY2016, up 45.0 millions of pieces, or 0.1%, from FY2015, down 10,411.0 millions of pieces, or -11.5%, from FY2011, and down 5,681.0 millions of pieces, or -6.6%, from FY2010, since the FY2010 methodology break.",
             "metric": "advertising-received-total",
             "years": [
-              2016,
-              2015,
+              2010,
               2011,
-              2010
+              2015,
+              2016
             ]
           },
           {
-            "text": "For all households, First-Class advertising received (ads only) was 3,826.0 millions of pieces in FY2016, increasing by 233.0 millions of pieces from FY2015, lower by 1,622.0 millions of pieces from FY2011, and down by 2,289.0 millions of pieces from the FY2010 methodology break across the FY2010 methodology break.",
+            "text": "First-Class advertising received (ads only) totaled 3,826.0 millions of pieces in FY2016, up 233.0 millions of pieces, or 6.5%, from FY2015, down 1,622.0 millions of pieces, or -29.8%, from FY2011, and down 2,289.0 millions of pieces, or -37.4%, from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-received-advertising",
             "years": [
-              2016,
-              2015,
+              2010,
               2011,
-              2010
+              2015,
+              2016
             ]
           },
           {
-            "text": "For all households, Marketing Mail advertising received was 71,754.0 millions of pieces in FY2016, up by 123.0 millions of pieces from FY2015, lower by 5,993.0 millions of pieces from FY2011, and down by 1,180.0 millions of pieces from the FY2010 methodology break across the FY2010 methodology break.",
+            "text": "Marketing Mail advertising received totaled 71,754.0 millions of pieces in FY2016, up 123.0 millions of pieces, or 0.2%, from FY2015, down 5,993.0 millions of pieces, or -7.7%, from FY2011, and down 1,180.0 millions of pieces, or -1.6%, from FY2010, since the FY2010 methodology break.",
             "metric": "marketing-mail-ads-received",
             "years": [
-              2016,
-              2015,
+              2010,
               2011,
-              2010
+              2015,
+              2016
             ]
           }
         ],
         "caveats": [
-          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The FY2020 A8-12 drops the note but its pre-2007 values are no lower.",
-          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly offsets the Detached Address Label double count; 2007 itself is understated.",
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting.",
-          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix (Beginning in 2012 data was restated due to weighing by Home Ownership, p. 249). The household-group series take each year from that year's own report, whose chapter tables were not restated, so they change basis between 2013 and 2014.",
-          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed (NuStats to RCF). The FY2024 report restated 2014-2023 on its own basis, so its values for those years can differ slightly from earlier reports (e.g. bills paid by mail in 2014: 34% in FY2023, 33% in FY2024).",
-          "FY2025 used a new survey design (renamed the Household Mail Survey); Q1 was still covered by the old survey. Age bands changed to Under 45 / 45-64 / 65+ (previously 18-34 / 35-54 / 55+), and Large MSA was redefined in January 2025 from the top 30 metros to metros of 1 million or more."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "The FY2014 report began weighting by home ownership and restated 2012-2013 in its appendix."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 1: 26.0 is a change of its metric, but not between the years the sentence names",
+          "statement 1: say which years the change 0.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 0.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 26.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 4.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 45.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 0.1 is between (\"from FY2018 to FY2023\")",
+          "statement 2: 10,411.0 is a change of its metric, but not between the years the sentence names",
+          "statement 2: say which years the change 11.5 is between (\"from FY2018 to FY2023\")",
           "statement 2: say which years the change 5,681.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 6.6 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 233.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 6.5 is between (\"from FY2018 to FY2023\")",
+          "statement 3: 1,622.0 is a change of its metric, but not between the years the sentence names",
+          "statement 3: say which years the change 29.8 is between (\"from FY2018 to FY2023\")",
           "statement 3: say which years the change 2,289.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 1,180.0 is between (\"from FY2018 to FY2023\")"
+          "statement 3: say which years the change 37.4 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 123.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 0.2 is between (\"from FY2018 to FY2023\")",
+          "statement 4: 5,993.0 is a change of its metric, but not between the years the sentence names",
+          "statement 4: say which years the change 7.7 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1,180.0 is between (\"from FY2018 to FY2023\")",
+          "statement 4: say which years the change 1.6 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "cbc9fd0ba7fd7622db03df8ba878e511a8198f63d079a5dd2c042264ef74f943",
-      "generated_at": "2026-11-06T17:31:30+00:00",
+      "generated_at": "2026-11-07T01:03:51+00:00",
       "sources": [
         {
           "metric": "advertising-mail-received-per-household",
@@ -3572,19 +3640,21 @@
       "fiscal_year": 2011,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Summary of advertising mail statistics for all households in fiscal year 2011.",
+        "headline": "Advertising mail metrics showed mixed movements in FY2011 compared to previous periods",
         "statements": [
           {
-            "text": "For All households, advertising-received-total was 90,457 million of pieces in FY2011, which increased by 4,730 million of pieces or 5.5 percent from FY2010 since the latest break, but fell by 15,102 million of pieces or -14.3 percent from FY2006 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "text": "Advertising mail received by households totaled 90,457.0 millions of pieces in FY2011, up 4,730.0 millions of pieces, or 5.5%, from FY2010, since the FY2010 methodology break, and down 15,102.0 millions of pieces, or 14.3%, from FY2006 to FY2011, across the FY2007, FY2008 and FY2010 methodology breaks.",
             "metric": "advertising-received-total",
             "years": [
               2006,
+              2007,
+              2008,
               2010,
               2011
             ]
           },
           {
-            "text": "For All households, fcm-received-advertising was 5,448 million of pieces in FY2011, showing a decrease of 667 million of pieces or -10.9 percent from FY2010 since the latest break, and a decrease of 4,896 million of pieces or -47.3 percent from FY2006 across the FY2010 methodology break.",
+            "text": "First-Class advertising received (ads only) totaled 5,448.0 millions of pieces in FY2011, down 667.0 millions of pieces, or 10.9%, from FY2010, since the FY2010 methodology break, and down 4,896.0 millions of pieces, or 47.3%, from FY2006 to FY2011, across the FY2010 methodology break.",
             "metric": "fcm-received-advertising",
             "years": [
               2006,
@@ -3593,39 +3663,46 @@
             ]
           },
           {
-            "text": "For All households, marketing-mail-ads-received stood at 77,747 million of pieces in FY2011, which rose by 4,813 million of pieces or 6.6 percent from FY2010 since the latest break, while declining by 9,814 million of pieces or -11.2 percent from FY2006 across the FY2007, FY2008, and FY2010 methodology breaks.",
+            "text": "Marketing Mail advertising received totaled 77,747.0 millions of pieces in FY2011, up 4,813.0 millions of pieces, or 6.6%, from FY2010, since the FY2010 methodology break, and down 9,814.0 millions of pieces, or 11.2%, from FY2006 to FY2011, across the FY2007, FY2008 and FY2010 methodology breaks.",
             "metric": "marketing-mail-ads-received",
             "years": [
               2006,
+              2007,
+              2008,
               2010,
               2011
             ]
           }
         ],
         "caveats": [
-          "Comparisons across FY2007, FY2008, and FY2010 methodology breaks are cautious.",
-          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels.",
-          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology."
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels in the Carrier Cost System, whose volumes are the control for the survey results (FY2008 Table E.2 and FY2016 Table A8-12 notes). The FY2020 A8-12 drops the note but its pre-2007 values are no lower.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses (FY2008 Table E.2 note; also FY2016 Table A8-12). Before 2007 this roughly offsets the Detached Address Label double count; 2007 itself is understated.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
-          "statement 1: say which years the change 4,730 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 15,102 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 667 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 4,896 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 4,813 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 9,814 is between (\"from FY2018 to FY2023\")"
+          "statement 1: say which years the change 4,730.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 5.5 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 15,102.0 is between (\"from FY2018 to FY2023\")",
+          "statement 1: say which years the change 14.3 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 667.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 10.9 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 4,896.0 is between (\"from FY2018 to FY2023\")",
+          "statement 2: say which years the change 47.3 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 4,813.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 6.6 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 9,814.0 is between (\"from FY2018 to FY2023\")",
+          "statement 3: say which years the change 11.2 is between (\"from FY2018 to FY2023\")"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v2",
+      "prompt_version": "summary-v3",
       "input_hash": "462a52cd6b15976f278aa2b85f333b60b52658771cc72fed5aa6aa49dd66b73f",
-      "generated_at": "2026-11-06T17:37:01+00:00",
+      "generated_at": "2026-11-07T01:04:04+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
