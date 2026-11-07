@@ -452,8 +452,8 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 226 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
-  validation, storage and display), `dashboard/test_ai_page.py` (the AI summaries tab: views,
+- **Tests:** 230 in total, in `dashboard/tests.py`, `dashboard/test_ai_summary.py` (AI summary
+  validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
   the year dropdown and each subject's latest year, search, categories, hidden list, copy and export, summary page, staff review mark, and
   "Create a new summary" with Gemini mocked: CSRF, criteria, no key, limits, one at a time, a
   failing reply never shown), `dashboard/test_demographics.py` (household-group
@@ -694,12 +694,22 @@ analyst should be able to:
     - Tests: `test_ai_summary.py` holds the rule tests (with the reviews' near misses) and
       an eval set of known FY2023 facts: packages, bills, household groups, a projection,
       break-note numbers and the headline.
-  - **The input (prompt `summary-v2`):** every change that straddles a break lists
+  - **The input (prompt `summary-v3`, 2026-11-06):** every change that straddles a break lists
     `crosses_methodology_breaks`, and `since_latest_break` gives the change within the current
-    method. The instructions spell out the rules above: group labels right before their figures,
-    a value's year right after it, a change's years, the allowed direction words, "projected"
-    with its interval, every crossed break named, percentage points, digits only, and no figures
-    in the headline or caveats.
+    method. The instructions spell out the rules above as 10 numbered rules: group labels right
+    before their figures, a value's year right after it, the allowed direction words,
+    "projected" with its interval, percentage points, digits only, and no figures in the headline
+    or caveats.
+    - v3 targets the failures of the v2 run (27 records hidden): most gave a change without its
+      start year, often "across the FY2010 methodology break" alone (40 problems), or crossed a
+      break without naming it (12). Now every change must name both years ("from FY2022 to
+      FY2023"), a crossing change ends with ", across the FY… methodology break", and a
+      `since_latest_break` change reads "from FY… to FY…, since the FY… methodology break".
+    - `PROMPT_EXAMPLES` (one sentence per rule, plus `PROMPT_HEADLINE_EXAMPLE`) are shown to
+      the model and run through `validate_ai_summary` in `PromptExampleTests`, so the prompt
+      can't teach a wording the check refuses. Change the examples and the check together.
+    - Stored summaries keep their `prompt_version`; only regenerated ones use v3. The 27 hidden
+      v2 records haven't been regenerated with v3 yet.
   - **Staleness:** pages show a stored summary only if it passed when made and passes again
     against the current data with the current check (`shown()`). The result is cached per data
     version (observation count, max id, sums of values, years, segments, metrics and report
