@@ -299,6 +299,19 @@
                 return items;
             }
 
+            // Show or hide a legend entry's line, and the band edge that goes with it (the 80% interval's
+            // lower edge has no entry of its own). Not Chart.js's own hide(): that fades the line out
+            // but keeps drawing it until the fade ends, so the next change (another entry, the axis
+            // rescaling) brought it back at full strength for its whole animation.
+            function toggleDataset(chart, index) {
+                const visible = !chart.isDatasetVisible(index);
+                const band = chart.data.datasets[index].band;
+                chart.data.datasets.forEach((dataset, i) => {
+                    if (i === index || (band && dataset.band === band)) chart.setDatasetVisibility(i, visible);
+                });
+                chart.update();
+            }
+
             // The breaks that fall on the chart's years.
             function chartBreaks(chart) {
                 const breaks = (chart.options.plugins.methodologyMarkers || {}).breaks || [];
@@ -386,7 +399,7 @@
                                 },
                                 onClick(event, item, legend) {
                                     if (item.methodChanges) return;   // not a dataset to hide
-                                    Chart.defaults.plugins.legend.onClick.call(this, event, item, legend);
+                                    toggleDataset(legend.chart, item.datasetIndex);
                                 }},
                                 methodologyMarkers: {breaks: data.breaks},
                                 tooltip: {

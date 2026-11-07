@@ -457,7 +457,7 @@ analyst should be able to:
   `crosstab_values()` as the loader. See `VERIFICATION.md`.
 - **Every table has a corrected title and number.** See `dashboard/titles.py`, `table_titles.json`,
   and `manage.py extract_titles`.
-- **Tests:** 247 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
+- **Tests:** 252 in total, in `dashboard/tests.py`, `dashboard/test_settings.py` (the Settings
   page: saving, CSRF, only "1" turns it on; which columns, tags and folded notes each page shows in
   either mode, escaped; the empty listing's colspan; exports identical in both modes), `dashboard/test_ai_summary.py` (AI summary
   validation, storage and display, and the prompt's example sentences passing the check), `dashboard/test_ai_page.py` (the AI summaries tab: views,
@@ -544,6 +544,9 @@ analyst should be able to:
       years and backtest error are in a table. The point where a projection joins its line is a
       published value, so it has no projection marker or tooltip (`joinIndex`).
     - Labelled as projections on the chart, in tooltips, and in a table with both intervals.
+    - The legend shows the 80% band as one entry; clicking it hides both edges (they share a
+      `band` key). Legend clicks set visibility at once (`toggleDataset`), not Chart.js's `hide()`,
+      whose fade kept drawing a hidden line until it ended, so the next change brought it back.
   - **Copy the values with sources** (2026-11-06), under the chart: a tab-separated table (pastes
     into a spreadsheet or a Word table) with the title, unit and group, every published value with
     its source report, page, table and verification, the missing years ("left as gaps"), the

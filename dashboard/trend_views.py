@@ -199,11 +199,12 @@ def add_projection(years, datasets, projection, band=True):
     if band:
         # The light fill alone is below 3:1 against white, so the band's edges get a thin line that
         # meets it (WCAG 1.4.11); the same intervals are also in the projection table.
+        # "band" ties the two edges together: the legend shows one entry, and hiding it hides both.
         datasets += [
             {**common, "label": "80% prediction interval (lower)", "data": line("lo80"), "fill": False,
-             "legendHidden": True, "backgroundColor": BAND},
+             "legendHidden": True, "backgroundColor": BAND, "band": "80"},
             {**common, "label": "80% prediction interval", "data": line("hi80"), "fill": "-1",
-             "backgroundColor": BAND},
+             "backgroundColor": BAND, "band": "80"},
         ]
         label, color, dash = f"Projection ({model})", "#5a5a5a", [6, 4]
     else:
