@@ -1899,37 +1899,37 @@
       "fiscal_year": 2008,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Periodicals received by households fell in FY2008 compared to FY2007 and FY2003",
+        "headline": "Periodicals received by households fell in FY2008",
         "statements": [
           {
-            "text": "Periodicals received by households totaled 6,400.0 millions of pieces in FY2008, down 200.0 millions of pieces, or 3.0%, from FY2007, and down 400.0 millions of pieces, or 5.9%, from FY2003.",
+            "text": "Periodicals received by households totaled 6,400.0 millions of pieces in FY2008, down 200.0 millions of pieces (3.0%) from FY2007.",
             "metric": "periodicals-volume",
             "years": [
-              2003,
-              2007,
-              2008
+              2008,
+              2007
+            ]
+          },
+          {
+            "text": "Periodicals received by households fell by 400.0 millions of pieces (5.9%) from FY2003 to FY2008.",
+            "metric": "periodicals-volume",
+            "years": [
+              2008,
+              2003
             ]
           }
         ],
-        "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
-        ]
+        "caveats": []
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 1: say which years the change 200.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 3.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 400.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 5.9 is between (\"from FY2018 to FY2023\")"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "fc112245346aebc947f0042604b6a8daa18705e9d42430cf0a962938b5bd67c0",
-      "generated_at": "2026-11-07T01:04:25+00:00",
+      "generated_at": "2026-11-07T01:14:14+00:00",
       "sources": [
         {
           "metric": "periodicals-volume",

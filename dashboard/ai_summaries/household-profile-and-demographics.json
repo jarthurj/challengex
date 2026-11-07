@@ -5916,18 +5916,18 @@
       "fiscal_year": 2022,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Mail volumes per household generally declined in FY2022 compared to FY2017.",
+        "headline": "Household mail volumes for advertising, correspondence, and transactions declined across several demographic segments in FY2022 compared to FY2017.",
         "statements": [
           {
-            "text": "Advertising mail received per household for all households totaled 499.2 pieces per household per year in FY2022, down 109.2 pieces per household per year, or -17.9%, from FY2017.",
+            "text": "Advertising mail received per household for all households totaled 499.2 pieces per household per year in FY2022, down 156.0 pieces per household per year (-23.8%) from FY2014 to FY2022, since the FY2014 methodology break.",
             "metric": "advertising-mail-received-per-household",
             "years": [
-              2017,
+              2014,
               2022
             ]
           },
           {
-            "text": "Correspondence mail received per household for all households totaled 104.0 pieces per household per year in FY2022, down 15.6 pieces per household per year, or -13.0%, from FY2017, since the FY2017 methodology break.",
+            "text": "Correspondence mail received per household for all households totaled 104.0 pieces per household per year in FY2022, down 15.6 pieces per household per year (-13.0%) from FY2017 to FY2022, since the FY2017 methodology break.",
             "metric": "correspondence-received-per-household",
             "years": [
               2017,
@@ -5935,7 +5935,7 @@
             ]
           },
           {
-            "text": "Transactions mail received per household for all households totaled 114.4 pieces per household per year in FY2022, down 36.4 pieces per household per year, or -24.1%, from FY2017, since the FY2017 methodology break.",
+            "text": "Transactions mail received per household for all households totaled 114.4 pieces per household per year in FY2022, down 36.4 pieces per household per year (-24.1%) from FY2017 to FY2022, since the FY2017 methodology break.",
             "metric": "transactions-received-per-household",
             "years": [
               2017,
@@ -5944,7 +5944,7 @@
           }
         ],
         "caveats": [
-          "Data for FY2021 are missing from the survey series."
+          "Data for FY2021 are missing across all series."
         ]
       },
       "validation": {
@@ -5956,9 +5956,9 @@
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "6144cd3171936682bc49c4dc0115f74cdef5252492f6089a98fd7ec7949b7626",
-      "generated_at": "2026-11-07T01:00:58+00:00",
+      "generated_at": "2026-11-07T01:11:36+00:00",
       "sources": [
         {
           "metric": "advertising-mail-received-per-household",
@@ -20852,10 +20852,10 @@
       "fiscal_year": 2008,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Mail volumes per household showed mixed movements across categories in FY2008.",
+        "headline": "Mail volumes per household varied across categories in FY2008.",
         "statements": [
           {
-            "text": "Advertising mail received per household totaled 852.8 pieces per household per year for all households in FY2008, down by 15.6 million pieces, or -1.8%, from FY2007, across the FY2008 methodology break.",
+            "text": "Advertising mail received per household for all households totaled 852.8 pieces per household per year in FY2008, down 15.6 pieces per household per year (-1.8%) from FY2007, across the FY2008 methodology break.",
             "metric": "advertising-mail-received-per-household",
             "years": [
               2007,
@@ -20863,7 +20863,7 @@
             ]
           },
           {
-            "text": "Correspondence mail received per household totaled 124.8 pieces per household per year for all households in FY2008, up by 15.6 million pieces, or 14.3%, from FY2007, and down by 5.2 million pieces, or -4.0%, from FY2003, across the FY2008 methodology break.",
+            "text": "Correspondence mail received per household for all households totaled 124.8 pieces per household per year in FY2008, up 15.6 pieces per household per year (14.3%) from FY2007, and down 5.2 pieces per household per year (-4.0%) from FY2003, across the FY2008 methodology break.",
             "metric": "correspondence-received-per-household",
             "years": [
               2003,
@@ -20872,7 +20872,7 @@
             ]
           },
           {
-            "text": "Transactions mail received per household totaled 265.2 pieces per household per year for all households in FY2008, down 10.4 pieces from FY2007, or -3.8%, and down 10.4 pieces from FY2003, or -3.8%.",
+            "text": "Transactions mail received per household for all households totaled 265.2 pieces per household per year in FY2008, down 10.4 pieces per household per year (-3.8%) from FY2007, and down 10.4 pieces per household per year (-3.8%) from FY2003.",
             "metric": "transactions-received-per-household",
             "years": [
               2003,
@@ -20882,29 +20882,20 @@
           }
         ],
         "caveats": [
-          "Definition of correspondence was recalculated for FY2006 and FY2007, and numbers do not compare to previously published reports.",
-          "Residential delivery estimates were corrected in FY2008.",
-          "Data for FY2008 crosses methodology breaks."
+          "Definition of correspondence recalculated for FY2006 and FY2007; numbers do not compare to previously published reports.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 1: say which fiscal year 852.8 is for (write the year right after it)",
-          "statement 2: say which fiscal year 124.8 is for (write the year right after it)",
-          "statement 2: say which years the change 15.6 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 14.3 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 5.2 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 4.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which fiscal year 265.2 is for (write the year right after it)"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "294739af6a9178f66c636d2283333b31f84b1a688ca700aec492204c6337efca",
-      "generated_at": "2026-11-07T01:01:09+00:00",
+      "generated_at": "2026-11-07T01:11:47+00:00",
       "sources": [
         {
           "metric": "advertising-mail-received-per-household",

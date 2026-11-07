@@ -1156,10 +1156,10 @@
       "fiscal_year": 2021,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class correspondence metrics moved in FY2021",
+        "headline": "First-Class correspondence received and sent shifted in FY2021 relative to FY2020 and FY2016",
         "statements": [
           {
-            "text": "First-Class correspondence received totaled 13,969.0 millions of pieces in FY2021, down 36.0 millions of pieces, or -0.3%, from FY2020, and down 1,175.0 millions of pieces, or -7.8%, from FY2016.",
+            "text": "First-Class correspondence received totaled 13,969.0 millions of pieces in FY2021, down 36.0 millions of pieces (-0.3%) from FY2020 and down 1,175.0 millions of pieces (-7.8%) from FY2016.",
             "metric": "fcm-received-correspondence",
             "years": [
               2016,
@@ -1168,7 +1168,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence sent totaled 3,439.0 millions of pieces in FY2021, up 93.0 millions of pieces, or 2.8%, from FY2020, and down 608.0 millions of pieces, or -15.0%, from FY2016.",
+            "text": "First-Class correspondence sent totaled 3,439.0 millions of pieces in FY2021, up 93.0 millions of pieces (2.8%) from FY2020 and down 608.0 millions of pieces (-15.0%) from FY2016.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2016,
@@ -1192,23 +1192,15 @@
         "passed": false,
         "problems": [
           "statement 1: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
-          "statement 1: say which years the change 36.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 0.3 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 1,175.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 7.8 is between (\"from FY2018 to FY2023\")",
-          "statement 2: compares FY2016 with FY2021 across the FY2017 methodology break without naming it",
-          "statement 2: say which years the change 93.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 2.8 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 608.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 15.0 is between (\"from FY2018 to FY2023\")"
+          "statement 2: compares FY2016 with FY2021 across the FY2017 methodology break without naming it"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "0bf59004ee5ff84dab18cb9fe6c50866b97c85bd7daf72c7e95285bd22908d73",
-      "generated_at": "2026-11-07T01:01:36+00:00",
+      "generated_at": "2026-11-07T01:12:02+00:00",
       "sources": [
         {
           "metric": "fcm-received-correspondence",
@@ -2792,10 +2784,10 @@
       "fiscal_year": 2011,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "First-Class correspondence received and sent changed in FY2011",
+        "headline": "First-Class correspondence received increased in FY2011 while sent correspondence decreased",
         "statements": [
           {
-            "text": "First-Class correspondence received totaled 16,281.0 millions of pieces in FY2011, up 286.0 millions of pieces, or 1.8%, from FY2010, since the FY2010 methodology break.",
+            "text": "First-Class correspondence received totaled 16,281.0 millions of pieces in FY2011, up 286.0 millions of pieces (1.8%) from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2010,
@@ -2803,7 +2795,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence received fell by 2,215.0 millions of pieces, or -12.0%, from FY2006 to FY2011, across the FY2010 methodology break.",
+            "text": "First-Class correspondence received fell by 2,215.0 millions of pieces (12.0%) from FY2006 to FY2011, across the FY2010 methodology break.",
             "metric": "fcm-received-correspondence",
             "years": [
               2006,
@@ -2812,7 +2804,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence sent totaled 4,965.0 millions of pieces in FY2011, down 626.0 millions of pieces, or -11.2%, from FY2010, since the FY2010 methodology break.",
+            "text": "First-Class correspondence sent totaled 4,965.0 millions of pieces in FY2011, down 626.0 millions of pieces (11.2%) from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2010,
@@ -2820,7 +2812,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence sent fell by 3,301.0 millions of pieces, or -39.9%, from FY2006 to FY2011, across the FY2010 methodology break.",
+            "text": "First-Class correspondence sent fell by 3,301.0 millions of pieces (39.9%) from FY2006 to FY2011, across the FY2010 methodology break.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2006,
@@ -2830,26 +2822,22 @@
           }
         ],
         "caveats": [
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology."
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
         ]
       },
       "validation": {
         "passed": false,
         "problems": [
           "statement 2: compares FY2006 with FY2011 across the FY2008 methodology break without naming it",
-          "statement 2: say which years the change 2,215.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 12.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: compares FY2006 with FY2011 across the FY2008 methodology break without naming it",
-          "statement 4: say which years the change 3,301.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 39.9 is between (\"from FY2018 to FY2023\")"
+          "statement 4: compares FY2006 with FY2011 across the FY2008 methodology break without naming it"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "9f1f55577c217f73d004b6814c59f1140f551a831e1b6512dbbf819b66abdfd3",
-      "generated_at": "2026-11-07T01:02:01+00:00",
+      "generated_at": "2026-11-07T01:12:14+00:00",
       "sources": [
         {
           "metric": "fcm-received-correspondence",
@@ -3449,10 +3437,10 @@
       "fiscal_year": 2007,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Correspondence metrics showed mixed results in FY2007",
+        "headline": "Correspondence mail received per household and First-Class correspondence sent fell in FY2007, while First-Class correspondence received increased from the previous year.",
         "statements": [
           {
-            "text": "Correspondence mail received per household totaled 109.2 pieces per household per year in FY2007, down 5.2 pieces per household per year, or -4.5%, from FY2006.",
+            "text": "Correspondence mail received per household totaled 109.2 pieces per household per year in FY2007, down 5.2 pieces per household per year (-4.5%) from FY2006.",
             "metric": "correspondence-received-per-household",
             "years": [
               2006,
@@ -3460,7 +3448,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence received totaled 18,828.0 millions of pieces in FY2007, up 332.0 millions of pieces, or 1.8%, from FY2006, and down 2,071.0 millions of pieces, or -9.9%, from FY2002.",
+            "text": "First-Class correspondence received totaled 18,828.0 millions of pieces in FY2007, up 332.0 millions of pieces (1.8%) from FY2006 and down 2,071.0 millions of pieces (-9.9%) from FY2002.",
             "metric": "fcm-received-correspondence",
             "years": [
               2002,
@@ -3469,7 +3457,7 @@
             ]
           },
           {
-            "text": "First-Class correspondence sent totaled 7,944.0 millions of pieces in FY2007, down 322.0 millions of pieces, or -3.9%, from FY2006, and down 1,796.0 millions of pieces, or -18.4%, from FY2002.",
+            "text": "First-Class correspondence sent totaled 7,944.0 millions of pieces in FY2007, down 322.0 millions of pieces (-3.9%) from FY2006 and down 1,796.0 millions of pieces (-18.4%) from FY2002.",
             "metric": "fcm-sent-correspondence",
             "years": [
               2002,
@@ -3479,29 +3467,19 @@
           }
         ],
         "caveats": [
-          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports (FY2008, p. 27). Table E.2 moved 2007 correspondence from 14.6 to 16.9 billion, out of unclassified mail (6.2 to 3.8); transactions unchanged.",
-          "Beginning in 2010, diary data were restated because of changes in weighting methodology (Appendix A8 table notes). Values before 2010 use the earlier weighting."
+          "Definition of correspondence recalculated for FY 2006 and 2007; numbers do not compare to previously published reports."
         ]
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 2: say which years the change 332.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 1.8 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 2,071.0 is between (\"from FY2018 to FY2023\")",
-          "statement 2: say which years the change 9.9 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 322.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 3.9 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 1,796.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 18.4 is between (\"from FY2018 to FY2023\")"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "e5ac7aaac2bbdce11ff3caf2132d8c89d264b6f6b233546854dbc0c5e3eb7c5e",
-      "generated_at": "2026-11-07T01:02:24+00:00",
+      "generated_at": "2026-11-07T01:12:40+00:00",
       "sources": [
         {
           "metric": "correspondence-received-per-household",

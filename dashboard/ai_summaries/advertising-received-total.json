@@ -101,43 +101,94 @@
       "fiscal_year": null,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Advertising mail received by households: long-term change in the published values, FY2000 to FY2023.",
+        "headline": "Advertising mail received by households fell from FY2000 to FY2023",
         "statements": [
           {
-            "text": "Advertising mail received by households (millions of pieces) went from 77,370 in FY2000 to 57,286 in FY2023: it fell by 20,084 (26.0%) over the period. Since FY2018 (five years earlier) it fell by 17,989 (23.9%). Since FY2013 (ten years earlier) it fell by 26,788 (31.9%).",
+            "text": "Advertising mail received by households fell by 20,084.0 millions of pieces (-26.0%) from FY2000 to FY2023, across the FY2007, FY2008 and FY2010 methodology breaks.",
             "metric": "advertising-received-total",
             "years": [
               2000,
-              2023,
-              2018,
-              2013
+              2023
             ]
           },
           {
-            "text": "Projection, not a published figure: the Linear trend model, fitted on FY2010 to FY2023, puts Advertising mail received by households at 49,387 in FY2028 (80% range 38,755 to 60,019). On past years it beat the naive baseline.",
+            "text": "Advertising mail received by households fell by 28,441.0 millions of pieces (-33.2%) from FY2010 to FY2023, since the FY2010 methodology break.",
             "metric": "advertising-received-total",
             "years": [
-              2023,
+              2010,
+              2023
+            ]
+          },
+          {
+            "text": "Advertising mail received by households fell by 26,788.0 millions of pieces (-31.9%) from FY2013 to FY2023.",
+            "metric": "advertising-received-total",
+            "years": [
+              2013,
+              2023
+            ]
+          },
+          {
+            "text": "Advertising mail received by households fell by 17,989.0 millions of pieces (-23.9%) from FY2018 to FY2023.",
+            "metric": "advertising-received-total",
+            "years": [
+              2018,
+              2023
+            ]
+          },
+          {
+            "text": "Advertising mail received by households is projected at 58,560.0 millions of pieces in FY2024, 80% prediction interval 53,030.0 to 64,090.0.",
+            "metric": "advertising-received-total",
+            "years": [
+              2024
+            ]
+          },
+          {
+            "text": "Advertising mail received by households is projected at 56,266.0 millions of pieces in FY2025, 80% prediction interval 49,875.0 to 62,658.0.",
+            "metric": "advertising-received-total",
+            "years": [
+              2025
+            ]
+          },
+          {
+            "text": "Advertising mail received by households is projected at 53,973.0 millions of pieces in FY2026, 80% prediction interval 46,600.0 to 61,347.0.",
+            "metric": "advertising-received-total",
+            "years": [
+              2026
+            ]
+          },
+          {
+            "text": "Advertising mail received by households is projected at 51,680.0 millions of pieces in FY2027, 80% prediction interval 41,963.0 to 61,397.0.",
+            "metric": "advertising-received-total",
+            "years": [
+              2027
+            ]
+          },
+          {
+            "text": "Advertising mail received by households is projected at 49,387.0 millions of pieces in FY2028, 80% prediction interval 38,755.0 to 60,019.0.",
+            "metric": "advertising-received-total",
+            "years": [
               2028
             ]
           }
         ],
         "caveats": [
-          "Methodology change in FY2007: Detached Address Labels no longer double-counted. Comparisons across it should be cautious.",
-          "Methodology change in FY2008: Residential delivery estimates corrected. Comparisons across it should be cautious.",
-          "Methodology change in FY2010: Diary data restated with new weighting. Comparisons across it should be cautious."
+          "Prior to 2007, Standard mail volumes were inflated by about 3 billion pieces due to a double count of Detached Address Labels.",
+          "Volumes through 2007 were understated by about 2 to 3 billion pieces due to a change in the methodology used by the carrier cost system for estimating deliveries to residential addresses.",
+          "Beginning in 2010, diary data were restated because of changes in weighting methodology.",
+          "From the FY2024 report, results are published as pieces per household per year, and the survey contractor changed from NuStats to RCF.",
+          "FY2025 used a new survey design and was renamed the Household Mail Survey."
         ]
       },
       "validation": {
         "passed": true,
         "problems": []
       },
-      "ai_generated": false,
+      "ai_generated": true,
       "reviewed": false,
-      "model": "rule-based template (no AI)",
-      "prompt_version": "template-v1",
-      "input_hash": "41d95d4e4c9f6e1175359ae9156aac5a7b53fe27b44e40e022ee4258fbf63b12",
-      "generated_at": "2026-11-05T11:05:00+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "prompt_version": "summary-v4",
+      "input_hash": "f3ddcd6818ca660063a5cc2b1773101238af7452e81a200166fa41111ec4e0b5",
+      "generated_at": "2026-11-07T01:14:40+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
@@ -149,122 +200,122 @@
             "2000": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2001": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2002": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2003": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2004": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2005": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2006": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2007": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2008": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2009": {
               "report_year": 2020,
               "page": 82,
-              "verified": false
+              "verified": true
             },
             "2010": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2011": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2012": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2013": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2014": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2015": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2016": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2017": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2018": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2019": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2020": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2021": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2022": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             },
             "2023": {
               "report_year": 2023,
               "page": 88,
-              "verified": false
+              "verified": true
             }
           }
         }

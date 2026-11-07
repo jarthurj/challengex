@@ -2586,10 +2586,10 @@
       "fiscal_year": 2018,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Household mail metrics changed across categories in FY2018.",
+        "headline": "Household mail volumes and advertising mail fell in FY2018 while package volumes rose.",
         "statements": [
           {
-            "text": "Advertising mail received by households totaled 75,275.0 millions of pieces in FY2018, down 1,596.0 millions of pieces, or 2.1%, from FY2017, and down 8,799.0 millions of pieces, or 10.5%, from FY2013.",
+            "text": "Advertising mail received by households totaled 75,275.0 millions of pieces in FY2018, down 1,596.0 millions of pieces (2.1%) from FY2017 and down 8,799.0 millions of pieces (10.5%) from FY2013.",
             "metric": "advertising-received-total",
             "years": [
               2013,
@@ -2598,7 +2598,7 @@
             ]
           },
           {
-            "text": "Share of bills paid by mail was 27.0 percent in FY2018, down 3.0 percentage points from FY2017, and down 10.0 percentage points from FY2013.",
+            "text": "Share of bills paid by mail was 27.0 percent in FY2018, down 3.0 percentage points from FY2017 and down 10.0 percentage points from FY2013.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2013,
@@ -2607,7 +2607,7 @@
             ]
           },
           {
-            "text": "First-Class Mail received by households totaled 38,958.0 millions of pieces in FY2018, down 836.0 millions of pieces, or 2.1%, from FY2017, and down 5,184.0 millions of pieces, or 11.7%, from FY2013.",
+            "text": "First-Class Mail received by households totaled 38,958.0 millions of pieces in FY2018, down 836.0 millions of pieces (2.1%) from FY2017 and down 5,184.0 millions of pieces (11.7%) from FY2013.",
             "metric": "fcm-received-total",
             "years": [
               2013,
@@ -2616,7 +2616,7 @@
             ]
           },
           {
-            "text": "All household mail, sent and received, totaled 121,000.0 millions of pieces in FY2018, down 2,700.0 millions of pieces, or 2.2%, from FY2017, and down 12,900.0 millions of pieces, or 9.6%, from FY2013.",
+            "text": "All household mail, sent and received totaled 121,000.0 millions of pieces in FY2018, down 2,700.0 millions of pieces (2.2%) from FY2017 and down 12,900.0 millions of pieces (9.6%) from FY2013.",
             "metric": "household-mail-total",
             "years": [
               2013,
@@ -2625,7 +2625,7 @@
             ]
           },
           {
-            "text": "Packages sent and received by households totaled 5,300.0 millions of pieces in FY2018, up 300.0 millions of pieces, or 6.0%, from FY2017, and up 1,200.0 millions of pieces, or 29.3%, from FY2013.",
+            "text": "Packages sent and received by households totaled 5,300.0 millions of pieces in FY2018, up 300.0 millions of pieces (6.0%) from FY2017 and up 1,200.0 millions of pieces (29.3%) from FY2013.",
             "metric": "packages-volume",
             "years": [
               2013,
@@ -2634,7 +2634,7 @@
             ]
           },
           {
-            "text": "Periodicals received by households totaled 4,400.0 millions of pieces in FY2018, down 500.0 millions of pieces, or 10.2%, from FY2017, and down 1,300.0 millions of pieces, or 22.8%, from FY2013.",
+            "text": "Periodicals received by households totaled 4,400.0 millions of pieces in FY2018, down 500.0 millions of pieces (10.2%) from FY2017 and down 1,300.0 millions of pieces (22.8%) from FY2013.",
             "metric": "periodicals-volume",
             "years": [
               2013,
@@ -2643,57 +2643,18 @@
             ]
           }
         ],
-        "caveats": [
-          "Advertising mail received by households fell by 10,452.0 millions of pieces, or 12.2%, from FY2010 to FY2018, since the FY2010 methodology break.",
-          "Share of bills paid by mail fell by 20.0 percentage points from FY2010 to FY2018, since the FY2010 methodology break.",
-          "First-Class Mail received by households fell by 11,105.0 millions of pieces, or 22.2%, from FY2010 to FY2018, since the FY2010 methodology break.",
-          "All household mail, sent and received, fell by 15,900.0 millions of pieces, or 11.6%, from FY2012 to FY2018, since the FY2012 methodology break.",
-          "Packages sent and received by households rose by 1,400.0 millions of pieces, or 35.9%, from FY2012 to FY2018, since the FY2012 methodology break.",
-          "Periodicals received by households fell by 1,500.0 millions of pieces, or 25.4%, from FY2012 to FY2018, since the FY2012 methodology break."
-        ]
+        "caveats": []
       },
       "validation": {
-        "passed": false,
-        "problems": [
-          "statement 1: say which years the change 1,596.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 2.1 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 8,799.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 10.5 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 836.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 2.1 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 5,184.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 11.7 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 2,700.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 2.2 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 12,900.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 9.6 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 300.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 6.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 1,200.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 29.3 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 500.0 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 10.2 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 1,300.0 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 22.8 is between (\"from FY2018 to FY2023\")",
-          "caveat 1: number 10,452.0 belongs in a statement, which names its metric and years",
-          "caveat 1: number 12.2 belongs in a statement, which names its metric and years",
-          "caveat 2: number 20.0 belongs in a statement, which names its metric and years",
-          "caveat 3: number 11,105.0 belongs in a statement, which names its metric and years",
-          "caveat 3: number 22.2 belongs in a statement, which names its metric and years",
-          "caveat 4: number 15,900.0 belongs in a statement, which names its metric and years",
-          "caveat 4: number 11.6 belongs in a statement, which names its metric and years",
-          "caveat 5: number 1,400.0 belongs in a statement, which names its metric and years",
-          "caveat 5: number 35.9 belongs in a statement, which names its metric and years",
-          "caveat 6: number 1,500.0 belongs in a statement, which names its metric and years",
-          "caveat 6: number 25.4 belongs in a statement, which names its metric and years"
-        ]
+        "passed": true,
+        "problems": []
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "6d8aae683bbb7f81d61ced3e4a61ff4877d55ea8a682e19d1782ef6f5985d19b",
-      "generated_at": "2026-11-07T00:59:47+00:00",
+      "generated_at": "2026-11-07T01:10:46+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
@@ -3575,10 +3536,10 @@
       "fiscal_year": 2015,
       "fiscal_year_range": null,
       "summary": {
-        "headline": "Household mail volumes and bills paid by mail changed across FY2015",
+        "headline": "Household mail volumes and advertising mail declined in FY2015 while packages remained unchanged from FY2014",
         "statements": [
           {
-            "text": "Advertising mail received by households totaled 80,001.0 millions of pieces in FY2015, down 774.0 millions of pieces, or -1.0%, from FY2014, and down 5,726.0 millions of pieces, or -6.7%, from FY2010, since the FY2010 methodology break.",
+            "text": "Advertising mail received by households totaled 80,001.0 millions of pieces in FY2015, down 774.0 millions of pieces (-1.0%) from FY2014 and down 5,726.0 millions of pieces (-6.7%) from FY2010, since the FY2010 methodology break.",
             "metric": "advertising-received-total",
             "years": [
               2010,
@@ -3587,7 +3548,7 @@
             ]
           },
           {
-            "text": "Share of bills paid by mail was 31.0 percent in FY2015, down 2.0 percentage points from FY2014, and down 16.0 percentage points from FY2010, since the FY2010 methodology break.",
+            "text": "Share of bills paid by mail was 31.0 percent in FY2015, down 2.0 percentage points from FY2014 and down 16.0 percentage points from FY2010, since the FY2010 methodology break.",
             "metric": "bills-paid-by-mail-share",
             "years": [
               2010,
@@ -3596,7 +3557,7 @@
             ]
           },
           {
-            "text": "First-Class Mail received by households totaled 41,400.0 millions of pieces in FY2015, down 1,430.0 millions of pieces, or -3.3%, from FY2014, and down 8,663.0 millions of pieces, or -17.3%, from FY2010, since the FY2010 methodology break.",
+            "text": "First-Class Mail received by households totaled 41,400.0 millions of pieces in FY2015, down 1,430.0 millions of pieces (-3.3%) from FY2014 and down 8,663.0 millions of pieces (-17.3%) from FY2010, since the FY2010 methodology break.",
             "metric": "fcm-received-total",
             "years": [
               2010,
@@ -3605,7 +3566,7 @@
             ]
           },
           {
-            "text": "All household mail, sent and received totaled 128,400.0 millions of pieces in FY2015, down 1,600.0 millions of pieces, or -1.2%, from FY2014, down 8,500.0 millions of pieces, or -6.2%, from FY2012, since the FY2012 methodology break, and down 12,800.0 millions of pieces, or -9.1%, from FY2010, across the FY2012 methodology break.",
+            "text": "All household mail, sent and received totaled 128,400.0 millions of pieces in FY2015, down 1,600.0 millions of pieces (-1.2%) from FY2014, down 8,500.0 millions of pieces (-6.2%) from FY2012, since the FY2012 methodology break, and down 12,800.0 millions of pieces (-9.1%) from FY2010, across the FY2012 methodology break.",
             "metric": "household-mail-total",
             "years": [
               2010,
@@ -3615,7 +3576,7 @@
             ]
           },
           {
-            "text": "Packages sent and received by households totaled 4,300.0 millions of pieces in FY2015, up 0.0 millions of pieces, or 0.0%, from FY2014, up 400.0 millions of pieces, or 10.3%, from FY2012, since the FY2012 methodology break, and up 700.0 millions of pieces, or 19.4%, from FY2010, across the FY2012 methodology break.",
+            "text": "Packages sent and received by households totaled 4,300.0 millions of pieces in FY2015, up 0.0 millions of pieces (0.0%) from FY2014, up 400.0 millions of pieces (10.3%) from FY2012, since the FY2012 methodology break, and up 700.0 millions of pieces (19.4%) from FY2010, across the FY2012 methodology break.",
             "metric": "packages-volume",
             "years": [
               2010,
@@ -3625,7 +3586,7 @@
             ]
           },
           {
-            "text": "Periodicals received by households totaled 5,100.0 millions of pieces in FY2015, down 200.0 millions of pieces, or -3.8%, from FY2014, down 800.0 millions of pieces, or -13.6%, from FY2012, since the FY2012 methodology break, and down 400.0 millions of pieces, or -7.3%, from FY2010, across the FY2012 methodology break.",
+            "text": "Periodicals received by households totaled 5,100.0 millions of pieces in FY2015, down 200.0 millions of pieces (-3.8%) from FY2014, down 800.0 millions of pieces (-13.6%) from FY2012, since the FY2012 methodology break, and down 400.0 millions of pieces (-7.3%) from FY2010, across the FY2012 methodology break.",
             "metric": "periodicals-volume",
             "years": [
               2010,
@@ -3643,40 +3604,16 @@
       "validation": {
         "passed": false,
         "problems": [
-          "statement 1: say which years the change 774.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 1.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 5,726.0 is between (\"from FY2018 to FY2023\")",
-          "statement 1: say which years the change 6.7 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 1,430.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 3.3 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 8,663.0 is between (\"from FY2018 to FY2023\")",
-          "statement 3: say which years the change 17.3 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 1,600.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 1.2 is between (\"from FY2018 to FY2023\")",
-          "statement 4: 8,500.0 is a change of its metric, but not between the years the sentence names",
-          "statement 4: say which years the change 6.2 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 12,800.0 is between (\"from FY2018 to FY2023\")",
-          "statement 4: say which years the change 9.1 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 0.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 0.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: 400.0 is a change of its metric, but not between the years the sentence names",
-          "statement 5: say which years the change 10.3 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 700.0 is between (\"from FY2018 to FY2023\")",
-          "statement 5: say which years the change 19.4 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 200.0 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 3.8 is between (\"from FY2018 to FY2023\")",
-          "statement 6: 800.0 is a change of its metric, but not between the years the sentence names",
-          "statement 6: say which years the change 13.6 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 400.0 is between (\"from FY2018 to FY2023\")",
-          "statement 6: say which years the change 7.3 is between (\"from FY2018 to FY2023\")"
+          "statement 5: says 0.0 went up, but the data says the opposite",
+          "statement 5: says 0.0 went up, but the data says the opposite"
         ]
       },
       "ai_generated": true,
       "reviewed": false,
       "model": "gemini-3.5-flash-lite",
-      "prompt_version": "summary-v3",
+      "prompt_version": "summary-v4",
       "input_hash": "43a6bb0e3b7976f9f4a05532dcb5a62ab665b0fd74b5347d8996af82972733e0",
-      "generated_at": "2026-11-07T00:59:58+00:00",
+      "generated_at": "2026-11-07T01:11:02+00:00",
       "sources": [
         {
           "metric": "advertising-received-total",
