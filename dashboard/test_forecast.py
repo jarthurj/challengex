@@ -111,6 +111,18 @@ class TrendForecastTests(TestCase):
         self.assertIn("statistical projections, not published USPS figures", page)
         self.assertIn("Naive (last value)", page)
 
+    def test_band_edges_are_one_legend_entry_and_hide_together(self):
+        datasets = self.data()["chart"]["datasets"]
+        edges = [d for d in datasets if d.get("band")]
+        self.assertEqual([d["label"] for d in edges], ["80% prediction interval (lower)", "80% prediction interval"])
+        self.assertEqual({d["band"] for d in edges}, {"80"})
+        self.assertEqual([bool(d.get("legendHidden")) for d in edges], [True, False])  # one entry for both
+        page = self.client.get(reverse("trends")).content.decode()
+        # the legend toggles visibility at once (Chart.js's hide() fade let hidden lines reappear)
+        self.assertIn("toggleDataset(legend.chart, item.datasetIndex)", page)
+        self.assertIn("dataset.band === band", page)
+        self.assertNotIn("legend.onClick.call", page)
+
     def test_market_series_fit_after_the_fy2014_restatement(self):
         # 2003-2023 from Table E.2, but 2012 on is the one basis later reports share.
         payload = self.data(trend="packages-volume")

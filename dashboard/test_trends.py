@@ -80,10 +80,27 @@ class TrendTests(TestCase):
         self.assertContains(response, "&lt;script&gt;bad()&lt;/script&gt;")
         self.assertNotContains(response, "<script>bad()</script>")
 
+    def test_chart_comes_right_after_its_title_and_long_sections_fold(self):
+        page = self.client.get(reverse("trends"), {"trend": "fcm-received-total"}).content.decode()
+        title, chart, notes = page.index("<h2>"), page.index('<div class="chart">'), page.index('<div class="chart-notes">')
+        self.assertLess(title, chart)
+        self.assertNotIn("<p", page[title:chart])   # nothing between the title and the chart
+        self.assertLess(chart, notes)
+        notes_text = page[notes:page.index("</div>", notes)]
+        self.assertIn("Missing years are gaps", notes_text)
+        self.assertIn('Dashed vertical lines ("Method changes" in the legend)', notes_text)
+        self.assertLess(notes_text.index("Missing years"), notes_text.index("Dashed vertical lines"))
+        # closed by default: no "open" on either panel
+        self.assertRegex(page, r'<details class="section-panel" id="methodology">\s*<summary><h3>Changes in survey methodology</h3></summary>')
+        self.assertRegex(page, r'<details class="section-panel" id="values">\s*<summary><h3>Values and sources</h3></summary>')
+        self.assertNotRegex(page, r'class="section-panel"[^>]*open')
+
     def test_group_picker_only_when_there_is_a_group_to_choose(self):
         only_all = self.client.get(reverse("trends"), {"trend": "fcm-received-total"}).content.decode()
         self.assertNotIn('id="segment"', only_all)
-        self.assertIn("<strong>Group:</strong> All households", only_all)   # still says whose values these are
+        self.assertIn("<p>Millions of pieces · All households.</p>", only_all)   # still says whose values these are
+        self.assertNotIn("<strong>Unit:</strong>", only_all)
+        self.assertNotIn("<strong>Group:</strong>", only_all)
         groups = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
         self.assertIn('<select name="segment" id="segment">', groups)
         self.assertIn('<label for="segment">Household group:</label>', groups)

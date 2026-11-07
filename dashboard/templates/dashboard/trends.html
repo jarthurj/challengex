@@ -39,19 +39,22 @@
 
     {% if chart_data %}
         <h2>{{ chart_title }}</h2>
-        <p><strong>Unit:</strong> {{ unit_label }}. <strong>Group:</strong> {{ selected_segment }}.</p>
-        {% for description in descriptions %}<p>{{ description }}</p>{% endfor %}
-        {% if category_chart %}
-            <p class="notice">These categories cover First-Class Mail received by households. They do not represent all USPS mail or all components of the First-Class total.</p>
-        {% endif %}
-        <p>Missing years are gaps. Unverified observations are identified in the source table.</p>
         <div class="chart">
-            <canvas id="trend-chart" role="img" aria-label="{{ chart_title }}. Values and sources follow in the data table.">
+            <canvas id="trend-chart" role="img" aria-label="{{ chart_title }}, {{ selected_segment }}, {{ unit_label }}. Values and sources follow in the data table.">
                 Use the data table below for values, units, and sources.
             </canvas>
         </div>
-        {% if breaks %}<p class="small chart-note">Dashed vertical lines ("Method changes" in the legend) mark changes in survey
-            methodology, labelled with their fiscal year and explained under "Changes in survey methodology" below.</p>{% endif %}
+        {# The chart's notes sit under it, so the chart comes straight after its title. #}
+        <div class="chart-notes">
+            <p>{{ unit_label }} · {{ selected_segment }}.</p>
+            {% for description in descriptions %}<p>{{ description }}</p>{% endfor %}
+            {% if category_chart %}
+                <p class="notice">These categories cover First-Class Mail received by households. They do not represent all USPS mail or all components of the First-Class total.</p>
+            {% endif %}
+            <p>Missing years are gaps. Unverified observations are identified in the source table.</p>
+            {% if breaks %}<p>Dashed vertical lines ("Method changes" in the legend) mark changes in survey
+                methodology, labelled with their fiscal year and explained under "Changes in survey methodology" below.</p>{% endif %}
+        </div>
         <p id="chart-status" role="status"></p>
         <p class="item-actions page-actions">
             <button type="button" class="copy-button" data-copy="chart-copy" hidden>Copy the values with sources</button>
@@ -161,14 +164,17 @@
             </section>
         {% endif %}
         {% if breaks %}
-            <h3>Changes in survey methodology</h3>
-            <ul>
-                {% for change in breaks %}
-                    <li><strong>FY{{ change.fiscal_year }}: {{ change.title }}</strong> — {{ change.description }}</li>
-                {% endfor %}
-            </ul>
+            <details class="section-panel" id="methodology">
+                <summary><h3>Changes in survey methodology</h3></summary>
+                <ul>
+                    {% for change in breaks %}
+                        <li><strong>FY{{ change.fiscal_year }}: {{ change.title }}</strong> — {{ change.description }}</li>
+                    {% endfor %}
+                </ul>
+            </details>
         {% endif %}
-        <h3>Values and sources</h3>
+        <details class="section-panel" id="values">
+        <summary><h3>Values and sources</h3></summary>
         <p><a href="{% url 'trend-csv' %}?{{ request.GET.urlencode }}">Download these values{% if forecast.points %} and the projection{% elif category_projections %} and the projections{% endif %} as CSV</a>
             (with source report, page and verification status for every value).</p>
         <details class="copy-panel">
@@ -201,6 +207,7 @@
                 </tbody>
             </table>
         </div>
+        </details>
 
         {% if ai_url %}
             <p class="notice">Plain-language summaries of this metric, by year and over the long term, are on the
@@ -299,6 +306,19 @@
                 return items;
             }
 
+            // Show or hide a legend entry's line, and the band edge that goes with it (the 80% interval's
+            // lower edge has no entry of its own). Not Chart.js's own hide(): that fades the line out
+            // but keeps drawing it until the fade ends, so the next change (another entry, the axis
+            // rescaling) brought it back at full strength for its whole animation.
+            function toggleDataset(chart, index) {
+                const visible = !chart.isDatasetVisible(index);
+                const band = chart.data.datasets[index].band;
+                chart.data.datasets.forEach((dataset, i) => {
+                    if (i === index || (band && dataset.band === band)) chart.setDatasetVisibility(i, visible);
+                });
+                chart.update();
+            }
+
             // The breaks that fall on the chart's years.
             function chartBreaks(chart) {
                 const breaks = (chart.options.plugins.methodologyMarkers || {}).breaks || [];
@@ -386,7 +406,7 @@
                                 },
                                 onClick(event, item, legend) {
                                     if (item.methodChanges) return;   // not a dataset to hide
-                                    Chart.defaults.plugins.legend.onClick.call(this, event, item, legend);
+                                    toggleDataset(legend.chart, item.datasetIndex);
                                 }},
                                 methodologyMarkers: {breaks: data.breaks},
                                 tooltip: {

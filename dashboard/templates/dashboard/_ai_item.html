@@ -5,7 +5,8 @@
         <span class="ai-item-head">
             <span class="ai-item-title"><span class="chevron" aria-hidden="true"></span>{{ item.short_title }}{% if item.short_title != item.title %}<span class="visually-hidden">: {{ item.title }}</span>{% endif %}</span>
             {% if mixed_years %}<span class="badge">{{ item.label }}</span>{% endif %}
-            <span class="badge {{ item.status_style }}">{{ item.status }}</span>
+            {# "not yet reviewed" is true of nearly every row and the list's status line says so; advanced mode shows it per row #}
+            {% if advanced or item.status_style != "badge-warn" %}<span class="badge {{ item.status_style }}">{{ item.status }}</span>{% endif %}
             {% if item.record.stale %}<span class="badge">Data changed since</span>{% endif %}
         </span>
         <span class="ai-item-headline">{{ item.record.summary.headline }}</span>

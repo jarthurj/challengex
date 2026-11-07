@@ -115,10 +115,12 @@
     {% endif %}
 
     {% for g in groups %}
-        <section aria-labelledby="cat-{{ g.key }}" class="ai-category">
-            <h3 id="cat-{{ g.key }}">{{ g.title }}{% if g.years %} <span class="small">({{ g.years }})</span>{% endif %}</h3>
+        {# Each category folds too (open by default), around its own folding summaries. #}
+        <details class="ai-category" open>
+            <summary><span class="chevron" aria-hidden="true"></span><h3 id="cat-{{ g.key }}">{{ g.title }}{% if g.years %} <span class="small">({{ g.years }})</span>{% endif %}</h3>
+                <span class="chip-count">{{ g.items|length }}</span></summary>
             {% for item in g.items %}{% include "dashboard/_ai_item.html" %}{% endfor %}
-        </section>
+        </details>
     {% empty %}
         <div class="notice">
             <p><strong>No summaries match{% if f.q %} "{{ f.q }}"{% endif %}{% if f.view == "year" and year %} for FY{{ year }}{% endif %}.</strong></p>

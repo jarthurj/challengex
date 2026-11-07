@@ -103,6 +103,10 @@ class AiPageTests(TestCase):
         self.assertIn('<h3 id="cat-packages">Packages</h3>', html)
         self.assertLess(html.index("cat-executive-summary"), html.index('id="cat-packages"'))
         self.assertIn('href="#cat-packages"', html)   # jump links
+        # each category folds (open by default) around its folding summaries
+        self.assertRegex(html, r'<details class="ai-category" open>\s*<summary><span class="chevron" aria-hidden="true"></span>'
+                               r'<h3 id="cat-packages">')
+        self.assertNotIn('<section aria-labelledby="cat-', html)
         # a year with none says so and offers to create one for that year
         html = self.page("?view=year&year=2010")
         self.assertIn("No summaries match for FY2010", html)
