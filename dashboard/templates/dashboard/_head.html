@@ -1,3 +1,20 @@
+{# Tailwind compiles the styles below in the browser, after the page starts rendering, so the layout #}
+{# (table columns most of all) used to jump on load. The page stays invisible until the styles are on: #}
+{# the body's background only turns slate once they apply. Revealed after 1.5 s whatever happens (CDN #}
+{# down), and never hidden without JavaScript, since this script adds the class itself. #}
+<style>html.styles-pending body { visibility: hidden; }</style>
+<script>
+    (function () {
+        const root = document.documentElement;
+        root.classList.add("styles-pending");
+        const started = performance.now();
+        (function check() {
+            const styled = document.body && getComputedStyle(document.body).backgroundColor !== "rgba(0, 0, 0, 0)";
+            if (styled || performance.now() - started > 1500) root.classList.remove("styles-pending");
+            else requestAnimationFrame(check);
+        })();
+    })();
+</script>
 {# Pinned version + integrity hash, like Chart.js: the browser refuses the file if the CDN serves anything else. #}
 {# The package's own file, not the bare URL, which jsDelivr minifies on the fly (its hash can change). #}
 {# To upgrade: change the version, then hash the new dist/index.global.js (see CLAUDE.md). #}

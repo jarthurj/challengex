@@ -648,7 +648,12 @@ analyst should be able to:
   jsDelivr minifies on the fly), and holds the whole design as `@apply` rules in a
   `<style type="text/tailwindcss">` block; templates use only those semantic class names
   (`.card`, `.notice`, `.badge` …). The browser compiles it on each load, so pages need the
-  internet (as Chart.js does) and can flash unstyled for a moment. To upgrade: change the
+  internet (as Chart.js does). Because it compiles after the page starts rendering, the layout
+  (table columns most of all) used to jump on load; a small script at the top of `_head.html`
+  keeps the body invisible (`html.styles-pending`) until the body's background shows the styles
+  are on, and reveals it after 1.5 s regardless (CDN down: the page shows unstyled, not blank).
+  Without JavaScript nothing is hidden. Checked in headless Chrome with the CDN blocked
+  (decided 2026-11-06 over compiling the CSS, to keep the setup). To upgrade: change the
   version, check the file against the npm package, and hash it
   (`openssl dgst -sha384 -binary index.global.js | openssl base64 -A`). Compiling the block once
   into a static CSS file with the Tailwind CLI would remove the CDN script entirely; that needs
