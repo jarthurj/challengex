@@ -161,6 +161,12 @@
 
   /* Forms */
   form { @apply mb-6 flex flex-wrap items-center gap-3; }
+  /* a label kept on one line with its control; the control shrinks rather than wrapping below it */
+  .form-field { @apply flex min-w-0 max-w-full items-center gap-3; }
+  .form-field label { @apply shrink-0; }
+  .form-field select { @apply min-w-0; }
+  /* a full-width, zero-height item: what follows it starts a new line */
+  .form-break { @apply h-0 basis-full; }
   form.filters { @apply items-end gap-x-5 rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }
   form.filters label { @apply flex flex-col gap-1 text-sm font-medium; }
   form.filters label.inline { @apply flex-row items-center; }

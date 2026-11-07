@@ -497,7 +497,9 @@ analyst should be able to:
 - **`trend_views.py` (Trends page, `/dashboard/trends/`):**
   - Pick a metric (or "First-Class Mail received by category") and a household segment. The
     household-group picker appears only when the metric has a group besides "All households"
-    (7 of the 26 metrics); otherwise the page just says "Group: All households".
+    (7 of the 26 metrics); otherwise the page just says "Group: All households". When shown, it
+    starts its own line, and each label stays on one line with its dropdown (`.form-field`,
+    `.form-break` in `_head.html`).
   - The page draws a Chart.js line chart from `/dashboard/trends/data/` (JSON).
   - Methodology breaks are marked on the chart and listed. Each is a dashed line labelled with
     its year ("2012"); the legend's "Method changes" entry (a dashed line, not a dataset, so

@@ -13,19 +13,25 @@
     <p>Explore household mail metrics using the preferred source for each fiscal year.</p>
 
     <form method="get">
-        <label for="trend">Trend:</label>
-        <select name="trend" id="trend">
-            {% for value, label in trend_options %}
-                <option value="{{ value }}" {% if selected_trend == value %}selected{% endif %}>{{ label }}</option>
-            {% endfor %}
-        </select>
-        {% if segments|length > 1 %}{# only when there is a group to choose besides the one shown #}
-            <label for="segment">Household group:</label>
-            <select name="segment" id="segment">
-                {% for segment in segments %}
-                    <option value="{{ segment.pk }}" {% if selected_segment.pk == segment.pk %}selected{% endif %}>{{ segment }}</option>
+        {# Each label stays on the same line as its dropdown; the household group starts a new line. #}
+        <div class="form-field">
+            <label for="trend">Trend:</label>
+            <select name="trend" id="trend">
+                {% for value, label in trend_options %}
+                    <option value="{{ value }}" {% if selected_trend == value %}selected{% endif %}>{{ label }}</option>
                 {% endfor %}
             </select>
+        </div>
+        {% if segments|length > 1 %}{# only when there is a group to choose besides the one shown #}
+            <div class="form-break" aria-hidden="true"></div>
+            <div class="form-field">
+                <label for="segment">Household group:</label>
+                <select name="segment" id="segment">
+                    {% for segment in segments %}
+                        <option value="{{ segment.pk }}" {% if selected_segment.pk == segment.pk %}selected{% endif %}>{{ segment }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         {% endif %}
         <button type="submit">Show trend</button>
     </form>

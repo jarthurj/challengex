@@ -87,6 +87,10 @@ class TrendTests(TestCase):
         groups = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
         self.assertIn('<select name="segment" id="segment">', groups)
         self.assertIn('<label for="segment">Household group:</label>', groups)
+        # the group starts its own line, with its label and dropdown kept together
+        self.assertRegex(groups, r'<div class="form-break" aria-hidden="true"></div>\s*<div class="form-field">\s*'
+                                 r'<label for="segment">Household group:</label>\s*<select name="segment"')
+        self.assertNotIn('class="form-break"', only_all)
 
     def test_break_markers_are_explained_and_laid_out_without_overlap(self):
         page = self.client.get(reverse("trends"), {"trend": "transactions-received-per-household"}).content.decode()
