@@ -935,7 +935,7 @@ reviewer subagent check each branch before merging, and update this file when a 
 5. **Table browser:** titles, column repair, PDF re-reads, "From the report" excerpts, topics,
    needs-review flags, OCR filter, source PDF links.
 6. **Data repairs:** checked; none needed for the current series.
-7. **Polish:** WCAG 2.1 AA pass, `pip-audit` clean, `DEMO.md`.
+7. **Polish:** WCAG 2.1 AA pass, `pip-audit` clean.
 8. **FY2003–FY2015 tables extracted** (`tables_2000_2015.json`, 1,933 tables; see Source material).
 9. **Longer market series:** Table E.2 from FY2005–FY2015, so total, packages and periodicals
    run 2003–2023; restatements are methodology breaks.
@@ -1020,10 +1020,10 @@ Measured against the slides' required capabilities and the quality bar above.
     file (see Styling) so the demo doesn't need the CDN for styles.
 
 **D. Before the demo** (whoever presents)
-11. Follow the checklist in `DEMO.md` on the demo laptop: `pip install -r requirements.txt`,
-    `python manage.py rebuild_db` (expect 1592 match, 0 mismatch), tests pass, PDFs in `docs/`,
-    internet for the Chart.js CDN. Update the walk-through to show a household-group chart
-    (e.g. transactions received by age, with its breaks), then rehearse the 7 minutes once.
+11. On the demo laptop: `pip install -r requirements.txt`, `python manage.py rebuild_db` (expect
+    1592 match, 0 mismatch), tests pass, PDFs in `docs/`, internet for the Chart.js and Tailwind
+    CDNs. The talk is 4 minutes plus 2 of questions; the walk-through is in the speaker notes of
+    the team's slides (`DEMO.md` was removed from the repo on 2026-11-06). Rehearse it once.
 12. Re-run `python -m pip_audit -r requirements.txt -r requirements-dev.txt`.
 
 **E. Low priority**
