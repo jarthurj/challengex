@@ -179,7 +179,10 @@
   .year-dropdown { @apply relative; }
   .year-dropdown summary { @apply cursor-pointer rounded-md border border-slate-400 bg-white px-3 py-2 font-normal; }
   .year-options { @apply absolute z-10 max-h-56 min-w-[150px] overflow-y-auto rounded-md border border-slate-400 bg-white p-2 shadow-lg; }
-  .year-options label { @apply flex-row whitespace-nowrap p-1 font-normal; }
+  /* as specific as "form.filters label" (which stacks a label's text over its control), so each
+     checkbox sits beside its year, centred on it */
+  form.filters .year-options label, .year-options label { @apply flex-row items-center gap-2 whitespace-nowrap p-1 font-normal; }
+  .year-options input[type="checkbox"] { @apply m-0 shrink-0; }
 
   /* Chart */
   .chart { @apply relative h-[420px] rounded-xl border border-slate-200 bg-white p-4 shadow-sm; }

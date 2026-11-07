@@ -99,6 +99,8 @@ class BrowserTests(TestCase):
         self.assertIn('<small id="year-help" class="help filter-note">None ticked: every year.</small>', page)
         self.assertIn('<form method="get" class="filters has-notes">', page)
         self.assertNotIn("{#", page)                                   # no template comment leaks
+        # each year's checkbox sits beside it: this rule must outrank "form.filters label" (flex-col)
+        self.assertIn("form.filters .year-options label, .year-options label { @apply flex-row items-center", page)
         two = self.client.get(reverse("table-list"), {"year": ["2016", "2017"]}).content.decode()
         self.assertIn('<span id="year-summary">Select years (2 selected)</span>', two)
 
